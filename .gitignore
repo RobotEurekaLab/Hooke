@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Virtual environments / package managers
+.venv/
+venv/
+uv.lock
+
+# Simulation-generated data (regenerate with the task scripts under autobio/)
+autobio/logs/
+
+# LeRobot-format datasets converted from autobio/logs (regenerate with scripts/convert.py)
+openpi/data/
+openpi-pi0-legacy/data/
+
+# Training outputs
+checkpoints/
+wandb/
+*.log
+
+# Large vendored/patched dependency clones (regenerate per README instructions)
+vendor/
+
+# OS / editor cruft
+.DS_Store
+*.swp
+
+# Claude Code local session state
+.claude/
