@@ -127,6 +127,15 @@ CATALOG: dict[str, CatalogEntry] = {
             category="conditioning",
             module="mani_centrifuge_mini", cls="CentrifugeMiniManipulate", robot="ur5e", camera="table_cam_left",
         ),
+        CatalogEntry(
+            name="pickup_reagent_bottle",
+            description=(
+                "Pick up a chemistry lab reagent bottle from the bench with a single-arm "
+                "horizontal side grasp."
+            ),
+            category="transfer",
+            module="mani_reagent_bottle", cls="PickupReagentBottle", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

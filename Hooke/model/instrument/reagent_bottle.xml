@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="reagent_bottle">
+  <compiler angle="radian" meshdir="../../assets" autolimits="true"/>
+
+  <asset>
+    <!-- Generated via the GPT-6 Astra + Blender pipeline (webui/custom_gen.py):
+         "A simple chemistry lab reagent bottle: a cylindrical amber glass
+         bottle, about 60mm diameter and 140mm tall, with a screw-on cap
+         on top ..." -- see private/technical-log.md for the generation
+         session. Blender's wm.obj_export writes OBJ's own Y-up convention,
+         not MuJoCo's Z-up (same issue documented in webui/custom_gen.py's
+         render_asset_preview), so the visual geom below carries a +90deg
+         local-X quat to compensate. -->
+    <mesh name="reagent_bottle-visual" file="container/reagent_bottle_vis.obj"/>
+    <material name="reagent_bottle_glass" rgba="0.55 0.32 0.12 1"/>
+  </asset>
+
+  <worldbody>
+    <body name="reagent_bottle_body">
+      <geom name="reagent_bottle-visual" type="mesh" mesh="reagent_bottle-visual" material="reagent_bottle_glass"
+            contype="0" conaffinity="0" density="0" group="2"
+            pos="0 0 0.07" quat="0.7071068 0.7071068 0 0"/>
+      <!-- Collision: simple primitives matching the generated mesh's real
+           dimensions (main body + narrower neck/cap), not the mesh itself --
+           cheaper and more robust for a grasp than a non-watertight
+           boolean-heavy export. -->
+      <geom name="reagent_bottle_body_collision" type="cylinder" size="0.0303 0.055" pos="0 0 0.055" group="3"/>
+      <geom name="reagent_bottle_neck_collision" type="cylinder" size="0.018 0.015" pos="0 0 0.125" group="3"/>
+      <site name="grasp_site" pos="0 0 0.07" size="0.005" rgba="1 0 0 1" group="4"/>
+      <inertial pos="0 0 0.06" mass="0.15" diaginertia="0.00025 0.00025 0.00008"/>
+    </body>
+  </worldbody>
+</mujoco>

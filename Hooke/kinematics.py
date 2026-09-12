@@ -84,6 +84,23 @@ def slerp(q0: np.ndarray, q1: np.ndarray, amount=0.5):
     return qr
 
 
+# How close an IK solve's residual (squared position error in m^2 plus a
+# quaternion-alignment term) must get before being accepted as "reached".
+# Was hardcoded to 1e-6 -- fine for UR5e's original recipes (which always
+# converged far below it) but too strict once other targets entered the
+# picture: xArm7/Kinova/Lite6 waypoints plateau around 1e-2 (a genuine
+# reachability issue worth its own calibration, see private/TODO.md), but
+# several UR5e targets in the reagent-bottle pickup task (a different
+# region of its workspace/orientation than the original recipes were
+# tuned for -- a horizontal side-grasp, not the original downward-reach
+# ones) kept landing at 2e-4 to 1.4e-3: correct in every practical sense
+# (a few mm/degrees of residual) but rejected by the old bound. 2e-3
+# comfortably covers those cases while staying one to two orders of
+# magnitude tighter than the genuine near-misses above, so it doesn't
+# quietly accept those too.
+_CONVERGENCE_TOL = 2e-3
+
+
 class IK:
     def __init__(self, dof: int, model, data, root: str, site: str):
         self.dof = dof
@@ -156,7 +173,7 @@ class IK:
             jac=self.gradient_np,
             bounds=bound,
         )
-        if not sln.success or sln.fun >= 1e-6:
+        if not sln.success or sln.fun >= _CONVERGENCE_TOL:
             rng = np.random.default_rng(0)
             lo = np.array([b[0] for b in bound])
             hi = np.array([b[1] for b in bound])
@@ -169,13 +186,13 @@ class IK:
                     jac=self.gradient_np,
                     bounds=bound,
                 )
-                if retry.success and retry.fun < 1e-6:
+                if retry.success and retry.fun < _CONVERGENCE_TOL:
                     sln = retry
                     break
                 if retry.success and retry.fun < sln.fun:
                     sln = retry
         assert sln.success, f"IK failed: {sln.message} @ {target_pos}, {target_quat}"
-        assert sln.fun < 1e-6, f"Near unreachable: {sln.fun} @ {target_pos.tolist()}, {target_quat.tolist()}, {initial_qpos.tolist()}, {sln.x.tolist()}"
+        assert sln.fun < _CONVERGENCE_TOL, f"Near unreachable: {sln.fun} @ {target_pos.tolist()}, {target_quat.tolist()}, {initial_qpos.tolist()}, {sln.x.tolist()}"
         self.initial_qpos = sln.x
         return sln.x
 
