@@ -11,11 +11,15 @@ deferred, harder problem). Output is a plain ordered list of catalog task
 names, which is exactly the raw material Phase II's compositional benchmark
 needs (see private/proposal.tex, Phase II).
 
-Usage:
-    export ANTHROPIC_API_KEY=...
+Usage (OpenAI, default):
+    export OPENAI_API_KEY=...
     python -m archetypes.compose_protocol "Take a tube from the rack, spin it \
         down in the 5430 centrifuge, then place a second tube in the slot \
         opposite it for balance."
+
+Usage (Anthropic, pass --provider anthropic):
+    export ANTHROPIC_API_KEY=...
+    python -m archetypes.compose_protocol --provider anthropic "..."
 
 Every step of parsing/validation below is unit-testable (and tested, see
 archetypes/test_compose_protocol.py) without ever calling the actual API --
@@ -28,7 +32,8 @@ import re
 
 from archetypes.task_catalog import CATALOG, catalog_prompt_listing
 
-DEFAULT_MODEL = "claude-sonnet-5"
+DEFAULT_PROVIDER = "openai"
+DEFAULT_MODELS = {"openai": "gpt-6-astra", "anthropic": "claude-sonnet-5"}
 
 SYSTEM_PROMPT = """You turn a free-text biology-lab protocol description into an ordered \
 sequence of robot tasks, chosen ONLY from a fixed catalog of tasks a robot can actually \
@@ -95,21 +100,37 @@ def parse_and_validate(response_text: str) -> list[dict]:
     return validated
 
 
-def call_llm(protocol_text: str, model: str = DEFAULT_MODEL) -> str:
-    import anthropic  # imported lazily so parse_and_validate can be unit-tested without the package
+def call_llm(protocol_text: str, provider: str = DEFAULT_PROVIDER, model: str | None = None) -> str:
+    """Imports the SDK lazily so parse_and_validate can be unit-tested
+    without either package installed."""
+    model = model or DEFAULT_MODELS[provider]
+    if provider == "openai":
+        import openai
 
-    client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from the environment
-    message = client.messages.create(
-        model=model,
-        max_tokens=1024,
-        system=build_prompt(),
-        messages=[{"role": "user", "content": protocol_text}],
-    )
-    return "".join(block.text for block in message.content if block.type == "text")
+        client = openai.OpenAI()  # reads OPENAI_API_KEY from the environment
+        response = client.responses.create(
+            model=model,
+            instructions=build_prompt(),
+            input=protocol_text,
+        )
+        return response.output_text
+    elif provider == "anthropic":
+        import anthropic
+
+        client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from the environment
+        message = client.messages.create(
+            model=model,
+            max_tokens=1024,
+            system=build_prompt(),
+            messages=[{"role": "user", "content": protocol_text}],
+        )
+        return "".join(block.text for block in message.content if block.type == "text")
+    else:
+        raise ValueError(f"Unknown provider: {provider!r} (expected 'openai' or 'anthropic')")
 
 
-def compose(protocol_text: str, model: str = DEFAULT_MODEL) -> list[dict]:
-    response_text = call_llm(protocol_text, model=model)
+def compose(protocol_text: str, provider: str = DEFAULT_PROVIDER, model: str | None = None) -> list[dict]:
+    response_text = call_llm(protocol_text, provider=provider, model=model)
     return parse_and_validate(response_text)
 
 
@@ -118,11 +139,12 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("protocol_text")
-    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--provider", choices=["openai", "anthropic"], default=DEFAULT_PROVIDER)
+    parser.add_argument("--model", default=None, help=f"Defaults per-provider: {DEFAULT_MODELS}")
     parser.add_argument("--out", help="Optional path to save the validated task sequence as JSON")
     args = parser.parse_args()
 
-    sequence = compose(args.protocol_text, model=args.model)
+    sequence = compose(args.protocol_text, provider=args.provider, model=args.model)
     print(json.dumps(sequence, indent=2))
     if args.out:
         with open(args.out, "w") as f:
