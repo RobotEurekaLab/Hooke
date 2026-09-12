@@ -98,6 +98,11 @@ ROBOTS: dict[str, RobotEntry] = {
             source="Hooke/AutoBio original asset",
         ),
         RobotEntry(
+            name="dual_ur5e", display_name="Dual UR5e (pipetting rig)", category="dual_arm",
+            mount="native_only", mjcf_path=None,
+            source="Hooke/AutoBio original asset",
+        ),
+        RobotEntry(
             name="unitree_g1", display_name="Unitree G1 (humanoid)", category="humanoid",
             mount="floor", mjcf_path="robot_menagerie/unitree_g1/g1.xml",
             source="MuJoCo Menagerie (Unitree Robotics, BSD-style)",

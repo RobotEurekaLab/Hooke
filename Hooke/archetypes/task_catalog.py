@@ -102,6 +102,31 @@ CATALOG: dict[str, CatalogEntry] = {
             category="separation",
             module="load_centrifuge_5430", cls="InsertCentrifuge5430", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="thermal_mixer",
+            description="Load a tube into the Eppendorf ThermoMixer C and run a mixing/heating cycle.",
+            category="combination",
+            module="mani_thermal_mixer", cls="ThermalMixerManipulate", robot="ur5e", camera="table_cam_left",
+            task_override="thermal_mixer",
+        ),
+        CatalogEntry(
+            name="pipette",
+            description="Pipette liquid from one container to another using a two-armed UR5e pipetting rig.",
+            category="transfer",
+            module="mani_pipette", cls="Pipette", robot="dual_ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="vortex_mixer",
+            description="Vortex-mix a tube's contents using a dual-arm Aloha setup and a Vortex-Genie 2 mixer.",
+            category="combination",
+            module="mani_vortex_mixer", cls="VortexMixerManipulate", robot="aloha", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="centrifuge_mini_close_lid",
+            description="Close the lid of the Tiangen T-Gear mini centrifuge.",
+            category="conditioning",
+            module="mani_centrifuge_mini", cls="CentrifugeMiniManipulate", robot="ur5e", camera="table_cam_left",
+        ),
     ]
 }
 
