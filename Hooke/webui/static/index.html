@@ -9,17 +9,24 @@
   .landing { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
   .landing button { flex: 1; padding: 1rem; font-size: 1rem; cursor: pointer; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; }
   .landing button.active { background: #e8f0fe; border-color: #4285f4; }
-  .landing button:disabled { color: #999; cursor: not-allowed; background: #f0f0f0; }
   fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
   label { display: block; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.9rem; }
-  select, button.primary { padding: 0.5rem; font-size: 1rem; margin-bottom: 0.8rem; width: 100%; box-sizing: border-box; }
+  select, textarea, input[type="text"], input[type="password"], button.primary {
+    padding: 0.5rem; font-size: 1rem; margin-bottom: 0.8rem; width: 100%; box-sizing: border-box;
+    font-family: inherit; border: 1px solid #ccc; border-radius: 6px;
+  }
+  input[type="file"] { margin-bottom: 0.8rem; }
+  textarea { resize: vertical; min-height: 4.5em; }
   button.primary { background: #4285f4; color: white; border: none; border-radius: 6px; cursor: pointer; }
   button.primary:disabled { background: #aaa; cursor: not-allowed; }
   #robot-info { font-size: 0.9rem; color: #555; margin-bottom: 0.8rem; }
-  #preview { text-align: center; }
-  #preview img { max-width: 100%; border: 1px solid #ccc; border-radius: 8px; }
-  #error { color: #c00; font-size: 0.9rem; }
-  #todo { font-size: 0.9rem; color: #777; }
+  #preview, #custom-preview { text-align: center; }
+  #preview img, #custom-preview img { max-width: 100%; border: 1px solid #ccc; border-radius: 8px; }
+  #error, #custom-error { color: #c00; font-size: 0.9rem; }
+  .hint { font-size: 0.8rem; color: #777; margin: -0.4rem 0 0.8rem; }
+  .key-note { font-size: 0.78rem; color: #2a7a2a; background: #eefbee; border: 1px solid #cdeecd; border-radius: 6px; padding: 0.5rem 0.7rem; margin-bottom: 0.8rem; }
+  details { margin-top: 0.6rem; font-size: 0.85rem; }
+  details pre { white-space: pre-wrap; background: #f6f6f6; border-radius: 6px; padding: 0.6rem; max-height: 16rem; overflow: auto; }
 </style>
 </head>
 <body>
@@ -27,7 +34,7 @@
 
 <div class="landing">
   <button id="btn-existing" class="active">Use an existing task scene</button>
-  <button id="btn-custom" disabled title="Coming soon (see private/TODO.md: generative-3D asset creation)">Generate a custom task scene (soon)</button>
+  <button id="btn-custom">Generate a custom task scene</button>
 </div>
 
 <fieldset id="existing-panel">
@@ -50,8 +57,42 @@
 
 <div id="preview"></div>
 
+<fieldset id="custom-panel" style="display:none">
+  <label for="description">Describe the instrument or asset</label>
+  <textarea id="description" placeholder="e.g. a small benchtop vortex mixer with a round rubber cup on top"></textarea>
+
+  <label for="image">Reference photo (optional)</label>
+  <input type="file" id="image" accept="image/*">
+
+  <label for="api_key">Your OpenAI API key</label>
+  <input type="password" id="api_key" placeholder="sk-...">
+  <p class="key-note">Used once, for this generation only. Never saved to disk, logged, or sent anywhere except OpenAI's API for this single request.</p>
+
+  <label for="model">Model</label>
+  <input type="text" id="model" value="gpt-6-astra">
+  <p class="hint">Needs GPT-6 Astra access enabled on your account/org (off by default). Generation can take up to ~90 seconds: the model writes a Blender script, which then actually runs in a real (headless) Blender.</p>
+
+  <button class="primary" id="generate-custom">Generate</button>
+  <div id="custom-error"></div>
+</fieldset>
+
+<div id="custom-preview"></div>
+
 <script>
 let CATALOG = null;
+
+document.getElementById('btn-existing').addEventListener('click', () => showPanel('existing'));
+document.getElementById('btn-custom').addEventListener('click', () => showPanel('custom'));
+
+function showPanel(which) {
+  const existing = which === 'existing';
+  document.getElementById('btn-existing').classList.toggle('active', existing);
+  document.getElementById('btn-custom').classList.toggle('active', !existing);
+  document.getElementById('existing-panel').style.display = existing ? '' : 'none';
+  document.getElementById('preview').style.display = existing ? '' : 'none';
+  document.getElementById('custom-panel').style.display = existing ? 'none' : '';
+  document.getElementById('custom-preview').style.display = existing ? 'none' : '';
+}
 
 async function loadCatalog() {
   const res = await fetch('/api/catalog');
@@ -142,7 +183,54 @@ async function generateScene() {
      <p><em>${data.task_info.prefix}</em> &mdash; robot: ${data.robot.display_name}</p>`;
 }
 
+async function generateCustom() {
+  const description = document.getElementById('description').value.trim();
+  const apiKey = document.getElementById('api_key').value.trim();
+  const model = document.getElementById('model').value.trim() || 'gpt-6-astra';
+  const imageFile = document.getElementById('image').files[0];
+
+  document.getElementById('custom-error').textContent = '';
+  document.getElementById('custom-preview').innerHTML = '';
+  if (!description) {
+    document.getElementById('custom-error').textContent = 'Please describe what you want to generate.';
+    return;
+  }
+  if (!apiKey) {
+    document.getElementById('custom-error').textContent = 'An API key is required for this step.';
+    return;
+  }
+
+  const btn = document.getElementById('generate-custom');
+  btn.disabled = true;
+  btn.textContent = 'Generating… (this can take up to ~90s)';
+
+  const form = new FormData();
+  form.append('description', description);
+  form.append('api_key', apiKey);
+  form.append('model', model);
+  if (imageFile) form.append('image', imageFile);
+
+  try {
+    const res = await fetch('/api/generate_custom', { method: 'POST', body: form });
+    const data = await res.json();
+    if (!res.ok) {
+      document.getElementById('custom-error').textContent = data.error || 'Unknown error';
+      return;
+    }
+    document.getElementById('custom-preview').innerHTML = `
+      <img src="data:image/png;base64,${data.image_png_base64}" alt="generated asset preview">
+      <details>
+        <summary>Generated Blender script</summary>
+        <pre>${data.script.replace(/</g, '&lt;')}</pre>
+      </details>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Generate';
+  }
+}
+
 document.getElementById('generate').addEventListener('click', generateScene);
+document.getElementById('generate-custom').addEventListener('click', generateCustom);
 loadCatalog();
 </script>
 </body>

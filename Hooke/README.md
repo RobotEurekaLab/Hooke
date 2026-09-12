@@ -97,9 +97,17 @@ rotor slot count) a variant, and see a rendered preview. Run:
 export MUJOCO_GL=egl
 python -m webui.server
 ```
-then open `http://localhost:8080/`. "Generate a custom task scene" (upload
-a photo/video/description) is shown on the landing page but not yet wired
-up -- it depends on the generative-3D work tracked in `private/TODO.md`.
+then open `http://localhost:8080/`.
+
+**Generate a custom task scene**: describe an instrument/asset (optionally
+with a reference photo), paste your own OpenAI API key (needs GPT-6 Astra
+access), and it writes a Blender (`bpy`) script, statically rejects it if
+it tries to touch the filesystem/network/subprocesses, runs the (approved)
+script in a real headless Blender, and renders the exported mesh. Your key
+is used only for that one request -- never written to disk, logged, or
+kept afterwards (see `webui/custom_gen.py`'s module docstring for the full
+security model). This is single-asset generation, not yet a full
+task+scene generator -- see `private/TODO.md`.
 
 **Robot picker**: every task offers its native robot plus, for
 UR5e-native tasks, arm-mount alternatives (Franka Panda, UFACTORY xArm7)

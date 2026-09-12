@@ -29,10 +29,15 @@ from archetypes.task_catalog import CATALOG
 from webui.robot_registry import ROBOTS, robot_options_for
 from webui.robot_scene import compose_scene, render_robot_preview
 from webui.scene_render import render_scene
+from webui.custom_gen import generate_custom_asset, GenerationError
 from PIL import Image
 import io
 
 app = Flask(__name__, static_folder="static", static_url_path="")
+# 8MB cap on the whole request (mainly to bound the optional reference-photo
+# upload for /api/generate_custom) -- not a security boundary by itself,
+# just a sane limit for a local dev server.
+app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024
 
 # The only task with more than one asset variant right now (see Step 2 /
 # archetypes/rotor_variants.py). 30 is the original, unmodified rotor.
@@ -114,6 +119,45 @@ def api_scene():
         "image_png_base64": image_b64,
         "task_info": task_info,
         "robot": dataclasses.asdict(ROBOTS[robot]),
+    })
+
+
+@app.post("/api/generate_custom")
+def api_generate_custom():
+    """Generate a custom asset preview from a text description (+ optional
+    reference photo), using the caller's own OpenAI API key.
+
+    The key is read from the request, used only for this one call, and
+    never written to disk, logged, or kept past the end of this request --
+    see webui/custom_gen.py's module docstring for the full security model
+    (this includes the generated script itself being statically rejected
+    if it tries to touch the filesystem/network/subprocesses).
+    """
+    description = (request.form.get("description") or "").strip()
+    api_key = (request.form.get("api_key") or "").strip()
+    model = (request.form.get("model") or "gpt-6-astra").strip()
+    image_file = request.files.get("image")
+
+    if not description:
+        return jsonify({"error": "Please describe the instrument or asset you want to generate."}), 400
+    if not api_key:
+        return jsonify({"error": "An OpenAI API key is required for this step (used once, not stored)."}), 400
+
+    image_bytes = image_file.read() if image_file and image_file.filename else None
+
+    try:
+        result = generate_custom_asset(description, image_bytes, api_key, model=model)
+    except GenerationError as e:
+        return jsonify({"error": str(e)}), 422
+    except Exception as e:
+        # Deliberately not including api_key in this message -- only ever
+        # pass it as a positional argument to the OpenAI client, never into
+        # a format string, so it can't leak into an error message either.
+        return jsonify({"error": f"{type(e).__name__}: {e}"}), 500
+
+    return jsonify({
+        "image_png_base64": base64.b64encode(result["image_png_bytes"]).decode("ascii"),
+        "script": result["script"],
     })
 
 
