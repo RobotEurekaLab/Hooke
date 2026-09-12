@@ -40,9 +40,21 @@ _KEYFRAME_BLOCK_RE = re.compile(r'<keyframe>.*?</keyframe>', re.DOTALL)
 
 # Where a "floor"-mount robot stands, relative to the scene's own origin --
 # off to the side of the table, not at the arm's tabletop mount point.
-# Approximate for every scene (not tailored per task); see
+# Approximate for every scene (not tailored per task layout); see
 # private/technical-log.md.
+#
+# This default happens to sit almost exactly at `table_cam_left`'s own
+# position (-1.2, 0, 1.65 -- see task_catalog.py) -- fine for the other
+# camera (table_cam_front), but for any scene using table_cam_left it
+# places the robot right where that camera is, so the render shows
+# essentially nothing (the robot is behind/inside the camera). Real bug,
+# not a rare one: 4 of the 6 catalog tasks use table_cam_left. Since a
+# single offset can't suit both cameras' very different distances from
+# the table (verified: an offset good for table_cam_left's wider framing
+# ends up far too close to table_cam_front's tighter one, dominating the
+# shot instead), branch on which camera the scene actually declares.
 FLOOR_STAND_POS = "-1.0 -0.9 0"
+FLOOR_STAND_POS_TABLE_CAM_LEFT = "0.6 0.0 0"
 
 
 def _attachable_floor_robot_path(robot: RobotEntry) -> Path:
@@ -89,8 +101,9 @@ def compose_scene(base_scene_path: Path, native_robot: str, chosen_robot: str) -
         rel_path = attachable_path.relative_to(MODEL_ROOT)
         prefix = f"{robot.name}:"
         model_decl = f'<model name="{robot.name}" file="../{rel_path}" content_type="text/xml" />'
+        stand_pos = FLOOR_STAND_POS_TABLE_CAM_LEFT if 'name="table_cam_left"' in text else FLOOR_STAND_POS
         attach_block = (
-            f'<body name="{prefix}mount" pos="{FLOOR_STAND_POS}">'
+            f'<body name="{prefix}mount" pos="{stand_pos}">'
             f'<joint name="{prefix}root" type="free"/>'
             f'<attach model="{robot.name}" body="world" prefix="{prefix}"/>'
             f'</body>'
