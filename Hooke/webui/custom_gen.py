@@ -54,7 +54,10 @@ Hard requirements:
 - Use ONLY the `bpy`, `bmesh`, `math`, and `mathutils` modules. Do not import `os`, `sys`, \
 `subprocess`, `socket`, `urllib`, `requests`, `shutil`, or anything else that touches the \
 filesystem, network, or another process.
-- Start from `bpy.ops.wm.read_factory_settings(use_empty=True)` to get a clean scene.
+- Start from `bpy.ops.wm.read_factory_settings(use_empty=True)` to get a clean scene. That leaves \
+`scene.world` as `None` (no default World datablock) -- never read or write `scene.world` or \
+anything under it (no environment/background/lighting setup); only mesh geometry is exported, so \
+it has no effect and `scene.world.anything` will crash with an AttributeError on `None`.
 - Build the geometry with primitive meshes (cubes, cylinders, spheres) combined with modifiers \
 or bmesh operations -- do not attempt to load any external file.
 - Scale the model in meters, roughly within a 0.05-0.5m bounding box (benchtop lab instrument \
@@ -154,7 +157,7 @@ _SCENE_TEMPLATE = """
     <light directional="true" diffuse="0.8 0.8 0.8" ambient="0.3 0.3 0.3" pos="0.3 -0.3 1.2" dir="-0.2 0.2 -1"/>
     <geom name="floor" type="plane" size="1 1 0.05" material="groundplane"/>
     <body name="asset" pos="0 0 {z_offset}">
-      <geom type="mesh" mesh="custom_asset" rgba="0.75 0.75 0.78 1"/>
+      <geom type="mesh" mesh="custom_asset" rgba="0.75 0.75 0.78 1" quat="0.7071068 0.7071068 0 0"/>
     </body>
     <camera name="preview_cam" pos="0.5 -0.5 0.4" xyaxes="0.7 0.7 0 -0.3 0.3 0.9"/>
   </worldbody>
@@ -169,7 +172,17 @@ def render_asset_preview(obj_path: Path, width: int = 480, height: int = 360) ->
     # Normalize so the model's largest dimension is ~0.3m, in case the
     # generated script didn't scale to meters correctly.
     scale = 0.3 / extent if extent > 0 else 1.0
-    z_offset = -float(mesh.bounds[0][2]) * scale if mesh.bounds is not None else 0.0
+    # Blender's `wm.obj_export` writes OBJ's own up-axis convention (+Y up),
+    # not Blender's own Z-up -- confirmed by a real generated asset (a
+    # tube rack with 6 conical sockets on top) rendering as a nearly
+    # featureless slab lying on its side, with the sockets only visible
+    # when viewed along the *exported* Y axis instead of Z. The geom's
+    # `quat` above (+90deg about local X: (x,y,z) -> (x,-z,y)) compensates
+    # by rotating the mesh's own Y-up data back to MuJoCo's Z-up, so
+    # z_offset (how far to lift it so it rests on the floor) must be
+    # computed from the mesh's Y bound -- the axis that becomes "up" after
+    # that rotation -- not its raw Z bound.
+    z_offset = -float(mesh.bounds[0][1]) * scale if mesh.bounds is not None else 0.0
 
     scene_xml = _SCENE_TEMPLATE.format(obj_path=str(obj_path), scale=scale, z_offset=z_offset)
     scene_path = obj_path.parent / "preview_scene.xml"
