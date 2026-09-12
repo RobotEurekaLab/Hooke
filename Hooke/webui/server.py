@@ -39,6 +39,17 @@ app = Flask(__name__, static_folder="static", static_url_path="")
 # just a sane limit for a local dev server.
 app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024
 
+
+def _robot_entry_json(entry) -> dict:
+    """`RobotEntry.arm_cls` (added when Panda/xArm7/etc. got real IK) is a
+    Python class, not JSON-serializable via plain `dataclasses.asdict` --
+    replace it with the one thing the frontend actually cares about:
+    whether this robot is functionally controllable or placement-only."""
+    d = dataclasses.asdict(entry)
+    d["arm_cls"] = None
+    d["functional"] = entry.arm_cls is not None
+    return d
+
 # The only task with more than one asset variant right now (see Step 2 /
 # archetypes/rotor_variants.py). 30 is the original, unmodified rotor.
 VARIANTS = {"insert_centrifuge_5430": [10, 15, 20, 24, 30]}
@@ -61,7 +72,7 @@ def api_catalog():
             "robot_options": robot_options_for(entry.robot),
             "variants": VARIANTS.get(entry.name),
         })
-    robots = {name: dataclasses.asdict(r) for name, r in ROBOTS.items()}
+    robots = {name: _robot_entry_json(r) for name, r in ROBOTS.items()}
     return jsonify({"tasks": tasks, "robots": robots})
 
 
@@ -118,7 +129,7 @@ def api_scene():
     return jsonify({
         "image_png_base64": image_b64,
         "task_info": task_info,
-        "robot": dataclasses.asdict(ROBOTS[robot]),
+        "robot": _robot_entry_json(ROBOTS[robot]),
     })
 
 
