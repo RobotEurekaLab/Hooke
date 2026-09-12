@@ -31,3 +31,6 @@ vendor/
 
 # Claude Code local session state
 .claude/
+
+# Private/unpublished material (research proposals, drafts, notes)
+private/
