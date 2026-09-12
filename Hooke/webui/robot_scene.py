@@ -13,6 +13,7 @@ when no robot swap is requested.
 """
 from __future__ import annotations
 
+import math
 import re
 from pathlib import Path
 
@@ -39,22 +40,59 @@ _FREEJOINT_RE = re.compile(r'<freejoint\b[^>]*/>|<joint\b(?=[^>]*type="free")[^>
 _KEYFRAME_BLOCK_RE = re.compile(r'<keyframe>.*?</keyframe>', re.DOTALL)
 
 # Where a "floor"-mount robot stands, relative to the scene's own origin --
-# off to the side of the table, not at the arm's tabletop mount point.
-# Approximate for every scene (not tailored per task layout); see
+# off to the side of the table, not at the arm's tabletop mount point, and
+# (via `facing_deg`) rotated to face back toward the table rather than
+# whatever direction its own model happens to default to. Approximate for
+# every scene (not tailored per task's actual object layout); see
 # private/technical-log.md.
 #
-# This default happens to sit almost exactly at `table_cam_left`'s own
-# position (-1.2, 0, 1.65 -- see task_catalog.py) -- fine for the other
-# camera (table_cam_front), but for any scene using table_cam_left it
-# places the robot right where that camera is, so the render shows
-# essentially nothing (the robot is behind/inside the camera). Real bug,
-# not a rare one: 4 of the 6 catalog tasks use table_cam_left. Since a
-# single offset can't suit both cameras' very different distances from
-# the table (verified: an offset good for table_cam_left's wider framing
-# ends up far too close to table_cam_front's tighter one, dominating the
-# shot instead), branch on which camera the scene actually declares.
-FLOOR_STAND_POS = "-1.0 -0.9 0"
-FLOOR_STAND_POS_TABLE_CAM_LEFT = "0.6 0.0 0"
+# Keyed by (camera_name, robot_name) because neither a single position nor
+# a single per-camera position turned out to generalize:
+# - A first attempt used one fixed offset for every scene. It happens to
+#   sit almost exactly at `table_cam_left`'s own position (-1.2, 0, 1.65 --
+#   see task_catalog.py) -- fine for `table_cam_front`, but on any scene
+#   using `table_cam_left` (4 of 6 catalog tasks) it places the robot right
+#   where that camera is, so the render shows essentially nothing (the
+#   robot is behind/inside the camera).
+# - A second attempt branched on which camera the scene *declares* --
+#   wrong test, since a scene can declare a camera it doesn't actually use
+#   for this task's preview (`pickup.xml` declares both `table_cam_front`
+#   and `table_cam_left`, but `pickup_centrifuge_tube` only renders from
+#   the former) -- silently always matching the wrong branch for that
+#   scene. Fixed by taking the camera MuJoCo will actually render from as
+#   an explicit parameter instead of sniffing scene text for it.
+# - Different robots also need different positions at the *same* camera --
+#   Unitree G1 (a compact biped) and Tiago Dual (bigger footprint, taller
+#   lift column) don't fit the same framing at the same spot. Verified via
+#   MuJoCo's segmentation rendering (count/bbox of the added robot's own
+#   geom pixels) rather than eyeballing renders, since a small visible
+#   fraction can just as easily mean "a small correctly-framed figure" as
+#   "one cropped body part" -- the two look identical as a raw percentage.
+#
+# `facing_deg` rotates the robot about its own vertical (Z) axis so it
+# faces back toward the table; both vendored floor robots default to
+# facing world +X when placed with an identity orientation (confirmed
+# empirically: the sign/axis conventions in a URDF/MJCF export aren't
+# reliable to assume from attribute names alone -- see
+# private/technical-log.md for how this was verified for Panda's gripper
+# earlier the same session, the same lesson applies here).
+_FLOOR_ROBOT_PLACEMENT: dict[tuple[str, str], tuple[str, float]] = {
+    ("table_cam_front", "unitree_g1"): ("-1.0 -0.9 0", 42.0),
+    ("table_cam_left", "unitree_g1"): ("0.6 0.0 0", 180.0),
+    ("table_cam_front", "tiago_dual"): ("-2.2 -0.6 0", 15.3),
+    ("table_cam_left", "tiago_dual"): ("0.6 1.2 0", -116.6),
+}
+_DEFAULT_FLOOR_PLACEMENT = ("-1.0 -0.9 0", 45.0)
+
+
+def _floor_robot_placement(camera_name: str | None, robot_name: str) -> tuple[str, str]:
+    """Returns (pos, quat) MJCF attribute strings for a floor-mount robot,
+    looked up by (camera, robot) with a reasonable fallback for any camera/
+    robot combination not explicitly tuned above."""
+    pos, facing_deg = _FLOOR_ROBOT_PLACEMENT.get((camera_name, robot_name), _DEFAULT_FLOOR_PLACEMENT)
+    half = math.radians(facing_deg) / 2
+    quat = f"{math.cos(half)} 0 0 {math.sin(half)}"
+    return pos, quat
 
 
 def _attachable_floor_robot_path(robot: RobotEntry) -> Path:
@@ -81,9 +119,15 @@ def _attachable_floor_robot_path(robot: RobotEntry) -> Path:
     return out
 
 
-def compose_scene(base_scene_path: Path, native_robot: str, chosen_robot: str) -> Path:
+def compose_scene(base_scene_path: Path, native_robot: str, chosen_robot: str, camera_name: str | None = None) -> Path:
     """Returns a scene XML path with `chosen_robot` swapped in / added. If
-    `chosen_robot == native_robot`, returns `base_scene_path` unchanged."""
+    `chosen_robot == native_robot`, returns `base_scene_path` unchanged.
+
+    `camera_name` is the camera this scene will actually be *rendered*
+    from (only used for "floor"-mount placement) -- deliberately not
+    inferred from the scene file itself, since a scene can declare a
+    camera it doesn't use for this particular task (see
+    _FLOOR_ROBOT_PLACEMENT's comment for why that distinction matters)."""
     if chosen_robot == native_robot:
         return base_scene_path
 
@@ -101,9 +145,9 @@ def compose_scene(base_scene_path: Path, native_robot: str, chosen_robot: str) -
         rel_path = attachable_path.relative_to(MODEL_ROOT)
         prefix = f"{robot.name}:"
         model_decl = f'<model name="{robot.name}" file="../{rel_path}" content_type="text/xml" />'
-        stand_pos = FLOOR_STAND_POS_TABLE_CAM_LEFT if 'name="table_cam_left"' in text else FLOOR_STAND_POS
+        stand_pos, stand_quat = _floor_robot_placement(camera_name, chosen_robot)
         attach_block = (
-            f'<body name="{prefix}mount" pos="{stand_pos}">'
+            f'<body name="{prefix}mount" pos="{stand_pos}" quat="{stand_quat}">'
             f'<joint name="{prefix}root" type="free"/>'
             f'<attach model="{robot.name}" body="world" prefix="{prefix}"/>'
             f'</body>'

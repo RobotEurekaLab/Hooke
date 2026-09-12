@@ -119,7 +119,7 @@ def api_scene():
                 base_scene = generate_rotor_variant(variant) if variant != 30 else entry.load_classes()[0].default_scene
             else:
                 base_scene = entry.load_classes()[0].default_scene
-            scene_path = compose_scene(base_scene, entry.robot, robot)
+            scene_path = compose_scene(base_scene, entry.robot, robot, camera_name=entry.camera)
             image = render_robot_preview(scene_path, camera_name=entry.camera)
             image_b64 = _png_base64(image)
             task_info = {"prefix": f"[preview only -- {ROBOTS[robot].display_name} placed in the '{task_name}' scene]"}
