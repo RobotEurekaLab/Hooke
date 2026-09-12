@@ -10,6 +10,9 @@
 conda create -n autobio python=3.11
 conda activate autobio
 pip install 'mujoco==3.3.0' numpy scipy jax[cpu] toppra trimesh shapely triangle manifold3d sympy zstandard tqdm networkx usd-core ffmpeg imageio[ffmpeg] matplotlib scikit-image
+# Optional: only needed for archetypes/compose_protocol.py (Phase I step 4,
+# LLM-driven protocol -> task-sequence composition)
+pip install anthropic
 ```
 
 ## File structure
