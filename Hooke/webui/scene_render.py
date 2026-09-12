@@ -31,9 +31,14 @@ def render_scene(entry, seed: int = 0, variant: int | None = None, width: int = 
     """Returns {"image_png_bytes": bytes, "task_info": dict, "robot": str}."""
     task_cls = _build_task(entry, variant)
     task = task_cls(task_cls.load())
-    task_info = task.reset(seed=seed)
+    # task_override must be set *before* reset(): reset() itself branches on
+    # self.task to decide both the prompt text and the initial state (e.g.
+    # thermal_cycler_open's reset() starts the lid closed, since opening it
+    # is the point -- applying the override after reset() would render the
+    # "close" task's start state under the "open" task's label).
     if entry.task_override:
         task.task = entry.task_override
+    task_info = task.reset(seed=seed)
     mujoco.mj_forward(task.model, task.data)
 
     camera_name = task_info["camera_mapping"].get("image")
