@@ -21,7 +21,11 @@ BSD-3-Clause-style for ufactory_xarm7 and unitree_g1; see each LICENSE).
 """
 import dataclasses
 
-from archetypes.menagerie_arms import MODEL_ROOT, PandaArm, XArm7Arm, panda_with_tcp_site
+from archetypes.menagerie_arms import (
+    MODEL_ROOT, PandaArm, XArm7Arm, panda_with_tcp_site,
+    KinovaGen3Arm, KukaIiwa14Arm, FlexivRizon4Arm, Lite6Arm,
+    gen3_with_2f85, iiwa14_with_2f85, rizon4_with_2f85, lite6_with_position_gripper,
+)
 from expert_common import UR5eArm
 
 
@@ -46,6 +50,10 @@ class RobotEntry:
 # with one added, once, and every reference to Panda's MJCF below uses
 # that copy rather than the raw vendored file.
 _PANDA_MJCF = str(panda_with_tcp_site().relative_to(MODEL_ROOT))
+_GEN3_MJCF = str(gen3_with_2f85().relative_to(MODEL_ROOT))
+_IIWA14_MJCF = str(iiwa14_with_2f85().relative_to(MODEL_ROOT))
+_RIZON4_MJCF = str(rizon4_with_2f85().relative_to(MODEL_ROOT))
+_LITE6_MJCF = str(lite6_with_position_gripper().relative_to(MODEL_ROOT))
 
 ROBOTS: dict[str, RobotEntry] = {
     entry.name: entry for entry in [
@@ -63,6 +71,26 @@ ROBOTS: dict[str, RobotEntry] = {
             name="xarm7", display_name="UFACTORY xArm7", category="single_arm",
             mount="arm", mjcf_path="robot_menagerie/ufactory_xarm7/xarm7.xml",
             source="MuJoCo Menagerie (UFACTORY, BSD-style)", arm_cls=XArm7Arm,
+        ),
+        RobotEntry(
+            name="kinova_gen3", display_name="Kinova Gen3 + Robotiq 2F-85", category="single_arm",
+            mount="arm", mjcf_path=_GEN3_MJCF,
+            source="MuJoCo Menagerie (Kinova, BSD-style)", arm_cls=KinovaGen3Arm,
+        ),
+        RobotEntry(
+            name="kuka_iiwa14", display_name="KUKA iiwa14 + Robotiq 2F-85", category="single_arm",
+            mount="arm", mjcf_path=_IIWA14_MJCF,
+            source="MuJoCo Menagerie (KUKA/Drake, BSD-style)", arm_cls=KukaIiwa14Arm,
+        ),
+        RobotEntry(
+            name="flexiv_rizon4", display_name="Flexiv Rizon4 + Robotiq 2F-85", category="single_arm",
+            mount="arm", mjcf_path=_RIZON4_MJCF,
+            source="MuJoCo Menagerie (Flexiv, Apache-2.0)", arm_cls=FlexivRizon4Arm,
+        ),
+        RobotEntry(
+            name="ufactory_lite6", display_name="UFACTORY Lite6", category="single_arm",
+            mount="arm", mjcf_path=_LITE6_MJCF,
+            source="MuJoCo Menagerie (UFACTORY, BSD-style)", arm_cls=Lite6Arm,
         ),
         RobotEntry(
             name="aloha", display_name="Aloha (dual-arm)", category="dual_arm",
@@ -89,7 +117,7 @@ ROBOTS: dict[str, RobotEntry] = {
 # there is no dual-arm or floor robot that cleanly substitutes for the
 # existing ur5e/aloha mount points.
 ARM_ALTERNATIVES: dict[str, list[str]] = {
-    "ur5e": ["franka_panda", "xarm7"],
+    "ur5e": ["franka_panda", "xarm7", "kinova_gen3", "kuka_iiwa14", "flexiv_rizon4", "ufactory_lite6"],
 }
 
 # Floor-standing robots offered as an *addition* next to any task's scene
