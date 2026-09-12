@@ -137,9 +137,18 @@ class Centrifuge_Eppendorf_5430(System):
         self.rotor_joint = self.name2id(mujoco.mjtObj.mjOBJ_JOINT, 'rotor')
         self.rotor_qposadr = model.jnt_qposadr[self.rotor_joint].item()
         self.lid_site = self.name2id(mujoco.mjtObj.mjOBJ_SITE, 'lid')
-        self.slot_sites = [
-            self.name2id(mujoco.mjtObj.mjOBJ_SITE, f'slot{i:02}') for i in range(30)
-        ]
+        # Auto-detect how many `slotNN` sites the loaded rotor asset actually has,
+        # rather than assuming the original 30-slot rotor. This lets alternate
+        # rotor-capacity variants (see archetypes/rotor_variants.py) reuse this
+        # class unchanged -- only the MJCF's <replicate count="..."> differs.
+        self.slot_sites = []
+        i = 0
+        while True:
+            site_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SITE, self.make_name(f'slot{i:02}'))
+            if site_id == -1:
+                break
+            self.slot_sites.append(site_id)
+            i += 1
         self.num_slots = len(self.slot_sites)
 
     def _reset(self, data: mujoco.MjData):
