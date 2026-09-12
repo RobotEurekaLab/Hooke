@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hooke Task Scene Picker</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; color: #222; }
+  h1 { font-size: 1.4rem; }
+  .landing { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+  .landing button { flex: 1; padding: 1rem; font-size: 1rem; cursor: pointer; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; }
+  .landing button.active { background: #e8f0fe; border-color: #4285f4; }
+  .landing button:disabled { color: #999; cursor: not-allowed; background: #f0f0f0; }
+  fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+  label { display: block; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.9rem; }
+  select, button.primary { padding: 0.5rem; font-size: 1rem; margin-bottom: 0.8rem; width: 100%; box-sizing: border-box; }
+  button.primary { background: #4285f4; color: white; border: none; border-radius: 6px; cursor: pointer; }
+  button.primary:disabled { background: #aaa; cursor: not-allowed; }
+  #robot-info { font-size: 0.9rem; color: #555; margin-bottom: 0.8rem; }
+  #preview { text-align: center; }
+  #preview img { max-width: 100%; border: 1px solid #ccc; border-radius: 8px; }
+  #error { color: #c00; font-size: 0.9rem; }
+  #todo { font-size: 0.9rem; color: #777; }
+</style>
+</head>
+<body>
+<h1>Hooke &mdash; Task Scene Picker</h1>
+
+<div class="landing">
+  <button id="btn-existing" class="active">Use an existing task scene</button>
+  <button id="btn-custom" disabled title="Coming soon (see private/TODO.md: generative-3D asset creation)">Generate a custom task scene (soon)</button>
+</div>
+
+<fieldset id="existing-panel">
+  <label for="category">Category</label>
+  <select id="category"></select>
+
+  <label for="task">Task</label>
+  <select id="task"></select>
+
+  <label for="variant" id="variant-label" style="display:none">Rotor variant (slot count)</label>
+  <select id="variant" style="display:none"></select>
+
+  <div id="robot-info"></div>
+
+  <button class="primary" id="generate">Generate scene</button>
+  <div id="error"></div>
+</fieldset>
+
+<div id="preview"></div>
+
+<script>
+let CATALOG = null;
+
+async function loadCatalog() {
+  const res = await fetch('/api/catalog');
+  CATALOG = await res.json();
+  const categories = [...new Set(CATALOG.tasks.map(t => t.category))].sort();
+  const categorySelect = document.getElementById('category');
+  categorySelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+  categorySelect.addEventListener('change', populateTasks);
+  document.getElementById('task').addEventListener('change', onTaskChange);
+  populateTasks();
+}
+
+function populateTasks() {
+  const category = document.getElementById('category').value;
+  const tasks = CATALOG.tasks.filter(t => t.category === category);
+  const taskSelect = document.getElementById('task');
+  taskSelect.innerHTML = tasks.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
+  onTaskChange();
+}
+
+function currentTask() {
+  const name = document.getElementById('task').value;
+  return CATALOG.tasks.find(t => t.name === name);
+}
+
+function onTaskChange() {
+  const task = currentTask();
+  if (!task) return;
+  const robot = CATALOG.robots[task.robot] || { name: task.robot };
+  document.getElementById('robot-info').textContent =
+    `Description: ${task.description}  |  Robot: ${robot.name}`;
+
+  const variantSelect = document.getElementById('variant');
+  const variantLabel = document.getElementById('variant-label');
+  if (task.variants) {
+    variantSelect.style.display = '';
+    variantLabel.style.display = '';
+    variantSelect.innerHTML = task.variants.map(v => `<option value="${v}">${v} slots${v === 30 ? ' (original)' : ''}</option>`).join('');
+  } else {
+    variantSelect.style.display = 'none';
+    variantLabel.style.display = 'none';
+  }
+}
+
+async function generateScene() {
+  const task = currentTask();
+  document.getElementById('error').textContent = '';
+  document.getElementById('preview').innerHTML = 'Rendering...';
+  const body = { task: task.name, seed: Math.floor(Math.random() * 100000) };
+  if (task.variants) body.variant = document.getElementById('variant').value;
+
+  const res = await fetch('/api/scene', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    document.getElementById('error').textContent = data.error || 'Unknown error';
+    document.getElementById('preview').innerHTML = '';
+    return;
+  }
+  document.getElementById('preview').innerHTML =
+    `<img src="data:image/png;base64,${data.image_png_base64}" alt="scene preview">
+     <p><em>${data.task_info.prefix}</em> &mdash; robot: ${data.robot.name}</p>`;
+}
+
+document.getElementById('generate').addEventListener('click', generateScene);
+loadCatalog();
+</script>
+</body>
+</html>

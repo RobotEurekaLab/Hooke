@@ -19,7 +19,9 @@ conda activate autobio
 pip install 'mujoco==3.3.0' numpy scipy jax[cpu] toppra trimesh shapely triangle manifold3d sympy zstandard tqdm networkx usd-core ffmpeg imageio[ffmpeg] matplotlib scikit-image
 # Optional: only needed for archetypes/compose_protocol.py (Phase I step 4,
 # LLM-driven protocol -> task-sequence composition)
-pip install anthropic
+pip install anthropic openai
+# Optional: only needed for webui/ (Phase I step 5, interactive task-scene picker)
+pip install flask
 ```
 
 ## File structure
@@ -85,3 +87,16 @@ for the full write-up, in brief:
 - `task_catalog.py` + `compose_protocol.py` — a catalog of verified atomic
   tasks and an LLM-driven pipeline that composes a free-text protocol
   description into an ordered sequence of them.
+
+## `webui/`
+
+An interactive scene picker: pick a category, then a task, then (for tasks
+with generated asset variants, e.g. rotor slot count) a variant, and see a
+rendered preview of the task's reset state with the robot it uses. Run:
+```bash
+export MUJOCO_GL=egl
+python -m webui.server
+```
+then open `http://localhost:8080/`. "Generate a custom task scene" (upload
+a photo/video/description) is shown on the landing page but not yet wired
+up -- it depends on the generative-3D work tracked in `private/TODO.md`.
