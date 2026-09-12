@@ -98,9 +98,25 @@ def _attach_2f85_gripper(src: Path, out_name: str, site_marker: str, frame_pos: 
 # Franka Panda ships with no site at its gripper's pinch point (unlike
 # xArm7, which already has one -- see XArm7Arm below) -- add one, at the
 # conventional ~0.1m offset along the hand's local +z from the flange,
-# roughly where the fingertips meet. Approximate, like every such
-# hand-picked offset in this codebase; tune against real grasp success if
-# it matters later.
+# roughly where the fingertips meet. The offset magnitude is approximate
+# (hand-picked, like every such offset in this codebase), but the site's
+# *orientation* is deliberately identity, not a hand-picked rotation: an
+# earlier version of this rotated it -90deg/+90deg about Z, reasoning from
+# the raw joint axis attributes (Panda's fingers: axis="0 1 0"; Robotiq's:
+# axis="1 0 0") that the two conventions were 90deg apart. That reasoning
+# skipped over how each site's own orientation composes with those joints.
+# Measuring the actual open/close axis in each TCP site's own local frame
+# (finger-body world positions, projected through the site's rotation
+# matrix) shows they already agree on the Y axis with an *identity* Panda
+# site -- the earlier Z-rotation was actively wrong, not merely
+# unnecessary: it remapped the true open axis onto the wrong local axis,
+# which is what made Panda's open gripper crash into the (thin, flat)
+# grasp target at the "grip" pose in every recipe (confirmed via a direct
+# test: solving IK for that exact pose and checking contacts with the
+# gripper held open showed 0 contacts for UR5e/2f85 and ~19mm of
+# penetration on both fingers for Panda with the old rotated site -- 0
+# contacts once the site went back to identity). See
+# private/technical-log.md for the full measurement.
 _PANDA_SRC = MODEL_ROOT / "robot_menagerie" / "franka_emika_panda" / "panda.xml"
 _PANDA_TCP_MARKER = '<body name="hand" pos="0 0 0.107" quat="0.9238795 0 0 -0.3826834">'
 
@@ -124,7 +140,7 @@ def panda_with_tcp_site() -> Path:
             raise RuntimeError(f"Expected hand-body marker not found in {_PANDA_SRC}; it may have changed upstream.")
         new_text = text.replace(
             _PANDA_TCP_MARKER,
-            _PANDA_TCP_MARKER + '\n                      <site name="tcp" pos="0 0 0.1" quat="0.7071068 0 0 -0.7071068" group="4"/>',
+            _PANDA_TCP_MARKER + '\n                      <site name="tcp" pos="0 0 0.1" quat="1 0 0 0" group="4"/>',
             1,
         )
         out.write_text(new_text)
