@@ -1,4 +1,11 @@
-# AutoBio
+# Hooke simulator
+
+The MuJoCo-based lab-automation simulator, task definitions, and
+demonstration-generation/rendering pipeline. Originally the `autobio/`
+directory from [AutoBio](https://arxiv.org/abs/2505.14030); renamed to
+match the overall [Hooke](../README.md) project as it diverges from the
+original release (see `archetypes/` below and `private/technical-log.md`
+for what's changed and why).
 
 ## Requirements
 ### System requirement
@@ -57,3 +64,24 @@ After simulation data acquired, you may run
 bash render.bash "[task_name]"
 ```
 to get the visual output for each camera in the scenario.
+
+## `archetypes/`
+
+Added on top of the original release to make the task/asset library
+scale rather than requiring a new hand-written file per instrument
+variant. See `private/technical-log.md` (not published; ask the repo owner)
+for the full write-up, in brief:
+
+- `expert_common.py` — shared UR5e/motion-primitive code every task file
+  used to duplicate.
+- `lever_lock_centrifuge.py` + `centrifuge_specs.py` — a generic archetype
+  for the "grip a lever, close it, engage a lock" instrument family
+  (`mani_centrifuge_5430.py`/`5910.py` are now ~20-line instantiations of it).
+- `rotor_variants.py` — generates alternate rotor-capacity variants of the
+  centrifuge 5430 asset by editing its MJCF `<replicate>` block.
+- `validate_task.py` / `validate_rotor_variants.py` / `validate_catalog.py` —
+  a generic harness that runs a task's scripted expert and reports
+  compile/stability/success-rate stats.
+- `task_catalog.py` + `compose_protocol.py` — a catalog of verified atomic
+  tasks and an LLM-driven pipeline that composes a free-text protocol
+  description into an ordered sequence of them.

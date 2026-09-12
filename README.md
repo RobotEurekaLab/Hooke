@@ -6,8 +6,8 @@ laboratories, built on top of [AutoBio](https://arxiv.org/abs/2505.14030)
 
 ## Layout
 
-- `autobio/` — the MuJoCo-based simulator, task definitions, and demonstration
-  data generation/rendering pipeline. See `autobio/README.md`.
+- `Hooke/` — the MuJoCo-based simulator, task definitions, and demonstration
+  data generation/rendering pipeline. See `Hooke/README.md`.
 - `openpi/` — VLA training/inference stack (forked from
   [Physical Intelligence's openpi](https://github.com/Physical-Intelligence/openpi)),
   upgraded to support fine-tuning **pi0.5** on AutoBio tasks.

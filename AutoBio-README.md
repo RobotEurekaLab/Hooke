@@ -1,10 +1,16 @@
 # AutoBio [Preliminary Version]
 
+> This is the original AutoBio release README, preserved for reference.
+> The `autobio` directory it refers to has since been renamed to `Hooke`
+> as part of the [Hooke](README.md) project built on top of it; the paths
+> below are updated to match, but the rest of this document describes the
+> original release as published.
+
 ⚠️ **Note**: This is currently a preliminary version of AutoBio, including our simulation assets and example code for synthetic data generation. The project is in development, and the codebase is undergoing structural improvements. We appreciate your understanding as we work to refine and stabilize the implementation. Contributions and suggestions are welcome! For details, please refer to our paper [AutoBio: A Simulation and Benchmark for Robotic Automation in Digital Biology Laboratory](https://arxiv.org/abs/2505.14030)
 
 This codebase contains the following directories:
 
-- `autobio`: The AutoBio codebase. Please refer to the `autobio/README.md` file for instructions on how to install and use AutoBio.
+- `Hooke` (originally `autobio`): The AutoBio codebase. Please refer to the `Hooke/README.md` file for instructions on how to install and use AutoBio.
 
 - `openpi`: The modified openpi ($\pi_0$) codebase adapted from [OpenPI](https://github.com/Physical-Intelligence/openpi) and contains our code to convert autobio data to LeRobot format, as well as the code to reproduce experiment results about $\pi_0$. Please refer to the `openpi/README.md` file for instructions on how to install and use the code.
 
@@ -58,7 +64,7 @@ To quickly navigate the dataset, you can use the HuggingFace dataset viewer to c
 ## Overall workflow
 
 ### Environment setup
-Follow the instructions in the `autobio/README.md` file to set up the environment for AutoBio.
+Follow the instructions in the `Hooke/README.md` file to set up the environment for AutoBio.
 
 NOTE: Our codebase currently assumes Linux only. We have tested it on Ubuntu 20.04 and 24.04 (recommended).
 
@@ -67,9 +73,9 @@ NOTE: The dependencies of `openpi` and `RoboticsDiffusionTransformer` are somewh
 ### Data collection (Optional)
 *If you prefer using our rendered videos, you can skip this step and download the datasets from HuggingFace.*
 
-All commands below are run from the `autobio` directory and in the conda environment `autobio` created in the previous step.
-1. **Trajectory collection**: Basic data collection is done by executing a specific task file directly. The synthesized trajectories are saved in the `autobio/logs/<task_name>` directory.
-2. **Video rendering**: For MuJoCo rendering, run `bash render.bash logs/<task_name>` to render the videos for all trajectories in `autobio/logs/<task_name>`. You can adjust flags as needed. For Blender rendering, ensure that you have the Blender (>=4.4) installed and run `blender --background --python render_blender.py -- logs/<task_name>/<traj_name>/` to generate the Blend file at `logs/<task_name>/<traj_name>/scene.blend`. The Blender rendering then follows Blender's own workflow. An example command is
+All commands below are run from the `Hooke` directory and in the conda environment `autobio` created in the previous step.
+1. **Trajectory collection**: Basic data collection is done by executing a specific task file directly. The synthesized trajectories are saved in the `Hooke/logs/<task_name>` directory.
+2. **Video rendering**: For MuJoCo rendering, run `bash render.bash logs/<task_name>` to render the videos for all trajectories in `Hooke/logs/<task_name>`. You can adjust flags as needed. For Blender rendering, ensure that you have the Blender (>=4.4) installed and run `blender --background --python render_blender.py -- logs/<task_name>/<traj_name>/` to generate the Blend file at `logs/<task_name>/<traj_name>/scene.blend`. The Blender rendering then follows Blender's own workflow. An example command is
 
 ```bash
 blender -b 'logs/<task_name>/<traj_name>/scene.blend' --render-output '<out_dir>/####.png' --engine CYCLES --render-anim --render-format PNG
@@ -81,7 +87,7 @@ ffmpeg -framerate 50 -i '<out_dir>/%04d.png' -filter:v 'format=rgba,premultiply=
 
 All commands below are run from the `openpi` directory. Run:
 ```bash
-LEROBOT_HOME=$PWD uv run scripts/convert.py --data_dir '../autobio/logs/<task_name>' --repo_id 'data/<task_name>'
+LEROBOT_HOME=$PWD uv run scripts/convert.py --data_dir '../Hooke/logs/<task_name>' --repo_id 'data/<task_name>'
 LEROBOT_HOME=$PWD JAX_PLATFORMS=cpu uv run python scripts/compute_norm_stats.py --config-name '<task_name>'
 ```
 This will convert the data to LeRobot format and save it in the `openpi/data/<task_name>` directory. The `compute_norm_stats.py` script computes normalization statistics for the data required by openpi.
@@ -97,7 +103,7 @@ XLA_PYTHON_CLIENT_MEM_FRACTION=.6 CUDA_VISIBLE_DEVICES=0 uv run scripts/serve_po
 # for RoboticsDiffusionTransformer (in RoboticsDiffusionTransformer directory and with the rdt environment activated)
 python scripts/autobio_serve.py 'checkpoints/<exp_name>'
 ```
-Then, you can run `autobio/evaluate.py` to evaluate the model.
+Then, you can run `Hooke/evaluate.py` to evaluate the model.
 ```bash
 python evaluate.py --port 8000 --task '<task_name>' --num_episodes 100 --image_history 0 --num_workers 0 --render_device_id 0 --save result.json
 ```
