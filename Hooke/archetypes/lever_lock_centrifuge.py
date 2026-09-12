@@ -57,6 +57,15 @@ class LeverLockSpec:
     recipe: list[dict[str, Any]]    # ordered motion steps, see LeverLockExpert._run_recipe
     qpos_perturb_lows: tuple = (-0.1, 0.0, -0.2, -0.1, 0.0, -0.2)
     qpos_perturb_highs: tuple = (0.1, 0.3, 0.2, 0.1, 0.3, 0.2)
+    # Which arm class drives this task -- defaults to the original UR5eArm;
+    # override (e.g. to PandaArm/XArm7Arm from archetypes/menagerie_arms.py)
+    # to run the exact same recipe against a different real (IK-driving)
+    # arm, rather than swapping in a robot for visualization only. When the
+    # arm's own DOF doesn't match qpos_perturb_lows/highs above (e.g. a
+    # 7-DOF arm with this class's 6-element UR5e-shaped defaults), reset()
+    # falls back to the arm class's own default perturbation range instead
+    # of erroring on a shape mismatch.
+    arm_cls: type = UR5eArm
 
     @property
     def scene_path(self) -> Path:
@@ -133,12 +142,15 @@ def make_task_classes(spec: LeverLockSpec) -> tuple[type, type]:
             self.instrument = instrument_cls(spec.instrument_prefix)
             manager = Manager.from_spec(mjspec, [self.instrument])
             super().__init__(manager)
-            self.arm = UR5eArm(self.model, '/ur:')
+            self.arm = spec.arm_cls(self.model, '/ur:')
 
         def reset(self, seed: int | None = None):
             super().reset(seed=seed)
             self.manager.reset(keyframe=0)
-            perturbation = self.arm.qpos_perturb(spec.qpos_perturb_lows, spec.qpos_perturb_highs)
+            if self.arm.dof == len(spec.qpos_perturb_lows):
+                perturbation = self.arm.qpos_perturb(spec.qpos_perturb_lows, spec.qpos_perturb_highs)
+            else:
+                perturbation = self.arm.qpos_perturb()  # arm's own default range for its actual DOF count
             self.data.qpos[self.arm.jnt_span] += perturbation
             self.data.ctrl[self.arm.act_span] += perturbation
             self.task_info = {

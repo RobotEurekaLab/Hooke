@@ -32,7 +32,15 @@ def build_equality(model: mujoco.MjModel, i: int) -> JointEquality:
     joint2 = model.eq_obj2id[i].item()
     if joint2 == -1:
         joint2 = None
-    else:
-        assert joint1 > joint2
+    # NOTE: used to assert joint1 > joint2 here. MuJoCo's own <equality><joint
+    # joint1=".." joint2=".."/> semantics already fix which side is dependent
+    # (joint1 = polynomial(joint2), see compute_joint1 below) independent of
+    # their numeric ids -- this assertion was checking an incidental
+    # property of ur5e_gripper.xml's own joint declaration order (the only
+    # file this had ever processed), not a real requirement. It broke on
+    # the first other robot whose gripper-mimic <equality> happened to
+    # declare joint1/joint2 the other way around (Franka Panda, UFACTORY
+    # xArm7 -- both vendored from MuJoCo Menagerie); nothing downstream in
+    # enforce_equality()/expand_qpos() actually depends on this ordering.
     polycoef = model.eq_data[i][:5]
     return JointEquality(i, name, active, joint1, joint2, polycoef)

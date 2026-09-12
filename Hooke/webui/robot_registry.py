@@ -21,6 +21,9 @@ BSD-3-Clause-style for ufactory_xarm7 and unitree_g1; see each LICENSE).
 """
 import dataclasses
 
+from archetypes.menagerie_arms import MODEL_ROOT, PandaArm, XArm7Arm, panda_with_tcp_site
+from expert_common import UR5eArm
+
 
 @dataclasses.dataclass(frozen=True)
 class RobotEntry:
@@ -31,24 +34,35 @@ class RobotEntry:
     mjcf_path: str | None  # relative to Hooke/model/
     source: str
     freejoint_name: str | None = None  # unprefixed name of the root free joint, for "floor" robots
+    # For "arm"-mount robots: the real, IK-driving arm class (see
+    # archetypes/menagerie_arms.py) that makes this robot actually usable,
+    # not just visually placeable -- archetypes/lever_lock_centrifuge.py's
+    # LeverLockSpec.arm_cls is how a task recipe is pointed at one of these.
+    arm_cls: type | None = None
 
+
+# franka_emika_panda/panda.xml ships with no gripper-TCP site (unlike
+# xArm7, which already has one); panda_with_tcp_site() generates a copy
+# with one added, once, and every reference to Panda's MJCF below uses
+# that copy rather than the raw vendored file.
+_PANDA_MJCF = str(panda_with_tcp_site().relative_to(MODEL_ROOT))
 
 ROBOTS: dict[str, RobotEntry] = {
     entry.name: entry for entry in [
         RobotEntry(
             name="ur5e", display_name="UR5e + Robotiq 2F-85", category="single_arm",
             mount="arm", mjcf_path="robot/ur5e_gripper.xml",
-            source="Hooke/AutoBio original asset",
+            source="Hooke/AutoBio original asset", arm_cls=UR5eArm,
         ),
         RobotEntry(
             name="franka_panda", display_name="Franka Emika Panda", category="single_arm",
-            mount="arm", mjcf_path="robot_menagerie/franka_emika_panda/panda.xml",
-            source="MuJoCo Menagerie (Apache-2.0)",
+            mount="arm", mjcf_path=_PANDA_MJCF,
+            source="MuJoCo Menagerie (Apache-2.0)", arm_cls=PandaArm,
         ),
         RobotEntry(
             name="xarm7", display_name="UFACTORY xArm7", category="single_arm",
             mount="arm", mjcf_path="robot_menagerie/ufactory_xarm7/xarm7.xml",
-            source="MuJoCo Menagerie (UFACTORY, BSD-style)",
+            source="MuJoCo Menagerie (UFACTORY, BSD-style)", arm_cls=XArm7Arm,
         ),
         RobotEntry(
             name="aloha", display_name="Aloha (dual-arm)", category="dual_arm",

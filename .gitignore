@@ -40,4 +40,4 @@ private/
 # (Not the same as the small, deliberately-committed set of rotor-capacity
 # variants from Step 2, which don't match this "_robot_" naming pattern.)
 Hooke/model/scene/*_robot_*.gen.xml
-Hooke/model/robot_menagerie/*/*_attachable.gen.xml
+Hooke/model/robot_menagerie/*/*.gen.xml

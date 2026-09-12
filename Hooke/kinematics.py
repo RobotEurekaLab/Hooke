@@ -134,7 +134,21 @@ class IK:
         target_pos = quatapply(quatinv(self.quat), target_pos - self.pos)
         target_quat = quatcompose(quatinv(self.quat), target_quat)
 
-        bound = self.hierarchy.bounds[:6]
+        # Was hardcoded to [:6], silently correct only for a 6-DOF arm (UR5e,
+        # the only one this ever drove until now) -- self.dof already carries
+        # the real chain length, so generalizing this is what actually makes
+        # IK usable for a 7-DOF arm like the Panda/xArm7.
+        bound = self.hierarchy.bounds[:self.dof]
+
+        # Single-start L-BFGS-B warm-started from the previous solve. That's
+        # enough for UR5e's recipes (never observed to fail below), but a
+        # 7-DOF arm with different link geometry can warm-start into a local
+        # basin that stalls just above the threshold (e.g. xArm7 at a
+        # waypoint tuned for UR5e's dimensions: sln.fun ~1.8e-4, "success"
+        # but not actually converged). Retrying from fresh, randomized
+        # starting points is a generic fix for that -- not a per-robot
+        # hack -- and only ever triggers on the failure path, so it can't
+        # change any already-passing (e.g. UR5e) result.
         sln = minimize(
             fun=self.objective_np,
             x0=initial_qpos,
@@ -142,6 +156,24 @@ class IK:
             jac=self.gradient_np,
             bounds=bound,
         )
+        if not sln.success or sln.fun >= 1e-6:
+            rng = np.random.default_rng(0)
+            lo = np.array([b[0] for b in bound])
+            hi = np.array([b[1] for b in bound])
+            for _ in range(20):
+                x0 = rng.uniform(lo, hi)
+                retry = minimize(
+                    fun=self.objective_np,
+                    x0=x0,
+                    args=(target_pos, target_quat),
+                    jac=self.gradient_np,
+                    bounds=bound,
+                )
+                if retry.success and retry.fun < 1e-6:
+                    sln = retry
+                    break
+                if retry.success and retry.fun < sln.fun:
+                    sln = retry
         assert sln.success, f"IK failed: {sln.message} @ {target_pos}, {target_quat}"
         assert sln.fun < 1e-6, f"Near unreachable: {sln.fun} @ {target_pos.tolist()}, {target_quat.tolist()}, {initial_qpos.tolist()}, {sln.x.tolist()}"
         self.initial_qpos = sln.x
