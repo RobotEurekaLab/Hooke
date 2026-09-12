@@ -146,10 +146,16 @@ class ExpertMotionMixin:
             self.step_and_log({})
 
     def wait(self, wait_time: float, info: dict):
+        # Original per-file implementations called self.serializer.record(info)
+        # unconditionally here (unlike step_and_log, which guards it), so any
+        # task using this step would crash if run without set_serializer()
+        # first. Guarded here since there's no reason a shared utility should
+        # require logging just to simulate.
         wait_steps = int(wait_time / self.dt)
         for _ in range(wait_steps):
             mujoco.mj_step(self.model, self.data)
-            self.serializer.record(info)
+            if self.serializer:
+                self.serializer.record(info)
 
 
 def make_topp_planner(dof: int, ik_solve):
