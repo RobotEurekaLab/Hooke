@@ -20,9 +20,13 @@ Each entry:
                     conditioning, separation, combination, measurement,
                     preservation), for grouping/filtering
   module, cls    -- where to import the Task class from
-  robot          -- which robot rig the task's scene was authored for (e.g.
-                    "ur5e", "aloha"); currently one fixed robot per task, not
-                    a free choice -- see webui/README.md's open questions
+  robot          -- native robot rig the task's scene was authored for (e.g.
+                    "ur5e", "aloha"); see webui/robot_registry.py for the
+                    other robots selectable in the UI (arm-mount swaps for
+                    ur5e-native tasks, or floor-mount bystanders for any
+                    task)
+  camera         -- which of the scene's cameras to render the preview from
+                    (matches task_info['camera_mapping']['image'])
   task_override  -- for classes whose execute()/reset() branch on `self.task`
                     to support more than one named task (see
                     mani_thermal_cycler.py's close vs. open), the string to
@@ -39,6 +43,7 @@ class CatalogEntry:
     module: str
     cls: str
     robot: str  # which robot rig the task's scene was authored for (see webui/README.md)
+    camera: str
     task_override: str | None = None
 
     def load_classes(self):
@@ -60,33 +65,33 @@ CATALOG: dict[str, CatalogEntry] = {
             name="pickup_centrifuge_tube",
             description="Pick up a single centrifuge tube from its rack with a dual-arm (Aloha) gripper.",
             category="transfer",
-            module="pickup_centrifuge_tube", cls="Pickup", robot="aloha",
+            module="pickup_centrifuge_tube", cls="Pickup", robot="aloha", camera="table_cam_front",
         ),
         CatalogEntry(
             name="thermal_cycler_close",
             description="Close the lid of the Bio-Rad C1000 thermal cycler (lever + screw knob).",
             category="conditioning",
-            module="mani_thermal_cycler", cls="ThermalCyclerManipulate", robot="ur5e",
+            module="mani_thermal_cycler", cls="ThermalCyclerManipulate", robot="ur5e", camera="table_cam_left",
             task_override="thermal_cycler_close",
         ),
         CatalogEntry(
             name="thermal_cycler_open",
             description="Open the lid of the Bio-Rad C1000 thermal cycler (lever + screw knob).",
             category="conditioning",
-            module="mani_thermal_cycler", cls="ThermalCyclerManipulate", robot="ur5e",
+            module="mani_thermal_cycler", cls="ThermalCyclerManipulate", robot="ur5e", camera="table_cam_left",
             task_override="thermal_cycler_open",
         ),
         CatalogEntry(
             name="centrifuge_5430_close_lid",
             description="Close and lock the lid of the Eppendorf 5430 centrifuge (grip lever, rotate, engage lock).",
             category="conditioning",
-            module="mani_centrifuge_5430", cls="Centrifuge5430Manipulate", robot="ur5e",
+            module="mani_centrifuge_5430", cls="Centrifuge5430Manipulate", robot="ur5e", camera="table_cam_left",
         ),
         CatalogEntry(
             name="centrifuge_5910_lid_close",
             description="Close and lock the lid of the Eppendorf 5910 centrifuge (grip lever, rotate, engage lock).",
             category="conditioning",
-            module="mani_centrifuge_5910", cls="Centrifuge5910Manipulate", robot="ur5e",
+            module="mani_centrifuge_5910", cls="Centrifuge5910Manipulate", robot="ur5e", camera="table_cam_left",
         ),
         CatalogEntry(
             name="insert_centrifuge_5430",
@@ -95,7 +100,7 @@ CATALOG: dict[str, CatalogEntry] = {
                 "opposite an already-placed tube (rotor balancing)."
             ),
             category="separation",
-            module="load_centrifuge_5430", cls="InsertCentrifuge5430", robot="ur5e",
+            module="load_centrifuge_5430", cls="InsertCentrifuge5430", robot="ur5e", camera="table_cam_front",
         ),
     ]
 }

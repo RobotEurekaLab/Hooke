@@ -37,10 +37,12 @@
   <label for="task">Task</label>
   <select id="task"></select>
 
+  <label for="robot">Robot</label>
+  <select id="robot"></select>
+  <div id="robot-info"></div>
+
   <label for="variant" id="variant-label" style="display:none">Rotor variant (slot count)</label>
   <select id="variant" style="display:none"></select>
-
-  <div id="robot-info"></div>
 
   <button class="primary" id="generate">Generate scene</button>
   <div id="error"></div>
@@ -78,9 +80,16 @@ function currentTask() {
 function onTaskChange() {
   const task = currentTask();
   if (!task) return;
-  const robot = CATALOG.robots[task.robot] || { name: task.robot };
-  document.getElementById('robot-info').textContent =
-    `Description: ${task.description}  |  Robot: ${robot.name}`;
+
+  const robotSelect = document.getElementById('robot');
+  robotSelect.innerHTML = task.robot_options.map(name => {
+    const r = CATALOG.robots[name];
+    const nativeTag = name === task.robot ? ' (native)' : '';
+    return `<option value="${name}">${r.display_name}${nativeTag}</option>`;
+  }).join('');
+  robotSelect.value = task.robot;
+  robotSelect.onchange = onRobotChange;
+  onRobotChange();
 
   const variantSelect = document.getElementById('variant');
   const variantLabel = document.getElementById('variant-label');
@@ -94,11 +103,27 @@ function onTaskChange() {
   }
 }
 
+function onRobotChange() {
+  const task = currentTask();
+  const robotName = document.getElementById('robot').value;
+  const robot = CATALOG.robots[robotName];
+  const isNative = robotName === task.robot;
+  const mountNote = isNative ? 'this task\'s native robot'
+    : robot.mount === 'arm' ? 'replaces the native arm at its mount point'
+    : 'added standing beside the table (not controlling the task)';
+  document.getElementById('robot-info').textContent =
+    `${task.description} — ${robot.category.replace('_', ' ')}, ${mountNote}. Source: ${robot.source}`;
+}
+
 async function generateScene() {
   const task = currentTask();
   document.getElementById('error').textContent = '';
   document.getElementById('preview').innerHTML = 'Rendering...';
-  const body = { task: task.name, seed: Math.floor(Math.random() * 100000) };
+  const body = {
+    task: task.name,
+    robot: document.getElementById('robot').value,
+    seed: Math.floor(Math.random() * 100000),
+  };
   if (task.variants) body.variant = document.getElementById('variant').value;
 
   const res = await fetch('/api/scene', {
@@ -114,7 +139,7 @@ async function generateScene() {
   }
   document.getElementById('preview').innerHTML =
     `<img src="data:image/png;base64,${data.image_png_base64}" alt="scene preview">
-     <p><em>${data.task_info.prefix}</em> &mdash; robot: ${data.robot.name}</p>`;
+     <p><em>${data.task_info.prefix}</em> &mdash; robot: ${data.robot.display_name}</p>`;
 }
 
 document.getElementById('generate').addEventListener('click', generateScene);

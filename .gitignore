@@ -34,3 +34,10 @@ vendor/
 
 # Private/unpublished material (research proposals, drafts, notes)
 private/
+
+# webui/ robot-swap scene compositions and freejoint-stripped robot copies:
+# generated on demand by webui/robot_scene.py, cached to disk, regenerable.
+# (Not the same as the small, deliberately-committed set of rotor-capacity
+# variants from Step 2, which don't match this "_robot_" naming pattern.)
+Hooke/model/scene/*_robot_*.gen.xml
+Hooke/model/robot_menagerie/*/*_attachable.gen.xml

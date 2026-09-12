@@ -90,9 +90,9 @@ for the full write-up, in brief:
 
 ## `webui/`
 
-An interactive scene picker: pick a category, then a task, then (for tasks
-with generated asset variants, e.g. rotor slot count) a variant, and see a
-rendered preview of the task's reset state with the robot it uses. Run:
+An interactive scene picker: pick a category, then a task, then a robot to
+place in the scene, then (for tasks with generated asset variants, e.g.
+rotor slot count) a variant, and see a rendered preview. Run:
 ```bash
 export MUJOCO_GL=egl
 python -m webui.server
@@ -100,3 +100,17 @@ python -m webui.server
 then open `http://localhost:8080/`. "Generate a custom task scene" (upload
 a photo/video/description) is shown on the landing page but not yet wired
 up -- it depends on the generative-3D work tracked in `private/TODO.md`.
+
+**Robot picker**: every task offers its native robot plus, for
+UR5e-native tasks, arm-mount alternatives (Franka Panda, UFACTORY xArm7)
+that swap in at the same tabletop mount point; every task also offers
+floor-mount bystanders (Unitree G1 humanoid, PAL Tiago Dual mobile
+manipulator) that stand beside the table instead. These are placed for
+visualization only -- swapping the robot does not adapt IK/motion
+primitives to it, so the preview shows the scene's default pose, not the
+task's actual reset() state (see `webui/robot_scene.py` and
+`private/technical-log.md` for why, and `private/TODO.md` for the
+functional-execution version of this that's deliberately not attempted
+yet). Robot MJCF models beyond the original UR5e/Aloha assets are vendored
+from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie)
+under `model/robot_menagerie/` (each subdirectory keeps its own LICENSE).
