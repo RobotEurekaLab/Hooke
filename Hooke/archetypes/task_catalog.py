@@ -136,6 +136,13 @@ CATALOG: dict[str, CatalogEntry] = {
             category="transfer",
             module="mani_reagent_bottle", cls="PickupReagentBottle", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="close_fume_hood",
+            description="Grip the handle of a benchtop fume hood's sliding sash and pull it closed.",
+            category="conditioning",
+            module="mani_fume_hood", cls="OperateFumeHood", robot="ur5e", camera="table_cam_front",
+            task_override="close_fume_hood",
+        ),
     ]
 }
 

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="fume_hood">
+  <compiler angle="radian" autolimits="true"/>
+
+  <!-- Benchtop-scale fume hood, deliberately not full real-world size (a
+       real walk-in fume hood is much larger than this scene's other
+       instruments and would need its own arm/table geometry) -- same
+       "quasi to-scale" approximation this codebase already uses for
+       every other instrument. All primitive geoms (box/cylinder), no
+       generated mesh: unlike the reagent bottle's organic bottle shape,
+       a rectangular enclosure gets nothing from LLM generation and
+       primitives give exact, cheap collision for free.
+
+       Housing: 3 fixed walls (back, left, right) + a top, open at the
+       front and bottom (bottom is the scene's own table surface). Sash:
+       a single box that slides vertically (a `slide` joint along local
+       Z) across the front opening, with a horizontal cylindrical handle
+       rigidly attached to it (grasp that, and the sash moves with it) --
+       this codebase's first task with a prismatic (as opposed to hinge
+       or screw) interactive joint. -->
+
+  <default>
+    <default class="housing">
+      <geom type="box" rgba="0.75 0.78 0.8 1" contype="1" conaffinity="1"/>
+    </default>
+    <default class="sash">
+      <geom type="box" rgba="0.55 0.75 0.85 0.35" contype="1" conaffinity="1"/>
+    </default>
+    <default class="handle">
+      <geom type="cylinder" rgba="0.15 0.15 0.15 1" contype="1" conaffinity="1"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <body name="housing">
+      <!-- Interior footprint: 0.34m wide x 0.26m deep, walls 0.44m tall.
+           Deliberately no top wall/ceiling: the sash (below) needs
+           0.10+0.18+0.10 = 0.38m of clear vertical travel+height above
+           the counter when fully open, so a housing that actually
+           enclosed the top (like a real fume hood's hidden upper duct
+           cavity) would need to be taller than looks reasonable at this
+           benchtop scale -- simplest to just leave the top open, closer
+           to how the sash visibly slides into an open channel here. -->
+      <geom name="back_wall" class="housing" size="0.25 0.01 0.22" pos="0 0.26 0.22"/>
+      <geom name="left_wall" class="housing" size="0.01 0.13 0.22" pos="-0.25 0.13 0.22"/>
+      <geom name="right_wall" class="housing" size="0.01 0.13 0.22" pos="0.25 0.13 0.22"/>
+
+      <!-- Sash: closed (qpos=0) covers the front opening down to the
+           counter; open (qpos=0.18, the joint's own upper range limit)
+           raises it clear of the opening. Positioned so its *closed*
+           pose sits flush across the front face. -->
+      <body name="sash" pos="0 0.01 0.10">
+        <joint name="sash_slide" type="slide" axis="0 0 1" range="0 0.18" damping="8" frictionloss="2"/>
+        <geom name="sash_pane" class="sash" size="0.165 0.008 0.10"/>
+        <!-- Handle: a horizontal bar on the sash's front face, low enough
+             to grip comfortably without the arm needing to reach above
+             the housing. Cylinder's own axis is local Z by default;
+             rotated -90deg about X so it runs along local Y in the
+             instrument's own frame -- which, once attached under this
+             scene's table body (itself rotated 90deg about world Z, see
+             mani_fume_hood.xml), ends up as world X: perpendicular to
+             the arm's horizontal approach direction (world Y), the "bar
+             axis" the task's grasp-orientation logic grips
+             perpendicular to. Confirmed empirically (not assumed) by
+             querying the compiled geom's world orientation -- this
+             scene's nested body rotations are not the ones intuition
+             suggests, the same lesson as the reagent-bottle task's
+             render-preview axis bug. -->
+        <body name="handle" pos="0 -0.05 0">
+          <geom name="handle_bar" class="handle" size="0.006 0.06" quat="0.7071068 -0.7071068 0 0"/>
+          <site name="grasp_site" pos="0 0 0" size="0.005" rgba="1 0 0 1" group="4"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
