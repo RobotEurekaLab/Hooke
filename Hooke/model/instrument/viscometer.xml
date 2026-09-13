@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="viscometer">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.06 0.06 0.005" pos="0 0 0.005" rgba="0.2 0.2 0.2 1" class="body"/>
+      <geom type="cylinder" size="0.008 0.12" pos="-0.04 0 0.13" rgba="0.75 0.75 0.78 1" class="body"/>
+      <geom type="box" size="0.06 0.04 0.02" pos="0.02 0 0.24" rgba="0.85 0.85 0.87 1" class="body"/>
+      <body name="spindle" pos="0.02 0 0.16">
+        <joint name="spindle_joint" type="hinge" axis="0 0 1" range="-3.14159 3.14159" damping="0.15" frictionloss="0.05"/>
+  <geom type="cylinder" size="0.004 0.07" pos="0 0 0" rgba="0.3 0.3 0.32 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="brix_refractometer">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.02 0.06 0.01" pos="0 0 0.01" rgba="0.15 0.15 0.15 1" class="body"/>
+      <body name="prism_cover" pos="0 0.03 0.02">
+        <joint name="prism_cover_joint" type="hinge" axis="1 0 0" range="0 1.4" damping="0.1" frictionloss="0.05"/>
+  <geom type="box" size="0.018 0.03 0.003" pos="0 0 0" rgba="0.7 0.7 0.75 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

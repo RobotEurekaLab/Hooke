@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="wafer_inspection_station">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.10 0.10 0.02" pos="0 0 0.02" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.02 0.03" pos="0 -0.06 0.06" rgba="0.15 0.15 0.15 1" class="body"/>
+      <body name="scope_arm" pos="0 -0.06 0.09">
+        <joint name="scope_arm_joint" type="hinge" axis="1 0 0" range="-0.8 0.2" damping="0.4" frictionloss="0.3"/>
+  <geom type="cylinder" size="0.015 0.09" pos="0 0 0" rgba="0.15 0.15 0.15 1" class="body" quat="0.966 0.259 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
