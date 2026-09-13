@@ -7,8 +7,11 @@
   <worldbody>
     <body name="base">
       <geom type="box" size="0.06 0.08 0.01" pos="0 0 0.01" rgba="0.2 0.2 0.2 1" class="body"/>
-      <geom type="cylinder" size="0.015 0.10" pos="0 -0.03 0.12" rgba="0.15 0.15 0.15 1" class="body" quat="0.966 0.259 0 0"/>
       <geom type="cylinder" size="0.02 0.04" pos="0 -0.06 0.05" rgba="0.15 0.15 0.15 1" class="body"/>
+      <body name="focus_stage" pos="0 -0.03 0.12">
+        <joint name="focus_stage_joint" type="slide" axis="0 0 1" range="-0.02 0.02" damping="1.0" frictionloss="0.5"/>
+  <geom type="cylinder" size="0.015 0.10" pos="0 0 0" rgba="0.15 0.15 0.15 1" class="body" quat="0.966 0.259 0 0"/>
+      </body>
     </body>
   </worldbody>
 </mujoco>

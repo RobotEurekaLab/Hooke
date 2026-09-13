@@ -8,7 +8,10 @@
     <body name="base">
       <geom type="cylinder" size="0.035 0.005" pos="0 0 0.005" rgba="0.3 0.3 0.32 1" class="body"/>
       <geom type="cylinder" size="0.01 0.08" pos="0 0 0.09" rgba="0.75 0.75 0.78 1" class="body"/>
-      <geom type="cylinder" size="0.013 0.01" pos="0 0 0.18" rgba="0.2 0.2 0.2 1" class="body"/>
+      <body name="air_collar" pos="0 0 0.18">
+        <joint name="air_collar_joint" type="hinge" axis="0 0 1" range="-1.57 1.57" damping="0.2" frictionloss="0.1"/>
+  <geom type="cylinder" size="0.013 0.01" pos="0 0 0" rgba="0.2 0.2 0.2 1" class="body"/>
+      </body>
     </body>
   </worldbody>
 </mujoco>

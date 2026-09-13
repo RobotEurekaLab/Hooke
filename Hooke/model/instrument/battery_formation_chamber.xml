@@ -6,11 +6,14 @@
   </default>
   <worldbody>
     <body name="base">
-      <geom type="box" size="0.11 0.01 0.12" pos="0 0.1 0.12" rgba="0.2 0.2 0.22 1" class="body"/>
-      <geom type="box" size="0.01 0.1 0.12" pos="-0.11 0 0.12" rgba="0.2 0.2 0.22 1" class="body"/>
-      <geom type="box" size="0.01 0.1 0.12" pos="0.11 0 0.12" rgba="0.2 0.2 0.22 1" class="body"/>
-      <geom type="box" size="0.11 0.1 0.01" pos="0 0 0.24" rgba="0.2 0.2 0.22 1" class="body"/>
-      <geom type="box" size="0.08800000000000001 0.006 0.072" pos="0 0.05 0.12" rgba="0.3 0.6 0.9 0.3" class="body"/>
+      <geom type="box" size="0.11 0.01 0.12" pos="0 0.10 0.12" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="box" size="0.01 0.10 0.12" pos="-0.11 0.05 0.12" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="box" size="0.01 0.10 0.12" pos="0.11 0.05 0.12" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="box" size="0.12 0.11 0.01" pos="0 0.05 0.24" rgba="0.2 0.2 0.22 1" class="body"/>
+      <body name="door" pos="-0.11 0.0 0.12">
+        <joint name="door_joint" type="hinge" axis="0 0 1" range="0 1.8" damping="0.6" frictionloss="0.5"/>
+  <geom type="box" size="0.11 0.005 0.12" pos="0.11 0 0" rgba="0.3 0.6 0.9 0.3" class="body"/>
+      </body>
     </body>
   </worldbody>
 </mujoco>

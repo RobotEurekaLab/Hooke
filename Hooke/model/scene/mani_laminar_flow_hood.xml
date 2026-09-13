@@ -23,7 +23,7 @@
             <attach model="table" body="vention table" prefix="/"/>
             <site name="instrument_site" pos="0.0 0.0 0.824" size="0.01" rgba="1 0 0 1" group="3" />
             <body name="laminar_flow_hood" pos="0.0 0.0 0.824">
-                <attach model="laminar_flow_hood" body="housing" prefix="/laminar_flow_hood:" />
+                <attach model="laminar_flow_hood" body="base" prefix="/laminar_flow_hood:" />
             </body>
             <site name="arm1_site" pos="0.5 -0.0 0.824" quat="0 0 0 1" size="0.01" rgba="0 1 0 1" group="3" />
             <body name="1/ur5e" pos="0.5 -0. 0.824" quat="0 0 0 1">

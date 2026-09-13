@@ -7,10 +7,13 @@
   <worldbody>
     <body name="base">
       <geom type="box" size="0.16 0.01 0.13" pos="0 0.13 0.13" rgba="0.85 0.87 0.9 1" class="body"/>
-      <geom type="box" size="0.01 0.13 0.13" pos="-0.16 0 0.13" rgba="0.85 0.87 0.9 1" class="body"/>
-      <geom type="box" size="0.01 0.13 0.13" pos="0.16 0 0.13" rgba="0.85 0.87 0.9 1" class="body"/>
-      <geom type="box" size="0.16 0.13 0.01" pos="0 0 0.26" rgba="0.85 0.87 0.9 1" class="body"/>
-      <geom type="box" size="0.128 0.006 0.078" pos="0 0.05 0.13" rgba="0.6 0.8 0.9 0.3" class="body"/>
+      <geom type="box" size="0.01 0.13 0.13" pos="-0.16 0.065 0.13" rgba="0.85 0.87 0.9 1" class="body"/>
+      <geom type="box" size="0.01 0.13 0.13" pos="0.16 0.065 0.13" rgba="0.85 0.87 0.9 1" class="body"/>
+      <geom type="box" size="0.17 0.14 0.01" pos="0 0.065 0.26" rgba="0.85 0.87 0.9 1" class="body"/>
+      <body name="sash" pos="0 0.02 0.13">
+        <joint name="sash_joint" type="slide" axis="0 0 1" range="0 0.16" damping="1.2" frictionloss="0.5"/>
+  <geom type="box" size="0.15 0.006 0.13" pos="0 0 0" rgba="0.6 0.8 0.9 0.3" class="body"/>
+      </body>
     </body>
   </worldbody>
 </mujoco>

@@ -8,8 +8,10 @@
     <body name="base">
       <geom type="box" size="0.09 0.08 0.1" pos="0 0 0.1" rgba="0.75 0.78 0.8 1" class="body"/>
       <geom type="box" size="0.027 0.004 0.025" pos="-0.045 -0.07200000000000001 0.15000000000000002" rgba="0.9 0.7 0.1 1" class="body"/>
-      <geom type="cylinder" size="0.01 0.008" pos="0.027 0.024 0.20500000000000002" rgba="0.8 0.1 0.1 1" class="body"/>
-      <geom type="cylinder" size="0.03 0.06" pos="0 0 0.26" rgba="0.7 0.9 0.7 0.4" class="body"/>
+      <body name="dispense_nozzle" pos="0 0 0.20">
+        <joint name="dispense_nozzle_joint" type="slide" axis="0 0 1" range="-0.05 0" damping="1.0" frictionloss="0.5"/>
+  <geom type="cylinder" size="0.03 0.06" pos="0 0 0" rgba="0.7 0.9 0.7 0.4" class="body"/>
+      </body>
     </body>
   </worldbody>
 </mujoco>

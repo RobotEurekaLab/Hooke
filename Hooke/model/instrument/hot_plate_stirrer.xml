@@ -8,8 +8,11 @@
     <body name="base">
       <geom type="box" size="0.09 0.09 0.03" pos="0 0 0.03" rgba="0.15 0.15 0.15 1" class="body"/>
       <geom type="cylinder" size="0.075 0.002" pos="0 0 0.062" rgba="0.2 0.2 0.22 1" class="body"/>
-      <geom type="cylinder" size="0.01 0.008" pos="0.06 -0.06 0.064" rgba="0.8 0.1 0.1 1" class="body"/>
       <geom type="cylinder" size="0.01 0.008" pos="0.06 0.06 0.064" rgba="0.1 0.1 0.8 1" class="body"/>
+      <body name="temp_knob" pos="0.06 -0.06 0.064">
+        <joint name="temp_knob_joint" type="hinge" axis="0 0 1" range="-3.14159 3.14159" damping="0.3" frictionloss="0.1"/>
+  <geom type="cylinder" size="0.01 0.008" pos="0 0 0" rgba="0.8 0.1 0.1 1" class="body"/>
+      </body>
     </body>
   </worldbody>
 </mujoco>
