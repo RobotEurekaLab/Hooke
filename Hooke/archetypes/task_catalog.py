@@ -213,6 +213,36 @@ CATALOG: dict[str, CatalogEntry] = {
             module="archetypes.composite_generated", cls="ChemistryGeneralLabCompositeTask",
             robot="ur5e", camera="table_cam_front", task_override="microplate_stacker_eject2",
         ),
+        # --- built from two existing, separately-verified tasks
+        # (load_centrifuge_5430.InsertCentrifuge5430 +
+        # archetypes/lever_lock_centrifuge.py's centrifuge_5430_close_lid)
+        # rather than a fresh recipe -- see private/technical-log.md's
+        # "Real composite pair from existing tasks" entry for how the two
+        # independent class hierarchies were merged into one shared
+        # Task/Expert (transcription, not inheritance) and the two real
+        # bugs (wrong tube-grasp helper, wrong TOPP planner tuning) caught
+        # by diffing against each half's own upstream baseline before
+        # trusting the result.
+        CatalogEntry(
+            name="composite_insert_centrifuge_5430",
+            description=(
+                "Insert a second centrifuge tube into the 5430 rotor, the first step before closing "
+                "and locking the lid."
+            ),
+            category="composite",
+            module="mani_centrifuge_5430_composite", cls="CentrifugeInsertCloseComposite",
+            robot="ur5e", camera="table_cam_front", task_override="insert_centrifuge_5430_step",
+        ),
+        CatalogEntry(
+            name="composite_centrifuge_5430_close_lid",
+            description=(
+                "Close and lock the 5430 centrifuge's lid, the second step after inserting a second "
+                "tube into the rotor."
+            ),
+            category="composite",
+            module="mani_centrifuge_5430_composite", cls="CentrifugeInsertCloseComposite",
+            robot="ur5e", camera="table_cam_front", task_override="close_lid_step",
+        ),
 
         # --- Visual-only display scenes (archetypes/static_display.py) --
         # real MJCF/collision/render, but no scripted-expert interaction
