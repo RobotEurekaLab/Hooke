@@ -127,3 +127,71 @@ def write_instrument_and_scene(name: str, static_geoms: list[str], moving: str, 
     scene_path = model_root / "scene" / f"mani_{name}.xml"
     scene_path.write_text(SCENE_TEMPLATE.format(title=name, instrument=name))
     return str(inst_path), str(scene_path)
+
+
+MULTI_INSTRUMENT_SCENE_TEMPLATE = """<mujoco model="{title}">
+
+    <option integrator="implicitfast" impratio="10" cone="elliptic" noslip_iterations="2">
+        <flag multiccd="enable"/>
+    </option>
+    <visual>
+        <global azimuth="220" elevation="-30" offwidth="1280" offheight="960"/>
+    </visual>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.6 0.7 0.8" rgb2="0.4 0.5 0.6" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"/>
+        <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+{instrument_assets}
+        <model name="ur5e" file="../robot/ur5e_gripper.xml" content_type="text/xml" />
+    </asset>
+
+    <worldbody>
+        <light directional="true" diffuse="0.8 0.8 0.8" ambient="0.2 0.2 0.2" pos="0 0 5" dir="0 0 -1"/>
+        <geom name="floor" pos="0 0 0" size="2.5 2 0.05" type="plane" material="groundplane"/>
+        <body name="table" pos="0 0 0." quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="/"/>
+            <site name="instrument_site" pos="0.0 0.0 0.824" size="0.01" rgba="1 0 0 1" group="3" />
+{instrument_bodies}
+            <site name="arm1_site" pos="0.5 -0.0 0.824" quat="0 0 0 1" size="0.01" rgba="0 1 0 1" group="3" />
+            <body name="1/ur5e" pos="0.5 -0. 0.824" quat="0 0 0 1">
+                <attach model="ur5e" body="world" prefix="/ur:"/>
+            </body>
+            <camera name="table_cam_front" pos="0. -1.5 1.65" quat="0.819 0.574 0 0" fovy="45" resolution="1280 960"/>
+            <camera name="table_cam_left" pos="-1.2 0. 1.65" quat="0.579 0.406 -0.406 -0.579" fovy="45" resolution="1280 960"/>
+        </body>
+    </worldbody>
+
+</mujoco>
+"""
+
+
+def write_multi_instrument_scene(scene_name: str, instrument_names: list[str], offsets: list[float], model_root) -> str:
+    """Writes model/scene/mani_{scene_name}.xml combining several already-
+    existing instruments (each already built under model/instrument/), each
+    placed at a distinct attach-body offset (meters, along the axis that
+    empirically maps to world X -- see private/technical-log.md's first
+    cross-instrument composite entry for how this was confirmed, not
+    assumed). Does not touch model/instrument/ at all -- the instruments
+    themselves must already exist. Returns the scene path as a string.
+
+    Callers are responsible for spacing `offsets` far enough apart that the
+    instruments' own footprints don't overlap (checked empirically per
+    scene when this is used, not enforced here)."""
+    assert len(instrument_names) == len(offsets)
+    assets = "\n".join(
+        f'        <model name="{n}" file="../instrument/{n}.xml" content_type="text/xml" />'
+        for n in instrument_names
+    )
+    bodies = "\n".join(
+        f'            <body name="{n}" pos="0.0 {off} 0.824">\n'
+        f'                <attach model="{n}" body="base" prefix="/{n}:" />\n'
+        f'            </body>'
+        for n, off in zip(instrument_names, offsets)
+    )
+    scene_path = model_root / "scene" / f"mani_{scene_name}.xml"
+    scene_path.write_text(MULTI_INSTRUMENT_SCENE_TEMPLATE.format(
+        title=scene_name, instrument_assets=assets, instrument_bodies=bodies,
+    ))
+    return str(scene_path)

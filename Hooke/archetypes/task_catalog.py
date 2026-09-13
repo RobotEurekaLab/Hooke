@@ -18,7 +18,15 @@ Each entry:
                     pick this task for a given protocol step
   category       -- AutoBio's own primitive taxonomy bucket (transfer,
                     conditioning, separation, combination, measurement,
-                    preservation), for grouping/filtering
+                    preservation) for most atomic entries, a domain label
+                    (chemistry, pharma, nanotechnology, ...) for the
+                    display-only breadth batches, or "composite" for an
+                    entry that's one step of a multi-instrument chained
+                    sequence (archetypes/composite_task.py) rather than a
+                    standalone atomic task -- kept distinct from the
+                    primitive taxonomy so composite steps don't get
+                    silently mixed in with regular atomic tasks of the
+                    same nominal primitive when filtering/grouping
   module, cls    -- where to import the Task class from
   robot          -- native robot rig the task's scene was authored for (e.g.
                     "ur5e", "aloha"); see webui/robot_registry.py for the
@@ -148,6 +156,62 @@ CATALOG: dict[str, CatalogEntry] = {
             description="Grip a vial-filling line's dispensing nozzle from above and push it down.",
             category="conditioning",
             module="mani_vial_filling_line", cls="PushFillingNozzle", robot="ur5e", camera="table_cam_front",
+        ),
+        # --- cross-instrument composite scene (see private/technical-log.md
+        # / archetypes/composite_task.py's "not attempted here" note) --
+        # both entries share one scene with two physically distinct
+        # instruments, switched via task_override the same way
+        # thermal_cycler_close/open share one scene with one instrument.
+        CatalogEntry(
+            name="composite_push_vial_nozzle",
+            description=(
+                "Step 1 of the cross-instrument composite: push the vial-filling line's "
+                "nozzle down (shares a scene with an HPLC injector plunger)."
+            ),
+            category="composite",
+            module="mani_cross_instrument_composite", cls="CrossInstrumentComposite",
+            robot="ur5e", camera="table_cam_front", task_override="push_vial_nozzle",
+        ),
+        CatalogEntry(
+            name="composite_push_hplc_plunger",
+            description=(
+                "Step 2 of the cross-instrument composite: push the HPLC autosampler's "
+                "injector plunger down (shares a scene with a vial-filling line)."
+            ),
+            category="composite",
+            module="mani_cross_instrument_composite", cls="CrossInstrumentComposite",
+            robot="ur5e", camera="table_cam_front", task_override="push_hplc_plunger",
+        ),
+        # --- composite batch: cross-instrument pairs must correspond to a
+        # real multi-step lab workflow, not just a device pairing chosen to
+        # cover more discipline labels -- a first attempt at 5 more pairs
+        # here (biology+materials_science, food_science+environmental_testing,
+        # semiconductor+textile_testing, forensic_science+geology_mining,
+        # microbiology+metallurgy_welding) was caught on review and removed
+        # for failing exactly that test (see private/technical-log.md's
+        # "Composite batch, corrected" entry) -- only this one survived:
+        # filter a sample, then load plates into general-lab automation for
+        # further processing, a real and recognizable chemistry/lab-
+        # automation sequence.
+        CatalogEntry(
+            name="composite_filter_cartridge_housing",
+            description=(
+                "Pull a chemistry filter cartridge housing up, then load plates into a general-lab "
+                "microplate stacker -- a real filter-then-aliquot lab sequence."
+            ),
+            category="composite",
+            module="archetypes.composite_generated", cls="ChemistryGeneralLabCompositeTask",
+            robot="ur5e", camera="table_cam_front", task_override="filter_cartridge_housing_lift",
+        ),
+        CatalogEntry(
+            name="composite_microplate_stacker_eject",
+            description=(
+                "Press a general-lab microplate stacker's eject down, the second step after pulling a "
+                "chemistry filter cartridge housing up."
+            ),
+            category="composite",
+            module="archetypes.composite_generated", cls="ChemistryGeneralLabCompositeTask",
+            robot="ur5e", camera="table_cam_front", task_override="microplate_stacker_eject2",
         ),
 
         # --- Visual-only display scenes (archetypes/static_display.py) --
