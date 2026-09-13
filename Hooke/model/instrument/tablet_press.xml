@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="tablet_press">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.09 0.11 0.06" pos="0 0 0.06" rgba="0.5 0.52 0.55 1" class="body"/>
+      <geom type="box" size="0.04 0.05 0.02" pos="0 0 0.14" rgba="0.3 0.3 0.32 1" class="body"/>
+      <geom type="cylinder" size="0.012 0.05" pos="0 0 0.22" rgba="0.2 0.2 0.2 1" class="body"/>
+      <geom type="cylinder" size="0.025 0.015" pos="0 0 0.275" rgba="0.15 0.15 0.15 1" class="body"/>
+      <geom type="box" size="0.02 0.03 0.005" pos="0.07 -0.09 0.125" rgba="0.9 0.7 0.1 1" class="body"/>
+    </body>
+  </worldbody>
+</mujoco>

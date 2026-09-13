@@ -143,6 +143,58 @@ CATALOG: dict[str, CatalogEntry] = {
             module="mani_fume_hood", cls="OperateFumeHood", robot="ur5e", camera="table_cam_front",
             task_override="close_fume_hood",
         ),
+
+        # --- Visual-only display scenes (archetypes/static_display.py) --
+        # real MJCF/collision/render, but no scripted-expert interaction
+        # written or verified -- see that module's docstring for why.
+        CatalogEntry(
+            name="analytical_balance_display",
+            description="An analytical balance sitting on the bench (display only, no interaction).",
+            category="measurement",
+            module="archetypes.static_items", cls="AnalyticalBalanceTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="hot_plate_stirrer_display",
+            description="A magnetic hot plate stirrer on the bench (display only, no interaction).",
+            category="combination",
+            module="archetypes.static_items", cls="HotPlateStirrerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="round_bottom_flask_stand_display",
+            description="A round-bottom flask held on a ring stand (display only, no interaction).",
+            category="preservation",
+            module="archetypes.static_items", cls="RoundBottomFlaskStandTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="tablet_press_display",
+            description="A pharmaceutical tablet press (display only, no interaction).",
+            category="combination",
+            module="archetypes.static_items", cls="TabletPressTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="laminar_flow_hood_display",
+            description="A laminar flow hood for sterile pharmaceutical work (display only, no interaction).",
+            category="conditioning",
+            module="archetypes.static_items", cls="LaminarFlowHoodTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="autoclave_display",
+            description="A benchtop autoclave sterilizer (display only, no interaction).",
+            category="conditioning",
+            module="archetypes.static_items", cls="AutoclaveTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="glovebox_display",
+            description="An inert-atmosphere glovebox for battery cell assembly (display only, no interaction).",
+            category="preservation",
+            module="archetypes.static_items", cls="GloveboxTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="coin_cell_crimper_display",
+            description="A manual coin cell crimper for battery assembly (display only, no interaction).",
+            category="combination",
+            module="archetypes.static_items", cls="CoinCellCrimperTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

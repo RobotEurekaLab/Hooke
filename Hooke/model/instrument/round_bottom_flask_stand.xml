@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="round_bottom_flask_stand">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.09 0.09 0.005" pos="0 0 0.005" rgba="0.2 0.2 0.2 1" class="body"/>
+      <geom type="cylinder" size="0.007 0.17" pos="-0.07 0 0.18" rgba="0.75 0.75 0.78 1" class="body"/>
+      <geom type="box" size="0.05 0.015 0.007" pos="-0.045 0 0.28" rgba="0.75 0.75 0.78 1" class="body"/>
+      <geom name="flask_bulb" type="sphere" size="0.045" pos="0.02 0 0.235" rgba="0.7 0.85 0.9 0.4" class="body"/>
+      <geom type="cylinder" size="0.007 0.02" pos="0.02 0 0.29" rgba="0.7 0.85 0.9 0.4" class="body"/>
+    </body>
+  </worldbody>
+</mujoco>

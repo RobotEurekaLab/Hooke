@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="hot_plate_stirrer">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.09 0.09 0.03" pos="0 0 0.03" rgba="0.15 0.15 0.15 1" class="body"/>
+      <geom type="cylinder" size="0.075 0.002" pos="0 0 0.062" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.008" pos="0.06 -0.06 0.064" rgba="0.8 0.1 0.1 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.008" pos="0.06 0.06 0.064" rgba="0.1 0.1 0.8 1" class="body"/>
+    </body>
+  </worldbody>
+</mujoco>
