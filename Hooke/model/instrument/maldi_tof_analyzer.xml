@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="maldi_tof_analyzer">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.1 0.11 0.08" pos="0 0 0.08" rgba="0.75 0.76 0.78 1" class="body"/>
+      <geom type="box" size="0.03 0.0055000000000000005 0.02" pos="-0.05 -0.099 0.12" rgba="0.6 0.9 0.9 0.7" class="body"/>
+      <body name="sample_plate" pos="0 -0.11 0.10">
+        <joint name="sample_plate_joint" type="slide" axis="0 1 0" range="0 0.08" damping="1.0" frictionloss="0.3"/>
+  <geom type="box" size="0.06 0.03 0.004" pos="0 0 0" rgba="0.2 0.2 0.2 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

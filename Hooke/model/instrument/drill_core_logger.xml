@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="drill_core_logger">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.15 0.05 0.01" pos="0 0 0.01" rgba="0.3 0.3 0.32 1" class="body"/>
+      <geom type="cylinder" size="0.008 0.10" pos="-0.10 0 0.11" rgba="0.75 0.75 0.78 1" class="body"/>
+      <body name="scanner_head" pos="-0.10 0 0.20">
+        <joint name="scanner_head_joint" type="slide" axis="1 0 0" range="-0.08 0.08" damping="1.0" frictionloss="0.3"/>
+  <geom type="box" size="0.02 0.02 0.02" pos="0 0 0" rgba="0.1 0.1 0.1 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="metallography_polisher">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="cylinder" size="0.09 0.06" pos="0 0 0.06" rgba="0.5 0.52 0.55 1" class="body"/>
+      <body name="polish_lid" pos="0 0.09 0.12">
+        <joint name="polish_lid_joint" type="hinge" axis="1 0 0" range="0 1.5" damping="0.4" frictionloss="0.3"/>
+  <geom type="cylinder" size="0.09 0.005" pos="0 0 0" rgba="0.6 0.6 0.62 0.6" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

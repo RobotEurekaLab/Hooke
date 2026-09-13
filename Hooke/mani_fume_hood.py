@@ -16,13 +16,26 @@ could have disturbed it rather than trusting a pre-move snapshot.
 
 Only `close_fume_hood` is verified and catalogued (10/10 seeds). The
 class also supports `open_fume_hood` (start closed, slide the sash back
-up) but that direction currently fails outright -- starting with the
-sash *closed* means the whole front opening is covered by glass, and
-this recipe's straight-line approach doesn't reliably avoid clipping the
-sash's own face on the way to the handle protruding from it, unlike
-`close_fume_hood`, which starts with the front wide open and nothing to
-clip. Left as a follow-up (see private/TODO.md) rather than catalogued
-half-working.
+up) but that direction currently fails outright. Originally suspected to
+be the sash's glass clipping the gripper on approach; re-diagnosed with
+`mj_contactForce` + geom/body lookup (not just a contact-list check) and
+that guess was wrong -- the real collision, present from the very first
+reorientation step regardless of translation order, is the arm's own
+`/ur:forearm_link` slamming into `/vention table` (its own mount), not
+anything in the fume hood scene at all. The closed-sash handle sits
+lower (z~0.92) than `close_fume_hood`'s open-sash handle (z~1.10), and
+`_grasp_quat`'s orientation for that lower, more side-on target apparently
+forces an elbow/wrist configuration that self-intersects the mount at
+this arm's reset pose -- confirmed reproducible across 10 seeds with
+forces from ~1.7kN up to ~110kN, regardless of whether the reorientation
+happens before, after, or interleaved with the translation, and
+regardless of a high-altitude "go up and over" detour (which additionally
+hits UR5e's reach limit at this workspace's arm-base offset). This needs
+a genuinely different fix -- likely reworking `_grasp_quat` to avoid the
+problematic wrist configuration for low targets, or giving `open_fume_hood`
+its own start-of-episode arm pose instead of sharing `close_fume_hood`'s --
+not just a smarter waypoint path. Left as a follow-up (see
+private/TODO.md) rather than catalogued half-working.
 """
 import numpy as np
 import mujoco
@@ -115,14 +128,6 @@ class OperateFumeHoodExpert(OperateFumeHood, Expert, ExpertMotionMixin):
             self.step_and_log({})
 
     def wait(self, seconds: float):
-        for _ in range(int(seconds / self.dt)):
-            self.step_and_log({})
-
-    def reposition_directly(self, pose: Pose, seconds: float = 1.5):
-        """See mani_reagent_bottle.py's identical method for why this
-        exists instead of just using move_to for the big reorientation."""
-        sln = self.arm.ik.solve(pose.pos, pose.quat)
-        self.data.ctrl[self.arm.act_span] = sln
         for _ in range(int(seconds / self.dt)):
             self.step_and_log({})
 

@@ -172,5 +172,59 @@ def api_generate_custom():
     })
 
 
+@app.post("/api/protocol_to_task")
+def api_protocol_to_task():
+    """Phase I's protocol-to-task pipeline (archetypes/protocol_to_task.py):
+    parse one or more real lab-protocol steps (one per line) into a task
+    spec, generate the instrument/scene, and run the automatic-validation
+    yield check -- using the caller's own API key, same security model as
+    `/api/generate_custom` (used once, never stored).
+
+    Deliberately does NOT write anything into `task_catalog.py` from this
+    endpoint -- generating and validating candidate tasks from an HTTP
+    request is fine; committing them into the real catalog is a separate,
+    deliberate step (`protocol_to_task.promote_passing_to_catalog`, run
+    directly, not over the web) so a request can't silently mutate the
+    repo's own source files.
+    """
+    from archetypes.protocol_to_task import run_pipeline
+
+    protocol_text = (request.form.get("protocol_text") or "").strip()
+    api_key = (request.form.get("api_key") or "").strip()
+    n_seeds = int(request.form.get("n_seeds") or 10)
+
+    if not protocol_text:
+        return jsonify({"error": "Please provide at least one protocol step (one per line)."}), 400
+    if not api_key:
+        return jsonify({"error": "An LLM API key is required for this step (used once, not stored)."}), 400
+
+    steps = [line.strip() for line in protocol_text.splitlines() if line.strip()]
+
+    try:
+        report = run_pipeline(steps, api_key=api_key, n_seeds=n_seeds)
+    except Exception as e:
+        # Never format api_key into this message -- same rule as
+        # /api/generate_custom's error handling.
+        return jsonify({"error": f"{type(e).__name__}: {e}"}), 500
+
+    results = []
+    for entry in report.entries:
+        results.append({
+            "step": entry["step"],
+            "spec": entry["spec"],
+            "error": entry["error"],
+            "report": entry["report"],
+        })
+
+    return jsonify({
+        "total": report.total,
+        "parsed": report.parsed,
+        "passed": report.passed,
+        "parse_yield": report.parse_yield,
+        "overall_yield": report.overall_yield,
+        "results": results,
+    })
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=False)

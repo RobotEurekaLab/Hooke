@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="gram_stain_station">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.10 0.06 0.02" pos="0 0 0.02" rgba="0.3 0.3 0.32 1" class="body"/>
+      <body name="rack" pos="0 0 0.06">
+        <joint name="rack_joint" type="slide" axis="0 1 0" range="-0.04 0.04" damping="1.0" frictionloss="0.3"/>
+  <geom type="box" size="0.04 0.02 0.02" pos="0 0 0" rgba="0.85 0.85 0.87 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

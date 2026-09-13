@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="flotation_cell">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="cylinder" size="0.07 0.07" pos="0 0 0.07" rgba="0.6 0.7 0.75 0.6" class="body"/>
+      <body name="paddle" pos="0 0 0.16">
+        <joint name="paddle_joint" type="hinge" axis="0 0 1" range="-3.14159 3.14159" damping="0.2" frictionloss="0.05"/>
+  <geom type="box" size="0.05 0.008 0.03" pos="0 0 0" rgba="0.2 0.2 0.2 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

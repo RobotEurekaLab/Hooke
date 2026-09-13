@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="supernatant_decant">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.04 0.04 0.05" pos="0 0 0.05" rgba="0.75 0.78 0.8 1" class="body"/>
+
+    </body>
+  </worldbody>
+</mujoco>

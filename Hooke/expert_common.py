@@ -140,6 +140,35 @@ class ExpertMotionMixin:
         path = self.interpolate(cur_pos, pose, num_steps)
         self.path_follow(path)
 
+    def reposition_directly(self, pose: Pose, seconds: float = 1.5):
+        """Solve IK once for `pose` and servo straight there via a stiff
+        position setpoint, instead of `move_to`'s multi-waypoint
+        slerp-then-IK-per-waypoint path -- appropriate for a large
+        reorientation done with (near-)zero net translation, where
+        interpolating the rotation waypoint-by-waypoint tends to land on a
+        hard-to-reach intermediate pose.
+
+        (An earlier version of this method tried rejecting any IK solution
+        that put two of the arm's own bodies in contact and retrying with a
+        randomized warm-start seed until a contact-free one turned up, on
+        the theory that this was strictly safer. Measured, not assumed: it
+        wasn't -- on `mani_reagent_bottle.py`'s own 10-seed check this
+        dropped the success rate from 8/10 to 5/10, because a real, frequent
+        self-contact (`upper_arm_link` vs `wrist_2_link`, ~800-1900N) shows
+        up in most of the *successful* runs too -- it's an artifact of this
+        arm's simplified collision geometry in a normal folded posture, not
+        a real problem, and rejecting it pushed the solver onto a different,
+        genuinely-worse elbow branch more often than it avoided anything
+        real. A correct version of this idea would need an adjacency-aware
+        check (only flag non-adjacent-link contact pairs, the standard
+        robotics self-collision-checking approach), which is more machinery
+        than this codebase's per-task follow-up budget currently justifies
+        -- see private/technical-log.md.)"""
+        sln = self.arm.ik.solve(pose.pos, pose.quat)
+        self.data.ctrl[self.arm.act_span] = sln
+        for _ in range(int(seconds / self.dt)):
+            self.step_and_log({})
+
     def gripper_control(self, value: float, delay: int = 300):
         self.data.ctrl[self.arm.gripper_id] = value
         for _ in range(delay):

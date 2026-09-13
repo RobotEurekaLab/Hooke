@@ -17,7 +17,15 @@
              restriction. -->
         <joint name="flask_joint" type="slide" axis="0 0 1" range="0 0.08" damping="1.0" frictionloss="0.3"/>
         <geom name="flask_bulb" type="sphere" size="0.045" pos="0 0 0" rgba="0.7 0.85 0.9 0.4" class="body"/>
-        <geom type="cylinder" size="0.007 0.02" pos="0 0 0.055" rgba="0.7 0.85 0.9 0.4" class="body"/>
+        <!-- Widened from the original 0.007 (see private/technical-log.md):
+             confirmed via contact logging that the original radius let the
+             gripper pads close past it (pad-vs-pad contact, missing the
+             neck entirely) rather than grip it. This radius does form a
+             real, sustained pad-vs-neck contact -- see the log for the
+             separate (still open) issue with actually lifting past that
+             contact. -->
+        <geom name="flask_neck" type="cylinder" size="0.016 0.02" pos="0 0 0.06" rgba="0.7 0.85 0.9 0.4" class="body"/>
+        <site name="grasp_site" pos="0 0 0.06" size="0.005" rgba="1 0 0 1" group="4"/>
       </body>
     </body>
   </worldbody>

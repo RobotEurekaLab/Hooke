@@ -119,26 +119,6 @@ class PickupReagentBottleExpert(PickupReagentBottle, Expert, ExpertMotionMixin):
         for _ in range(int(seconds / self.dt)):
             self.step_and_log({})
 
-    def reposition_directly(self, pose: Pose, seconds: float = 1.5):
-        """Solves IK once for `pose` and servos straight there, instead of
-        `move_to`'s multi-waypoint slerp-then-IK-per-waypoint path.
-
-        This task's first move is a large reorientation (the arm starts
-        facing down at whatever the reset keyframe/perturbation left it at;
-        the grasp needs a horizontal side-on approach instead) -- a big
-        rotation away from every other task's recipes, which all keep a
-        fixed or near-fixed orientation throughout. Interpolating that
-        rotation via `move_to`'s per-waypoint IK chain kept landing one
-        intermediate waypoint on a hard-to-reach local optimum (residual
-        ~1e-3-1e-4, i.e. correct to a few mm/degrees but just missing
-        kinematics.py's tolerance) at an unpredictable waypoint/seed
-        combination -- solving once for the endpoint sidesteps needing
-        every point along the way to be independently reachable."""
-        sln = self.arm.ik.solve(pose.pos, pose.quat)
-        self.data.ctrl[self.arm.act_span] = sln
-        for _ in range(int(seconds / self.dt)):
-            self.step_and_log({})
-
     def execute(self):
         self.arm.ik.initial_qpos = self.data.qpos[self.arm.jnt_span]
         # `data.xpos`/`data.site_xpos` rows are views into MuJoCo's own live

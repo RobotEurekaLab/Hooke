@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="pipeline_valve_actuator">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="cylinder" size="0.03 0.10" pos="0 0 0.10" rgba="0.6 0.62 0.65 1" class="body" quat="0.7071068 0.7071068 0 0"/>
+      <body name="valve_lever" pos="0 0 0.14">
+        <joint name="valve_lever_joint" type="hinge" axis="0 1 0" range="-1.0 0" damping="0.3" frictionloss="0.3"/>
+  <geom type="box" size="0.06 0.01 0.01" pos="0.05 0 0" rgba="0.8 0.1 0.1 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
