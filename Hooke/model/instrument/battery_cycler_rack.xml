@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="battery_cycler_rack">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.13 0.1 0.12" pos="0 0 0.12" rgba="0.15 0.15 0.17 1" class="body"/>
+      <geom type="box" size="0.039 0.005000000000000001 0.03" pos="-0.065 -0.09000000000000001 0.18" rgba="0.9 0.7 0.1 1" class="body"/>
+      <geom type="box" size="0.11 0.001 0.09" pos="0 -0.10 0.24" rgba="0.1 0.1 0.1 1" class="body"/>
+    </body>
+  </worldbody>
+</mujoco>

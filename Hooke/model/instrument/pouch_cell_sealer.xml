@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="pouch_cell_sealer">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.09 0.08 0.05" pos="0 0 0.05" rgba="0.55 0.57 0.6 1" class="body"/>
+      <geom type="box" size="0.027 0.004 0.0125" pos="-0.045 -0.07200000000000001 0.07500000000000001" rgba="0.9 0.7 0.1 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.008" pos="0.027 0.024 0.10500000000000001" rgba="0.8 0.1 0.1 1" class="body"/>
+      <geom type="box" size="0.07 0.05 0.008" pos="0 0 0.105" rgba="0.85 0.3 0.1 0.9" class="body"/>
+    </body>
+  </worldbody>
+</mujoco>

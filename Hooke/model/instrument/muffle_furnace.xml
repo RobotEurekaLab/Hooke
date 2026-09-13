@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="muffle_furnace">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.1 0.1 0.09" pos="0 0 0.09" rgba="0.5 0.15 0.1 1" class="body"/>
+      <geom type="box" size="0.03 0.005000000000000001 0.0225" pos="-0.05 -0.09000000000000001 0.135" rgba="0.9 0.3 0.1 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.008" pos="0.03 0.03 0.185" rgba="0.8 0.1 0.1 1" class="body"/>
+    </body>
+  </worldbody>
+</mujoco>

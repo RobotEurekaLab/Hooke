@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="bunsen_burner">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="cylinder" size="0.035 0.005" pos="0 0 0.005" rgba="0.3 0.3 0.32 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.08" pos="0 0 0.09" rgba="0.75 0.75 0.78 1" class="body"/>
+      <geom type="cylinder" size="0.013 0.01" pos="0 0 0.18" rgba="0.2 0.2 0.2 1" class="body"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="electrode_coating_machine">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.14 0.10 0.05" pos="0 0 0.05" rgba="0.5 0.52 0.55 1" class="body"/>
+      <geom type="cylinder" size="0.03 0.10" pos="-0.08 0 0.14" rgba="0.3 0.3 0.32 1" class="body" quat="0.7071068 0.7071068 0 0"/>
+      <geom type="cylinder" size="0.03 0.10" pos="0.08 0 0.14" rgba="0.3 0.3 0.32 1" class="body" quat="0.7071068 0.7071068 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>
