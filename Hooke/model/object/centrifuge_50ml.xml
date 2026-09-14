@@ -8,7 +8,7 @@
 
   <worldbody>
     <body name="centrifuge_50ml">
-      <geom type="mesh" mesh="centrifuge_50ml-visual:" rgba="1 1 1 0.2" />
+      <geom type="mesh" mesh="obj:centrifuge_50ml-visual" rgba="1 1 1 0.2" />
       <!-- Gernerated with tube(0.0145, 0.0134, 0.1146, 0.113, 16) -->
       <geom type="cylinder" size="0.0145 0.0007999999999999952" pos="0 0 0.0007999999999999952" group="3" />
       <replicate count="16" euler="0 0 -0.39269908169872414">
