@@ -1054,6 +1054,35 @@ _CONFIGS = [
         batch_size=16,
         num_train_steps=30_000,
     ),
+    # Hooke (this session's own new tasks) -- same LeRoboAutoBioDataConfig
+    # as the three AutoBio configs above, since Hooke's own demo-export
+    # pipeline (archetypes/demo_export.py + examples/hooke/
+    # convert_hooke_demos_to_lerobot.py in this repo) writes the exact
+    # same image/wrist_image/state/actions/prompt schema AutoBioRepack
+    # expects -- no new policy code needed, just a new repo_id pointing at
+    # the converted dataset. This is a pilot config for
+    # push_filling_nozzle_down (verified 30/30 scripted-expert reliability
+    # this session, see Hooke's own private/technical-log.md), not yet
+    # exercised end-to-end with an actual training run -- config
+    # construction only checked via get_config(), no `uv run scripts/
+    # train.py` has been invoked.
+    TrainConfig(
+        name="pi05_hooke_push_filling_nozzle_down",
+        model=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ),
+        data=LeRoboAutoBioDataConfig(
+            repo_id="data/push_filling_nozzle_down",
+            base_config=DataConfig(prompt_from_task=True),
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi05_base/params"),
+        freeze_filter=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ).get_freeze_filter(),
+        ema_decay=None,
+        batch_size=16,
+        num_train_steps=30_000,
+    ),
     # RoboArena & PolaRiS configs.
     *roboarena_config.get_roboarena_configs(),
     *polaris_config.get_polaris_configs(),
