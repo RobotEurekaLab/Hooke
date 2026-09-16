@@ -113,7 +113,7 @@ class AssessmentTests(unittest.TestCase):
         report = summarize(rows, parameters)
         self.assertTrue(report['pairs'][0]['completed'])
         self.assertIsNone(report['pairs'][0]['legacy_agreement'])
-        self.assertIsNone(report['pairs'][0]['v2_agreement'])
+        self.assertIsNone(report['pairs'][0]['assessment_agreement'])
         self.assertEqual(report['groups'][0]['legacy_constant_count'], 1)
 
 

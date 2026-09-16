@@ -13,7 +13,11 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
-VERSION = 'hooke-manipulation-v2'
+from contact_state import body_geoms, touching
+from archetypes.centrifuge_insertion import insertion_target
+from grasp.quat import quatapply, quatinv
+
+VERSION = 'hooke-manipulation-v3'
 
 
 def literal_predicate(check):
@@ -130,18 +134,35 @@ class VortexSequence:
                 'tube_released': self.released, 'platform_stopped': self.stopped}
 
 
-def body_geoms(model, root):
-    bodies = {int(root)}
-    for i in range(int(root) + 1, model.nbody):
-        if int(model.body_parentid[i]) in bodies:
-            bodies.add(i)
-    return {i for i in range(model.ngeom) if int(model.geom_bodyid[i]) in bodies}
+@dataclass
+class InsertionSequence:
+    height_m: float = 0.
+    target_distance_m: float = 0.
+    tilt_error_rad: float = 0.
+    released: bool = False
+    stable_s: float = 0.
+    anchor: tuple | None = None
 
+    def update(self, dt, height, relative_position, tilt, held):
+        self.height_m = float(height)
+        self.target_distance_m = float(np.linalg.norm(relative_position))
+        self.tilt_error_rad = float(tilt)
+        self.released = not held
+        seated = (.955 < self.height_m < .961 and self.target_distance_m < .005
+                  and self.tilt_error_rad < float(np.deg2rad(5.)) and self.released)
+        if not seated:
+            self.stable_s, self.anchor = 0., None
+        elif self.anchor is None or np.linalg.norm(relative_position - self.anchor) > .0005:
+            self.stable_s = 0.
+            self.anchor = tuple(float(x) for x in relative_position)
+        else:
+            self.stable_s += dt
 
-def touching(data, first, second):
-    return any((int(c.geom[0]) in first and int(c.geom[1]) in second)
-               or (int(c.geom[1]) in first and int(c.geom[0]) in second)
-               for c in data.contact)
+    def checks(self):
+        return {'height_955_to_961mm': .955 < self.height_m < .961,
+                'target_within_5mm': self.target_distance_m < .005,
+                'tube_axis_within_5deg': self.tilt_error_rad < float(np.deg2rad(5.)),
+                'tube_released': self.released, 'seated_stable_500ms': self.stable_s >= .5}
 
 
 class EpisodeAssessment:
@@ -167,6 +188,7 @@ class EpisodeAssessment:
             self.state = VortexSequence()
             self.tube_body = model.body('1/centrifuge_15ml_body').id
             self.tube = body_geoms(model, self.tube_body)
+            self.held_assembly = self.tube | body_geoms(model, model.body('2/centrifuge_15ml_cap').id)
             self.platform = body_geoms(model, model.body('/vortex_mixer_genie_2:platform').id)
             joint = model.joint('/vortex_mixer_genie_2:platform/pivot')
             self.speed_adr = int(joint.dofadr[0])
@@ -174,6 +196,11 @@ class EpisodeAssessment:
             self.return_position = data.site_xpos[model.site('origin1').id].copy()
             self.robot = {i for i in range(model.ngeom)
                           if '/aloha:' in model.body(int(model.geom_bodyid[i])).name}
+        elif name in ('insert_centrifuge_5430', 'composite_insert_centrifuge_5430'):
+            self.state = InsertionSequence()
+            self.tube = body_geoms(model, int(model.body_weldid[task.tube.body_id]))
+            self.robot = {i for i in range(model.ngeom)
+                          if '/ur:' in model.body(int(model.geom_bodyid[i])).name}
 
     def update(self):
         task = self.task
@@ -206,11 +233,17 @@ class EpisodeAssessment:
             self.state.update(dt, float(position[2] - self.initial_height),
                               touching(data, self.tube, self.platform), float(data.qvel[self.speed_adr]),
                               float(np.linalg.norm(position - self.return_position)),
-                              touching(data, self.tube, self.robot))
-        elif self.name in ('insert_centrifuge_5430', 'composite_insert_centrifuge_5430'):
-            position = task.tube.get_body_pose(data).pos
-            self.metrics.update(tube_height_m=float(position[2]),
-                                target_distance_m=float(np.linalg.norm(position - task.final_tar_tubepose.pos)))
+                              touching(data, self.held_assembly, self.robot))
+        elif isinstance(self.state, InsertionSequence):
+            actual = task.tube.get_body_pose(data)
+            target = insertion_target(task)
+            relative = quatapply(quatinv(target.quat), actual.pos - target.pos)
+            axis = np.array([0., 0., 1.])
+            cosine = np.dot(quatapply(actual.quat, axis), quatapply(target.quat, axis))
+            tilt = float(np.arccos(np.clip(cosine, -1., 1.)))
+            self.state.update(dt, actual.pos[2], relative, tilt, touching(data, self.tube, self.robot))
+            self.metrics.update(target_frame='current_rotor_slot', slot_id=int(task.slot_id),
+                                legacy_world_target_distance_m=float(np.linalg.norm(actual.pos - task.final_tar_tubepose.pos)))
 
     def report(self):
         from dataclasses import asdict
@@ -221,10 +254,6 @@ class EpisodeAssessment:
             checks = self.state.checks()
             metrics.update(asdict(self.state))
             scope = 'motion_sequence_proxy' if self.name == 'pipette' else 'manipulation'
-        elif self.name in ('insert_centrifuge_5430', 'composite_insert_centrifuge_5430') and metrics:
-            scope = 'legacy_insertion_geometry'
-            checks = {'height_955_to_961mm': .955 < metrics['tube_height_m'] < .961,
-                      'target_within_5mm': metrics['target_distance_m'] < .005}
         audited = bool(checks)
         failures = [key for key, value in checks.items() if not value]
         within_limit = self.time <= self.task.time_limit

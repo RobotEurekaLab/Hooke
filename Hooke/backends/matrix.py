@@ -71,9 +71,9 @@ def summarize(rows, requested):
                     'completed': len(completed), 'status_counts': dict(Counter(r['status'] for r in selected)),
                     'legacy_successes': sum(r.get('source_success') is True for r in completed),
                     'legacy_constant_count': sum(r.get('assessment', {}).get('legacy_constant') is not None for r in completed),
-                    'v2_assessed': sum(r.get('assessment', {}).get('success') is not None for r in completed),
-                    'v2_successes': sum(r.get('assessment', {}).get('success') is True for r in completed),
-                    'v2_successes_within_time': sum(r.get('assessment', {}).get('success_within_time_limit') is True for r in completed),
+                    'assessment_count': sum(r.get('assessment', {}).get('success') is not None for r in completed),
+                    'assessment_successes': sum(r.get('assessment', {}).get('success') is True for r in completed),
+                    'assessment_successes_within_time': sum(r.get('assessment', {}).get('success_within_time_limit') is True for r in completed),
                     'failure_reasons': dict(Counter(reason for r in completed for reason in r.get('assessment', {}).get('failure_reasons', [])))})
     pairs = []
     lookup = {(r['task'], r['seed'], r['mode'], r['backend']): r for r in rows}
@@ -88,8 +88,8 @@ def summarize(rows, requested):
                     audited = ready and all(r.get('assessment', {}).get('success') is not None for r in (a, b))
                     pairs.append({'task': task, 'seed': seed, 'mode': mode, 'completed': ready,
                                   'legacy_agreement': a['source_success'] == b['source_success'] if legacy else None,
-                                  'v2_agreement': a['assessment']['success'] == b['assessment']['success'] if audited else None})
-    return {'groups': groups, 'pairs': pairs, 'parity_qualified': False,
+                                  'assessment_agreement': a['assessment']['success'] == b['assessment']['success'] if audited else None})
+    return {'schema_version': 2, 'groups': groups, 'pairs': pairs, 'parity_qualified': False,
             'requested_episodes': len(requested['tasks']) * len(requested['seeds']) * len(requested['modes']) * len(requested['backends']),
             'recorded_episodes': len(rows), 'results': rows}
 
@@ -99,22 +99,22 @@ def write_report(output, rows, manifest):
     report['provenance'] = {k: v for k, v in manifest['provenance'].items() if k != 'input_files'}
     atomic_json(output / 'report.json', report)
     fields = ['task', 'mode', 'backend', 'requested', 'recorded', 'completed', 'legacy_successes',
-              'legacy_constant_count', 'v2_assessed', 'v2_successes', 'v2_successes_within_time']
+              'legacy_constant_count', 'assessment_count', 'assessment_successes', 'assessment_successes_within_time']
     with (output / 'report.csv').open('w', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=fields, extrasaction='ignore')
         writer.writeheader()
         writer.writerows(report['groups'])
     lines = ['# Paired multi-seed regression', '',
              f"Assessment: `{VERSION}`. Recorded {len(rows)}/{report['requested_episodes']} episodes.", '',
-             'Legacy outcomes and v2 assessments use different criteria. Agreement includes joint failures and does not establish physics equivalence.',
-             'A v2 dash means unaudited. No-action successes are negative-control failures. All counts use the requested seeds as denominator.', '',
-             '| Task | Mode | Backend | Completed | Legacy success | Constant checks | v2 success | v2 within time |',
+             'Legacy outcomes and versioned assessments use different criteria. Agreement includes joint failures and does not establish physics equivalence.',
+             'An assessment dash means unaudited. No-action successes are negative-control failures. All counts use the requested seeds as denominator.', '',
+             '| Task | Mode | Backend | Completed | Legacy success | Constant checks | Assessment success | Assessment within time |',
              '| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |']
     for g in report['groups']:
         n = g['requested']
-        v2 = f"{g['v2_successes']}/{n}" if g['v2_assessed'] else '—'
-        timed = f"{g['v2_successes_within_time']}/{n}" if g['v2_assessed'] else '—'
-        lines.append(f"| {g['task']} | {g['mode']} | {g['backend']} | {g['completed']}/{n} | {g['legacy_successes']}/{n} | {g['legacy_constant_count']} | {v2} | {timed} |")
+        assessed = f"{g['assessment_successes']}/{n}" if g['assessment_count'] else '—'
+        timed = f"{g['assessment_successes_within_time']}/{n}" if g['assessment_count'] else '—'
+        lines.append(f"| {g['task']} | {g['mode']} | {g['backend']} | {g['completed']}/{n} | {g['legacy_successes']}/{n} | {g['legacy_constant_count']} | {assessed} | {timed} |")
     lines += ['', '## Failure reasons', '']
     for g in report['groups']:
         if g['failure_reasons']:

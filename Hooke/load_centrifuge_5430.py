@@ -6,6 +6,7 @@ from kinematics import IK, Pose, slerp, mul_pose, neg_pose
 from topp import Topp
 from task import Task, Expert, Manager, SCENE_ROOT
 from instrument import Centrifuge_Eppendorf_5430
+from archetypes.centrifuge_insertion import RotorSlotPoses, insertion_geometry_passes, execute_insertion
 
 def set_gravcomp(body: mujoco.MjsBody):
     body.gravcomp = 1
@@ -144,30 +145,8 @@ class CentrifugeTube:
         return Pose(res_pos, res_quat)
 
 
-class Centrifuge_5430(Centrifuge_Eppendorf_5430):
-
-    def get_slot_pose(self, data: mujoco.MjData, slot_id: int) -> Pose:
-        if slot_id < 0 or slot_id >= self.num_slots:
-            raise ValueError(f'Invalid slot id {slot_id}')
-        pos = data.site_xpos[self.slot_sites[slot_id]]
-        mat = data.site_xmat[self.slot_sites[slot_id]]
-        quat = np.zeros(4)
-        mujoco.mju_mat2Quat(quat, mat)
-        return Pose(pos, quat)
-
-    def get_tube_pose(self, data: mujoco.MjData, slot_id: int, mode="distal") -> Pose:
-        slot_pose = self.get_slot_pose(data, slot_id)
-        if mode == "distal":
-            rel_pos= np.array([0.0, 0.0, 0.005])
-        elif mode == "proximal":
-            rel_pos = np.array([0.0, 0.0, -0.03])
-        rel_quat = np.array([1.0, 0.0, 0.0, -1.0])
-        # rel_quat = np.array([-0.183, 0.683, 0.683, 0.183])
-        rel_quat /= np.linalg.norm(rel_quat)
-        return mul_pose(p1=slot_pose, p2=Pose(rel_pos, rel_quat))
-    
-    def rotor_perturb(self):
-        return np.random.uniform(-0.1, 0.1)
+class Centrifuge_5430(RotorSlotPoses, Centrifuge_Eppendorf_5430):
+    pass
 
 
 class InsertCentrifuge5430(Task):
@@ -258,12 +237,7 @@ class InsertCentrifuge5430(Task):
         return self.task_info
 
     def check(self):
-        tube_height = self.tube.get_body_pose(self.data).pos
-        tube_pos_2 = [self.tube.get_body_pose(self.data).pos[0], self.tube.get_body_pose(self.data).pos[1], self.tube.get_body_pose(self.data).pos[2]]
-        site_pos = [self.final_tar_tubepose.pos[0], self.final_tar_tubepose.pos[1], self.final_tar_tubepose.pos[2]]
-        squared_distance_site = sum((p1 - p2) ** 2 for p1, p2 in zip(tube_pos_2, site_pos))
-        distance_site = math.sqrt(squared_distance_site)
-        return 0.955 < tube_height[2] < 0.961 and distance_site < 0.005
+        return insertion_geometry_passes(self)
 
 class InsertCentrifuge5430Expert(InsertCentrifuge5430, Expert):
     def __init__(self, spec: mujoco.MjSpec, freq: int = 20):
@@ -346,24 +320,7 @@ class InsertCentrifuge5430Expert(InsertCentrifuge5430, Expert):
 
     def execute(self):
         self.arm.ik.initial_qpos = self.data.qpos[self.arm.jnt_span]
-        path = self.interpolate(self.site_pose, self.tube.get_eef_pose(self.data), 10)
-        self.path_follow(path)
-        self.gripper_control(240)
-        self.move_to(Pose(
-            pos=self.site_pose.pos + (0.0, 0.0, 0.1),
-            quat=self.site_pose.quat
-        ), 20)
-        tube_pose = self.tube.get_body_pose(self.data)
-        rel_pose = mul_pose(p1=neg_pose(tube_pose), p2=self.site_pose)
-        tar_pose = mul_pose(p1=self.tar_tubepose, p2=rel_pose)
-        path = self.interpolate2(self.site_pose, tar_pose, 20)
-        self.path_follow(path)
-        # tube_pose = self.tube.get_body_pose(self.data)
-        # rel_pose = mul_pose(p1=neg_pose(tube_pose), p2=self.site_pose)
-        tar_pose = mul_pose(p1=self.final_tar_tubepose, p2=rel_pose)
-        self.move_to(tar_pose, 20)
-        self.gripper_control(190)
-        self.wait(200)
+        execute_insertion(self)
         self.finish()
 
 InsertCentrifuge5430.Expert = InsertCentrifuge5430Expert
