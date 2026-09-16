@@ -376,7 +376,9 @@ class NativeScene:
         from backends.usd_visuals import apply_visuals
         stats=apply_visuals(self.world.stage,self.m,visuals,self.visual_geometry)
         get_physx_interface().update_transformations(True,True,False,False)
-        for _ in range(3 if stats['texture_updates'] else 1):self.world.render()
+        # RGB annotators buffer render frames for moving actors as well as
+        # texture changes. Drain that latency before pairing RGB with state.
+        for _ in range(3):self.world.render()
         self.capture()
         after=self.observe()
         if any(not np.allclose(before[key],after[key],rtol=0,atol=1e-6) for key in ('qpos','qvel')):
