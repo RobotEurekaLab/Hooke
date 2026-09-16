@@ -196,6 +196,10 @@ class EpisodeAssessment:
             self.return_position = data.site_xpos[model.site('origin1').id].copy()
             self.robot = {i for i in range(model.ngeom)
                           if '/aloha:' in model.body(int(model.geom_bodyid[i])).name}
+            self.arms = tuple({i for i in self.robot
+                               if f'{arm}/aloha:' in model.body(int(model.geom_bodyid[i])).name}
+                              for arm in (1, 2))
+            self.inter_arm_contact_s = 0.
         elif name in ('insert_centrifuge_5430', 'composite_insert_centrifuge_5430'):
             self.state = InsertionSequence()
             self.tube = body_geoms(model, int(model.body_weldid[task.tube.body_id]))
@@ -230,6 +234,11 @@ class EpisodeAssessment:
                               touching(data, self.handle, self.gripper), dt)
         elif isinstance(self.state, VortexSequence):
             position = data.xpos[self.tube_body]
+            self.inter_arm_contact_s += dt if touching(data, *self.arms) else 0.
+            axis = data.xmat[self.tube_body].reshape(3, 3)[:, 2]
+            self.metrics.update(inter_arm_contact_s=self.inter_arm_contact_s,
+                                final_tube_tilt_rad=float(np.arccos(np.clip(axis[2], -1., 1.))),
+                                return_distance_m=float(np.linalg.norm(position-self.return_position)))
             self.state.update(dt, float(position[2] - self.initial_height),
                               touching(data, self.tube, self.platform), float(data.qvel[self.speed_adr]),
                               float(np.linalg.norm(position - self.return_position)),

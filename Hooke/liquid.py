@@ -218,6 +218,8 @@ class LiquidLog:
     boundary: np.ndarray
     normal: list[np.ndarray]
     distance: list[float]
+    present: list[bool]
+    volume_m3: list[float]
 
 
 class ContainerSystem(System):
@@ -266,6 +268,8 @@ class ContainerSystem(System):
             boundary=np.where(self.definition._interior_opening_vertex_mask)[0].astype(np.uint64),
             normal=[],
             distance=[],
+            present=[],
+            volume_m3=[],
         )
 
     def _reset(self, data: mujoco.MjData):
@@ -280,6 +284,8 @@ class ContainerSystem(System):
         )
         self.log.normal = []
         self.log.distance = []
+        self.log.present = []
+        self.log.volume_m3 = []
         if self.initial_volume is None:
             volume = self.container.definition.interior.volume * 0.5
         else:
@@ -289,7 +295,23 @@ class ContainerSystem(System):
     def _update(self, data: mujoco.MjData):
         self._update_container(data)
 
-    def _update_container(self, data: mujoco.MjData, volume: float = None):
+    def set_volume(self, data: mujoco.MjData, volume: float):
+        """Update a transferred volume and the current surface without adding a tick."""
+        if not np.isfinite(volume) or not 0 <= volume <= self.definition.interior.volume*.9:
+            raise ValueError('Container volume exceeds the supported fill range')
+        container = self.container
+        if volume == 0:
+            container.liquid = None
+        else:
+            if container.liquid is None:
+                acceleration = container.rotation_matrix.T @ self._acceleration(data)
+                container.liquid = LiquidState.create(self.definition.interior, volume, acceleration, container.dt)
+            else:
+                container.liquid.volume = volume
+            container.liquid.update_level()
+        self._record_surface(record=False)
+
+    def _acceleration(self, data: mujoco.MjData):
         acceleration = np.zeros(6)  # rot:lin
         mujoco.mj_objectAcceleration(
             self.model, data,
@@ -298,15 +320,33 @@ class ContainerSystem(System):
             acceleration,
             False,
         )
-        acceleration = acceleration[3:]  # only linear acceleration
+        return acceleration[3:]  # only linear acceleration
+
+    def _update_container(self, data: mujoco.MjData, volume: float = None):
         self.container.update(
             data.geom_xpos[self.geom_id],
             data.geom_xmat[self.geom_id].reshape(3, 3),
-            acceleration,
+            self._acceleration(data),
             volume=volume,
         )
-        self.log.normal.append(self.container.liquid.surface_normal)
-        self.log.distance.append(self.container.liquid.surface.distance)
+        self._record_surface(record=True)
+
+    def _record_surface(self, *, record: bool):
+        liquid = self.container.liquid
+        normal = liquid.surface_normal if liquid is not None else Z.copy()
+        distance = liquid.surface.distance if liquid is not None else 0.
+        present = liquid is not None
+        volume = float(self.container.volume)
+        if record:
+            self.log.normal.append(normal)
+            self.log.distance.append(distance)
+            self.log.present.append(present)
+            self.log.volume_m3.append(volume)
+        elif self.log.normal:
+            self.log.normal[-1] = normal
+            self.log.distance[-1] = distance
+            self.log.present[-1] = present
+            self.log.volume_m3[-1] = volume
 
     def _visualize(self, data: mujoco.MjData, scene: mujoco.MjvScene):
         # Visualize water surface
@@ -354,6 +394,8 @@ class ContainerCoordinator(System):
                 "boundary": cs.log.boundary,
                 "normal": np.stack(cs.log.normal),
                 "distance": np.stack(cs.log.distance),
+                "present": np.asarray(cs.log.present, dtype=bool),
+                "volume_m3": np.asarray(cs.log.volume_m3),
             }
             liquids.append(log)
         with open("liquid.pkl", "wb") as f:

@@ -69,6 +69,8 @@ def render_mujoco(
             for j in range(len(meshplanes)):
                 meshplane = meshplanes[j]
                 liquid = liquids[j]
+                if 'present' in liquid and not liquid['present'][indices[i]]:
+                    continue
                 surface_normal = liquid['normal'][indices[i]]
                 surface_distance = liquid['distance'][indices[i]]
                 position = data.geom_xpos[liquid['geom_id']]

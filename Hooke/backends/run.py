@@ -39,11 +39,14 @@ def run(args,worker=None):
             'mode':args.mode,'parity_qualified':False}
     result_path=output/'result.json';write_json(result_path,result)
     started=time.perf_counter();task=None;steps=0;contact_steps=0;frames=0;physics_wall=0.;rows=[]
-    renderer=None;adapter=None;original_step=None;original_manager_step=None;visuals=None;assessment=None
+    renderer=None;adapter=None;original_step=None;original_manager_step=None;visuals=None;assessment=None;volume_assessment=None
     try:
         entry=CATALOG[args.task]
         task=entry.make_expert();task.reset(args.seed);mujoco.mj_forward(task.model,task.data)
         assessment=EpisodeAssessment(task,args.task)
+        if getattr(task,'liquid_transfer',None) is not None:
+            from backends.volume_assessment import PipetteVolumeAssessment
+            volume_assessment=PipetteVolumeAssessment(task.liquid_transfer)
         task.task_info['simulation_backend']=args.backend
         task.task_info['physics_engine']='PhysX' if args.backend=='isaac' else 'MuJoCo'
         if args.mode=='expert':task.set_serializer(log_root=output/'task_log',log_name='episode')
@@ -96,6 +99,7 @@ def run(args,worker=None):
             def manager_step():
                 original_manager_step()
                 assessment.update()
+                if volume_assessment is not None:volume_assessment.update()
                 # The instrument/liquid systems update after physics. Render
                 # their current state, with the same ordering for both engines.
                 if steps%max(1,round(.05/task.dt))==0:capture()
@@ -146,6 +150,8 @@ def run(args,worker=None):
                           physics_options=adapter.loaded['conversion']['physics_options'])
         if task is not None:
             if assessment is not None:result['assessment']=assessment.report()
+            if volume_assessment is not None:result['volume_assessment']=volume_assessment.report()
+            if getattr(task,'phase_history',None) is not None:result['expert_phases']=task.phase_history
             result['final_qpos']=task.data.qpos.tolist()
             result['final_contact_pairs']=sorted({tuple(sorted(map(int,c.geom))) for c in task.data.contact})
             if task.model.nsensor:

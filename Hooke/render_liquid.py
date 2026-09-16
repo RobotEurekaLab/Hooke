@@ -204,6 +204,10 @@ def render_liquid(log_dir: Path, fps: int = 20, meniscus: bool = False):
         face_vertex_indices_attr = usd_mesh.GetFaceVertexIndicesAttr()
 
         for i in range(num_frames):
+            visible = 'present' not in liquid or bool(liquid['present'][indices[i]])
+            usd_mesh.CreateVisibilityAttr().Set('inherited' if visible else 'invisible', time=i)
+            if not visible:
+                continue
             meshplane.set_plane_normal(*normals[i])
             result_mesh = meshplane.calculate_mesh(distances[i])
             

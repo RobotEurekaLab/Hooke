@@ -46,12 +46,14 @@ def provenance():
             'input_files': hashes, 'assessment_version': VERSION,
             'python': sys.version.split()[0],
             'packages': {name: importlib.metadata.version(name) for name in ('mujoco', 'numpy', 'scipy')},
-            'isaac_task_threads': os.environ.get('HOOKE_ISAAC_TASK_THREADS', '8')}
+            'isaac_task_threads': os.environ.get('HOOKE_ISAAC_TASK_THREADS', '8'),
+            'isaac_environment': {key: value for key, value in sorted(os.environ.items())
+                                  if key.startswith('HOOKE_ISAAC_') and key not in ('HOOKE_ISAAC_PATH', 'HOOKE_ISAAC_RENDER_GPU')}}
 
 
 def compact(result, evidence):
     keys = ('task', 'backend', 'seed', 'mode', 'status', 'source_success', 'source_check_kind',
-            'source_check', 'within_declared_time_limit', 'assessment', 'steps',
+            'source_check', 'within_declared_time_limit', 'assessment', 'volume_assessment', 'steps',
             'simulation_s', 'total_wall_s', 'max_fk_position_error_m')
     row = {key: result[key] for key in keys if key in result}
     row['evidence'] = evidence
@@ -74,6 +76,8 @@ def summarize(rows, requested):
                     'assessment_count': sum(r.get('assessment', {}).get('success') is not None for r in completed),
                     'assessment_successes': sum(r.get('assessment', {}).get('success') is True for r in completed),
                     'assessment_successes_within_time': sum(r.get('assessment', {}).get('success_within_time_limit') is True for r in completed),
+                    'volume_assessment_count': sum(r.get('volume_assessment', {}).get('success') is not None for r in completed),
+                    'volume_assessment_successes': sum(r.get('volume_assessment', {}).get('success') is True for r in completed),
                     'failure_reasons': dict(Counter(reason for r in completed for reason in r.get('assessment', {}).get('failure_reasons', [])))})
     pairs = []
     lookup = {(r['task'], r['seed'], r['mode'], r['backend']): r for r in rows}
@@ -99,7 +103,8 @@ def write_report(output, rows, manifest):
     report['provenance'] = {k: v for k, v in manifest['provenance'].items() if k != 'input_files'}
     atomic_json(output / 'report.json', report)
     fields = ['task', 'mode', 'backend', 'requested', 'recorded', 'completed', 'legacy_successes',
-              'legacy_constant_count', 'assessment_count', 'assessment_successes', 'assessment_successes_within_time']
+              'legacy_constant_count', 'assessment_count', 'assessment_successes', 'assessment_successes_within_time',
+              'volume_assessment_count', 'volume_assessment_successes']
     with (output / 'report.csv').open('w', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=fields, extrasaction='ignore')
         writer.writeheader()
@@ -108,13 +113,14 @@ def write_report(output, rows, manifest):
              f"Assessment: `{VERSION}`. Recorded {len(rows)}/{report['requested_episodes']} episodes.", '',
              'Legacy outcomes and versioned assessments use different criteria. Agreement includes joint failures and does not establish physics equivalence.',
              'An assessment dash means unaudited. No-action successes are negative-control failures. All counts use the requested seeds as denominator.', '',
-             '| Task | Mode | Backend | Completed | Legacy success | Constant checks | Assessment success | Assessment within time |',
-             '| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |']
+             '| Task | Mode | Backend | Completed | Legacy success | Constant checks | Assessment success | Assessment within time | Ideal volume |',
+             '| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |']
     for g in report['groups']:
         n = g['requested']
         assessed = f"{g['assessment_successes']}/{n}" if g['assessment_count'] else '—'
         timed = f"{g['assessment_successes_within_time']}/{n}" if g['assessment_count'] else '—'
-        lines.append(f"| {g['task']} | {g['mode']} | {g['backend']} | {g['completed']}/{n} | {g['legacy_successes']}/{n} | {g['legacy_constant_count']} | {assessed} | {timed} |")
+        volume = f"{g['volume_assessment_successes']}/{n}" if g['volume_assessment_count'] else '—'
+        lines.append(f"| {g['task']} | {g['mode']} | {g['backend']} | {g['completed']}/{n} | {g['legacy_successes']}/{n} | {g['legacy_constant_count']} | {assessed} | {timed} | {volume} |")
     lines += ['', '## Failure reasons', '']
     for g in report['groups']:
         if g['failure_reasons']:
@@ -200,8 +206,8 @@ def main():
     if args.resume:
         prior = json.loads(manifest_path.read_text())
         # A commit of identical tested code is compatible; changed bytes are not.
-        if prior['parameters'] != parameters or any(prior['provenance'][k] != manifest['provenance'][k]
-                for k in ('inputs_sha256', 'assessment_version', 'python', 'packages', 'isaac_task_threads')):
+        if prior['parameters'] != parameters or any(prior['provenance'].get(k) != manifest['provenance'].get(k)
+                for k in ('inputs_sha256', 'assessment_version', 'python', 'packages', 'isaac_task_threads', 'isaac_environment')):
             parser.error('Resume refused: parameters, code or scene configuration changed')
         manifest = prior
     else:
@@ -229,8 +235,9 @@ def main():
                     write_report(args.output, rows, manifest)
                     print(backend, task, seed, mode, row['status'], flush=True)
     failed = any(r['status'] not in TERMINAL or (r['mode'] == 'expert' and
-                 (r.get('assessment', {}).get('success') is False or r.get('source_success') is False)) or
-                 (r['mode'] == 'no_action' and r.get('assessment', {}).get('success') is True) for r in rows)
+                 (r.get('assessment', {}).get('success') is False or r.get('volume_assessment', {}).get('success') is False or r.get('source_success') is False)) or
+                 (r['mode'] == 'no_action' and (r.get('assessment', {}).get('success') is True or
+                                              r.get('volume_assessment', {}).get('success') is True)) for r in rows)
     raise SystemExit(1 if failed else 0)
 
 

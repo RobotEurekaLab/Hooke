@@ -54,11 +54,26 @@ class Topp:
             # producing an ill-conditioned spline that TOPPRA cannot time.
             # Solve once and let the caller's normal settling interval hold it.
             return HoldTrajectory(np.asarray(self.ik(first.pos, first.quat), dtype=float).copy())
-        ss = np.linspace(0, 1, len(pose_path))
         jnts = [self.ik(pose.pos, pose.quat) for pose in pose_path]
+        return self._retime(jnts)
+
+    def joint_traj(self, joint_path):
+        """Time joint waypoints with the same velocity/acceleration constraints."""
+        jnts = np.asarray(joint_path, dtype=float)
+        if jnts.ndim != 2 or not len(jnts) or jnts.shape[1] != self.qc_vel.dof or not np.isfinite(jnts).all():
+            raise ValueError('Joint path must contain finite waypoints of the configured size')
+        if np.allclose(jnts, jnts[0], rtol=0., atol=1e-12):
+            return HoldTrajectory(jnts[0].copy())
+        return self._retime(jnts, parametrizer='ParametrizeConstAccel')
+
+    def _retime(self, jnts, parametrizer='ParametrizeSpline'):
+        ss = np.linspace(0, 1, len(jnts))
         path = ta.SplineInterpolator(ss, jnts)
-        instance = ta.algorithm.TOPPRA([self.qc_vel, self.qc_acc], path)
-        return instance.compute_trajectory(0, 0)
+        instance = ta.algorithm.TOPPRA([self.qc_vel, self.qc_acc], path, parametrizer=parametrizer)
+        trajectory = instance.compute_trajectory(0, 0)
+        if trajectory is None:
+            raise ValueError('Joint path could not be timed within the motion constraints')
+        return trajectory
 
     @staticmethod
     def query(traj: ta.interpolator.AbstractGeometricPath, t: float):

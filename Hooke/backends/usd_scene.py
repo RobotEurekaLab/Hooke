@@ -63,6 +63,7 @@ class SceneBridge:
                                       '.00005' if np.any(self.m['geom_type']==8) else '.001')),
             'sdf_contact_offset_m':float(os.environ.get('HOOKE_ISAAC_SDF_CONTACT_OFFSET','.00005')),
             'solver_velocity_iterations':int(os.environ.get('HOOKE_ISAAC_VELOCITY_ITERATIONS','8')),
+            'simulation_threads':int(os.environ.get('HOOKE_ISAAC_SIMULATION_THREADS','1')),
             'compliant_contact_scale':float(os.environ.get('HOOKE_ISAAC_COMPLIANT_SCALE','1')),
             'compliant_impedance_fraction':float(os.environ.get('HOOKE_ISAAC_IMPEDANCE_FRACTION','0')),
             'soft_connect_constraints':os.environ.get('HOOKE_ISAAC_SOFT_CONNECT','1')=='1',
@@ -80,6 +81,9 @@ class SceneBridge:
             self.physics_options[key]=value
         iterations=self.physics_options['solver_velocity_iterations']
         if int(iterations)!=iterations or not 1<=iterations<=255:raise ValueError('Invalid solver iterations')
+        threads=self.physics_options['simulation_threads']
+        if not isinstance(threads,int) or isinstance(threads,bool) or not 1<=threads<=64:
+            raise ValueError('Simulation threads must be an integer from 1 to 64')
         if not isinstance(self.physics_options['approximate_cylinders'],bool):raise ValueError('Invalid cylinder approximation option')
         fraction=float(self.physics_options['compliant_impedance_fraction'])
         if not np.isfinite(fraction) or not 0<=fraction<=1:raise ValueError('Invalid impedance fraction')

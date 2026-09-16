@@ -28,9 +28,9 @@ class NativeScene:
         self.managed_render=managed_render
         self.visual_geometry={}
         self.dt = json.loads((self.source/'scene.json').read_text())['timestep_s']
-        carb.settings.get_settings().set(SETTING_NUM_THREADS, 1)
         self.world = World(stage_units_in_meters=1., physics_dt=self.dt, rendering_dt=self.dt, device='cpu')
         self.bridge = SceneBridge(self.world.stage, self.source, self.output,physics_options)
+        carb.settings.get_settings().set_int(SETTING_NUM_THREADS,self.bridge.physics_options['simulation_threads'])
         approximate_cylinders=self.bridge.physics_options['approximate_cylinders']
         carb.settings.get_settings().set_bool(SETTING_COLLISION_APPROXIMATE_CYLINDERS,approximate_cylinders)
         if approximate_cylinders:

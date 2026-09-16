@@ -5,10 +5,28 @@ import unittest
 import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Hooke"))
 from topp import Topp
-from kinematics import Pose
+from kinematics import Pose, align_axes
+from grasp.quat import quatapply
 
 
 class ZeroPathTests(unittest.TestCase):
+    def test_joint_transit_preserves_both_motion_limits(self):
+        planner = Topp(2, .8, .8, None)
+        trajectory = planner.joint_traj([[0., 0.], [1.3, -.7]])
+        times = np.linspace(0., trajectory.duration, 2000)
+        np.testing.assert_allclose(trajectory.eval(trajectory.duration), [1.3, -.7], atol=1e-8)
+        self.assertLessEqual(np.max(np.abs(trajectory.evald(times))), .8+1e-6)
+        self.assertLessEqual(np.max(np.abs(trajectory.evaldd(times))), .8+1e-6)
+        with self.assertRaises(ValueError):planner.joint_traj([[0.]])
+        with self.assertRaises(ValueError):planner.joint_traj([[0., float('nan')]])
+
+    def test_axis_alignment_handles_parallel_and_opposite_axes(self):
+        source = np.array([0., 0., 1.])
+        for target in (source, -source, np.array([1., 0., 0.])):
+            quat = align_axes(source, target)
+            np.testing.assert_allclose(quatapply(quat, source), target, atol=1e-12)
+        np.testing.assert_array_equal(align_axes(source, source), [1., 0., 0., 0.])
+
     def test_identical_pose_and_quaternion_sign_do_not_accumulate_ik_drift(self):
         calls = []
         def drifting_ik(pos, quat):

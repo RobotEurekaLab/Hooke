@@ -5,6 +5,7 @@ from kinematics import IK, Pose, slerp
 from topp import Topp
 from task import Task, Expert, Manager, SCENE_ROOT
 from liquid import ContainerSystem, ContainerCoordinator
+from pipetting import PipetteTransferSystem
 
 def set_gravcomp(body: mujoco.MjsBody):
     body.gravcomp = 1
@@ -154,8 +155,10 @@ class Pipette(Task):
 
     def __init__(self, spec: mujoco.MjSpec):
         self.container = ContainerSystem("5/centrifuge_50ml_screw_body-visual")
+        self.liquid_transfer = PipetteTransferSystem(source=self.container, tip_site='tl/tip_site',
+                                                     plunger_joint='tl/pipette_button', tip_capacity_m3=200e-9)
         cc = ContainerCoordinator()
-        manager = Manager.from_spec(spec, [self.container, cc])
+        manager = Manager.from_spec(spec, [self.container, self.liquid_transfer, cc])
         super().__init__(manager)
         self.arm1 = UR5eArm(self.model, '1/ur:')
         self.arm2 = UR5eArm(self.model, '2/ur:')
