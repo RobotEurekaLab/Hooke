@@ -3,7 +3,7 @@
 import xml.etree.ElementTree as ET
 import numpy as np
 
-VERSION = "hooke-native-capabilities-v1"
+VERSION = "hooke-native-capabilities-v2"
 KNOWN_PLUGINS = {"mjlab.sdf.thread", "mjlab.passive.detent"}
 FEATURES = {
     "free_hinge_slide_joints": "Implemented; compound joints add declared auxiliary inertia.",
@@ -23,6 +23,12 @@ UNSUPPORTED = {
     "flexible_bodies": "Native deformable state and force adapter required.",
     "nonlinear_dynamic_actuators": "Actuator state/dynamics adapter required.",
     "arbitrary_plugins": "Explicit native/source-force plugin adapter required.",
+    "actuator_or_sensor_plugins": "Explicit actuator/sensor plugin adapter required.",
+    "actuator_transmission": "Only joint and fixed-tendon transmissions are implemented.",
+    "joint_actuator_gearing": "Joint actuators require a unit scalar gear.",
+    "spatial_tendon_actuators": "Spatial tendon actuator forces require another adapter.",
+    "equality_type": "Only connect, weld and affine joint equalities are implemented.",
+    "nonlinear_joint_equality": "Nonlinear joint coupling requires another adapter.",
 }
 
 
@@ -61,6 +67,13 @@ def preflight(model, xml):
         blockers.append("nonlinear_dynamic_actuators")
     if np.any(~np.isin(model.actuator_trntype, [0, 3])):
         blockers.append("actuator_transmission")
+    tendons = model.actuator_trnid[model.actuator_trntype == 3, 0]
+    for tendon in np.unique(tendons):
+        start = model.tendon_adr[tendon]
+        count = model.tendon_num[tendon]
+        if np.any(model.wrap_type[start : start + count] != 1):
+            blockers.append("spatial_tendon_actuators")
+            break
     joint_actuators = np.flatnonzero(model.actuator_trntype == 0)
     if np.any(
         model.actuator_gear[joint_actuators] != np.array([1.0, 0.0, 0.0, 0.0, 0.0, 0.0])

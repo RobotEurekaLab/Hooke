@@ -16,6 +16,7 @@ import time
 def inspect_catalog():
     import mujoco
     from archetypes.task_catalog import CATALOG
+    from backends.capabilities import preflight
     rows = []
     for name, entry in CATALOG.items():
         row = {"task": name, "module": entry.module, "class": entry.cls,
@@ -38,7 +39,8 @@ def inspect_catalog():
                        equalities=model.neq, tendons=model.ntendon, plugins=model.nplugin,
                        sensors=model.nsensor, timestep_s=model.opt.timestep,
                        equality_types=sorted(set(int(x) for x in model.eq_type)),
-                       actuator_transmissions=sorted(set(int(x) for x in model.actuator_trntype)))
+                       actuator_transmissions=sorted(set(int(x) for x in model.actuator_trntype)),
+                       native_preflight=preflight(model, spec.to_xml()))
         except Exception as exc:
             row.update(mujoco_compiles=False, error=f"{type(exc).__name__}: {exc}")
         row["inspect_wall_s"] = time.monotonic() - started

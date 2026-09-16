@@ -42,7 +42,8 @@ def expert_evidence():
     sources=[EVIDENCE/folder/'task_results.json' for folder in
              ('tasks_mujoco','native_v4_tasks','native_v5_tasks','native_v6_regression_r3','native_v6_remaining','native_v6_vortex_final','native_v6_pipette_final')]
     sources.extend(ROOT/'docs/validation'/name for name in
-                   ('isaac_pipette_transfer_summary.json','isaac_centrifuge_cycle_summary.json'))
+                   ('isaac_pipette_transfer_summary.json','isaac_pipette_transfer_ten_seed_summary.json',
+                    'isaac_5430_lid_summary.json','isaac_mini_lid_summary.json','isaac_centrifuge_cycle_summary.json'))
     for path in sources:
         for row in read_json(path).get('results',[]):
             if row.get('seed')!=0 or row.get('mode')!='expert':continue

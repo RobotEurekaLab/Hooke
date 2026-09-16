@@ -41,6 +41,24 @@ class BackendSettings(unittest.TestCase):
             with self.assertRaises(ValueError):
                 RenderSettings(width=width)
 
+    def test_actuated_spatial_tendon_is_rejected_and_fixed_tendon_allowed(self):
+        scene = """<worldbody><site name="fixed"/>
+        <body pos="0 0 1"><joint name="joint"/><geom type="sphere" size=".1"/>
+        <site name="moving" pos=".1 0 0"/></body></worldbody>"""
+        for tendon, expected in [
+            (
+                '<spatial name="t"><site site="fixed"/><site site="moving"/></spatial>',
+                ["spatial_tendon_actuators"],
+            ),
+            ('<fixed name="t"><joint joint="joint" coef="1"/></fixed>', []),
+        ]:
+            xml = (
+                "<mujoco>" + scene + "<tendon>" + tendon + "</tendon>"
+                '<actuator><motor tendon="t"/></actuator></mujoco>'
+            )
+            model = mujoco.MjModel.from_xml_string(xml)
+            self.assertEqual(preflight(model, xml)["blockers"], expected)
+
     def test_gpu_environment_precedence_and_invalid_gpu(self):
         with mock.patch.dict(os.environ, {"HOOKE_ISAAC_GPU": "7"}):
             self.assertEqual(isaac_gpu(), 7)
