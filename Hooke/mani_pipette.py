@@ -379,6 +379,10 @@ class PipetteTransfer(Pipette):
 
 
 class PipetteTransferExpert(PipetteRecipe, PipetteTransfer, Expert):
+    def __init__(self, spec, freq=20):
+        super().__init__(spec, freq)
+        self.transfer_planner = Topp(dof=self.arm1.dof, qc_vel=.35, qc_acc=.25, ik=self.arm1.ik.solve)
+
     def execute(self):
         self.phase_history = []
 
@@ -393,8 +397,8 @@ class PipetteTransferExpert(PipetteRecipe, PipetteTransfer, Expert):
         quat = self.arm1.get_site_pose(self.data).quat.copy()
         hover = Pose(position + (0., 0., .32), quat)
         dispense = Pose(position + (0., 0., .09), quat)
-        phase('transfer', lambda: self.move_to(hover, self.arm1, 5, self.withdrawal_planner))
-        phase('enter_destination', lambda: self.move_to(dispense, self.arm1, 5, self.withdrawal_planner))
+        phase('transfer', lambda: self.move_to(hover, self.arm1, 5, self.transfer_planner))
+        phase('enter_destination', lambda: self.move_to(dispense, self.arm1, 5, self.transfer_planner))
         phase('dispense', lambda: self.pipette_ctrl('push'))
         # Keep the button pressed until the tip leaves the receiver. Releasing
         # under its new liquid surface would aspirate the delivered sample.
