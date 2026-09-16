@@ -141,6 +141,9 @@ class VortexMixerManipulate(Task):
         self.data.qpos[self.object.body_pos_span] = tube_pos
         self.data.qpos[self.object.cap_pos_span] = tube_pos
         mujoco.mj_kinematics(self.model, self.data)
+        # Episode anchors belong to the randomized reset pose. The manager's
+        # earlier reset still observes the keyframe's original rack slot.
+        self.progress.reset(self.data)
 
         self.task_info = {
             'prefix': 'dual-Aloha arms mixing the centrifuge tube on the vortex mixer: one operates test tube, the other operates the vortex mixer',

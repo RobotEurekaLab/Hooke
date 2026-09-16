@@ -13,6 +13,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'Hooke'))
 from mani_pipette import Pipette
 from process_progress import ProcessProgressSystem, PipetteTransferSequence
 from simulation import Manager
+from archetypes.task_catalog import CATALOG
+from process_progress import ProcessProgress
 
 
 class ProcessProgressTests(unittest.TestCase):
@@ -83,6 +85,17 @@ class ProcessProgressTests(unittest.TestCase):
         self.assertTrue(sequence.checks()['delivered_target_within_5pct'])
         self.assertFalse(sequence.checks()['ordered_aspirate_transfer_dispense_withdraw'])
         json.dumps(sequence.__dict__, default=lambda obj: obj.__dict__, allow_nan=False)
+
+    def test_vortex_anchors_follow_the_randomized_reset_pose(self):
+        task = CATALOG['vortex_mixer'].make_expert()
+        for seed in (0, 4):
+            task.reset(seed)
+            mujoco.mj_forward(task.model, task.data)
+            independent = ProcessProgress(task, 'vortex_mixer')
+            observer = task.progress.observer
+            np.testing.assert_array_equal(observer.return_position, independent.return_position)
+            self.assertEqual(observer.initial_height, independent.initial_height)
+            self.assertFalse(task.check())
 
 
 if __name__ == '__main__':
