@@ -14,6 +14,7 @@ def run_control_streams(control: np.ndarray, step: Callable[[], None], *streams:
     from the preceding physics tick; they never advance physics themselves.
     """
     active = list(streams)
+    owners = {}
     try:
         while active:
             commands = {}
@@ -25,6 +26,9 @@ def run_control_streams(control: np.ndarray, step: Callable[[], None], *streams:
                     continue
                 if commands.keys() & command.keys():
                     raise ValueError('Concurrent streams command the same actuator')
+                for actuator in command:
+                    if owners.setdefault(actuator, id(stream)) != id(stream):
+                        raise ValueError('Concurrent streams command the same actuator')
                 commands.update(command)
                 remaining.append(stream)
             active = remaining

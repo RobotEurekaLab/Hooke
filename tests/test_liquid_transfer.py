@@ -67,3 +67,12 @@ class LiquidTransferTests(unittest.TestCase):
             ledger.transfer('tip', 'source', 7e-9)
         self.assertAlmostEqual(ledger.total_m3, ledger.initial_total_m3, places=18)
         self.assertLessEqual(ledger.state('tip').volume_m3, 200e-9)
+
+    def test_failed_dispense_can_be_retried_without_losing_the_stroke(self):
+        ledger = self.ledger(tip=200e-9)
+        pipette = PistonPipette(ledger, 'tip')
+        initial = pipette.snapshot()
+        with self.assertRaises(KeyError):pipette.update(.5, None, 'missing')
+        self.assertEqual(pipette.snapshot(), initial)
+        pipette.update(.5, None, 'environment')
+        self.assertAlmostEqual(ledger.state('environment').volume_m3, 100e-9)

@@ -69,7 +69,6 @@ class PistonPipette:
     def update(self, pressed_fraction: float, submerged_source: str | None, destination: str):
         fraction = self._fraction(pressed_fraction)
         delta = fraction-self.previous_fraction
-        self.previous_fraction = fraction
         requested = abs(delta)*self.capacity_m3
         if delta < 0:
             transferred = 0. if submerged_source is None else self.ledger.transfer(submerged_source, self.tip, requested)
@@ -77,6 +76,7 @@ class PistonPipette:
             self.air_stroke_m3 += requested-transferred
         elif delta > 0:
             self.dispensed_m3 += self.ledger.transfer(self.tip, destination, requested)
+        self.previous_fraction = fraction
 
     def snapshot(self) -> dict:
         return dict(model='ideal_piston_volume_v1', reservoirs=self.ledger.snapshot(),

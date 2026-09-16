@@ -29,6 +29,15 @@ class ControlStreamTests(unittest.TestCase):
         run_control_streams(np.zeros(1), lambda: calls.append(1), iter([]), iter([]))
         self.assertEqual(calls, [])
 
+    def test_commands_on_alternating_ticks_still_require_distinct_actuators(self):
+        control = np.zeros(1)
+        history = []
+        with self.assertRaises(ValueError):
+            run_control_streams(control, lambda: history.append(control.copy()),
+                                iter([{0: 1.}, {}]), iter([{}, {0: 2.}]))
+        np.testing.assert_array_equal(history, [[1.]])
+        np.testing.assert_array_equal(control, [1.])
+
     def test_physics_failure_closes_all_streams(self):
         closed = []
         def actions(actuator):
