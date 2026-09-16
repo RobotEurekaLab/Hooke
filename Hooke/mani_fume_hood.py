@@ -14,7 +14,11 @@ ever moving toward the object (a big single-step reorientation swept
 through it there), and re-measure the grasp target after any move that
 could have disturbed it rather than trusting a pre-move snapshot.
 
-Only `close_fume_hood` is verified and catalogued (10/10 seeds). The
+Only `close_fume_hood` is catalogued. The historical 10/10 result used
+final sash position alone: gravity also closes the sash without robot
+action. It does not validate manipulation. The versioned episode assessor
+in backends.assessment additionally requires handle contact and travel
+during contact; see docs/isaac_episode_assessment.md at the repo root. The
 class also supports `open_fume_hood` (start closed, slide the sash back
 up) but that direction currently fails outright. Originally suspected to
 be the sash's glass clipping the gripper on approach; re-diagnosed with
