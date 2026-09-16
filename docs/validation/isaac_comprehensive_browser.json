@@ -45,23 +45,45 @@
       "simulation_started": false
     },
     {
+      "page": "serial_pair_workflow",
+      "requests": [
+        {
+          "task": "centrifuge_5430_cycle",
+          "seed": 0,
+          "backend": "mujoco",
+          "mode": "preview",
+          "science_model": "",
+          "seconds": 2
+        },
+        {
+          "task": "centrifuge_5430_cycle",
+          "seed": 0,
+          "backend": "isaac",
+          "mode": "preview",
+          "science_model": "",
+          "seconds": 2
+        }
+      ],
+      "simulation_jobs_started": 0
+    },
+    {
       "task": "centrifuge_5430_cycle",
       "catalog_count": 167,
       "mobile_horizontal_overflow": false
     },
     {
-      "page": "actual_transfer_gallery",
-      "camera": "table_cam_front",
+      "page": "actual_source_display_gallery",
+      "camera": "0",
       "loaded_images": 6
     },
     {
-      "page": "actual_transfer_gallery",
-      "camera": "1/ur:wrist_cam",
+      "page": "actual_source_display_gallery",
+      "camera": "2",
       "loaded_images": 6
     },
     {
-      "page": "actual_transfer_gallery",
-      "camera": "2/ur:wrist_cam",
+      "page": "actual_source_display_gallery",
+      "camera": "3",
       "loaded_images": 6
     }
   ],

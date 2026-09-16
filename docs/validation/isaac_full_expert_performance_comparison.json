@@ -1,0 +1,201 @@
+{
+  "kind": "full_native_expert_optimization_comparison",
+  "task": "pipette_transfer",
+  "seed": 0,
+  "baseline_wall_s": 466.5797501760535,
+  "candidate_wall_s": 456.53086519101635,
+  "speedup": 1.022011403283396,
+  "arrays": {
+    "control": {
+      "old_shape": [
+        16819,
+        25
+      ],
+      "new_shape": [
+        16819,
+        25
+      ],
+      "exactly_equal": true,
+      "maximum_absolute_difference": 0.0
+    },
+    "qpos": {
+      "old_shape": [
+        16819,
+        56
+      ],
+      "new_shape": [
+        16819,
+        56
+      ],
+      "exactly_equal": true,
+      "maximum_absolute_difference": 0.0
+    },
+    "qvel": {
+      "old_shape": [
+        16819,
+        54
+      ],
+      "new_shape": [
+        16819,
+        54
+      ],
+      "exactly_equal": true,
+      "maximum_absolute_difference": 0.0
+    },
+    "time": {
+      "old_shape": [
+        16819
+      ],
+      "new_shape": [
+        16819
+      ],
+      "exactly_equal": true,
+      "maximum_absolute_difference": 0.0
+    },
+    "contacts": {
+      "old_shape": [
+        16819
+      ],
+      "new_shape": [
+        16819
+      ],
+      "exactly_equal": true,
+      "maximum_absolute_difference": 0.0
+    }
+  },
+  "exactly_equal_all_trajectory_arrays": true,
+  "candidate_status": "TASK_SUCCEEDED",
+  "candidate_assessment": {
+    "version": "hooke-manipulation-v5",
+    "scope": "ideal_liquid_transfer_manipulation",
+    "samples": 16819,
+    "legacy_constant": null,
+    "checks": {
+      "ordered_aspirate_transfer_dispense_withdraw": true,
+      "delivered_target_within_5pct": true,
+      "tip_residual_within_1nl": true,
+      "no_liquid_expelled_to_environment": true,
+      "tip_outside_containers": true,
+      "source_returned_within_5mm": true,
+      "source_upright_within_5deg": true,
+      "source_released": true,
+      "source_settled_500ms": true,
+      "destination_within_5mm": true,
+      "destination_upright_within_5deg": true
+    },
+    "metrics": {
+      "tip_depth_m": -0.25694649454980945,
+      "radial_offset_m": 0.3485311202733468,
+      "thumb_joint_rad": 0.20806699991226196,
+      "thumb_command": 0.2,
+      "target_m3": 2e-07,
+      "aspiration": {
+        "phase": "complete",
+        "events": {
+          "submerged_pressed_s": 9.93,
+          "released_under_liquid_s": 12.264000000000001,
+          "withdrawn_s": 14.292
+        },
+        "clearance_m": 0.25694649454980945,
+        "max_depth_m": 0.01001380480544038,
+        "liquid_available": true
+      },
+      "phase": "complete",
+      "events": {
+        "aspirated_and_withdrawn_s": 14.292,
+        "dispensed_in_destination_s": 23.830000000000002,
+        "withdrawn_from_destination_s": 24.542
+      },
+      "delivered_m3": 1.9999999999999996e-07,
+      "tip_volume_m3": 0.0,
+      "environment_volume_m3": 0.0,
+      "tip_outside": true,
+      "source_return_distance_m": 0.0015163498068273679,
+      "source_tilt_rad": 0.0009444623748718483,
+      "source_released": true,
+      "source_stable_s": 1.7199999999999989,
+      "destination_distance_m": 0.00011230197356847416,
+      "destination_tilt_rad": 0.0013170779303146934
+    },
+    "failure_reasons": [],
+    "success": true,
+    "within_declared_time_limit": true,
+    "success_within_time_limit": true,
+    "scientific_process_validated": false
+  },
+  "candidate_volume_assessment": {
+    "version": "hooke-ideal-volume-v3",
+    "scope": "ideal_volume_accounting",
+    "samples": 16819,
+    "checks": {
+      "delivered_target_within_5pct": true,
+      "tip_residual_within_1nl": true,
+      "volume_conserved": true,
+      "surface_volume_matches_ledger": true,
+      "geometric_surface_volume_matches_ledger": true,
+      "reservoirs_within_capacity": true,
+      "no_liquid_expelled_to_environment": true
+    },
+    "success": true,
+    "failure_reasons": [],
+    "metrics": {
+      "model": "ideal_piston_volume_v1",
+      "reservoirs": {
+        "source": {
+          "volume_m3": 3.126440511781967e-05,
+          "capacity_m3": 5.00861045730822e-05
+        },
+        "destination": {
+          "volume_m3": 1.9999999999999996e-07,
+          "capacity_m3": 5.00861045730822e-05
+        },
+        "tip": {
+          "volume_m3": 0.0,
+          "capacity_m3": 2e-07
+        },
+        "environment": {
+          "volume_m3": 0.0,
+          "capacity_m3": null
+        }
+      },
+      "initial_total_m3": 3.1464405117819745e-05,
+      "total_m3": 3.146440511781967e-05,
+      "conservation_error_m3": -7.453889935837843e-20,
+      "aspirated_m3": 2.7853163612307955e-07,
+      "dispensed_m3": 2.7853163612307976e-07,
+      "air_stroke_m3": 3.174563913175715e-07,
+      "pressed_fraction": 0.0,
+      "immersed_ticks": 1963,
+      "input": "actual_plunger_joint",
+      "tip_capacity_m3": 2e-07,
+      "target_reservoir": "destination",
+      "initial_volumes_m3": {
+        "source": 3.1464405117819745e-05,
+        "destination": 0.0
+      },
+      "tip_reservoir": null,
+      "tip_submerged": false,
+      "plunger_input": {
+        "mapping": "endpoint_tolerance_v1",
+        "raw_pressed_fraction": 0.0,
+        "endpoint_tolerance_m": 1e-08,
+        "endpoint_tolerance_m3": 2.4999999999999994e-13
+      },
+      "reservoir_errors_m3": {
+        "source": {
+          "surface_m3": 0.0,
+          "geometric_m3": 9.999703566273069e-13
+        },
+        "destination": {
+          "surface_m3": 0.0,
+          "geometric_m3": 9.215462948315034e-13
+        }
+      },
+      "max_conservation_error_m3": 8.131516293641283e-20,
+      "max_surface_volume_error_m3": 0.0,
+      "max_geometric_volume_error_m3": 9.999703566273069e-13
+    },
+    "scientific_process_validated": false
+  },
+  "parity_qualified": false
+}
