@@ -1139,6 +1139,27 @@ _CONFIGS = [
         batch_size=16,
         num_train_steps=30_000,
     ),
+    # close_fume_hood: 11/12 export (one seed hits a known, occasional
+    # IK-unreachable failure -- see demo_export.py's exception handling
+    # fix and TODO.md's entry for this task's own history). First Hooke
+    # config built from a non-100%-reliability export.
+    TrainConfig(
+        name="pi05_hooke_close_fume_hood",
+        model=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ),
+        data=LeRoboAutoBioDataConfig(
+            repo_id="data/close_fume_hood",
+            base_config=DataConfig(prompt_from_task=True),
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi05_base/params"),
+        freeze_filter=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ).get_freeze_filter(),
+        ema_decay=None,
+        batch_size=16,
+        num_train_steps=30_000,
+    ),
     # RoboArena & PolaRiS configs.
     *roboarena_config.get_roboarena_configs(),
     *polaris_config.get_polaris_configs(),

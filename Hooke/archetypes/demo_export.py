@@ -121,7 +121,16 @@ def export_episode(entry: CatalogEntry, seed: int, camera: CameraRenderer, contr
         return result
 
     expert.step_and_log = recording_step
-    expert.execute()
+    try:
+        expert.execute()
+    except Exception as e:
+        # A scripted expert can raise mid-episode on a bad seed (e.g. an
+        # IK-unreachable assertion) -- treat that the same as a failed
+        # check(): skip this seed, don't crash the whole batch. Printed
+        # (not silent) so a task that excepts on *every* seed is still
+        # obviously broken rather than reporting a quiet 0/N.
+        print(f"  seed {seed}: expert.execute() raised {type(e).__name__}: {e}")
+        return None
 
     if not expert.check() or not actions:
         return None
