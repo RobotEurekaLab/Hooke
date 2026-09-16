@@ -229,4 +229,12 @@ def api_protocol_to_task():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=False)
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Hooke scene and backend interface")
+    parser.add_argument("--host", default="0.0.0.0")
+    parser.add_argument("--port", type=int, default=8080)
+    options = parser.parse_args()
+    if not 1 <= options.port <= 65535:
+        parser.error("Port must be between 1 and 65535")
+    app.run(host=options.host, port=options.port, debug=False)

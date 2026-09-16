@@ -18,7 +18,18 @@ export OMP_NUM_THREADS=1
 
 网页：`http://服务器局域网地址:8080/backends`。可以选择相同目录任务，分别打开两个后端。默认 GPU 为 6，也可以在未跟踪的 `temp/isaac_local.json` 中配置 `isaac_path` 和 `gpu`；环境变量优先。使用其他机器时自行填写安装路径和空闲 GPU，不复制本机账号、SSH 密钥或驱动。
 
+也可从任意目录启动，脚本自动进入源码目录，避免插件相对路径错误：
+
+```bash
+/path/to/Hooke/scripts/start_hooke_backends.sh --doctor --gpu 6
+/path/to/Hooke/scripts/start_hooke_backends.sh --host 0.0.0.0 --port 8080
+```
+
+默认使用仓库 `.venv/bin/python`，可用 `HOOKE_SOURCE_PYTHON` 指定已有的 Source Python 可执行文件。脚本不创建环境或安装依赖。
+
 `doctor` 只读取依赖、安装路径、GPU UUID、显存和驱动，不安装软件、不启动仿真。`files_ready` 只表示必需文件存在，不能代替实际原生回合验证。
+
+诊断记录 MuJoCo、NumPy、SciPy、JAX、TOPPRA、Pillow、Flask 的实际版本及本地 `meshplane` 模块是否可发现；缺少依赖时仍输出其他检查，`environment_files_ready=false`。Source 的安装说明见 [模拟器 README](../Hooke/README.md)，本机 Python 3.12 已实测。原 SDF 和 `meshplane` 为本地二进制组件，复制文件或找到模块不能代替其他 Python/平台上的 ABI 验证。Isaac 使用其独立安装环境。
 
 ## 实际物理验证
 
