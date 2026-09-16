@@ -23,7 +23,7 @@ import time
 from backends.assessment import VERSION
 
 ROOT = Path(__file__).resolve().parents[2]
-TERMINAL = {'TASK_SUCCEEDED', 'TASK_FAILED', 'CONTROL_COMPLETE'}
+TERMINAL = {'TASK_SUCCEEDED', 'TASK_FAILED', 'CONTROL_COMPLETE', 'DISPLAY_COMPLETE'}
 
 
 def atomic_json(path, value):

@@ -41,7 +41,8 @@ function update(b,data){const s=states[b];s.running=data.running;s.images=data.i
   const a=data.assessment;
   if(a?.success!==null&&typeof a?.success==='boolean'){
    $(b+'-status').textContent+='\n新版操作判据：'+(a.success?'通过':'未通过')+(a.scope==='motion_sequence_proxy'?'（仅动作顺序，未验证吸液量）':'')+(a.success&&a.success_within_time_limit===false?'，但超过任务时限':'');
-   if(a.failure_reasons?.length)$(b+'-status').textContent+='\n未满足项：'+a.failure_reasons.join('、');
+   const reasons={ordered_submerge_release_withdraw:'浸入、液面下释放、抬起的动作顺序',final_clearance_50mm:'最终离开液面超过 50 mm',liquid_available:'容器内有液体',target_within_20mm:'窗位置距目标小于 20 mm',handle_contact_50ms:'夹爪接触把手至少 50 ms',travel_in_contact_50mm:'接触期间关窗位移至少 50 mm',tube_lifted_30mm:'试管抬起超过 30 mm',continuous_rotating_tube_contact_500ms:'试管连续接触旋转平台至少 500 ms',returned_within_30mm:'归位误差小于 30 mm',tube_released:'释放试管',platform_stopped:'平台停止',height_955_to_961mm:'试管高度在 0.955–0.961 m 内',target_within_5mm:'插入位置误差小于 5 mm'};
+   if(a.failure_reasons?.length)$(b+'-status').textContent+='\n未满足项：'+a.failure_reasons.map(k=>reasons[k]||k).join('、');
   }else $(b+'-status').textContent+='\n新版操作判据：尚未覆盖此任务。';
  }
  const progress=data.running?data.progress:data;const t=progress?.simulation_s??data.simulation_s??0, steps=progress?.steps??data.steps??0;const wall=data.running?Math.max(0,Date.now()/1000-data.created):data.total_wall_s;$(b+'-stats').textContent=`仿真时间 ${t.toFixed(3)} 秒　·　${steps} 步　·　${s.images[0]?.frames||0} 帧`+(Number.isFinite(wall)?`　·　实际耗时 ${wall.toFixed(1)} 秒`:'');

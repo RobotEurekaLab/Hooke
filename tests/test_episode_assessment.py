@@ -103,6 +103,19 @@ class AssessmentTests(unittest.TestCase):
         self.assertEqual(report['groups'][1]['completed'], 0)
         self.assertEqual(report['groups'][1]['requested'], 2)
 
+    def test_display_completion_is_not_a_crash_or_valid_predicate_agreement(self):
+        parameters = {'tasks': ['display'], 'seeds': [0],
+                      'modes': ['expert'], 'backends': ['mujoco', 'isaac']}
+        rows = [{'task': 'display', 'seed': 0, 'mode': 'expert', 'backend': backend,
+                 'status': 'DISPLAY_COMPLETE', 'source_success': True,
+                 'assessment': {'legacy_constant': True, 'success': None}}
+                for backend in parameters['backends']]
+        report = summarize(rows, parameters)
+        self.assertTrue(report['pairs'][0]['completed'])
+        self.assertIsNone(report['pairs'][0]['legacy_agreement'])
+        self.assertIsNone(report['pairs'][0]['v2_agreement'])
+        self.assertEqual(report['groups'][0]['legacy_constant_count'], 1)
+
 
 if __name__ == '__main__':
     unittest.main()
