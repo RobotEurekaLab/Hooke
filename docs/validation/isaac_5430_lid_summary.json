@@ -3703,10 +3703,10 @@
       },
       "input_file_count": 608,
       "manifest_sha256": "86760b716eb6fc7e906ae0a4f90fd5ecd30f160961226c3b49df087a1d1bdac1",
-      "report_sha256": "1c59b06954717ea65e181b02a2a9bc72228c0e5148d80f3d901cb865774515c7"
+      "report_sha256": "381dfeab002d5658bc236311e708f3e56bdd356b9480da06c2c31a77642f640a"
     }
   ],
-  "collected_at": "2026-09-16T23:08:48.679400+00:00",
+  "collected_at": "2026-09-16T23:22:06.022743+00:00",
   "measurements": [
     {
       "backend": "mujoco",

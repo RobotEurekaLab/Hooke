@@ -12,13 +12,15 @@
 
 完整移液的任务谓词、独立操作、时限和理想体积验收均为 **MuJoCo 10/10、Isaac 10/10**，十对实际源模型与资产对照通过。[十种子逐回合报告](validation/isaac_pipette_transfer_ten_seed_summary.json) 分别保留实际冻结版本；两引擎各十个 45 秒空动作对照均误通过 0/10。
 
-[完整离心流程](isaac_centrifuge_cycle.md) 已加入真实转子驱动、连续计时、制动和安全解锁。MuJoCo 完整离心、5430 关盖、小离心机关盖的专家均为 10/10，60 秒空动作对照均误通过 0/10；Isaac 关盖试验批次与完整离心首个回合通过，最终十种子批次运行中。原子关盖按原时限验收，完整离心独立声明 60 秒。
+[完整离心流程](isaac_centrifuge_cycle.md) 已加入真实转子驱动、连续计时、制动和安全解锁。MuJoCo 完整离心、5430 关盖、小离心机关盖的专家均为 10/10，60 秒空动作对照均误通过 0/10；Isaac 三项专家也均为 10/10；完整离心的 60 秒对照和两项关盖的 30 秒对照均误通过 0/10。原子关盖按原时限验收，完整离心独立声明 60 秒。
 
 [简化科学模型](validation/isaac_science_model_summary.json) 已在两个实际引擎时钟上接入：90 秒热学、5 秒毛细管流体实验通过，报告能量和体积守恒及未标定的适用范围。[三个新增原生物理小场景](validation/isaac_extended_contracts.json) 通过刚体力/力矩、捕获 weld 和静态地形检查。
 
 [真实显示对照](isaac_visual_configuration.md) 的 9 组图像平均误差下降 62.4%，仍未达到像素等价。[完整专家性能对照](validation/isaac_full_expert_performance_comparison.json) 的 16,819 步数组一致，实际耗时改善 2.2%；二进制同步微基准的 1.42 倍加速不外推为整回合加速。118 项单元测试通过，桌面和手机真实浏览器检查通过。
 
 [配置、启动、诊断和恢复](isaac_operations.md) 已落地；原生构造故障恢复与 120 秒长稳在声明的 TGS 外力迭代配置下通过，默认设置的速度门限失败保留。新增 16 张完整离心真实关键帧与独立物理计数、桌面/手机浏览器检查通过。[七项工作验收](isaac_completion_plan.md) 汇总每项状态及未解决的研究范围。
+
+[最终汇总](validation/isaac_comprehensive_acceptance.json) 记录四项操作共 160 个实际回合：80 个时限内成功专家、80 个未误通过的完整时长空动作对照、80 对一致的源模型和实际资产。[当前代码出图验收](validation/isaac_latest_renderer_summary.json) 在共享 GPU 锁接入后分别生成两引擎真实图片；回放不计为新闭环回合。
 
 [此前离心机连续操作验证](isaac_centrifuge_chain.md) 保留当时仅插管、关盖和锁盖的 45 秒协议及六条独立关盖兼容性检查，不改写为已执行旋转。
 

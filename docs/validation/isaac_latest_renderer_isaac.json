@@ -1,0 +1,67 @@
+{
+  "kind": "recorded_trajectory_keyframe_render",
+  "closed_loop_validation": false,
+  "render_settings": {
+    "width": 640,
+    "height": 480,
+    "frames_per_second": 20.0,
+    "native_sun_intensity": 1500.0,
+    "native_ambient_intensity": 450.0,
+    "native_color_pipeline": "source_display"
+  },
+  "task": "centrifuge_5430_cycle",
+  "backend": "isaac",
+  "seed": 0,
+  "motion_pass": true,
+  "ideal_volume_pass": null,
+  "renderer_script_sha256": "d8b71d50cfbdb7b7d7bbfe947314cf3c47042da4e6dede38af119e7431736ba2",
+  "renderer_commit": "cb94efa157f0431492aad6309e3bd736a0e2d40d",
+  "inputs_sha256": {
+    "result.json": "8a723c0aaadc686daac360e9e5ffb9389da26edad1b47a917ee0608cf2a28543",
+    "trajectory.npz": "e8e25a3837866c4ff19613f5fdbe2bfcb091a8d33a1f1ab7d0cfa39b44f328e1",
+    "source/model.mjb": "62e1fe9a42cfa69be80cb577fbfc682b3d412866021633c451a487d6079baccd",
+    "source/model.npz": "49fca1542411702e549d9ada0a37a684c850d20c629565ad4f5241db0d003909",
+    "source/scene.xml": "ce874c67c9aca444cb6517036d2bd550ba1528c00fe3a7dff9105469edb081ee"
+  },
+  "liquid_log_sha256": null,
+  "frames": [
+    {
+      "phase": "safe_unlock",
+      "camera": "table_cam_front",
+      "camera_id": 0,
+      "image": "safe_unlock-camera-0.png",
+      "image_sha256": "7c15606a49663bef959c999bcdb08d87b0f98e01823c1335c184087e3e442240",
+      "trajectory_index": 19803,
+      "recorded_time_s": 39.608000000000004,
+      "liquid_volumes_m3": [],
+      "max_qpos_refresh_delta": 5.960464477539063e-08,
+      "max_restored_fk_position_error_m": 3.269467815422786e-07,
+      "initialization_physics_steps": 2,
+      "initialization_episode_steps": 0,
+      "physics_steps_during_render": 0,
+      "physics_events_during_render": 0,
+      "render_calls_to_settle_rgb": 1,
+      "render_passes_to_settle_rgb": 8
+    },
+    {
+      "phase": "safe_unlock",
+      "camera": "/ur:wrist_cam",
+      "camera_id": 2,
+      "image": "safe_unlock-camera-2.png",
+      "image_sha256": "6bc294c0d586315bb417622f3eef3694f662c73a9989750ea8902e4261c8016f",
+      "trajectory_index": 19803,
+      "recorded_time_s": 39.608000000000004,
+      "liquid_volumes_m3": [],
+      "max_qpos_refresh_delta": 5.960464477539063e-08,
+      "max_restored_fk_position_error_m": 3.269467815422786e-07,
+      "initialization_physics_steps": 2,
+      "initialization_episode_steps": 0,
+      "physics_steps_during_render": 0,
+      "physics_events_during_render": 0,
+      "render_calls_to_settle_rgb": 1,
+      "render_passes_to_settle_rgb": 8
+    }
+  ],
+  "parity_qualified": false,
+  "scientific_process_validated": false
+}
