@@ -38,6 +38,8 @@ app = Flask(__name__, static_folder="static", static_url_path="")
 # upload for /api/generate_custom) -- not a security boundary by itself,
 # just a sane limit for a local dev server.
 app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024
+from webui.backend_api import bp as backend_blueprint
+app.register_blueprint(backend_blueprint)
 
 
 def _robot_entry_json(entry) -> dict:

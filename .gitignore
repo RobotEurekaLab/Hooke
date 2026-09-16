@@ -34,7 +34,7 @@ vendor/
 
 # Private/unpublished material (research proposals, drafts, notes)
 private/
-
+temp/
 # webui/ robot-swap scene compositions and freejoint-stripped robot copies:
 # generated on demand by webui/robot_scene.py, cached to disk, regenerable.
 # (Not the same as the small, deliberately-committed set of rotor-capacity

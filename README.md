@@ -19,3 +19,18 @@ laboratories, built on top of [AutoBio](https://arxiv.org/abs/2505.14030)
 
 Actively evolving beyond the original AutoBio release — expect the layout and
 tooling here to diverge over time as new features land.
+
+## MuJoCo / Isaac backends
+
+The `/backends` web page can open catalogue scenes and run their original
+controllers with either MuJoCo or an isolated Isaac Sim 4.5 / PhysX process.
+The adapter reuses source assets and feeds actual PhysX state and contacts back
+to the task. All 165 catalogue scenes have passed a short load, physics-step,
+and RGB check. All 22 original experts completed at seed 0; Isaac reproduced
+the 18 source predicate successes (15 also within declared time limits).
+Full physical, visual, and performance equivalence remains unqualified.
+
+See [setup, validation evidence, and limitations](docs/isaac_scene_parity.md)
+for the existing server configuration, commands, and LAN comparison page.
+See the [completion metrics and remaining work](docs/isaac_status.md) for the
+experimental branch assessment and a committed seed-0 validation snapshot.
