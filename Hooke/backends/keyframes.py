@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 from contextlib import contextmanager
 import fcntl
+from functools import cache
 import json
 import os
 from pathlib import Path
@@ -26,6 +27,12 @@ from backends.visual_state import ellipse_frame, LiveVisuals
 from backends.worker_client import IsaacWorker
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+@cache
+def load_replay_plugins():
+    """Register the repository's SDF types before reading cached model binaries."""
+    mujoco.mj_loadPluginLibrary(str(ROOT / 'Hooke/libmjlab.so.3.3.0'))
 
 
 def phase_indices(times, phases, requested):
@@ -90,6 +97,7 @@ def render_episode(episode, output, requested, gpu):
     result = json.loads((episode / 'result.json').read_text())
     if result['mode'] != 'expert' or result['status'] not in ('TASK_SUCCEEDED', 'TASK_FAILED'):
         raise ValueError('Expected a completed, recorded expert episode')
+    load_replay_plugins()
     model = mujoco.MjModel.from_binary_path(str(episode / 'source/model.mjb'))
     data = mujoco.MjData(model)
     with np.load(episode / 'trajectory.npz', allow_pickle=False) as archive:
