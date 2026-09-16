@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-16",
+  "scope": "Identity-only replacements; original runtime hashes in validation reports remain unchanged. Equivalent source trees are reachable through corrected commits.",
+  "preserved_upstream_commit": "77e0ebb3dda7ffcc6019ba7e8fd383f9ea54d4e8",
+  "author": "universea",
+  "committer": "universea",
+  "email": "13444641+universea@users.noreply.github.com",
+  "verification": {
+    "all_trees_identical": true,
+    "all_commit_diffs_identical": true,
+    "all_messages_identical": true,
+    "all_dates_identical": true,
+    "upstream_contributors_preserved": true,
+    "remote_updated": true,
+    "push_dry_run_passed": true,
+    "remote_head_verified": "9e2b6a8d464dd54b37c4e157a1035a8eda5201bb"
+  },
+  "replacements": [
+    {
+      "old": "d21fd43da01638032270354646b8b97bedfbd9a5",
+      "new": "9c7c172d2ab64ca9c8ac3779d566c1612512eb9f",
+      "tree": "f993c69309794ca33ae6a5c35a735b64ad69e1f2",
+      "subject": "Add experimental Isaac backend with native feedback and validation"
+    },
+    {
+      "old": "584933b808763942e4e2785822c5d7931866574a",
+      "new": "539cbd1563b47821808d0a80a7f64358e16de991",
+      "tree": "978c0c5950faa6be2380c0ff77b9014d245806e1",
+      "subject": "Add versioned episode assessments and paired seed regression"
+    },
+    {
+      "old": "fc8f67e0bced38f9655f4d6e54cabb5c81305d44",
+      "new": "0d8da052398baa2a52921ece17a5c6dfe90689db",
+      "tree": "09bef5d8862b5a41231bc27fe2769129dba450f3",
+      "subject": "Clarify that passive sash closure is not validated manipulation"
+    },
+    {
+      "old": "7db0c164db7db7aee4bfa2904f54104f6c482d11",
+      "new": "258d5f821b4a4edf162d46c4f4361075027672c7",
+      "tree": "d44728b5cda638a7ac67f548420a9a88f210573a",
+      "subject": "Keep display completion distinct from valid task assessment"
+    },
+    {
+      "old": "6183b510c5008784ec34d57b2605311da2a0982b",
+      "new": "c915ffafa3dd844647f7f946fc7213bc1f5b786d",
+      "tree": "751549993601e0b12677ff7a795927dcf8a3d538",
+      "subject": "Handle zero-motion paths without TOPPRA failure"
+    },
+    {
+      "old": "cfdb4994b4e12c3a6421a348d88f2dcff39270fa",
+      "new": "1372319e36fc8b9fb4c21cdc7b66760452cd1ae5",
+      "tree": "b89edbe9a6a48a239919a2b2f5c0c6ea32c057b9",
+      "subject": "Record multi-seed Isaac validation and remaining task failures"
+    },
+    {
+      "old": "8005c70a5cabd7cafeafb37794f953c48dc840ef",
+      "new": "8f9a9551b9fa705197b94ac9a0aeee20efc03a6d",
+      "tree": "60e18090fe930b4ac85d6a5830bf30c45707f778",
+      "subject": "Make fume hood closure require a counterbalanced contact grasp"
+    },
+    {
+      "old": "1d7086c602b0d4a4ff38347a02314bb15dfca635",
+      "new": "4a1fd372f3492799fc7e4a03da137c5620184771",
+      "tree": "38c1babdd8cf90c0fd020555b90966cb84573b53",
+      "subject": "Validate fume hood manipulation with paired seeds and no-action controls"
+    },
+    {
+      "old": "029ac612f749b583dcdbc729f08343e6c249a680",
+      "new": "298d7b5414be2cb2b3609f90873def452a77b9c6",
+      "tree": "657bde67c32fd8093d03ef90369d48276a41bd84",
+      "subject": "Share centrifuge insertion and strengthen manipulation assessment"
+    },
+    {
+      "old": "65b447e9c366bffb207cb43bb8b855f7dbbea52a",
+      "new": "fa5d5068b8b1720f8a925f88ad5f6f2b3d8cf686",
+      "tree": "59bf41b41921f7d18fd9c6d202e1d0e437afc4e5",
+      "subject": "Document insertion validation and remaining vortex limits"
+    },
+    {
+      "old": "79bc811282de573df5a584cf96c2159add0c20d6",
+      "new": "3116434c1d15cb0529455957420defbedce11b0f",
+      "tree": "4bfaa8b2164e3ccfd04dc0e656c86ef6a5918d28",
+      "subject": "Coordinate vortex arms and account for observed pipette volume"
+    },
+    {
+      "old": "b8bff48a82583905a7bf13bd09dd7e8d817caec9",
+      "new": "2d4e50c1c92034f9551488bdbec506097c915d57",
+      "tree": "cdb4513b5e56f7bf02d8916e8cd3648e11f22f26",
+      "subject": "Preserve control ownership and piston state on failed updates"
+    },
+    {
+      "old": "e57e330ad9f300fd558a69baac2431a0d19a2d7e",
+      "new": "a610a89970ea4c2fb4e5db7e5fadc836e8c62074",
+      "tree": "17ae890d356af450fe2290d054815d9fb73a7432",
+      "subject": "Explain shared control and ideal volume model boundaries"
+    },
+    {
+      "old": "e5469563de0dcf5fbc3e62ec6eeb14b84912f45d",
+      "new": "f98bade95081f0250e3b006f67f63e6ebe571e74",
+      "tree": "848fdf4587ac43c387c708017f34cd68c7616aea",
+      "subject": "Add reproducible audits for source assets and recorded trajectories"
+    },
+    {
+      "old": "6f2cd3e08fe910f4282c4d3ed173053f9ecc7baa",
+      "new": "5b7f521e3ff28995cbcbb2e111e235439f19ae49",
+      "tree": "d16bdc72b1993ebbafe3d1a013648d9a9dd781b3",
+      "subject": "Identify catalogue coverage as the recorded baseline"
+    },
+    {
+      "old": "22378fd18b412419a2a1c52d6bdf4ed82ab4bc17",
+      "new": "3b740889b353b3b23e64a3c11f23de29a843335f",
+      "tree": "4dc13bb9e6acf14103bbc131dac2b18df7000302",
+      "subject": "Record completed shared-process source regression"
+    },
+    {
+      "old": "c353a275971a3d76efa9882c5d5f4813f0b8470d",
+      "new": "b8c285987496052b6ba11f401f9eccae7d4f72de",
+      "tree": "f6291c0746caea3916438601b2554bd343413e5a",
+      "subject": "Refine liquid surfaces and independently audit geometric volume"
+    },
+    {
+      "old": "cebbcfbc2496c5e9efe68bbdaa6cc12a2de09da9",
+      "new": "7c158d54c6b045a243e31b33e98adc89b8683399",
+      "tree": "eb294e53f1c726dd96398e899c94d68648fc313f",
+      "subject": "Retract pipette thumb clear of the button before withdrawal"
+    },
+    {
+      "old": "94cdb8fe8ba3b08b1a17cfe71748a850c9687324",
+      "new": "e96aff0a5696c7d008e65570023722d23226c4a7",
+      "tree": "a34f0ad792296344981c16f291b3ea30eb7117ff",
+      "subject": "Use phase-specific motion limits for pipette withdrawal"
+    },
+    {
+      "old": "a410f9173f794307cd0b35186800fef97d83a6e5",
+      "new": "6d3fc64fbbb1cbce9e3062e4b1c3b036be6478a7",
+      "tree": "342935c0e8037d9d572a3792253f7dd9f6294f21",
+      "subject": "Settle camera RGB after moving actor updates"
+    },
+    {
+      "old": "28d5e4b8a5ea968975f2586d4b7bb14a7ca81b1b",
+      "new": "707e818f5de762639841daa4d660c24a37b9ea8e",
+      "tree": "eb6fb3cdc96bc102a25825b253db2b547645d963",
+      "subject": "Drain the full native RGB pipeline before capturing state"
+    },
+    {
+      "old": "511323455ed808aeb66c8e0e7f2614d0691aa78c",
+      "new": "9e2b6a8d464dd54b37c4e157a1035a8eda5201bb",
+      "tree": "a629add90e8ae553fd5d3d113c933118d124c421",
+      "subject": "Record native volume regression and verified process keyframes"
+    },
+    {
+      "old": "09cfb2894c627ed88b3c5d7d6f7fb06f9311eb77",
+      "new": "1af623d9d24198b2243fdeac56a8a33592400807",
+      "tree": "feb6a1b6b58332330f5dfd42a8d7828713f1fc69",
+      "subject": "Add shared process predicates and complete dual-container pipetting"
+    },
+    {
+      "old": "ba00810ebc9974cf8227220dca12ce215f6b35b3",
+      "new": "757e6f40aa305c4ea247d9dd74cda0ae3bb594bb",
+      "tree": "7ac70a1add323daf1e6b6f800e718aef11f513c1",
+      "subject": "Initialize vortex progress from the randomized reset pose"
+    },
+    {
+      "old": "896ab87c2debef0e3920ff5c6d0e8bc0a572551f",
+      "new": "0067f0adb9368f991dca4a5693ac3a93f6b3a091",
+      "tree": "0f2f5602edc04cf6d77bc0459209d2ca90a0b6d5",
+      "subject": "Separate the pipetting receiver rack from the pickup sweep"
+    },
+    {
+      "old": "c34aad6a12b9cabbf56e9f147bef0bd56f1fc909",
+      "new": "aa5991703c5bebdf7d74ce9af83af8fbf295ce0d",
+      "tree": "1985b454c559d410cc294393b7c8d3cf75ea66da",
+      "subject": "Expose transfer outcomes in the backend interface and guard invalid volume"
+    },
+    {
+      "old": "ea404e7669a85ceecd9f9d131bdc9152f55cb46f",
+      "new": "175b5e0bb7fd3caf85ce523d2934cbc41d2fd039",
+      "tree": "e6868d35ab02fe9a6d7ba259aff2fae18b37e2f9",
+      "subject": "Limit loaded pipette travel and descent accelerations"
+    },
+    {
+      "old": "59984f38800001d79a9a095d0af7224c24196944",
+      "new": "a2d672a5ae7f5fe0ca16ea106a2e4130775ac27f",
+      "tree": "14c0bd47148c4e9125951f3933eea6b8680ba032",
+      "subject": "Require actual centrifuge lid closure before reporting lock success"
+    }
+  ]
+}

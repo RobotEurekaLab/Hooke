@@ -8,6 +8,8 @@
 
 ## 最新流程回归
 
+[完整双容器移液与共享任务判定](isaac_pipette_transfer.md) 记录新增 `pipette_transfer`、实际盖板及锁盖判定、柱塞端点容差和逐回合验证状态。当前目录共 166 项；下方 165 项全目录表为历史基线，未重新认证整个新目录。新完整移液的原生复测状态以新报告为准，离线重放不计为原生成功回合。
+
 [双引擎共享控制与移液体积模型](isaac_shared_processes.md) 记录插管多种子扩展、30 秒内涡旋动作、实际活塞驱动的理想体积模型、独立液面几何验收及原生移液失败修正。原生默认涡旋完成一个种子，实际耗时 2397.459 秒，仍有明显性能差距；下方性能表保留历史回合。
 
 ## 最新单项修复
@@ -75,6 +77,8 @@
 
 ## 记录与复现
 
+- [完整移液、共享判定与当前验证状态](isaac_pipette_transfer.md)
+- [提交署名修正前后相同代码的版本映射](validation/isaac_commit_identity_mapping.json)：验证证据保留实际运行时的原哈希。
 - [最新共享流程、体积模型与失败修正](isaac_shared_processes.md)
 - [逐项专家结果](isaac_regression_results.md)
 - [新版判据与多种子回归](isaac_multiseed_results.md)
