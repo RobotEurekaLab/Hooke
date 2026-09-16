@@ -163,8 +163,11 @@ class CentrifugeMiniManipulate(Task):
         return self.task_info
 
     def check(self):
-        # Placeholder for task completion logic
-        return True
+        target = float(self.model.eq_data[self.instrument.lid_lock,0])
+        position = float(self.data.qpos[self.instrument.lid_qposadr])
+        velocity = int(self.model.jnt_dofadr[self.instrument.lid_joint])
+        return bool(np.isfinite(position) and abs(position-target) < .01
+                    and abs(float(self.data.qvel[velocity])) < .02)
 
 
 class CentrifugeMiniManipulateExpert(CentrifugeMiniManipulate, Expert):

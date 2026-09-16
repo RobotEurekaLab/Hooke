@@ -4,6 +4,7 @@ Usage (from Hooke/): ../.venv/bin/python -m backends.native_contracts --output .
 These tests actuate real PhysX joints; they never copy the leader's pose to its follower.
 """
 from __future__ import annotations
+from backends.config import isaac_gpu
 import argparse
 import json
 from pathlib import Path
@@ -132,7 +133,7 @@ def run(output,worker,include_experimental=False):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output',type=Path,required=True);parser.add_argument('--gpu',type=int,default=6)
+    parser.add_argument('--output',type=Path,required=True);parser.add_argument('--gpu',type=int,default=isaac_gpu())
     parser.add_argument('--include-experimental',action='store_true',help='Also check the unqualified noslip=0 approximation')
     args=parser.parse_args()
     with IsaacWorker(args.output,args.gpu) as worker:report=run(args.output,worker,args.include_experimental)

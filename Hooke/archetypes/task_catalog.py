@@ -71,6 +71,12 @@ class CatalogEntry:
 CATALOG: dict[str, CatalogEntry] = {
     entry.name: entry for entry in [
         CatalogEntry(
+            name="centrifuge_5430_cycle",
+            description="Insert and balance a tube, close/lock the original 5430 lid, drive a 60 RPM qualification cycle, brake and safely unlock.",
+            category="separation", module="mani_centrifuge_cycle",cls="CentrifugeCycle",
+            robot="ur5e",camera="table_cam_front",completion_rule="centrifuge_cycle",
+        ),
+        CatalogEntry(
             name="pickup_centrifuge_tube",
             description="Pick up a single centrifuge tube from its rack with a dual-arm (Aloha) gripper.",
             category="transfer",
@@ -115,7 +121,7 @@ CATALOG: dict[str, CatalogEntry] = {
         ),
         CatalogEntry(
             name="thermal_mixer",
-            description="Load a tube into the Eppendorf ThermoMixer C and run a mixing/heating cycle.",
+            description="Set the Eppendorf ThermoMixer C speed, temperature and duration through robot button presses; the reduced heating model is an optional experiment.",
             category="combination",
             module="mani_thermal_mixer", cls="ThermalMixerManipulate", robot="ur5e", camera="table_cam_left",
             task_override="thermal_mixer",
@@ -146,6 +152,7 @@ CATALOG: dict[str, CatalogEntry] = {
             description="Close the lid of the Tiangen T-Gear mini centrifuge.",
             category="conditioning",
             module="mani_centrifuge_mini", cls="CentrifugeMiniManipulate", robot="ur5e", camera="table_cam_left",
+            completion_rule="lid_standstill_geometry",
         ),
         CatalogEntry(
             name="pickup_reagent_bottle",

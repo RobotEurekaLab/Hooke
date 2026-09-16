@@ -1,4 +1,5 @@
 """Isolated contact calibration, separate from original expert validation."""
+from backends.config import isaac_gpu
 import argparse
 import json
 from pathlib import Path
@@ -43,7 +44,7 @@ def run(output,grasp,worker):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True)
-    parser.add_argument('--grasp',type=Path,required=True);parser.add_argument('--gpu',type=int,default=6);args=parser.parse_args()
+    parser.add_argument('--grasp',type=Path,required=True);parser.add_argument('--gpu',type=int,default=isaac_gpu());args=parser.parse_args()
     with IsaacWorker(args.output,args.gpu) as worker:run(args.output,args.grasp,worker)
 
 

@@ -1,5 +1,6 @@
 """Run physical fixtures and original experts in one isolated Isaac worker."""
 from __future__ import annotations
+from backends.config import isaac_gpu
 
 import argparse
 import faulthandler
@@ -19,7 +20,7 @@ def main():
     parser.add_argument('--seed',action='append',type=int)
     parser.add_argument('--render-task',action='append',default=[])
     parser.add_argument('--max-sim-seconds',type=float,default=120.)
-    parser.add_argument('--gpu',type=int,default=6)
+    parser.add_argument('--gpu',type=int,default=isaac_gpu())
     parser.add_argument('--skip-contracts',action='store_true')
     args=parser.parse_args();output=args.output.resolve();output.mkdir(parents=True,exist_ok=True)
     seeds=args.seed or [0];rows=[]

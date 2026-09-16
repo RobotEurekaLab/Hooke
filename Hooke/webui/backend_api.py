@@ -12,6 +12,8 @@ import uuid
 
 from flask import Blueprint, jsonify, request, send_file, abort
 from archetypes.task_catalog import CATALOG
+from backends.config import isaac_gpu
+from backends.capabilities import registry
 
 ROOT=Path(__file__).resolve().parents[2]
 EVIDENCE=ROOT/'temp/backend_parity'
@@ -39,7 +41,8 @@ def expert_evidence():
     rows={}
     sources=[EVIDENCE/folder/'task_results.json' for folder in
              ('tasks_mujoco','native_v4_tasks','native_v5_tasks','native_v6_regression_r3','native_v6_remaining','native_v6_vortex_final','native_v6_pipette_final')]
-    sources.append(ROOT/'docs/validation/isaac_pipette_transfer_summary.json')
+    sources.extend(ROOT/'docs/validation'/name for name in
+                   ('isaac_pipette_transfer_summary.json','isaac_centrifuge_cycle_summary.json'))
     for path in sources:
         for row in read_json(path).get('results',[]):
             if row.get('seed')!=0 or row.get('mode')!='expert':continue
@@ -51,6 +54,11 @@ def expert_evidence():
 
 @bp.get('/backends')
 def page():return send_file(Path(__file__).with_name('static')/'backends.html')
+
+
+@bp.get('/api/backends/capabilities')
+def capabilities():
+    return jsonify(registry())
 
 
 @bp.get('/api/backends/catalog')
@@ -145,23 +153,33 @@ def get_job(identifier):
 def start_job():
     body=request.get_json(silent=True) or {}
     task=body.get('task');backend=body.get('backend');mode=body.get('mode','expert')
-    if task not in CATALOG or backend not in ('mujoco','isaac') or mode not in ('preview','expert'):
+    science = body.get('science_model')
+    experiments = {'thermal':('thermal_mixer',90.),'capillary':('pipette_transfer',5.)}
+    if mode == 'experiment' and (science not in experiments or task != experiments[science][0]):
+        return jsonify(error='模型与场景不匹配：热学使用 thermal_mixer，流体使用 pipette_transfer。'),400
+    if task not in CATALOG or backend not in ('mujoco','isaac') or mode not in ('preview','expert','experiment'):
         return jsonify(error='Invalid task, backend or mode'),400
     try:
         seed=int(body.get('seed',0));seconds=float(body.get('seconds',2))
         if not 0<=seed<=2**31-1 or not 0<seconds<=10:raise ValueError()
     except (TypeError,ValueError,OverflowError):return jsonify(error='Invalid seed or duration'),400
+    if mode == 'experiment':seconds = experiments[science][1]
     with _lock:
         if any(j['backend']==backend and j.get('process') and j['process'].poll() is None for j in _jobs.values()):
             return jsonify(error=f'{backend} 已有运行中的任务，请等待或停止该任务。'),409
         identifier=uuid.uuid4().hex;output=JOBS/identifier;output.mkdir(parents=True)
         meta={'id':identifier,'task':task,'backend':backend,'mode':mode,'seed':seed,'created':time.time()}
+        if mode == 'experiment':meta['science_model'] = science
         (output/'job.json').write_text(json.dumps(meta))
-        env=os.environ.copy();env.update(MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID='6',OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',PYTHONUNBUFFERED='1')
+        gpu = isaac_gpu()
+        env=os.environ.copy();env.update(MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID=str(gpu),OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',PYTHONUNBUFFERED='1')
         log=(output/'run.log').open('wb')
+        command = [sys.executable,'-m','backends.run','--task',task,'--backend',backend,
+                   '--mode','no_action' if mode == 'experiment' else mode,
+                   '--seed',str(seed),'--seconds',str(seconds),'--gpu',str(gpu),'--output',str(output)]
+        if mode == 'experiment':command.extend(['--science-model',science])
         try:
-            process=subprocess.Popen([sys.executable,'-m','backends.run','--task',task,'--backend',backend,'--mode',mode,
-                                      '--seed',str(seed),'--seconds',str(seconds),'--output',str(output)],
+            process=subprocess.Popen(command,
                                      cwd=ROOT/'Hooke',env=env,stdout=log,stderr=subprocess.STDOUT,stdin=subprocess.DEVNULL,start_new_session=True)
         except OSError:
             log.close();raise

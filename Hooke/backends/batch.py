@@ -3,6 +3,7 @@
 This establishes runtime compatibility, not task or physics equivalence.
 """
 from __future__ import annotations
+from backends.config import isaac_gpu
 import argparse
 import json
 from pathlib import Path
@@ -21,7 +22,7 @@ def main():
     parser.add_argument('--task',action='append')
     parser.add_argument('--steps',type=int,default=100)
     parser.add_argument('--render',action='store_true')
-    parser.add_argument('--gpu',type=int,default=6)
+    parser.add_argument('--gpu',type=int,default=isaac_gpu())
     parser.add_argument('--simple-only',action='store_true')
     args=parser.parse_args()
     args.catalog=args.catalog.resolve();args.output=args.output.resolve();args.output.mkdir(parents=True,exist_ok=True)

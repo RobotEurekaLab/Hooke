@@ -15,6 +15,7 @@ from pxr import Gf, Sdf, Vt, UsdGeom, UsdPhysics, UsdShade, UsdLux, PhysxSchema
 from backends.mass_properties import compose_welded_mass
 from backends.collision_rules import collision_participants
 from backends.contact_parameters import compliant_parameters,constraint_parameters
+from backends.render_settings import RenderSettings
 
 
 def quat(q):
@@ -42,6 +43,7 @@ def pose(prim, p, q):
 class SceneBridge:
     def __init__(self, stage, source, output, physics_options=None):
         self.stage = stage
+        self.render_settings = RenderSettings.from_environment()
         self.source, self.output = Path(source), Path(output)
         # NPZ is a compressed archive: indexing it repeatedly decompresses the
         # same fields. Materialize once for both export and every physics step.
@@ -106,8 +108,11 @@ class SceneBridge:
         m, stage = self.m, self.stage
         if np.any(~np.isin(m['jnt_type'], [0, 2, 3])):
             raise NotImplementedError('Ball joints require an adapter.')
-        if np.any(~np.isin(m['geom_type'], [0, 2, 3, 4, 5, 6, 7, 8])):
+        if np.any(~np.isin(m['geom_type'], [0, 1, 2, 3, 4, 5, 6, 7, 8])):
             raise NotImplementedError('Unsupported geometry type; export stopped.')
+        terrain = np.flatnonzero(m['geom_type'] == 1)
+        if np.any(m['body_weldid'][m['geom_bodyid'][terrain]] != 0):
+            raise NotImplementedError('Moving heightfields require a terrain dynamics adapter')
         plugins=ET.parse(self.source/'scene.xml').findall('./extension/plugin')
         self.plugins={p.get('plugin') for p in plugins}
         unsupported=self.plugins-{'mjlab.sdf.thread','mjlab.passive.detent'}
@@ -179,10 +184,26 @@ class SceneBridge:
             pose(marker, m['site_pos'][i], m['site_quat'][i])
             self.name(marker, 'site', i)
         light = UsdLux.DistantLight.Define(stage, '/World/Sun')
-        light.CreateIntensityAttr(1500.)
+        light.CreateIntensityAttr(self.render_settings.native_sun_intensity)
         light.CreateAngleAttr(.5)
         light.CreateColorAttr(Gf.Vec3f(.8, .8, .8))
-        UsdLux.DomeLight.Define(stage, '/World/Ambient').CreateIntensityAttr(450.)
+        dome = UsdLux.DomeLight.Define(stage, '/World/Ambient')
+        dome.CreateIntensityAttr(self.render_settings.native_ambient_intensity)
+        if self.render_settings.native_color_pipeline == 'source_display':
+            skyboxes = np.flatnonzero(m['tex_type'] == 2)
+            if len(skyboxes):
+                from PIL import Image
+                from backends.skybox import cube_to_latlong
+                texture = int(skyboxes[0])
+                width,channels,start = (int(m[field][texture]) for field in ('tex_width','tex_nchannel','tex_adr'))
+                faces = m['tex_data'][start:start+6*width*width*channels].reshape(6,width,width,channels)
+                folder = self.output/'textures';folder.mkdir(exist_ok=True)
+                panorama = folder/'source-sky.png'
+                Image.fromarray(cube_to_latlong(faces)).save(panorama)
+                dome.CreateTextureFileAttr(str(panorama.resolve()))
+                dome.CreateTextureFormatAttr('latlong')
+                UsdGeom.Xformable(dome).AddRotateXOp().Set(90.)
+                self.limits.append('Source sky pixels retained as a latlong dome; native environment illumination differs.')
         report = {'status': 'EXPERIMENTAL_UNQUALIFIED', 'source': str(self.source),'conversion_version':6,
                   'body_count': len(self.body_paths), 'geom_count': len(self.geom_paths),
                   'joint_count': len(self.joint_paths), 'camera_count': len(self.camera_paths),
@@ -192,6 +213,7 @@ class SceneBridge:
                   'site_frame_count': len(self.names['site']),
                   'source_equalities': len(m['eq_type']), 'source_tendons': len(m['tendon_adr']),
                   'physics_options':self.physics_options,
+                  'render_settings':self.render_settings.report(),
                   'explicit_contact_pairs':sorted(self.explicit_pairs),
                   'collider_count':len(self.colliders),
                   'articulation_roots': self.articulation_roots,
@@ -211,7 +233,11 @@ class SceneBridge:
         material = UsdShade.Material.Define(self.stage, f'/World/Materials/g{i}')
         shader = UsdShade.Shader.Define(self.stage, f'/World/Materials/g{i}/Surface')
         shader.CreateIdAttr('UsdPreviewSurface')
-        shader.CreateInput('diffuseColor', Sdf.ValueTypeNames.Color3f).Set(vec(rgba[:3]))
+        color = rgba[:3]
+        if self.render_settings.native_color_pipeline == 'source_display':
+            from backends.skybox import srgb_to_linear
+            color = srgb_to_linear(color)
+        shader.CreateInput('diffuseColor', Sdf.ValueTypeNames.Color3f).Set(vec(color))
         shader.CreateInput('opacity', Sdf.ValueTypeNames.Float).Set(float(rgba[3]))
         shader.CreateInput('roughness', Sdf.ValueTypeNames.Float).Set(
             float(np.clip(1 - m['mat_shininess'][mat_id], .05, 1.)) if mat_id >= 0 else .7)
@@ -261,10 +287,19 @@ class SceneBridge:
         typ = int(m['geom_type'][i]); size = m['geom_size'][i]
         path = self.body_paths[int(m['geom_bodyid'][i])] + f'/g{i}'
         self.geom_paths[i] = path
-        if typ in (0, 7, 8):
+        if typ in (0, 1, 7, 8):
             g = UsdGeom.Mesh.Define(stage, path)
             g.CreateSubdivisionSchemeAttr('none')
-            if typ in (7, 8):
+            if typ == 1:
+                from backends.heightfield import heightfield_mesh
+                points,faces = heightfield_mesh(m,int(m['geom_dataid'][i]))
+                g.CreatePointsAttr(Vt.Vec3fArray.FromNumpy(points.astype(np.float32)))
+                g.CreateFaceVertexCountsAttr(Vt.IntArray.FromNumpy(np.full(len(faces),3,np.int32)))
+                g.CreateFaceVertexIndicesAttr(Vt.IntArray.FromNumpy(faces.ravel()))
+                UsdGeom.PrimvarsAPI(g).CreatePrimvar('st',Sdf.ValueTypeNames.TexCoord2fArray,'vertex').Set(
+                    Vt.Vec2fArray.FromNumpy(((points[:,:2]/m['hfield_size'][int(m['geom_dataid'][i]),:2]+1)/2).astype(np.float32)))
+                self.limits.append('Static heightfield samples are triangulated; source heightfield contact semantics are unqualified.')
+            elif typ in (7, 8):
                 mid = int(m['geom_dataid'][i])
                 va, vn, fa, fn = [int(m[k][mid]) for k in ('mesh_vertadr','mesh_vertnum','mesh_faceadr','mesh_facenum')]
                 points = m['mesh_vert'][va:va+vn]
@@ -314,7 +349,9 @@ class SceneBridge:
             offset=self.physics_options['sdf_contact_offset_m'] if i in self.sdf_contacts else self.physics_options['contact_offset_m']
             api.CreateContactOffsetAttr(max(offset, float(m['geom_margin'][i])))
             api.CreateRestOffsetAttr(0.)
-            if typ == 7:
+            if typ == 1:
+                UsdPhysics.MeshCollisionAPI.Apply(prim).CreateApproximationAttr('none')
+            elif typ == 7:
                 UsdPhysics.MeshCollisionAPI.Apply(prim).CreateApproximationAttr('convexHull')
             elif typ == 8:
                 UsdPhysics.MeshCollisionAPI.Apply(prim).CreateApproximationAttr('sdf')
@@ -432,6 +469,29 @@ class SceneBridge:
         for i, typ in enumerate(m['eq_type']):
             if previous is not None and bool(active[i])==bool(previous[i]):continue
             a, b = int(m['eq_obj1id'][i]), int(m['eq_obj2id'][i])
+            if typ == 1:
+                joint = UsdPhysics.FixedJoint.Define(self.stage,f'/World/Joints/weld{i}')
+                joint.CreateExcludeFromArticulationAttr(True)
+                anchor = m['eq_data'][i,:3]
+                relative_position = m['eq_data'][i,3:6]
+                relative_quaternion = m['eq_data'][i,6:10]
+                def weld_frame(body,point,orientation):
+                    owner = int(m['body_weldid'][body]) or body
+                    frame_rotation = rotation(m['reference_xquat'][owner]).T
+                    position = frame_rotation @ (m['reference_xpos'][body]
+                        + rotation(m['reference_xquat'][body]) @ point-m['reference_xpos'][owner])
+                    relative = quat(m['reference_xquat'][owner]).GetInverse()*quat(m['reference_xquat'][body])
+                    return self.body_paths[owner] if body else None,vec(position),relative*quat(orientation)
+                path0,pos0,rot0 = weld_frame(a,relative_position+rotation(relative_quaternion)@anchor,relative_quaternion)
+                path1,pos1,rot1 = weld_frame(b,anchor,[1.,0.,0.,0.])
+                joint.GetBody0Rel().SetTargets([path0] if path0 else [])
+                joint.GetBody1Rel().SetTargets([path1] if path1 else [])
+                joint.CreateLocalPos0Attr(pos0);joint.CreateLocalRot0Attr(rot0)
+                joint.CreateLocalPos1Attr(pos1);joint.CreateLocalRot1Attr(rot1)
+                joint.CreateJointEnabledAttr(bool(active[i]))
+                note = 'Weld equalities use native fixed joints; MuJoCo soft weld compliance and torquescale are not calibrated.'
+                if note not in self.limits:self.limits.append(note)
+                continue
             if typ==2 and b<0:
                 # An instrument can engage its lid lock during a task.
                 # Keep the original articulation DOF and constrain it with an

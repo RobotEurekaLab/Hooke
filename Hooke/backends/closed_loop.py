@@ -5,6 +5,7 @@ code. It never advances physics while this adapter is active. Contact-based
 checks receive PhysX contacts, not contacts predicted by a second simulation.
 """
 from __future__ import annotations
+from backends.config import isaac_gpu
 import argparse
 import json
 from pathlib import Path
@@ -15,7 +16,7 @@ import mujoco
 import numpy as np
 from backends.baseline import write_snapshot
 from backends.worker_client import IsaacWorker
-from backends.source_forces import passive_residual, update_kinematics
+from backends.source_forces import body_wrench_forces, passive_residual, update_kinematics
 from backends.task_result import task_result
 
 
@@ -111,11 +112,14 @@ class PhysXTaskAdapter:
     def step(self, model, data, nstep=1):
         if model is not self.task.model or data is not self.task.data:
             raise RuntimeError('Task changed its model/data while the PhysX adapter was active')
-        if np.any(data.xfrc_applied):raise NotImplementedError('Body wrench forwarding is not implemented yet')
         for _ in range(nstep):
             control=data.ctrl.copy()
-            state=self.worker.call('step',control=control.tolist(),extra_forces=(data.qfrc_applied+passive_residual(model,data)).tolist(),
-                                   eq_active=data.eq_active.tolist())
+            force = data.qfrc_applied+passive_residual(model,data)
+            if np.any(data.xfrc_applied):
+                force += body_wrench_forces(model,data)
+            state=self.worker.call('step',control=control.tolist(),extra_forces=force.tolist(),
+                                   eq_active=data.eq_active.tolist(),
+                                   eq_data=model.eq_data.tolist())
             self.apply_state(state)
             self.rows.append({'control':control,'qpos':data.qpos.copy(),'qvel':data.qvel.copy(),
                               'time':float(data.time),'contacts':len(state['contacts'])})
@@ -139,6 +143,13 @@ class PhysXTaskAdapter:
         # Preserve actual external contact wrenches for existing observations.
         # Torque is about the root-subtree COM, as in MuJoCo cfrc_ext.
         data.cfrc_ext[:]=0
+        # Source body wrenches are world-frame force/torque at the body COM.
+        for body in np.flatnonzero(np.any(data.xfrc_applied,axis=1)):
+            if body == 0:continue
+            force = data.xfrc_applied[body,:3]
+            torque = data.xfrc_applied[body,3:]+np.cross(
+                data.xipos[body]-data.subtree_com[model.body_rootid[body]],force)
+            data.cfrc_ext[body] = np.r_[torque,force]
         if self._contact_arrays:
             arrays=self._contact_arrays;bodies=model.geom_bodyid[arrays['geoms']]
             roots=model.body_rootid[bodies]
@@ -203,7 +214,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--task',default='hplc_injector_plunger')
     parser.add_argument('--seed',type=int,default=0)
-    parser.add_argument('--gpu',type=int,default=6)
+    parser.add_argument('--gpu',type=int,default=isaac_gpu())
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--render',action='store_true')
     args=parser.parse_args()

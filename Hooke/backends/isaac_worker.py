@@ -1,4 +1,4 @@
-"""Isolated Isaac process controlled over a local Unix socket (JSON messages)."""
+"""Isolated Isaac process controlled over a private bounded Unix socket."""
 import argparse
 import json
 import os
@@ -11,6 +11,9 @@ parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--socket',type=Path,required=True)
 args=parser.parse_args()
 from isaacsim import SimulationApp
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from backends.render_settings import RenderSettings
+render_settings = RenderSettings.from_environment()
 # A batch worker never hot-reloads extensions. On shared servers, extension
 # watches can exhaust the per-user inotify quota before a scene even loads.
 extra_args=['--/rtx/rendermode=PathTracing', '--/app/extensions/fsWatcherEnabled=false']
@@ -22,14 +25,22 @@ if not 0 <= task_threads <= 128:
 if task_threads:
  extra_args.append(f'--/plugins/carb.tasking.plugin/threadCount={task_threads}')
 app=SimulationApp({'headless':True,'active_gpu':int(os.environ.get('HOOKE_ISAAC_RENDER_GPU','6')),
- 'physics_gpu':0,'multi_gpu':False,'renderer':'PathTracing','width':640,'height':480,
+ 'physics_gpu':0,'multi_gpu':False,'renderer':'PathTracing','width':render_settings.width,'height':render_settings.height,
  'samples_per_pixel_per_frame':1,'max_bounces':2,'max_specular_transmission_bounces':4,
  'max_volume_bounces':0,'anti_aliasing':0,'extra_args':extra_args})
+if render_settings.native_color_pipeline == 'source_display':
+ import carb
+ settings=carb.settings.get_settings()
+ settings.set('/rtx/post/tonemap/op',1)
+ settings.set('/rtx/post/tonemap/enableSrgbToGamma',True)
+ settings.set('/rtx/post/histogram/enabled',False)
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from backends.isaac_runtime import NativeScene
+from backends.ipc import read_message, write_message
 from isaacsim.core.api import World
 from isaacsim.core.utils.stage import create_new_stage
 scene=None
+transport=os.environ.get('HOOKE_ISAAC_TRANSPORT','binary')
 server=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM)
 try:
  server.bind(str(args.socket));os.chmod(args.socket,0o600);server.listen(1)
@@ -37,11 +48,11 @@ try:
  connection,_=server.accept()
  with connection,connection.makefile('rwb') as stream:
   while True:
-   line=stream.readline(16*1024*1024)
-   if not line:break
+   request=read_message(stream,transport)
+   if request is None:break
    shutdown=False
    try:
-    request=json.loads(line);op=request['op']
+    op=request['op']
     if op=='load':
      if scene is not None:scene.close();scene=None
      elif World.instance() is not None:
@@ -50,7 +61,7 @@ try:
       World.instance().stop();World.instance().clear();World.clear_instance();create_new_stage()
      scene=NativeScene(request['source'],request['output'],request.get('render',False),request.get('physics_options'),request.get('managed_render',False))
      result={'state':scene.observe(),'conversion':scene.conversion,'gains':scene.gains}
-    elif op=='step':result=scene.step(request['control'],request.get('extra_forces'),request.get('eq_active'))
+    elif op=='step':result=scene.step(request['control'],request.get('extra_forces'),request.get('eq_active'),request.get('eq_data'))
     elif op=='reset':result=scene.reset(request.get('qpos'),request.get('qvel'))
     elif op=='render':result=scene.render_frame(request.get('visuals',{}))
     elif op=='observe':result=scene.observe()
@@ -86,7 +97,7 @@ try:
    except Exception as exc:
     traceback.print_exc()
     response={'ok':False,'error':str(exc),'traceback':traceback.format_exc()}
-   stream.write((json.dumps(response,allow_nan=False)+'\n').encode());stream.flush()
+   write_message(stream,response,transport)
    if shutdown:break
 finally:
  if scene is not None:scene.close()

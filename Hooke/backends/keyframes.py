@@ -6,6 +6,7 @@ Joint states and recorded liquid surfaces are restored; other dynamic
 instrument overlays are outside this replay's scope.
 """
 from __future__ import annotations
+from backends.config import isaac_gpu
 
 import argparse
 from contextlib import contextmanager
@@ -25,6 +26,7 @@ from PIL import Image
 from backends.evidence import file_sha256
 from backends.visual_state import ellipse_frame, LiveVisuals
 from backends.worker_client import IsaacWorker
+from backends.render_settings import RenderSettings
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -95,7 +97,8 @@ def mujoco_renderer(model, gpu):
             '--query-gpu=memory.used', '--format=csv,noheader,nounits'], text=True).strip())
         if memory >= 2048:
             raise RuntimeError(f'GPU {gpu} is busy ({memory} MiB); wait for the running job')
-        with mujoco.Renderer(model, height=480, width=640) as renderer:
+        settings = RenderSettings.from_environment()
+        with mujoco.Renderer(model, height=settings.height, width=settings.width) as renderer:
             yield renderer
 
 
@@ -171,6 +174,7 @@ def render_episode(episode, output, requested, gpu):
                     recorded_time_s=float(trajectory['time'][index]),
                     liquid_volumes_m3=[float(liquid['volume_m3'][index + 1]) for liquid in liquids], **audit))
     report = dict(kind='recorded_trajectory_keyframe_render', closed_loop_validation=False,
+        render_settings=RenderSettings.from_environment().report(),
         task=result['task'], backend=result['backend'], seed=result['seed'],
         motion_pass=result.get('assessment', {}).get('success') is True,
         ideal_volume_pass=result.get('volume_assessment', {}).get('success'),
@@ -189,7 +193,7 @@ def main():
     parser.add_argument('--episode', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--phases', nargs='+', required=True)
-    parser.add_argument('--gpu', type=int, default=6)
+    parser.add_argument('--gpu', type=int, default=isaac_gpu())
     args = parser.parse_args()
     os.environ['MUJOCO_EGL_DEVICE_ID'] = str(args.gpu)
     report = render_episode(args.episode.resolve(), args.output.resolve(), args.phases, args.gpu)

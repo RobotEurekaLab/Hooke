@@ -6,7 +6,7 @@ import unittest
 import mujoco
 import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'Hooke'))
-from backends.source_forces import passive_residual, update_kinematics
+from backends.source_forces import body_wrench_forces, passive_residual, update_kinematics
 from backends.closed_loop import PhysXTaskAdapter
 from backends.task_result import task_result
 from backends.mass_properties import compose_welded_mass,rotation,quaternion
@@ -17,6 +17,17 @@ from backends.texture_mapping import plane_uv,source_uv_to_usd
 
 
 class ForceContracts(unittest.TestCase):
+    def test_body_wrenches_preserve_virtual_work_at_offset_mass_center(self):
+        model=mujoco.MjModel.from_xml_string('''<mujoco><worldbody><body quat=".7071 0 0 .7071"><freejoint/><geom type="sphere" pos=".02 .01 .03" size=".1" mass="1"/></body></worldbody></mujoco>''')
+        data=mujoco.MjData(model);data.qvel[:]=[.1,.2,.3,.4,.5,.6]
+        mujoco.mj_forward(model,data)
+        data.xfrc_applied[1]=[1.,2.,3.,.1,.2,.3]
+        wrench=body_wrench_forces(model,data)
+        velocity=np.zeros(6)
+        mujoco.mj_objectVelocity(model,data,mujoco.mjtObj.mjOBJ_BODY,1,velocity,False)
+        power=np.dot(data.xfrc_applied[1,:3],velocity[3:])+np.dot(data.xfrc_applied[1,3:],velocity[:3])
+        self.assertAlmostEqual(np.dot(wrench,data.qvel),power,places=12)
+
     def test_small_display_uses_entire_texture_and_floor_keeps_spatial_repeat(self):
         corners=np.array([[-.049369,-.012886],[.049369,-.012886],[.049369,.012886],[-.049369,.012886]])
         np.testing.assert_allclose(plane_uv(corners,[.049369,.012886],[1,1],False),

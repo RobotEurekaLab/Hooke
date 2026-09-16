@@ -1,5 +1,6 @@
 """Run the same catalogue task through either engine for the LAN interface."""
 from __future__ import annotations
+from backends.config import isaac_gpu
 import argparse
 from contextlib import ExitStack
 from dataclasses import asdict, is_dataclass
@@ -16,6 +17,8 @@ import numpy as np
 from PIL import Image
 from backends.task_result import task_result
 from backends.assessment import EpisodeAssessment
+from backends.render_settings import RenderSettings
+from backends.capabilities import require_native
 
 
 def write_json(path, value):
@@ -39,12 +42,20 @@ def run(args,worker=None):
             'mode':args.mode,'parity_qualified':False}
     result_path=output/'result.json';write_json(result_path,result)
     started=time.perf_counter();task=None;steps=0;contact_steps=0;frames=0;physics_wall=0.;rows=[]
-    renderer=None;adapter=None;original_step=None;original_manager_step=None;visuals=None;assessment=None;volume_assessment=None
+    renderer=None;adapter=None;original_step=None;original_manager_step=None;visuals=None;assessment=None;volume_assessment=None;science_model=None
     try:
+        rendering = RenderSettings.from_environment()
+        result['render_settings'] = rendering.report()
         entry=CATALOG[args.task]
         task=entry.make_expert();task.reset(args.seed);mujoco.mj_forward(task.model,task.data)
+        if args.backend == 'isaac':result['preflight'] = require_native(task)
+        if getattr(args,'science_model',None):
+            if args.mode != 'no_action':
+                raise ValueError('Scientific qualification uses no_action with explicit programme boundaries')
+            from science.systems import configure
+            science_model = configure(task,args.science_model)
         assessment=EpisodeAssessment(task,args.task)
-        if getattr(task,'liquid_transfer',None) is not None:
+        if getattr(task,'liquid_transfer',None) is not None and science_model is None:
             from backends.volume_assessment import PipetteVolumeAssessment
             volume_assessment=PipetteVolumeAssessment(task.liquid_transfer)
         task.task_info['simulation_backend']=args.backend
@@ -63,7 +74,7 @@ def run(args,worker=None):
                                                            report_progress=False,managed_render=not args.no_render))
             else:
                 source=output/'source';source.mkdir(exist_ok=True);write_snapshot(task,source)
-                if not args.no_render:renderer=mujoco.Renderer(task.model,height=480,width=640)
+                if not args.no_render:renderer=mujoco.Renderer(task.model,height=rendering.height,width=rendering.width)
             if not args.no_render:
                 from backends.visual_state import LiveVisuals
                 visuals=LiveVisuals(task,output/'visuals')
@@ -102,10 +113,11 @@ def run(args,worker=None):
                 if volume_assessment is not None:volume_assessment.update()
                 # The instrument/liquid systems update after physics. Render
                 # their current state, with the same ordering for both engines.
-                if steps%max(1,round(.05/task.dt))==0:capture()
+                if steps%rendering.step_interval(task.dt)==0:capture()
                 if steps%100==0:
                     write_json(output/'progress.json',{'steps':steps,'simulation_s':float(task.data.time),'contacts':task.data.ncon,
-                                                      'instrument_state':instrument_state(task)})
+                                                      'instrument_state':instrument_state(task),
+                                                      'scientific_model':science_model.report() if science_model is not None else None})
             task.manager.step=manager_step
             try:
                 if args.mode in ('preview','no_action') or display_only:
@@ -149,9 +161,15 @@ def run(args,worker=None):
                           max_fk_rotation_error_rad=adapter.max_fk_rotation_error,
                           physics_options=adapter.loaded['conversion']['physics_options'])
         if task is not None:
+            if science_model is not None:result['scientific_model']=science_model.report()
             if assessment is not None:result['assessment']=assessment.report()
             if volume_assessment is not None:result['volume_assessment']=volume_assessment.report()
             if getattr(task,'phase_history',None) is not None:result['expert_phases']=task.phase_history
+            elif getattr(task,'expert_phases',None) is not None:result['expert_phases']=task.expert_phases
+            programme = getattr(task,'rotor_program',None)
+            if programme is not None:
+                result['rotor_program'] = programme.controller.report()
+                result['rotor_events'] = programme.events
             result['final_qpos']=task.data.qpos.tolist()
             result['final_contact_pairs']=sorted({tuple(sorted(map(int,c.geom))) for c in task.data.contact})
             if task.model.nsensor:
@@ -175,8 +193,10 @@ def main():
     parser.add_argument('--seed',type=int,default=0)
     parser.add_argument('--seconds',type=float,default=2.)
     parser.add_argument('--max-sim-seconds',type=float,default=120.)
-    parser.add_argument('--gpu',type=int,default=6)
+    parser.add_argument('--gpu',type=int,default=isaac_gpu())
     parser.add_argument('--no-render',action='store_true',help='Physics/controller validation without RGB')
+    parser.add_argument('--science-model',choices=['thermal','capillary'],
+                        help='Qualify a declared reduced model against actual simulation time and existing instrument/geometry')
     parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args()
     if not 0<args.seconds<=args.max_sim_seconds<=120:parser.error('Invalid duration')

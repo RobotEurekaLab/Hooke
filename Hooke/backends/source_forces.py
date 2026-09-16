@@ -34,3 +34,20 @@ def passive_residual(model, data):
         force[va]+=model.dof_damping[va]*data.qvel[va]
     if not np.isfinite(force).all():raise ValueError('Non-finite source passive force')
     return force
+
+
+def body_wrench_forces(model, data):
+    """Map world-frame force/torque at each source body COM to joint forces.
+
+    This uses only the observed state's kinematic Jacobian. Native PhysX
+    still owns integration and contacts, including free-body inertial motion.
+    """
+    result = np.zeros(model.nv)
+    if not np.isfinite(data.xfrc_applied).all():
+        raise ValueError('Body wrenches must be finite')
+    for body in np.flatnonzero(np.any(data.xfrc_applied, axis=1)):
+        if body == 0:
+            continue
+        force, torque = data.xfrc_applied[body,:3], data.xfrc_applied[body,3:]
+        mujoco.mj_applyFT(model, data, force, torque, data.xipos[body], int(body), result)
+    return result

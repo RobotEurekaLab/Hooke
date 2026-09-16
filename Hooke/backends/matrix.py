@@ -6,6 +6,7 @@ JSON, CSV and Markdown are updated after every episode. Reuse requires
 --resume and exactly matching code, scene configuration and run parameters.
 """
 from __future__ import annotations
+from backends.config import isaac_gpu
 
 import argparse
 from collections import Counter
@@ -183,7 +184,7 @@ def main():
     parser.add_argument('--mode', action='append', choices=['expert', 'no_action'])
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--resume', action='store_true')
-    parser.add_argument('--gpu', type=int, default=6)
+    parser.add_argument('--gpu', type=int, default=isaac_gpu())
     parser.add_argument('--control-seconds', type=float, default=2.)
     parser.add_argument('--max-sim-seconds', type=float, default=120.)
     parser.add_argument('--wall-seconds', type=float, default=600.)

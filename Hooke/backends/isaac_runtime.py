@@ -18,11 +18,13 @@ from isaacsim.core.utils.stage import create_new_stage
 from isaacsim.sensors.camera import Camera
 from backends.usd_scene import SceneBridge, rotation
 from backends.contact_parameters import constraint_parameters
+from backends.render_settings import RenderSettings
 
 
 class NativeScene:
     def __init__(self, source, output, render=False, physics_options=None, managed_render=False):
         self.source, self.output = Path(source), Path(output)
+        self.render_settings = RenderSettings.from_environment()
         self.output.mkdir(parents=True, exist_ok=True)
         self.render_enabled = render
         self.managed_render=managed_render
@@ -79,7 +81,8 @@ class NativeScene:
             names = dict.fromkeys(self.bridge.meta['task_info']['camera_mapping'].values())
             for name in names:
                 i = self.bridge.names['camera'].index(name)
-                self.cameras[i] = Camera(prim_path=self.bridge.camera_paths[i], resolution=(640,480))
+                self.cameras[i] = Camera(prim_path=self.bridge.camera_paths[i],
+                                         resolution=(self.render_settings.width,self.render_settings.height))
         self.world.reset()
         self.world.get_physics_context().set_physx_update_transformations_settings(
             update_to_usd=False, update_velocities_to_usd=False)
@@ -261,11 +264,13 @@ class NativeScene:
             qpos[item['qa']]=item['view'].get_dof_positions()[0]+self.m['qpos0'][item['qa']]
             qvel[item['va']]=item['view'].get_dof_velocities()[0]
             for body,transform in zip(item['body_ids'],item['view'].get_link_transforms()[0]):
-                if body is not None:body_poses[body]=np.r_[transform[:3],transform[6],transform[3:6]].tolist()
+                if body is not None:
+                    body_poses[body] = [float(transform[k]) for k in (0,1,2,6,3,4,5)]
         for j,body in self.free.items():
             qa=int(self.m['jnt_qposadr'][j]);va=int(self.m['jnt_dofadr'][j])
             position,orientation=body.get_world_pose()
-            qpos[qa:qa+7]=np.r_[position,orientation]
+            qpos[qa:qa+3]=position
+            qpos[qa+3:qa+7]=orientation
             r=rotation(orientation);angular=body.get_angular_velocity()
             offset=r@self.bridge.mass_properties[self.bridge.free_bodies[j]]['center']
             qvel[va:va+3]=body.get_linear_velocity()-np.cross(angular,offset)
@@ -285,8 +290,16 @@ class NativeScene:
                         'body_poses':body_poses,'joint_coupling_errors':coupling_errors}
         return self._observed
 
-    def step(self, control, extra_forces=None, eq_active=None):
+    def step(self, control, extra_forces=None, eq_active=None, eq_data=None):
         m=self.m
+        if eq_data is not None:
+            parameters = np.asarray(eq_data,dtype=float)
+            if parameters.shape != m['eq_data'].shape or not np.isfinite(parameters).all():
+                raise ValueError('Equality parameter size or values are invalid')
+            changed = np.flatnonzero(np.any(parameters != m['eq_data'],axis=1))
+            if np.any(m['eq_type'][changed] != 1) or np.any(self.eq_active[changed]):
+                raise NotImplementedError('Only inactive weld capture parameters can change')
+            m['eq_data'][:] = parameters
         if eq_active is not None and not np.array_equal(eq_active,self.eq_active):
             for tendon in self.tendon_drives.values():
                 if any(not eq_active[i] for i in tendon['equalities']):
@@ -301,7 +314,7 @@ class NativeScene:
         state=self._observed; q=np.asarray(state['qpos']); v=np.asarray(state['qvel'])
         forces=np.zeros_like(v) if extra_forces is None else np.asarray(extra_forces,dtype=float).copy()
         actuator_forces=np.zeros_like(v)
-        if forces.shape != v.shape:raise ValueError('Generalized force size is invalid')
+        if forces.shape != v.shape or not np.isfinite(forces).all():raise ValueError('Generalized force size or values are invalid')
         targets=[(m['qpos_spring'][item['qa']]-m['qpos0'][item['qa']]).astype(np.float32) for item in self.views]
         velocity_targets=[np.zeros(len(item['ids']),np.float32) for item in self.views]
         for a,j in self.actuators.items():
@@ -358,13 +371,15 @@ class NativeScene:
             va=m['jnt_dofadr'][j];qa=m['jnt_qposadr'][j]
             force=forces[va:va+3];torque=rotation(q[qa+3:qa+7])@forces[va+3:va+6]
             if np.any(force) or np.any(torque):
-                body._rigid_prim_view.apply_forces_and_torques_at_pos(forces=force[None,:],torques=torque[None,:],is_global=True)
+                body._rigid_prim_view.apply_forces_and_torques_at_pos(
+                    forces=force[None,:],torques=torque[None,:],
+                    positions=q[None,qa:qa+3],is_global=True)
         self.contacts=[]
         started=time.perf_counter()
         self.world.step(render=False)
         self.physics_wall+=time.perf_counter()-started
         self.steps+=1; self.time=self.steps*self.dt
-        if self.render_enabled and not self.managed_render and self.steps % max(1,round(.05/self.dt)) == 0:
+        if self.render_enabled and not self.managed_render and self.steps % self.render_settings.step_interval(self.dt) == 0:
             get_physx_interface().update_transformations(True,True,False,False)
             self.world.render(); self.capture()
         return self.observe()
@@ -389,7 +404,7 @@ class NativeScene:
         from PIL import Image
         for i,camera in self.cameras.items():
             rgba=camera.get_rgba()
-            if rgba is None or rgba.shape != (480,640,4):raise RuntimeError('Camera did not produce RGB')
+            if rgba is None or rgba.shape != (self.render_settings.height,self.render_settings.width,4):raise RuntimeError('Camera did not produce RGB')
             folder=self.output/f'camera_{i}';folder.mkdir(exist_ok=True)
             path=folder/f'{self.frame_count:05d}.png'
             temporary=path.with_suffix('.tmp')

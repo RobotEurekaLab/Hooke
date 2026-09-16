@@ -17,10 +17,11 @@ import numpy as np
 from contact_state import body_geoms, touching
 from archetypes.centrifuge_insertion import insertion_target
 from grasp.quat import quatapply, quatinv
+from backends.centrifuge_assessment import CentrifugeCycleSequence
 
 from process_progress import PROCESS_NAMES, ProcessProgress, PipetteSequence, VortexSequence
 
-VERSION = 'hooke-manipulation-v4'
+VERSION = 'hooke-manipulation-v5'
 
 
 def literal_predicate(check):
@@ -98,6 +99,36 @@ class InsertionSequence:
                 'tube_released': self.released, 'seated_stable_500ms': self.stable_s >= .5}
 
 
+@dataclass
+class LidClosureSequence:
+    initial: float
+    target: float
+    previous: float = field(init=False)
+    position: float = field(init=False)
+    contact_s: float = 0.
+    travel_in_contact_rad: float = 0.
+    stable_s: float = 0.
+    previous_contact: bool = False
+
+    def __post_init__(self):
+        self.previous = self.position = self.initial
+
+    def update(self,dt,position,speed,contact):
+        if contact and self.previous_contact:
+            self.contact_s += dt
+            direction = 1 if self.target > self.initial else -1
+            self.travel_in_contact_rad += direction*(position-self.previous)
+        self.stable_s = self.stable_s+dt if abs(position-self.target)<.01 and abs(speed)<.02 else 0.
+        self.previous = self.position = float(position)
+        self.previous_contact = bool(contact)
+
+    def checks(self):
+        return {'lid_within_10mrad':abs(self.position-self.target)<.01,
+                'lid_robot_contact_50ms':self.contact_s >= .05,
+                'lid_travel_in_contact_100mrad':self.travel_in_contact_rad >= .1,
+                'lid_standstill_50ms':self.stable_s >= .05}
+
+
 class EpisodeAssessment:
     def __init__(self, task, name):
         self.task, self.name = task, name
@@ -111,6 +142,22 @@ class EpisodeAssessment:
         if name in PROCESS_NAMES:
             self.progress = ProcessProgress(task, name)
             self.state = self.progress.state
+        elif name == 'centrifuge_5430_cycle':
+            self.state = CentrifugeCycleSequence()
+            self.robot = {i for i in range(model.ngeom)
+                          if '/ur:' in model.body(int(model.geom_bodyid[i])).name}
+            self.load_geoms = [body_geoms(model, int(model.body_weldid[tube.body_id]))
+                               for tube in (task.tube, task.tube2)]
+        elif name in ('centrifuge_5430_close_lid','centrifuge_5910_lid_close',
+                      'centrifuge_mini_close_lid','composite_centrifuge_5430_close_lid'):
+            joint = task.instrument.lid_joint
+            self.lid_position = int(model.jnt_qposadr[joint])
+            self.lid_velocity = int(model.jnt_dofadr[joint])
+            self.state = LidClosureSequence(float(data.qpos[self.lid_position]),
+                            float(model.eq_data[task.instrument.lid_lock,0]))
+            self.lid = body_geoms(model,int(model.jnt_bodyid[joint]))
+            self.robot = {i for i in range(model.ngeom)
+                          if '/ur:' in model.body(int(model.geom_bodyid[i])).name}
         elif name in ('close_fume_hood', 'open_fume_hood'):
             self.state = SashManipulation(float(data.qpos[task.sash_jnt_adr]),
                                          0. if name == 'close_fume_hood' else .18)
@@ -140,6 +187,10 @@ class EpisodeAssessment:
         elif isinstance(self.state, SashManipulation):
             self.state.update(float(data.qpos[task.sash_jnt_adr]),
                               touching(data, self.handle, self.gripper), dt)
+        elif isinstance(self.state,LidClosureSequence):
+            self.state.update(dt,float(data.qpos[self.lid_position]),
+                              float(data.qvel[self.lid_velocity]),
+                              touching(data,self.lid,self.robot))
         elif isinstance(self.state, InsertionSequence):
             actual = task.tube.get_body_pose(data)
             target = insertion_target(task)
@@ -150,6 +201,22 @@ class EpisodeAssessment:
             self.state.update(dt, actual.pos[2], relative, tilt, touching(data, self.tube, self.robot))
             self.metrics.update(target_frame='current_rotor_slot', slot_id=int(task.slot_id),
                                 legacy_world_target_distance_m=float(np.linalg.norm(actual.pos - task.final_tar_tubepose.pos)))
+        elif isinstance(self.state, CentrifugeCycleSequence):
+            programme = task.rotor_program
+            slots = (task.slot_id, (task.slot_id+task.instrument.num_slots//2)%task.instrument.num_slots)
+            seated = True
+            for tube, slot, geoms in zip((task.tube, task.tube2), slots, self.load_geoms):
+                actual = tube.get_body_pose(data)
+                target = task.instrument.get_tube_pose(data, slot, 'proximal')
+                axis = np.array([0., 0., 1.])
+                cosine = np.dot(quatapply(actual.quat, axis), quatapply(target.quat, axis))
+                seated &= (np.linalg.norm(actual.pos-target.pos) < .005
+                           and cosine > np.cos(np.deg2rad(5.))
+                           and not touching(data, geoms, self.robot))
+            lock = task.instrument.lid_lock
+            self.state.update(dt, programme.speed(data), programme.balance_ratio(data),
+                              abs(float(data.qpos[task.instrument.lid_qposadr])-float(task.model.eq_data[lock,0])) < .01,
+                              bool(data.eq_active[lock]), seated, programme.controller.program)
 
     def report(self):
         from dataclasses import asdict

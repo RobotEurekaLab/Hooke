@@ -30,7 +30,7 @@ class LidLockTests(unittest.TestCase):
 
     def test_catalogue_lid_tasks_start_unsuccessful(self):
         for name in ('centrifuge_5430_close_lid', 'centrifuge_5910_lid_close',
-                     'composite_centrifuge_5430_close_lid'):
+                     'composite_centrifuge_5430_close_lid','centrifuge_mini_close_lid'):
             task_cls, _ = CATALOG[name].load_classes()
             task = task_cls(task_cls.load())
             if CATALOG[name].task_override:
