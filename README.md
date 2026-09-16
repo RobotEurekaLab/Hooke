@@ -37,6 +37,13 @@ experimental branch assessment and a committed seed-0 validation snapshot.
 See [shared dual-arm control and ideal pipette volume accounting](docs/isaac_shared_processes.md)
 for the reusable process modules, separate assessments, and validation scope.
 See [full two-container transfer and actual rendered keyframes](docs/isaac_pipette_transfer.md)
-for the new 45-second task, ten MuJoCo experts, five Isaac experts, and no-action controls.
+for the 45-second task and historical validation. The
+[ten-seed transfer report](docs/validation/isaac_pipette_transfer_ten_seed_summary.json)
+records ten successful experts in each backend and their frozen runtime versions.
 See [continuous centrifuge insertion, closure, and locking](docs/isaac_centrifuge_chain.md)
-for the one-reset protocol; rotor driving and safe shutdown remain future work.
+for the earlier protocol, and [the complete centrifuge cycle](docs/isaac_centrifuge_cycle.md)
+for measured rotor control, braking and safe unlocking.
+See [operations and configuration](docs/isaac_operations.md),
+[actual visual comparisons](docs/isaac_visual_configuration.md), and
+[the seven acceptance areas](docs/isaac_completion_plan.md) for the current implementation,
+evidence and reduced-model limits.

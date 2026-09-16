@@ -1,0 +1,73 @@
+{
+  "python": "3.12.4",
+  "isaac_path": "/home/amax/data/datacopy/isaacsim",
+  "gpu": 6,
+  "checks": {
+    "isaac_python_launcher": true,
+    "source_plugin": true,
+    "nvidia_smi": true,
+    "meshplane_module_found": true,
+    "source_packages": true
+  },
+  "render_settings": {
+    "width": 640,
+    "height": 480,
+    "frames_per_second": 20.0,
+    "native_sun_intensity": 1500.0,
+    "native_ambient_intensity": 450.0,
+    "native_color_pipeline": "physical"
+  },
+  "packages": {
+    "mujoco": "3.3.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.11.1",
+    "toppra": "0.6.10",
+    "Pillow": "12.3.0",
+    "Flask": "3.1.3"
+  },
+  "driver_modified": false,
+  "capabilities": {
+    "version": "hooke-native-capabilities-v2",
+    "features": {
+      "free_hinge_slide_joints": "Implemented; compound joints add declared auxiliary inertia.",
+      "body_wrenches": "Forwarded through observed-state kinematic Jacobians.",
+      "connect_equalities": "Compliant native linear springs; impedance mapping is approximate.",
+      "weld_equalities": "Native fixed joints; source soft weld compliance is uncalibrated.",
+      "static_heightfields": "Source samples become a closed triangle terrain mesh; contact parity is unqualified.",
+      "affine_joint_and_fixed_tendon_actuators": "Implemented within supported gain, bias and transmission types.",
+      "thread_sdf": "Original visual mesh; native voxel SDF collision remains approximate.",
+      "textures_cameras_liquid_surfaces": "Original assets and dynamic overlays retained; pixels differ.",
+      "thermal": "Opt-in two-node energy model, uncalibrated.",
+      "capillary_flow": "Opt-in laminar filled-tube flow and conservative reservoir volumes, uncalibrated."
+    },
+    "unsupported": {
+      "ball_joints": "Quaternion joint/velocity adapter required.",
+      "moving_heightfields": "Moving terrain collision/dynamics adapter required.",
+      "flexible_bodies": "Native deformable state and force adapter required.",
+      "nonlinear_dynamic_actuators": "Actuator state/dynamics adapter required.",
+      "arbitrary_plugins": "Explicit native/source-force plugin adapter required.",
+      "actuator_or_sensor_plugins": "Explicit actuator/sensor plugin adapter required.",
+      "actuator_transmission": "Only joint and fixed-tendon transmissions are implemented.",
+      "joint_actuator_gearing": "Joint actuators require a unit scalar gear.",
+      "spatial_tendon_actuators": "Spatial tendon actuator forces require another adapter.",
+      "equality_type": "Only connect, weld and affine joint equalities are implemented.",
+      "nonlinear_joint_equality": "Nonlinear joint coupling requires another adapter."
+    },
+    "parity_qualified": false,
+    "scientific_process_validated": false
+  },
+  "device": {
+    "index": 6,
+    "uuid": "GPU-236ef039-d857-d2f0-d85d-ce73fc2ae676",
+    "name": "NVIDIA GeForce RTX 4090",
+    "driver": "535.230.02",
+    "memory_used_mib": 5138,
+    "memory_total_mib": 24564
+  },
+  "gpu_idle_for_startup": false,
+  "environment_files_ready": true,
+  "native_runtime_started": false,
+  "kind": "read_only_environment_diagnosis",
+  "scope": "File/dependency discovery and GPU status; native runtime acceptance is reported separately."
+}

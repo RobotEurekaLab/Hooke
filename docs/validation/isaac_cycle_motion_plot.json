@@ -1,0 +1,68 @@
+{
+  "kind": "recorded_rotor_motion_plot",
+  "closed_loop_episodes_added": 0,
+  "inputs": [
+    {
+      "backend": "mujoco",
+      "trajectory": "temp/backend_parity/comprehensive_final_source10/group_0/mujoco/centrifuge_5430_cycle/seed_0/expert/trajectory.npz",
+      "trajectory_sha256": "1f850c73c873380ff68815c9f127a5d51a0bfc2560fe39c2670cf1de3803b387",
+      "phase": {
+        "phase": "spin_brake",
+        "start_s": 35.48999999999741,
+        "end_s": 39.58000000000241
+      },
+      "rotor_program": {
+        "state": "COMPLETE",
+        "fault": null,
+        "peak_rad_s": 6.269843399707415,
+        "measured_rotation_rad": 14.034864598514755,
+        "measured_hold_s": 1.0000000000000007,
+        "stopped_s": 0.5020000000000003,
+        "programme": {
+          "rpm": 60.0,
+          "hold_seconds": 1.0,
+          "acceleration_rad_s2": 5.0,
+          "torque_limit_nm": 0.1,
+          "speed_gain": 0.08,
+          "safe_speed_rad_s": 0.02,
+          "stopped_seconds": 0.5,
+          "balance_ratio_limit": 0.05
+        }
+      }
+    },
+    {
+      "backend": "isaac",
+      "trajectory": "temp/backend_parity/comprehensive-final-cycle-native10/isaac/centrifuge_5430_cycle/seed_0/expert/trajectory.npz",
+      "trajectory_sha256": "e8e25a3837866c4ff19613f5fdbe2bfcb091a8d33a1f1ab7d0cfa39b44f328e1",
+      "phase": {
+        "phase": "spin_brake",
+        "start_s": 35.52,
+        "end_s": 39.608000000000004
+      },
+      "rotor_program": {
+        "state": "COMPLETE",
+        "fault": null,
+        "peak_rad_s": 6.27518892288208,
+        "measured_rotation_rad": 14.031387208586924,
+        "measured_hold_s": 1.0000000000000007,
+        "stopped_s": 0.5020000000000003,
+        "programme": {
+          "rpm": 60.0,
+          "hold_seconds": 1.0,
+          "acceleration_rad_s2": 5.0,
+          "torque_limit_nm": 0.1,
+          "speed_gain": 0.08,
+          "safe_speed_rad_s": 0.02,
+          "stopped_seconds": 0.5,
+          "balance_ratio_limit": 0.05
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    "centrifuge-cycle-speed-torque.png": "71bbe4a6b9c60b82fd53cc8d25c6763e7f2e40b52c9b7b929e99f2a3dfcbda03",
+    "centrifuge-cycle-speed-torque.svg": "7c632ef93488dc6d16fb4246c05ec14f3d9ef0d9b2da93eab00f27f9ca7ee4eb"
+  },
+  "plot_script_sha256": "101ec87a8d32522e5725ed8b6153c4f371b8147a8ae370bb3646c1619a9a0dae",
+  "parity_qualified": false
+}

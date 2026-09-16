@@ -1,10 +1,12 @@
 # 双后端回合判据与多种子回归
 
+当前运行器使用 `hooke-manipulation-v5`：在以下历史 v3 范围之外，增加完整移液、真实盖板接触位移与停稳、完整离心九项机械判定。科学模型报告适用范围及能量/体积守恒，仍保留 `scientific_process_validated=false`。完整离心使用独立的 60 秒流程时限；原子任务时限不随复合流程改写。最新逐回合结果见 [七项验收](isaac_completion_plan.md)。以下 v3 表格与统计保留为历史记录。
+
 ## 两种结果分别保存
 
-`backends.run` 继续在回合结束时调用一次任务的 `task.check()`，保存 `source_check`、`source_success` 和原状态码。`assessment` 当前使用 `hooke-manipulation-v3` 判据，在每次 `Manager.step()` 完成物理和仪器系统更新后采样。读取报告不会更新历史，也不会再次调用原判据。
+`backends.run` 继续在回合结束时调用一次任务的 `task.check()`，保存 `source_check`、`source_success` 和原状态码。以下历史报告的 `assessment` 使用 `hooke-manipulation-v3` 判据，在每次 `Manager.step()` 完成物理和仪器系统更新后采样。读取报告不会更新历史，也不会再次调用原判据。
 
-验收观察器不改变资产、动力学参数或控制量。任务配方的独立修复见 [操作流程进展](isaac_process_manipulation.md)。多种子回归另发现零位移路径规划异常，随后修复 `Topp`：相同位置和朝向返回保持轨迹，实际平移与旋转沿用原算法。修改前与修复后结果分别保留。旧 seed-0 结果保留；新版通过率不能作为旧版后端性能提升的证据。当前仅覆盖下面五个目录任务，其余任务的新版 `success` 为 `null`，表示尚未审查。所有结果仍为 `parity_qualified=false`。
+验收观察器不改变资产、动力学参数或控制量。任务配方的独立修复见 [操作流程进展](isaac_process_manipulation.md)。多种子回归另发现零位移路径规划异常，随后修复 `Topp`：相同位置和朝向返回保持轨迹，实际平移与旋转沿用原算法。修改前与修复后结果分别保留。旧 seed-0 结果保留；新版通过率不能作为旧版后端性能提升的证据。v3 阶段仅覆盖下面五个目录任务，其余任务的 `success` 为 `null`，表示当时尚未审查。所有结果仍为 `parity_qualified=false`。
 
 ## 判据与解释范围
 

@@ -1,0 +1,111 @@
+{
+  "kind": "recorded_trajectory_keyframe_render",
+  "closed_loop_validation": false,
+  "render_settings": {
+    "width": 640,
+    "height": 480,
+    "frames_per_second": 20.0,
+    "native_sun_intensity": 1500.0,
+    "native_ambient_intensity": 450.0,
+    "native_color_pipeline": "source_display"
+  },
+  "task": "centrifuge_5430_cycle",
+  "backend": "mujoco",
+  "seed": 0,
+  "motion_pass": true,
+  "ideal_volume_pass": null,
+  "renderer_script_sha256": "204fc4aacc7cd815075a866d2d29c8bc2192bd70e40319e2092034464466ef2b",
+  "renderer_commit": "64d9f75c926ef0a8233387856b51a805ca603d46",
+  "inputs_sha256": {
+    "result.json": "4647770d7fc2f898f40ea4a9d8da67b540d7d2aca2d0070e9fb768485dff0f37",
+    "trajectory.npz": "1f850c73c873380ff68815c9f127a5d51a0bfc2560fe39c2670cf1de3803b387",
+    "source/model.mjb": "62e1fe9a42cfa69be80cb577fbfc682b3d412866021633c451a487d6079baccd",
+    "source/model.npz": "49fca1542411702e549d9ada0a37a684c850d20c629565ad4f5241db0d003909",
+    "source/scene.xml": "ce874c67c9aca444cb6517036d2bd550ba1528c00fe3a7dff9105469edb081ee"
+  },
+  "liquid_log_sha256": null,
+  "frames": [
+    {
+      "phase": "insert",
+      "camera": "table_cam_front",
+      "camera_id": 0,
+      "image": "insert-camera-0.png",
+      "image_sha256": "c79b8be82b6c44cf6fe1097a7a7f38183cb5aec0bfb0d37f1c75909aa0efac44",
+      "trajectory_index": 6191,
+      "recorded_time_s": 12.384000000000805,
+      "liquid_volumes_m3": []
+    },
+    {
+      "phase": "insert",
+      "camera": "/ur:wrist_cam",
+      "camera_id": 2,
+      "image": "insert-camera-2.png",
+      "image_sha256": "b49cabb5a5fe898ca0d94471f740de390f0286af8f8de241b5258bc937c858e5",
+      "trajectory_index": 6191,
+      "recorded_time_s": 12.384000000000805,
+      "liquid_volumes_m3": []
+    },
+    {
+      "phase": "close_lock",
+      "camera": "table_cam_front",
+      "camera_id": 0,
+      "image": "close_lock-camera-0.png",
+      "image_sha256": "9a532a1ddefd8b1637c6395cedacf857a1f01787186924d015c7ea2b2496a705",
+      "trajectory_index": 17489,
+      "recorded_time_s": 34.979999999996785,
+      "liquid_volumes_m3": []
+    },
+    {
+      "phase": "close_lock",
+      "camera": "/ur:wrist_cam",
+      "camera_id": 2,
+      "image": "close_lock-camera-2.png",
+      "image_sha256": "ea6643883ad7014f8d96585012e28554152ba8a6ed46e4e0100075aa2800c463",
+      "trajectory_index": 17489,
+      "recorded_time_s": 34.979999999996785,
+      "liquid_volumes_m3": []
+    },
+    {
+      "phase": "spin_brake",
+      "camera": "table_cam_front",
+      "camera_id": 0,
+      "image": "spin_brake-camera-0.png",
+      "image_sha256": "ba6ccaf976429c7a6a510aab5c00cdc18f43f00d53b3a03e0e428bda53fbb3f5",
+      "trajectory_index": 19789,
+      "recorded_time_s": 39.58000000000241,
+      "liquid_volumes_m3": []
+    },
+    {
+      "phase": "spin_brake",
+      "camera": "/ur:wrist_cam",
+      "camera_id": 2,
+      "image": "spin_brake-camera-2.png",
+      "image_sha256": "3eec45dd8903a0e29640c3f296211920d0bcbebb1754fdb321c12ac8b17eb209",
+      "trajectory_index": 19789,
+      "recorded_time_s": 39.58000000000241,
+      "liquid_volumes_m3": []
+    },
+    {
+      "phase": "safe_unlock",
+      "camera": "table_cam_front",
+      "camera_id": 0,
+      "image": "safe_unlock-camera-0.png",
+      "image_sha256": "ba6ccaf976429c7a6a510aab5c00cdc18f43f00d53b3a03e0e428bda53fbb3f5",
+      "trajectory_index": 19789,
+      "recorded_time_s": 39.58000000000241,
+      "liquid_volumes_m3": []
+    },
+    {
+      "phase": "safe_unlock",
+      "camera": "/ur:wrist_cam",
+      "camera_id": 2,
+      "image": "safe_unlock-camera-2.png",
+      "image_sha256": "592b42f79477cdfdb0c543d9fab5802eced1bbdcabf005102b2dde3af4ffed7c",
+      "trajectory_index": 19789,
+      "recorded_time_s": 39.58000000000241,
+      "liquid_volumes_m3": []
+    }
+  ],
+  "parity_qualified": false,
+  "scientific_process_validated": false
+}

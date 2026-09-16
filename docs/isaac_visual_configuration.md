@@ -12,6 +12,8 @@
 
 局域网实际对照：[源显示颜色画廊](http://10.5.174.93:8081/source-display-gallery.html)。三个相机、三个阶段，共 18 张真实图片，按相机切换。
 
+物理计数修正：旧移液回放报告只检查运行器计数，不能据此宣称 Kit 内部初始化完全没有步进。新增独立 PhysX 回调的 [离心机关键帧](validation/isaac_cycle_isaac_keyframes.json) 记录内部初始化 2 步、随后恢复记录状态；恢复后的各次渲染实际推进 0 个物理事件，姿态校验通过。内部初始化、回合执行和恢复后渲染分别报告。
+
 | MuJoCo：吸液完成 | Isaac：同阶段记录终态 |
 | --- | --- |
 | ![](assets/transfer-mujoco-display-reference-aspirate.png) | ![](assets/transfer-isaac-display-aspirate.png) |

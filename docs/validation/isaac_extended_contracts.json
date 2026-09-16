@@ -30,5 +30,38 @@
   "failed_first_attempt": {
     "reason": "Empty equality parameter lists lost their (0,11) shape during transport; fixed before retry.",
     "log": "temp/comprehensive_work/comprehensive-native-contracts.log"
-  }
+  },
+  "prior_fixture_result": {
+    "path": "temp/backend_parity/comprehensive-native-contracts-retry/result.json",
+    "terrain_shape": [
+      3,
+      3
+    ],
+    "xml_terrain_samples_restorable": false
+  },
+  "final_fixture_runtime_commit": "3080443",
+  "final_fixture_result_path": "temp/backend_parity/comprehensive-final-contracts/result.json",
+  "final_fixture_result_sha256": "39c855af576443f632258f96035361b7d7531c8162512ac7a121144350cc8df6",
+  "final_fixture_source_sha256": {
+    "body_wrench": {
+      "model.npz": "1933c83975a2d7cbf3080fe5901b468e2ee25a7423bf62c30fe8267e4c708c24",
+      "scene.xml": "93c129aff175990865f23eb0eb0b66d88ec48f1ec2dbe221c6301ae8bb19789a",
+      "scene.json": "da2ae70d7b5ad998fed85aed9924a434a6b2d0279735d72c9c7f80b026ed4beb"
+    },
+    "captured_weld": {
+      "model.npz": "771413a517dca0e87345b67a31cab8802aee407c9a72e7be825fa89ee1ac5a00",
+      "scene.xml": "60f522546742394fae41de33c4cb61fa98b970fa81de5a2cc60f5ea3b58ef32f",
+      "scene.json": "95e33640de0eef6318e9609dd3157493baef01a6f51c1f8a69d4b3716434d6e5"
+    },
+    "heightfield": {
+      "model.npz": "99da6fd1a4f74fbc3a47a6d9cf9e534bcc930fd45d56fb05974241b9e34ad705",
+      "scene.xml": "9391bce921b6948d7441c4bfedb09f71b70960cacfa43c53095ab08375519f84",
+      "scene.json": "ccb890c3499ef47b462279217f32a14f5c828b82787c52f83fb31a04190dee72"
+    }
+  },
+  "terrain_shape": [
+    5,
+    5
+  ],
+  "xml_terrain_samples_restorable": true
 }
