@@ -48,6 +48,7 @@ function update(b,data){const s=states[b];s.running=data.running;s.images=data.i
   if(volume){
    const m=volume.metrics,tip=m.reservoirs.tip.volume_m3*1e9;
    $(b+'-status').textContent+=`\n液量模型：${volume.success?'通过':'未通过'} · 吸头内 ${tip.toFixed(1)} µL · 容器内 ${(m.reservoirs.source.volume_m3*1e6).toFixed(3)} mL`;
+   if(Number.isFinite(m.max_geometric_volume_error_m3))$(b+'-status').textContent+=`\n液面几何体积最大误差 ${(m.max_geometric_volume_error_m3*1e9).toFixed(6)} µL`;
    $(b+'-status').textContent+='\n体积模型读取实际按钮位移；真实流体与移液精度待校准。';
   }
  }

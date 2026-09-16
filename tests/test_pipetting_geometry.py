@@ -10,10 +10,32 @@ import trimesh
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'Hooke'))
 from pipetting import PipetteTransferSystem
-from liquid import ContainerSystem
+from liquid import ContainerSystem, Container, LiquidState
+from meshplane import Mesh
 
 
 class PipettingGeometryTests(unittest.TestCase):
+    def test_small_aspiration_strokes_change_the_geometric_surface_volume(self):
+        mesh = trimesh.creation.cylinder(radius=.02, height=.05, sections=64)
+        boundary = np.flatnonzero(mesh.vertices[:, 2] > .024)
+        definition = Mesh(mesh.vertices, mesh.faces.astype(np.uint64), boundary.astype(np.uint64))
+        liquid = LiquidState.create(definition, definition.volume*.5, np.array([0., 0., 9.81]), .002)
+        liquid.update_level()
+        initial = liquid.volume
+        for step in range(1, 201):
+            liquid.volume = initial-step*1e-9
+            liquid.update_level()
+            geometric_volume = liquid.meshplane.calculate_volume(liquid.surface.distance)[0]
+            self.assertAlmostEqual(geometric_volume, liquid.volume, delta=1e-12)
+
+        for normal in (np.array([0., 0., 9.81]), np.array([9.81, 0., 0.])):
+            for volume in (1e-9, definition.volume*.8):
+                with self.subTest(normal=normal, volume=volume):
+                    liquid = LiquidState.create(definition, volume, normal, .002)
+                    liquid.update_level()
+                    geometric_volume = liquid.meshplane.calculate_volume(liquid.surface.distance)[0]
+                    self.assertAlmostEqual(geometric_volume, volume, delta=1e-12)
+
     def test_volume_update_does_not_advance_surface_dynamics_or_add_a_log_tick(self):
         system = ContainerSystem.__new__(ContainerSystem)
         system.definition = SimpleNamespace(interior=SimpleNamespace(volume=1e-6))
@@ -40,13 +62,14 @@ class PipettingGeometryTests(unittest.TestCase):
 
     def container(self, position, volume):
         mesh = trimesh.creation.box(extents=[.01, .01, .01])
-        state = SimpleNamespace(position=np.asarray(position), rotation_matrix=np.eye(3), volume=volume)
-        state.liquid = SimpleNamespace(surface_normal=np.array([0., 0., 1.]),
-                                       surface=SimpleNamespace(distance=.004)) if volume else None
-        system = SimpleNamespace(container=state, definition=SimpleNamespace(_interior=mesh,
-                                 interior=SimpleNamespace(volume=mesh.volume)))
-        def set_volume(data, value):state.volume = value
-        system.set_volume = set_volume
+        definition = SimpleNamespace(_interior=mesh, interior=Mesh(mesh.vertices, mesh.faces.astype(np.uint64),
+            np.flatnonzero(mesh.vertices[:, 2] > .004).astype(np.uint64)))
+        system = ContainerSystem.__new__(ContainerSystem)
+        system.definition = definition
+        system.container = Container(definition, None, None, None, False, None, .002)
+        system.container.update(np.asarray(position), np.eye(3), np.array([0., 0., 9.81]), volume)
+        system.log = SimpleNamespace(normal=[], distance=[], present=[], volume_m3=[])
+        system._acceleration = lambda data: np.array([0., 0., 9.81])
         return system
 
     def fixture(self):
@@ -59,6 +82,7 @@ class PipettingGeometryTests(unittest.TestCase):
         system = PipetteTransferSystem(source=source, destinations={'target': target},
                                        tip_site='tip', plunger_joint='plunger', tip_capacity_m3=200e-9)
         system.reload(model)
+        data.mocap_pos[0] = [0., 0., -.001]
         mujoco.mj_forward(model, data)
         system.reset(data)
         return model, data, system, source, target
@@ -77,6 +101,8 @@ class PipettingGeometryTests(unittest.TestCase):
         mujoco.mj_kinematics(model, data)
         system.update(data)
         self.assertAlmostEqual(target.container.volume, 100e-9)
+        geometric_volume = target.container.liquid.meshplane.calculate_volume(target.container.liquid.surface.distance)[0]
+        self.assertAlmostEqual(geometric_volume, 100e-9, delta=1e-12)
         self.assertAlmostEqual(system.pipette.ledger.total_m3, 500e-9)
 
     def test_releasing_outside_the_interior_does_not_aspirate(self):

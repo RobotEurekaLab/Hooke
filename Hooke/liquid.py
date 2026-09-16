@@ -156,8 +156,29 @@ class LiquidState:
         low, high, soft_high = self.meshplane.get_plane_distance_range()
         distance = self.meshplane.solve_plane_distance(self.volume, self.surface.distance)
 
+        # The compiled solver's stopping rule can miss small pipette strokes.
+        # Refine against volume, using a bracket for shallow or tilted fills.
+        tolerance = max(1e-12, self.max_volume*1e-10)
+        for _ in range(32):
+            volume, gradient = self.meshplane.calculate_volume(distance)
+            error = volume-self.volume
+            if not np.isfinite(volume) or not np.isfinite(gradient):
+                raise RuntimeError('Non-finite liquid surface volume')
+            if abs(error) <= tolerance:
+                break
+            if error < 0:
+                low = distance
+            else:
+                high = distance
+            candidate = distance-error/gradient if gradient > 0 else np.nan
+            distance = candidate if low < candidate < high else (low+high)/2
+        else:
+            raise RuntimeError('Liquid surface volume refinement did not converge')
+
         valid = distance < soft_high
         result = self.meshplane.calculate_plane(distance)
+        if result is None:
+            raise RuntimeError('Liquid surface is below the mesh resolution')
 
         self.surface = LiquidSurface(
             valid=valid,
