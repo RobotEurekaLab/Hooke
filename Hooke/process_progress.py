@@ -9,6 +9,8 @@ import numpy as np
 from contact_state import body_geoms, touching
 from simulation import System
 
+PROCESS_NAMES = frozenset(('pipette', 'pipette_transfer', 'vortex_mixer'))
+
 
 @dataclass
 class PipetteSequence:
@@ -145,7 +147,8 @@ class ProcessProgress:
             self.source_geoms = body_geoms(model, task.object.body_id)
             self.robot = {i for i in range(model.ngeom)
                           if '/ur:' in model.body(int(model.geom_bodyid[i])).name}
-            self.destination_body = model.body('6/centrifuge_50ml_screw_body').id
+            destination = task.liquid_transfer.containers[task.liquid_transfer.target_reservoir]
+            self.destination_body = int(model.geom_bodyid[destination.geom_id])
             self.source_anchor = None
         elif name == 'vortex_mixer':
             self.state = VortexSequence()

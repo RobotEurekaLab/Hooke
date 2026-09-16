@@ -12,6 +12,7 @@ import uuid
 
 from flask import Blueprint, jsonify, request, send_file, abort
 from archetypes.task_catalog import CATALOG
+from process_progress import PROCESS_NAMES
 
 ROOT=Path(__file__).resolve().parents[2]
 EVIDENCE=ROOT/'temp/backend_parity'
@@ -39,6 +40,7 @@ def expert_evidence():
     rows={}
     sources=[EVIDENCE/folder/'task_results.json' for folder in
              ('tasks_mujoco','native_v4_tasks','native_v5_tasks','native_v6_regression_r3','native_v6_remaining','native_v6_vortex_final','native_v6_pipette_final')]
+    sources.append(ROOT/'docs/validation/isaac_pipette_transfer_summary.json')
     for path in sources:
         for row in read_json(path).get('results',[]):
             if row.get('seed')!=0 or row.get('mode')!='expert':continue
@@ -58,8 +60,9 @@ def catalog():
     reports=evidence();experts=expert_evidence()
     return jsonify(tasks=[{'name':e.name,'description':e.description,'category':e.category,
                            'display_only':inventory.get(e.name,{}).get('display_only',False),
-                           'check_constant_true':inventory.get(e.name,{}).get('check_constant_true',False),
-                           'check_constant_false':inventory.get(e.name,{}).get('check_constant_false',False),
+                           'check_constant_true':e.name not in PROCESS_NAMES and inventory.get(e.name,{}).get('check_constant_true',False),
+                           'check_constant_false':e.name not in PROCESS_NAMES and inventory.get(e.name,{}).get('check_constant_false',False),
+                           'shared_process_progress':e.name in PROCESS_NAMES,
                            'expert_validation':experts.get(e.name,{}),
                            'isaac':reports.get(e.name)} for e in CATALOG.values()],
                    completed=len(reports),passed=sum(r.get('status') in ('LOAD_STEP_OK','LOAD_STEP_RENDER_OK') and r.get('finite',False) for r in reports.values()),

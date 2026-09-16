@@ -18,7 +18,7 @@ from contact_state import body_geoms, touching
 from archetypes.centrifuge_insertion import insertion_target
 from grasp.quat import quatapply, quatinv
 
-from process_progress import ProcessProgress, PipetteSequence, VortexSequence
+from process_progress import PROCESS_NAMES, ProcessProgress, PipetteSequence, VortexSequence
 
 VERSION = 'hooke-manipulation-v4'
 
@@ -108,7 +108,7 @@ class EpisodeAssessment:
         model, data = task.model, task.data
         self.constant = literal_predicate(task.check)
         self.progress = None
-        if name in ('pipette', 'pipette_transfer', 'vortex_mixer'):
+        if name in PROCESS_NAMES:
             self.progress = ProcessProgress(task, name)
             self.state = self.progress.state
         elif name in ('close_fume_hood', 'open_fume_hood'):

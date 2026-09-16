@@ -63,3 +63,13 @@ class VolumeAssessmentTests(unittest.TestCase):
         self.assertFalse(report['checks']['geometric_surface_volume_matches_ledger'])
         self.assertIsNone(report['metrics']['max_geometric_volume_error_m3'])
         json.dumps(report, allow_nan=False)
+
+    def test_nonfinite_cached_volume_is_a_serializable_failure(self):
+        transfer = self.transfer()
+        transfer.source.container.volume = float('nan')
+        observer = PipetteVolumeAssessment(transfer)
+        observer.update()
+        report = observer.report()
+        self.assertFalse(report['checks']['surface_volume_matches_ledger'])
+        self.assertIsNone(report['metrics']['max_surface_volume_error_m3'])
+        json.dumps(report, allow_nan=False)

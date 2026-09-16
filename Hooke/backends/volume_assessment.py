@@ -20,6 +20,8 @@ class PipetteVolumeAssessment:
         for name, system in self.transfer.containers.items():
             volume = state['reservoirs'][name]['volume_m3']
             error = abs(system.container.volume-volume)
+            if not np.isfinite(error):
+                error = float('inf')
             liquid = system.container.liquid
             geometric_volume = 0. if liquid is None else liquid.meshplane.calculate_volume(liquid.surface.distance)[0]
             geometric_error = abs(geometric_volume-volume)
@@ -54,6 +56,6 @@ class PipetteVolumeAssessment:
                     metrics=dict(state, reservoir_errors_m3={name: {key: value if np.isfinite(value) else None
                                  for key, value in errors.items()} for name, errors in self.reservoir_errors.items()},
                                  max_conservation_error_m3=self.max_conservation_error_m3,
-                                 max_surface_volume_error_m3=self.max_surface_volume_error_m3,
+                                 max_surface_volume_error_m3=self.max_surface_volume_error_m3 if np.isfinite(self.max_surface_volume_error_m3) else None,
                                  max_geometric_volume_error_m3=self.max_geometric_volume_error_m3 if np.isfinite(self.max_geometric_volume_error_m3) else None),
                     scientific_process_validated=False)
