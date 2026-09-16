@@ -2,6 +2,7 @@
 
 import argparse
 import importlib.metadata
+import importlib.util
 import json
 from pathlib import Path
 import platform
@@ -21,17 +22,23 @@ def diagnose(gpu=None):
             Path(__file__).resolve().parents[1] / "libmjlab.so.3.3.0"
         ).is_file(),
         "nvidia_smi": shutil.which("nvidia-smi") is not None,
+        "meshplane_module_found": importlib.util.find_spec("meshplane")
+        is not None,
     }
+    packages = {}
+    for name in ("mujoco", "numpy", "scipy", "jax", "toppra", "Pillow", "Flask"):
+        try:
+            packages[name] = importlib.metadata.version(name)
+        except importlib.metadata.PackageNotFoundError:
+            packages[name] = None
+    checks["source_packages"] = all(packages.values())
     report = dict(
         python=platform.python_version(),
         isaac_path=str(install),
         gpu=selected,
         checks=checks,
         render_settings=RenderSettings.from_environment().report(),
-        packages={
-            name: importlib.metadata.version(name)
-            for name in ("mujoco", "numpy", "scipy")
-        },
+        packages=packages,
         driver_modified=False,
         capabilities=registry(),
     )

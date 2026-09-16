@@ -64,7 +64,8 @@ def capabilities():
 
 @bp.get('/api/backends/catalog')
 def catalog():
-    inventory={r['task']:r for r in read_json(EVIDENCE/'inventory.json').get('entries',[])}
+    inspected=read_json(ROOT/'docs/validation/isaac_catalogue_preflight_summary.json') or read_json(EVIDENCE/'inventory.json')
+    inventory={r['task']:r for r in inspected.get('entries',[])}
     reports=evidence();experts=expert_evidence()
     return jsonify(tasks=[{'name':e.name,'description':e.description,'category':e.category,
                            'display_only':inventory.get(e.name,{}).get('display_only',False),

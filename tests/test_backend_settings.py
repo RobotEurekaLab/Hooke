@@ -11,11 +11,30 @@ import mujoco
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Hooke"))
 from backends.capabilities import preflight
 from backends.config import isaac_gpu
+from backends.doctor import diagnose
 from backends.render_settings import RenderSettings
 from backends.worker_client import IsaacWorker
 
 
 class BackendSettings(unittest.TestCase):
+    def test_missing_dependency_is_reported_without_losing_other_checks(self):
+        def version(name):
+            if name == "toppra":
+                import importlib.metadata
+
+                raise importlib.metadata.PackageNotFoundError(name)
+            return "test-version"
+
+        device = "6, gpu-uuid, RTX 4090, 535.230.02, 0, 24564"
+        with mock.patch(
+            "backends.doctor.importlib.metadata.version", side_effect=version
+        ), mock.patch("backends.doctor.subprocess.check_output", return_value=device):
+            report = diagnose(6)
+        self.assertIsNone(report["packages"]["toppra"])
+        self.assertFalse(report["environment_files_ready"])
+        self.assertEqual(report["device"]["driver"], "535.230.02")
+        self.assertFalse(report["native_runtime_started"])
+
     def test_ball_rejected_before_native_start_and_free_body_allowed(self):
         for joint, blockers in [
             ('<joint type="ball"/>', ["ball_joints"]),
