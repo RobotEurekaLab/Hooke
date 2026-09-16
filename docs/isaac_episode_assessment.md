@@ -4,7 +4,7 @@
 
 `backends.run` 继续在回合结束时调用一次原 `task.check()`，保存 `source_check`、`source_success` 和原状态码。新增 `assessment` 使用 `hooke-manipulation-v2` 判据，在每次 `Manager.step()` 完成物理和仪器系统更新后采样。读取报告不会更新历史，也不会再次调用原判据。
 
-这次改变验收逻辑，没有改变资产、控制器、动力学参数或专家默认动作。旧 seed-0 结果保留；新版通过率不能作为旧版后端性能提升的证据。当前仅覆盖下面五个目录任务，其余任务的新版 `success` 为 `null`，表示尚未审查。所有结果仍为 `parity_qualified=false`。
+验收层不改变资产、动力学参数或专家默认动作。多种子回归另发现零位移路径规划异常，随后修复 `Topp`：相同位置和朝向返回保持轨迹，实际平移与旋转沿用原算法。修改前与修复后结果分别保留。旧 seed-0 结果保留；新版通过率不能作为旧版后端性能提升的证据。当前仅覆盖下面五个目录任务，其余任务的新版 `success` 为 `null`，表示尚未审查。所有结果仍为 `parity_qualified=false`。
 
 ## 判据与解释范围
 
@@ -46,4 +46,4 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m backends.matrix \
 
 ## 本轮实测
 
-运行结果另行归档；旧数据见 [seed-0 报告](isaac_regression_results.md)。
+新结果见 [多种子报告](isaac_multiseed_results.md)；旧数据见 [seed-0 报告](isaac_regression_results.md)。

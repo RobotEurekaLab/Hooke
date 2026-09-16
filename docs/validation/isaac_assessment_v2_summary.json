@@ -1,0 +1,4817 @@
+{
+  "scope": "Selected task assessments and multi-seed regression; not all 22 experts, physical equivalence or scientific process validation.",
+  "parity_qualified": false,
+  "driver": "535.230.02 unchanged",
+  "assessment_version": "hooke-manipulation-v2",
+  "assessment_sha256": "3d3e0a913677ae52054b8c7cfb536465025856d8f307d86ebc704f9ba5c7badf",
+  "isaac_task_threads": 8,
+  "render": false,
+  "paired_10_seeds_before_zero_path_fix": {
+    "groups": [
+      {
+        "task": "close_fume_hood",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 10,
+        "recorded": 10,
+        "completed": 10,
+        "status_counts": {
+          "TASK_SUCCEEDED": 10
+        },
+        "legacy_successes": 10,
+        "legacy_constant_count": 0,
+        "v2_assessed": 10,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "handle_contact_50ms": 10,
+          "travel_in_contact_50mm": 10
+        }
+      },
+      {
+        "task": "close_fume_hood",
+        "mode": "expert",
+        "backend": "isaac",
+        "requested": 10,
+        "recorded": 10,
+        "completed": 9,
+        "status_counts": {
+          "TASK_SUCCEEDED": 9,
+          "ERROR": 1
+        },
+        "legacy_successes": 9,
+        "legacy_constant_count": 0,
+        "v2_assessed": 9,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "handle_contact_50ms": 7,
+          "travel_in_contact_50mm": 9
+        }
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 10,
+        "recorded": 10,
+        "completed": 10,
+        "status_counts": {
+          "TASK_SUCCEEDED": 10
+        },
+        "legacy_successes": 10,
+        "legacy_constant_count": 0,
+        "v2_assessed": 0,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {}
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "mode": "expert",
+        "backend": "isaac",
+        "requested": 10,
+        "recorded": 10,
+        "completed": 10,
+        "status_counts": {
+          "TASK_SUCCEEDED": 10
+        },
+        "legacy_successes": 10,
+        "legacy_constant_count": 0,
+        "v2_assessed": 0,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {}
+      }
+    ],
+    "pairs": [
+      {
+        "task": "close_fume_hood",
+        "seed": 0,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 1,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 2,
+        "mode": "expert",
+        "completed": false,
+        "legacy_agreement": null,
+        "v2_agreement": null
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 3,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 4,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 5,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 6,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 7,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 8,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 9,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 0,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 1,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 2,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 3,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 4,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 5,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 6,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 7,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 8,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "seed": 9,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": null
+      }
+    ],
+    "parity_qualified": false,
+    "requested_episodes": 40,
+    "recorded_episodes": 40,
+    "results": [
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9275,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921413652,
+            "position": 0.0009021025921413652,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9275,
+        "simulation_s": 18.550000000000598,
+        "total_wall_s": 10.085187956690788,
+        "evidence": "mujoco/close_fume_hood/seed_0/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 1,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8366,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921413553,
+            "position": 0.0009021025921413553,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8366,
+        "simulation_s": 16.732000000001605,
+        "total_wall_s": 9.984847243409604,
+        "evidence": "mujoco/close_fume_hood/seed_1/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 2,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8987,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921415735,
+            "position": 0.0009021025921415735,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8987,
+        "simulation_s": 17.974000000000917,
+        "total_wall_s": 9.833930317312479,
+        "evidence": "mujoco/close_fume_hood/seed_2/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 3,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8736,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0008865368387968585,
+            "position": 0.0008865368387968585,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8736,
+        "simulation_s": 17.472000000001195,
+        "total_wall_s": 10.419261367991567,
+        "evidence": "mujoco/close_fume_hood/seed_3/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 4,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8915,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0008851144246019168,
+            "position": 0.0008851144246019168,
+            "contact_s": 0.008000000000002672,
+            "travel_m": 9.03401229284599e-06,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8915,
+        "simulation_s": 17.830000000000997,
+        "total_wall_s": 9.995730007067323,
+        "evidence": "mujoco/close_fume_hood/seed_4/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 5,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 35644,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009015976780947725,
+            "position": 0.0009015976780947725,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 35644,
+        "simulation_s": 71.28800000001526,
+        "total_wall_s": 19.14820469589904,
+        "evidence": "mujoco/close_fume_hood/seed_5/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 6,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9306,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921412698,
+            "position": 0.0009021025921412698,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9306,
+        "simulation_s": 18.612000000000563,
+        "total_wall_s": 10.850981944706291,
+        "evidence": "mujoco/close_fume_hood/seed_6/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 7,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9398,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921412614,
+            "position": 0.0009021025921412614,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9398,
+        "simulation_s": 18.79600000000046,
+        "total_wall_s": 10.105058541055769,
+        "evidence": "mujoco/close_fume_hood/seed_7/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 8,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9419,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921412528,
+            "position": 0.0009021025921412528,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9419,
+        "simulation_s": 18.838000000000438,
+        "total_wall_s": 9.97620003670454,
+        "evidence": "mujoco/close_fume_hood/seed_8/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 9,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8117,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921414106,
+            "position": 0.0009021025921414106,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8117,
+        "simulation_s": 16.23400000000188,
+        "total_wall_s": 9.64474810520187,
+        "evidence": "mujoco/close_fume_hood/seed_9/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4622,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4622,
+        "simulation_s": 9.243999999999756,
+        "total_wall_s": 7.938885847106576,
+        "evidence": "mujoco/hplc_injector_plunger/seed_0/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 1,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4594,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4594,
+        "simulation_s": 9.187999999999738,
+        "total_wall_s": 7.96505320770666,
+        "evidence": "mujoco/hplc_injector_plunger/seed_1/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 2,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4595,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4595,
+        "simulation_s": 9.189999999999738,
+        "total_wall_s": 8.427457277663052,
+        "evidence": "mujoco/hplc_injector_plunger/seed_2/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 3,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4672,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4672,
+        "simulation_s": 9.34399999999979,
+        "total_wall_s": 7.89434819528833,
+        "evidence": "mujoco/hplc_injector_plunger/seed_3/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 4,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4772,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4772,
+        "simulation_s": 9.543999999999857,
+        "total_wall_s": 7.9074677913449705,
+        "evidence": "mujoco/hplc_injector_plunger/seed_4/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 5,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4573,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4573,
+        "simulation_s": 9.145999999999724,
+        "total_wall_s": 7.908949987031519,
+        "evidence": "mujoco/hplc_injector_plunger/seed_5/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 6,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4636,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4636,
+        "simulation_s": 9.271999999999766,
+        "total_wall_s": 7.905872342176735,
+        "evidence": "mujoco/hplc_injector_plunger/seed_6/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 7,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4606,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4606,
+        "simulation_s": 9.211999999999746,
+        "total_wall_s": 7.953232382889837,
+        "evidence": "mujoco/hplc_injector_plunger/seed_7/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 8,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4707,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4707,
+        "simulation_s": 9.413999999999813,
+        "total_wall_s": 7.903682789765298,
+        "evidence": "mujoco/hplc_injector_plunger/seed_8/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "mujoco",
+        "seed": 9,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4498,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4498,
+        "simulation_s": 8.995999999999674,
+        "total_wall_s": 7.841971700079739,
+        "evidence": "mujoco/hplc_injector_plunger/seed_9/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8581,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8581,
+        "simulation_s": 17.162,
+        "total_wall_s": 64.52440067473799,
+        "max_fk_position_error_m": 5.014705913443864e-07,
+        "evidence": "isaac/close_fume_hood/seed_0/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 1,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8252,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8252,
+        "simulation_s": 16.504,
+        "total_wall_s": 63.567446453962475,
+        "max_fk_position_error_m": 5.107883768335506e-07,
+        "evidence": "isaac/close_fume_hood/seed_1/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 2,
+        "mode": "expert",
+        "status": "ERROR",
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 5776,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 5776,
+        "simulation_s": 11.552,
+        "total_wall_s": 51.93152518616989,
+        "max_fk_position_error_m": 5.905732151101872e-07,
+        "evidence": "isaac/close_fume_hood/seed_2/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 3,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8586,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8586,
+        "simulation_s": 17.172,
+        "total_wall_s": 66.14860369870439,
+        "max_fk_position_error_m": 5.17489853850272e-07,
+        "evidence": "isaac/close_fume_hood/seed_3/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 4,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9129,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": true,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 2.381480967983407e-08,
+            "position": 2.381480967983407e-08,
+            "contact_s": 0.2060000000000013,
+            "travel_m": -0.0019181581446900964,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9129,
+        "simulation_s": 18.258,
+        "total_wall_s": 66.55835266737267,
+        "max_fk_position_error_m": 5.782384314154523e-07,
+        "evidence": "isaac/close_fume_hood/seed_4/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 5,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9208,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9208,
+        "simulation_s": 18.416,
+        "total_wall_s": 67.83678474603221,
+        "max_fk_position_error_m": 6.098725770520182e-07,
+        "evidence": "isaac/close_fume_hood/seed_5/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 6,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8381,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8381,
+        "simulation_s": 16.762,
+        "total_wall_s": 64.73335368791595,
+        "max_fk_position_error_m": 4.940316758141809e-07,
+        "evidence": "isaac/close_fume_hood/seed_6/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 7,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9109,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9109,
+        "simulation_s": 18.218,
+        "total_wall_s": 66.52079985663295,
+        "max_fk_position_error_m": 5.426435488508827e-07,
+        "evidence": "isaac/close_fume_hood/seed_7/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 8,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 7840,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": true,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 2.381480967983407e-08,
+            "position": 2.381480967983407e-08,
+            "contact_s": 0.5279999999999987,
+            "travel_m": -0.0048975870013237,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 7840,
+        "simulation_s": 15.68,
+        "total_wall_s": 59.815763752907515,
+        "max_fk_position_error_m": 6.195498935694318e-07,
+        "evidence": "isaac/close_fume_hood/seed_8/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 9,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9098,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9098,
+        "simulation_s": 18.196,
+        "total_wall_s": 67.03101719589904,
+        "max_fk_position_error_m": 5.465119135440021e-07,
+        "evidence": "isaac/close_fume_hood/seed_9/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4622,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4622,
+        "simulation_s": 9.244,
+        "total_wall_s": 42.59313208423555,
+        "max_fk_position_error_m": 5.156436123611329e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_0/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 1,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4594,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4594,
+        "simulation_s": 9.188,
+        "total_wall_s": 42.329172289930284,
+        "max_fk_position_error_m": 5.493125223620223e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_1/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 2,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4595,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4595,
+        "simulation_s": 9.19,
+        "total_wall_s": 42.61256550997496,
+        "max_fk_position_error_m": 5.579051037791816e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_2/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 3,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4672,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4672,
+        "simulation_s": 9.344,
+        "total_wall_s": 43.60182487219572,
+        "max_fk_position_error_m": 5.266017495680773e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_3/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 4,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4772,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4772,
+        "simulation_s": 9.544,
+        "total_wall_s": 43.81137455115095,
+        "max_fk_position_error_m": 5.404368305623495e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_4/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 5,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4573,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4573,
+        "simulation_s": 9.146,
+        "total_wall_s": 42.400326947215945,
+        "max_fk_position_error_m": 5.291254698343289e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_5/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 6,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4636,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4636,
+        "simulation_s": 9.272,
+        "total_wall_s": 42.14483168302104,
+        "max_fk_position_error_m": 5.529267542711253e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_6/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 7,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4606,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4606,
+        "simulation_s": 9.212,
+        "total_wall_s": 42.68714127596468,
+        "max_fk_position_error_m": 5.30044991896009e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_7/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 8,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4707,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4707,
+        "simulation_s": 9.414,
+        "total_wall_s": 42.94291549688205,
+        "max_fk_position_error_m": 5.186748729042263e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_8/expert/result.json"
+      },
+      {
+        "task": "hplc_injector_plunger",
+        "backend": "isaac",
+        "seed": 9,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "unaudited_legacy",
+          "samples": 4498,
+          "legacy_constant": null,
+          "checks": {},
+          "metrics": {},
+          "failure_reasons": [],
+          "success": null,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": null,
+          "scientific_process_validated": false
+        },
+        "steps": 4498,
+        "simulation_s": 8.996,
+        "total_wall_s": 42.610991588793695,
+        "max_fk_position_error_m": 5.308170807135713e-07,
+        "evidence": "isaac/hplc_injector_plunger/seed_9/expert/result.json"
+      }
+    ],
+    "provenance": {
+      "git_head": "584933b808763942e4e2785822c5d7931866574a",
+      "inputs_sha256": "300345ca774f5a98ddbc6dcf2488335e75fcdfab6e8d99f6f17c2f81260e95d0",
+      "assessment_version": "hooke-manipulation-v2",
+      "python": "3.12.4",
+      "packages": {
+        "mujoco": "3.3.0",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1"
+      },
+      "isaac_task_threads": "8"
+    }
+  },
+  "fume_10_seeds_after_zero_path_fix": {
+    "groups": [
+      {
+        "task": "close_fume_hood",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 10,
+        "recorded": 10,
+        "completed": 10,
+        "status_counts": {
+          "TASK_SUCCEEDED": 10
+        },
+        "legacy_successes": 10,
+        "legacy_constant_count": 0,
+        "v2_assessed": 10,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "handle_contact_50ms": 10,
+          "travel_in_contact_50mm": 10
+        }
+      },
+      {
+        "task": "close_fume_hood",
+        "mode": "expert",
+        "backend": "isaac",
+        "requested": 10,
+        "recorded": 10,
+        "completed": 10,
+        "status_counts": {
+          "TASK_SUCCEEDED": 10
+        },
+        "legacy_successes": 10,
+        "legacy_constant_count": 0,
+        "v2_assessed": 10,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "handle_contact_50ms": 8,
+          "travel_in_contact_50mm": 10
+        }
+      }
+    ],
+    "pairs": [
+      {
+        "task": "close_fume_hood",
+        "seed": 0,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 1,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 2,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 3,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 4,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 5,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 6,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 7,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 8,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      },
+      {
+        "task": "close_fume_hood",
+        "seed": 9,
+        "mode": "expert",
+        "completed": true,
+        "legacy_agreement": true,
+        "v2_agreement": true
+      }
+    ],
+    "parity_qualified": false,
+    "requested_episodes": 20,
+    "recorded_episodes": 20,
+    "results": [
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9275,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921413652,
+            "position": 0.0009021025921413652,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9275,
+        "simulation_s": 18.550000000000598,
+        "total_wall_s": 9.896090753842145,
+        "evidence": "mujoco/close_fume_hood/seed_0/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 1,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8366,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921413553,
+            "position": 0.0009021025921413553,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8366,
+        "simulation_s": 16.732000000001605,
+        "total_wall_s": 9.616397250909358,
+        "evidence": "mujoco/close_fume_hood/seed_1/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 2,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8987,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921415735,
+            "position": 0.0009021025921415735,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8987,
+        "simulation_s": 17.974000000000917,
+        "total_wall_s": 9.791215349920094,
+        "evidence": "mujoco/close_fume_hood/seed_2/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 3,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8736,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0008865368387968585,
+            "position": 0.0008865368387968585,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8736,
+        "simulation_s": 17.472000000001195,
+        "total_wall_s": 9.743776476942003,
+        "evidence": "mujoco/close_fume_hood/seed_3/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 4,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8915,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0008851144246019168,
+            "position": 0.0008851144246019168,
+            "contact_s": 0.008000000000002672,
+            "travel_m": 9.03401229284599e-06,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8915,
+        "simulation_s": 17.830000000000997,
+        "total_wall_s": 9.738755580037832,
+        "evidence": "mujoco/close_fume_hood/seed_4/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 5,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 35644,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009015976780947725,
+            "position": 0.0009015976780947725,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 35644,
+        "simulation_s": 71.28800000001526,
+        "total_wall_s": 18.125919699203223,
+        "evidence": "mujoco/close_fume_hood/seed_5/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 6,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9306,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921412698,
+            "position": 0.0009021025921412698,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9306,
+        "simulation_s": 18.612000000000563,
+        "total_wall_s": 9.994801522698253,
+        "evidence": "mujoco/close_fume_hood/seed_6/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 7,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9398,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921412614,
+            "position": 0.0009021025921412614,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9398,
+        "simulation_s": 18.79600000000046,
+        "total_wall_s": 10.105301070958376,
+        "evidence": "mujoco/close_fume_hood/seed_7/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 8,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9419,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921412528,
+            "position": 0.0009021025921412528,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9419,
+        "simulation_s": 18.838000000000438,
+        "total_wall_s": 10.083346064202487,
+        "evidence": "mujoco/close_fume_hood/seed_8/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 9,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8117,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921414106,
+            "position": 0.0009021025921414106,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8117,
+        "simulation_s": 16.23400000000188,
+        "total_wall_s": 9.466968810651451,
+        "evidence": "mujoco/close_fume_hood/seed_9/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8581,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8581,
+        "simulation_s": 17.162,
+        "total_wall_s": 64.38011101307347,
+        "max_fk_position_error_m": 5.014705913443864e-07,
+        "evidence": "isaac/close_fume_hood/seed_0/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 1,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8252,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8252,
+        "simulation_s": 16.504,
+        "total_wall_s": 62.29781204415485,
+        "max_fk_position_error_m": 5.107883768335506e-07,
+        "evidence": "isaac/close_fume_hood/seed_1/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 2,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8403,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8403,
+        "simulation_s": 16.806,
+        "total_wall_s": 62.348773582838476,
+        "max_fk_position_error_m": 5.905732151101872e-07,
+        "evidence": "isaac/close_fume_hood/seed_2/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 3,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8586,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8586,
+        "simulation_s": 17.172,
+        "total_wall_s": 66.75236931582913,
+        "max_fk_position_error_m": 5.17489853850272e-07,
+        "evidence": "isaac/close_fume_hood/seed_3/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 4,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9129,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": true,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 2.381480967983407e-08,
+            "position": 2.381480967983407e-08,
+            "contact_s": 0.2060000000000013,
+            "travel_m": -0.0019181581446900964,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9129,
+        "simulation_s": 18.258,
+        "total_wall_s": 65.10565529996529,
+        "max_fk_position_error_m": 5.782384314154523e-07,
+        "evidence": "isaac/close_fume_hood/seed_4/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 5,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9208,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9208,
+        "simulation_s": 18.416,
+        "total_wall_s": 67.23869194509462,
+        "max_fk_position_error_m": 6.098725770520182e-07,
+        "evidence": "isaac/close_fume_hood/seed_5/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 6,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 8381,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 8381,
+        "simulation_s": 16.762,
+        "total_wall_s": 62.83085353905335,
+        "max_fk_position_error_m": 4.940316758141809e-07,
+        "evidence": "isaac/close_fume_hood/seed_6/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 7,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9109,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9109,
+        "simulation_s": 18.218,
+        "total_wall_s": 65.8625039961189,
+        "max_fk_position_error_m": 5.426435488508827e-07,
+        "evidence": "isaac/close_fume_hood/seed_7/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 8,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 7840,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": true,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 2.381480967983407e-08,
+            "position": 2.381480967983407e-08,
+            "contact_s": 0.5279999999999987,
+            "travel_m": -0.0048975870013237,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 7840,
+        "simulation_s": 15.68,
+        "total_wall_s": 61.1410390259698,
+        "max_fk_position_error_m": 6.195498935694318e-07,
+        "evidence": "isaac/close_fume_hood/seed_8/expert/result.json"
+      },
+      {
+        "task": "close_fume_hood",
+        "backend": "isaac",
+        "seed": 9,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9098,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0,
+            "position": 0.0,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9098,
+        "simulation_s": 18.196,
+        "total_wall_s": 66.09517587302253,
+        "max_fk_position_error_m": 5.465119135440021e-07,
+        "evidence": "isaac/close_fume_hood/seed_9/expert/result.json"
+      }
+    ],
+    "provenance": {
+      "git_head": "6183b510c5008784ec34d57b2605311da2a0982b",
+      "inputs_sha256": "5e8d36dc14ee239f98047f7b9816c04018d0509bcc55690f6d52b28292adfa90",
+      "assessment_version": "hooke-manipulation-v2",
+      "python": "3.12.4",
+      "packages": {
+        "mujoco": "3.3.0",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1"
+      },
+      "isaac_task_threads": "8"
+    }
+  },
+  "source_trajectory_preservation": {
+    "scope": "MuJoCo fume-hood recorded states, controls and times before/after zero-path handling, seeds 0-9; not cross-engine trajectory equivalence.",
+    "results": [
+      {
+        "seed": 0,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 9275,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 1,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 8366,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 2,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 8987,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 3,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 8736,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 4,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 8915,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 5,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 35644,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 6,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 9306,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 7,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 9398,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 8,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 9419,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      },
+      {
+        "seed": 9,
+        "final_qpos_max_absolute_difference": 0.0,
+        "simulation_time_difference_s": 0.0,
+        "recorded_samples": 8117,
+        "trajectory_fields_equal": {
+          "time": true,
+          "qpos": true,
+          "qvel": true,
+          "control": true
+        }
+      }
+    ],
+    "all_recorded_trajectories_equal": true
+  },
+  "zero_path_reproduction_before": {
+    "sash_position_m": 0.0,
+    "joint_path_max_span_rad": 5.3186459760368694e-05,
+    "planner_returned_none": true,
+    "duration_s": null
+  },
+  "zero_path_reproduction_candidate": {
+    "duration_s": 0.0,
+    "finite_hold_target": true,
+    "max_joint_delta_rad": 7.762345643647084e-05
+  },
+  "pipette_source_10_seeds": {
+    "groups": [
+      {
+        "task": "pipette",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 10,
+        "recorded": 10,
+        "completed": 10,
+        "status_counts": {
+          "TASK_FAILED": 10
+        },
+        "legacy_successes": 0,
+        "legacy_constant_count": 0,
+        "v2_assessed": 10,
+        "v2_successes": 10,
+        "v2_successes_within_time": 10,
+        "failure_reasons": {}
+      }
+    ],
+    "pairs": [],
+    "parity_qualified": false,
+    "requested_episodes": 10,
+    "recorded_episodes": 10,
+    "results": [
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 7220,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.09000793106165636,
+            "radial_offset_m": 0.0006874309516329554,
+            "thumb_joint_rad": 0.4140534339064506,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.929999999999986,
+              "released_under_liquid_s": 13.258000000001097,
+              "withdrawn_s": 13.946000000001327
+            },
+            "clearance_m": 0.09000793106165636,
+            "max_depth_m": 0.010004699085792346,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 7220,
+        "simulation_s": 14.440000000001492,
+        "total_wall_s": 25.703429688233882,
+        "evidence": "mujoco/pipette/seed_0/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 1,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 6987,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.08998722983073712,
+            "radial_offset_m": 0.0007592052398068544,
+            "thumb_joint_rad": 0.41407763837333267,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.46199999999983,
+              "released_under_liquid_s": 12.78800000000094,
+              "withdrawn_s": 13.480000000001171
+            },
+            "clearance_m": 0.08998722983073712,
+            "max_depth_m": 0.01002078052859093,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 6987,
+        "simulation_s": 13.974000000001336,
+        "total_wall_s": 25.22398383775726,
+        "evidence": "mujoco/pipette/seed_1/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 2,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 7029,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.09000407483699763,
+            "radial_offset_m": 0.0007517174581027501,
+            "thumb_joint_rad": 0.4140619759546654,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.547999999999858,
+              "released_under_liquid_s": 12.874000000000969,
+              "withdrawn_s": 13.5660000000012
+            },
+            "clearance_m": 0.09000407483699763,
+            "max_depth_m": 0.010005832649998077,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 7029,
+        "simulation_s": 14.058000000001364,
+        "total_wall_s": 26.21870884625241,
+        "evidence": "mujoco/pipette/seed_2/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 3,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 7172,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.08999212067560385,
+            "radial_offset_m": 0.000871063313740367,
+            "thumb_joint_rad": 0.4138450669562204,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.833999999999953,
+              "released_under_liquid_s": 13.162000000001065,
+              "withdrawn_s": 13.852000000001295
+            },
+            "clearance_m": 0.08999212067560385,
+            "max_depth_m": 0.010032476200755777,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 7172,
+        "simulation_s": 14.34400000000146,
+        "total_wall_s": 25.65255436487496,
+        "evidence": "mujoco/pipette/seed_3/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 4,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 6893,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.08998790876165819,
+            "radial_offset_m": 0.0008529354688500525,
+            "thumb_joint_rad": 0.4142566878983443,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.28599999999977,
+              "released_under_liquid_s": 12.61000000000088,
+              "withdrawn_s": 13.286000000001106
+            },
+            "clearance_m": 0.08998790876165819,
+            "max_depth_m": 0.010015274459461102,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 6893,
+        "simulation_s": 13.786000000001273,
+        "total_wall_s": 27.907015128061175,
+        "evidence": "mujoco/pipette/seed_4/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 5,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 7078,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.08999828572326829,
+            "radial_offset_m": 0.000741237315333489,
+            "thumb_joint_rad": 0.4136643306924494,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.625999999999884,
+              "released_under_liquid_s": 12.958000000000997,
+              "withdrawn_s": 13.65800000000123
+            },
+            "clearance_m": 0.08999828572326829,
+            "max_depth_m": 0.010008175863656385,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 7078,
+        "simulation_s": 14.156000000001397,
+        "total_wall_s": 25.538385844323784,
+        "evidence": "mujoco/pipette/seed_5/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 6,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 6992,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.09001020018725431,
+            "radial_offset_m": 0.0008973765014297398,
+            "thumb_joint_rad": 0.41404899807887147,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.481999999999836,
+              "released_under_liquid_s": 12.808000000000947,
+              "withdrawn_s": 13.488000000001174
+            },
+            "clearance_m": 0.09001020018725431,
+            "max_depth_m": 0.010008256337596295,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 6992,
+        "simulation_s": 13.98400000000134,
+        "total_wall_s": 25.224841308780015,
+        "evidence": "mujoco/pipette/seed_6/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 7,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 7059,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.09001599970610996,
+            "radial_offset_m": 0.0005942096480604763,
+            "thumb_joint_rad": 0.41383620827260825,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.58199999999987,
+              "released_under_liquid_s": 12.916000000000983,
+              "withdrawn_s": 13.618000000001217
+            },
+            "clearance_m": 0.09001599970610996,
+            "max_depth_m": 0.010016193423258438,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 7059,
+        "simulation_s": 14.118000000001384,
+        "total_wall_s": 25.34732622699812,
+        "evidence": "mujoco/pipette/seed_7/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 8,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 6910,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.08999773775593256,
+            "radial_offset_m": 0.0008117539776033059,
+            "thumb_joint_rad": 0.4140020764300164,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.317999999999781,
+              "released_under_liquid_s": 12.644000000000892,
+              "withdrawn_s": 13.32600000000112
+            },
+            "clearance_m": 0.08999773775593256,
+            "max_depth_m": 0.010012139314552998,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 6910,
+        "simulation_s": 13.820000000001285,
+        "total_wall_s": 25.815035685896873,
+        "evidence": "mujoco/pipette/seed_8/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 9,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 7400,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true,
+            "liquid_available": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.08999870158868734,
+            "radial_offset_m": 0.0005904411877195605,
+            "thumb_joint_rad": 0.4136438483036294,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 10.264000000000097,
+              "released_under_liquid_s": 13.59800000000121,
+              "withdrawn_s": 14.300000000001445
+            },
+            "clearance_m": 0.08999870158868734,
+            "max_depth_m": 0.010008703515177068,
+            "liquid_available": true
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 7400,
+        "simulation_s": 14.800000000001612,
+        "total_wall_s": 25.08341134386137,
+        "evidence": "mujoco/pipette/seed_9/expert/result.json"
+      }
+    ],
+    "provenance": {
+      "git_head": "d21fd43da01638032270354646b8b97bedfbd9a5",
+      "inputs_sha256": "080dd6390c8ac4786dd4fc6c8571c68b2ff8614e20eedad0c10271efb8ddb370",
+      "assessment_version": "hooke-manipulation-v2",
+      "python": "3.12.4",
+      "packages": {
+        "mujoco": "3.3.0",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1"
+      },
+      "isaac_task_threads": "8"
+    }
+  },
+  "pipette_native_seed0": {
+    "task": "pipette",
+    "backend": "isaac",
+    "seed": 0,
+    "mode": "expert",
+    "status": "TASK_FAILED",
+    "source_success": false,
+    "source_check_kind": "predicate",
+    "source_check": false,
+    "within_declared_time_limit": true,
+    "assessment": {
+      "version": "hooke-manipulation-v2",
+      "scope": "motion_sequence_proxy",
+      "samples": 7220,
+      "legacy_constant": null,
+      "checks": {
+        "ordered_submerge_release_withdraw": true,
+        "final_clearance_50mm": true,
+        "liquid_available": true
+      },
+      "metrics": {
+        "tip_depth_m": -0.09003747877142346,
+        "radial_offset_m": 0.0020140486671540296,
+        "thumb_joint_rad": 0.4124305844306946,
+        "thumb_command": 0.4,
+        "phase": "complete",
+        "events": {
+          "submerged_pressed_s": 9.93,
+          "released_under_liquid_s": 13.25,
+          "withdrawn_s": 13.946
+        },
+        "clearance_m": 0.09003747877142346,
+        "max_depth_m": 0.010013792765661805,
+        "liquid_available": true
+      },
+      "failure_reasons": [],
+      "success": true,
+      "within_declared_time_limit": true,
+      "success_within_time_limit": true,
+      "scientific_process_validated": false
+    },
+    "steps": 7220,
+    "simulation_s": 14.44,
+    "total_wall_s": 177.73512269603088,
+    "max_fk_position_error_m": 8.654088885450566e-07,
+    "evidence": "assessment_v2_native_pipette_contracts/pipette/result.json"
+  },
+  "insertion_native_no_action_final": {
+    "groups": [
+      {
+        "task": "composite_insert_centrifuge_5430",
+        "mode": "no_action",
+        "backend": "isaac",
+        "requested": 1,
+        "recorded": 1,
+        "completed": 1,
+        "status_counts": {
+          "CONTROL_COMPLETE": 1
+        },
+        "legacy_successes": 0,
+        "legacy_constant_count": 0,
+        "v2_assessed": 1,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "height_955_to_961mm": 1,
+          "target_within_5mm": 1
+        }
+      },
+      {
+        "task": "insert_centrifuge_5430",
+        "mode": "no_action",
+        "backend": "isaac",
+        "requested": 1,
+        "recorded": 1,
+        "completed": 1,
+        "status_counts": {
+          "CONTROL_COMPLETE": 1
+        },
+        "legacy_successes": 0,
+        "legacy_constant_count": 0,
+        "v2_assessed": 1,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "height_955_to_961mm": 1,
+          "target_within_5mm": 1
+        }
+      }
+    ],
+    "pairs": [],
+    "parity_qualified": false,
+    "requested_episodes": 2,
+    "recorded_episodes": 2,
+    "results": [
+      {
+        "task": "composite_insert_centrifuge_5430",
+        "backend": "isaac",
+        "seed": 0,
+        "mode": "no_action",
+        "status": "CONTROL_COMPLETE",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "legacy_insertion_geometry",
+          "samples": 1000,
+          "legacy_constant": null,
+          "checks": {
+            "height_955_to_961mm": false,
+            "target_within_5mm": false
+          },
+          "metrics": {
+            "tube_height_m": 0.8239802122116089,
+            "target_distance_m": 0.6095713930694574
+          },
+          "failure_reasons": [
+            "height_955_to_961mm",
+            "target_within_5mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 1000,
+        "simulation_s": 2.0,
+        "total_wall_s": 86.02696347888559,
+        "max_fk_position_error_m": 3.8206813299617515e-07,
+        "evidence": "isaac/composite_insert_centrifuge_5430/seed_0/no_action/result.json"
+      },
+      {
+        "task": "insert_centrifuge_5430",
+        "backend": "isaac",
+        "seed": 0,
+        "mode": "no_action",
+        "status": "CONTROL_COMPLETE",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "legacy_insertion_geometry",
+          "samples": 1000,
+          "legacy_constant": null,
+          "checks": {
+            "height_955_to_961mm": false,
+            "target_within_5mm": false
+          },
+          "metrics": {
+            "tube_height_m": 0.8239802122116089,
+            "target_distance_m": 0.6095713930694574
+          },
+          "failure_reasons": [
+            "height_955_to_961mm",
+            "target_within_5mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 1000,
+        "simulation_s": 2.0,
+        "total_wall_s": 85.23053264711052,
+        "max_fk_position_error_m": 3.8206813299617515e-07,
+        "evidence": "isaac/insert_centrifuge_5430/seed_0/no_action/result.json"
+      }
+    ],
+    "provenance": {
+      "git_head": "7db0c164db7db7aee4bfa2904f54104f6c482d11",
+      "inputs_sha256": "4ea2b899686c83c5645f8b0e4d821673313f2f5e6a5fd0882ff3d59d2bddc1c8",
+      "assessment_version": "hooke-manipulation-v2",
+      "python": "3.12.4",
+      "packages": {
+        "mujoco": "3.3.0",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1"
+      },
+      "isaac_task_threads": "8"
+    }
+  },
+  "native_physics_fixtures": {
+    "scope": "Native joint coupling, compliant closure, catalogue noslip friction and free-joint reset fixtures.",
+    "includes_experimental_noslip_zero": false,
+    "passed": true,
+    "results": [
+      {
+        "fixture": "prismatic_mimic",
+        "final_qpos": [
+          0.030001893639564514,
+          0.030001893639564514
+        ],
+        "max_coupling_error": 7.524577085860074e-07,
+        "max_settled_coupling_error": 7.450580596923828e-09,
+        "settling_time_s": 0.2,
+        "max_fk_position_error_m": 8.940696710757479e-09,
+        "implicit_tendon_drives": {},
+        "passed": true
+      },
+      {
+        "fixture": "revolute_mimic",
+        "final_qpos": [
+          0.5999719500541687,
+          -0.19998596608638763
+        ],
+        "max_coupling_error": 2.4702399969156463e-06,
+        "max_settled_coupling_error": 3.576278687078549e-08,
+        "settling_time_s": 0.2,
+        "max_fk_position_error_m": 7.599592208307193e-08,
+        "implicit_tendon_drives": {},
+        "passed": true
+      },
+      {
+        "fixture": "mixed_mimic",
+        "final_qpos": [
+          0.5999723076820374,
+          0.031998611986637115
+        ],
+        "max_coupling_error": 0.0003679997771978377,
+        "max_settled_coupling_error": 8.824467658853641e-08,
+        "settling_time_s": 0.2,
+        "max_fk_position_error_m": 7.599592208307193e-08,
+        "implicit_tendon_drives": {},
+        "passed": true
+      },
+      {
+        "fixture": "fixed_tendon_mimic",
+        "final_qpos": [
+          0.030001893639564514,
+          0.030001893639564514
+        ],
+        "max_coupling_error": 7.524577085860074e-07,
+        "max_settled_coupling_error": 7.450580596923828e-09,
+        "settling_time_s": 0.2,
+        "max_fk_position_error_m": 8.940696710757479e-09,
+        "implicit_tendon_drives": {
+          "0": {
+            "joint": 0,
+            "weight": 1.0
+          }
+        },
+        "passed": true
+      },
+      {
+        "fixture": "soft_connect",
+        "source_sag_m": 0.0001961999999994246,
+        "native_sag_m": 0.00019502639770507812,
+        "error_m": 1.1736022943464874e-06,
+        "passed": true
+      },
+      {
+        "fixture": "static_friction",
+        "noslip_iterations": 2,
+        "source_hold_qpos": 0.0,
+        "native_hold_qpos": -1.754194016712063e-07,
+        "source_loaded_qpos": -0.01122389033432596,
+        "native_loaded_qpos": -0.01135318260639906,
+        "passed": true
+      },
+      {
+        "fixture": "nonunit_free_reset",
+        "source_reset_quaternion_norm": 2.0,
+        "initial_pose_error": 5.960464477539063e-08,
+        "initial_velocity_error": 3.874301962580873e-08,
+        "position_error_m": 1.8998419761894427e-06,
+        "orientation_quaternion_error": 1.872197535552478e-06,
+        "passed": true
+      }
+    ]
+  },
+  "cli_checks": {
+    "scope": "CLI fault-injection checks, excluded from scientific episode counts",
+    "checks": [
+      {
+        "name": "classify_wall_timeout",
+        "passed": true
+      },
+      {
+        "name": "resume_preserves_failed_evidence",
+        "passed": true
+      },
+      {
+        "name": "refuse_overwrite",
+        "passed": true
+      },
+      {
+        "name": "refuse_changed_parameters",
+        "passed": true
+      },
+      {
+        "name": "refuse_changed_code_fingerprint",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "revision": "7db0c164db7db7aee4bfa2904f54104f6c482d11"
+  },
+  "unit_checks": {
+    "tests_run": 31,
+    "failures": 0,
+    "errors": 0,
+    "passed": true,
+    "ui_js_syntax_passed": true,
+    "revision": "6183b510c5008784ec34d57b2605311da2a0982b",
+    "ui_html_sha256": "42cc727f1ceb30a457a5c8c0e6f79a25e81604f8717fafeeeaa263340a4786ca",
+    "patterns": [
+      "test_backend*.py",
+      "test_episode_assessment.py",
+      "test_topp_zero_path.py"
+    ]
+  },
+  "startup_probes_threads8": [
+    {
+      "probe": 0,
+      "ready": true,
+      "wall_s": 15.76767307613045
+    },
+    {
+      "probe": 1,
+      "ready": true,
+      "wall_s": 14.83398451609537
+    },
+    {
+      "probe": 2,
+      "ready": true,
+      "wall_s": 14.938058882951736
+    }
+  ],
+  "source_seed0_diagnostics": {
+    "groups": [
+      {
+        "task": "close_fume_hood",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 1,
+        "recorded": 1,
+        "completed": 1,
+        "status_counts": {
+          "TASK_SUCCEEDED": 1
+        },
+        "legacy_successes": 1,
+        "legacy_constant_count": 0,
+        "v2_assessed": 1,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "handle_contact_50ms": 1,
+          "travel_in_contact_50mm": 1
+        }
+      },
+      {
+        "task": "composite_insert_centrifuge_5430",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 1,
+        "recorded": 1,
+        "completed": 1,
+        "status_counts": {
+          "TASK_FAILED": 1
+        },
+        "legacy_successes": 0,
+        "legacy_constant_count": 0,
+        "v2_assessed": 1,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "target_within_5mm": 1
+        }
+      },
+      {
+        "task": "insert_centrifuge_5430",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 1,
+        "recorded": 1,
+        "completed": 1,
+        "status_counts": {
+          "TASK_FAILED": 1
+        },
+        "legacy_successes": 0,
+        "legacy_constant_count": 0,
+        "v2_assessed": 1,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "target_within_5mm": 1
+        }
+      },
+      {
+        "task": "pipette",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 1,
+        "recorded": 1,
+        "completed": 1,
+        "status_counts": {
+          "TASK_FAILED": 1
+        },
+        "legacy_successes": 0,
+        "legacy_constant_count": 0,
+        "v2_assessed": 1,
+        "v2_successes": 1,
+        "v2_successes_within_time": 1,
+        "failure_reasons": {}
+      },
+      {
+        "task": "vortex_mixer",
+        "mode": "expert",
+        "backend": "mujoco",
+        "requested": 1,
+        "recorded": 1,
+        "completed": 1,
+        "status_counts": {
+          "TASK_FAILED": 1
+        },
+        "legacy_successes": 0,
+        "legacy_constant_count": 1,
+        "v2_assessed": 1,
+        "v2_successes": 0,
+        "v2_successes_within_time": 0,
+        "failure_reasons": {
+          "continuous_rotating_tube_contact_500ms": 1,
+          "returned_within_30mm": 1
+        }
+      }
+    ],
+    "pairs": [],
+    "parity_qualified": false,
+    "requested_episodes": 5,
+    "recorded_episodes": 5,
+    "results": [
+      {
+        "task": "close_fume_hood",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_SUCCEEDED",
+        "source_success": true,
+        "source_check_kind": "predicate",
+        "source_check": true,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 9275,
+          "legacy_constant": null,
+          "checks": {
+            "target_within_20mm": true,
+            "handle_contact_50ms": false,
+            "travel_in_contact_50mm": false
+          },
+          "metrics": {
+            "initial": 0.18,
+            "target": 0.0,
+            "previous": 0.0009021025921413652,
+            "position": 0.0009021025921413652,
+            "contact_s": 0.0,
+            "travel_m": 0.0,
+            "previous_contact": false
+          },
+          "failure_reasons": [
+            "handle_contact_50ms",
+            "travel_in_contact_50mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 9275,
+        "simulation_s": 18.550000000000598,
+        "total_wall_s": 9.986921106930822,
+        "evidence": "mujoco/close_fume_hood/seed_0/expert/result.json"
+      },
+      {
+        "task": "composite_insert_centrifuge_5430",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "legacy_insertion_geometry",
+          "samples": 5164,
+          "legacy_constant": null,
+          "checks": {
+            "height_955_to_961mm": true,
+            "target_within_5mm": false
+          },
+          "metrics": {
+            "tube_height_m": 0.9602073523531508,
+            "target_distance_m": 0.005142130718325267
+          },
+          "failure_reasons": [
+            "target_within_5mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 5164,
+        "simulation_s": 10.328000000000118,
+        "total_wall_s": 23.037560371216387,
+        "evidence": "mujoco/composite_insert_centrifuge_5430/seed_0/expert/result.json"
+      },
+      {
+        "task": "insert_centrifuge_5430",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "legacy_insertion_geometry",
+          "samples": 5164,
+          "legacy_constant": null,
+          "checks": {
+            "height_955_to_961mm": true,
+            "target_within_5mm": false
+          },
+          "metrics": {
+            "tube_height_m": 0.9602073523531508,
+            "target_distance_m": 0.005142130718325267
+          },
+          "failure_reasons": [
+            "target_within_5mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 5164,
+        "simulation_s": 10.328000000000118,
+        "total_wall_s": 22.923276484012604,
+        "evidence": "mujoco/insert_centrifuge_5430/seed_0/expert/result.json"
+      },
+      {
+        "task": "pipette",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": true,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "motion_sequence_proxy",
+          "samples": 7220,
+          "legacy_constant": null,
+          "checks": {
+            "ordered_submerge_release_withdraw": true,
+            "final_clearance_50mm": true
+          },
+          "metrics": {
+            "tip_depth_m": -0.09000793106165636,
+            "radial_offset_m": 0.0006874309516329554,
+            "thumb_joint_rad": 0.4140534339064506,
+            "thumb_command": 0.4,
+            "phase": "complete",
+            "events": {
+              "submerged_pressed_s": 9.929999999999986,
+              "released_under_liquid_s": 13.258000000001097,
+              "withdrawn_s": 13.946000000001327
+            },
+            "clearance_m": 0.09000793106165636,
+            "max_depth_m": 0.010004699085792346
+          },
+          "failure_reasons": [],
+          "success": true,
+          "within_declared_time_limit": true,
+          "success_within_time_limit": true,
+          "scientific_process_validated": false
+        },
+        "steps": 7220,
+        "simulation_s": 14.440000000001492,
+        "total_wall_s": 28.04483340587467,
+        "evidence": "mujoco/pipette/seed_0/expert/result.json"
+      },
+      {
+        "task": "vortex_mixer",
+        "backend": "mujoco",
+        "seed": 0,
+        "mode": "expert",
+        "status": "TASK_FAILED",
+        "source_success": false,
+        "source_check_kind": "predicate",
+        "source_check": false,
+        "within_declared_time_limit": false,
+        "assessment": {
+          "version": "hooke-manipulation-v2",
+          "scope": "manipulation",
+          "samples": 42819,
+          "legacy_constant": false,
+          "checks": {
+            "tube_lifted_30mm": true,
+            "continuous_rotating_tube_contact_500ms": false,
+            "returned_within_30mm": false,
+            "tube_released": true,
+            "platform_stopped": true
+          },
+          "metrics": {
+            "lifted": true,
+            "active_run_s": 0.0,
+            "longest_active_s": 0.0,
+            "contact_s": 31.87400000000591,
+            "peak_speed_rad_s": 0.0003034120538880651,
+            "returned": false,
+            "released": true,
+            "stopped": true
+          },
+          "failure_reasons": [
+            "continuous_rotating_tube_contact_500ms",
+            "returned_within_30mm"
+          ],
+          "success": false,
+          "within_declared_time_limit": false,
+          "success_within_time_limit": false,
+          "scientific_process_validated": false
+        },
+        "steps": 42819,
+        "simulation_s": 85.63799999998182,
+        "total_wall_s": 157.44439848326147,
+        "evidence": "mujoco/vortex_mixer/seed_0/expert/result.json"
+      }
+    ],
+    "provenance": {
+      "git_head": "d21fd43da01638032270354646b8b97bedfbd9a5",
+      "inputs_sha256": "0f46d961fe9653031c10d844a8a4567eb524fa15fbc7bc7779c01ff39f5c977f",
+      "assessment_version": "hooke-manipulation-v2",
+      "python": "3.12.4"
+    }
+  },
+  "pre_fix_no_action_batches": [
+    {
+      "provenance": {
+        "git_head": "d21fd43da01638032270354646b8b97bedfbd9a5",
+        "inputs_sha256": "0f46d961fe9653031c10d844a8a4567eb524fa15fbc7bc7779c01ff39f5c977f",
+        "assessment_version": "hooke-manipulation-v2",
+        "python": "3.12.4"
+      },
+      "requested": 10,
+      "results": [
+        {
+          "task": "close_fume_hood",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": true,
+          "source_check_kind": "predicate",
+          "source_check": true,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "manipulation",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "target_within_20mm": true,
+              "handle_contact_50ms": false,
+              "travel_in_contact_50mm": false
+            },
+            "metrics": {
+              "initial": 0.18,
+              "target": 0.0,
+              "previous": 0.0009021025921421479,
+              "position": 0.0009021025921421479,
+              "contact_s": 0.0,
+              "travel_m": 0.0,
+              "previous_contact": false
+            },
+            "failure_reasons": [
+              "handle_contact_50ms",
+              "travel_in_contact_50mm"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 4.6311844531446695,
+          "evidence": "mujoco/close_fume_hood/seed_0/no_action/result.json"
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "legacy_insertion_geometry",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": false,
+              "target_within_5mm": false
+            },
+            "metrics": {
+              "tube_height_m": 0.8249498103520709,
+              "target_distance_m": 0.6093591278625369
+            },
+            "failure_reasons": [
+              "height_955_to_961mm",
+              "target_within_5mm"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 7.91723255161196,
+          "evidence": "mujoco/composite_insert_centrifuge_5430/seed_0/no_action/result.json"
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "legacy_insertion_geometry",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": false,
+              "target_within_5mm": false
+            },
+            "metrics": {
+              "tube_height_m": 0.8249498103520709,
+              "target_distance_m": 0.6093591278625369
+            },
+            "failure_reasons": [
+              "height_955_to_961mm",
+              "target_within_5mm"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 7.800241972785443,
+          "evidence": "mujoco/insert_centrifuge_5430/seed_0/no_action/result.json"
+        },
+        {
+          "task": "pipette",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "motion_sequence_proxy",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "ordered_submerge_release_withdraw": false,
+              "final_clearance_50mm": true
+            },
+            "metrics": {
+              "tip_depth_m": -0.24910250963967326,
+              "radial_offset_m": 0.7936186327894127,
+              "thumb_joint_rad": 2.538252886125327e-06,
+              "thumb_command": 0.0,
+              "phase": "await_submersion",
+              "events": {},
+              "clearance_m": 0.24910250963967326,
+              "max_depth_m": 0.0
+            },
+            "failure_reasons": [
+              "ordered_submerge_release_withdraw"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 14.214763367082924,
+          "evidence": "mujoco/pipette/seed_0/no_action/result.json"
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "manipulation",
+            "samples": 1000,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": false,
+              "continuous_rotating_tube_contact_500ms": false,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": false,
+              "active_run_s": 0.0,
+              "longest_active_s": 0.0,
+              "contact_s": 0.0,
+              "peak_speed_rad_s": 0.0,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [
+              "tube_lifted_30mm",
+              "continuous_rotating_tube_contact_500ms"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 16.167913931887597,
+          "evidence": "mujoco/vortex_mixer/seed_0/no_action/result.json"
+        },
+        {
+          "task": "close_fume_hood",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": true,
+          "source_check_kind": "predicate",
+          "source_check": true,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "manipulation",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "target_within_20mm": true,
+              "handle_contact_50ms": false,
+              "travel_in_contact_50mm": false
+            },
+            "metrics": {
+              "initial": 0.18,
+              "target": 0.0,
+              "previous": 0.0,
+              "position": 0.0,
+              "contact_s": 0.0,
+              "travel_m": 0.0,
+              "previous_contact": false
+            },
+            "failure_reasons": [
+              "handle_contact_50ms",
+              "travel_in_contact_50mm"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0,
+          "total_wall_s": 32.08371395478025,
+          "max_fk_position_error_m": 3.490599205625853e-07,
+          "evidence": "isaac/close_fume_hood/seed_0/no_action/result.json"
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "ERROR",
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "unaudited_legacy",
+            "samples": 0,
+            "legacy_constant": null,
+            "checks": {},
+            "metrics": {},
+            "failure_reasons": [],
+            "success": null,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": null,
+            "scientific_process_validated": false
+          },
+          "steps": 0,
+          "simulation_s": 0.0,
+          "total_wall_s": 15.790284221060574,
+          "evidence": "isaac/composite_insert_centrifuge_5430/seed_0/no_action/result.json"
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "ERROR",
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "unaudited_legacy",
+            "samples": 0,
+            "legacy_constant": null,
+            "checks": {},
+            "metrics": {},
+            "failure_reasons": [],
+            "success": null,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": null,
+            "scientific_process_validated": false
+          },
+          "steps": 0,
+          "simulation_s": 0.0,
+          "total_wall_s": 15.414158114697784,
+          "evidence": "isaac/insert_centrifuge_5430/seed_0/no_action/result.json"
+        },
+        {
+          "task": "pipette",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "motion_sequence_proxy",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "ordered_submerge_release_withdraw": false,
+              "final_clearance_50mm": true
+            },
+            "metrics": {
+              "tip_depth_m": -0.24923724515360204,
+              "radial_offset_m": 0.7936097776715433,
+              "thumb_joint_rad": 1.008103822641715e-08,
+              "thumb_command": 0.0,
+              "phase": "await_submersion",
+              "events": {},
+              "clearance_m": 0.24923724515360204,
+              "max_depth_m": 0.0
+            },
+            "failure_reasons": [
+              "ordered_submerge_release_withdraw"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0,
+          "total_wall_s": 59.175212339963764,
+          "max_fk_position_error_m": 5.545314766013193e-07,
+          "evidence": "isaac/pipette/seed_0/no_action/result.json"
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "ERROR",
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "manipulation",
+            "samples": 0,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": false,
+              "continuous_rotating_tube_contact_500ms": false,
+              "returned_within_30mm": false,
+              "tube_released": false,
+              "platform_stopped": false
+            },
+            "metrics": {
+              "lifted": false,
+              "active_run_s": 0.0,
+              "longest_active_s": 0.0,
+              "contact_s": 0.0,
+              "peak_speed_rad_s": 0.0,
+              "returned": false,
+              "released": false,
+              "stopped": false
+            },
+            "failure_reasons": [
+              "tube_lifted_30mm",
+              "continuous_rotating_tube_contact_500ms",
+              "returned_within_30mm",
+              "tube_released",
+              "platform_stopped"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 0,
+          "simulation_s": 0.0,
+          "total_wall_s": 17.865795572753996,
+          "evidence": "isaac/vortex_mixer/seed_0/no_action/result.json"
+        }
+      ]
+    },
+    {
+      "provenance": {
+        "git_head": "d21fd43da01638032270354646b8b97bedfbd9a5",
+        "inputs_sha256": "a3f06dcf4809a65a10b71d5c7a6dbb96a86f66d50e368b59393b5728a1521ff5",
+        "assessment_version": "hooke-manipulation-v2",
+        "python": "3.12.4",
+        "packages": {
+          "mujoco": "3.3.0",
+          "numpy": "2.5.3",
+          "scipy": "1.18.1"
+        },
+        "isaac_task_threads": "0"
+      },
+      "requested": 10,
+      "results": [
+        {
+          "task": "close_fume_hood",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": true,
+          "source_check_kind": "predicate",
+          "source_check": true,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "manipulation",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "target_within_20mm": true,
+              "handle_contact_50ms": false,
+              "travel_in_contact_50mm": false
+            },
+            "metrics": {
+              "initial": 0.18,
+              "target": 0.0,
+              "previous": 0.0009021025921421479,
+              "position": 0.0009021025921421479,
+              "contact_s": 0.0,
+              "travel_m": 0.0,
+              "previous_contact": false
+            },
+            "failure_reasons": [
+              "handle_contact_50ms",
+              "travel_in_contact_50mm"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 4.561755336821079,
+          "evidence": "mujoco/close_fume_hood/seed_0/no_action/result.json"
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "legacy_insertion_geometry",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": false,
+              "target_within_5mm": false
+            },
+            "metrics": {
+              "tube_height_m": 0.8249498103520709,
+              "target_distance_m": 0.6093591278625369
+            },
+            "failure_reasons": [
+              "height_955_to_961mm",
+              "target_within_5mm"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 7.844862199854106,
+          "evidence": "mujoco/composite_insert_centrifuge_5430/seed_0/no_action/result.json"
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "legacy_insertion_geometry",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": false,
+              "target_within_5mm": false
+            },
+            "metrics": {
+              "tube_height_m": 0.8249498103520709,
+              "target_distance_m": 0.6093591278625369
+            },
+            "failure_reasons": [
+              "height_955_to_961mm",
+              "target_within_5mm"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 7.9202932780608535,
+          "evidence": "mujoco/insert_centrifuge_5430/seed_0/no_action/result.json"
+        },
+        {
+          "task": "pipette",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "motion_sequence_proxy",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "ordered_submerge_release_withdraw": false,
+              "final_clearance_50mm": true
+            },
+            "metrics": {
+              "tip_depth_m": -0.24910250963967326,
+              "radial_offset_m": 0.7936186327894127,
+              "thumb_joint_rad": 2.538252886125327e-06,
+              "thumb_command": 0.0,
+              "phase": "await_submersion",
+              "events": {},
+              "clearance_m": 0.24910250963967326,
+              "max_depth_m": 0.0
+            },
+            "failure_reasons": [
+              "ordered_submerge_release_withdraw"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 14.242276499979198,
+          "evidence": "mujoco/pipette/seed_0/no_action/result.json"
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "manipulation",
+            "samples": 1000,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": false,
+              "continuous_rotating_tube_contact_500ms": false,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": false,
+              "active_run_s": 0.0,
+              "longest_active_s": 0.0,
+              "contact_s": 0.0,
+              "peak_speed_rad_s": 0.0,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [
+              "tube_lifted_30mm",
+              "continuous_rotating_tube_contact_500ms"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0000000000000013,
+          "total_wall_s": 16.1559557733126,
+          "evidence": "mujoco/vortex_mixer/seed_0/no_action/result.json"
+        },
+        {
+          "task": "close_fume_hood",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": true,
+          "source_check_kind": "predicate",
+          "source_check": true,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "manipulation",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "target_within_20mm": true,
+              "handle_contact_50ms": false,
+              "travel_in_contact_50mm": false
+            },
+            "metrics": {
+              "initial": 0.18,
+              "target": 0.0,
+              "previous": 0.0,
+              "position": 0.0,
+              "contact_s": 0.0,
+              "travel_m": 0.0,
+              "previous_contact": false
+            },
+            "failure_reasons": [
+              "handle_contact_50ms",
+              "travel_in_contact_50mm"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0,
+          "total_wall_s": 32.71698115300387,
+          "max_fk_position_error_m": 3.490599205625853e-07,
+          "evidence": "isaac/close_fume_hood/seed_0/no_action/result.json"
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "ERROR",
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "unaudited_legacy",
+            "samples": 0,
+            "legacy_constant": null,
+            "checks": {},
+            "metrics": {},
+            "failure_reasons": [],
+            "success": null,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": null,
+            "scientific_process_validated": false
+          },
+          "steps": 0,
+          "simulation_s": 0.0,
+          "total_wall_s": 15.215868210420012,
+          "evidence": "isaac/composite_insert_centrifuge_5430/seed_0/no_action/result.json"
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "ERROR",
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "unaudited_legacy",
+            "samples": 0,
+            "legacy_constant": null,
+            "checks": {},
+            "metrics": {},
+            "failure_reasons": [],
+            "success": null,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": null,
+            "scientific_process_validated": false
+          },
+          "steps": 0,
+          "simulation_s": 0.0,
+          "total_wall_s": 15.12573598511517,
+          "evidence": "isaac/insert_centrifuge_5430/seed_0/no_action/result.json"
+        },
+        {
+          "task": "pipette",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "motion_sequence_proxy",
+            "samples": 1000,
+            "legacy_constant": null,
+            "checks": {
+              "ordered_submerge_release_withdraw": false,
+              "final_clearance_50mm": true
+            },
+            "metrics": {
+              "tip_depth_m": -0.24923724515360204,
+              "radial_offset_m": 0.7936097776715433,
+              "thumb_joint_rad": 1.008103822641715e-08,
+              "thumb_command": 0.0,
+              "phase": "await_submersion",
+              "events": {},
+              "clearance_m": 0.24923724515360204,
+              "max_depth_m": 0.0
+            },
+            "failure_reasons": [
+              "ordered_submerge_release_withdraw"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0,
+          "total_wall_s": 59.044068788178265,
+          "max_fk_position_error_m": 5.545314766013193e-07,
+          "evidence": "isaac/pipette/seed_0/no_action/result.json"
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "isaac",
+          "seed": 0,
+          "mode": "no_action",
+          "status": "CONTROL_COMPLETE",
+          "source_success": false,
+          "source_check_kind": "predicate",
+          "source_check": false,
+          "within_declared_time_limit": true,
+          "assessment": {
+            "version": "hooke-manipulation-v2",
+            "scope": "manipulation",
+            "samples": 1000,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": false,
+              "continuous_rotating_tube_contact_500ms": false,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": false,
+              "active_run_s": 0.0,
+              "longest_active_s": 0.0,
+              "contact_s": 0.0,
+              "peak_speed_rad_s": 3.4233271772876606e-10,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [
+              "tube_lifted_30mm",
+              "continuous_rotating_tube_contact_500ms"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          },
+          "steps": 1000,
+          "simulation_s": 2.0,
+          "total_wall_s": 182.99350306671113,
+          "max_fk_position_error_m": 1.8165497307880064e-07,
+          "evidence": "isaac/vortex_mixer/seed_0/no_action/result.json"
+        }
+      ]
+    }
+  ],
+  "evidence_sha256": {
+    "assessment_v2_paired10/report.json": "14f965f3ee17dda816545e95568b6f47467ecabc3e2bb2fed86412b0d0b0c454",
+    "assessment_v2_pipette_source10_final/report.json": "b6f09caf2e00758ef18d2c338cdcce6eb6adc67fff138d23bd13190efe0aa3e6",
+    "assessment_v2_insert_startup_final/report.json": "18b47788d04cda60a32d078e02c9fe1739c4147d611955f1bb8b2bcd46ca25b9",
+    "assessment_v2_fume_fixed10/report.json": "984c8e09d97914dab1bcce4fb381ec391fb8f2580412bf10779db431ac9ec1ff",
+    "assessment_v2_native_pipette_contracts/task_results.json": "b05efc3e97ec738313b957b9f7422872541d3b747f40cfc0090b19f1076c6392",
+    "assessment_v2_native_pipette_contracts/contracts/result.json": "dee89e178785c8ce3422a6dcef9d45b313430bfbe5a155cdbe53c4629530a6d6",
+    "assessment_v2_cli_final/checks.json": "eadc1cd52b6552d33e83b8e781b85efed2e1aa569c789370084057ac88026cec",
+    "assessment_v2_unit_checks.json": "10d17c33685c7841937632902fb6a8bf73ebe80ffc4428ed4f342591954c2c91",
+    "assessment_v2_startup_threads8/result.json": "914c6a01676c8841073d6438c517838329727eb5bef19e874d4c9fc44dcaa6b4",
+    "assessment_v2_source_diagnostics/report.json": "18eac4ba8759e0dea14ca21cc91bfe7beb6af9719b65cf56774fcd93bbdca305",
+    "assessment_v2_controls/report.json": "c1c19f825452a35fc44808e7ed20e61fa9cf974a7bc13673be80ed4dd11db703",
+    "assessment_v2_controls_r2/report.json": "1fa9ec9427f3b04c670ffc29f6d3bdf951cf6629918cb0630fb7f7954a45fae7",
+    "assessment_v2_paired10/manifest.json": "0600599afaad0c347e7c7796f15aa79ffc4488fa0851be9fa6837e0ac98811b6",
+    "assessment_v2_pipette_source10_final/manifest.json": "1ce61216a0c923614553bd3175effc8fe3dd24d5e63f381061d82bc6bb4974a5",
+    "assessment_v2_source_preservation.json": "048eb13ef297e6bdcb8e2f463f324108dfe48de0be22f024461e8b00ee1703cd",
+    "assessment_v2_zero_path_reproduction.json": "c7f4560f71569d22e04616b1636f8442547ba482ffad045cc6cfec968fca5995",
+    "assessment_v2_zero_path_candidate.json": "5f5a8763c2e65897720108bb40320ee46f05525194c25b2a434f988730efbac6"
+  }
+}
