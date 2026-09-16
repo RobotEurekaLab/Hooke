@@ -1,6 +1,6 @@
 # 完整双容器移液与共享任务判定
 
-当前完整移液专家已补齐 MuJoCo 10/10、Isaac 10/10，十对实际源模型与资产对照通过；新增原生完整时长对照以 [十种子报告](validation/isaac_pipette_transfer_ten_seed_summary.json) 为准。[完整离心流程](isaac_centrifuge_cycle.md)、[简化科学模型](validation/isaac_science_model_summary.json) 和 [改进后的真实画面对照](isaac_visual_configuration.md) 单独报告。
+当前完整移液专家的任务谓词、独立操作、时限和理想体积验收均为 MuJoCo 10/10、Isaac 10/10；两引擎各十个 45 秒空动作对照的动作及体积误通过均为 0/10。共 40 个实际回合、20 对源模型与实际资产对照通过，见 [十种子报告](validation/isaac_pipette_transfer_ten_seed_summary.json)。[完整离心流程](isaac_centrifuge_cycle.md)、[简化科学模型](validation/isaac_science_model_summary.json) 和 [改进后的真实画面对照](isaac_visual_configuration.md) 单独报告。
 
 下文保留此前五种子验收的版本、指标和失败历史，其“尚未完成”“下一阶段”等描述指当时状态。
 
