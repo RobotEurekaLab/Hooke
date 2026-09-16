@@ -93,6 +93,8 @@ class SpinController:
         if self.state == "HOLDING":
             if abs(speed - nominal) <= nominal * 0.05:
                 self.hold_s += dt
+            else:
+                self.hold_s = 0.0
             if self.hold_s >= self.program.hold_seconds:
                 self.state = "BRAKING"
         if self.state == "BRAKING":
@@ -106,6 +108,12 @@ class SpinController:
                 and self.target_rad_s == 0
             ):
                 self.state = "FAULT" if self.fault else "COMPLETE"
+        elif self.state in ("COMPLETE", "FAULT"):
+            self.stopped_s = (
+                self.stopped_s + dt
+                if abs(speed) <= self.program.safe_speed_rad_s
+                else 0.0
+            )
         if self.state in ("IDLE", "COMPLETE", "FAULT"):
             return 0.0
         torque = self.program.speed_gain * (self.target_rad_s - speed)

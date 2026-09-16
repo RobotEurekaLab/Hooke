@@ -1,0 +1,34 @@
+{
+  "kind": "extended_native_physics_contracts",
+  "passed": true,
+  "results": [
+    {
+      "fixture": "world_body_wrench_at_offset_com",
+      "position_error_m": 1.727800102135853e-06,
+      "velocity_error": 5.0648671197688067e-05,
+      "max_fk_position_error_m": 0.0,
+      "passed": true
+    },
+    {
+      "fixture": "captured_weld_on_rotating_load",
+      "retention_error_m": 3.1763891009301235e-06,
+      "actual_rotation_rad": 1.4602248668670654,
+      "source_native_qpos_error": 0.00037694298640444934,
+      "passed": true
+    },
+    {
+      "fixture": "static_heightfield_drop",
+      "source_height_m": 0.24992759782990515,
+      "native_height_m": 0.2495497316122055,
+      "height_error_m": 0.00037786621769964057,
+      "native_contact_steps": 1367,
+      "passed": true
+    }
+  ],
+  "parity_qualified": false,
+  "scope": "Bounded fixtures; no arbitrary MJCF or weld compliance parity claim.",
+  "failed_first_attempt": {
+    "reason": "Empty equality parameter lists lost their (0,11) shape during transport; fixed before retry.",
+    "log": "temp/comprehensive_work/comprehensive-native-contracts.log"
+  }
+}

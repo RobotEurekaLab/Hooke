@@ -12,6 +12,7 @@ class CentrifugeCycleSequence:
     safety_violation: bool = False
     rotation_rad: float = 0.0
     hold_s: float = 0.0
+    continuous_hold_s: float = 0.0
     stopped_s: float = 0.0
     peak_rad_s: float = 0.0
     speed_rad_s: float = 0.0
@@ -33,7 +34,10 @@ class CentrifugeCycleSequence:
             self.rotation_rad += abs(speed) * dt
             nominal = program.rpm * math.pi / 30
             if abs(speed - nominal) <= nominal * 0.05 and closed and locked:
-                self.hold_s += dt
+                self.continuous_hold_s += dt
+                self.hold_s = max(self.hold_s, self.continuous_hold_s)
+            else:
+                self.continuous_hold_s = 0.0
             self.stopped_s = self.stopped_s + dt if not moving else 0.0
             if moving and (
                 not closed or not locked or balance > program.balance_ratio_limit

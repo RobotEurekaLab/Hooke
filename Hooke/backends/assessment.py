@@ -18,6 +18,7 @@ from contact_state import body_geoms, touching
 from archetypes.centrifuge_insertion import insertion_target
 from grasp.quat import quatapply, quatinv
 from backends.centrifuge_assessment import CentrifugeCycleSequence
+from backends.task_result import within_time_limit
 
 from process_progress import PROCESS_NAMES, ProcessProgress, PipetteSequence, VortexSequence
 
@@ -230,7 +231,7 @@ class EpisodeAssessment:
                      'ideal_liquid_transfer_manipulation' if self.name == 'pipette_transfer' else 'manipulation')
         audited = bool(checks)
         failures = [key for key, value in checks.items() if not value]
-        within_limit = self.time <= self.task.time_limit
+        within_limit = within_time_limit(self.time,self.task.time_limit)
         return {'version': VERSION, 'scope': scope, 'samples': self.samples,
                 'legacy_constant': self.constant, 'checks': checks, 'metrics': metrics,
                 'failure_reasons': failures,

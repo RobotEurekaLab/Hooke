@@ -214,6 +214,6 @@ class ExpertMotionMixin:
                 self.serializer.record(info)
 
 
-def make_topp_planner(dof: int, ik_solve):
+def make_topp_planner(dof: int, ik_solve, *, qc_vel: float = 1.5, qc_acc: float = 1.0):
     from topp import Topp
-    return Topp(dof=dof, qc_vel=1.5, qc_acc=1.0, ik=ik_solve)
+    return Topp(dof=dof, qc_vel=qc_vel, qc_acc=qc_acc, ik=ik_solve)

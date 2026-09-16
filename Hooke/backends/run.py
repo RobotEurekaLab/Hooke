@@ -15,7 +15,7 @@ os.environ.setdefault('MUJOCO_GL','egl')
 import mujoco
 import numpy as np
 from PIL import Image
-from backends.task_result import task_result
+from backends.task_result import task_result, within_time_limit
 from backends.assessment import EpisodeAssessment
 from backends.render_settings import RenderSettings
 from backends.capabilities import require_native
@@ -74,7 +74,9 @@ def run(args,worker=None):
                                                            report_progress=False,managed_render=not args.no_render))
             else:
                 source=output/'source';source.mkdir(exist_ok=True);write_snapshot(task,source)
-                if not args.no_render:renderer=mujoco.Renderer(task.model,height=rendering.height,width=rendering.width)
+                if not args.no_render:
+                    from backends.keyframes import mujoco_renderer
+                    renderer=stack.enter_context(mujoco_renderer(task.model,args.gpu))
             if not args.no_render:
                 from backends.visual_state import LiveVisuals
                 visuals=LiveVisuals(task,output/'visuals')
@@ -130,7 +132,7 @@ def run(args,worker=None):
             check=task_result(task.check());result.update(check);source_check=check['source_success']
             status='PREVIEW_COMPLETE' if args.mode=='preview' else 'CONTROL_COMPLETE' if args.mode=='no_action' else 'DISPLAY_COMPLETE' if display_only else 'TASK_SUCCEEDED' if source_check else 'TASK_FAILED'
             result.update(status=status,source_success=source_check,steps=steps,contact_steps=contact_steps,
-                          simulation_s=float(task.data.time),within_declared_time_limit=bool(task.data.time<=task.time_limit),
+                          simulation_s=float(task.data.time),within_declared_time_limit=within_time_limit(task.data.time,task.time_limit),
                           final_qpos=task.data.qpos.tolist(),
                           final_contact_pairs=sorted({tuple(sorted(map(int,c.geom))) for c in task.data.contact}))
             if adapter:
@@ -152,7 +154,6 @@ def run(args,worker=None):
             result['runtime_visuals']={'display_texture_updates':visuals.updates,'liquid_surface_drawing':bool(visuals.liquid_extra),
                                       'liquid_fit_fallbacks':visuals.liquid_fit_fallbacks}
             visuals.close()
-        if renderer:renderer.close()
         trajectory=adapter.rows if adapter else rows
         if trajectory:np.savez_compressed(output/'trajectory.npz',**{k:np.asarray([r[k] for r in trajectory]) for k in trajectory[0]})
         result['total_wall_s']=time.perf_counter()-started

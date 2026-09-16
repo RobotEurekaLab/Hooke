@@ -119,7 +119,11 @@ class Manager:
         self.data = None
         self.spec = None
         self.loader = loader
-        
+
+        self.set_systems(systems)
+
+    def set_systems(self, systems: Iterable[System]):
+        """Replace execution order and type lookup without resetting live state."""
         systems = tuple(systems)
         visited = set()
         def validate_system(system: System):

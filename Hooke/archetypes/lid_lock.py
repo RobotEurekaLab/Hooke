@@ -11,3 +11,13 @@ def lid_lock_passes(data, instrument):
     position = float(data.qpos[instrument.lid_qposadr])
     target = float(model.eq_data[lock, 0])
     return bool(data.eq_active[lock] and math.isfinite(position) and abs(position-target) < .01)
+
+
+def lid_standstill_passes(data, instrument):
+    """Mini lids finish closed and stopped without a modelled latch."""
+    model = instrument.model
+    position = float(data.qpos[instrument.lid_qposadr])
+    target = float(model.eq_data[instrument.lid_lock, 0])
+    speed = float(data.qvel[int(model.jnt_dofadr[instrument.lid_joint])])
+    return bool(math.isfinite(position) and math.isfinite(speed)
+                and abs(position-target) < .01 and abs(speed) < .02)

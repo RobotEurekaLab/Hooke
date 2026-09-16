@@ -71,8 +71,11 @@ def configure(task, name):
         flow.reset(task.data)
         # This is a connected-reservoir experiment; piston accounting would
         # compete with this ledger for ownership of the same liquid surfaces.
-        task.manager.systems = tuple(
-            flow if system is transfer else system for system in task.manager.systems
+        task.manager.set_systems(
+            tuple(
+                flow if system is transfer else system
+                for system in task.manager.systems
+            )
         )
         return flow
     raise ValueError("Unknown scientific model")

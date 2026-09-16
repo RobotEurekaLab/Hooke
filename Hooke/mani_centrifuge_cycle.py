@@ -194,7 +194,7 @@ class CentrifugeCycle(CentrifugeInsertCloseComposite):
         super().__init__(spec)
         self.rotor_program = RotorProgramSystem(task=self)
         self.rotor_program.reload(self.model)
-        self.manager.systems = (*self.manager.systems, self.rotor_program)
+        self.manager.set_systems((*self.manager.systems, self.rotor_program))
         self.expert_phases = []
 
     def reset(self, seed=None):

@@ -112,14 +112,14 @@ def run(output, worker):
 
     folder = output / "heightfield"
     task = fixture(
-        """<mujoco><option timestep=".002"/><asset><hfield name="terrain" nrow="3" ncol="3" size="1 1 .2 .1"/></asset>
+        """<mujoco><option timestep=".002"/><asset><hfield name="terrain" nrow="5" ncol="5" size="1 1 .2 .1"
+      elevation="0 0 0 0 0  0 1 1 1 0  0 1 1 1 0  0 1 1 1 0  0 0 0 0 0"/></asset>
       <worldbody><geom type="hfield" hfield="terrain"/><body name="load" pos="0 0 .6"><freejoint/>
       <geom name="load" type="sphere" size=".05" mass=".1"/></body></worldbody></mujoco>""",
         folder,
         "heightfield",
     )
     model, data = task.model, task.data
-    model.hfield_data[:] = 1.0
     mujoco.mj_forward(model, data)
     reference = mujoco.MjData(model)
     mujoco.mj_forward(model, reference)

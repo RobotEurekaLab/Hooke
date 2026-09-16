@@ -90,6 +90,7 @@ def recorded_liquid_visuals(data, liquids, index):
 def mujoco_renderer(model, gpu):
     """Serialize EGL replay with native jobs on the same server GPU."""
     lock_dir = ROOT / 'temp/backend_parity'
+    os.environ['MUJOCO_EGL_DEVICE_ID'] = str(gpu)
     lock_dir.mkdir(parents=True, exist_ok=True)
     with (lock_dir / f'gpu-{gpu}.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)

@@ -173,6 +173,8 @@ def start_job():
         (output/'job.json').write_text(json.dumps(meta))
         gpu = isaac_gpu()
         env=os.environ.copy();env.update(MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID=str(gpu),OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',PYTHONUNBUFFERED='1')
+        if backend == 'isaac':env.setdefault('HOOKE_ISAAC_COLOR_PIPELINE','source_display')
+        if mode == 'experiment':env['HOOKE_RENDER_FPS']='1'
         log=(output/'run.log').open('wb')
         command = [sys.executable,'-m','backends.run','--task',task,'--backend',backend,
                    '--mode','no_action' if mode == 'experiment' else mode,

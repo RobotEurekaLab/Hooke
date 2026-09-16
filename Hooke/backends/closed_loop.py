@@ -45,15 +45,18 @@ class PhysXTaskAdapter:
         # Forward calculations support existing IK and site queries. Position /
         # velocity integration and all actual contacts are owned by PhysX.
         update_kinematics(model,data)
-        for body,pose in state.get('body_poses',{}).items():
-            body=int(body)
-            position_error=float(np.linalg.norm(data.xpos[body]-pose[:3]))
-            self.max_fk_position_error=max(self.max_fk_position_error,position_error)
-            orientation=np.asarray(pose[3:]);orientation/=np.linalg.norm(orientation)
-            dot=np.clip(abs(np.dot(data.xquat[body],orientation)),0.,1.)
-            self.max_fk_rotation_error=max(self.max_fk_rotation_error,float(2*np.arccos(dot)))
-            if position_error>.005:
-                raise RuntimeError(f'Native body/FK disagreement at t={data.time:.4f}, body={body} ({model.body(body).name}): {position_error:.6f} m; source={data.xpos[body].tolist()}, native={pose[:3]}')
+        observed=state.get('body_poses',{})
+        if observed:
+            ids=np.asarray(list(observed),dtype=np.int32)
+            poses=np.asarray(list(observed.values()),dtype=float)
+            errors=np.linalg.norm(data.xpos[ids]-poses[:,:3],axis=1)
+            self.max_fk_position_error=max(self.max_fk_position_error,float(errors.max()))
+            orientations=poses[:,3:]/np.linalg.norm(poses[:,3:],axis=1)[:,None]
+            dots=np.clip(abs(np.sum(data.xquat[ids]*orientations,axis=1)),0.,1.)
+            self.max_fk_rotation_error=max(self.max_fk_rotation_error,float((2*np.arccos(dots)).max()))
+            if np.any(errors>.005):
+                index=int(np.argmax(errors));body=int(ids[index]);position_error=float(errors[index])
+                raise RuntimeError(f'Native body/FK disagreement at t={data.time:.4f}, body={body} ({model.body(body).name}): {position_error:.6f} m; source={data.xpos[body].tolist()}, native={poses[index,:3].tolist()}')
         # These contacts were solved by PhysX. They have no MuJoCo constraint
         # Jacobian/force entries; never leave the old solver dimensions active.
         data.nefc=0

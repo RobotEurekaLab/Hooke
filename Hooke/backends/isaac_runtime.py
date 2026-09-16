@@ -294,6 +294,8 @@ class NativeScene:
         m=self.m
         if eq_data is not None:
             parameters = np.asarray(eq_data,dtype=float)
+            if parameters.size == 0 and m['eq_data'].size == 0:
+                parameters=parameters.reshape(m['eq_data'].shape)
             if parameters.shape != m['eq_data'].shape or not np.isfinite(parameters).all():
                 raise ValueError('Equality parameter size or values are invalid')
             changed = np.flatnonzero(np.any(parameters != m['eq_data'],axis=1))

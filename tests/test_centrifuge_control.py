@@ -56,6 +56,24 @@ class CentrifugeControl(unittest.TestCase):
         self.assertEqual(controller.state, "FAULT")
         self.assertTrue(controller.can_unlock(0.0))
 
+    def test_interrupted_hold_and_restarted_motion_do_not_reuse_old_dwell(self):
+        controller = SpinController()
+        controller.start(0.0, True, True, 0.0)
+        for _ in range(10):
+            for _ in range(250):
+                controller.update(0.002, 6.283185307, True, True, 0.0)
+            controller.update(0.002, 0.0, True, True, 0.0)
+        self.assertEqual(controller.state, "HOLDING")
+        self.assertEqual(controller.hold_s, 0.0)
+        controller.state = "COMPLETE"
+        controller.stopped_s = 0.5
+        controller.update(0.002, 1.0, True, True, 0.0)
+        controller.update(0.002, 0.0, True, True, 0.0)
+        self.assertFalse(controller.can_unlock(0.0))
+        for _ in range(250):
+            controller.update(0.002, 0.0, True, True, 0.0)
+        self.assertTrue(controller.can_unlock(0.0))
+
     def test_invalid_program_or_sensor_is_rejected(self):
         with self.assertRaises(ValueError):
             SpinProgram(rpm=float("nan"))
