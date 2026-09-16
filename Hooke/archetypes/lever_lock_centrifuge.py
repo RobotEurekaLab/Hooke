@@ -122,6 +122,43 @@ def _make_instrument_class(spec: LeverLockSpec) -> type:
     )
 
 
+class LeverLockMotionMixin(ExpertMotionMixin):
+    """Run one lever-lock recipe against the host's actual robot controls."""
+    lever_spec: LeverLockSpec
+
+    def _run_recipe(self):
+        for step in self.lever_spec.recipe:
+            op = step['op']
+            getattr(self, f'_step_{op}')(**{k: v for k, v in step.items() if k != 'op'})
+
+    def _step_move_to_pose(self, mode: str, num_steps: int, quat_override: str | None = None,
+                            gripper_before: float | None = None):
+        pose = self.instrument.get_eef_pose(self.data, loc='lid', mode=mode)
+        if quat_override == 'lock_quat':
+            pose.quat = LOCK_QUAT
+        if gripper_before is not None:
+            self.gripper_control(gripper_before)
+        self.move_to(pose, num_steps=num_steps)
+
+    def _step_gripper(self, value: float, delay: int = 300):
+        self.gripper_control(value, delay=delay)
+
+    def _step_lever_close(self, mode: str = '1/close'):
+        path = self.instrument.lever_path(self.data, mode=mode)
+        self.path_follow(path[:-1])
+        self._lever_end_pose = path[-1]
+
+    def _step_move_to_lever_end(self, num_steps: int):
+        assert self._lever_end_pose is not None, "lever_close must run before move_to_lever_end"
+        self.move_to(self._lever_end_pose, num_steps=num_steps)
+
+    def _step_force_lock(self):
+        self.data.eq_active[self.instrument.lid_lock] = 1
+
+    def _step_wait(self, seconds: float):
+        self.wait(seconds, {})
+
+
 def make_task_classes(spec: LeverLockSpec) -> tuple[type, type]:
     """Builds (Task, Expert) classes for `spec`, matching the structure of the
     original hand-written `Centrifuge{5430,5910}Manipulate(Expert)` classes."""
@@ -166,7 +203,9 @@ def make_task_classes(spec: LeverLockSpec) -> tuple[type, type]:
         def check(self):
             return lid_lock_passes(self.data, self.instrument)
 
-    class LeverLockExpert(LeverLockTask, Expert, ExpertMotionMixin):
+    class LeverLockExpert(LeverLockTask, Expert, LeverLockMotionMixin):
+        lever_spec = spec
+
         def __init__(self, mjspec: mujoco.MjSpec, freq: int = 20):
             super().__init__(mjspec)
             self.freq = freq
@@ -175,37 +214,6 @@ def make_task_classes(spec: LeverLockSpec) -> tuple[type, type]:
             self.planner = make_topp_planner(self.arm.dof, self.arm.ik.solve)
             self._lever_end_pose: Pose | None = None
 
-        def _run_recipe(self):
-            for step in spec.recipe:
-                op = step['op']
-                getattr(self, f'_step_{op}')(**{k: v for k, v in step.items() if k != 'op'})
-
-        def _step_move_to_pose(self, mode: str, num_steps: int, quat_override: str | None = None,
-                                gripper_before: float | None = None):
-            pose = self.instrument.get_eef_pose(self.data, loc='lid', mode=mode)
-            if quat_override == 'lock_quat':
-                pose.quat = LOCK_QUAT
-            if gripper_before is not None:
-                self.gripper_control(gripper_before)
-            self.move_to(pose, num_steps=num_steps)
-
-        def _step_gripper(self, value: float, delay: int = 300):
-            self.gripper_control(value, delay=delay)
-
-        def _step_lever_close(self, mode: str = '1/close'):
-            path = self.instrument.lever_path(self.data, mode=mode)
-            self.path_follow(path[:-1])
-            self._lever_end_pose = path[-1]
-
-        def _step_move_to_lever_end(self, num_steps: int):
-            assert self._lever_end_pose is not None, "lever_close must run before move_to_lever_end"
-            self.move_to(self._lever_end_pose, num_steps=num_steps)
-
-        def _step_force_lock(self):
-            self.data.eq_active[self.instrument.lid_lock] = 1
-
-        def _step_wait(self, seconds: float):
-            self.wait(seconds, {})
 
         def execute(self):
             self.arm.ik.initial_qpos = self.data.qpos[self.arm.jnt_span]

@@ -7,10 +7,10 @@ import numpy as np
 import mujoco
 mujoco.mj_loadPluginLibrary('./libmjlab.so.3.3.0')
 
-from kinematics import Pose, mul_pose, neg_pose
+from kinematics import Pose
 from task import Task, Expert, Manager, SCENE_ROOT
-from expert_common import UR5eArm, ExpertMotionMixin, set_gravcomp, make_topp_planner
-from archetypes.lever_lock_centrifuge import _make_instrument_class, LOCK_QUAT
+from expert_common import UR5eArm, set_gravcomp, make_topp_planner
+from archetypes.lever_lock_centrifuge import _make_instrument_class, LeverLockMotionMixin
 from archetypes.centrifuge_specs import CENTRIFUGE_5430_SPEC
 from archetypes.lid_lock import lid_lock_passes
 from load_centrifuge_5430 import CentrifugeTube, GridSlot
@@ -97,7 +97,9 @@ class CentrifugeInsertCloseComposite(Task):
         raise ValueError(f"unknown task {self.task!r}")
 
 
-class CentrifugeInsertCloseCompositeExpert(CentrifugeInsertCloseComposite, Expert, ExpertMotionMixin):
+class CentrifugeInsertCloseCompositeExpert(CentrifugeInsertCloseComposite, Expert, LeverLockMotionMixin):
+    lever_spec = CENTRIFUGE_5430_SPEC
+
     def __init__(self, mjspec: mujoco.MjSpec, freq: int = 20):
         super().__init__(mjspec)
         self.freq = freq
@@ -138,40 +140,22 @@ class CentrifugeInsertCloseCompositeExpert(CentrifugeInsertCloseComposite, Exper
     def _execute_insert(self):
         execute_insertion(self)
 
-    # --- close-lid half: transcribed from lever_lock_centrifuge.py's
-    # closure-based _step_*/_run_recipe (see module docstring for why this
-    # can't just be imported) ---
-    def _step_move_to_pose(self, mode: str, num_steps: int, quat_override: str | None = None, gripper_before: float | None = None):
-        pose = self.instrument.get_eef_pose(self.data, loc='lid', mode=mode)
-        if quat_override == 'lock_quat':
-            pose.quat = LOCK_QUAT
-        if gripper_before is not None:
-            self.gripper_control(gripper_before)
-        self.move_to(pose, num_steps=num_steps)
-
-    def _step_gripper(self, value: float, delay: int = 300):
-        self.gripper_control(value, delay=delay)
-
-    def _step_lever_close(self, mode: str = '1/close'):
-        path = self.instrument.lever_path(self.data, mode=mode)
-        self.path_follow(path[:-1])
-        self._lever_end_pose = path[-1]
-
-    def _step_move_to_lever_end(self, num_steps: int):
-        assert self._lever_end_pose is not None
-        self.move_to(self._lever_end_pose, num_steps=num_steps)
-
-    def _step_force_lock(self):
-        self.data.eq_active[self.instrument.lid_lock] = 1
 
     def _step_wait(self, seconds: float):
         for _ in range(int(seconds / self.dt)):
             self.step_and_log({})
 
     def _execute_close_lid(self):
-        for step in CENTRIFUGE_5430_SPEC.recipe:
-            op = step['op']
-            getattr(self, f'_step_{op}')(**{k: v for k, v in step.items() if k != 'op'})
+        # Clear the insertion arm configuration through real actuator motion.
+        # Starting the lid recipe from the insertion IK branch jams a follower
+        # against the open lid before the finger pads can grasp its edge.
+        self.gripper_control(0)
+        approach = self.model.key_qpos[0, self.arm.jnt_span].copy()
+        self.move_joints(approach)
+        if np.max(abs(self.data.qpos[self.arm.jnt_span] - approach)) > .01:
+            raise RuntimeError('Arm did not reach the lid approach configuration')
+        self.arm.ik.initial_qpos = self.data.qpos[self.arm.jnt_span].copy()
+        self._run_recipe()
 
 
 CentrifugeInsertCloseComposite.Expert = CentrifugeInsertCloseCompositeExpert
