@@ -35,6 +35,12 @@ def load_replay_plugins():
     mujoco.mj_loadPluginLibrary(str(ROOT / 'Hooke/libmjlab.so.3.3.0'))
 
 
+def load_replay_model(path):
+    """Load a recorded binary after registering the plugins it may reference."""
+    load_replay_plugins()
+    return mujoco.MjModel.from_binary_path(str(path))
+
+
 def phase_indices(times, phases, requested):
     """Select an actual saved sample for each complete, uniquely named phase."""
     times = np.asarray(times)
@@ -97,8 +103,7 @@ def render_episode(episode, output, requested, gpu):
     result = json.loads((episode / 'result.json').read_text())
     if result['mode'] != 'expert' or result['status'] not in ('TASK_SUCCEEDED', 'TASK_FAILED'):
         raise ValueError('Expected a completed, recorded expert episode')
-    load_replay_plugins()
-    model = mujoco.MjModel.from_binary_path(str(episode / 'source/model.mjb'))
+    model = load_replay_model(episode / 'source/model.mjb')
     data = mujoco.MjData(model)
     with np.load(episode / 'trajectory.npz', allow_pickle=False) as archive:
         trajectory = {key: archive[key] for key in ('qpos', 'qvel', 'time')}

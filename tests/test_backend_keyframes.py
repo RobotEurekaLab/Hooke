@@ -2,6 +2,7 @@
 from copy import deepcopy
 import json
 from pathlib import Path
+import subprocess
 import sys
 from tempfile import TemporaryDirectory
 import unittest
@@ -13,6 +14,38 @@ from backends.keyframes import phase_indices, render_episode
 
 
 class RecordedKeyframeTests(unittest.TestCase):
+    def test_plugin_binary_loads_in_a_fresh_process(self):
+        source = Path(__file__).resolve().parents[1] / 'Hooke'
+        xml = '''<mujoco>
+          <extension><plugin plugin="mjlab.sdf.thread"><instance name="thread">
+            <config key="pitch" value="0.003"/>
+            <config key="radius" value="0.014"/>
+            <config key="low" value="-1"/><config key="high" value="1.2"/>
+            <config key="gauge" value="0.0009"/>
+          </instance></plugin></extension>
+          <asset><mesh name="thread"><plugin instance="thread"/></mesh></asset>
+          <worldbody><geom type="sdf" mesh="thread"><plugin instance="thread"/></geom></worldbody>
+        </mujoco>'''
+        with TemporaryDirectory() as directory:
+            binary = str(Path(directory) / 'model.mjb')
+            create = (
+                "import mujoco, sys; "
+                "mujoco.mj_loadPluginLibrary('libmjlab.so.3.3.0'); "
+                "model = mujoco.MjModel.from_xml_string(sys.argv[1]); "
+                "mujoco.mj_saveModel(model, sys.argv[2])"
+            )
+            read = (
+                "import resource, sys; resource.setrlimit(resource.RLIMIT_CORE, (0, 0)); "
+                "from backends.keyframes import load_replay_model; "
+                "model = load_replay_model(sys.argv[1]); "
+                "assert model.nplugin == 1; "
+                "assert load_replay_model(sys.argv[1]).nplugin == 1"
+            )
+            for command in ([create, xml, binary], [read, binary]):
+                completed = subprocess.run([sys.executable, '-c', *command], cwd=source,
+                    capture_output=True, text=True, timeout=30)
+                self.assertEqual(completed.returncode, 0, completed.stderr)
+
     def test_phase_endpoint_selects_a_recorded_sample_without_interpolation(self):
         times = np.array([.002, .004, .006])
         phases = [{'phase': 'aspirate', 'end_s': .0051}, {'phase': 'dispense', 'end_s': .006}]
