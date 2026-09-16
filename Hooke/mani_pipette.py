@@ -358,7 +358,10 @@ class PipetteTransfer(Pipette):
     def prepare(cls, spec):
         spec = super().prepare(spec)
         tube_spec = mujoco.MjSpec.from_file(str(SCENE_ROOT.parent/'object/centrifuge_50ml_screw.xml'))
-        receiver = spec.worldbody.add_body(name='pipette_destination', pos=[.072, .018, .829])
+        rack_spec = mujoco.MjSpec.from_file(str(SCENE_ROOT.parent/'object/centrifuge_10slot.gen.xml'))
+        rack = spec.worldbody.add_body(name='pipette_destination_rack', pos=[-.2, -.25, .854], quat=[1, 0, 0, 1])
+        rack.add_frame().attach_body(rack_spec.body('centrifuge_10slot'), '7/', '')
+        receiver = spec.worldbody.add_body(name='pipette_destination', pos=[-.236, -.268, .829])
         receiver.add_joint(name='pipette_destination', type=mujoco.mjtJoint.mjJNT_FREE)
         receiver.add_frame().attach_body(tube_spec.body('centrifuge_50ml_screw_body'), '6/', '')
         return spec
@@ -368,13 +371,6 @@ class PipetteTransfer(Pipette):
 
     def reset(self, seed=None):
         info = super().reset(seed)
-        # Choose a distant rack corner before physics starts so pickup clears
-        # the receiver; the source's original seed distribution is preserved.
-        origin = self.data.qpos[self.object.body_jnt_adr:self.object.body_jnt_adr+2]
-        corners = np.array([[-.072, -.018], [-.072, .018], [.072, -.018], [.072, .018]])
-        position = corners[np.argmax(np.linalg.norm(corners-origin, axis=1))]
-        address = int(self.model.joint('pipette_destination').qposadr[0])
-        self.data.qpos[address:address+2] = position
         mujoco.mj_forward(self.model, self.data)
         self.source_return_position = self.data.xpos[self.object.body_id].copy()
         self.destination_position = self.data.xpos[self.model.body('6/centrifuge_50ml_screw_body').id].copy()
