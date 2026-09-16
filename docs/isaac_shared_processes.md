@@ -55,3 +55,12 @@ python -m backends.matrix --task pipette --backend isaac \
 ```
 
 每次复测使用新的输出目录。矩阵会记录代码、资产及 Isaac 环境选项指纹；恢复运行仅接受相同输入和参数。`HOOKE_ISAAC_SIMULATION_THREADS` 是可选的原生线程诊断设置，默认仍为 1，不代表已取得任务加速效果。
+
+保存后的证据可通过独立命令核对，无需启动 Isaac：
+
+```bash
+python -m backends.evidence source /path/to/mujoco/source /path/to/isaac/source
+python -m backends.evidence trajectory /path/to/baseline/trajectory.npz /path/to/new/trajectory.npz
+```
+
+源快照核对全部数值字段、数据类型、名称、导出 XML、资产清单及实际复制文件的 SHA-256；轨迹核对字段完整性和数组。差异使命令以非零状态退出。证据一致仍不构成物理等价性认证。

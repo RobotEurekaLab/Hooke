@@ -34,3 +34,5 @@ See [setup, validation evidence, and limitations](docs/isaac_scene_parity.md)
 for the existing server configuration, commands, and LAN comparison page.
 See the [completion metrics and remaining work](docs/isaac_status.md) for the
 experimental branch assessment and a committed seed-0 validation snapshot.
+See [shared dual-arm control and ideal pipette volume accounting](docs/isaac_shared_processes.md)
+for the reusable process modules, separate assessments, and validation scope.
