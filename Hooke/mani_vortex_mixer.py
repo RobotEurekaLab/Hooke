@@ -7,6 +7,7 @@ from topp import Topp
 from task import Task, Expert, Manager, SCENE_ROOT
 from instrument import VortexMixerGenie2
 from liquid import ContainerSystem, ContainerCoordinator
+from process_progress import ProcessProgressSystem
 from expert_common import set_gravcomp
 from contact_state import body_geoms, touching
 from control_streams import run_control_streams
@@ -109,7 +110,8 @@ class VortexMixerManipulate(Task):
         self.instrument = VortexMixerGenie2("/vortex_mixer_genie_2:")
         cs = ContainerSystem("1/centrifuge_15ml_body-visual")
         cc = ContainerCoordinator()
-        manager = Manager.from_spec(spec, [self.instrument, cs, cc])
+        self.progress = ProcessProgressSystem()
+        manager = Manager.from_spec(spec, [self.instrument, cs, cc, self.progress])
         super().__init__(manager)
         self.arm1 = AlohaArm(self.model, '1/aloha:')
         self.arm2 = AlohaArm(self.model, '2/aloha:')
@@ -120,6 +122,7 @@ class VortexMixerManipulate(Task):
         self.aloha2_withdraw_pose = Pose(pos=(0.0, 0.0, 0.0), quat=np.array([1.0, 0.0, 0.0, 0.0]))
         self.model.key_qpos[0] += self.model.key_qpos[1]
         self.model.key_ctrl[0] += self.model.key_ctrl[1]
+        self.progress.bind(self)
 
     def reset(self, seed: int | None = None):
         super().reset(seed=seed)
@@ -154,8 +157,7 @@ class VortexMixerManipulate(Task):
         return self.task_info
 
     def check(self):
-        # Placeholder for task completion logic
-        return False
+        return self.progress.success
 
 class VortexMixerManipulateExpert(VortexMixerManipulate, Expert):
     """Two cooperative arm recipes yield targets to one shared physics clock."""

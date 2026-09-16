@@ -101,6 +101,9 @@ def get_task_class(name: str) -> type[Task]:
     elif name == "pipette":
         from mani_pipette import Pipette
         return Pipette
+    elif name == "pipette_transfer":
+        from mani_pipette import PipetteTransfer
+        return PipetteTransfer
     elif name == "screw_loose":
         from screw_loose_topp import ScrewLoose
         return ScrewLoose
@@ -123,7 +126,7 @@ def get_task_class(name: str) -> type[Task]:
         from mani_centrifuge_mini import CentrifugeMiniManipulate
         return CentrifugeMiniManipulate
     elif name == "vortex_mixer":
-        from vortex_mixer import VortexMixerManipulate
+        from mani_vortex_mixer import VortexMixerManipulate
         return VortexMixerManipulate
     else:
         raise ValueError(f"Unknown task name: {name}")

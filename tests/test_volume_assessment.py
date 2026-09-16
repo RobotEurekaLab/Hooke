@@ -18,8 +18,9 @@ class VolumeAssessmentTests(unittest.TestCase):
         container = SimpleNamespace(volume=1e-6)
         container.liquid = SimpleNamespace(surface=SimpleNamespace(distance=0.),
             meshplane=SimpleNamespace(calculate_volume=lambda distance: (container.volume, 1.)))
+        source = SimpleNamespace(container=container)
         return SimpleNamespace(snapshot=piston.snapshot, pipette=piston, tip_capacity_m3=200e-9,
-                               source=SimpleNamespace(container=container))
+                               source=source, containers={'source': source}, target_reservoir='tip')
 
     def test_unexecuted_piston_is_not_a_volume_success(self):
         observer = PipetteVolumeAssessment(self.transfer())

@@ -1,8 +1,9 @@
-"""Versioned episode evidence, separate from the historical task.check().
+"""Versioned episode evidence without invoking task.check().
 
 Observers consume post-system-update state. Reading a report never advances
-history or invokes a task predicate. These are manipulation checks, not
-validation of transferred liquid volume or chemical mixing.
+history or invokes a task predicate. Pipette and vortex tasks share the same
+observation rules; ideal volume geometry is audited separately. These checks
+do not validate fluid dynamics or chemical mixing.
 """
 from __future__ import annotations
 
@@ -17,7 +18,9 @@ from contact_state import body_geoms, touching
 from archetypes.centrifuge_insertion import insertion_target
 from grasp.quat import quatapply, quatinv
 
-VERSION = 'hooke-manipulation-v3'
+from process_progress import ProcessProgress, PipetteSequence, VortexSequence
+
+VERSION = 'hooke-manipulation-v4'
 
 
 def literal_predicate(check):
@@ -33,46 +36,6 @@ def literal_predicate(check):
     except (OSError, TypeError, IndentationError, SyntaxError):
         pass
     return None
-
-
-@dataclass
-class PipetteSequence:
-    phase: str = 'await_submersion'
-    events: dict = field(default_factory=dict)
-    clearance_m: float = 0.
-    max_depth_m: float = 0.
-    liquid_available: bool = True
-
-    def update(self, time, depth, radial, above_bottom, thumb, liquid_available=True):
-        self.liquid_available = liquid_available
-        if not liquid_available:
-            self.phase = 'await_submersion'
-            self.events.clear()
-            self.clearance_m = 0.
-            return
-        inside = radial < .0065 and above_bottom
-        self.clearance_m = -depth
-        if inside:
-            self.max_depth_m = max(self.max_depth_m, depth)
-        if self.phase == 'await_submersion' and inside and depth > .005 and thumb > .70:
-            self.phase = 'await_release'
-            self.events['submerged_pressed_s'] = time
-        elif self.phase == 'await_release':
-            if not inside or depth <= 0:
-                # A release in air cannot be credited on subsequent re-entry.
-                self.phase = 'await_submersion'
-                self.events.clear()
-            elif thumb < .45:
-                self.phase = 'await_withdrawal'
-                self.events['released_under_liquid_s'] = time
-        elif self.phase == 'await_withdrawal' and depth < -.05:
-            self.phase = 'complete'
-            self.events['withdrawn_s'] = time
-
-    def checks(self):
-        return {'ordered_submerge_release_withdraw': self.phase == 'complete',
-                'final_clearance_50mm': self.clearance_m > .05,
-                'liquid_available': self.liquid_available}
 
 
 @dataclass
@@ -102,36 +65,6 @@ class SashManipulation:
         return {'target_within_20mm': abs(self.position - self.target) < .02,
                 'handle_contact_50ms': self.contact_s >= .05,
                 'travel_in_contact_50mm': self.travel_m >= .05}
-
-
-@dataclass
-class VortexSequence:
-    lifted: bool = False
-    active_run_s: float = 0.
-    longest_active_s: float = 0.
-    contact_s: float = 0.
-    peak_speed_rad_s: float = 0.
-    returned: bool = False
-    released: bool = False
-    stopped: bool = False
-
-    def update(self, dt, height_gain, contact, speed, return_distance, held):
-        self.lifted |= height_gain > .03
-        self.peak_speed_rad_s = max(self.peak_speed_rad_s, abs(speed))
-        if contact:
-            self.contact_s += dt
-        active = self.lifted and contact and abs(speed) >= 1.
-        self.active_run_s = self.active_run_s + dt if active else 0.
-        self.longest_active_s = max(self.longest_active_s, self.active_run_s)
-        self.returned = return_distance < .03
-        self.released = not held
-        self.stopped = abs(speed) < 1.
-
-    def checks(self):
-        return {'tube_lifted_30mm': self.lifted,
-                'continuous_rotating_tube_contact_500ms': self.longest_active_s >= .5,
-                'returned_within_30mm': self.returned,
-                'tube_released': self.released, 'platform_stopped': self.stopped}
 
 
 @dataclass
@@ -174,8 +107,10 @@ class EpisodeAssessment:
         self.state = None
         model, data = task.model, task.data
         self.constant = literal_predicate(task.check)
-        if name == 'pipette':
-            self.state = PipetteSequence()
+        self.progress = None
+        if name in ('pipette', 'pipette_transfer', 'vortex_mixer'):
+            self.progress = ProcessProgress(task, name)
+            self.state = self.progress.state
         elif name in ('close_fume_hood', 'open_fume_hood'):
             self.state = SashManipulation(float(data.qpos[task.sash_jnt_adr]),
                                          0. if name == 'close_fume_hood' else .18)
@@ -184,22 +119,6 @@ class EpisodeAssessment:
                             if '/ur:2f85:' in model.body(int(model.geom_bodyid[i])).name}
             if not self.gripper:
                 raise ValueError('Fume hood assessment could not locate gripper geoms')
-        elif name == 'vortex_mixer':
-            self.state = VortexSequence()
-            self.tube_body = model.body('1/centrifuge_15ml_body').id
-            self.tube = body_geoms(model, self.tube_body)
-            self.held_assembly = self.tube | body_geoms(model, model.body('2/centrifuge_15ml_cap').id)
-            self.platform = body_geoms(model, model.body('/vortex_mixer_genie_2:platform').id)
-            joint = model.joint('/vortex_mixer_genie_2:platform/pivot')
-            self.speed_adr = int(joint.dofadr[0])
-            self.initial_height = float(data.xpos[self.tube_body, 2])
-            self.return_position = data.site_xpos[model.site('origin1').id].copy()
-            self.robot = {i for i in range(model.ngeom)
-                          if '/aloha:' in model.body(int(model.geom_bodyid[i])).name}
-            self.arms = tuple({i for i in self.robot
-                               if f'{arm}/aloha:' in model.body(int(model.geom_bodyid[i])).name}
-                              for arm in (1, 2))
-            self.inter_arm_contact_s = 0.
         elif name in ('insert_centrifuge_5430', 'composite_insert_centrifuge_5430'):
             self.state = InsertionSequence()
             self.tube = body_geoms(model, int(model.body_weldid[task.tube.body_id]))
@@ -215,34 +134,12 @@ class EpisodeAssessment:
             return
         self.time = now
         self.samples += 1
-        if isinstance(self.state, PipetteSequence):
-            container = task.container.container
-            if container.liquid is None:
-                self.state.update(now, 0., 0., False, 0., liquid_available=False)
-                return
-            tip = data.site_xpos[task.arm1.site_id]
-            local = container.rotation_matrix.T @ (tip - container.position)
-            depth = float(container.liquid.surface.distance - local @ container.liquid.surface_normal)
-            tube_local = data.xmat[task.object.body_id].reshape(3, 3).T @ (tip - data.xpos[task.object.body_id])
-            thumb = float(data.qpos[task.arm1.thj3_qposadr])
-            radial = float(np.linalg.norm(tube_local[:2]))
-            self.state.update(now, depth, radial, bool(tube_local[2] > 0), thumb)
-            self.metrics.update(tip_depth_m=depth, radial_offset_m=radial, thumb_joint_rad=thumb,
-                                thumb_command=float(data.ctrl[task.arm1.thj3_id]))
+        if self.progress is not None:
+            self.progress.update()
+            self.metrics = self.progress.metrics
         elif isinstance(self.state, SashManipulation):
             self.state.update(float(data.qpos[task.sash_jnt_adr]),
                               touching(data, self.handle, self.gripper), dt)
-        elif isinstance(self.state, VortexSequence):
-            position = data.xpos[self.tube_body]
-            self.inter_arm_contact_s += dt if touching(data, *self.arms) else 0.
-            axis = data.xmat[self.tube_body].reshape(3, 3)[:, 2]
-            self.metrics.update(inter_arm_contact_s=self.inter_arm_contact_s,
-                                final_tube_tilt_rad=float(np.arccos(np.clip(axis[2], -1., 1.))),
-                                return_distance_m=float(np.linalg.norm(position-self.return_position)))
-            self.state.update(dt, float(position[2] - self.initial_height),
-                              touching(data, self.tube, self.platform), float(data.qvel[self.speed_adr]),
-                              float(np.linalg.norm(position - self.return_position)),
-                              touching(data, self.held_assembly, self.robot))
         elif isinstance(self.state, InsertionSequence):
             actual = task.tube.get_body_pose(data)
             target = insertion_target(task)
@@ -262,7 +159,8 @@ class EpisodeAssessment:
         if self.state is not None:
             checks = self.state.checks()
             metrics.update(asdict(self.state))
-            scope = 'motion_sequence_proxy' if self.name == 'pipette' else 'manipulation'
+            scope = ('motion_sequence_proxy' if self.name == 'pipette' else
+                     'ideal_liquid_transfer_manipulation' if self.name == 'pipette_transfer' else 'manipulation')
         audited = bool(checks)
         failures = [key for key, value in checks.items() if not value]
         within_limit = self.time <= self.task.time_limit

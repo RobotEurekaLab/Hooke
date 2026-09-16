@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'Hooke'))
 from pipetting import PipetteTransferSystem
 from liquid import ContainerSystem, Container, LiquidState
 from meshplane import Mesh
+from backends.volume_assessment import PipetteVolumeAssessment
 
 
 class PipettingGeometryTests(unittest.TestCase):
@@ -119,3 +120,43 @@ class PipettingGeometryTests(unittest.TestCase):
         system.update(data)
         self.assertEqual(source.container.volume, 500e-9)
         self.assertEqual(system.pipette.ledger.state('tip').volume_m3, 0.)
+
+    def test_complete_transfer_goal_checks_both_container_surfaces(self):
+        model, data, system, source, target = self.fixture()
+        system.target_reservoir = 'target'
+        observer = PipetteVolumeAssessment(system)
+        for position, stroke in (([0., 0., -.001], -.008), ([0., 0., -.001], 0.),
+                                 ([.03, 0., 0.], -.008), ([.1, 0., 0.], 0.)):
+            data.mocap_pos[0] = position
+            data.qpos[0] = stroke
+            mujoco.mj_kinematics(model, data)
+            system.update(data)
+            observer.update()
+        report = observer.report()
+        self.assertTrue(report['success'])
+        self.assertEqual(report['version'], 'hooke-ideal-volume-v3')
+        self.assertAlmostEqual(target.container.volume, 200e-9)
+        self.assertEqual(system.pipette.ledger.state('tip').volume_m3, 0.)
+        # Corrupt the actual receiver plane while leaving its cached volume
+        # and the source plane unchanged: independent geometry must catch it.
+        target.container.liquid.surface.distance += .001
+        observer.update()
+        report = observer.report()
+        self.assertTrue(report['checks']['surface_volume_matches_ledger'])
+        self.assertFalse(report['checks']['geometric_surface_volume_matches_ledger'])
+        self.assertLessEqual(report['metrics']['reservoir_errors_m3']['source']['geometric_m3'], 1e-12)
+        self.assertGreater(report['metrics']['reservoir_errors_m3']['target']['geometric_m3'], 1e-12)
+
+    def test_receiver_button_release_reaspirates_and_fails_transfer_goal(self):
+        model, data, system, source, target = self.fixture()
+        system.target_reservoir = 'target'
+        for position, stroke in (([0., 0., -.001], -.008), ([0., 0., -.001], 0.),
+                                 ([.03, 0., 0.], -.008), ([.03, 0., -.004], 0.)):
+            data.mocap_pos[0] = position
+            data.qpos[0] = stroke
+            mujoco.mj_kinematics(model, data)
+            system.update(data)
+        observer = PipetteVolumeAssessment(system)
+        observer.update()
+        self.assertFalse(observer.report()['checks']['tip_residual_within_1nl'])
+        self.assertFalse(observer.report()['success'])

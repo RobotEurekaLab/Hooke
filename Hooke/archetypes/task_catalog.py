@@ -119,9 +119,15 @@ CATALOG: dict[str, CatalogEntry] = {
         ),
         CatalogEntry(
             name="pipette",
-            description="Pipette liquid from one container to another using a two-armed UR5e pipetting rig.",
+            description="Aspirate 200 uL from a lifted tube using a two-armed UR5e pipetting rig.",
             category="transfer",
             module="mani_pipette", cls="Pipette", robot="dual_ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="pipette_transfer",
+            description="Aspirate 200 uL, dispense into an empty tube, withdraw and return the source using dual UR5e arms.",
+            category="transfer",
+            module="mani_pipette", cls="PipetteTransfer", robot="dual_ur5e", camera="table_cam_front",
         ),
         CatalogEntry(
             name="vortex_mixer",
