@@ -25,8 +25,8 @@ tooling here to diverge over time as new features land.
 The `/backends` web page can open catalogue scenes and run their original
 controllers with either MuJoCo or an isolated Isaac Sim 4.5 / PhysX process.
 The adapter reuses source assets and feeds actual PhysX state and contacts back
-to the task. All 165 catalogue scenes have passed a short load, physics-step,
-and RGB check. All 22 original experts completed at seed 0; Isaac reproduced
+to the task. In the recorded baseline, all 165 catalogue scenes passed a short
+load, physics-step, and RGB check. All 22 original experts completed at seed 0; Isaac reproduced
 the 18 source predicate successes (15 also within declared time limits).
 Full physical, visual, and performance equivalence remains unqualified.
 
