@@ -29,6 +29,7 @@ from archetypes.task_catalog import CATALOG
 from webui.robot_registry import ROBOTS, robot_options_for
 from webui.robot_scene import compose_scene, render_robot_preview
 from webui.scene_render import render_scene
+from backends.gpu_lease import GPUBusy
 from webui.custom_gen import generate_custom_asset, GenerationError
 from PIL import Image
 import io
@@ -125,6 +126,8 @@ def api_scene():
             image = render_robot_preview(scene_path, camera_name=entry.camera)
             image_b64 = _png_base64(image)
             task_info = {"prefix": f"[preview only -- {ROBOTS[robot].display_name} placed in the '{task_name}' scene]"}
+    except GPUBusy as e:
+        return jsonify({"error": str(e)}), 409
     except Exception as e:
         return jsonify({"error": f"{type(e).__name__}: {e}"}), 500
 

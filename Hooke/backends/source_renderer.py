@@ -5,7 +5,7 @@ import os
 import subprocess
 
 from backends.config import isaac_gpu
-from backends.gpu_lease import GPULease
+from backends.gpu_lease import GPUBusy, GPULease
 from backends.render_settings import RenderSettings
 
 
@@ -28,7 +28,7 @@ def mujoco_renderer(model, gpu=None, *, width=None, height=None):
             ).strip()
         )
         if memory >= 2048:
-            raise RuntimeError(
+            raise GPUBusy(
                 f"GPU {gpu} is busy ({memory} MiB); wait for the running job"
             )
         os.environ["MUJOCO_EGL_DEVICE_ID"] = str(gpu)

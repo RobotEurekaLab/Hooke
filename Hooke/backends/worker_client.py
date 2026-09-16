@@ -10,7 +10,7 @@ import tempfile
 import time
 
 from backends.config import isaac_gpu, isaac_installation
-from backends.gpu_lease import GPULease
+from backends.gpu_lease import GPUBusy, GPULease
 from backends.ipc import read_message, write_message
 
 
@@ -42,7 +42,7 @@ class IsaacWorker:
                 ).strip()
             )
             if memory >= 2048:
-                raise RuntimeError(
+                raise GPUBusy(
                     f"GPU {gpu} is busy ({memory} MiB); wait for the running job"
                 )
             uuid = subprocess.check_output(

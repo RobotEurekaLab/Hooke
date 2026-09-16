@@ -95,6 +95,19 @@ class GPULeases(unittest.TestCase):
         self.assertEqual(response.status_code, 409)
         popen.assert_not_called()
 
+    def test_original_scene_picker_reports_gpu_conflict(self):
+        from webui.server import app
+
+        with patch(
+            "webui.server.render_scene",
+            side_effect=leases.GPUBusy("GPU 6 is busy"),
+        ):
+            response = app.test_client().post(
+                "/api/scene", json={"task": "centrifuge_5430_cycle"}
+            )
+        self.assertEqual(response.status_code, 409)
+        self.assertEqual(response.json["error"], "GPU 6 is busy")
+
 
 if __name__ == "__main__":
     unittest.main()

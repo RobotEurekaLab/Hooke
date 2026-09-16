@@ -16,7 +16,7 @@
 
 [简化科学模型](validation/isaac_science_model_summary.json) 已在两个实际引擎时钟上接入：90 秒热学、5 秒毛细管流体实验通过，报告能量和体积守恒及未标定的适用范围。[三个新增原生物理小场景](validation/isaac_extended_contracts.json) 通过刚体力/力矩、捕获 weld 和静态地形检查。
 
-[真实显示对照](isaac_visual_configuration.md) 的 9 组图像平均误差下降 62.4%，仍未达到像素等价。[完整专家性能对照](validation/isaac_full_expert_performance_comparison.json) 的 16,819 步数组一致，实际耗时改善 2.2%；二进制同步微基准的 1.42 倍加速不外推为整回合加速。117 项单元测试通过，桌面和手机真实浏览器检查通过。
+[真实显示对照](isaac_visual_configuration.md) 的 9 组图像平均误差下降 62.4%，仍未达到像素等价。[完整专家性能对照](validation/isaac_full_expert_performance_comparison.json) 的 16,819 步数组一致，实际耗时改善 2.2%；二进制同步微基准的 1.42 倍加速不外推为整回合加速。118 项单元测试通过，桌面和手机真实浏览器检查通过。
 
 [配置、启动、诊断和恢复](isaac_operations.md) 已落地；原生构造故障恢复与 120 秒长稳在声明的 TGS 外力迭代配置下通过，默认设置的速度门限失败保留。新增 16 张完整离心真实关键帧与独立物理计数、桌面/手机浏览器检查通过。[七项工作验收](isaac_completion_plan.md) 汇总每项状态及未解决的研究范围。
 
