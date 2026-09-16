@@ -94,7 +94,7 @@ class BackendSettings(unittest.TestCase):
             close(worker)
 
         with tempfile.TemporaryDirectory() as output, mock.patch(
-            "backends.worker_client.fcntl.flock"
+            "backends.gpu_lease.fcntl.flock"
         ), mock.patch(
             "backends.worker_client.subprocess.check_output",
             side_effect=OSError("probe failed"),

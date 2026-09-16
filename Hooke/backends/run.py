@@ -75,7 +75,7 @@ def run(args,worker=None):
             else:
                 source=output/'source';source.mkdir(exist_ok=True);write_snapshot(task,source)
                 if not args.no_render:
-                    from backends.keyframes import mujoco_renderer
+                    from backends.source_renderer import mujoco_renderer
                     renderer=stack.enter_context(mujoco_renderer(task.model,args.gpu))
             if not args.no_render:
                 from backends.visual_state import LiveVisuals

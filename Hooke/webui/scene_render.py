@@ -14,6 +14,7 @@ from PIL import Image
 
 from archetypes.rotor_variants import generate_rotor_variant
 from load_centrifuge_5430 import InsertCentrifuge5430
+from backends.source_renderer import mujoco_renderer
 
 
 def _build_task(entry, variant: int | None):
@@ -42,15 +43,12 @@ def render_scene(entry, seed: int = 0, variant: int | None = None, width: int = 
     mujoco.mj_forward(task.model, task.data)
 
     camera_name = task_info["camera_mapping"].get("image")
-    renderer = mujoco.Renderer(task.model, height, width)
-    try:
+    with mujoco_renderer(task.model, width=width, height=height) as renderer:
         if camera_name:
             renderer.update_scene(task.data, camera=camera_name)
         else:
             renderer.update_scene(task.data)
         image = renderer.render()
-    finally:
-        renderer.close()
 
     buf = io.BytesIO()
     Image.fromarray(np.asarray(image)).save(buf, format="PNG")

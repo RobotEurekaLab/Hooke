@@ -39,6 +39,8 @@ class ScienceJobs(unittest.TestCase):
             api.subprocess, "Popen", return_value=process
         ) as popen, patch.object(
             api.threading, "Thread"
+        ), patch.object(
+            api, "GPULease"
         ):
             response = app.test_client().post(
                 "/api/backends/jobs",

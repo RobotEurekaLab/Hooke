@@ -13,6 +13,7 @@ import uuid
 from flask import Blueprint, jsonify, request, send_file, abort
 from archetypes.task_catalog import CATALOG
 from backends.config import isaac_gpu
+from backends.gpu_lease import GPULease
 from backends.capabilities import registry
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -167,13 +168,17 @@ def start_job():
     except (TypeError,ValueError,OverflowError):return jsonify(error='Invalid seed or duration'),400
     if mode == 'experiment':seconds = experiments[science][1]
     with _lock:
-        if any(j['backend']==backend and j.get('process') and j['process'].poll() is None for j in _jobs.values()):
-            return jsonify(error=f'{backend} 已有运行中的任务，请等待或停止该任务。'),409
+        if any(j.get('process') and j['process'].poll() is None for j in _jobs.values()):
+            return jsonify(error='已有运行中的仿真任务，请等待或停止该任务后切换后端。'),409
+        gpu = isaac_gpu()
+        try:
+            with GPULease(gpu):pass
+        except RuntimeError as exc:
+            return jsonify(error=str(exc)),409
         identifier=uuid.uuid4().hex;output=JOBS/identifier;output.mkdir(parents=True)
         meta={'id':identifier,'task':task,'backend':backend,'mode':mode,'seed':seed,'created':time.time()}
         if mode == 'experiment':meta['science_model'] = science
         (output/'job.json').write_text(json.dumps(meta))
-        gpu = isaac_gpu()
         env=os.environ.copy();env.update(MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID=str(gpu),OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',PYTHONUNBUFFERED='1')
         if backend == 'isaac':env.setdefault('HOOKE_ISAAC_COLOR_PIPELINE','source_display')
         if mode == 'experiment':env['HOOKE_RENDER_FPS']='1'

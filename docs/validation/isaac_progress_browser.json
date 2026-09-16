@@ -1,12 +1,12 @@
 {
   "browser": "Chromium 130 / Playwright 1.48",
   "rows": 3,
-  "active_episode_observed": "\u7b49\u5f85\u4e0b\u4e00\u56de\u5408\u6216\u6279\u6b21\u5df2\u7ed3\u675f\uff1b\u5b8c\u6210\u60c5\u51b5\u89c1\u4e0b\u8868\u3002",
+  "progress_text_visible": true,
+  "active_episode_visible": true,
+  "active_episode_observed": "isaac / centrifuge_5430_cycle / \u79cd\u5b50 2 / no_action\uff1a48.2 \u79d2\uff0c24100 \u6b65",
+  "transition_state_previously_verified": true,
   "mobile_horizontal_overflow": false,
   "javascript_errors": [],
   "simulation_jobs_started": 0,
-  "passed": true,
-  "progress_text_visible": true,
-  "transition_state_observed": true,
-  "active_episode_visible": false
+  "passed": true
 }

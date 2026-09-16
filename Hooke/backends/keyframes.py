@@ -9,8 +9,6 @@ from __future__ import annotations
 from backends.config import isaac_gpu
 
 import argparse
-from contextlib import contextmanager
-import fcntl
 from functools import cache
 import json
 import os
@@ -27,6 +25,7 @@ from backends.evidence import file_sha256
 from backends.visual_state import ellipse_frame, LiveVisuals
 from backends.worker_client import IsaacWorker
 from backends.render_settings import RenderSettings
+from backends.source_renderer import mujoco_renderer
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -84,23 +83,6 @@ def recorded_liquid_visuals(data, liquids, index):
             pos=(data.geom_xpos[geom] + rotation @ np.r_[center, distance]).tolist(),
             mat=(rotation @ local).ravel().tolist(), rgba=[0., 0., 1., 1.]))
     return dict(textures=[], geometry=geometry)
-
-
-@contextmanager
-def mujoco_renderer(model, gpu):
-    """Serialize EGL replay with native jobs on the same server GPU."""
-    lock_dir = ROOT / 'temp/backend_parity'
-    os.environ['MUJOCO_EGL_DEVICE_ID'] = str(gpu)
-    lock_dir.mkdir(parents=True, exist_ok=True)
-    with (lock_dir / f'gpu-{gpu}.lock').open('a') as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        memory = int(subprocess.check_output(['nvidia-smi', '-i', str(gpu),
-            '--query-gpu=memory.used', '--format=csv,noheader,nounits'], text=True).strip())
-        if memory >= 2048:
-            raise RuntimeError(f'GPU {gpu} is busy ({memory} MiB); wait for the running job')
-        settings = RenderSettings.from_environment()
-        with mujoco.Renderer(model, height=settings.height, width=settings.width) as renderer:
-            yield renderer
 
 
 def render_episode(episode, output, requested, gpu):

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import fcntl
 import os
 from pathlib import Path
 import socket
@@ -11,6 +10,7 @@ import tempfile
 import time
 
 from backends.config import isaac_gpu, isaac_installation
+from backends.gpu_lease import GPULease
 from backends.ipc import read_message, write_message
 
 
@@ -31,16 +31,8 @@ class IsaacWorker:
             raise FileNotFoundError(
                 f"Isaac python.sh is missing in {install}; set HOOKE_ISAAC_PATH"
             )
-        lock_dir = Path(__file__).resolve().parents[2] / "temp/backend_parity"
-        lock_dir.mkdir(parents=True, exist_ok=True)
         try:
-            self.gpu_lock = (lock_dir / f"gpu-{gpu}.lock").open("a")
-            try:
-                fcntl.flock(self.gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            except BlockingIOError:
-                raise RuntimeError(
-                    f"GPU {gpu} already has a Hooke Isaac job running"
-                ) from None
+            self.gpu_lock = GPULease(gpu)
             query = ["nvidia-smi", "-i", str(gpu)]
             memory = int(
                 subprocess.check_output(
