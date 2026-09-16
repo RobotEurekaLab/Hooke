@@ -132,6 +132,33 @@ class PipettingGeometryTests(unittest.TestCase):
             with self.subTest(tolerance=tolerance), self.assertRaises(ValueError):
                 self.fixture(tolerance)
 
+    def test_pressed_endpoint_jitter_cannot_reaspirate_but_real_release_can(self):
+        model, data, system, source, target = self.fixture(1e-8)
+        system.target_reservoir = 'target'
+        for stroke in (-.008, 0.):
+            data.qpos[0] = stroke
+            system.update(data)
+        data.mocap_pos[0] = [.03, 0., -.004]
+        data.qpos[0] = -.008
+        mujoco.mj_kinematics(model, data)
+        system.update(data)
+        for _ in range(1000):
+            for stroke in (-.008, -.008+6e-9):
+                data.qpos[0] = stroke
+                system.update(data)
+        state = system.snapshot()
+        self.assertEqual(state['aspirated_m3'], 200e-9)
+        self.assertEqual(state['reservoirs']['tip']['volume_m3'], 0.)
+        self.assertEqual(state['reservoirs']['target']['volume_m3'], 200e-9)
+        self.assertLess(state['plunger_input']['raw_pressed_fraction'], 1.)
+        self.assertEqual(state['pressed_fraction'], 1.)
+        data.qpos[0] = -.008+60e-9
+        system.update(data)
+        self.assertAlmostEqual(system.snapshot()['reservoirs']['tip']['volume_m3'], 1.5e-12, delta=1e-18)
+        observer = PipetteVolumeAssessment(system)
+        observer.update()
+        self.assertFalse(observer.report()['checks']['tip_residual_within_1nl'])
+
     def test_submerged_aspiration_and_dispense_to_an_empty_destination(self):
         model, data, system, source, target = self.fixture()
         data.qpos[0] = -.008
