@@ -53,6 +53,7 @@ class CatalogEntry:
     robot: str  # which robot rig the task's scene was authored for (see webui/README.md)
     camera: str
     task_override: str | None = None
+    completion_rule: str | None = None
 
     def load_classes(self):
         module = __import__(self.module, fromlist=[self.cls])
@@ -94,12 +95,14 @@ CATALOG: dict[str, CatalogEntry] = {
             description="Close and lock the lid of the Eppendorf 5430 centrifuge (grip lever, rotate, engage lock).",
             category="conditioning",
             module="mani_centrifuge_5430", cls="Centrifuge5430Manipulate", robot="ur5e", camera="table_cam_left",
+            completion_rule="lid_lock_geometry",
         ),
         CatalogEntry(
             name="centrifuge_5910_lid_close",
             description="Close and lock the lid of the Eppendorf 5910 centrifuge (grip lever, rotate, engage lock).",
             category="conditioning",
             module="mani_centrifuge_5910", cls="Centrifuge5910Manipulate", robot="ur5e", camera="table_cam_left",
+            completion_rule="lid_lock_geometry",
         ),
         CatalogEntry(
             name="insert_centrifuge_5430",
@@ -122,18 +125,21 @@ CATALOG: dict[str, CatalogEntry] = {
             description="Aspirate 200 uL from a lifted tube using a two-armed UR5e pipetting rig.",
             category="transfer",
             module="mani_pipette", cls="Pipette", robot="dual_ur5e", camera="table_cam_front",
+            completion_rule="shared_process_progress",
         ),
         CatalogEntry(
             name="pipette_transfer",
             description="Aspirate 200 uL, dispense into an empty tube, withdraw and return the source using dual UR5e arms.",
             category="transfer",
             module="mani_pipette", cls="PipetteTransfer", robot="dual_ur5e", camera="table_cam_front",
+            completion_rule="shared_process_progress",
         ),
         CatalogEntry(
             name="vortex_mixer",
             description="Vortex-mix a tube's contents using a dual-arm Aloha setup and a Vortex-Genie 2 mixer.",
             category="combination",
             module="mani_vortex_mixer", cls="VortexMixerManipulate", robot="aloha", camera="table_cam_front",
+            completion_rule="shared_process_progress",
         ),
         CatalogEntry(
             name="centrifuge_mini_close_lid",
@@ -248,6 +254,7 @@ CATALOG: dict[str, CatalogEntry] = {
             category="composite",
             module="mani_centrifuge_5430_composite", cls="CentrifugeInsertCloseComposite",
             robot="ur5e", camera="table_cam_front", task_override="close_lid_step",
+            completion_rule="lid_lock_geometry",
         ),
 
         # --- Visual-only display scenes (archetypes/static_display.py) --

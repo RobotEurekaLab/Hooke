@@ -33,6 +33,7 @@ import mujoco
 from kinematics import Pose, FK
 from task import Task, Expert, Manager, SCENE_ROOT
 from expert_common import UR5eArm, ExpertMotionMixin, set_gravcomp, qpos_interpolate, make_topp_planner
+from archetypes.lid_lock import lid_lock_passes
 
 # Shared across every instrument in this family: the wrist orientation held
 # while moving through the lock sub-sequence (not instrument-specific -- the
@@ -163,11 +164,7 @@ def make_task_classes(spec: LeverLockSpec) -> tuple[type, type]:
             return self.task_info
 
         def check(self):
-            # Matches upstream: neither original file implements a real
-            # completion check for this family yet (both return True
-            # unconditionally). Left as-is rather than inventing a new
-            # success criterion as part of a pure refactor.
-            return True
+            return lid_lock_passes(self.data, self.instrument)
 
     class LeverLockExpert(LeverLockTask, Expert, ExpertMotionMixin):
         def __init__(self, mjspec: mujoco.MjSpec, freq: int = 20):

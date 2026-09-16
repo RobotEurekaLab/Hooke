@@ -1,7 +1,7 @@
 """Insert a tube, then optionally close the lid using the existing lid recipe.
 
 Insertion targets and controls are shared with the atomic insertion task.
-The close-lid step retains the lever-lock recipe and its historical predicate.
+The close-lid step uses the lever-lock recipe and actual lid/lock feedback.
 """
 import numpy as np
 import mujoco
@@ -12,6 +12,7 @@ from task import Task, Expert, Manager, SCENE_ROOT
 from expert_common import UR5eArm, ExpertMotionMixin, set_gravcomp, make_topp_planner
 from archetypes.lever_lock_centrifuge import _make_instrument_class, LOCK_QUAT
 from archetypes.centrifuge_specs import CENTRIFUGE_5430_SPEC
+from archetypes.lid_lock import lid_lock_passes
 from load_centrifuge_5430 import CentrifugeTube, GridSlot
 from archetypes.centrifuge_insertion import RotorSlotPoses, insertion_geometry_passes, execute_insertion
 
@@ -92,9 +93,7 @@ class CentrifugeInsertCloseComposite(Task):
         if self.task == 'insert_centrifuge_5430_step':
             return insertion_geometry_passes(self)
         elif self.task == 'close_lid_step':
-            # Matches upstream (see module docstring): the lever-lock family
-            # has no real completion check for this instrument yet.
-            return True
+            return lid_lock_passes(self.data, self.instrument)
         raise ValueError(f"unknown task {self.task!r}")
 
 

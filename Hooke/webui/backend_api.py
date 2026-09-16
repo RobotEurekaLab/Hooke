@@ -12,7 +12,6 @@ import uuid
 
 from flask import Blueprint, jsonify, request, send_file, abort
 from archetypes.task_catalog import CATALOG
-from process_progress import PROCESS_NAMES
 
 ROOT=Path(__file__).resolve().parents[2]
 EVIDENCE=ROOT/'temp/backend_parity'
@@ -60,9 +59,10 @@ def catalog():
     reports=evidence();experts=expert_evidence()
     return jsonify(tasks=[{'name':e.name,'description':e.description,'category':e.category,
                            'display_only':inventory.get(e.name,{}).get('display_only',False),
-                           'check_constant_true':e.name not in PROCESS_NAMES and inventory.get(e.name,{}).get('check_constant_true',False),
-                           'check_constant_false':e.name not in PROCESS_NAMES and inventory.get(e.name,{}).get('check_constant_false',False),
-                           'shared_process_progress':e.name in PROCESS_NAMES,
+                           'check_constant_true':e.completion_rule is None and inventory.get(e.name,{}).get('check_constant_true',False),
+                           'check_constant_false':e.completion_rule is None and inventory.get(e.name,{}).get('check_constant_false',False),
+                           'shared_process_progress':e.completion_rule == 'shared_process_progress',
+                           'completion_rule':e.completion_rule,
                            'expert_validation':experts.get(e.name,{}),
                            'isaac':reports.get(e.name)} for e in CATALOG.values()],
                    completed=len(reports),passed=sum(r.get('status') in ('LOAD_STEP_OK','LOAD_STEP_RENDER_OK') and r.get('finite',False) for r in reports.values()),
