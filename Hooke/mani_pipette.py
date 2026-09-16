@@ -254,6 +254,12 @@ class PipetteExpert(Pipette, Expert):
             qc_acc=1.5,
             ik=self.arm1.ik.solve
         )
+        self.withdrawal_planner = Topp(
+            dof=self.arm1.dof,
+            qc_vel=0.5,
+            qc_acc=0.5,
+            ik=self.arm1.ik.solve
+        )
 
     def interpolate(self, start: Pose, end: Pose, num_steps: int) -> list[Pose]:
         path = []
@@ -264,22 +270,23 @@ class PipetteExpert(Pipette, Expert):
             path.append(Pose(pos, quat))
         return path
 
-    def path_follow(self, path: list[Pose], arm: UR5eArm):
-        self.planner.ik = arm.ik.solve
-        trajectory = self.planner.jnt_traj(path)
+    def path_follow(self, path: list[Pose], arm: UR5eArm, planner: Topp | None = None):
+        planner = self.planner if planner is None else planner
+        planner.ik = arm.ik.solve
+        trajectory = planner.jnt_traj(path)
         run_time = trajectory.duration + 0.2
         num_steps = int(run_time / self.dt)
         for step in range(num_steps):
             if step % self.period == 0:
                 t = step * self.dt
-                ctrl = self.planner.query(trajectory, t)
+                ctrl = planner.query(trajectory, t)
                 self.data.ctrl[arm.act_span] = ctrl
             self.step_and_log({})
 
-    def move_to(self, pose: Pose, arm: UR5eArm, num_steps: int=2):
+    def move_to(self, pose: Pose, arm: UR5eArm, num_steps: int=2, planner: Topp | None = None):
         cur_pos = arm.get_site_pose(self.data)
         path = self.interpolate(cur_pos, pose, num_steps)
-        self.path_follow(path, arm)
+        self.path_follow(path, arm, planner)
 
     def gripper_control(self, value: float, arm: UR5eArm):
         self.data.ctrl[arm.gripper_id] = value
@@ -332,7 +339,7 @@ class PipetteExpert(Pipette, Expert):
         self.move_to(descent_pose, self.arm1, 5)
         self.pipette_ctrl(mode='pull')
         final_pose = Pose(pos=self.arm1.get_site_pose(self.data).pos + height, quat=target_quat1)
-        self.move_to(final_pose, self.arm1, 5)
+        self.move_to(final_pose, self.arm1, 5, self.withdrawal_planner)
 
         self.serializer.finish()
         with self.serializer.within_save_dir():
