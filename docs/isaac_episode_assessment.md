@@ -2,18 +2,18 @@
 
 ## 两种结果分别保存
 
-`backends.run` 继续在回合结束时调用一次原 `task.check()`，保存 `source_check`、`source_success` 和原状态码。新增 `assessment` 使用 `hooke-manipulation-v2` 判据，在每次 `Manager.step()` 完成物理和仪器系统更新后采样。读取报告不会更新历史，也不会再次调用原判据。
+`backends.run` 继续在回合结束时调用一次任务的 `task.check()`，保存 `source_check`、`source_success` 和原状态码。`assessment` 当前使用 `hooke-manipulation-v3` 判据，在每次 `Manager.step()` 完成物理和仪器系统更新后采样。读取报告不会更新历史，也不会再次调用原判据。
 
-验收层不改变资产、动力学参数或专家默认动作。多种子回归另发现零位移路径规划异常，随后修复 `Topp`：相同位置和朝向返回保持轨迹，实际平移与旋转沿用原算法。修改前与修复后结果分别保留。旧 seed-0 结果保留；新版通过率不能作为旧版后端性能提升的证据。当前仅覆盖下面五个目录任务，其余任务的新版 `success` 为 `null`，表示尚未审查。所有结果仍为 `parity_qualified=false`。
+验收观察器不改变资产、动力学参数或控制量。任务配方的独立修复见 [操作流程进展](isaac_process_manipulation.md)。多种子回归另发现零位移路径规划异常，随后修复 `Topp`：相同位置和朝向返回保持轨迹，实际平移与旋转沿用原算法。修改前与修复后结果分别保留。旧 seed-0 结果保留；新版通过率不能作为旧版后端性能提升的证据。当前仅覆盖下面五个目录任务，其余任务的新版 `success` 为 `null`，表示尚未审查。所有结果仍为 `parity_qualified=false`。
 
 ## 判据与解释范围
 
-| 任务 | v2 判据 | 限制 |
+| 任务 | v3 判据 | 限制 |
 | --- | --- | --- |
 | `pipette` | 管内径向偏差 <6.5 mm；尖端在管底上方；实际拇指关节 >0.70 rad 时浸入液面 >5 mm，随后在液面下释放到 <0.45 rad，最后离开液面 >50 mm | 液面使用容器局部坐标与实际法向；离开管内后释放不计分。只证明动作顺序，没有实现吸入体积/流量模型 |
 | `close_fume_hood` | 最终窗位置距目标 <20 mm；夹爪与把手接触至少 50 ms；接触期间沿关闭方向累计净位移至少 50 mm | 仅重力关窗不通过；正反抖动不会累计有效位移。接触不能单独证明完整的受力因果关系 |
-| `vortex_mixer` | 试管抬起 >30 mm；与实际角速度 ≥1 rad/s 的平台连续接触 ≥500 ms；归还至 `origin1` 30 mm 内；最终无机器人接触且平台停止 | 不证明化学混合均匀度；默认专家 `gear=0` 未改动。无机器人接触是释放的代理指标 |
-| `insert_centrifuge_5430`、`composite_insert_centrifuge_5430` | 保持原高度 0.955–0.961 m、目标距离 <5 mm，报告各项误差 | 几何判据，未新增姿态、释放或机械稳定性验收；不通过放宽公差刷成功率 |
+| `vortex_mixer` | 试管抬起 >30 mm；与实际角速度 ≥1 rad/s 的平台连续接触 ≥500 ms；归还至 `origin1` 30 mm 内；最终无机器人接触且平台停止 | 不证明化学混合均匀度；默认专家使用 `gear=3`；释放检查同时包含管身和管盖。无机器人接触是释放的代理指标 |
+| `insert_centrifuge_5430`、`composite_insert_centrifuge_5430` | 保持原高度 0.955–0.961 m、距当前转子槽位 <5 mm；管轴夹角 <5°；无机器人接触；在转子坐标系内相对位置偏移 ≤0.5 mm 持续 ≥500 ms | 旋转对称管不限制绕自身轴的扭转；这是有限时间的就位检查，未验证高速离心载荷。保留距旧世界坐标目标的诊断值 |
 
 新增接触时间/位移等门限是本项目的初始工程验收定义，尚未经实机标定。`success` 与 `success_within_time_limit` 分开保存；超时完成不能作为声明时限内成功。`scientific_process_validated=false` 表示尚无科学过程验收。
 
@@ -31,6 +31,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m backends.matrix \
 
 默认运行 MuJoCo 和 Isaac，可用 `--backend mujoco` 或 `--backend isaac` 单独运行。每个回合使用独立进程；Isaac 仍遵守 GPU 空闲检查和独占锁。生成 `report.json`、`report.csv`、`report.md`，并保存每个回合的日志、轨迹和 `result.json`。
 
+- 新报告使用 `schema_version=2`：`v2_assessed` → `assessment_count`、`v2_successes` → `assessment_successes`、`v2_successes_within_time` → `assessment_successes_within_time`、`v2_agreement` → `assessment_agreement`。每回合仍保存实际 `assessment.version`；历史报告不覆盖。
 - `manifest.json` 保存任务、种子、时限、模式、Git HEAD、Python 版本，以及 Python/XML/共享库/JSON 输入文件的 SHA-256 指纹；这不是全部纹理/网格资产的重新哈希验收。
 - 新运行拒绝覆盖非空目录。追加 `--resume` 仅恢复相同参数和输入指纹的运行；已完成失败回合也保留，不自动重试以改变分母。中断未完成的证据会先归档。
 - `WALL_TIMEOUT`、`PROCESS_ERROR`、`ERROR`、`TIME_LIMIT` 单列，仍占请求分母。默认单回合实际时间上限 600 秒；涡旋完整 Isaac 回合此前需约 70 分钟，需显式增加预算，例如 `--wall-seconds 7200`。
@@ -46,4 +47,4 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m backends.matrix \
 
 ## 本轮实测
 
-新结果见 [多种子报告](isaac_multiseed_results.md)；旧数据见 [seed-0 报告](isaac_regression_results.md)。
+v3 操作流程进展见 [当前报告](isaac_process_manipulation.md)；v2 结果见 [多种子报告](isaac_multiseed_results.md)；旧数据见 [seed-0 报告](isaac_regression_results.md)。
