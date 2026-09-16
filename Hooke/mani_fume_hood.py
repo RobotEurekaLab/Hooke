@@ -1,45 +1,14 @@
-"""Open/close a benchtop fume hood's sliding sash with a single UR5e arm.
+"""Contact-driven operation of an ideally counterbalanced fume-hood sash.
 
-Hooke's second chemistry-lab task (after `mani_reagent_bottle.py`) and its
-first with a prismatic (slide) interactive joint -- every other task in
-this codebase moves a hinge, a screw, or nothing at all. The housing/sash
-geometry (`model/instrument/fume_hood.xml`) is plain MJCF primitives, not
-a generated or sourced mesh: a rectangular enclosure gets nothing from
-the GPT-6 Astra pipeline that hand-authored primitives don't already give
-for free (exact collision, no axis-convention surprises to work around).
+The shared MJCF retains sash inertia, guide friction and damping, while
+compensating the weight of the pane and handle. Approach the hood's front
+normal, grip its transverse handle, slide, release and retreat. Neither
+backend receives a sash position command.
 
-Shares two lessons learned the hard way while building the reagent-bottle
-task (see private/technical-log.md): reorient the gripper in place before
-ever moving toward the object (a big single-step reorientation swept
-through it there), and re-measure the grasp target after any move that
-could have disturbed it rather than trusting a pre-move snapshot.
-
-Only `close_fume_hood` is catalogued. The historical 10/10 result used
-final sash position alone: gravity also closes the sash without robot
-action. It does not validate manipulation. The versioned episode assessor
-in backends.assessment additionally requires handle contact and travel
-during contact; see docs/isaac_episode_assessment.md at the repo root. The
-class also supports `open_fume_hood` (start closed, slide the sash back
-up) but that direction currently fails outright. Originally suspected to
-be the sash's glass clipping the gripper on approach; re-diagnosed with
-`mj_contactForce` + geom/body lookup (not just a contact-list check) and
-that guess was wrong -- the real collision, present from the very first
-reorientation step regardless of translation order, is the arm's own
-`/ur:forearm_link` slamming into `/vention table` (its own mount), not
-anything in the fume hood scene at all. The closed-sash handle sits
-lower (z~0.92) than `close_fume_hood`'s open-sash handle (z~1.10), and
-`_grasp_quat`'s orientation for that lower, more side-on target apparently
-forces an elbow/wrist configuration that self-intersects the mount at
-this arm's reset pose -- confirmed reproducible across 10 seeds with
-forces from ~1.7kN up to ~110kN, regardless of whether the reorientation
-happens before, after, or interleaved with the translation, and
-regardless of a high-altitude "go up and over" detour (which additionally
-hits UR5e's reach limit at this workspace's arm-base offset). This needs
-a genuinely different fix -- likely reworking `_grasp_quat` to avoid the
-problematic wrist configuration for low targets, or giving `open_fume_hood`
-its own start-of-episode arm pose instead of sharing `close_fume_hood`'s --
-not just a smarter waypoint path. Left as a follow-up (see
-private/TODO.md) rather than catalogued half-working.
+Only ``close_fume_hood`` is catalogued. Its versioned assessment requires
+final position, handle contact and signed travel during contact. Historical
+position-only passes also occurred with gravity and no robot action; they
+are not manipulation evidence. Opening remains uncatalogued and unqualified.
 """
 import numpy as np
 import mujoco
@@ -53,18 +22,9 @@ SASH_OPEN = 0.18
 SASH_CLOSED = 0.0
 
 
-def _grasp_quat(arm_base_pos: np.ndarray, handle_pos: np.ndarray) -> np.ndarray:
-    """Horizontal grasp orientation for a horizontal bar whose own long
-    axis runs world-X: the approach axis (site-local +Z) points from the
-    arm base toward the handle (horizontal), and the open axis
-    (site-local Y) is *vertical* this time -- unlike the reagent bottle's
-    vertical-cylinder grasp (open axis horizontal, perpendicular to a
-    vertical approach target), a horizontal bar needs the fingers to
-    close top-to-bottom, perpendicular to both the approach direction and
-    the bar's own length."""
-    approach = handle_pos[:2] - arm_base_pos[:2]
-    approach = approach / np.linalg.norm(approach)
-    z_axis = np.array([approach[0], approach[1], 0.0])
+def _grasp_quat(approach: np.ndarray) -> np.ndarray:
+    """Point pinch-local +Z into the hood, with fingers closing vertically."""
+    z_axis = approach / np.linalg.norm(approach)
     y_axis = np.array([0.0, 0.0, 1.0])
     x_axis = np.cross(y_axis, z_axis)
     rot = np.stack([x_axis, y_axis, z_axis], axis=1)
@@ -137,19 +97,24 @@ class OperateFumeHoodExpert(OperateFumeHood, Expert, ExpertMotionMixin):
 
     def execute(self):
         self.arm.ik.initial_qpos = self.data.qpos[self.arm.jnt_span]
-        arm_base_pos = self.data.xpos[self.model.body('/ur:base').id].copy()
         handle_pos = self.data.site_xpos[self.grasp_site].copy()
-        quat = _grasp_quat(arm_base_pos, handle_pos)
-
-        approach_dir = (handle_pos[:2] - arm_base_pos[:2])
-        approach_dir = approach_dir / np.linalg.norm(approach_dir)
+        # The hood front is local -Y. Approach normal to that face, not
+        # along the arm-base/handle line (which cuts through the side wall).
+        housing = self.model.body('/fume_hood:housing').id
+        hood_rotation = self.data.xmat[housing].reshape(3, 3)
+        approach = hood_rotation[:, 1].copy()
+        quat = _grasp_quat(approach)
+        approach_dir = approach[:2]
         pre_grasp = Pose(handle_pos - np.array([approach_dir[0] * 0.08, approach_dir[1] * 0.08, 0.0]), quat)
 
         self.gripper_control(0)
 
-        # Reorient in place first (see module docstring / mani_reagent_bottle.py).
-        cur_pose = self.arm.get_site_pose(self.data)
-        self.reposition_directly(Pose(cur_pose.pos.copy(), quat))
+        # A common ready pose keeps the reorientation within reach across
+        # reset perturbations. Reorienting at the initial far-out pinch
+        # position can select an elbow branch that intersects the cabinet.
+        ready = (handle_pos - approach * 0.28 + hood_rotation[:, 0] * 0.22
+                 + np.array([0., 0., 0.10]))
+        self.reposition_directly(Pose(ready, quat))
 
         self.move_to(pre_grasp, num_steps=10)
 
@@ -159,6 +124,17 @@ class OperateFumeHoodExpert(OperateFumeHood, Expert, ExpertMotionMixin):
         grasp_pose = Pose(handle_pos, quat)
         self.move_to(grasp_pose, num_steps=5)
         self.gripper_control(255)
+
+        # Do not execute a blind closing motion after a missed grasp.
+        handle = self.model.geom('/fume_hood:handle_bar').id
+        pads = set()
+        for contact in self.data.contact:
+            a, b = map(int, contact.geom)
+            other = b if a == handle else a if b == handle else None
+            if other is not None:
+                pads.add(self.model.body(int(self.model.geom_bodyid[other])).name)
+        if not {'/ur:2f85:left_pad', '/ur:2f85:right_pad'} <= pads:
+            raise RuntimeError('Fume hood grasp failed: both finger pads must contact the handle')
 
         # Slide the sash by moving the (now rigidly gripped) handle
         # straight up or down by the joint's own full travel -- the sash
