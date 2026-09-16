@@ -1,0 +1,39 @@
+{
+  "browser": "Chromium 130 / Playwright 1.48",
+  "browser_gpu_disabled": true,
+  "simulation_jobs_started": 0,
+  "checks": [
+    {
+      "page": "backends",
+      "catalog_count": 166,
+      "selected_task": "pipette_transfer",
+      "validation": "最近一次原任务验证（种子 0）：MuJoCo 原任务判据通过，33.664 秒仿真；Isaac 原任务判据通过，33.638 秒仿真"
+    },
+    {
+      "page": "transfer",
+      "table_rows": 16,
+      "status": "当前回归记录已整理，失败候选保留供核对。"
+    },
+    {
+      "page": "gallery",
+      "camera": "table_cam_front",
+      "loaded_images": 6
+    },
+    {
+      "page": "gallery",
+      "camera": "1/ur:wrist_cam",
+      "loaded_images": 6
+    },
+    {
+      "page": "gallery",
+      "camera": "2/ur:wrist_cam",
+      "loaded_images": 6
+    },
+    {
+      "page": "gallery_mobile",
+      "width": 480,
+      "horizontal_overflow": false
+    }
+  ],
+  "javascript_errors": []
+}
