@@ -29,6 +29,7 @@
 - [科学模型结果](validation/isaac_science_model_summary.json)：两引擎实际时钟、能量和体积守恒，参数未标定。
 - [扩展原生物理](validation/isaac_extended_contracts.json)：偏心 CoM 的刚体力/力矩、真实旋转载荷的 weld、静态地形落球。
 - [完整专家性能对照](validation/isaac_full_expert_performance_comparison.json)：完整轨迹和接触数量一致；微基准加速不推算为整回合加速。
+- [性能分析口径](isaac_performance.md)：物理、接触回调、观测与通信等待的计时范围，避免重复累计或误报纯物理耗时。
 - [构造恢复与实际长稳](validation/isaac_lifecycle_summary.json)：默认设置失败保留；相同阈值下的 TGS 外力迭代配置复测通过。
 - [167 项目录结构检查](validation/isaac_catalogue_preflight_summary.json)：143 项展示、24 项控制器入口；CPU 结果不作为新的全目录原生资格。
 - [完整离心真实曲线与图片](isaac_centrifuge_cycle.md)：19,805 步兼容性、两相机四阶段及独立物理事件计数。

@@ -46,7 +46,7 @@ def run(output, worker):
     )
     initial = worker.call("info")
     if initial["steps"] != 0 or initial["time"] != 0:
-        raise RuntimeError("Recovery initialization advanced physics")
+        raise RuntimeError("Recovery did not restore the episode origin")
     np.testing.assert_allclose(
         loaded["state"]["qpos"], task.data.qpos, atol=1e-6, rtol=0
     )
