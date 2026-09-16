@@ -11,8 +11,12 @@ parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--socket',type=Path,required=True)
 args=parser.parse_args()
 from isaacsim import SimulationApp
-extra_args=['--/rtx/rendermode=PathTracing']
-task_threads=int(os.environ.get('HOOKE_ISAAC_TASK_THREADS','0'))
+# A batch worker never hot-reloads extensions. On shared servers, extension
+# watches can exhaust the per-user inotify quota before a scene even loads.
+extra_args=['--/rtx/rendermode=PathTracing', '--/app/extensions/fsWatcherEnabled=false']
+# Bound the shared-server task pool. Zero remains an explicit opt-in to Kit's
+# automatic sizing; large automatic pools intermittently abort at startup here.
+task_threads=int(os.environ.get('HOOKE_ISAAC_TASK_THREADS','8'))
 if not 0 <= task_threads <= 128:
  raise ValueError('HOOKE_ISAAC_TASK_THREADS must be between 0 and 128')
 if task_threads:

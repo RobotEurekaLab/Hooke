@@ -15,6 +15,7 @@ import mujoco
 import numpy as np
 from PIL import Image
 from backends.task_result import task_result
+from backends.assessment import EpisodeAssessment
 
 
 def write_json(path, value):
@@ -38,10 +39,11 @@ def run(args,worker=None):
             'mode':args.mode,'parity_qualified':False}
     result_path=output/'result.json';write_json(result_path,result)
     started=time.perf_counter();task=None;steps=0;contact_steps=0;frames=0;physics_wall=0.;rows=[]
-    renderer=None;adapter=None;original_step=None;original_manager_step=None;visuals=None
+    renderer=None;adapter=None;original_step=None;original_manager_step=None;visuals=None;assessment=None
     try:
         entry=CATALOG[args.task]
         task=entry.make_expert();task.reset(args.seed);mujoco.mj_forward(task.model,task.data)
+        assessment=EpisodeAssessment(task,args.task)
         task.task_info['simulation_backend']=args.backend
         task.task_info['physics_engine']='PhysX' if args.backend=='isaac' else 'MuJoCo'
         if args.mode=='expert':task.set_serializer(log_root=output/'task_log',log_name='episode')
@@ -93,6 +95,7 @@ def run(args,worker=None):
             original_manager_step=task.manager.step
             def manager_step():
                 original_manager_step()
+                assessment.update()
                 # The instrument/liquid systems update after physics. Render
                 # their current state, with the same ordering for both engines.
                 if steps%max(1,round(.05/task.dt))==0:capture()
@@ -101,7 +104,7 @@ def run(args,worker=None):
                                                       'instrument_state':instrument_state(task)})
             task.manager.step=manager_step
             try:
-                if args.mode=='preview' or display_only:
+                if args.mode in ('preview','no_action') or display_only:
                     for _ in range(round(args.seconds/task.dt)):task.step_and_log({})
                     if display_only and args.mode=='expert':task.finish()
                 else:task.execute()
@@ -109,7 +112,7 @@ def run(args,worker=None):
                 mujoco.mj_step=original_step;original_step=None
                 task.manager.step=original_manager_step;original_manager_step=None
             check=task_result(task.check());result.update(check);source_check=check['source_success']
-            status='PREVIEW_COMPLETE' if args.mode=='preview' else 'DISPLAY_COMPLETE' if display_only else 'TASK_SUCCEEDED' if source_check else 'TASK_FAILED'
+            status='PREVIEW_COMPLETE' if args.mode=='preview' else 'CONTROL_COMPLETE' if args.mode=='no_action' else 'DISPLAY_COMPLETE' if display_only else 'TASK_SUCCEEDED' if source_check else 'TASK_FAILED'
             result.update(status=status,source_success=source_check,steps=steps,contact_steps=contact_steps,
                           simulation_s=float(task.data.time),within_declared_time_limit=bool(task.data.time<=task.time_limit),
                           final_qpos=task.data.qpos.tolist(),
@@ -142,6 +145,7 @@ def run(args,worker=None):
                           max_fk_rotation_error_rad=adapter.max_fk_rotation_error,
                           physics_options=adapter.loaded['conversion']['physics_options'])
         if task is not None:
+            if assessment is not None:result['assessment']=assessment.report()
             result['final_qpos']=task.data.qpos.tolist()
             result['final_contact_pairs']=sorted({tuple(sorted(map(int,c.geom))) for c in task.data.contact})
             if task.model.nsensor:
@@ -160,7 +164,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--task',required=True)
     parser.add_argument('--backend',choices=['mujoco','isaac'],required=True)
-    parser.add_argument('--mode',choices=['preview','expert'],default='expert')
+    parser.add_argument('--mode',choices=['preview','expert','no_action'],default='expert',
+                        help='no_action holds reset controls while physics and instrument systems run')
     parser.add_argument('--seed',type=int,default=0)
     parser.add_argument('--seconds',type=float,default=2.)
     parser.add_argument('--max-sim-seconds',type=float,default=120.)
