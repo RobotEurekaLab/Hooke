@@ -73,7 +73,7 @@ class PipettingGeometryTests(unittest.TestCase):
         system._acceleration = lambda data: np.array([0., 0., 9.81])
         return system
 
-    def fixture(self):
+    def fixture(self, endpoint_tolerance_m=0.):
         model = mujoco.MjModel.from_xml_string('''<mujoco><worldbody><body pos="1 0 0">
           <joint name="plunger" type="slide" range="-.008 0"/>
           <geom type="sphere" size=".001"/>
@@ -81,12 +81,56 @@ class PipettingGeometryTests(unittest.TestCase):
         data = mujoco.MjData(model)
         source, target = self.container([0., 0., 0.], 500e-9), self.container([.03, 0., 0.], 0.)
         system = PipetteTransferSystem(source=source, destinations={'target': target},
-                                       tip_site='tip', plunger_joint='plunger', tip_capacity_m3=200e-9)
+                                       tip_site='tip', plunger_joint='plunger', tip_capacity_m3=200e-9,
+                                       endpoint_tolerance_m=endpoint_tolerance_m)
         system.reload(model)
         data.mocap_pos[0] = [0., 0., -.001]
         mujoco.mj_forward(model, data)
         system.reset(data)
         return model, data, system, source, target
+
+    def test_endpoint_jitter_does_not_rectify_into_continuous_liquid_loss(self):
+        for tolerance, expected_loss in ((0., 150e-12), (1e-8, 0.)):
+            with self.subTest(tolerance=tolerance):
+                model, data, system, source, target = self.fixture(tolerance)
+                for stroke in (-.008, 0.):
+                    data.qpos[0] = stroke
+                    system.update(data)
+                data.mocap_pos[0] = [.1, 0., 0.]
+                mujoco.mj_kinematics(model, data)
+                for _ in range(1000):
+                    for stroke in (-6e-9, 0.):
+                        data.qpos[0] = stroke
+                        system.update(data)
+                state = system.snapshot()
+                self.assertAlmostEqual(state['reservoirs']['environment']['volume_m3'], expected_loss, delta=1e-18)
+                self.assertAlmostEqual(state['total_m3'], state['initial_total_m3'], delta=1e-18)
+                self.assertEqual(state['plunger_input']['endpoint_tolerance_m'], tolerance)
+                self.assertEqual(data.qpos[0], 0.)
+
+    def test_gradual_real_press_is_preserved_and_still_fails_environment_check(self):
+        model, data, system, source, target = self.fixture(1e-8)
+        for stroke in (-.008, 0.):
+            data.qpos[0] = stroke
+            system.update(data)
+        data.mocap_pos[0] = [.1, 0., 0.]
+        mujoco.mj_kinematics(model, data)
+        for stroke in np.linspace(-1e-9, -60e-9, 60):
+            data.qpos[0] = stroke
+            system.update(data)
+        state = system.snapshot()
+        self.assertAlmostEqual(state['reservoirs']['environment']['volume_m3'], 1.5e-12, delta=1e-18)
+        self.assertAlmostEqual(state['pressed_fraction'], 60e-9/.008)
+        self.assertAlmostEqual(state['plunger_input']['raw_pressed_fraction'], state['pressed_fraction'])
+        self.assertEqual(data.qpos[0], -60e-9)
+        observer = PipetteVolumeAssessment(system)
+        observer.update()
+        self.assertFalse(observer.report()['checks']['no_liquid_expelled_to_environment'])
+
+    def test_endpoint_tolerance_rejects_invalid_and_overlapping_ranges(self):
+        for tolerance in (-1., float('nan'), float('inf'), .004):
+            with self.subTest(tolerance=tolerance), self.assertRaises(ValueError):
+                self.fixture(tolerance)
 
     def test_submerged_aspiration_and_dispense_to_an_empty_destination(self):
         model, data, system, source, target = self.fixture()
