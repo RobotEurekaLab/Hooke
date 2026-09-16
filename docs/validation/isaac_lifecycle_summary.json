@@ -1,0 +1,818 @@
+{
+  "kind": "native_constructor_recovery_and_contact_stability",
+  "passed": true,
+  "thresholds_unchanged": {
+    "max_velocity_after_10s": 0.002,
+    "height_error_m": 0.005,
+    "min_contact_steps": 50000,
+    "physics_steps": 60000,
+    "simulation_s": 120
+  },
+  "initial_default_failure": {
+    "path": "temp/backend_parity/comprehensive-lifecycle/result.json",
+    "sha256": "480f0cda1de2d23581ff09dbd5639361753b4c98249afb225548cdece0376e20",
+    "report": {
+      "kind": "native_lifecycle_and_contact_stability",
+      "constructor_error": "[Errno 2] No such file or directory: '/home/amax/data/media/xyl_ps/Hooke/temp/backend_parity/comprehensive-lifecycle/missing_archive/model.npz'\nTraceback (most recent call last):\n  File \"/home/amax/data/media/xyl_ps/Hooke/Hooke/backends/isaac_worker.py\", line 70, in <module>\n    scene=NativeScene(request['source'],request['output'],request.get('render',False),request.get('physics_options'),request.get('managed_render',False))\n  File \"/home/amax/data/media/xyl_ps/Hooke/Hooke/backends/isaac_runtime.py\", line 34, in __init__\n    self.bridge = SceneBridge(self.world.stage, self.source, self.output,physics_options)\n  File \"/home/amax/data/media/xyl_ps/Hooke/Hooke/backends/usd_scene.py\", line 50, in __init__\n    with np.load(self.source/'model.npz', allow_pickle=False) as archive:\n  File \"/home/amax/data/datacopy/isaacsim/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/numpy/lib/npyio.py\", line 427, in load\n    fid = stack.enter_context(open(os_fspath(file), \"rb\"))\nFileNotFoundError: [Errno 2] No such file or directory: '/home/amax/data/media/xyl_ps/Hooke/temp/backend_parity/comprehensive-lifecycle/missing_archive/model.npz'\n",
+      "constructor_recovery": true,
+      "initialization_physics_steps": 2,
+      "initialization_episode_steps": 0,
+      "initialization_state_matches_source": true,
+      "physics_callback_steps": 60000,
+      "physics_callback_elapsed_s": 120.00000569969416,
+      "physics_steps": 60000,
+      "simulation_s": 120.0,
+      "contact_steps": 59888,
+      "max_velocity_after_10s": 0.005942432209849358,
+      "native_height_m": 0.049550022929906845,
+      "source_height_m": 0.04963281815753985,
+      "height_error_m": 8.279522763300629e-05,
+      "trajectory_sha256": "4eeb228ca8130e1874d625e0e1802d258f30b8fe2961195fc9aa94021513e1c2",
+      "passed": false,
+      "scope": "Isolated contact fixture; catalogue task stability is reported separately.",
+      "parity_qualified": false
+    }
+  },
+  "velocity_diagnostics": {
+    "comprehensive-rest-diagnostic": {
+      "path": "temp/backend_parity/comprehensive-rest-diagnostic/result.json",
+      "sha256": "e6012aa67849531d33e068833ad93d06800319706dba63f8acf222ee60ba8e17",
+      "report": {
+        "max_components": [
+          0.0,
+          0.0,
+          0.005942432209849358,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "qpos_range": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "time": 10.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942432209849358,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 11.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942430347204208,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 12.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942431278526783,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 13.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942432209849358,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 14.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942430347204208,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 15.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942431278526783,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 16.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942432209849358,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 17.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942430347204208,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 18.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942431278526783,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 19.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.049550022929906845,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              0.005942432209849358,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "final_info": {
+          "time": 20.0,
+          "steps": 10000,
+          "frames": 0,
+          "physics_wall_s": 3.9612261685542762,
+          "initialization_physics_events": 2,
+          "physics_events_total": 10002,
+          "physics_event_elapsed_s": 20.004000950139016,
+          "physics_events_since_load": 10000,
+          "world_step_index": 10002
+        }
+      }
+    },
+    "comprehensive-rest-diagnostic-pgs": {
+      "path": "temp/backend_parity/comprehensive-rest-diagnostic-pgs/result.json",
+      "sha256": "aaa89fc121f63f0c48a03725d35ff4a49ad65c81525297f349f12f7fee2e8937",
+      "report": {
+        "max_components": [
+          0.0,
+          0.0,
+          8.493661880493164e-07,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "qpos_range": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "time": 10.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 11.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 12.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 13.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 14.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 15.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 16.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 17.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 18.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 19.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956275224685669,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              8.493661880493164e-07,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "final_info": {
+          "time": 20.0,
+          "steps": 10000,
+          "frames": 0,
+          "physics_wall_s": 3.8194639491848648,
+          "initialization_physics_events": 2,
+          "physics_events_total": 10002,
+          "physics_event_elapsed_s": 20.004000950139016,
+          "physics_events_since_load": 10000,
+          "world_step_index": 10002
+        }
+      }
+    },
+    "comprehensive-rest-diagnostic-tgs-forces-retry": {
+      "path": "temp/backend_parity/comprehensive-rest-diagnostic-tgs-forces-retry/result.json",
+      "sha256": "0bf3877e1ec234e3d45852e3d0ce7bfc3a7e94732961a3399a181801edbb10db",
+      "report": {
+        "max_components": [
+          0.0,
+          0.0,
+          1.290137879550457e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "qpos_range": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples": [
+          {
+            "time": 10.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2900563888251781e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 11.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2899399735033512e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 12.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2900563888251781e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 13.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2899399735033512e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 14.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2900563888251781e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 15.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2899399735033512e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 16.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2900563888251781e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 17.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2899399735033512e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 18.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2900563888251781e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "time": 19.002,
+            "qpos": [
+              0.0,
+              0.0,
+              0.04956214874982834,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "qvel": [
+              0.0,
+              0.0,
+              1.2899399735033512e-05,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "final_info": {
+          "time": 20.0,
+          "steps": 10000,
+          "frames": 0,
+          "physics_wall_s": 3.8033734019845724,
+          "initialization_physics_events": 2,
+          "physics_events_total": 10002,
+          "physics_event_elapsed_s": 20.004000950139016,
+          "physics_events_since_load": 10000,
+          "world_step_index": 10002
+        }
+      }
+    }
+  },
+  "final": {
+    "path": "temp/backend_parity/comprehensive-lifecycle-force-iterations/result.json",
+    "sha256": "81c8c484c8785b42aea1cbac51a78fdac99ef4a45fdab893a3f6c9f996163b41",
+    "report": {
+      "kind": "native_lifecycle_and_contact_stability",
+      "physics_options": {
+        "contact_offset_m": 0.001,
+        "sdf_contact_offset_m": 5e-05,
+        "solver_velocity_iterations": 8,
+        "simulation_threads": 1,
+        "solver_type": "TGS",
+        "external_forces_every_iteration": true,
+        "compliant_contact_scale": 1.0,
+        "compliant_impedance_fraction": 0.0,
+        "soft_connect_constraints": true,
+        "connect_impedance_fraction": 0.0,
+        "approximate_cylinders": false
+      },
+      "constructor_error": "[Errno 2] No such file or directory: '/home/amax/data/media/xyl_ps/Hooke/temp/backend_parity/comprehensive-lifecycle-force-iterations/missing_archive/model.npz'\nTraceback (most recent call last):\n  File \"/home/amax/data/media/xyl_ps/Hooke/Hooke/backends/isaac_worker.py\", line 70, in <module>\n    scene=NativeScene(request['source'],request['output'],request.get('render',False),request.get('physics_options'),request.get('managed_render',False))\n  File \"/home/amax/data/media/xyl_ps/Hooke/Hooke/backends/isaac_runtime.py\", line 34, in __init__\n    self.bridge = SceneBridge(self.world.stage, self.source, self.output,physics_options)\n  File \"/home/amax/data/media/xyl_ps/Hooke/Hooke/backends/usd_scene.py\", line 50, in __init__\n    with np.load(self.source/'model.npz', allow_pickle=False) as archive:\n  File \"/home/amax/data/datacopy/isaacsim/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/numpy/lib/npyio.py\", line 427, in load\n    fid = stack.enter_context(open(os_fspath(file), \"rb\"))\nFileNotFoundError: [Errno 2] No such file or directory: '/home/amax/data/media/xyl_ps/Hooke/temp/backend_parity/comprehensive-lifecycle-force-iterations/missing_archive/model.npz'\n",
+      "constructor_recovery": true,
+      "initialization_physics_steps": 2,
+      "initialization_episode_steps": 0,
+      "initialization_state_matches_source": true,
+      "physics_callback_steps": 60000,
+      "physics_callback_elapsed_s": 120.00000569969416,
+      "physics_steps": 60000,
+      "simulation_s": 120.0,
+      "contact_steps": 59887,
+      "max_velocity_after_10s": 1.290137879550457e-05,
+      "max_velocity_components_after_10s": [
+        0.0,
+        0.0,
+        1.290137879550457e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "settled_qpos_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "final_qvel": [
+        0.0,
+        0.0,
+        1.290137879550457e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_height_m": 0.04956214874982834,
+      "source_height_m": 0.04963281815753985,
+      "height_error_m": 7.066940771151276e-05,
+      "trajectory_sha256": "fc0125e32518301fd4c8f00c5fe9b432a0301cc6605ddd8dcaeb9238c8bbdbba",
+      "passed": true,
+      "scope": "Isolated contact fixture; catalogue task stability is reported separately.",
+      "parity_qualified": false
+    }
+  },
+  "bootstrap_physics_steps": 2,
+  "episode_initialization_steps": 0,
+  "source_state_restored_after_bootstrap": true,
+  "parity_qualified": false,
+  "scope": "120-second isolated fixture passed with TGS external forces every iteration enabled; catalogue matrices keep their frozen settings. Default TGS residual velocity remains unqualified; no velocity or position overwritten.",
+  "references": [
+    "https://docs.omniverse.nvidia.com/kit/docs/omni_physics/108.1/dev_guide/simulation_control/simulation_control.html",
+    "https://docs.omniverse.nvidia.com/kit/docs/omni_physics/107.3/dev_guide/guides/current_limitations.html"
+  ]
+}

@@ -39,6 +39,13 @@ from backends.isaac_runtime import NativeScene
 from backends.ipc import read_message, write_message
 from isaacsim.core.api import World
 from isaacsim.core.utils.stage import create_new_stage
+from omni.physx import get_physx_interface
+physics_clock={'events':0,'elapsed_s':0.0}
+def record_physics_step(dt):
+ if dt>0:
+  physics_clock['events']+=1
+  physics_clock['elapsed_s']+=float(dt)
+physics_subscription=get_physx_interface().subscribe_physics_step_events(record_physics_step)
 scene=None
 transport=os.environ.get('HOOKE_ISAAC_TRANSPORT','binary')
 server=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM)
@@ -59,7 +66,10 @@ try:
       # A failed constructor can leave a partial World behind. Discard it
       # before processing the next catalogue entry, not just successful scenes.
       World.instance().stop();World.instance().clear();World.clear_instance();create_new_stage()
+     event_start=physics_clock['events']
      scene=NativeScene(request['source'],request['output'],request.get('render',False),request.get('physics_options'),request.get('managed_render',False))
+     scene.initialization_physics_events=physics_clock['events']-event_start
+     scene.physics_event_epoch=physics_clock['events']
      result={'state':scene.observe(),'conversion':scene.conversion,'gains':scene.gains}
     elif op=='step':result=scene.step(request['control'],request.get('extra_forces'),request.get('eq_active'),request.get('eq_data'))
     elif op=='reset':result=scene.reset(request.get('qpos'),request.get('qvel'))
@@ -90,7 +100,11 @@ try:
      profile.disable();wall=time.perf_counter()-started
      report=io.StringIO();pstats.Stats(profile,stream=report).sort_stats('cumulative').print_stats(35)
      result={'state':state,'steps':count,'wall_s':wall,'profile':report.getvalue()}
-    elif op=='info':result={'time':scene.time,'steps':scene.steps,'frames':scene.frame_count,'physics_wall_s':scene.physics_wall}
+    elif op=='info':result={'time':scene.time,'steps':scene.steps,'frames':scene.frame_count,'physics_wall_s':scene.physics_wall,
+     'initialization_physics_events':scene.initialization_physics_events,
+     'physics_events_total':physics_clock['events'],'physics_event_elapsed_s':physics_clock['elapsed_s'],
+     'physics_events_since_load':physics_clock['events']-scene.physics_event_epoch,
+     'world_step_index':scene.world.current_time_step_index}
     elif op=='shutdown':result={'closed':True};shutdown=True
     else:raise ValueError(f'Unknown operation: {op}')
     response={'ok':True,'result':result}
@@ -100,6 +114,7 @@ try:
    write_message(stream,response,transport)
    if shutdown:break
 finally:
+ physics_subscription=None
  if scene is not None:scene.close()
  server.close()
  args.socket.unlink(missing_ok=True)

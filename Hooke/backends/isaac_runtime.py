@@ -32,6 +32,10 @@ class NativeScene:
         self.dt = json.loads((self.source/'scene.json').read_text())['timestep_s']
         self.world = World(stage_units_in_meters=1., physics_dt=self.dt, rendering_dt=self.dt, device='cpu')
         self.bridge = SceneBridge(self.world.stage, self.source, self.output,physics_options)
+        self.world.get_physics_context().set_solver_type(self.bridge.physics_options['solver_type'])
+        physics_scene=self.world.get_physics_context().get_current_physics_scene_prim()
+        PhysxSchema.PhysxSceneAPI.Apply(physics_scene).CreateEnableExternalForcesEveryIterationAttr(
+            self.bridge.physics_options['external_forces_every_iteration'])
         carb.settings.get_settings().set_int(SETTING_NUM_THREADS,self.bridge.physics_options['simulation_threads'])
         approximate_cylinders=self.bridge.physics_options['approximate_cylinders']
         carb.settings.get_settings().set_bool(SETTING_COLLISION_APPROXIMATE_CYLINDERS,approximate_cylinders)

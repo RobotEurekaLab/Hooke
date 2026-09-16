@@ -151,10 +151,12 @@ def render_episode(episode, output, requested, gpu):
                 before = renderer.call('info')
                 renderer.call('render', visuals=recorded_liquid_visuals(data, liquids, index + 1))
                 after = renderer.call('info')
-                if any(before[key] != after[key] for key in ('time', 'steps')):
+                if any(before[key] != after[key] for key in ('time', 'steps', 'physics_events_total', 'world_step_index')):
                     raise RuntimeError('Native keyframe render advanced physics')
                 audit = dict(max_qpos_refresh_delta=delta, max_restored_fk_position_error_m=float(error),
-                             initialization_physics_steps=0, physics_steps_during_render=0, render_calls_to_settle_rgb=1,
+                             initialization_physics_steps=initialization['initialization_physics_events'],
+                             initialization_episode_steps=initialization['steps'],
+                             physics_steps_during_render=0, physics_events_during_render=0, render_calls_to_settle_rgb=1,
                              render_passes_to_settle_rgb=8)
             else:
                 data.qpos[:], data.qvel[:] = qpos, qvel

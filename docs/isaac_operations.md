@@ -81,3 +81,16 @@ Native 光照：`HOOKE_ISAAC_SUN_INTENSITY`、`HOOKE_ISAAC_AMBIENT_INTENSITY`。
 回归只复用代码、场景和参数完全匹配的记录，保留失败及中断文件。遇到 GPU 占用提示，等待运行中的任务结束；不跳过显存检查或 GPU 锁。启动或请求失败时查看该回合的 `isaac-worker.log` 和 `process.log`。运行器会回收自己创建的进程和 socket，网页“停止”只停止对应任务。服务重启后，旧未完成任务显示为中断。
 
 Native 启动前运行 CPU 能力检查。未知插件、球关节、柔性体、动态地形、任意非线性执行器和其他未实现特性会明确拒绝。静态地形、刚体 wrench、焊接约束等扩展以独立原生小场景的实际报告为准，能力清单 `can_attempt_native` 不是物理等价证书。
+
+## 求解器与实际稳定性
+
+`HOOKE_ISAAC_SOLVER_TYPE` 支持 `TGS`（默认）或 `PGS`；`HOOKE_ISAAC_EXTERNAL_FORCES_EVERY_ITERATION=1` 为 TGS 的可选外力迭代设置，默认关闭。设置进入实际物理配置报告。它们改变求解行为，不能把一种设置的验收结果当成其他设置已通过。
+
+本轮默认 TGS 的静止落球位置不漂移，但返回约 5.94 mm/s 的竖直残余速度，未通过 2 mm/s 门限。TGS 开启逐次迭代外力后，在相同门限下通过 120 秒、60,000 步和故障构造恢复，残余速度不超过 0.013 mm/s。没有改写位置、速度或提高门限；完整目录任务仍保留其冻结设置。[失败、诊断与复测记录](validation/isaac_lifecycle_summary.json)。NVIDIA 的 [求解器配置说明](https://docs.omniverse.nvidia.com/kit/docs/omni_physics/108.1/dev_guide/simulation_control/simulation_control.html) 建议在 TGS 中考虑逐次迭代外力以改善收敛；这里的通过结论来自本机小场景测量。
+
+```bash
+HOOKE_ISAAC_EXTERNAL_FORCES_EVERY_ITERATION=1 ../.venv/bin/python \
+  -m backends.lifecycle_contracts --gpu 6 --output ../temp/native-lifecycle
+```
+
+新 `info` 与关键帧报告使用独立 PhysX 步进回调，区分 Kit 内部初始化、已恢复的回合起点和渲染。当前小场景与离心回放初始化实际为 2 步，随后恢复源位置和速度；恢复后的图片渲染为 0 个物理事件。旧报告的零运行器计数不能证明没有内部初始化步骤，历史文件保留原值并补充解释。
