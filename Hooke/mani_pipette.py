@@ -296,7 +296,8 @@ class PipetteExpert(Pipette, Expert):
                 self.data.ctrl[self.arm1.thj3_id] = 0.8
                 for step in range(1600):
                     progress = step / 1599
-                    self.data.ctrl[self.arm1.thj3_id] = 0.8 * (1 - progress / 2)
+                    # Clear the spring-loaded button before lifting the tool.
+                    self.data.ctrl[self.arm1.thj3_id] = 0.8 * (1-progress) + 0.2 * progress
                     self.step_and_log({})
 
 
