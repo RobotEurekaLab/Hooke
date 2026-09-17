@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Universe · 星球表面探索</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #101315;
+        --panel: #1a1f22;
+        --line: #323a3e;
+        --text: #eeeae2;
+        --muted: #aeb6ba;
+        --accent: #e6b579;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          15px/1.65 system-ui,
+          sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      select {
+        font: inherit;
+        color: inherit;
+        background: transparent;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 9px 15px;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:hover {
+        border-color: var(--accent);
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: default;
+      }
+      button.active {
+        background: var(--accent);
+        color: #20190f;
+        border-color: var(--accent);
+      }
+      button.primary {
+        background: var(--accent);
+        color: #20190f;
+        font-weight: 650;
+      }
+      select {
+        background: var(--panel);
+      }
+      header {
+        max-width: 1500px;
+        margin: auto;
+        padding: 22px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .brand {
+        letter-spacing: 0.13em;
+        font-size: 17px;
+        font-weight: 650;
+      }
+      nav {
+        display: flex;
+        gap: 25px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      main {
+        max-width: 1500px;
+        margin: auto;
+        padding: 10px 32px 40px;
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+      }
+      h1 {
+        font-size: clamp(27px, 3.2vw, 43px);
+        line-height: 1.3;
+        margin: 8px 0;
+      }
+      h2 {
+        font-size: 20px;
+        margin: 0 0 12px;
+      }
+      p {
+        margin: 7px 0;
+        color: var(--muted);
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+        margin: 10px 0 25px;
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+      }
+      .hero {
+        position: relative;
+        aspect-ratio: 16/9;
+        background: #080a0c;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        overflow: hidden;
+      }
+      .hero img,
+      .hero video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        position: absolute;
+        inset: 0;
+      }
+      .hero img[hidden],
+      .hero video[hidden] {
+        display: none;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 75% 0 0;
+        background: linear-gradient(transparent, #0008);
+        pointer-events: none;
+      }
+      .badge {
+        position: absolute;
+        left: 20px;
+        top: 18px;
+        background: #101315cc;
+        border: 1px solid #ffffff33;
+        padding: 5px 11px;
+        border-radius: 20px;
+        font-size: 12px;
+        z-index: 2;
+      }
+      .caption {
+        position: absolute;
+        left: 22px;
+        bottom: 20px;
+        z-index: 2;
+        font-size: 13px;
+        letter-spacing: 0.04em;
+      }
+      .empty {
+        height: 100%;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        padding: 25px;
+        color: var(--muted);
+      }
+      .viewbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin: 14px 0 23px;
+      }
+      .views {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .views button {
+        font-size: 13px;
+        padding: 7px 13px;
+      }
+      .play {
+        font-size: 13px;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 1.75fr 1fr;
+        gap: 22px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 22px;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin: 22px 0;
+      }
+      .metric {
+        padding: 15px 19px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+      .metric span {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .metric strong {
+        font-size: 23px;
+        font-weight: 500;
+      }
+      .metric small {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .phases {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(var(--phase-count, 5), 1fr);
+        gap: 14px;
+      }
+      .phases li {
+        position: relative;
+        border-top: 2px solid var(--line);
+        padding: 14px 0;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .phases li.current {
+        border-color: var(--accent);
+        color: var(--text);
+      }
+      .phases li.done {
+        border-color: #6aaa90;
+      }
+      .phases span {
+        display: block;
+        color: var(--accent);
+        font-size: 11px;
+        margin-bottom: 4px;
+      }
+      .map {
+        width: 100%;
+        height: 160px;
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        margin-top: 12px;
+      }
+      .map text {
+        fill: #c4cbd0;
+        font: 12px system-ui;
+      }
+      .map .route {
+        stroke: #c29365;
+        fill: none;
+        stroke-width: 2;
+        stroke-dasharray: 5 5;
+      }
+      .map .track {
+        stroke: #91cebc;
+        fill: none;
+        stroke-width: 3;
+      }
+      .actions {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin: 15px 0;
+      }
+      .settings {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 12px;
+      }
+      .status {
+        white-space: pre-wrap;
+        font-size: 13px;
+        min-height: 45px;
+        overflow-wrap: anywhere;
+      }
+      .qualification {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 12px;
+      }
+      .footnote {
+        font-size: 13px;
+        margin-top: 20px;
+      }
+      .error {
+        color: #ffb7a6;
+      }
+      details {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 16px;
+      }
+      summary {
+        cursor: pointer;
+      }
+      footer {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 25px;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      select:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+      @media (max-width: 850px) {
+        header,
+        main {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        nav {
+          gap: 13px;
+        }
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .title {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .phases {
+          gap: 8px;
+        }
+        .phases li {
+          font-size: 12px;
+        }
+        .hero {
+          aspect-ratio: 16/10;
+        }
+        .caption {
+          left: 13px;
+          bottom: 12px;
+        }
+        .badge {
+          left: 12px;
+          top: 12px;
+        }
+        .card {
+          padding: 17px;
+        }
+      }
+      @media (max-width: 440px) {
+        nav a:first-child {
+          display: none;
+        }
+        .tabs button {
+          padding: 7px 14px;
+        }
+        .phases {
+          grid-template-columns: 1fr;
+        }
+        .phases li {
+          padding: 7px 0;
+        }
+        .phases span {
+          display: inline;
+          margin-right: 10px;
+        }
+        .hero {
+          aspect-ratio: 4/3;
+        }
+        .metric {
+          padding: 12px;
+        }
+      }
+      .empty[hidden] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/">UNIVERSE</a>
+      <nav>
+        <a href="/space-experiments">空间实验</a
+        ><a href="/backends">运行与对比</a><a href="/">返回首页</a>
+      </nav>
+    </header>
+    <main>
+      <section class="title">
+        <div>
+          <div class="eyebrow">PLANETARY EXPLORATION</div>
+          <h1 id="title">星球表面探索</h1>
+          <p id="description">从着陆区出发，让机器人把岩样带回来。</p>
+        </div>
+        <div class="tabs" role="group" aria-label="选择星球">
+          <button id="lunar" class="active">月球</button
+          ><button id="martian">火星</button>
+        </div>
+      </section>
+      <section class="hero" aria-label="实际仿真画面">
+        <div id="empty" class="empty">正在加载场景…</div>
+        <img id="image" alt="机器人在星球表面的实际仿真画面" hidden /><video
+          id="video"
+          controls
+          playsinline
+          preload="metadata"
+          hidden
+        ></video>
+        <div id="badge" class="badge">实景仿真</div>
+        <div id="caption" class="caption"></div>
+      </section>
+      <div class="viewbar">
+        <label for="scenario"
+          >任务组合
+          <select id="scenario">
+            <option value="rover">采样车</option>
+            <option value="team">G1 人形机器人 + 采样车</option>
+          </select>
+        </label>
+        <div id="views" class="views" role="group" aria-label="选择视角"></div>
+        <button id="play" class="play" disabled>播放完整任务</button>
+      </div>
+      <section class="metrics" aria-label="任务指标">
+        <div class="metric">
+          <span>局部重力</span><strong id="gravity">—</strong>
+          <small>m/s²</small>
+        </div>
+        <div class="metric">
+          <span>环境</span><strong id="atmosphere">—</strong>
+        </div>
+        <div class="metric">
+          <span>场景范围</span><strong id="extent">—</strong> <small>米</small>
+        </div>
+        <div class="metric">
+          <span>采样车实际行驶</span><strong id="distance">—</strong>
+          <small>米</small>
+          <small id="human-distance" hidden></small>
+        </div>
+      </section>
+      <div class="layout">
+        <section class="card">
+          <h2 id="mission-heading">岩样采集任务</h2>
+          <p id="mission-description">
+            六轮采样车搭载机械臂，在低重力环境中驶向采样点，抓取地面岩样、放入车载容器，再返回着陆区。
+          </p>
+          <ol id="phases" class="phases">
+            <li data-phase="leave_landing_site"><span>01</span>驶离着陆区</li>
+            <li data-phase="approach_rock"><span>02</span>接近岩样</li>
+            <li data-phase="grasp_rock"><span>03</span>抓取与提升</li>
+            <li data-phase="stow_sample"><span>04</span>存入样本舱</li>
+            <li data-phase="return_to_lander"><span>05</span>返回着陆区</li>
+          </ol>
+          <svg
+            class="map"
+            viewBox="0 0 550 160"
+            role="img"
+            aria-label="采样路线示意及本次实际行驶轨迹"
+          >
+            <path class="route" d="M65 88 L465 88" />
+            <path id="track" class="track" d="" />
+            <path id="human-track" class="track" d="" style="stroke: #e6b579" />
+            <circle cx="65" cy="88" r="7" fill="#a3a9b0" />
+            <circle cx="465" cy="88" r="7" fill="#e6b579" />
+            <circle id="rover-dot" cx="65" cy="88" r="5" fill="#91cebc" />
+            <circle
+              id="human-dot"
+              cx="65"
+              cy="75"
+              r="5"
+              fill="#e6b579"
+              style="display: none"
+            />
+            <text x="32" y="125">着陆区</text>
+            <text x="425" y="125">采样点</text>
+            <text x="200" y="30">实际轮驱移动 · 5.5 米单程</text>
+          </svg>
+          <div id="route-note" class="footnote">
+            路线图显示采样走廊。任务通过实际行驶、双侧夹持接触、岩样提升、入舱和返回状态判定。
+          </div>
+        </section>
+        <section class="card">
+          <h2>运行一次探索</h2>
+          <p>启动机器人，观察行驶、抓取和返回过程。</p>
+          <div class="settings">
+            <label for="backend">仿真环境</label
+            ><select id="backend">
+              <option value="isaac">Isaac</option>
+              <option value="mujoco">MuJoCo</option>
+            </select>
+          </div>
+          <div class="actions">
+            <button id="run" class="primary" disabled>开始采样</button
+            ><button id="preview" disabled>打开场景</button
+            ><button id="stop" disabled>停止</button>
+          </div>
+          <div id="status" class="status" role="status" aria-live="polite">
+            正在加载…
+          </div>
+          <div id="qualification" class="qualification"></div>
+          <a id="compare" href="/backends">查看两种环境的运行对比 ↗</a>
+        </section>
+      </div>
+      <details>
+        <summary>场景资产与仿真范围</summary>
+        <p>
+          场景组合了生成的陨坑或山脊、带来源记录的 LROC / HiRISE 地形小块，以及
+          NASA / SRB 的 Apollo 岩样外形。火星岩样使用该外形作为示意样本。G1
+          模型及步态策略来自 BSD-3-Clause 开源项目，低重力控制在此适配。G1
+          负责行走和接触确认，采样车负责抓取；地形为刚性表面，导航使用状态反馈。松软土壤、扬尘、视觉自主导航及人形机器人抓取岩样尚未实现。
+        </p>
+      </details>
+      <footer>
+        画面来自实际仿真。完整任务视频只发布通过采集与返回判定的记录；新部署可直接打开场景或开始运行。
+      </footer>
+    </main>
+    <script>
+      "use strict";
+      const $ = (id) => document.getElementById(id),
+        roverPhases = [
+          "leave_landing_site",
+          "approach_rock",
+          "grasp_rock",
+          "stow_sample",
+          "return_to_lander",
+        ];
+      const phaseLabels = {
+        ready: "待命",
+        leave_landing_site: "驶向采样点",
+        approach_rock: "接近岩样",
+        grasp_rock: "夹持岩样",
+        lift_rock: "提升岩样",
+        stow_sample: "存入样本舱",
+        return_to_lander: "返回着陆区",
+        complete: "任务结束",
+        humanoid_confirm: "G1 触压采样确认按钮",
+      };
+      let catalog,
+        world = "lunar",
+        view = "landing",
+        job = null,
+        pollTimer = null,
+        jobState = null,
+        track = [],
+        mediaGeneration = 0;
+      let phaseNames = roverPhases.slice(),
+        humanTrack = [];
+      const teamMode = () => $("scenario").value === "team";
+      const mission = () => {
+          const base = catalog.missions.find((m) => m.world === world);
+          return teamMode() ? { ...base, ...base.team } : base;
+        },
+        engine = () => $("backend").value;
+      const mediaURL = (kind) =>
+        `/api/surface-missions/${teamMode() ? "team/" : ""}${world}/${engine()}/${view}/${kind}`;
+      function updatePhases(phase) {
+        const name = phase === "lift_rock" ? "grasp_rock" : phase,
+          index =
+            phase === "complete" ? phaseNames.length : phaseNames.indexOf(name);
+        for (const [i, item] of [...$("phases").children].entries()) {
+          item.classList.toggle("done", i < index);
+          item.classList.toggle("current", i === index);
+        }
+      }
+      function resetViewer() {
+        mediaGeneration++;
+        $("video").ontimeupdate = null;
+        $("video").onended = null;
+        $("video").pause();
+        $("video").hidden = true;
+        $("video").removeAttribute("src");
+        $("video").replaceChildren();
+        $("image").hidden = true;
+        $("empty").hidden = false;
+        $("empty").textContent = "加载画面…";
+      }
+      function showImage(url) {
+        const generation = mediaGeneration;
+        $("image").onload = () => {
+          if (generation !== mediaGeneration) return;
+          $("image").hidden = false;
+          $("empty").hidden = true;
+        };
+        $("image").onerror = () => {
+          if (generation !== mediaGeneration) return;
+          $("image").hidden = true;
+          $("empty").hidden = false;
+          $("empty").textContent = "此视角暂时没有画面，可打开场景生成。";
+        };
+        $("image").src = url;
+      }
+      function refreshMedia() {
+        resetViewer();
+        const media = mission().media[engine()][view];
+        $("play").disabled = !media.video || !!job;
+        $("play").textContent = "播放完整任务";
+        $("caption").textContent =
+          `${world === "lunar" ? "月面陨坑与探索区" : "火星山脊与探索区"} · ${catalog.views[view]}`;
+        $("badge").textContent = jobState
+          ? "本次运行 · 实际仿真"
+          : "场景预览 · 实际仿真";
+        if (jobState?.images?.length) {
+          updateLiveImage(jobState);
+          return;
+        }
+        if (media.image) showImage(mediaURL("image"));
+        else
+          $("empty").textContent =
+            "此环境尚无保存画面。点击「打开场景」或「开始采样」。";
+      }
+      function render() {
+        const m = mission();
+        phaseNames = teamMode()
+          ? [roverPhases[0], "humanoid_confirm", ...roverPhases.slice(1)]
+          : roverPhases.slice();
+        const labels = [
+          "驶离着陆区",
+          ...(teamMode() ? ["G1 触压确认"] : []),
+          "接近岩样",
+          "抓取与提升",
+          "存入样本舱",
+          "返回着陆区",
+        ];
+        $("phases").replaceChildren(
+          ...labels.map((label, i) => {
+            const item = document.createElement("li"),
+              number = document.createElement("span");
+            item.dataset.phase = phaseNames[i];
+            number.textContent = String(i + 1).padStart(2, "0");
+            item.append(number, label);
+            return item;
+          }),
+        );
+        $("phases").style.setProperty("--phase-count", labels.length);
+        $("route-note").textContent = teamMode()
+          ? "绿色：采样车；金色：G1。轨迹来自真实机器人位姿，触压确认通过手部接触和按钮行程判定。"
+          : "路线图显示采样走廊。任务通过实际行驶、双侧夹持接触、岩样提升、入舱和返回状态判定。";
+        $("mission-heading").textContent = teamMode()
+          ? "人形机器人与采样车协作"
+          : "岩样采集任务";
+        $("mission-description").textContent = teamMode()
+          ? "G1 在低重力下与采样车同行，用手实际触压确认按钮；采样车抓取岩样、存入容器，两者返回着陆区。"
+          : "六轮采样车搭载机械臂，在低重力环境中驶向采样点，抓取地面岩样、放入车载容器，再返回着陆区。";
+        $("human-distance").hidden = !teamMode();
+        $("human-dot").style.display = teamMode() ? "" : "none";
+        for (const name of ["lunar", "martian"])
+          $(name).classList.toggle("active", name === world);
+        $("title").textContent = m.label;
+        $("description").textContent = teamMode()
+          ? "人形机器人真实行走与接触确认，采样车完成岩样采集。"
+          : world === "lunar"
+            ? "黑色天幕、陨坑与岩石：在月面真空中探索。"
+            : "红褐色地貌、山脊与岩石：在火星低重力中探索。";
+        $("gravity").textContent = m.gravity_m_s2.toFixed(2);
+        $("atmosphere").textContent =
+          m.pressure_pa === 0 ? "真空" : `${m.pressure_pa} Pa`;
+        $("extent").textContent = `${m.extent_m} × ${m.extent_m}`;
+        $("compare").href = `/backends?task=${m.task}`;
+        const rows = m.qualification.filter((r) => r.backend === engine()),
+          passed = rows.filter((r) => r.passed);
+        $("qualification").textContent = rows.length
+          ? `已验证完整任务：${passed.length}/${rows.length} 次。`
+          : "此环境的完整任务尚无验证记录。";
+        refreshMedia();
+      }
+      function lock(running) {
+        for (const id of [
+          "run",
+          "preview",
+          "backend",
+          "scenario",
+          "lunar",
+          "martian",
+        ])
+          $(id).disabled = running;
+        $("stop").disabled = !running;
+        $("play").disabled = running || !mission().media[engine()][view].video;
+      }
+      function updateLiveImage(data) {
+        const cameras = data.cameras || [],
+          names = {
+            overview: "expedition_overview",
+            landing: "landing_site",
+            follow: teamMode() ? "team_follow" : "rover_follow",
+            sample: teamMode() ? "team_closeup" : "sampling_closeup",
+          },
+          id = cameras.find((c) => c.name === names[view])?.id,
+          image = data.images?.find((i) => i.id === id);
+        if (image) {
+          $("video").pause();
+          $("video").hidden = true;
+          showImage(image.url);
+        }
+      }
+      function updateTrack(position) {
+        if (!position) return;
+        const x = 65 + (400 * position[0]) / 5.5,
+          y = 88 - 35 * position[1];
+        track.push([x, y]);
+        $("rover-dot").setAttribute("cx", x);
+        $("rover-dot").setAttribute("cy", y);
+        $("track").setAttribute(
+          "d",
+          track
+            .map(
+              (p, i) => `${i ? "L" : "M"}${p[0].toFixed(2)} ${p[1].toFixed(2)}`,
+            )
+            .join(" "),
+        );
+      }
+      function updateHuman(position, distance) {
+        if (!teamMode() || !position) return;
+        const x = 65 + (400 * (position[0] + 0.5)) / 5.5,
+          y = 75 - 35 * (position[1] + 0.75);
+        humanTrack.push([x, y]);
+        $("human-track").setAttribute(
+          "d",
+          humanTrack
+            .map(
+              (p, i) => `${i ? "L" : "M"}${p[0].toFixed(2)} ${p[1].toFixed(2)}`,
+            )
+            .join(" "),
+        );
+        $("human-dot").setAttribute("cx", x);
+        $("human-dot").setAttribute("cy", y);
+        $("human-distance").textContent = `G1 ${(distance ?? 0).toFixed(2)} 米`;
+      }
+      async function poll() {
+        try {
+          const response = await fetch(`/api/backends/jobs/${job}`);
+          if (!response.ok) throw Error("无法读取任务状态");
+          const data = await response.json();
+          jobState = data;
+          const state = data.running
+            ? data.progress?.surface_mission
+            : data.surface_mission;
+          if (state) {
+            $("distance").textContent = state.traveled_m.toFixed(2);
+            updatePhases(state.phase || data.expert_phases?.at(-1)?.phase);
+            updateTrack(state.rover_position_m);
+            updateHuman(
+              state.humanoid_position_m,
+              state.humanoid_traveled_m ?? state.humanoid?.traveled_m,
+            );
+            if (state.humanoid?.position_m)
+              updateHuman(state.humanoid.position_m, state.humanoid.traveled_m);
+          }
+          updateLiveImage(data);
+          const seconds = data.progress?.simulation_s ?? data.simulation_s ?? 0;
+          $("status").classList.toggle(
+            "error",
+            data.status === "ERROR" ||
+              data.status === "TASK_FAILED" ||
+              data.status === "TIME_LIMIT",
+          );
+          $("status").textContent = data.running
+            ? `${phaseLabels[state?.phase] || "初始化仿真环境"} · 仿真 ${seconds.toFixed(1)} 秒`
+            : data.status === "TASK_SUCCEEDED"
+              ? teamMode()
+                ? "协作完成：G1 已确认采样，两者携岩样返回着陆区。"
+                : "任务成功：岩样已存入车载容器并返回着陆区。"
+              : data.status === "PREVIEW_COMPLETE"
+                ? "场景已打开。"
+                : data.status === "CANCELLED"
+                  ? "本次运行已停止。"
+                  : `任务未完成：${data.error || data.status}`;
+          if (data.running) pollTimer = setTimeout(poll, 1500);
+          else {
+            job = null;
+            lock(false);
+            $("badge").textContent = "本次运行 · 实际仿真";
+          }
+        } catch (error) {
+          $("status").classList.add("error");
+          $("status").textContent = error.message + "，正在重试…";
+          if (job) pollTimer = setTimeout(poll, 3000);
+        }
+      }
+      async function start(mode) {
+        if (mode === "expert" && teamMode() && !mission().policy_available) {
+          $("status").textContent =
+            "G1 步态资源尚未准备；请按协作任务说明准备后运行。";
+          return;
+        }
+        lock(true);
+        resetViewer();
+        jobState = null;
+        track = [];
+        humanTrack = [];
+        $("human-track").setAttribute("d", "");
+        $("track").setAttribute("d", "");
+        $("distance").textContent = "0.00";
+        updatePhases("ready");
+        $("status").classList.remove("error");
+        $("status").textContent = "正在启动仿真…";
+        try {
+          const response = await fetch("/api/backends/jobs", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              task: mission().task,
+              backend: engine(),
+              mode,
+              seed: 0,
+              seconds: 2,
+            }),
+          });
+          const data = await response.json();
+          if (!response.ok) throw Error(data.error || "启动失败");
+          job = data.id;
+          jobState = data;
+          $("badge").textContent = "本次运行 · 实际仿真";
+          await poll();
+        } catch (error) {
+          job = null;
+          lock(false);
+          $("status").classList.add("error");
+          $("status").textContent = error.message;
+        }
+      }
+      function clearEpisode() {
+        jobState = null;
+        track = [];
+        humanTrack = [];
+        $("human-track").setAttribute("d", "");
+        $("human-dot").setAttribute("cx", "65");
+        $("human-dot").setAttribute("cy", "75");
+        $("human-distance").textContent = "G1 — 米";
+        $("track").setAttribute("d", "");
+        $("rover-dot").setAttribute("cx", "65");
+        $("rover-dot").setAttribute("cy", "88");
+        $("distance").textContent = "—";
+        updatePhases("ready");
+        $("status").classList.remove("error");
+        $("status").textContent = "就绪。选择视角后打开场景或开始采样。";
+      }
+      function playRecord() {
+        resetViewer();
+        clearEpisode();
+        $("empty").hidden = true;
+        $("video").hidden = false;
+        const formats = mission().media[engine()][view];
+        $("video").replaceChildren(
+          ...[
+            ["video", "video/mp4"],
+            ["webm", "video/webm"],
+          ]
+            .filter(([kind]) => formats[kind])
+            .map(([kind, type]) => {
+              const source = document.createElement("source");
+              source.src = mediaURL(kind);
+              source.type = type;
+              return source;
+            }),
+        );
+        $("video").load();
+        const record = mission().qualification.find(
+          (row) =>
+            row.backend === engine() && row.passed && row.playback?.length,
+        );
+        $("badge").textContent = record?.render_replay
+          ? "验证轨迹回放"
+          : "验证记录 · 实际仿真";
+        $("status").textContent = record?.render_replay
+          ? "正在按已验证的任务轨迹回放场景。"
+          : "正在播放通过采集与返回判定的任务记录。";
+        $("video").ontimeupdate = () => {
+          if (!record) return;
+          const frames = record.playback,
+            time = $("video").currentTime,
+            index = Math.min(
+              Math.floor(time / (frames[1]?.time_s || 1)),
+              frames.length - 1,
+            ),
+            frame = frames[index];
+          track = [];
+          for (const f of frames.slice(0, index + 1)) {
+            const pos = f.rover_position_m;
+            track.push([65 + (400 * pos[0]) / 5.5, 88 - 35 * pos[1]]);
+          }
+          humanTrack = frames
+            .slice(0, index + 1)
+            .filter((f) => f.humanoid_position_m)
+            .map((f) => {
+              const [x, y] = f.humanoid_position_m;
+              return [65 + (400 * (x + 0.5)) / 5.5, 75 - 35 * (y + 0.75)];
+            });
+          updateHuman(frame.humanoid_position_m, frame.humanoid_traveled_m);
+          const position = frame.rover_position_m;
+          updateTrack(position);
+          $("distance").textContent = frame.traveled_m.toFixed(2);
+          updatePhases(frame.phase);
+        };
+        $("video").onended = () => {
+          if (record) {
+            updatePhases("complete");
+            $("distance").textContent = record.metrics.traveled_m.toFixed(2);
+            if (record.metrics.humanoid)
+              updateHuman(
+                record.metrics.humanoid.position_m,
+                record.metrics.humanoid.traveled_m,
+              );
+            $("status").textContent = "验证记录播放完成：岩样已带回着陆区。";
+          }
+        };
+        $("video")
+          .play()
+          .catch(() => {});
+      }
+      async function init() {
+        try {
+          const response = await fetch("/api/surface-missions");
+          if (!response.ok) throw Error("无法加载场景目录");
+          catalog = await response.json();
+          const params = new URLSearchParams(location.search);
+          if (params.get("scenario") === "team") {
+            $("scenario").value = "team";
+            view = "follow";
+          }
+          if (["lunar", "martian"].includes(params.get("world")))
+            world = params.get("world");
+          if (["mujoco", "isaac"].includes(params.get("backend")))
+            $("backend").value = params.get("backend");
+          for (const [name, label] of Object.entries(catalog.views)) {
+            const button = document.createElement("button");
+            button.textContent = label;
+            button.classList.toggle("active", name === view);
+            button.onclick = () => {
+              view = name;
+              if (!job && !jobState) clearEpisode();
+              for (const b of $("views").children)
+                b.classList.toggle("active", b === button);
+              refreshMedia();
+            };
+            $("views").append(button);
+          }
+          for (const name of ["lunar", "martian"])
+            $(name).onclick = () => {
+              world = name;
+              clearEpisode();
+              render();
+            };
+          $("backend").onchange = () => {
+            clearEpisode();
+            render();
+          };
+          $("scenario").onchange = () => {
+            clearEpisode();
+            if (teamMode()) view = "follow";
+            if (
+              !mission().media[engine()][view].image &&
+              mission().media.mujoco[view].image
+            )
+              $("backend").value = "mujoco";
+            for (const [i, b] of [...$("views").children].entries())
+              b.classList.toggle(
+                "active",
+                Object.keys(catalog.views)[i] === view,
+              );
+            render();
+          };
+          $("run").onclick = () => start("expert");
+          $("preview").onclick = () => start("preview");
+          $("stop").onclick = async () => {
+            if (!job) return;
+            try {
+              const response = await fetch(`/api/backends/jobs/${job}/stop`, {
+                method: "POST",
+              });
+              if (!response.ok) throw Error("停止失败");
+              clearTimeout(pollTimer);
+              await poll();
+            } catch (error) {
+              $("status").textContent = error.message;
+            }
+          };
+          $("play").onclick = playRecord;
+          if (
+            !mission().media.isaac[view].image &&
+            mission().media.mujoco[view].image
+          )
+            $("backend").value = "mujoco";
+          render();
+          lock(false);
+          $("status").textContent = "就绪。选择视角后打开场景或开始采样。";
+        } catch (error) {
+          $("empty").textContent = error.message;
+          $("status").textContent = error.message;
+        }
+      }
+      init();
+    </script>
+  </body>
+</html>

@@ -41,3 +41,22 @@ def heightfield_mesh(model, index):
     return np.concatenate(
         (points, bottom, np.array([[0.0, 0.0, -base]]))
     ), np.concatenate((faces, walls, base_faces)).astype(np.int32)
+
+
+def heightfield_normals(points, faces, rows, columns):
+    """Smooth the visible top without blending its normals with base walls."""
+    top = points[: rows * columns].reshape(rows, columns, 3)
+    dy, dx = np.gradient(
+        top[:, :, 2], top[1, 0, 1] - top[0, 0, 1], top[0, 1, 0] - top[0, 0, 0]
+    )
+    vertex = np.stack((-dx, -dy, np.ones_like(dx)), axis=-1).reshape(-1, 3)
+    vertex /= np.linalg.norm(vertex, axis=1, keepdims=True)
+    triangles = points[faces]
+    flat = np.cross(
+        triangles[:, 1] - triangles[:, 0], triangles[:, 2] - triangles[:, 0]
+    )
+    flat /= np.linalg.norm(flat, axis=1, keepdims=True)
+    normals = np.repeat(flat[:, None, :], 3, axis=1)
+    count = 2 * (rows - 1) * (columns - 1)
+    normals[:count] = vertex[faces[:count]]
+    return normals.reshape(-1, 3)

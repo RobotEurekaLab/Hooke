@@ -55,6 +55,7 @@ class SceneBridge:
         self.joint_paths = {}
         self.geom_paths = {}
         self.camera_paths = {}
+        self.written_textures = set()
         self.articulation_roots = []
         self.free_bodies = {}
         self.physics_options={
@@ -191,6 +192,15 @@ class SceneBridge:
         light.CreateIntensityAttr(self.render_settings.native_sun_intensity)
         light.CreateAngleAttr(.5)
         light.CreateColorAttr(Gf.Vec3f(.8, .8, .8))
+        source_suns=np.flatnonzero(m['light_directional'] & m['light_active'] &
+                                  (m['light_bodyid']==0) & (m['light_mode']==0))
+        if len(source_suns):
+            source_sun=int(source_suns[0])
+            direction=m['light_dir'][source_sun]
+            orientation=Gf.Rotation(Gf.Vec3d(0,0,-1),Gf.Vec3d(*map(float,direction)))
+            UsdGeom.Xformable(light).AddOrientOp().Set(Gf.Quatf(orientation.GetQuat()))
+            light.CreateColorAttr(vec(m['light_diffuse'][source_sun]))
+            self.limits.append('First fixed source directional light supplies native sun direction and colour; intensity remains an illustrative renderer setting.')
         dome = UsdLux.DomeLight.Define(stage, '/World/Ambient')
         dome.CreateIntensityAttr(self.render_settings.native_ambient_intensity)
         if self.render_settings.native_color_pipeline == 'source_display':
@@ -258,9 +268,12 @@ class SceneBridge:
             from PIL import Image
             w, h, c = [int(m[k][tex_id]) for k in ('tex_width','tex_height','tex_nchannel')]
             start = int(m['tex_adr'][tex_id])
-            pixels = m['tex_data'][start:start+w*h*c].reshape(h,w,c)
             folder = self.output/'textures'; folder.mkdir(exist_ok=True)
-            file = folder/f't{tex_id}.png'; Image.fromarray(pixels).save(file)
+            file = folder/f't{tex_id}.png'
+            if tex_id not in self.written_textures:
+                pixels = m['tex_data'][start:start+w*h*c].reshape(h,w,c)
+                Image.fromarray(pixels).save(file)
+                self.written_textures.add(tex_id)
             uv = UsdShade.Shader.Define(self.stage, f'/World/Materials/g{i}/UV')
             uv.CreateIdAttr('UsdPrimvarReader_float2')
             uv.CreateInput('varname', Sdf.ValueTypeNames.Token).Set('st')
@@ -300,13 +313,21 @@ class SceneBridge:
             g = UsdGeom.Mesh.Define(stage, path)
             g.CreateSubdivisionSchemeAttr('none')
             if typ == 1:
-                from backends.heightfield import heightfield_mesh
-                points,faces = heightfield_mesh(m,int(m['geom_dataid'][i]))
+                from backends.heightfield import heightfield_mesh, heightfield_normals
+                field = int(m['geom_dataid'][i])
+                points,faces = heightfield_mesh(m,field)
                 g.CreatePointsAttr(Vt.Vec3fArray.FromNumpy(points.astype(np.float32)))
                 g.CreateFaceVertexCountsAttr(Vt.IntArray.FromNumpy(np.full(len(faces),3,np.int32)))
                 g.CreateFaceVertexIndicesAttr(Vt.IntArray.FromNumpy(faces.ravel()))
+                normals = heightfield_normals(points, faces, int(m['hfield_nrow'][field]), int(m['hfield_ncol'][field]))
+                g.CreateNormalsAttr(Vt.Vec3fArray.FromNumpy(normals.astype(np.float32)))
+                g.SetNormalsInterpolation('faceVarying')
+                from backends.texture_mapping import plane_uv
+                mat = int(m['geom_matid'][i])
+                repeat = m['mat_texrepeat'][mat] if mat >= 0 else [1, 1]
+                coordinates = plane_uv(points, m['hfield_size'][field], repeat, mat >= 0 and bool(m['mat_texuniform'][mat]))
                 UsdGeom.PrimvarsAPI(g).CreatePrimvar('st',Sdf.ValueTypeNames.TexCoord2fArray,'vertex').Set(
-                    Vt.Vec2fArray.FromNumpy(((points[:,:2]/m['hfield_size'][int(m['geom_dataid'][i]),:2]+1)/2).astype(np.float32)))
+                    Vt.Vec2fArray.FromNumpy(coordinates))
                 self.limits.append('Static heightfield samples are triangulated; source heightfield contact semantics are unqualified.')
             elif typ in (7, 8):
                 mid = int(m['geom_dataid'][i])
@@ -381,6 +402,9 @@ class SceneBridge:
                 # A MuJoCo free joint is a floating rigid body, not six USD
                 # hinges. Its pose and twist are read from PhysX rigid bodies.
                 self.free_bodies[j] = b
+                descendants = m['body_rootid'][m['jnt_bodyid']] == b
+                if np.any(descendants & np.isin(m['jnt_type'], [2, 3])):
+                    self.articulation(b, self.body_paths[b])
                 continue
             count=int(m['body_jntnum'][b])
             if count>1:
@@ -443,13 +467,16 @@ class SceneBridge:
                 PhysxSchema.PhysxJointAPI.Apply(joint.GetPrim()).CreateJointFrictionAttr(0.)
             if not parent:
                 # Each independent source tree becomes its own articulation.
-                root=stage.GetPrimAtPath(root_path)
-                UsdPhysics.ArticulationRootAPI.Apply(root)
-                art = PhysxSchema.PhysxArticulationAPI.Apply(root)
-                art.CreateEnabledSelfCollisionsAttr(True)
-                art.CreateSolverPositionIterationCountAttr(32)
-                art.CreateSolverVelocityIterationCountAttr(self.physics_options['solver_velocity_iterations'])
-                self.articulation_roots.append({'body': b, 'body_path': self.body_paths[b], 'root_path': root_path})
+                self.articulation(b, root_path)
+
+    def articulation(self, body, root_path):
+        root = self.stage.GetPrimAtPath(root_path)
+        UsdPhysics.ArticulationRootAPI.Apply(root)
+        art = PhysxSchema.PhysxArticulationAPI.Apply(root)
+        art.CreateEnabledSelfCollisionsAttr(True)
+        art.CreateSolverPositionIterationCountAttr(32)
+        art.CreateSolverVelocityIterationCountAttr(self.physics_options['solver_velocity_iterations'])
+        self.articulation_roots.append({'body': body, 'body_path': self.body_paths[body], 'root_path': root_path})
 
     def scalar_joint(self,j,body,parent,parent_path,child_path):
         m=self.m
@@ -646,8 +673,7 @@ class SceneBridge:
             camera = UsdGeom.Camera.Define(self.stage, path)
             pose(camera.GetPrim(), m['cam_pos'][i], m['cam_quat'][i])
             self.name(camera.GetPrim(), 'camera', i)
-            resolution = m['cam_resolution'][i]
-            aspect = float(resolution[0]/resolution[1]) if resolution[1] else 4/3
+            aspect = self.render_settings.width/self.render_settings.height
             focal = 24.
             vertical = 2*focal*math.tan(math.radians(float(m['cam_fovy'][i]))/2)
             camera.CreateFocalLengthAttr(focal)

@@ -105,11 +105,15 @@ class NativeScene:
         if len(self.dof_map) != len(self.bridge.joint_paths):
             raise ValueError('Not every source scalar joint was instantiated')
         self.reset()
+        near,far=self.bridge.meta.get('camera_clipping_m',[.01,100.])
         for camera in self.cameras.values():
-            camera.initialize(); camera.set_clipping_range(.01,100.)
+            camera.initialize(); camera.set_clipping_range(near,far)
         if render:
             for _ in range(40): self.world.render()
-            if not managed_render:self.capture()
+            if not managed_render:
+                self._refresh_visual_meshes()
+                for _ in range(8):self.world.render()
+                self.capture()
         self.world.stage.GetRootLayer().Export(str(self.output/'scene.usda'))
 
     def _configure_drives(self):
@@ -390,6 +394,33 @@ class NativeScene:
             self.world.render(); self.capture()
         return self.observe()
 
+    def _refresh_visual_meshes(self):
+        """Refresh ray-traced display meshes after physics initialization."""
+        from pxr import UsdGeom
+
+        visibility = []
+        # First captures can retain an incomplete terrain display. Refresh only
+        # non-colliding meshes; preserve authored visibility and physical state.
+        try:
+            for i, path in self.bridge.geom_paths.items():
+                if (
+                    self.m['geom_type'][i] != 7
+                    or i in self.bridge.colliders
+                    or self.m['geom_group'][i] > 2
+                ):
+                    continue
+                mesh = UsdGeom.Imageable(self.world.stage.GetPrimAtPath(path))
+                attr = mesh.GetVisibilityAttr()
+                value = attr.Get()
+                if value == UsdGeom.Tokens.inherited:
+                    visibility.append((attr, value))
+                    attr.Set(UsdGeom.Tokens.invisible)
+            for _ in range(2):
+                self.world.render()
+        finally:
+            for attr, value in visibility:
+                attr.Set(value)
+
     def render_frame(self, visuals):
         """Render source display/liquid updates after the task's manager step."""
         if not self.render_enabled:raise RuntimeError('Rendering is disabled for this scene')
@@ -399,6 +430,7 @@ class NativeScene:
         get_physx_interface().update_transformations(True,True,False,False)
         # RGB annotators buffer render frames for moving actors as well as
         # texture changes. Drain that latency before pairing RGB with state.
+        if self.frame_count == 0:self._refresh_visual_meshes()
         for _ in range(8):self.world.render()
         self.capture()
         after=self.observe()

@@ -228,6 +228,9 @@ class EpisodeAssessment:
             checks = self.task.experiment_checks()
             metrics['sample_handling'] = self.task.mechanics.handling
             scope = 'space_sample_experiment'
+        if callable(getattr(self.task, 'mission_checks', None)):
+            checks = self.task.mission_checks()
+            scope = 'surface_sample_collection'
         if self.state is not None:
             checks = self.state.checks()
             metrics.update(asdict(self.state))

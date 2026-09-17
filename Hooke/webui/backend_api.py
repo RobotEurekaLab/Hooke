@@ -241,6 +241,10 @@ def start_job():
         env=os.environ.copy();env.update(MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID=str(gpu),OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',PYTHONUNBUFFERED='1')
         if backend == 'isaac':env.setdefault('HOOKE_ISAAC_COLOR_PIPELINE','source_display')
         if mode == 'experiment':env['HOOKE_RENDER_FPS']='1'
+        if CATALOG[task].completion_rule == 'surface_sampling':
+            env.setdefault('HOOKE_RENDER_FPS','2')
+            env.setdefault('HOOKE_RENDER_WIDTH','1280')
+            env.setdefault('HOOKE_RENDER_HEIGHT','720')
         if CATALOG[task].completion_rule == 'space_experiment':
             env.setdefault('HOOKE_RENDER_FPS','2')
             env['HOOKE_SCIENCE_CAMPAIGN_KEY']=persistent_host_key(JOBS/'.science_campaign.json')
@@ -248,6 +252,7 @@ def start_job():
         command = [sys.executable,'-m','backends.run','--task',task,'--backend',backend,
                    '--mode','no_action' if mode == 'experiment' else mode,
                    '--seed',str(seed),'--seconds',str(seconds),'--gpu',str(gpu),'--output',str(output)]
+        command.extend(['--max-sim-seconds',str(CATALOG[task].max_sim_seconds)])
         if mode == 'experiment':command.extend(['--science-model',science])
         try:
             process=subprocess.Popen(command,

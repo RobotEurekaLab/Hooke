@@ -8,10 +8,29 @@ import mujoco
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Hooke"))
-from backends.heightfield import heightfield_mesh
+from backends.heightfield import heightfield_mesh, heightfield_normals
 
 
 class HeightfieldTests(unittest.TestCase):
+    def test_visual_normals_preserve_top_slope_and_do_not_turn_bottom_upward(self):
+        heights = np.array([[0.0, 0.1, 0.2], [0.2, 0.3, 0.4], [0.4, 0.5, 0.6]])
+        fields = dict(
+            hfield_nrow=[3],
+            hfield_ncol=[3],
+            hfield_size=[[1, 1, 1, 0.1]],
+            hfield_adr=[0],
+            hfield_data=heights.ravel(),
+        )
+        vertices, faces = heightfield_mesh(fields, 0)
+        normals = heightfield_normals(vertices, faces, 3, 3).reshape(-1, 3, 3)
+        expected = np.array([-0.1, -0.2, 1.0])
+        expected /= np.linalg.norm(expected)
+        np.testing.assert_allclose(
+            normals[:8], np.broadcast_to(expected, (8, 3, 3)), atol=1e-12
+        )
+        self.assertTrue(np.all(normals[-8:, :, 2] < -0.99))
+        np.testing.assert_allclose(np.linalg.norm(normals, axis=-1), 1.0, atol=1e-12)
+
     def test_closed_terrain_retains_source_elevation(self):
         model = mujoco.MjModel.from_xml_string(
             """<mujoco><asset><hfield name="terrain" nrow="3" ncol="3" size="1 1 .2 .1"/></asset><worldbody><geom type="hfield" hfield="terrain"/></worldbody></mujoco>"""

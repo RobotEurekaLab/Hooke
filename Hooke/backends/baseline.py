@@ -110,6 +110,8 @@ def write_snapshot(expert, out: Path):
         'schema_version': 1, 'mujoco_version': mujoco.__version__,
         'source_scene': str(expert.default_scene), 'task': expert.task,
         'timestep_s': float(model.opt.timestep), 'gravity': model.opt.gravity.tolist(),
+        'camera_clipping_m': [float(model.vis.map.znear * model.stat.extent),
+                              float(model.vis.map.zfar * model.stat.extent)],
         'model_options': {k:int(getattr(model.opt,k)) for k in ('disableflags','enableflags','integrator','cone','solver','noslip_iterations')},
         'names': names, 'task_info': {k: v for k, v in expert.task_info.items() if k in ('seed', 'camera_mapping', 'prefix')},
         'model_fields': sorted(arrays),
@@ -153,6 +155,8 @@ def record(task_name: str, seed: int, out: Path, render: bool, width: int, heigh
                   if expert.model.body(int(expert.model.geom_bodyid[i])).name in ('/fume_hood:sash', '/fume_hood:handle')}
     initial_qpos = data.qpos.copy()
     renderer = mujoco.Renderer(expert.model, height=height, width=width) if render else None
+    if render:
+        from backends.source_renderer import center_directional_shadows
     cameras = list(dict.fromkeys(expert.task_info.get('camera_mapping', {}).values()))
     frame_times = []
     frame_stride = max(1, round(1 / (20 * expert.dt)))
@@ -182,6 +186,7 @@ def record(task_name: str, seed: int, out: Path, render: bool, width: int, heigh
                 folder = out / f'camera_{i}'
                 folder.mkdir(exist_ok=True)
                 renderer.update_scene(data, camera=camera)
+                center_directional_shadows(renderer, expert.model)
                 Image.fromarray(renderer.render()).save(folder / f'{len(frame_times):05d}.png')
             frame_times.append(float(data.time))
     expert.manager.step = step

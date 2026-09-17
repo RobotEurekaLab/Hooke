@@ -54,6 +54,7 @@ class CatalogEntry:
     camera: str
     task_override: str | None = None
     completion_rule: str | None = None
+    max_sim_seconds: float = 120.0
 
     def load_classes(self):
         module = __import__(self.module, fromlist=[self.cls])
@@ -70,6 +71,39 @@ class CatalogEntry:
 
 CATALOG: dict[str, CatalogEntry] = {
     entry.name: entry for entry in [
+        *[
+            CatalogEntry(
+                name=f"space_{world}_humanoid_rover",
+                description=(
+                    f"{world}: free-standing G1 walks alongside a rover, physically "
+                    "authorizes rock sampling and returns with the collected sample."
+                ),
+                category="space",
+                module="surface.cooperation",
+                cls=f"{world.title()}Team",
+                robot="g1_rover_team",
+                camera="team_follow",
+                completion_rule="surface_sampling",
+                max_sim_seconds=180.0,
+            )
+            for world in ("lunar", "martian")
+        ],
+        *[
+            CatalogEntry(
+                name=f"space_{world}_surface_sampling",
+                description=(
+                    f"{world}: wheel-driven rover exploration, contact grasp of a rock, "
+                    "bin stowage and return to the lander."
+                ),
+                category="space",
+                module="surface.tasks",
+                cls=f"{world.title()}Sampling",
+                robot="surface_rover",
+                camera="expedition_overview",
+                completion_rule="surface_sampling",
+            )
+            for world in ("lunar", "martian")
+        ],
         *[
             CatalogEntry(
                 name=f"space_{world}_{operation}",

@@ -24,6 +24,7 @@ EXPERIMENT_FIELDS = frozenset(
         "runtime",
         "total_wall_s",
         "space_experiment",
+        "surface_mission",
         "space_environment",
         "assessment",
         "expert_phases",
@@ -37,6 +38,6 @@ EXPERIMENT_FIELDS = frozenset(
 
 def public_result(result, task_name=None):
     entry = CATALOG.get(task_name or result.get("task"))
-    if entry is None or entry.completion_rule != "space_experiment":
+    if entry is None or entry.completion_rule not in ("space_experiment", "surface_sampling"):
         return result
     return {key: value for key, value in result.items() if key in EXPERIMENT_FIELDS}

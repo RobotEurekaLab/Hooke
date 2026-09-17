@@ -58,6 +58,24 @@ _LITE6_MJCF = str(lite6_with_position_gripper().relative_to(MODEL_ROOT))
 ROBOTS: dict[str, RobotEntry] = {
     entry.name: entry for entry in [
         RobotEntry(
+            name="g1_rover_team",
+            display_name="G1 人形机器人 + 六轮采样车",
+            category="mobile_manipulator",
+            mount="native_only",
+            mjcf_path=None,
+            source="Unitree G1 and Hooke sampling rover",
+            arm_cls=UR5eArm,
+        ),
+        RobotEntry(
+            name="surface_rover",
+            display_name="六轮采样车 + UR5e",
+            category="mobile_manipulator",
+            mount="native_only",
+            mjcf_path=None,
+            source="Hooke rover with existing UR5e / Robotiq assets",
+            arm_cls=UR5eArm,
+        ),
+        RobotEntry(
             name="ur5e", display_name="UR5e + Robotiq 2F-85", category="single_arm",
             mount="arm", mjcf_path="robot/ur5e_gripper.xml",
             source="Hooke/AutoBio original asset", arm_cls=UR5eArm,

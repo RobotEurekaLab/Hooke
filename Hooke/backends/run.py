@@ -41,7 +41,7 @@ def run(args,worker=None):
     result={'status':'STARTING','task':args.task,'backend':args.backend,'seed':args.seed,
             'mode':args.mode,'parity_qualified':False}
     result_path=output/'result.json';write_json(result_path,result)
-    started=time.perf_counter();task=None;steps=0;contact_steps=0;frames=0;physics_wall=0.;rows=[]
+    started=time.perf_counter();task=None;steps=0;contact_steps=0;frames=0;physics_wall=0.;rows=[];control_failure=None
     renderer=None;adapter=None;original_step=None;original_manager_step=None;visuals=None;assessment=None;volume_assessment=None;science_model=None
     try:
         rendering = RenderSettings.from_environment()
@@ -70,12 +70,12 @@ def run(args,worker=None):
             if args.backend=='isaac':
                 if worker is None:worker=stack.enter_context(IsaacWorker(output,args.gpu))
                 adapter=stack.enter_context(PhysXTaskAdapter(task,worker,output,render=not args.no_render,
-                                                           physics_options=getattr(args,'physics_options',None),
+                                                           physics_options=getattr(args,'physics_options',None) or getattr(task,'native_physics_options',None),
                                                            report_progress=False,managed_render=not args.no_render))
             else:
                 source=output/'source';source.mkdir(exist_ok=True);write_snapshot(task,source)
                 if not args.no_render:
-                    from backends.source_renderer import mujoco_renderer
+                    from backends.source_renderer import center_directional_shadows, mujoco_renderer
                     renderer=stack.enter_context(mujoco_renderer(task.model,args.gpu))
             if not args.no_render:
                 from backends.visual_state import LiveVisuals
@@ -92,6 +92,7 @@ def run(args,worker=None):
                     for i,name in zip(camera_ids,cameras):
                         folder=output/'mujoco'/f'camera_{i}';folder.mkdir(parents=True,exist_ok=True)
                         renderer.update_scene(task.data,camera=name)
+                        center_directional_shadows(renderer,task.model)
                         visuals.apply_mujoco(renderer,visual_state)
                         destination=folder/f'{frames:05d}.png';temporary=destination.with_suffix('.tmp')
                         Image.fromarray(renderer.render()).save(temporary,format='PNG');temporary.replace(destination)
@@ -120,11 +121,17 @@ def run(args,worker=None):
                     write_json(output/'progress.json',{'steps':steps,'simulation_s':float(task.data.time),'contacts':task.data.ncon,
                                                       'instrument_state':instrument_state(task),
                                                       'space_experiment':task.experiment_ui() if callable(getattr(task,'experiment_ui',None)) else None,
+                                                      'surface_mission':task.mission_ui() if callable(getattr(task,'mission_ui',None)) else None,
                                                       'scientific_model':science_model.report() if science_model is not None else None})
             task.manager.step=manager_step
             try:
                 if args.mode in ('preview','no_action') or display_only:
-                    for _ in range(round(args.seconds/task.dt)):task.step_and_log({})
+                    for _ in range(round(args.seconds/task.dt)):
+                        task.step_and_log({})
+                        rejection=getattr(task,'irreversible_control_failure',None)
+                        if args.mode=='no_action' and callable(rejection):
+                            control_failure=rejection()
+                            if control_failure:break
                     if display_only and args.mode=='expert':task.finish()
                 else:task.execute()
             finally:
@@ -132,6 +139,11 @@ def run(args,worker=None):
                 task.manager.step=original_manager_step;original_manager_step=None
             check=task_result(task.check());result.update(check);source_check=check['source_success']
             status='PREVIEW_COMPLETE' if args.mode=='preview' else 'CONTROL_COMPLETE' if args.mode=='no_action' else 'DISPLAY_COMPLETE' if display_only else 'TASK_SUCCEEDED' if source_check else 'TASK_FAILED'
+            if args.mode=='no_action':
+                result['requested_control_horizon_s']=args.seconds
+                if control_failure:
+                    status='CONTROL_REJECTED_EARLY'
+                    result['control_rejection']=control_failure
             result.update(status=status,source_success=source_check,steps=steps,contact_steps=contact_steps,
                           simulation_s=float(task.data.time),within_declared_time_limit=within_time_limit(task.data.time,task.time_limit),
                           final_qpos=task.data.qpos.tolist(),
@@ -163,6 +175,8 @@ def run(args,worker=None):
                           max_fk_rotation_error_rad=adapter.max_fk_rotation_error,
                           physics_options=adapter.loaded['conversion']['physics_options'])
         if task is not None:
+            if callable(getattr(task, 'mission_report', None)):
+                result['surface_mission'] = task.mission_report()
             if callable(getattr(task, 'experiment_report', None)):
                 result['space_experiment'] = task.experiment_report()
                 write_json(output/'evaluator_truth.json', task.evaluator_truth)
@@ -205,14 +219,19 @@ def main():
                         help='no_action holds reset controls while physics and instrument systems run')
     parser.add_argument('--seed',type=int,default=0)
     parser.add_argument('--seconds',type=float,default=2.)
-    parser.add_argument('--max-sim-seconds',type=float,default=120.)
+    parser.add_argument('--max-sim-seconds',type=float,
+                        help='Duration cap; defaults to the selected task catalogue limit')
     parser.add_argument('--gpu',type=int,default=isaac_gpu())
     parser.add_argument('--no-render',action='store_true',help='Physics/controller validation without RGB')
     parser.add_argument('--science-model',choices=['thermal','capillary'],
                         help='Qualify a declared reduced model against actual simulation time and existing instrument/geometry')
     parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args()
-    if not 0<args.seconds<=args.max_sim_seconds<=120:parser.error('Invalid duration')
+    from archetypes.task_catalog import CATALOG
+    entry=CATALOG.get(args.task)
+    if entry is None:parser.error('Unknown task')
+    if args.max_sim_seconds is None:args.max_sim_seconds=entry.max_sim_seconds
+    if not 0<args.seconds<=args.max_sim_seconds<=entry.max_sim_seconds:parser.error('Invalid duration')
     result=run(args)
     raise SystemExit(1 if result['status'] in ('ERROR','TIME_LIMIT','TASK_FAILED') else 0)
 
