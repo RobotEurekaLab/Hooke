@@ -1,0 +1,62 @@
+{
+  "kind": "additional_martian_ground_contact_preview",
+  "results": [
+    {
+      "backend": "mujoco",
+      "checks": {
+        "preview_complete": true,
+        "actual_two_seconds": true,
+        "actual_1000_steps": true,
+        "finite_trajectory": true,
+        "free_sample_contacts_ground": true,
+        "sample_center_above_ground": true
+      },
+      "passed": true,
+      "sample_center_height_m": 0.034944793523820766,
+      "simulation_s": 2.0000000000000013,
+      "total_wall_s": 3.362520151771605,
+      "runtime": {
+        "frames": 0,
+        "physics_wall_s": 0.058868194464594126
+      },
+      "result": {
+        "path": "temp/backend_parity/space-worlds-martian-contact/mujoco/result.json",
+        "sha256": "10b278e9f55517a93f67003d6319e9813a7d21f88e58a4ce2d5931e916b20b69"
+      }
+    },
+    {
+      "backend": "isaac",
+      "checks": {
+        "preview_complete": true,
+        "actual_two_seconds": true,
+        "actual_1000_steps": true,
+        "finite_trajectory": true,
+        "free_sample_contacts_ground": true,
+        "sample_center_above_ground": true
+      },
+      "passed": true,
+      "sample_center_height_m": 0.03492266312241554,
+      "simulation_s": 2.0,
+      "total_wall_s": 28.287814589217305,
+      "runtime": {
+        "time": 2.0,
+        "steps": 1000,
+        "frames": 0,
+        "physics_wall_s": 1.1582442428916693,
+        "initialization_physics_events": 2,
+        "physics_events_total": 1002,
+        "physics_event_elapsed_s": 2.0040000951848924,
+        "physics_events_since_load": 1000,
+        "world_step_index": 1002
+      },
+      "result": {
+        "path": "temp/backend_parity/space-worlds-martian-contact/isaac/result.json",
+        "sha256": "0b83715a4f48789963981bf0ab13a6d1b3b03864fcf6fdb088cc6222c82d0064"
+      }
+    }
+  ],
+  "passed": true,
+  "scope": "Two real two-second previews and observed sample-floor contact; no resting velocity threshold, long stability, pressure or manipulation qualification",
+  "parity_qualified": false,
+  "scientific_process_validated": false
+}

@@ -1,0 +1,65 @@
+{
+  "scope": "Three newly added display/physics qualification scenes; no expert or scientific success",
+  "entries": [
+    {
+      "task": "space_orbital_workstation",
+      "display_only": true,
+      "mujoco_compiles": true,
+      "check_constant_true": false,
+      "check_constant_false": true,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scene": "model/scene/space_orbital.gen.xml",
+      "scene_sha256": "0d0caac047664c4057900926621ca9c61e0547211bd6921ebac121082584d5c3",
+      "bodies": 50,
+      "geoms": 130,
+      "meshes": 28
+    },
+    {
+      "task": "space_lunar_workstation",
+      "display_only": true,
+      "mujoco_compiles": true,
+      "check_constant_true": false,
+      "check_constant_false": true,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scene": "model/scene/space_lunar.gen.xml",
+      "scene_sha256": "d2b459a7215b2ed6ff93e6b3e74dc405abffc371c339b933261efa3b307aa627",
+      "bodies": 50,
+      "geoms": 147,
+      "meshes": 56
+    },
+    {
+      "task": "space_martian_workstation",
+      "display_only": true,
+      "mujoco_compiles": true,
+      "check_constant_true": false,
+      "check_constant_false": true,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scene": "model/scene/space_martian.gen.xml",
+      "scene_sha256": "cfd757cd671c36eebf158d95fb66007fe962a5fbefa80bb1fc41bfd9f79b0666",
+      "bodies": 50,
+      "geoms": 147,
+      "meshes": 56
+    }
+  ]
+}

@@ -47,3 +47,10 @@ See [operations and configuration](docs/isaac_operations.md),
 [actual visual comparisons](docs/isaac_visual_configuration.md), and
 [the seven acceptance areas](docs/isaac_completion_plan.md) for the current implementation,
 evidence and reduced-model limits.
+
+## Space experiment workstations
+
+The `/space-worlds` page shows orbital, lunar and Martian workstations with
+shared robot/instrument assets and explicit environmental limits. Gravity is
+applied by the selected engine; gas pressure remains a reference condition.
+See [scenes, assets, environment assumptions and actual checks](docs/space_worlds.md).

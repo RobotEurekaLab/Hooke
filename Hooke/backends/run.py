@@ -162,6 +162,7 @@ def run(args,worker=None):
                           max_fk_rotation_error_rad=adapter.max_fk_rotation_error,
                           physics_options=adapter.loaded['conversion']['physics_options'])
         if task is not None:
+            if getattr(task,'environment',None) is not None:result['space_environment']=task.environment.report()
             if science_model is not None:result['scientific_model']=science_model.report()
             if assessment is not None:result['assessment']=assessment.report()
             if volume_assessment is not None:result['volume_assessment']=volume_assessment.report()

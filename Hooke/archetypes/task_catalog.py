@@ -71,6 +71,18 @@ class CatalogEntry:
 CATALOG: dict[str, CatalogEntry] = {
     entry.name: entry for entry in [
         CatalogEntry(
+            name="space_orbital_workstation", description="Pressurized orbital cabin with a fixed robot, retained dry cartridges and an unretained microgravity witness; scene qualification only.",
+            category="space", module="worlds.tasks", cls="OrbitalWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_lunar_workstation", description="Lunar exterior workbench at 1.62 m/s² with vacuum exposure requirements, sealed sample concepts and a protected module reference; scene qualification only.",
+            category="space", module="worlds.tasks", cls="LunarWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_martian_workstation", description="Martian exterior workbench at 3.73 m/s² and reference 636 Pa CO2 atmosphere; gas dynamics and dust transport disabled; scene qualification only.",
+            category="space", module="worlds.tasks", cls="MartianWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
             name="centrifuge_5430_cycle",
             description="Insert and balance a tube, close/lock the original 5430 lid, drive a 60 RPM qualification cycle, brake and safely unlock.",
             category="separation", module="mani_centrifuge_cycle",cls="CentrifugeCycle",

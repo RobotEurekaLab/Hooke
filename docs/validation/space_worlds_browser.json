@@ -1,0 +1,96 @@
+{
+  "kind": "space_worlds_lan_browser_check",
+  "collected_at": "2026-09-17T01:19:17.572029+00:00",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "world": "orbital",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "orbital",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "lunar",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "lunar",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "martian",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "martian",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "orbital",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "orbital",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "lunar",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "lunar",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "martian",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "martian",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    }
+  ],
+  "image_downloads_sha256_verified": 12,
+  "deep_link_task": "space_lunar_workstation",
+  "catalogue_total": 170,
+  "javascript_errors": [],
+  "simulation_jobs_started": 0,
+  "passed": true
+}
