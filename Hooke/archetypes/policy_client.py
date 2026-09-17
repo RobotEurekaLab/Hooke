@@ -179,6 +179,18 @@ class CameraRenderer:
         self.img_size = img_size
         self._cache: dict[int, mujoco.Renderer] = {}
 
+    def close(self) -> None:
+        """Release render contexts before EGL shuts down."""
+        for renderer in self._cache.values():
+            renderer.close()
+        self._cache.clear()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc, traceback):
+        self.close()
+
     def _renderer_for(self, task) -> mujoco.Renderer:
         key = id(task.model)
         if key not in self._cache:

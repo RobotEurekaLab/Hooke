@@ -149,15 +149,15 @@ def export_demos(entry: CatalogEntry, seeds: list[int], out_dir: Path | None = N
     per episode under `out_dir` (default `logs/demos/<entry.name>/`)."""
     out_dir = out_dir or (DEMO_ROOT / entry.name)
     out_dir.mkdir(parents=True, exist_ok=True)
-    camera = CameraRenderer(img_size=img_size)
 
     exported = 0
-    for seed in seeds:
-        episode = export_episode(entry, seed, camera)
-        if episode is None:
-            continue
-        np.savez_compressed(out_dir / f"episode_{seed:05d}.npz", **episode)
-        exported += 1
+    with CameraRenderer(img_size=img_size) as camera:
+        for seed in seeds:
+            episode = export_episode(entry, seed, camera)
+            if episode is None:
+                continue
+            np.savez_compressed(out_dir / f"episode_{seed:05d}.npz", **episode)
+            exported += 1
 
     return ExportStats(attempted=len(seeds), exported=exported)
 

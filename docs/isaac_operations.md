@@ -31,6 +31,12 @@ export OMP_NUM_THREADS=1
 
 诊断记录 MuJoCo、NumPy、SciPy、JAX、TOPPRA、Pillow、Flask 的实际版本及本地 `meshplane` 模块是否可发现；缺少依赖时仍输出其他检查，`environment_files_ready=false`。Source 的安装说明见 [模拟器 README](../Hooke/README.md)，本机 Python 3.12 已实测。原 SDF 和 `meshplane` 为本地二进制组件，复制文件或找到模块不能代替其他 Python/平台上的 ABI 验证。Isaac 使用其独立安装环境。
 
+演示导出和策略客户端另需 `packages/autobio-inference/pyproject.toml` 已声明的 `msgpack`、`websockets`。在上述 Source 环境中补齐缺失依赖：
+
+```bash
+../.venv/bin/python -m pip install --no-deps 'msgpack>=1.0.5' 'websockets>=11.0'
+```
+
 ## 实际物理验证
 
 ```bash
