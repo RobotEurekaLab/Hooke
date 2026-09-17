@@ -87,3 +87,5 @@ HOOKE_RENDER_FPS=2 HOOKE_ISAAC_COLOR_PIPELINE=source_display \
 首次原型的空间站全景存在侧壁遮挡，岩石采用非均匀椭球时出现 PhysX 碰撞表示警告。初始日志与图片保留在 `temp/backend_parity/space-worlds-v1/`；视角和岩石网格修正后重新运行，最新证据使用独立的 `space-worlds-v2/`。
 
 后续资产优先补：可操作并经验证的样品保持机构、带反力采样的称量台、可加载与校准的惯性滑台、可识别密封状态的隔离模块，以及有来源和分辨率声明的月球/火星地形。环境损伤模型和大型场景扩展各自验收。
+
+[开放场景与资产调研](space_asset_sources.md) 已核查 NASA Astrobee 舱内模型、SRB 实验资产、OmniLRS 月球场景、NASA/JPL 火星地形工具及数据来源，并记录当前 Isaac 4.5 的适配要求。这些候选外部三维资产尚未导入本页的三个原型。

@@ -54,3 +54,5 @@ The `/space-worlds` page shows orbital, lunar and Martian workstations with
 shared robot/instrument assets and explicit environmental limits. Gravity is
 applied by the selected engine; gas pressure remains a reference condition.
 See [scenes, assets, environment assumptions and actual checks](docs/space_worlds.md).
+See [open scene and asset sources](docs/space_asset_sources.md) for the researched
+ISS interior, lunar terrain, Martian terrain and experiment asset candidates.
