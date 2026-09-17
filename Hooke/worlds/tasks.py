@@ -5,12 +5,12 @@ from worlds.environment import EnvironmentSystem
 from worlds.profiles import WORLDS
 
 
-def make_world_task(name):
+def make_world_task(name, *, scene_file=None, task_name=None, asset_camera=False):
     profile = WORLDS[name]
     base, _ = make_static_task(
         StaticDisplaySpec(
-            name=profile.task_name,
-            scene_file=f"space_{name}.gen.xml",
+            name=task_name or profile.task_name,
+            scene_file=scene_file or f"space_{name}.gen.xml",
             prompt=profile.label,
             camera="world_overview",
         )
@@ -35,6 +35,8 @@ def make_world_task(name):
                 },
                 space_environment=profile.report(),
             )
+            if asset_camera:
+                self.task_info["camera_mapping"]["asset"] = "asset_closeup"
             return self.task_info
 
         def check(self):

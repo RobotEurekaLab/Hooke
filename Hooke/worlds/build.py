@@ -91,6 +91,9 @@ def build_scene(profile):
         "balance": "../instrument/analytical_balance.xml",
         "glovebox": "../instrument/glovebox.xml",
     }
+    if profile.name == "orbital":
+        del dependencies["table"]
+        del dependencies["balance"]
     for name, path in dependencies.items():
         ET.SubElement(assets, "model", name=name, file=path, content_type="text/xml")
     world = ET.SubElement(root, "worldbody")
@@ -158,10 +161,14 @@ def build_scene(profile):
                 "0.16 0.17 0.18 1",
             )
     bench = ET.SubElement(world, "body", name="anchored_workstation")
-    attach(bench, "table", "bench:", "0 0 0")
+    if profile.name == "orbital":
+        orbital_work_surface(bench)
+    else:
+        attach(bench, "table", "bench:", "0 0 0")
     attach(bench, "ur5e", "/ur:", "0.48 0.12 0.824", quat="0 0 0 1")
     attach(bench, "glovebox", "/containment:", "-0.30 0.08 0.824")
-    attach(bench, "balance", "/balance:", "0.02 -0.20 0.824")
+    if profile.name != "orbital":
+        attach(bench, "balance", "/balance:", "0.02 -0.20 0.824")
     geom(
         bench,
         "sample_retention_base",
@@ -219,6 +226,57 @@ def build_scene(profile):
     camera(world, "experiment_closeup", (0.1, -1.6, 1.8), (0, 0, 1.0), 48)
     ET.indent(root, space="  ")
     return root, dependencies
+
+
+def orbital_work_surface(parent):
+    """Station-fixed panel and side brackets, with no floor-supported legs.
+
+    This welded rigid assembly does not simulate bolt compliance or station
+    recoil. Positive retention is independent of contact weight/friction.
+    """
+    geom(
+        parent,
+        "rack_work_panel",
+        "box",
+        "0.66 0.40 0.016",
+        "0 0 0.808",
+        "0.68 0.72 0.76 1",
+    )
+    for index, y in enumerate((-0.30, 0.30)):
+        geom(
+            parent,
+            f"rack_wall_bracket_{index}",
+            "box",
+            "0.45 0.025 0.025",
+            f"1.11 {y} 0.79",
+            "0.20 0.30 0.40 1",
+        )
+        geom(
+            parent,
+            f"rack_wall_anchor_{index}",
+            "box",
+            "0.025 0.07 0.08",
+            f"1.55 {y} 0.79",
+            "0.82 0.55 0.18 1",
+        )
+    for name, position, size in (
+        ("robot_mount", "0.48 0.12 0.812", "0.13 0.13 0.012"),
+        ("glovebox_mount", "-0.30 0.08 0.812", "0.30 0.22 0.012"),
+    ):
+        geom(parent, name, "box", size, position, "0.20 0.30 0.40 1")
+    for index, (x, y) in enumerate(
+        ((0.38, 0.02), (0.58, 0.02), (0.38, 0.22), (0.58, 0.22))
+    ):
+        geom(
+            parent,
+            f"robot_mount_bolt_{index}",
+            "cylinder",
+            "0.009 0.005",
+            f"{x} {y} 0.829",
+            "0.82 0.55 0.18 1",
+            contype="0",
+            conaffinity="0",
+        )
 
 
 def cabin(world):

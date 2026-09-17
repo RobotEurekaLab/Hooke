@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Universe · 空间资产复用</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#10151d;color:#edf3fa;font:16px/1.65 system-ui}main{max-width:1400px;margin:auto;padding:28px 20px}h1{margin:0;font-size:28px}h2{font-size:20px}a{color:#71dfbf}select{font:inherit;background:#18212d;color:inherit;border:1px solid #304155;border-radius:8px;padding:10px}.muted{color:#aebed0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{background:#18212d;border:1px solid #304155;border-radius:12px;padding:16px;margin:16px 0}.card img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#080d14}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:10px;border-bottom:1px solid #304155}.scroll{overflow:auto}@media(max-width:800px){.grid{grid-template-columns:1fr}main{padding:20px 12px}select{max-width:100%}}
+</style>
+<main>
+<h1>Universe 空间资产复用</h1>
+<p class="muted">NASA ISS 实验舱与扶手、Apollo 岩样、Mars 2020 样品管。下方是实际仿真截图。</p>
+<label for="world">场景</label> <select id="world"></select>
+<label for="view">视角</label> <select id="view"><option value="overview">工作区全景</option><option value="bench">实验台</option><option value="asset">资产特写</option></select>
+<p><a id="open" href="/backends">打开并运行场景 ↗</a> · <a href="/space-worlds">环境参数与实验约束 ↗</a></p>
+<p id="environment"></p>
+<div class="grid"><section class="card"><h2>Isaac · PhysX</h2><img id="isaac" alt="Isaac 实际仿真截图"></section><section class="card"><h2>MuJoCo</h2><img id="mujoco" alt="MuJoCo 实际仿真截图"></section></div>
+<section class="card"><h2>来源与使用条件</h2><div class="scroll"><table><thead><tr><th>资产</th><th>来源署名</th><th>使用条款</th></tr></thead><tbody id="credits"></tbody></table></div><p class="muted">资产用于研究和教学时仍应保留来源与条款，不能暗示 NASA/JPL 认可本项目。</p></section>
+<section class="card"><h2>实际验收</h2><p id="qualification">正在读取结果…</p><p>源三角面、材质分组、UV、法线和漫反射纹理已核查。完整 PBR 与光照一致性尚未验收。</p><p class="muted">碰撞采用岩样凸包、样品管和扶手胶囊、舱体边界板。样品质量 0.1 kg 为示例设置。月球与火星地形仍为程序化原型。气流、泄漏、相变、尘埃和机械开盖操作尚未实现。</p></section>
+</main>
+<script>
+const $=id=>document.getElementById(id);let data;
+function show(){const world=data.worlds.find(row=>row.name===$('world').value);$('open').href='/backends?task='+encodeURIComponent(world.task);$('environment').textContent=`${world.label} · 重力 ${world.gravity_m_s2} m/s² · 参考气压 ${world.workspace.pressure_pa} Pa（气体动力学尚未仿真）`;for(const backend of ['isaac','mujoco'])$(backend).src=`/api/space-assets/${world.name}/image/${backend}/${$('view').value}`;}
+async function load(){const response=await fetch('/api/space-assets');if(!response.ok)throw Error('资产记录读取失败');data=await response.json();$('world').replaceChildren(...data.worlds.map(row=>{const option=document.createElement('option');option.value=row.name;option.textContent=row.label;return option}));for(const row of data.assets.assets){const tr=document.createElement('tr');const label=document.createElement('td');label.textContent=row.label;const credit=document.createElement('td');credit.textContent=row.credit;const terms=document.createElement('td');const link=document.createElement('a');link.href=row.terms_url;link.textContent=row.id==='mars_sample_tube'?'NASA 媒体条款 + SRB 修改 CC0':row.terms==='CC0-1.0'?'CC0 1.0':'NASA 媒体使用条款';link.target='_blank';link.rel='noopener';terms.append(link);tr.append(label,credit,terms);$('credits').append(tr)}$('qualification').textContent=data.qualification.passed===true?'3 场景 × 2 引擎共 6 次运行通过；每次实际步进 0.5 秒，并核查漂浮或下落轨迹。截图来自三种相机。':'运行验收尚未完成，未计为通过。';$('world').onchange=show;$('view').onchange=show;show()}load().catch(error=>$('qualification').textContent=error.message);
+</script>
+</html>

@@ -208,7 +208,12 @@ class SceneBridge:
                 dome.CreateTextureFormatAttr('latlong')
                 UsdGeom.Xformable(dome).AddRotateXOp().Set(90.)
                 self.limits.append('Source sky pixels retained as a latlong dome; native environment illumination differs.')
+        from backends.source_lights import create_point_lights
+        source_points = create_point_lights(stage, m, self.body_paths)
+        if source_points:
+            self.limits.append('Fixed source point lights use an illustrative sphere-light intensity scale; source attenuation, spot cones and ambient terms are not equivalent.')
         report = {'status': 'EXPERIMENTAL_UNQUALIFIED', 'source': str(self.source),'conversion_version':6,
+                  'source_point_lights': source_points,
                   'body_count': len(self.body_paths), 'geom_count': len(self.geom_paths),
                   'joint_count': len(self.joint_paths), 'camera_count': len(self.camera_paths),
                   'free_joints': self.free_bodies,

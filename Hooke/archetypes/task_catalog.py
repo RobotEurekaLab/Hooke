@@ -71,6 +71,21 @@ class CatalogEntry:
 CATALOG: dict[str, CatalogEntry] = {
     entry.name: entry for entry in [
         CatalogEntry(
+            name="space_orbital_assets_workstation",
+            description="Attributed NASA ISS interior and handrail with shared Apollo sample and Mars tube; explicit collision proxies and example masses; display qualification only.",
+            category="space", module="worlds.asset_tasks", cls="OrbitalAssetsWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_lunar_assets_workstation",
+            description="Lunar workbench with attributed Apollo geometry and Mars sample tube; procedural terrain, example masses and collision proxies; display qualification only.",
+            category="space", module="worlds.asset_tasks", cls="LunarAssetsWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_martian_assets_workstation",
+            description="Martian workbench with attributed Mars sample tube and Apollo geometry; procedural terrain, example masses and collision proxies; display qualification only.",
+            category="space", module="worlds.asset_tasks", cls="MartianAssetsWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
             name="space_orbital_workstation", description="Pressurized orbital cabin with a fixed robot, retained dry cartridges and an unretained microgravity witness; scene qualification only.",
             category="space", module="worlds.tasks", cls="OrbitalWorkstation", robot="ur5e", camera="world_overview",
         ),

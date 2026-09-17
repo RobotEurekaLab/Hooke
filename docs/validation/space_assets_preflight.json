@@ -1,0 +1,50 @@
+{
+  "entries": [
+    {
+      "task": "space_orbital_assets_workstation",
+      "display_only": true,
+      "check_constant_true": false,
+      "check_constant_false": true,
+      "scene_sha256": "930e31f1c8f1056cf0c7da3c775417cac0cfb8c4da393ef0c9015cdf28634dde",
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      }
+    },
+    {
+      "task": "space_lunar_assets_workstation",
+      "display_only": true,
+      "check_constant_true": false,
+      "check_constant_false": true,
+      "scene_sha256": "4b3b9018eccff25636a6cfd11b225e6259a0a58655dd968a130c69c83b730099",
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      }
+    },
+    {
+      "task": "space_martian_assets_workstation",
+      "display_only": true,
+      "check_constant_true": false,
+      "check_constant_false": true,
+      "scene_sha256": "f0e6c077d9a6dfb8f251c32073313e73c5b31e675db17d65e75d3985018ce218",
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      }
+    }
+  ],
+  "scope": "Actual source compile/reset and native static preflight; no expert qualification."
+}

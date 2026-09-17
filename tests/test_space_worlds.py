@@ -111,6 +111,24 @@ class SpaceWorlds(unittest.TestCase):
                 self.assertFalse(task.check())
                 self.assertEqual(task.model.opt.density, 0)
 
+    def test_station_support_is_independent_of_weight_and_has_no_gravity_balance(self):
+        for name in ("space_orbital_workstation", "space_orbital_assets_workstation"):
+            task = CATALOG[name].make_expert()
+            names = {task.model.geom(i).name for i in range(task.model.ngeom)}
+            self.assertIn("rack_work_panel", names)
+            self.assertIn("rack_wall_anchor_0", names)
+            self.assertFalse(
+                any(name.startswith(("bench:", "/balance:")) for name in names)
+            )
+            root, dependencies = build_scene(WORLDS["orbital"])
+            self.assertNotIn("table", dependencies)
+            self.assertNotIn("balance", dependencies)
+            self.assertIsNone(root.find(".//body[@name='anchored_workstation']/joint"))
+        for name in ("lunar", "martian"):
+            _, dependencies = build_scene(WORLDS[name])
+            self.assertIn("table", dependencies)
+            self.assertIn("balance", dependencies)
+
     def test_radiative_equilibrium_and_cooling_are_distinct_from_air_temperature(self):
         environment = Environment(0, 293.15, "vacuum")
         equilibrium = ThermalWitness()

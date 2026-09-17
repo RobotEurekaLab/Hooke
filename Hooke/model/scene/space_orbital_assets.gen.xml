@@ -1,0 +1,105 @@
+<mujoco model="space_orbital_assets">
+  <compiler angle="radian" autolimits="true" />
+  <option gravity="0 0 -0.0" timestep="0.002" integrator="implicitfast" cone="elliptic" noslip_iterations="2" density="0" viscosity="0" />
+  <visual>
+    <global offwidth="640" offheight="480" />
+  </visual>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.02 0.025 0.05" rgb2="0.04 0.05 0.08" width="512" height="3072" />
+    <model name="ur5e" file="../robot/ur5e_gripper.xml" content_type="text/xml" />
+    <model name="cartridge" file="../instrument/space_cartridge.xml" content_type="text/xml" />
+    <model name="glovebox" file="../instrument/glovebox.xml" content_type="text/xml" />
+    <model name="iss_us_lab" file="../../assets/space/iss_us_lab/asset.xml" content_type="text/xml" />
+    <model name="iss_handrail" file="../../assets/space/iss_handrail/asset.xml" content_type="text/xml" />
+    <model name="apollo_sample" file="../../assets/space/apollo_sample/asset.xml" content_type="text/xml" />
+    <model name="mars_sample_tube" file="../../assets/space/mars_sample_tube/asset.xml" content_type="text/xml" />
+    <mesh name="/apollo_display:collision_mesh" file="../../assets/space/apollo_sample/part_0.obj" />
+  </asset>
+  <worldbody>
+    <light name="work_light" directional="true" pos="0 -2 4" dir="0 0.3 -1" diffuse="0.8 0.8 0.8" ambient="0.15 0.15 0.15" />
+    <geom name="terrain" type="plane" size="10 10 0.05" pos="0 0 0" rgba="0.29 0.34 0.40 1" friction="0.8 0.01 0.001" />
+    <body name="anchored_workstation">
+      <geom name="rack_work_panel" type="box" size="0.66 0.40 0.016" pos="0 0 0.808" rgba="0.68 0.72 0.76 1" />
+      <geom name="rack_wall_bracket_0" type="box" size="0.45 0.025 0.025" pos="1.11 -0.3 0.79" rgba="0.20 0.30 0.40 1" />
+      <geom name="rack_wall_anchor_0" type="box" size="0.025 0.07 0.08" pos="1.55 -0.3 0.79" rgba="0.82 0.55 0.18 1" />
+      <geom name="rack_wall_bracket_1" type="box" size="0.45 0.025 0.025" pos="1.11 0.3 0.79" rgba="0.20 0.30 0.40 1" />
+      <geom name="rack_wall_anchor_1" type="box" size="0.025 0.07 0.08" pos="1.55 0.3 0.79" rgba="0.82 0.55 0.18 1" />
+      <geom name="robot_mount" type="box" size="0.13 0.13 0.012" pos="0.48 0.12 0.812" rgba="0.20 0.30 0.40 1" />
+      <geom name="glovebox_mount" type="box" size="0.30 0.22 0.012" pos="-0.30 0.08 0.812" rgba="0.20 0.30 0.40 1" />
+      <geom name="robot_mount_bolt_0" type="cylinder" size="0.009 0.005" pos="0.38 0.02 0.829" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" />
+      <geom name="robot_mount_bolt_1" type="cylinder" size="0.009 0.005" pos="0.58 0.02 0.829" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" />
+      <geom name="robot_mount_bolt_2" type="cylinder" size="0.009 0.005" pos="0.38 0.22 0.829" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" />
+      <geom name="robot_mount_bolt_3" type="cylinder" size="0.009 0.005" pos="0.58 0.22 0.829" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" />
+      <body name="/ur" pos="0.48 0.12 0.824" quat="0 0 0 1">
+        <attach model="ur5e" body="world" prefix="/ur:" />
+      </body>
+      <body name="/containment" pos="-0.30 0.08 0.824">
+        <attach model="glovebox" body="world" prefix="/containment:" />
+      </body>
+      <geom name="sample_retention_base" type="box" size="0.15 0.06 0.008" pos="-0.32 -0.24 0.832" rgba="0.13 0.22 0.30 1" />
+      <body name="/retained_0" pos="-0.42 -0.24 0.883">
+        <attach model="cartridge" body="world" prefix="/retained_0:" />
+      </body>
+      <geom name="retention_clip_0_-1" type="box" size="0.004 0.035 0.024" pos="-0.45099999999999996 -0.24 0.87" rgba="0.8 0.47 0.10 1" />
+      <geom name="retention_clip_0_1" type="box" size="0.004 0.035 0.024" pos="-0.389 -0.24 0.87" rgba="0.8 0.47 0.10 1" />
+      <body name="/retained_1" pos="-0.32 -0.24 0.883">
+        <attach model="cartridge" body="world" prefix="/retained_1:" />
+      </body>
+      <geom name="retention_clip_1_-1" type="box" size="0.004 0.035 0.024" pos="-0.351 -0.24 0.87" rgba="0.8 0.47 0.10 1" />
+      <geom name="retention_clip_1_1" type="box" size="0.004 0.035 0.024" pos="-0.28900000000000003 -0.24 0.87" rgba="0.8 0.47 0.10 1" />
+      <body name="/retained_2" pos="-0.22 -0.24 0.883">
+        <attach model="cartridge" body="world" prefix="/retained_2:" />
+      </body>
+      <geom name="retention_clip_2_-1" type="box" size="0.004 0.035 0.024" pos="-0.251 -0.24 0.87" rgba="0.8 0.47 0.10 1" />
+      <geom name="retention_clip_2_1" type="box" size="0.004 0.035 0.024" pos="-0.189 -0.24 0.87" rgba="0.8 0.47 0.10 1" />
+      <geom name="inertial_rail" type="box" size="0.16 0.045 0.012" pos="0.29 -0.24 0.838" rgba="0.15 0.20 0.26 1" />
+      <body name="inertial_fixture" pos="0.29 -0.24 0.873">
+        <joint name="inertial_slide" type="slide" axis="1 0 0" range="-0.09 0.09" stiffness="5" damping="0.1" />
+        <geom name="slide_tray" type="box" size="0.04 0.035 0.02" pos="0 0 0" rgba="0.27 0.50 0.66 1" mass="0.2" />
+      </body>
+      <body name="/apollo_display" pos="-0.53 -0.29 0.832">
+        <attach model="apollo_sample" body="asset_root" prefix="/apollo_display:" />
+        <geom name="/apollo_display:collision" type="mesh" mesh="/apollo_display:collision_mesh" group="3" mass="0" friction="0.8 0.01 0.001" />
+      </body>
+      <body name="/apollo_display_mount" pos="-0.53 -0.29 0.832">
+        <geom name="/apollo_display:mount_plate" type="box" size="0.0355234759747982 0.03300738077610731 0.004" pos="0 0 -0.004" rgba="0.18 0.28 0.38 1" contype="0" conaffinity="0" mass="0.02" />
+        <geom name="/apollo_display:mount_clip_0_-1" type="box" size="0.004 0.02700738077610731 0.006" pos="-0.0265234759747982 0 0.015427386201918124" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+        <geom name="/apollo_display:mount_clip_0_1" type="box" size="0.004 0.02700738077610731 0.006" pos="0.0265234759747982 0 0.015427386201918124" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+      </body>
+      <body name="/tube_display" pos="-0.53 -0.05 0.832">
+        <attach model="mars_sample_tube" body="asset_root" prefix="/tube_display:" />
+        <geom name="/tube_display:collision" type="capsule" size="0.016453592106699944 0.06854640133678913" pos="0 0 0.08499999344348907" rgba="0.5 0.5 0.5 1" group="3" mass="0" friction="0.8 0.01 0.001" />
+      </body>
+      <body name="/tube_display_mount" pos="-0.53 -0.05 0.832">
+        <geom name="/tube_display:mount_plate" type="box" size="0.028453592106699944 0.02642946153879166 0.004" pos="0 0 -0.004" rgba="0.18 0.28 0.38 1" contype="0" conaffinity="0" mass="0.02" />
+        <geom name="/tube_display:mount_clip_0_-1" type="box" size="0.004 0.020429461538791657 0.006" pos="-0.019453592106699943 0 0.04249999672174454" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+        <geom name="/tube_display:mount_clip_0_1" type="box" size="0.004 0.020429461538791657 0.006" pos="0.019453592106699943 0 0.04249999672174454" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+        <geom name="/tube_display:mount_clip_1_-1" type="box" size="0.004 0.020429461538791657 0.006" pos="-0.019453592106699943 0 0.1274999901652336" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+        <geom name="/tube_display:mount_clip_1_1" type="box" size="0.004 0.020429461538791657 0.006" pos="0.019453592106699943 0 0.1274999901652336" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+      </body>
+    </body>
+    <camera name="experiment_closeup" pos="0.1 -1.6 1.8" xyaxes="0.9980525784828885 0.06237828615518053 -0.0 -0.02785293137444961 0.4456469019911938 0.8947754204041938" fovy="48" />
+    <body name="/iss" pos="0 0 -0.94" quat="0.7071067811865476 0 0 0.7071067811865476">
+      <attach model="iss_us_lab" body="asset_root" prefix="/iss:" />
+    </body>
+    <geom name="iss_wall_-1" type="box" size="0.04 3.867288092209492 1.7540218234062195" pos="-1.5565723180770874 0 0.8140218234062195" rgba="0.5 0.5 0.5 1" group="3" />
+    <geom name="iss_end_-1" type="box" size="1.5565723180770874 0.04 1.7540218234062195" pos="0 -3.867288092209492 0.8140218234062195" rgba="0.5 0.5 0.5 1" group="3" />
+    <geom name="iss_wall_1" type="box" size="0.04 3.867288092209492 1.7540218234062195" pos="1.5565723180770874 0 0.8140218234062195" rgba="0.5 0.5 0.5 1" group="3" />
+    <geom name="iss_end_1" type="box" size="1.5565723180770874 0.04 1.7540218234062195" pos="0 3.867288092209492 0.8140218234062195" rgba="0.5 0.5 0.5 1" group="3" />
+    <geom name="iss_ceiling" type="box" size="1.5565723180770874 3.867288092209492 0.04" pos="0 0 2.568043646812439" rgba="0.5 0.5 0.5 1" group="3" />
+    <body name="/rail" pos="-0.55 -0.60 0.80">
+      <attach model="iss_handrail" body="asset_root" prefix="/rail:" />
+      <geom name="rail_collision" type="capsule" size="0.012 0.365" pos="-0.019 0 0.3917" rgba="0.5 0.5 0.5 1" group="3" />
+    </body>
+    <camera name="world_overview" pos="0 -2.2 1.7" xyaxes="1.0 0.0 -0.0 0.0 0.2696299255199709 0.9629640197141818" fovy="62" />
+    <camera name="asset_closeup" pos="0 -1.2 1.5" xyaxes="0.7371541402007413 0.6757246285173463 -0.0 -0.23368872053049136 0.25493314966962694 0.9382956203118212" fovy="45" />
+    <light name="cabin_fixture_0" pos="0 -2 1.92" dir="0 0 -1" directional="false" cutoff="90" diffuse="0.6 0.6 0.6" ambient="0.05 0.05 0.05" />
+    <light name="cabin_fixture_1" pos="0 0 1.92" dir="0 0 -1" directional="false" cutoff="90" diffuse="0.6 0.6 0.6" ambient="0.05 0.05 0.05" />
+    <light name="cabin_fixture_2" pos="0 2 1.92" dir="0 0 -1" directional="false" cutoff="90" diffuse="0.6 0.6 0.6" ambient="0.05 0.05 0.05" />
+    <body name="/external_free" pos="-0.40 -0.85 1.5">
+      <attach model="mars_sample_tube" body="asset_root" prefix="/external_free:" />
+      <freejoint name="free_cartridge_joint" />
+      <geom name="/external_free:collision" type="capsule" size="0.016453592106699944 0.06854640133678913" pos="0 0 0.08499999344348907" rgba="0.5 0.5 0.5 1" group="3" mass="0" friction="0.8 0.01 0.001" />
+    </body>
+  </worldbody>
+</mujoco>

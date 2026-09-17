@@ -42,10 +42,24 @@ class WorldRoutes(unittest.TestCase):
     def test_new_catalogue_entries_are_display_scenes_without_fake_success(self):
         tasks = self.client.get("/api/backends/catalog").get_json()["tasks"]
         space = [t for t in tasks if t["category"] == "space"]
-        self.assertEqual(len(space), 3)
+        self.assertEqual(len(space), 6)
         self.assertTrue(
             all(t["display_only"] and not t["check_constant_true"] for t in space)
         )
+
+    def test_external_assets_expose_attribution_and_only_registered_images(self):
+        data = self.client.get("/api/space-assets").get_json()
+        self.assertEqual(len(data["assets"]["assets"]), 4)
+        self.assertFalse(data["scientific_process_validated"])
+        for row in data["assets"]["assets"]:
+            self.assertIn("academic_research_use", row)
+            self.assertTrue(row["credit"])
+        for url in (
+            "/api/space-assets/unknown/image/isaac/overview",
+            "/api/space-assets/orbital/image/unknown/overview",
+            "/api/space-assets/orbital/image/isaac/unknown",
+        ):
+            self.assertEqual(self.client.get(url).status_code, 404)
 
 
 if __name__ == "__main__":

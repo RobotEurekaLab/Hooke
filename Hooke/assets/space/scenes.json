@@ -1,0 +1,26 @@
+[
+  {
+    "world": "orbital",
+    "task": "space_orbital_assets_workstation",
+    "scene": "model/scene/space_orbital_assets.gen.xml",
+    "sha256": "930e31f1c8f1056cf0c7da3c775417cac0cfb8c4da393ef0c9015cdf28634dde",
+    "collision_scope": "Convex Apollo hull, capsule tube/rail and approximate cabin boundary panels; imported cabin triangles have no collisions.",
+    "mass_scope": "0.1 kg illustrative sample mass, not measured NASA specimen/tube mass."
+  },
+  {
+    "world": "lunar",
+    "task": "space_lunar_assets_workstation",
+    "scene": "model/scene/space_lunar_assets.gen.xml",
+    "sha256": "4b3b9018eccff25636a6cfd11b225e6259a0a58655dd968a130c69c83b730099",
+    "collision_scope": "Convex Apollo hull, capsule tube/rail and approximate cabin boundary panels; imported cabin triangles have no collisions.",
+    "mass_scope": "0.1 kg illustrative sample mass, not measured NASA specimen/tube mass."
+  },
+  {
+    "world": "martian",
+    "task": "space_martian_assets_workstation",
+    "scene": "model/scene/space_martian_assets.gen.xml",
+    "sha256": "f0e6c077d9a6dfb8f251c32073313e73c5b31e675db17d65e75d3985018ce218",
+    "collision_scope": "Convex Apollo hull, capsule tube/rail and approximate cabin boundary panels; imported cabin triangles have no collisions.",
+    "mass_scope": "0.1 kg illustrative sample mass, not measured NASA specimen/tube mass."
+  }
+]

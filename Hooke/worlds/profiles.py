@@ -50,6 +50,20 @@ class WorldProfile:
                 if self.name == "orbital"
                 else "uniform_local_surface"
             ),
+            "workstation": {
+                "support": (
+                    "station_fixed_work_panel_and_wall_brackets"
+                    if self.name == "orbital"
+                    else "ground_anchored_table"
+                ),
+                "sample_storage": "explicit_fixed_mounts_not_weight_supported_storage",
+                "mass_measurement": (
+                    "inertial_fixture_unqualified_no_gravity_balance"
+                    if self.name == "orbital"
+                    else "gravity_balance_uncalibrated_for_local_gravity"
+                ),
+                "mount_model": "rigid_welded_bodies_no_fastener_compliance_or_latch_operation",
+            },
             "protected_module": {
                 "reference_pressure_pa": 101325.0,
                 "reference_temperature_k": 293.15,

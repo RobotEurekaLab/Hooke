@@ -1,0 +1,44 @@
+<mujoco model="iss_us_lab">
+  <compiler assetdir="../.." />
+  <asset>
+    <mesh name="part_0" file="space/iss_us_lab/part_0.obj" />
+    <material name="material_0" rgba="1 1 1 1" shininess="0.2" texture="texture_0" />
+    <texture name="texture_0" type="2d" file="space/iss_us_lab/diffuse_0.png" />
+    <mesh name="part_1" file="space/iss_us_lab/part_1.obj" />
+    <material name="material_1" rgba="1 1 1 1" shininess="0.2" texture="texture_1" />
+    <texture name="texture_1" type="2d" file="space/iss_us_lab/diffuse_1.png" />
+    <mesh name="part_2" file="space/iss_us_lab/part_2.obj" />
+    <material name="material_2" rgba="1 1 1 1" shininess="0.2" texture="texture_1" />
+    <mesh name="part_3" file="space/iss_us_lab/part_3.obj" />
+    <material name="material_3" rgba="1 1 1 1" shininess="0.2" texture="texture_2" />
+    <texture name="texture_2" type="2d" file="space/iss_us_lab/diffuse_2.png" />
+    <mesh name="part_4" file="space/iss_us_lab/part_4.obj" />
+    <material name="material_4" rgba="1 1 1 1" shininess="0.2" texture="texture_3" />
+    <texture name="texture_3" type="2d" file="space/iss_us_lab/diffuse_3.png" />
+    <mesh name="part_5" file="space/iss_us_lab/part_5.obj" />
+    <material name="material_5" rgba="1 1 1 1" shininess="0.2" texture="texture_1" />
+    <mesh name="part_6" file="space/iss_us_lab/part_6.obj" />
+    <material name="material_6" rgba="1 1 1 1" shininess="0.2" texture="texture_4" />
+    <texture name="texture_4" type="2d" file="space/iss_us_lab/diffuse_4.png" />
+    <mesh name="part_7" file="space/iss_us_lab/part_7.obj" />
+    <material name="material_7" rgba="1 1 1 1" shininess="0.2" texture="texture_5" />
+    <texture name="texture_5" type="2d" file="space/iss_us_lab/diffuse_5.png" />
+    <mesh name="part_8" file="space/iss_us_lab/part_8.obj" />
+    <material name="material_8" rgba="1 1 1 1" shininess="0.2" texture="texture_6" />
+    <texture name="texture_6" type="2d" file="space/iss_us_lab/diffuse_6.png" />
+  </asset>
+  <worldbody>
+    <body name="asset_root">
+      <inertial pos="0 0 1.7540218234062195" mass="0.1" diaginertia="0.183316998 0.601083658 0.579294486" />
+      <geom name="part_0" type="mesh" mesh="part_0" material="material_0" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_1" type="mesh" mesh="part_1" material="material_1" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_2" type="mesh" mesh="part_2" material="material_2" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_3" type="mesh" mesh="part_3" material="material_3" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_4" type="mesh" mesh="part_4" material="material_4" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_5" type="mesh" mesh="part_5" material="material_5" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_6" type="mesh" mesh="part_6" material="material_6" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_7" type="mesh" mesh="part_7" material="material_7" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_8" type="mesh" mesh="part_8" material="material_8" contype="0" conaffinity="0" mass="0" />
+    </body>
+  </worldbody>
+</mujoco>

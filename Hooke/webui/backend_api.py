@@ -87,11 +87,36 @@ def capabilities():
     return jsonify(registry())
 
 
+@bp.get('/space-assets')
+def space_assets_page():
+    return send_file(Path(__file__).with_name('static')/'space-assets.html')
+
+
+@bp.get('/api/space-assets')
+def space_assets_catalog():
+    from worlds.profiles import WORLDS
+    return jsonify(worlds=[dict(profile.report(), task=f'space_{profile.name}_assets_workstation') for profile in WORLDS.values()],
+                   assets=read_json(ROOT/'Hooke/assets/space/manifest.json'),
+                   qualification=read_json(ROOT/'docs/validation/space_assets_summary.json'),
+                   scientific_process_validated=False)
+
+
+@bp.get('/api/space-assets/<world>/image/<backend>/<view>')
+def space_asset_image(world, backend, view):
+    from worlds.profiles import WORLDS
+    if world not in WORLDS or backend not in ('mujoco','isaac') or view not in ('overview','bench','asset'):
+        abort(404)
+    path=ROOT/'docs/assets'/f'space-assets-{world}-{backend}-{view}.png'
+    if not path.is_file():abort(404)
+    return send_file(path,mimetype='image/png',max_age=0)
+
+
 @bp.get('/api/backends/catalog')
 def catalog():
     inspected=read_json(ROOT/'docs/validation/isaac_catalogue_preflight_summary.json') or read_json(EVIDENCE/'inventory.json')
     inventory={r['task']:r for r in inspected.get('entries',[])}
     inventory.update({r['task']:r for r in read_json(ROOT/'docs/validation/space_worlds_preflight.json').get('entries',[])})
+    inventory.update({r['task']:r for r in read_json(ROOT/'docs/validation/space_assets_preflight.json').get('entries',[])})
     reports=evidence();experts=expert_evidence()
     return jsonify(tasks=[{'name':e.name,'description':e.description,'category':e.category,
                            'display_only':inventory.get(e.name,{}).get('display_only',False),

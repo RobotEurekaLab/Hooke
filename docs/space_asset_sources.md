@@ -1,6 +1,6 @@
 # 空间站、月球与火星的开放场景和资产调研
 
-核查日期：2026-09-17。本页记录候选来源和接入方案，不是外部资产的运行验收报告。当前 `/space-worlds` 仍使用 Hooke 原资产与程序化场景；本次只拉取上游 Git 元数据、README、安装配置及空间站 URDF，尚未把外部三维资产导入这三个场景。
+核查日期：2026-09-17。本页记录候选来源和接入方案，不是外部资产的运行验收报告。当前 `/space-worlds` 仍使用 Hooke 原资产与程序化场景；后续已下载并接入美国实验舱、扶手、Apollo 样品 1 与火星样品管，新增独立的 `/space-assets` 场景变体。范围、使用条款和实际证据见 [资产复用记录](space_asset_reuse.md)。完整 SRB、OmniLRS、MARTIAN 框架仍未运行验证。
 
 ## 优先来源
 
@@ -21,7 +21,7 @@
 
 ## 已定位的具体资产
 
-以下文件路径已在固定上游提交的 Git 树中核查，模型与贴图内容尚未做导入检查。
+以下文件路径已在固定上游提交的 Git 树中核查，其中首批四个资产已转换和核查，其余仍为候选。
 
 ### 空间站
 
@@ -81,4 +81,4 @@
 | `OmniLRS/OmniLRS` | `5429512dfb80808a047e44c1b97dc0aadc3ce327` | Git 文件树、README、license、pixi.toml、LFS 配置与官方安装 wiki |
 | `nasa-jpl/martian` | `f03c16d47b42ebabb3e63d392576ea75b8bf5b87` | Git 文件树、README、LICENSE、地形输入与离线导出说明 |
 
-LuNaSynth、Poly Haven、NASA 3D 和 PDS 产品页面属于网页核查，不列为已下载或已导入模型。开发机的检索记录与局部 Git 元数据保存在 `temp/space_asset_research/`，不把这些临时目录加入产品依赖。外部资产的运行验收仍待完成；已有三世界原型的实际检查见 [场景文档](space_worlds.md)。
+LuNaSynth、Poly Haven、NASA 3D 和 PDS 产品页面属于网页核查，不列为已下载或已导入模型。开发机的检索记录与局部 Git 元数据保存在 `temp/space_asset_research/`，不把这些临时目录加入产品依赖。首批四个模型的实际接入见 [资产复用记录](space_asset_reuse.md)；已有三世界原型的实际检查见 [场景文档](space_worlds.md)。

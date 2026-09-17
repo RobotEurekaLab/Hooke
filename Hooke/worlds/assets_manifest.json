@@ -4,7 +4,7 @@
     {
       "world": "orbital",
       "scene": "model/scene/space_orbital.gen.xml",
-      "sha256": "0d0caac047664c4057900926621ca9c61e0547211bd6921ebac121082584d5c3",
+      "sha256": "f3a2d855ff7a28df89462bc3e2262261d2c7d2c9986fcb194fa511706e589f8d",
       "environment": {
         "name": "orbital",
         "label": "空间站实验舱",
@@ -29,6 +29,12 @@
           -0.0
         ],
         "gravity_model": "local_free_fall_frame",
+        "workstation": {
+          "support": "station_fixed_work_panel_and_wall_brackets",
+          "sample_storage": "explicit_fixed_mounts_not_weight_supported_storage",
+          "mass_measurement": "inertial_fixture_unqualified_no_gravity_balance",
+          "mount_model": "rigid_welded_bodies_no_fastener_compliance_or_latch_operation"
+        },
         "protected_module": {
           "reference_pressure_pa": 101325.0,
           "reference_temperature_k": 293.15,
@@ -88,6 +94,12 @@
           -1.62
         ],
         "gravity_model": "uniform_local_surface",
+        "workstation": {
+          "support": "ground_anchored_table",
+          "sample_storage": "explicit_fixed_mounts_not_weight_supported_storage",
+          "mass_measurement": "gravity_balance_uncalibrated_for_local_gravity",
+          "mount_model": "rigid_welded_bodies_no_fastener_compliance_or_latch_operation"
+        },
         "protected_module": {
           "reference_pressure_pa": 101325.0,
           "reference_temperature_k": 293.15,
@@ -147,6 +159,12 @@
           -3.73
         ],
         "gravity_model": "uniform_local_surface",
+        "workstation": {
+          "support": "ground_anchored_table",
+          "sample_storage": "explicit_fixed_mounts_not_weight_supported_storage",
+          "mass_measurement": "gravity_balance_uncalibrated_for_local_gravity",
+          "mount_model": "rigid_welded_bodies_no_fastener_compliance_or_latch_operation"
+        },
         "protected_module": {
           "reference_pressure_pa": 101325.0,
           "reference_temperature_k": 293.15,
@@ -180,12 +198,6 @@
     }
   ],
   "assets": {
-    "table": {
-      "path": "model/misc/simple_table.xml",
-      "sha256": "04e0312861751e052621ef13b8a0f9162c85587104e6738a7a2a09cfae636145",
-      "origin": "existing_hooke_asset",
-      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
-    },
     "ur5e": {
       "path": "model/robot/ur5e_gripper.xml",
       "sha256": "5c97d8af3091f311076c1d4bc68ab346ef93f0c6db8ccea8b111290a3be752ee",
@@ -198,15 +210,21 @@
       "origin": "local_procedural",
       "license_scope": "existing_repository_provenance_no_new_external_license_audit"
     },
-    "balance": {
-      "path": "model/instrument/analytical_balance.xml",
-      "sha256": "19bf1c04127f93973062507d210bbf31e4cf1ea91f499e062047653bc778ccf1",
-      "origin": "existing_hooke_asset",
-      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
-    },
     "glovebox": {
       "path": "model/instrument/glovebox.xml",
       "sha256": "167a6af58cbcfc62222e6f6027a63eb7899b4d3767ddb148fea6e9c5a8a08b55",
+      "origin": "existing_hooke_asset",
+      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
+    },
+    "table": {
+      "path": "model/misc/simple_table.xml",
+      "sha256": "04e0312861751e052621ef13b8a0f9162c85587104e6738a7a2a09cfae636145",
+      "origin": "existing_hooke_asset",
+      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
+    },
+    "balance": {
+      "path": "model/instrument/analytical_balance.xml",
+      "sha256": "19bf1c04127f93973062507d210bbf31e4cf1ea91f499e062047653bc778ccf1",
       "origin": "existing_hooke_asset",
       "license_scope": "existing_repository_provenance_no_new_external_license_audit"
     }

@@ -1,0 +1,5 @@
+# Offline conversion tools; not dependencies of the Hooke runtime.
+usd-core==26.8
+pycollada==0.9.3
+numpy==2.5.3
+Pillow==12.3.0

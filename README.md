@@ -56,3 +56,6 @@ applied by the selected engine; gas pressure remains a reference condition.
 See [scenes, assets, environment assumptions and actual checks](docs/space_worlds.md).
 See [open scene and asset sources](docs/space_asset_sources.md) for the researched
 ISS interior, lunar terrain, Martian terrain and experiment asset candidates.
+
+The `/space-assets` page compares three optional space scenes with attributed
+NASA/SRB assets in MuJoCo and Isaac. See [reuse, research terms and validation](docs/space_asset_reuse.md).

@@ -8,6 +8,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import numpy as np
+from PIL import Image
 
 from backends.config import isaac_gpu
 from backends.evidence import compare_sources
@@ -18,6 +19,20 @@ from worlds.profiles import WORLDS
 
 def assess(folder, profile):
     result = json.loads((folder / "result.json").read_text())
+    image_metrics = []
+    for path in sorted(folder.glob(f"{result['backend']}/camera_*/*.png")):
+        with Image.open(path) as image:
+            pixels = np.asarray(image.convert("RGB"), dtype=float).mean(axis=2)
+        lit_fraction = float((pixels > 25).mean())
+        image_metrics.append(
+            {
+                "path": str(path.relative_to(folder)),
+                "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                "mean_rgb": float(pixels.mean()),
+                "lit_fraction": lit_fraction,
+                "visible": lit_fraction > 0.05 and float(pixels.std()) > 3,
+            }
+        )
     with np.load(folder / "source/model.npz") as model, np.load(
         folder / "trajectory.npz"
     ) as trajectory:
@@ -51,10 +66,13 @@ def assess(folder, profile):
                 result["space_environment"]["thermal_witness"]["elapsed_s"] - elapsed
             )
             < 1e-6,
-            "actual_images": len(list(folder.rglob("camera_*/*.png"))) >= 4,
+            "actual_images": len(image_metrics) >= 2 * len(result["cameras"]),
+            "images_have_visible_content": bool(image_metrics)
+            and all(row["visible"] for row in image_metrics),
         }
     return {
         "world": profile.name,
+        "task": result["task"],
         "backend": result["backend"],
         "checks": checks,
         "passed": all(checks.values()),
@@ -68,6 +86,7 @@ def assess(folder, profile):
         ).hexdigest(),
         "environment": result["space_environment"],
         "runtime": result["runtime"],
+        "images": image_metrics,
     }
 
 
@@ -75,10 +94,19 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--gpu", type=int, default=isaac_gpu())
+    parser.add_argument(
+        "--asset-scenes",
+        action="store_true",
+        help="Qualify the attributed external asset variants",
+    )
+    parser.add_argument(
+        "--worlds", nargs="+", choices=tuple(WORLDS), default=list(WORLDS)
+    )
     args = parser.parse_args()
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
     rows = []
+    profiles = [WORLDS[name] for name in dict.fromkeys(args.worlds)]
     for backend in ("mujoco", "isaac"):
         with ExitStack() as stack:
             worker = (
@@ -86,10 +114,14 @@ def main():
                 if backend == "isaac"
                 else None
             )
-            for profile in WORLDS.values():
+            for profile in profiles:
                 folder = args.output / backend / profile.name
                 options = SimpleNamespace(
-                    task=profile.task_name,
+                    task=(
+                        f"space_{profile.name}_assets_workstation"
+                        if args.asset_scenes
+                        else profile.task_name
+                    ),
                     backend=backend,
                     mode="preview",
                     seed=0,
@@ -109,7 +141,12 @@ def main():
                 rows.append(row)
                 (args.output / "progress.json").write_text(
                     json.dumps(
-                        {"finished": len(rows), "requested": 6, "last": row}, indent=2
+                        {
+                            "finished": len(rows),
+                            "requested": 2 * len(profiles),
+                            "last": row,
+                        },
+                        indent=2,
                     )
                 )
     pairs = [
@@ -120,16 +157,20 @@ def main():
                 args.output / "isaac" / profile.name / "source",
             ),
         }
-        for profile in WORLDS.values()
+        for profile in profiles
     ]
     document = {
-        "kind": "space_world_scene_qualification",
-        "requested": 6,
+        "kind": (
+            "space_external_asset_scene_qualification"
+            if args.asset_scenes
+            else "space_world_scene_qualification"
+        ),
+        "requested": 2 * len(profiles),
         "results": rows,
         "source_pairs": pairs,
         "passed": all(row["passed"] for row in rows)
         and all(pair["equal"] for pair in pairs),
-        "scope": "Three world scenes, 0.5 seconds of actual rigid-body motion and real RGB. No E1/E2, gas/pressure seal, grasp/latch, terrain data, full thermal or scientific equivalence qualification.",
+        "scope": "Selected world scenes, 0.5 seconds of actual rigid-body motion and visible real RGB. External assets use explicit example masses and collision proxies when requested. Image brightness checks detect empty/dark previews, not visual or scientific equivalence. No E1/E2, gas/pressure seal, grasp/latch, terrain data, full PBR/thermal or scientific equivalence qualification.",
         "parity_qualified": False,
         "scientific_process_validated": False,
     }

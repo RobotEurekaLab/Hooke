@@ -1,0 +1,226 @@
+{
+  "kind": "space_assets_lan_browser_check",
+  "collected_at": "2026-09-17T02:03:23.796160+00:00",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "world": "orbital",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "orbital",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "orbital",
+      "view": "asset",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "lunar",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "lunar",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "lunar",
+      "view": "asset",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "martian",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "martian",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "martian",
+      "view": "asset",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "orbital",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "orbital",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "orbital",
+      "view": "asset",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "lunar",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "lunar",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "lunar",
+      "view": "asset",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "martian",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "martian",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "martian",
+      "view": "asset",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    }
+  ],
+  "images": [
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/orbital/image/mujoco/overview",
+      "sha256": "cf48bf28d5b63c8b45b23df44bccaccc8f912f33984bf5a51788cd71f354eb1e",
+      "camera_name": "world_overview"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/orbital/image/mujoco/bench",
+      "sha256": "902d7f69cbd4efde3339bb45b0b972bdc02acf3cb8ff8ff6a17989a94f239cbc",
+      "camera_name": "experiment_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/orbital/image/mujoco/asset",
+      "sha256": "dc6c79edc6809b88b73bf2bd821ea47d5da592b113fc38567e4f500d0bb0b5a9",
+      "camera_name": "asset_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/lunar/image/mujoco/overview",
+      "sha256": "25524de9b2e4acad043551bcced8c68dd5f127149482050671ddcb51cb254450",
+      "camera_name": "world_overview"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/lunar/image/mujoco/bench",
+      "sha256": "dc3e0c13bd75186c7b3a19c56804d611cc28b674ebe64ebd2fd5df734e32efd6",
+      "camera_name": "experiment_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/lunar/image/mujoco/asset",
+      "sha256": "75c4bfa0f5757be3c3b4786a1f8e054a182c4be580bdd05b352616b8523d1e2c",
+      "camera_name": "asset_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/martian/image/mujoco/overview",
+      "sha256": "48d483098f0becffbbff0c11d5265d94f06b938c1ef876f91e8d5e332add663f",
+      "camera_name": "world_overview"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/martian/image/mujoco/bench",
+      "sha256": "572613f44b20865924ad5c1885afc22bc15fbe6a733465aa408d1d7c0736e983",
+      "camera_name": "experiment_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/martian/image/mujoco/asset",
+      "sha256": "87ac96a4f46935915917d5117ffb55f6528864bc93fa9bcdef9bc4fb3c1440c4",
+      "camera_name": "asset_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/orbital/image/isaac/overview",
+      "sha256": "6e7ef54cd4d106c6a7ea9a5e2dcfeb7234872a08435bc63da2b3ef7922776a3c",
+      "camera_name": "world_overview"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/orbital/image/isaac/bench",
+      "sha256": "21122929eb920cd795eeeb47ce64d41bee3fc2dd1aa948fbdb9e2c2f08529294",
+      "camera_name": "experiment_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/orbital/image/isaac/asset",
+      "sha256": "f6a22e93528efe0ac27f1a1aa7fb8d07af3a7964f41deb21bcf2050a26e78ed0",
+      "camera_name": "asset_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/lunar/image/isaac/overview",
+      "sha256": "94801c91e5a8d69811d7488e4e860c17133f0efa51ff5ef5a428dff79d69326e",
+      "camera_name": "world_overview"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/lunar/image/isaac/bench",
+      "sha256": "5cc5e781adb2ac2cdce7aa7283a8af2825ed1fdbbfdfc5e995491bd1e507cfed",
+      "camera_name": "experiment_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/lunar/image/isaac/asset",
+      "sha256": "1c03f0d965838683eb6d7c75a911c9a08e8f757a777ad701b860f74020e51439",
+      "camera_name": "asset_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/martian/image/isaac/overview",
+      "sha256": "fff6a1c7abdda9d1787ac246f19b664f2353d316568bcd3e34441055c98f069e",
+      "camera_name": "world_overview"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/martian/image/isaac/bench",
+      "sha256": "a5f405da336641d9b21b30ed5a990ab32553eff3343e825f12ed7f407310d396",
+      "camera_name": "experiment_closeup"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-assets/martian/image/isaac/asset",
+      "sha256": "421c06da28b6a2b7a1ec422041edee99a699fcf6e1566579f38f14388cca30c2",
+      "camera_name": "asset_closeup"
+    }
+  ],
+  "passed": true,
+  "scope": "Desktop/mobile selections, source-verified image hashes, task links, credits, page errors and horizontal overflow; no robot operation qualification."
+}
