@@ -81,16 +81,31 @@ def media(world, operation, backend, media):
         world not in WORLDS
         or operation not in OPERATIONS
         or backend not in ("isaac", "mujoco")
-        or media not in ("image", "video")
+        or media not in ("image", "video", "webm")
     ):
         abort(404)
-    suffix = ".png" if media == "image" else ".mp4"
+    suffix = {"image": ".png", "video": ".mp4", "webm": ".webm"}[media]
     path = (
         ROOT / "docs/assets" / f"space-experiment-{world}-{operation}-{backend}{suffix}"
     )
     if not path.is_file():
         abort(404)
-    return send_file(path, mimetype="image/png" if media == "image" else "video/mp4")
+    return send_file(
+        path,
+        mimetype={"image": "image/png", "video": "video/mp4", "webm": "video/webm"}[
+            media
+        ],
+    )
+
+
+@bp.get("/api/space-experiments/terrain/<world>/image")
+def terrain_image(world):
+    if world not in ("lunar", "martian"):
+        abort(404)
+    path = ROOT / "docs/assets" / f"space-experiment-terrain-{world}-isaac.png"
+    if not path.is_file():
+        abort(404)
+    return send_file(path, mimetype="image/png")
 
 
 @bp.get("/api/science/capabilities")

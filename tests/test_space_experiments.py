@@ -21,6 +21,8 @@ from experiments.records import ScienceRecords
 from experiments.qualify import qualify
 from experiments.spectrometer import WAVELENGTH_UM, analyze_spectrum, test_profile
 from webui.space_experiment_api import bp
+from webui.backend_api import bp as backend_bp
+from webui.public_results import public_result
 
 
 def oscillation_record(identifier, sample, mass, dt=0.02):
@@ -58,6 +60,82 @@ def spectrum_record(identifier, sample, profile=0):
 
 
 class SpaceExperiments(unittest.TestCase):
+    def test_web_job_outcomes_cannot_reveal_native_model_mass_or_future_private_fields(
+        self,
+    ):
+        app = Flask(__name__)
+        app.register_blueprint(backend_bp)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            task = "space_orbital_mass_measurement"
+            raw = dict(
+                task=task,
+                status="TASK_SUCCEEDED",
+                conversion=dict(welded_mass_groups={"sample": dict(mass=123.456)}),
+                evaluator_truth=dict(mass=123.456),
+                future_private_field="private-model-state",
+                space_experiment=dict(conclusion=dict(total_mass_kg=0.16)),
+            )
+            (root / "result.json").write_text(json.dumps(raw))
+            job = dict(id="c" * 32, task=task, backend="isaac", output=root)
+            with patch("webui.backend_api.get_job", return_value=job):
+                client = app.test_client()
+                for suffix in ("", "/result"):
+                    response = client.get("/api/backends/jobs/" + job["id"] + suffix)
+                    self.assertEqual(response.status_code, 200)
+                    result = response.get_json()
+                    self.assertNotIn("conversion", result)
+                    self.assertNotIn("evaluator_truth", result)
+                    self.assertNotIn("future_private_field", result)
+                    self.assertNotIn("123.456", response.get_data(as_text=True))
+                    self.assertEqual(
+                        result["space_experiment"]["conclusion"]["total_mass_kg"], 0.16
+                    )
+            self.assertEqual(json.loads((root / "result.json").read_text()), raw)
+            self.assertIn("conversion", public_result(dict(raw, task="thermal_mixer")))
+
+    def test_gallery_video_routes_serve_declared_containers_only(self):
+        app = Flask(__name__)
+        app.register_blueprint(bp)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            assets = root / "docs/assets"
+            assets.mkdir(parents=True)
+            stem = "space-experiment-orbital-sample_transfer-mujoco"
+            for suffix in ("mp4", "webm"):
+                (assets / f"{stem}.{suffix}").write_bytes(suffix.encode())
+            with patch("webui.space_experiment_api.ROOT", root):
+                client = app.test_client()
+                base = "/api/space-experiments/orbital/sample_transfer/mujoco/"
+                for name, suffix in (("video", "mp4"), ("webm", "webm")):
+                    result = client.get(base + name)
+                    self.assertEqual(result.status_code, 200)
+                    self.assertEqual(result.mimetype, "video/" + suffix)
+                    self.assertEqual(result.get_data(), suffix.encode())
+                self.assertEqual(client.get(base + "avi").status_code, 404)
+
+    def test_terrain_image_route_is_limited_to_declared_planetary_assets(self):
+        app = Flask(__name__)
+        app.register_blueprint(bp)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            assets = root / "docs/assets"
+            assets.mkdir(parents=True)
+            (assets / "space-experiment-terrain-lunar-isaac.png").write_bytes(
+                b"route-fixture"
+            )
+            with patch("webui.space_experiment_api.ROOT", root):
+                client = app.test_client()
+                base = "/api/space-experiments/terrain/"
+                result = client.get(base + "lunar/image")
+                self.assertEqual(result.status_code, 200)
+                self.assertEqual(result.mimetype, "image/png")
+                self.assertEqual(result.get_data(), b"route-fixture")
+                for world in ("orbital", "martian", "unknown", ".."):
+                    self.assertEqual(
+                        client.get(base + world + "/image").status_code, 404
+                    )
+
     def test_gallery_does_not_publish_evaluator_metrics_or_private_paths(self):
         app = Flask(__name__)
         app.register_blueprint(bp)

@@ -16,6 +16,7 @@ from backends.config import isaac_gpu
 from backends.gpu_lease import GPULease
 from backends.capabilities import registry
 from experiments.private_state import persistent_host_key
+from webui.public_results import public_result
 
 ROOT=Path(__file__).resolve().parents[2]
 EVIDENCE=ROOT/'temp/backend_parity'
@@ -181,7 +182,7 @@ def monitor(job):
 
 
 def snapshot(job):
-    result=read_json(job['output']/'result.json',{'status':'STARTING'})
+    result=public_result(read_json(job['output']/'result.json',{'status':'STARTING'}),job['task'])
     progress=read_json(job['output']/'progress.json')
     process=job.get('process');code=process.poll() if process else None
     if job.get('terminal'):result['status']=job['terminal']

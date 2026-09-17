@@ -128,5 +128,19 @@
   "corrected_surface_cases": 60,
   "corrected_surface_passed": 60,
   "all_retained_failures_corrected": true,
-  "original_evidence_preserved": true
+  "original_evidence_preserved": true,
+  "native_warm_load_recovery": [
+    {
+      "task": "space_lunar_spectral_measurement",
+      "seed": 8,
+      "initial_control_status": "TIME_LIMIT",
+      "initial_control_simulation_s": 0.0,
+      "initial_result_sha256": "2ba7a9007ebad04148d1ef5965c0be631772d3e5705057359f941a5abcfe17fc",
+      "recovery": "fresh_isaac_worker_same_scene_seed_campaign_and_full_duration",
+      "recovered_control_status": "CONTROL_COMPLETE",
+      "recovered_control_simulation_s": 36.298,
+      "recovered_result_sha256": "3c35ea072361258ef4243b03d7a7cf728633909f972caf59208047ede93cfb6b",
+      "original_evidence_preserved": true
+    }
+  ]
 }

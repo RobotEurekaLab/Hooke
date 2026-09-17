@@ -18,6 +18,33 @@ from worlds.profiles import WORLDS
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def verify_video(path, expected_frames):
+    """Decode every frame and verify the container preserves the sample count."""
+    subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(path), "-f", "null", "-"], check=True
+    )
+    probe = json.loads(
+        subprocess.check_output(
+            [
+                "ffprobe",
+                "-v",
+                "error",
+                "-count_frames",
+                "-select_streams",
+                "v:0",
+                "-show_entries",
+                "stream=nb_read_frames,width,height,avg_frame_rate",
+                "-of",
+                "json",
+                str(path),
+            ]
+        )
+    )["streams"][0]
+    if int(probe["nb_read_frames"]) != expected_frames:
+        raise ValueError("Video does not preserve every sampled episode image")
+    return probe
+
+
 def paired_inputs(rows):
     """Validate shared initial models without publishing any private parameters."""
     comparisons = []
@@ -111,32 +138,41 @@ def export_case(row, destination):
         ],
         check=True,
     )
-    # Decode the whole video; a nonempty file alone is not video verification.
+    probe = verify_video(temporary_video, len(frames))
+    webm = destination / (base + ".webm")
+    temporary_webm = destination / ("." + base + ".tmp.webm")
     subprocess.run(
-        ["ffmpeg", "-v", "error", "-i", str(temporary_video), "-f", "null", "-"],
+        [
+            "ffmpeg",
+            "-v",
+            "error",
+            "-y",
+            "-framerate",
+            str(fps),
+            "-i",
+            str(images / "%05d.png"),
+            "-c:v",
+            "libvpx",
+            "-deadline",
+            "realtime",
+            "-cpu-used",
+            "8",
+            "-threads",
+            "2",
+            "-crf",
+            "10",
+            "-b:v",
+            "1M",
+            "-pix_fmt",
+            "yuv420p",
+            str(temporary_webm),
+        ],
         check=True,
     )
-    probe = json.loads(
-        subprocess.check_output(
-            [
-                "ffprobe",
-                "-v",
-                "error",
-                "-count_frames",
-                "-select_streams",
-                "v:0",
-                "-show_entries",
-                "stream=nb_read_frames,width,height,avg_frame_rate",
-                "-of",
-                "json",
-                str(temporary_video),
-            ]
-        )
-    )["streams"][0]
-    if int(probe["nb_read_frames"]) != len(frames):
-        raise ValueError("Video does not preserve every sampled episode image")
+    webm_probe = verify_video(temporary_webm, len(frames))
     temporary_image.replace(image)
     temporary_video.replace(video)
+    temporary_webm.replace(webm)
     store = ScienceRecords(folder)
     public = {
         identifier: store.read_measurement(identifier)
@@ -161,11 +197,14 @@ def export_case(row, destination):
         backend=row["backend"],
         image_sha256=hashlib.sha256(image.read_bytes()).hexdigest(),
         video_sha256=hashlib.sha256(video.read_bytes()).hexdigest(),
+        webm_sha256=hashlib.sha256(webm.read_bytes()).hexdigest(),
         video_frames=len(frames),
         frame_sampling_fps=fps,
         simulated_clip_seconds=(len(frames) - 1) / fps,
         decoding="PASS",
         decoded_frames=int(probe["nb_read_frames"]),
+        webm_decoding="PASS",
+        webm_frames=int(webm_probe["nb_read_frames"]),
     )
 
 

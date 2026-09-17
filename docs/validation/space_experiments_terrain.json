@@ -1,0 +1,83 @@
+{
+  "results": [
+    {
+      "world": "lunar",
+      "backend": "mujoco",
+      "passed": true,
+      "contact_steps": 817,
+      "finite": true,
+      "simulation_s": 5.999999999999561,
+      "final_height_m": 0.13570112371547083,
+      "final_speed_m_s": 2.9996645459844677e-13,
+      "source_resolution_m": 4.9999999999999005,
+      "product_id": "NAC_DTM_HYGINUS_E079N0063",
+      "source_label_sha256": "5f28c79eb226ad5ebe98fb85c182cc1981005d6340849b9842919b7eca9c5534",
+      "crop_sha256": "171057306385e22cf6909a63c679b858206630f19e4be557d5ba86a246dec11a",
+      "scope": "guided_collision_probe_on_real_pds_crop_not_robot_or_geological_validation"
+    },
+    {
+      "world": "martian",
+      "backend": "mujoco",
+      "passed": true,
+      "contact_steps": 2483,
+      "finite": true,
+      "simulation_s": 5.999999999999561,
+      "final_height_m": 0.12014573819460228,
+      "final_speed_m_s": 2.9463765321083786e-14,
+      "source_resolution_m": 1.0109257646541,
+      "product_id": "DTEEC_034394_1920_034249_1920_L01",
+      "source_label_sha256": "e038d22335e5628eddc31d95c589fae50a3339d5ab6f4e07cc077c878fae1596",
+      "crop_sha256": "b9c224c7b0ea051b4631c02efea96a7c96818f64bf895b17d9ad897d157e6200",
+      "scope": "guided_collision_probe_on_real_pds_crop_not_robot_or_geological_validation"
+    },
+    {
+      "world": "lunar",
+      "backend": "isaac",
+      "passed": true,
+      "contact_steps": 1352,
+      "finite": true,
+      "simulation_s": 6.0,
+      "final_height_m": 0.13565635681152344,
+      "final_speed_m_s": 0.0033604796044528484,
+      "source_resolution_m": 4.9999999999999005,
+      "product_id": "NAC_DTM_HYGINUS_E079N0063",
+      "source_label_sha256": "5f28c79eb226ad5ebe98fb85c182cc1981005d6340849b9842919b7eca9c5534",
+      "crop_sha256": "171057306385e22cf6909a63c679b858206630f19e4be557d5ba86a246dec11a",
+      "scope": "guided_collision_probe_on_real_pds_crop_not_robot_or_geological_validation",
+      "one_native_event_per_step": true
+    },
+    {
+      "world": "martian",
+      "backend": "isaac",
+      "passed": true,
+      "contact_steps": 2563,
+      "finite": true,
+      "simulation_s": 6.0,
+      "final_height_m": 0.1201707124710083,
+      "final_speed_m_s": -0.0001268578926101327,
+      "source_resolution_m": 1.0109257646541,
+      "product_id": "DTEEC_034394_1920_034249_1920_L01",
+      "source_label_sha256": "e038d22335e5628eddc31d95c589fae50a3339d5ab6f4e07cc077c878fae1596",
+      "crop_sha256": "b9c224c7b0ea051b4631c02efea96a7c96818f64bf895b17d9ad897d157e6200",
+      "scope": "guided_collision_probe_on_real_pds_crop_not_robot_or_geological_validation",
+      "one_native_event_per_step": true
+    }
+  ],
+  "pairs": [
+    {
+      "world": "lunar",
+      "passed": true,
+      "final_height_difference_m": 4.47669039473908e-05,
+      "identical_source_crop": true
+    },
+    {
+      "world": "martian",
+      "passed": true,
+      "final_height_difference_m": 2.4974276406020124e-05,
+      "identical_source_crop": true
+    }
+  ],
+  "passed": true,
+  "complete": true,
+  "scope": "real_crop_and_guided_collision_only_default_robot_ground_is_procedural"
+}

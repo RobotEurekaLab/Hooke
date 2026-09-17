@@ -1,0 +1,3586 @@
+{
+  "schema_version": 1,
+  "total": 111,
+  "passed": 111,
+  "cases": [
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_mass_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.144,
+      "total_wall_s": 256.1762028359808,
+      "result_sha256": "521d045b479892ae7315add504a9df5c324f652ac800543222517e5103d37ede",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 5.0811304427023085e-06,
+        "relative_mass_error": 3.901098096503715e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_mass_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.144
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_mass_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.054,
+      "total_wall_s": 212.1106301532127,
+      "result_sha256": "1f08e3fccdabc7e45a589c3830797272004796aff95fec329fc2380ddb01ca99",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.5060469946467925e-05,
+        "relative_mass_error": 0.00012514989269004793
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_mass_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.054
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/post-native-v3/episodes/space_lunar_mass_measurement/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.1,
+      "total_wall_s": 212.9597266400233,
+      "result_sha256": "920fc1bbfa92b9e8c1a79f6cbd44a2d4df5ec1a6ceaa6ad9cbe9f30427a36aaa",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.69021722212781e-05,
+        "relative_mass_error": 9.760394841551017e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/post-native-v3/episodes/space_lunar_mass_measurement/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.1
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_lunar_mass_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.56000000001338,
+      "total_wall_s": 22.234495064243674,
+      "result_sha256": "5fd0ea150fdc4b8f06f47dcc7a7c1e7824af307a9ea6a9713374f7e500b09a72",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 4.177094404950177e-06,
+        "relative_mass_error": 3.207013717876747e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_lunar_mass_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.56000000001338
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.51800000001333,
+      "total_wall_s": 20.12629478285089,
+      "result_sha256": "2bdb37e8efd02930c4b695727a4e796dfe009d0d6774b1ca21b527d798e8ea1e",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.598876891120704e-05,
+        "relative_mass_error": 0.00013286389605344427
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.51800000001333
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.52400000001334,
+      "total_wall_s": 19.887224196922034,
+      "result_sha256": "7aa82a0d4b9a4be2fae6d730db5fe34294574555e4d309ae3f7910eabaea2a23",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 3.326950917906246e-05,
+        "relative_mass_error": 0.00019806317051781285
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.52400000001334
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.55600000001338,
+      "total_wall_s": 20.630413627251983,
+      "result_sha256": "2790a2edbdb107f0eb09afc6f093eb8e404986ccd2b4985449cb43bee9d11744",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.578549579081545e-05,
+        "relative_mass_error": 0.0001294825098123243
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.55600000001338
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.4940000000133,
+      "total_wall_s": 19.957264704164118,
+      "result_sha256": "b927574e7959e3ff541a631dacab8b53e4744c610e69f1840b905849dd3aff9b",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.8662815999298532e-05,
+        "relative_mass_error": 0.0001143416052654475
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.4940000000133
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.94200000001385,
+      "total_wall_s": 20.46359419543296,
+      "result_sha256": "638ad7a4963fb6e2737331a9824a36dcd7cae5cbf11681fccb896a73ad42f1cc",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.2545002679636985e-05,
+        "relative_mass_error": 7.911871752436765e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.94200000001385
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.538000000013355,
+      "total_wall_s": 20.443453052081168,
+      "result_sha256": "216a28bf25e3be2ad242a1e713c908b7da9b02cb39c5d0234e84ae6417021302",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.1779849366927442e-05,
+        "relative_mass_error": 7.498126171377349e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.538000000013355
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.506000000013316,
+      "total_wall_s": 20.895913098938763,
+      "result_sha256": "a70fb04c3f8557b47f12eefec0d65ed577bc9fc4a5f9d9becbf3e8eff5e2e3ab",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.5676990843010996e-05,
+        "relative_mass_error": 0.00010598705374328856
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.506000000013316
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 49.00800000001393,
+      "total_wall_s": 21.21895442903042,
+      "result_sha256": "278c5ba016a75a27a79220f6ec2cd57fa08f0db1e1b7d39edc131d6d70a810ac",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.5451035684538317e-05,
+        "relative_mass_error": 8.922415830205328e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 49.00800000001393
+      }
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.48600000001329,
+      "total_wall_s": 20.157792195212096,
+      "result_sha256": "b4ec8e8c60c599fa1e39c2060774bbe627bc83fc00e60a35699e4ff7532fce52",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 2.5417944485017774e-06,
+        "relative_mass_error": 1.8225639686873946e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_mass_measurement/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.48600000001329
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_sample_transfer/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.490000000000002,
+      "total_wall_s": 110.75464292382821,
+      "result_sha256": "7d4515c76b1c77bea562192c7b449e3c5e146515046187cae00cbfa1372e9aac",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_sample_transfer/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.490000000000002
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_sample_transfer/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.484,
+      "total_wall_s": 93.18239967199042,
+      "result_sha256": "0560f397330ce143dde59db962600f8f4de2c11453b3dbb09791e5db6af827dc",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_sample_transfer/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.484
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/post-native-v3/episodes/space_lunar_sample_transfer/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.484,
+      "total_wall_s": 98.7702317982912,
+      "result_sha256": "c8d43721df0d4aab6a83b2030f37962c9ae2ad77bc1b35b726d1aee5e16b5625",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/post-native-v3/episodes/space_lunar_sample_transfer/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.484
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_lunar_sample_transfer/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.63600000000055,
+      "total_wall_s": 14.660762920044363,
+      "result_sha256": "189d0e0c46eca02cf2a690a244a28fe3b7e12816976caf5d71940b6caf17946c",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_lunar_sample_transfer/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.63600000000055
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.588000000000577,
+      "total_wall_s": 14.246604818850756,
+      "result_sha256": "b68e69808c6d65a3ed3cef3d92b2540c6139f831c269a1e6d07153c598452253",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.588000000000577
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.60000000000057,
+      "total_wall_s": 14.159392829984426,
+      "result_sha256": "59792efa81c116600183e01ea22d055f222c3a5bcfdf1f9b265c401ee5206bcf",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.60000000000057
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.63400000000055,
+      "total_wall_s": 16.97177688917145,
+      "result_sha256": "8b713f026d0700e80dacef07ab019aaa94cb20b782e2bfd5f94f2bd773744222",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.63400000000055
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.578000000000582,
+      "total_wall_s": 14.407678781077266,
+      "result_sha256": "e29acfc006f8e4ff1604b6111c4fb04cedbceadd2d47970e6cff72c1c753a9ce",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.578000000000582
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.56400000000059,
+      "total_wall_s": 15.149118782021105,
+      "result_sha256": "4f8881144406d00b9a1ed686bf598d233b23a56871ac0ba50a0c217849cec5e7",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.56400000000059
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.58200000000058,
+      "total_wall_s": 14.721834050957114,
+      "result_sha256": "3f3c9108dd4f1fe597262fc756523295a6ebef88f830bef12e54fa449d29c0a9",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.58200000000058
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.588000000000577,
+      "total_wall_s": 14.352013904135674,
+      "result_sha256": "cf61d2b6a22c2ec3d62739e1e1854349e541db9ab482491cccb1bd56b1c94d3d",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.588000000000577
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 19.0860000000003,
+      "total_wall_s": 14.451300056185573,
+      "result_sha256": "8acf89a106d578339c5ab2e1917c4563c240ad903c80eabf958198e19680847e",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 19.0860000000003
+      }
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.56600000000059,
+      "total_wall_s": 15.264649156946689,
+      "result_sha256": "aa624ea1d51a219fdb5d6d2cf51383fc8c1124eb6b031f53225420263300221f",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_sample_transfer/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.56600000000059
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_spectral_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.242,
+      "total_wall_s": 197.96751736011356,
+      "result_sha256": "440f529284aeed51ca0b8e9de7ae8885bef4b6cadecd297249c3b3d9032683a1",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_spectral_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.242
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_spectral_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.322,
+      "total_wall_s": 163.88018058007583,
+      "result_sha256": "2b04822c2c01c6ec6ef0c47b8d3e6b11719c60dd793688562bfe21f7ee5086da",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_lunar_spectral_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.322
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/post-native-v3/episodes/space_lunar_spectral_measurement/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.298,
+      "total_wall_s": 195.86282982770354,
+      "result_sha256": "741a396b49bfe78780cfe7ec81a798fb747dbf8a063574f520679295eade4fe2",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/post-native-control-recovery-v1/episodes/space_lunar_spectral_measurement/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.298
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_lunar_spectral_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.75799999999896,
+      "total_wall_s": 19.278859448619187,
+      "result_sha256": "abc814b8eff76f03cbbf9d772af1ca48c5ecf99c384607706499ad2bbe2d4c16",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_lunar_spectral_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.75799999999896
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.7079999999989,
+      "total_wall_s": 18.182203171774745,
+      "result_sha256": "be9b1bd236df77154670c6c2e2306b51d26318eaa4067dcfb0982c51cd9eaa84",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.7079999999989
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.705999999998895,
+      "total_wall_s": 17.692720791324973,
+      "result_sha256": "83d5c587431b9c4b823bab68c13bcded0869230b7bc2e9e70ba0e408fe2c2de7",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.705999999998895
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.755999999998956,
+      "total_wall_s": 20.385815332178026,
+      "result_sha256": "8ca9f336db70f88603346f52e20fcef1e1c47d602c9c4623b3e861676a5caa4d",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.755999999998956
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.69599999999888,
+      "total_wall_s": 17.927491788752377,
+      "result_sha256": "d546762fca3ac85e762ac09f62efe1aa88c63b7ccf79e326f5dc2f575114923b",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.69599999999888
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 37.14199999999943,
+      "total_wall_s": 18.039180391002446,
+      "result_sha256": "f8b12086b0925b7813697acc8f47610cc71c0851c618012e97320853b12a0022",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 37.14199999999943
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.73399999999893,
+      "total_wall_s": 17.698127143085003,
+      "result_sha256": "efe6f93d8b9843d7444d45ef9bdf751dc94d09f98931e1f8c6e0c2eaaae5931b",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.73399999999893
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.7099999999989,
+      "total_wall_s": 17.964020424056798,
+      "result_sha256": "1214d3ffb0a15093ff2750c8d0b9d7b3653cda8b9ec509d707e7f9378c0a9051",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.7099999999989
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 37.20799999999951,
+      "total_wall_s": 18.64854124793783,
+      "result_sha256": "11f441ad3e1577c885a8037a2d1fcc726d0704f83c18c8f053dc288dea5fa629",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 37.20799999999951
+      }
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.68799999999887,
+      "total_wall_s": 18.40717544592917,
+      "result_sha256": "951759d856f9de17800eb2aa0690fa38b0f1fdba088a9ca9d98edce8df148f42",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_lunar_spectral_measurement/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.68799999999887
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_mass_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.106,
+      "total_wall_s": 254.43448461499065,
+      "result_sha256": "bbd7269f3aa900169a7c6b2660249aca7a0b43f2ea733724b980605ffd9fd0fc",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 2.482656232399849e-06,
+        "relative_mass_error": 1.90608873590289e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_mass_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.106
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_mass_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.162,
+      "total_wall_s": 205.78026450891048,
+      "result_sha256": "f160b0330ce365e38256c04708806a6b752f7f5f44e20b7e8dc71f3ae41f3724",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 7.176077024731442e-06,
+        "relative_mass_error": 5.963195522934415e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_mass_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.162
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_martian_mass_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.50000000001331,
+      "total_wall_s": 22.506879313848913,
+      "result_sha256": "58fa5af4da253517641f9f3c081de5888b70b844329fd07ca1c94f0a4c91e622",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.8232028637654718e-06,
+        "relative_mass_error": 1.399785599204761e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_martian_mass_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.50000000001331
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.97600000001389,
+      "total_wall_s": 20.445332520175725,
+      "result_sha256": "fab2799031cc6e1b54069b4d0e96fac6591ee05af943f11a8bda4fdc1888a9b9",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 6.942318105163103e-06,
+        "relative_mass_error": 5.768945915828495e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.97600000001389
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.51200000001332,
+      "total_wall_s": 19.675993223208934,
+      "result_sha256": "6a6b8bee209c7fa244e41c7181f1194fa2e4000fabcddb7cf378651b5e78fccc",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.4426338343892509e-05,
+        "relative_mass_error": 8.588423399862623e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.51200000001332
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.50000000001331,
+      "total_wall_s": 19.55059449095279,
+      "result_sha256": "2b662c70c1c411f4b81fc092fdcc80ee2591aa5dfaf777055b161dd0538fa59b",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 6.859132862066519e-06,
+        "relative_mass_error": 5.626289790868105e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.50000000001331
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.47600000001328,
+      "total_wall_s": 19.594869914930314,
+      "result_sha256": "865b6f6e574dc3e2ed1ee237aaade5bbdf6bcca929dd4d33ace980fd31059c50",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 8.136035349409765e-06,
+        "relative_mass_error": 4.9847104658959544e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.47600000001328
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.948000000013856,
+      "total_wall_s": 19.570116106886417,
+      "result_sha256": "795f7ef1e620bc035bd77e9eeafaea341b89402439e4cba2eaef7d503341dd50",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 5.413263179265826e-06,
+        "relative_mass_error": 3.4140322748642626e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.948000000013856
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.46200000001326,
+      "total_wall_s": 19.174283152911812,
+      "result_sha256": "37cc9231085c5838861357e448dba14c0484c00d6cdc79db39da4eb1ccec74ab",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 5.1518470372546865e-06,
+        "relative_mass_error": 3.2792608714866734e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.46200000001326
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.48200000001329,
+      "total_wall_s": 19.654195422306657,
+      "result_sha256": "5f74bb94cc39227ce52c4a2606a5924b5d01ea295d9f4a53638ea27b743e1804",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 6.839144416737053e-06,
+        "relative_mass_error": 4.62372386457044e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.48200000001329
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.506000000013316,
+      "total_wall_s": 19.921458666212857,
+      "result_sha256": "41b21c511fdc391eb092168ecfd796c889883f658ef52664270cb50c3e57a2bc",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 6.7077862865860816e-06,
+        "relative_mass_error": 3.873504648556392e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.506000000013316
+      }
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.47000000001327,
+      "total_wall_s": 20.19081141706556,
+      "result_sha256": "47beff79de19be601c48eda9ab445673bf6aa1f32ca3ccf2cf8d07bbc7d00f6d",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.1243085222267801e-06,
+        "relative_mass_error": 8.061722707383069e-06
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_mass_measurement/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 48.47000000001327
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_sample_transfer/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.466,
+      "total_wall_s": 107.70155879482627,
+      "result_sha256": "806dcf98359b3e782d1b058f522259063bf21d830875786f8f44f8c46d9de055",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_sample_transfer/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.466
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_sample_transfer/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.51,
+      "total_wall_s": 89.2679550703615,
+      "result_sha256": "f2d918dca03de52ecd704210692f4a788be2830baa5b130663a621b6bf3e2f07",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_sample_transfer/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.51
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_martian_sample_transfer/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.646000000000544,
+      "total_wall_s": 14.989376935642213,
+      "result_sha256": "8d42463f6246ba3ff8f6cbb2ba01b8c8b3ea2709b0c4afed75867d9de1b851ac",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_martian_sample_transfer/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.646000000000544
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 19.036000000000328,
+      "total_wall_s": 14.704169674776495,
+      "result_sha256": "1b3045e9880377c8ce8d4de435a552496a10c2cd19246785014f490c8c56eddf",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 19.036000000000328
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.604000000000568,
+      "total_wall_s": 14.606709698680788,
+      "result_sha256": "5fc25273d21479c4fa23286c5d16c125e26087b534c9adf93e5293d254c710aa",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.604000000000568
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 19.05400000000032,
+      "total_wall_s": 14.931036744266748,
+      "result_sha256": "bd75425317c73463b25139c5423ad83312a1d91eadfb5e6fa454d14ea49baf7d",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 19.05400000000032
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.572000000000585,
+      "total_wall_s": 14.684992148075253,
+      "result_sha256": "06cfdb85242597b523a183e194e4f130e5754a0ca3a16c042575c7350191ac2d",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.572000000000585
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.560000000000592,
+      "total_wall_s": 15.182615641038865,
+      "result_sha256": "ba9673b96fb164e326190ff0581645a40cfd101c9e7a8bf45a12ad1e0f072e68",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.560000000000592
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.5480000000006,
+      "total_wall_s": 14.322878813371062,
+      "result_sha256": "fedf6b5f29107625ebdffb040c561bd7ad35f7821230d13b379b57694d563143",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.5480000000006
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.578000000000582,
+      "total_wall_s": 14.794258234091103,
+      "result_sha256": "8d186baf3e6179673226593d47899b2ab9f05e08c174edbe7950bf975818feda",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.578000000000582
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.60200000000057,
+      "total_wall_s": 14.700165359303355,
+      "result_sha256": "ab847957edfd629804c2bf57becbc7467fb5a962e30ff1f55b9d433e54bdf43b",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.60200000000057
+      }
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.554000000000595,
+      "total_wall_s": 14.679473279044032,
+      "result_sha256": "6d7a20602c6ebc0cc4b0b9bdeb91031da8aae382e0c53d59bb183834cc67d2f0",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_sample_transfer/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.554000000000595
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_spectral_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.342,
+      "total_wall_s": 115.8942685672082,
+      "result_sha256": "3a8895b140b352a61c98208c5407816df666f082f22ed29e79d15a01df64d614",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_spectral_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.342
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_spectral_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.326,
+      "total_wall_s": 86.45917328074574,
+      "result_sha256": "ec015764a99b1a140e3f1c70f414716e82bb98347c77ecaa7d48d28897dddca4",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_martian_spectral_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.326
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_martian_spectral_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.70199999999889,
+      "total_wall_s": 20.171393510885537,
+      "result_sha256": "e6dacf39967a67fd5e400e50acfa0d1d4fbaf11c7341f5ea209ceb0744667c4f",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_martian_spectral_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.70199999999889
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 37.17799999999947,
+      "total_wall_s": 17.659143055789173,
+      "result_sha256": "dbba727557f25f33356806bfe8d5c6bf4b6e32d70df6dac2354d598bb21248bc",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 37.17799999999947
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 37.115999999999396,
+      "total_wall_s": 18.04942441219464,
+      "result_sha256": "ccc8bb4bfe919a4b3a37ef65b6d200cb191c50dd30c6961de4a0dec201897fa9",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 37.115999999999396
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.70199999999889,
+      "total_wall_s": 17.555282060056925,
+      "result_sha256": "0c4eb545e1dfce7f1ca9537a38bb8352b6901faec3fb2b321aa5c6a1e3e93f1a",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.70199999999889
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.67799999999886,
+      "total_wall_s": 17.987287908792496,
+      "result_sha256": "548458b2b9a017522aba30d3dafc32323cfe0718b943b2eeaa9cca32eb7f6930",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.67799999999886
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 37.14999999999944,
+      "total_wall_s": 17.97916038101539,
+      "result_sha256": "5aceed2b97dc4910511bf7c947131ff61f8c57e3941c41bf9e1e692906485480",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 37.14999999999944
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.665999999998846,
+      "total_wall_s": 17.542325112968683,
+      "result_sha256": "0000d5c5d259a678ea36776ae91884337137e7a902743ea7b3d6782a548394ab",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.665999999998846
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.68399999999887,
+      "total_wall_s": 17.5205031610094,
+      "result_sha256": "9e25e49bf69523bd375530f266cccbd2004862240af02feb005892d1c9ccd62a",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.68399999999887
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.7079999999989,
+      "total_wall_s": 18.53089410206303,
+      "result_sha256": "306c0d202c4e8521f4f5fb0887f2d43adf7ec1884393ce4777c4ff2b70093df5",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.7079999999989
+      }
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.65999999999884,
+      "total_wall_s": 17.797124507836998,
+      "result_sha256": "ee307ad27b471597123e643603d326b94798a16fd23349581b22fd4ddbf4f779",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/surface-seating-regression/mujoco/space_martian_spectral_measurement/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.65999999999884
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_mass_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.03,
+      "total_wall_s": 292.7397321718745,
+      "result_sha256": "4930cbb19e50871ee75baddf268387bfd5c617aad6bc45f7caa7705fffda5a82",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 9.213258209683772e-07,
+        "relative_mass_error": 7.073588145333968e-06
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_mass_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.03
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_mass_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.064,
+      "total_wall_s": 227.4754292187281,
+      "result_sha256": "af198ffcab13762eeaf4edccfc3f8ba23c8d6511af31eef240de4d609b14f81d",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.6691344677244313e-06,
+        "relative_mass_error": 1.3870217879221192e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_mass_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.064
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_orbital_mass_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.568000000020724,
+      "total_wall_s": 36.43517439905554,
+      "result_sha256": "0caee34f9231435403781afd16259cdaba1d0a37c7e7100cab4bf8beca968de8",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 5.734400785883942e-07,
+        "relative_mass_error": 4.402654142156587e-06
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_orbital_mass_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.568000000020724
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.512000000020656,
+      "total_wall_s": 22.62414185097441,
+      "result_sha256": "45fdb284a94941ad503f1633e493b10535919f997445f6634392b23b2e2e369e",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.830014091389054e-06,
+        "relative_mass_error": 1.5207099643814786e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.512000000020656
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.494000000020634,
+      "total_wall_s": 24.775868284050375,
+      "result_sha256": "918764c61bce8682f8fdcee7ebcf989b3187512842f8c92b06f7f15910f1c866",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 9.755251847154423e-07,
+        "relative_mass_error": 5.807588262417533e-06
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.494000000020634
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.552000000020705,
+      "total_wall_s": 23.444437752943486,
+      "result_sha256": "5e7be9c008196cb4321d4f0cf5ca20c295b4329d8e4cc7fa6f0057db31622c7a",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 6.02909544594743e-07,
+        "relative_mass_error": 4.94544118591159e-06
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.552000000020705
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.48400000002062,
+      "total_wall_s": 25.262435083277524,
+      "result_sha256": "3e5ed596462e09f00733ccab67a1eb5f045fce02407d68209e1e5d2918df93f2",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 2.654765723197894e-06,
+        "relative_mass_error": 1.6264971717319787e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.48400000002062
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.478000000020614,
+      "total_wall_s": 24.082500174175948,
+      "result_sha256": "4dd4a7d36422eedcf1bf14a6e2ccc789dd7722456fdd61ff9bdaaf79eefb5aec",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 5.575363300480696e-07,
+        "relative_mass_error": 3.516265443151128e-06
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.478000000020614
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.478000000020614,
+      "total_wall_s": 23.52340409019962,
+      "result_sha256": "e3fbc73e65b4b3550dfcdc42bfb1bb6db73218f6bd70cc06fffbef07a158c589",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 3.937618840155199e-07,
+        "relative_mass_error": 2.506378643615645e-06
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.478000000020614
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.494000000020634,
+      "total_wall_s": 24.599164941813797,
+      "result_sha256": "4d5acec8e0a4d9fd7470378e2229267975c5239614c02e6a31f820ddf7836aeb",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 5.518318363845198e-06,
+        "relative_mass_error": 3.730756181835623e-05
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.494000000020634
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.47400000002061,
+      "total_wall_s": 24.171053209807724,
+      "result_sha256": "d9cc0c7ecbf94fa88b8ef54afec862800101215e5f16d5c91e785085ed5bba0f",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 1.6233410851662633e-07,
+        "relative_mass_error": 9.374209271035642e-07
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.47400000002061
+      }
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 54.486000000020624,
+      "total_wall_s": 23.535236119758338,
+      "result_sha256": "7e0bd8df1fc6b54bbdc201822a8759da04da5579a127bcd0f5f350d8d854f029",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "mass_within_3g": true,
+        "three_calibration_records": true
+      },
+      "metrics": {
+        "absolute_mass_error_kg": 4.908548154602954e-07,
+        "relative_mass_error": 3.5196170211243935e-06
+      },
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_mass_measurement/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 54.486000000020624
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_sample_transfer/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.518,
+      "total_wall_s": 112.28181973705068,
+      "result_sha256": "42deb6ff50dfd8b0f4583e4f0bad8fe4944a731ebf5ae13f05e9572a547eefda",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_sample_transfer/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.518
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_sample_transfer/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.518,
+      "total_wall_s": 94.40810453798622,
+      "result_sha256": "3d9acd4416b99a554b2fd6e137ec0f70e7ba0686d60578262a04a6d89400be85",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_sample_transfer/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.518
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_orbital_sample_transfer/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.666000000000533,
+      "total_wall_s": 21.436533206608146,
+      "result_sha256": "39f3afbbf96219db76eff0c23a5076616395cd6ed6813141f0b4b3ef4ecf53a1",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_orbital_sample_transfer/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.666000000000533
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.608000000000565,
+      "total_wall_s": 15.35572768561542,
+      "result_sha256": "b11e413b6e699ee829050430f5256ce3638f613cfae93c01449c4ab30c2dcd4a",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.608000000000565
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.588000000000577,
+      "total_wall_s": 15.274022763129324,
+      "result_sha256": "0624a857cb8ac65dde1f3bc68c32729a0ade37e1e7d9dedbf14bc56ac62db2dc",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.588000000000577
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.65200000000054,
+      "total_wall_s": 15.78593783872202,
+      "result_sha256": "5f88e8b9933ad5cdc375e70f5a1019f34a1bcddf81b4b5c1aa4be2eabdddb0dc",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.65200000000054
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.58000000000058,
+      "total_wall_s": 15.76390150282532,
+      "result_sha256": "d7ce43329d488c45b01f2682e2bfb93bad55f25e0a14f781d4c3a3af58fe4578",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.58000000000058
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.574000000000584,
+      "total_wall_s": 15.884537699166685,
+      "result_sha256": "e745256f326ac36e538fec10a5b869bc92eb374acb32f06aa50c4b5987e5c5f8",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.574000000000584
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.574000000000584,
+      "total_wall_s": 16.267456118948758,
+      "result_sha256": "10dd4fdeb9377403316a7e5973e4838635d3e190fe0b0c265dc888cf3b5abc43",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.574000000000584
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.592000000000574,
+      "total_wall_s": 16.453670633025467,
+      "result_sha256": "ac6e9d92f98d881ea5814c4a51d82406181605867607f8b12fd566b327960b66",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.592000000000574
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.606000000000567,
+      "total_wall_s": 15.335864441934973,
+      "result_sha256": "72872bb4bd73b189e85dbeb8a29836060e49689c547ce1d941b5fc779988e8bf",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.606000000000567
+      }
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 18.58000000000058,
+      "total_wall_s": 17.15572122996673,
+      "result_sha256": "fe8a382782b3391dae8cf1ca0b77bd964886d5de205f1bc365bf98f1d1013f77",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_sample_transfer/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 18.58000000000058
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_spectral_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.39,
+      "total_wall_s": 206.80973652098328,
+      "result_sha256": "4f7c8567d9b6475b5da05068861ff5cb913d164f1e418938c5feaa2b30777099",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_spectral_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.39
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_spectral_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.394,
+      "total_wall_s": 164.5248810928315,
+      "result_sha256": "f55507840d07268dff075948a7a5e31620a75cf9ff7df074a0ffb94f41710ff8",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true,
+        "one_native_event_per_step": true,
+        "native_fk_within_5mm": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-isaac-v2/isaac/space_orbital_spectral_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.394
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 0,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_orbital_spectral_measurement/seed_000",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.76999999999897,
+      "total_wall_s": 28.31354449177161,
+      "result_sha256": "3272b7889bce9e2524be325d1b4c43f3ef441115632e1f698f55b31725eae406",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-media/mujoco/space_orbital_spectral_measurement/seed_000_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.76999999999897
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 1,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_001",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.7119999999989,
+      "total_wall_s": 19.57433157740161,
+      "result_sha256": "d3d7f8c94d2f29571ddc3713bccfc13e63e6f6d87dd685afddd3f0f5c4c785d8",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_001_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.7119999999989
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 2,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_002",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.689999999998875,
+      "total_wall_s": 20.103760884143412,
+      "result_sha256": "3ff3b896e3c58db5435e6b26de379df5c1814b821d7bd6cde69ebd42102f633a",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_002_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.689999999998875
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 3,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_003",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.755999999998956,
+      "total_wall_s": 21.107460886705667,
+      "result_sha256": "c95b37709e2871ffbbec1021ff18d3102bd081c70caf9016aa3196ef622ad825",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_003_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.755999999998956
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 4,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_004",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.681999999998865,
+      "total_wall_s": 20.654560341034085,
+      "result_sha256": "5bf81ccf6d703890d45ff8f4fb274f11e3f31ac4809098cb7cec6cfe2bb53c98",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_004_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.681999999998865
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 5,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_005",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.67599999999886,
+      "total_wall_s": 19.844051675871015,
+      "result_sha256": "59c510d550ae5d85a1ce401a6eef94095b1b3d8e1870a2bf501c36ac4bf32d26",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_005_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.67599999999886
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 6,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_006",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.67599999999886,
+      "total_wall_s": 19.333747504279017,
+      "result_sha256": "35f301b9caec394ed9a703f119af9e7b1d93771fa835892ffc721b900ad52ff1",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_006_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.67599999999886
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 7,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_007",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.69599999999888,
+      "total_wall_s": 18.606840590015054,
+      "result_sha256": "07c4f9e4af3bf9a5c6c23fcdebe3679544309ac90c5f3fc1f8e8876e7ef0e589",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_007_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.69599999999888
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 8,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_008",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.673999999998856,
+      "total_wall_s": 19.929346211720258,
+      "result_sha256": "56dffd6d6fbdfe2057767f49e769a115b5b93f54b289beb45933dcac235fd21c",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_008_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.673999999998856
+      }
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "seed": 9,
+      "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_009",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 36.68599999999887,
+      "total_wall_s": 18.865800007246435,
+      "result_sha256": "4641c4227cd9d63f160b75a40bba7d8d73da1302619ff32f4fd79e85907806cd",
+      "passed": true,
+      "checks": {
+        "continuous_task": true,
+        "within_limit": true,
+        "correct_match_or_holdout_abstention": true,
+        "four_spectral_records": true
+      },
+      "metrics": {},
+      "scope": "robot_handling_and_declared_spring_or_analytic_spectral_model",
+      "no_action": {
+        "folder": "/home/amax/data/media/xyl_ps/Hooke/temp/space_experiments/final-mujoco-v2/mujoco/space_orbital_spectral_measurement/seed_009_no_action",
+        "status": "CONTROL_COMPLETE",
+        "false_success": false,
+        "simulation_s": 36.68599999999887
+      }
+    }
+  ],
+  "paired_initial_inputs": [
+    {
+      "task": "space_lunar_mass_measurement",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "86266242b73861019610dc94ecf0ae94a5a73d51dee7242e92719bd6cfa940d4",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "444b67846597a2bc0d030e7aaf08bf66f40ab6bc5cae27b9af894bc6972f75ca",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "seed": 8,
+      "passed": true,
+      "scene_xml_sha256": "55221e9aef5efd4020539a7027ed12110b39c040054b1cf762bc8e59f6c5ce47",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "86266242b73861019610dc94ecf0ae94a5a73d51dee7242e92719bd6cfa940d4",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "444b67846597a2bc0d030e7aaf08bf66f40ab6bc5cae27b9af894bc6972f75ca",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "seed": 8,
+      "passed": true,
+      "scene_xml_sha256": "55221e9aef5efd4020539a7027ed12110b39c040054b1cf762bc8e59f6c5ce47",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "86266242b73861019610dc94ecf0ae94a5a73d51dee7242e92719bd6cfa940d4",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "444b67846597a2bc0d030e7aaf08bf66f40ab6bc5cae27b9af894bc6972f75ca",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "seed": 8,
+      "passed": true,
+      "scene_xml_sha256": "55221e9aef5efd4020539a7027ed12110b39c040054b1cf762bc8e59f6c5ce47",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "dbbd391c21a271a7c20631c54144f7a41848523a75f24d60805428d48a5cf06c",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "9565df2d6def5771f33ae9106c893992d5abd7bf64e818f053394fd66e1a229f",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "dbbd391c21a271a7c20631c54144f7a41848523a75f24d60805428d48a5cf06c",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "9565df2d6def5771f33ae9106c893992d5abd7bf64e818f053394fd66e1a229f",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "dbbd391c21a271a7c20631c54144f7a41848523a75f24d60805428d48a5cf06c",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "9565df2d6def5771f33ae9106c893992d5abd7bf64e818f053394fd66e1a229f",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "4409c7921827f2f41820a42ac7b91917003fdcb534c30fd917234e2b76549bcb",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "3c84edd5580c0d38111cd2bc0ecdf33ab2d240e2167f556550ed4bae6901cb28",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "4409c7921827f2f41820a42ac7b91917003fdcb534c30fd917234e2b76549bcb",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_orbital_sample_transfer",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "3c84edd5580c0d38111cd2bc0ecdf33ab2d240e2167f556550ed4bae6901cb28",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "seed": 0,
+      "passed": true,
+      "scene_xml_sha256": "4409c7921827f2f41820a42ac7b91917003fdcb534c30fd917234e2b76549bcb",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "seed": 1,
+      "passed": true,
+      "scene_xml_sha256": "3c84edd5580c0d38111cd2bc0ecdf33ab2d240e2167f556550ed4bae6901cb28",
+      "compiled_fields_compared": 412,
+      "different_fields": [],
+      "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+    }
+  ],
+  "media": [
+    {
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha256": "2cbb2cae143d1c23229d5449701b0c3f5089d54c8e2cbad4f9f7a7dd6eabd5cb",
+      "video_sha256": "306700dcf03eb54a78dbab4ae61d4a55aaf5967692a87d0e5f1907256bba3a22",
+      "webm_sha256": "d3862e1247d2035d54ef039e4c202fe090bd085b6aa3892e18e3465e973eb118",
+      "video_frames": 97,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 48.0,
+      "decoding": "PASS",
+      "decoded_frames": 97,
+      "webm_decoding": "PASS",
+      "webm_frames": 97
+    },
+    {
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha256": "9d01d4d10b6ecb0232fe8a9d80b23fdb1931f3bfb29c237f11b329eea2e5bff2",
+      "video_sha256": "74f66aa25f96e797a5c4096d9b654c86c327b255a30a009fb9f92545deb345fd",
+      "webm_sha256": "4d3cf0dcf6883f961b627d92cbdcb370737d6d8196ce3d3de06ee72f08ce4536",
+      "video_frames": 98,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 48.5,
+      "decoding": "PASS",
+      "decoded_frames": 98,
+      "webm_decoding": "PASS",
+      "webm_frames": 98
+    },
+    {
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha256": "515d3af318cbc164ca67f8681bf1e5d95339ab11e3843454fdf56a660a9cfc12",
+      "video_sha256": "ca345474e52b25e22fc730933f046942ad7abbe97c6d4bf5113d455921178cb0",
+      "webm_sha256": "8a16021233c94575ba25385b608a955598e755a19a044678527ed9eaa0c7cb05",
+      "video_frames": 37,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 18.0,
+      "decoding": "PASS",
+      "decoded_frames": 37,
+      "webm_decoding": "PASS",
+      "webm_frames": 37
+    },
+    {
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha256": "3fbfa0ade01bb4fa4ae4240c1e2392eafb047f1a26fd5e8e39a740310e51f6d6",
+      "video_sha256": "cca9523d9c1ab75a57cac7daafa61c23c60c2b53005656a6368a0592625ae593",
+      "webm_sha256": "9d3d183968b4b0cb48aeea1dfded22ac7acaebd5cd486467a9b4ae127438e433",
+      "video_frames": 38,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 18.5,
+      "decoding": "PASS",
+      "decoded_frames": 38,
+      "webm_decoding": "PASS",
+      "webm_frames": 38
+    },
+    {
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha256": "77699ab9217e7981decb0e19192cb8229a1e7c97c0adefede01e8ed7500fe47d",
+      "video_sha256": "e5dbf44d76ed39f798983ffd0fc0fbaf306d56992b6cece03aa5319613334c13",
+      "webm_sha256": "7b45e788dcd18cc283e22bda3cb21fa9d919f7df1e4c61d0e3a9bd15fa998e76",
+      "video_frames": 73,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 36.0,
+      "decoding": "PASS",
+      "decoded_frames": 73,
+      "webm_decoding": "PASS",
+      "webm_frames": 73
+    },
+    {
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha256": "bb4a0928c3fe2f809b07edb198be3129c0e83d221ed0421c0482ef37f6354b30",
+      "video_sha256": "494ba3d24b2a8215f0b704f1c5c35985efa5330b2663563a04b3c148d5ce7a53",
+      "webm_sha256": "afe6f27ab6023acbe1ec7a093c3a020b8f11d659a0b1336a3f6b94a2fa96913c",
+      "video_frames": 74,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 36.5,
+      "decoding": "PASS",
+      "decoded_frames": 74,
+      "webm_decoding": "PASS",
+      "webm_frames": 74
+    },
+    {
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha256": "86a034546560a18a86ec55822a4ee5026e61542d49a2672b3360b405e131a3b5",
+      "video_sha256": "f408d8087b83def8045879e9a1c613a020075e882e307311cc30c8e419b36f32",
+      "webm_sha256": "272ced9265472256d55b6232fa00c4e4aba4d5168b9e5365519251026eb1a925",
+      "video_frames": 97,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 48.0,
+      "decoding": "PASS",
+      "decoded_frames": 97,
+      "webm_decoding": "PASS",
+      "webm_frames": 97
+    },
+    {
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha256": "32564c2f2421d99c7b98075bb2a91785910549a991e0c1f207fc7dec51c68a46",
+      "video_sha256": "993798b4eb2dbc09d610773c7a71615f8b7806f749b6e6adc3286f3264f4401a",
+      "webm_sha256": "05a3264ef66065117bfb3aedf2eb0a314816ba2ed918599a21fdda08605b9f96",
+      "video_frames": 98,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 48.5,
+      "decoding": "PASS",
+      "decoded_frames": 98,
+      "webm_decoding": "PASS",
+      "webm_frames": 98
+    },
+    {
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha256": "db9447d0d0b9cddd84a73f32d8f6f3aab551af40a8c192283d5408448fd379bb",
+      "video_sha256": "6386fc92ad45fec3c76974929df8f87ccb4322854752cd52ec1472948881fa26",
+      "webm_sha256": "aaa7c45596f369652923e1b2123744e3a306e623bef94290e67524d35a8b33c6",
+      "video_frames": 37,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 18.0,
+      "decoding": "PASS",
+      "decoded_frames": 37,
+      "webm_decoding": "PASS",
+      "webm_frames": 37
+    },
+    {
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha256": "63fba525541915839b7b562d9f47a8f9213f7114370238eb7741a9f302bae83b",
+      "video_sha256": "efe9e607d7ff4eb7638b0b18155f82d48349f93ea882fc8bf241af9ba205192c",
+      "webm_sha256": "35e744d8b4ed09ce8cb0a8edde1290637487150fe6521edbe7e71300be052eed",
+      "video_frames": 38,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 18.5,
+      "decoding": "PASS",
+      "decoded_frames": 38,
+      "webm_decoding": "PASS",
+      "webm_frames": 38
+    },
+    {
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha256": "7fe263f045078cac07d0462dca690972fa83392628b92fe657c278973cfd2979",
+      "video_sha256": "c0ab2aeaedf1a838a1e38b0df865a5f364bb61599defde45591594c7dfa032a1",
+      "webm_sha256": "7e0c6f33140fb914e82024dde5d964262be164da1dc3907bbea7defdf9efaf53",
+      "video_frames": 73,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 36.0,
+      "decoding": "PASS",
+      "decoded_frames": 73,
+      "webm_decoding": "PASS",
+      "webm_frames": 73
+    },
+    {
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha256": "0972695baa399be2b4be52f92b24ddfae73fae965bf4cb869c89d9a721fd0c29",
+      "video_sha256": "bbc8a3f81c14f789642daf94b203e14720fc1e1940c6e730619756064f5e2640",
+      "webm_sha256": "f6bac1d03aa5fc5ff4283ef67cedc542509d72daae11e66d1486adbd7aef2235",
+      "video_frames": 74,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 36.5,
+      "decoding": "PASS",
+      "decoded_frames": 74,
+      "webm_decoding": "PASS",
+      "webm_frames": 74
+    },
+    {
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha256": "3bd7a95ee291d0eadcad8710a428f20910e47d3187a4119add7baf2118c17c6a",
+      "video_sha256": "520cb4b77d3793e6632ff99043fdb7cd67204b1fb5810f24486dc3ad3c6215c9",
+      "webm_sha256": "bb28f78621d4a78f4f3c845a153ba22517f34a3ae12d52094bfd154205d312b7",
+      "video_frames": 109,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 54.0,
+      "decoding": "PASS",
+      "decoded_frames": 109,
+      "webm_decoding": "PASS",
+      "webm_frames": 109
+    },
+    {
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha256": "856017df496996434def0dc7d4d2cc574157cf0f39e18f2aafded5ef427c879d",
+      "video_sha256": "00c90320866f17be7689136ee2665ab4804385204c68e27fec0e91aec3564047",
+      "webm_sha256": "739b83063c02b79b029e0f924b58299515cca4a79980478567585f35ac936e1a",
+      "video_frames": 110,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 54.5,
+      "decoding": "PASS",
+      "decoded_frames": 110,
+      "webm_decoding": "PASS",
+      "webm_frames": 110
+    },
+    {
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha256": "33b61bb621aeb9008af8dd01c709dee1fd805d5392bba2f1dd2eff15a11c4453",
+      "video_sha256": "9f2d603af220524f8be5f748878aa82bb3e653a347602ff0b05980b2538ddd7e",
+      "webm_sha256": "d6d6313e69039bc98cd9cc68be259a15f2dfc26b74e02454467c18dc5196ed04",
+      "video_frames": 38,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 18.5,
+      "decoding": "PASS",
+      "decoded_frames": 38,
+      "webm_decoding": "PASS",
+      "webm_frames": 38
+    },
+    {
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha256": "6abf713700de0c1a83de0184e8a255a100ae131987cb36a7279cc99be8c50f2f",
+      "video_sha256": "f2408d11d05339a7f6bedd7e6643bfc1cd68a787c5a0ebe8cb2ba90fbab32dbd",
+      "webm_sha256": "a5b58f52eebfcd67b472a3542bbc866fee860c4fee324234f79b7d2aaab67276",
+      "video_frames": 38,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 18.5,
+      "decoding": "PASS",
+      "decoded_frames": 38,
+      "webm_decoding": "PASS",
+      "webm_frames": 38
+    },
+    {
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha256": "9fa3e6202ba7c8c604fd16e98b66467c6d8a74abaa582b5c6ce5bc443d0115a4",
+      "video_sha256": "58f970235344b33fd3f592ef8ec97d70c528782abf73fc94bc3e51547a69c1bd",
+      "webm_sha256": "24ebc6b7c8d9f94188a531607a842319492d0c51fa1021e2cd2626a2f1ae13c6",
+      "video_frames": 73,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 36.0,
+      "decoding": "PASS",
+      "decoded_frames": 73,
+      "webm_decoding": "PASS",
+      "webm_frames": 73
+    },
+    {
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha256": "f62ce738352ea4693fc0d08eedfe3e0475c8adc581acec876543dbda9a3abba0",
+      "video_sha256": "6f53e75b3a479c0fc4dfc08484b4e99d47b663ebc32af4920974017f7c503c14",
+      "webm_sha256": "5f200222289450fc3aa8dad9e2e825ff7d481746050adfba3d2d021a249d60b8",
+      "video_frames": 74,
+      "frame_sampling_fps": 2.0,
+      "simulated_clip_seconds": 36.5,
+      "decoding": "PASS",
+      "decoded_frames": 74,
+      "webm_decoding": "PASS",
+      "webm_frames": 74
+    }
+  ],
+  "complete": true,
+  "no_action_controls": {
+    "total": 111,
+    "false_successes": 0
+  },
+  "seeds_per_backend": {
+    "mujoco": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "isaac": [
+      0,
+      1,
+      8
+    ]
+  },
+  "scientific_scope": "spring_encoder_mass_and_analytic_test_spectra",
+  "metrics": {
+    "max_absolute_mass_error_kg": 3.326950917906246e-05,
+    "max_relative_mass_error": 0.00019806317051781285,
+    "max_simulation_s": 54.568000000020724,
+    "spectral_known_matches": 25,
+    "spectral_holdout_abstentions": 12,
+    "max_spectral_repeat_rms": 0.0006679099002042799
+  },
+  "limitations": [
+    "no_usgs_spectral_data_imported",
+    "default_robot_scenes_use_procedural_terrain",
+    "no_gas_seal_or_pressure_solver",
+    "no_station_recoil",
+    "no_llm_scientist_benchmark"
+  ]
+}

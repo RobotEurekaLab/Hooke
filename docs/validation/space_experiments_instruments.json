@@ -1,0 +1,869 @@
+{
+  "total": 30,
+  "passed": true,
+  "results": [
+    {
+      "name": "orbital_load_0.0",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.0,
+      "dt": 0.002,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.39481049340963686,
+      "expected_signal": 0.3947841760435743,
+      "relative_error": 6.666266699519965e-05,
+      "sample_rate_relative_error": 9.436570907213242e-12,
+      "diagnostics": {
+        "period_squared_s2": 0.39481049340963686,
+        "period_squared_variance": 2.537539232869759e-27,
+        "damping_rate_s_inv": 0.049995000677304176,
+        "cycles": 9.230563664788622,
+        "residual_std_m": 6.44743162478823e-14,
+        "measured_samples": 291
+      },
+      "simulation_s": 5.999999999999561,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_load_0.1",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.1,
+      "dt": 0.002,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.5922025714636558,
+      "expected_signal": 0.5921762640653616,
+      "relative_error": 4.442494556203697e-05,
+      "sample_rate_relative_error": 2.8009788629537294e-12,
+      "diagnostics": {
+        "period_squared_s2": 0.5922025714636558,
+        "period_squared_variance": 4.286482670744289e-28,
+        "damping_rate_s_inv": 0.03333110776694375,
+        "cycles": 7.536838865049046,
+        "residual_std_m": 1.2384935668847728e-14,
+        "measured_samples": 291
+      },
+      "simulation_s": 5.999999999999561,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_load_0.16",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.7106378293500961,
+      "expected_signal": 0.7106115168784337,
+      "relative_error": 3.702792740819803e-05,
+      "sample_rate_relative_error": 5.265115332526813e-14,
+      "diagnostics": {
+        "period_squared_s2": 0.7106378293500961,
+        "period_squared_variance": 3.4204064891856306e-30,
+        "damping_rate_s_inv": 0.027776233369770295,
+        "cycles": 6.880196097532582,
+        "residual_std_m": 7.91532717037792e-16,
+        "measured_samples": 291
+      },
+      "simulation_s": 5.999999999999561,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "lunar_load_0.0",
+      "world": "lunar",
+      "gravity": 1.62,
+      "mass": 0.0,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.32399999999698587,
+      "expected_signal": 0.32400000000000007,
+      "relative_error": 9.303086421932309e-12,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.32399999999698587,
+        "force_variance": 6.449483990116195e-24,
+        "measured_samples": 51
+      },
+      "simulation_s": 3.999999999999781,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "lunar_load_0.1",
+      "world": "lunar",
+      "gravity": 1.62,
+      "mass": 0.1,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.4860000100665459,
+      "expected_signal": 0.4860000000000001,
+      "relative_error": 2.0713057241034776e-08,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.4860000100665459,
+        "force_variance": 3.337611711779517e-17,
+        "measured_samples": 51
+      },
+      "simulation_s": 3.999999999999781,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "lunar_load_0.16",
+      "world": "lunar",
+      "gravity": 1.62,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.5831999301133215,
+      "expected_signal": 0.5832,
+      "relative_error": 1.1983312509489373e-07,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.5831999301133215,
+        "force_variance": 5.940649125757352e-15,
+        "measured_samples": 51
+      },
+      "simulation_s": 3.999999999999781,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_load_0.0",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.0,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.7459999999930599,
+      "expected_signal": 0.746,
+      "relative_error": 9.303103417204177e-12,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.7459999999930599,
+        "force_variance": 3.4191094017461464e-23,
+        "measured_samples": 51
+      },
+      "simulation_s": 3.999999999999781,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_load_0.1",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.1,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 1.1190000231779171,
+      "expected_signal": 1.1190000000000002,
+      "relative_error": 2.0713062483540257e-08,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 1.1190000231779171,
+        "force_variance": 1.7693894227768743e-16,
+        "measured_samples": 51
+      },
+      "simulation_s": 3.999999999999781,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_load_0.16",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 1.3427998390880773,
+      "expected_signal": 1.3428,
+      "relative_error": 1.1983312680615942e-07,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 1.3427998390880773,
+        "force_variance": 3.149354417587379e-14,
+        "measured_samples": 51
+      },
+      "simulation_s": 3.999999999999781,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_dt_0.001",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.16,
+      "dt": 0.001,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.7106279884421491,
+      "expected_signal": 0.7106115168784337,
+      "relative_error": 2.317942127898753e-05,
+      "sample_rate_relative_error": 5.936925300772074e-14,
+      "diagnostics": {
+        "period_squared_s2": 0.7106279884421491,
+        "period_squared_variance": 5.949699088764711e-29,
+        "damping_rate_s_inv": 0.027777011460014045,
+        "cycles": 6.880243734468139,
+        "residual_std_m": 3.3009351909321516e-15,
+        "measured_samples": 291
+      },
+      "simulation_s": 6.000000000000338,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_dt_0.001",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.16,
+      "dt": 0.001,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 1.3427998230048173,
+      "expected_signal": 1.3428,
+      "relative_error": 1.3181053227018015e-07,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 1.3427998230048173,
+        "force_variance": 2.7810603885286616e-14,
+        "measured_samples": 51
+      },
+      "simulation_s": 3.9999999999996705,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_dt_0.004",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.16,
+      "dt": 0.004,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.7106375862069638,
+      "expected_signal": 0.7106115168784337,
+      "relative_error": 3.668576699210634e-05,
+      "sample_rate_relative_error": 3.359049841226305e-14,
+      "diagnostics": {
+        "period_squared_s2": 0.7106375862069638,
+        "period_squared_variance": 3.954232622347383e-27,
+        "damping_rate_s_inv": 0.027774557983834467,
+        "cycles": 6.8801972803345794,
+        "residual_std_m": 2.6920828631073426e-14,
+        "measured_samples": 291
+      },
+      "simulation_s": 5.999999999999782,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_dt_0.004",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.16,
+      "dt": 0.004,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 1.3427997810159047,
+      "expected_signal": 1.3428,
+      "relative_error": 1.6308020204164588e-07,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 1.3427997810159047,
+        "force_variance": 3.2318057601097215e-14,
+        "measured_samples": 50
+      },
+      "simulation_s": 4.000000000000003,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_axis_45deg",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 0.7071067811865476,
+      "locked": true,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.9495028719952431,
+      "expected_signal": 0.949502985777296,
+      "relative_error": 1.198332755083994e-07,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.9495028719952431,
+        "force_variance": 1.5746693733771645e-14,
+        "measured_samples": 51
+      },
+      "simulation_s": 3.999999999999781,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_unlocked_negative",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 0.0,
+      "locked": false,
+      "backend": "mujoco",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true
+      },
+      "measured_signal": 0.39481049340963686,
+      "expected_signal": 0.3947841760435743,
+      "relative_error": 6.666266699519965e-05,
+      "sample_rate_relative_error": 9.436570907213242e-12,
+      "diagnostics": {
+        "period_squared_s2": 0.39481049340963686,
+        "period_squared_variance": 2.537539232869759e-27,
+        "damping_rate_s_inv": 0.049995000677304176,
+        "cycles": 9.230563664788622,
+        "residual_std_m": 6.44743162478823e-14,
+        "measured_samples": 291
+      },
+      "simulation_s": 5.999999999999561,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_load_0.0",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.0,
+      "dt": 0.002,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.394785460925069,
+      "expected_signal": 0.3947841760435743,
+      "relative_error": 3.2546428470806607e-06,
+      "sample_rate_relative_error": 1.936829216471734e-09,
+      "diagnostics": {
+        "period_squared_s2": 0.394785460925069,
+        "period_squared_variance": 1.2494583010597635e-17,
+        "damping_rate_s_inv": 0.053126928653259006,
+        "cycles": 9.230841405512512,
+        "residual_std_m": 4.48078556781812e-09,
+        "measured_samples": 291
+      },
+      "simulation_s": 6.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_load_0.1",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.1,
+      "dt": 0.002,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.5921780526604327,
+      "expected_signal": 0.5921762640653616,
+      "relative_error": 3.0203761609282294e-06,
+      "sample_rate_relative_error": 1.856550096931206e-09,
+      "diagnostics": {
+        "period_squared_s2": 0.5921780526604327,
+        "period_squared_variance": 5.651055244792774e-17,
+        "damping_rate_s_inv": 0.03541530068264189,
+        "cycles": 7.536986795885028,
+        "residual_std_m": 4.467902304073364e-09,
+        "measured_samples": 291
+      },
+      "simulation_s": 6.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_load_0.16",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.7106137401870382,
+      "expected_signal": 0.7106115168784337,
+      "relative_error": 3.1287258250608184e-06,
+      "sample_rate_relative_error": 2.386663031565287e-09,
+      "diagnostics": {
+        "period_squared_s2": 0.7106137401870382,
+        "period_squared_variance": 1.6748393393764543e-16,
+        "damping_rate_s_inv": 0.02951338762441185,
+        "cycles": 6.880306551654332,
+        "residual_std_m": 5.508913375899709e-09,
+        "measured_samples": 291
+      },
+      "simulation_s": 6.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "lunar_load_0.0",
+      "world": "lunar",
+      "gravity": 1.62,
+      "mass": 0.0,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.32394593581557274,
+      "expected_signal": 0.32400000000000007,
+      "relative_error": 0.00016686476675100947,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.32394593581557274,
+        "force_variance": 0.0,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "lunar_load_0.1",
+      "world": "lunar",
+      "gravity": 1.62,
+      "mass": 0.1,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.48594620060540883,
+      "expected_signal": 0.4860000000000001,
+      "relative_error": 0.00011069834278039008,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.48594620060540883,
+        "force_variance": 3.1858540112896197e-13,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "lunar_load_0.16",
+      "world": "lunar",
+      "gravity": 1.62,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.5831438609782387,
+      "expected_signal": 0.5832,
+      "relative_error": 9.626032537959718e-05,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.5831438609782387,
+        "force_variance": 4.810412208897195e-13,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_load_0.0",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.0,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.7458746898919344,
+      "expected_signal": 0.746,
+      "relative_error": 0.0001679760161737287,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.7458746898919344,
+        "force_variance": 0.0,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_load_0.1",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.1,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 1.118875698496898,
+      "expected_signal": 1.1190000000000002,
+      "relative_error": 0.00011108266586441052,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 1.118875698496898,
+        "force_variance": 3.195746136855051e-14,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_load_0.16",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 1.342678155896126,
+      "expected_signal": 1.3428,
+      "relative_error": 9.073883219686258e-05,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 1.342678155896126,
+        "force_variance": 2.0926100678837693e-13,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_dt_0.001",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.16,
+      "dt": 0.001,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.710612101443798,
+      "expected_signal": 0.7106115168784337,
+      "relative_error": 8.226229809847016e-07,
+      "sample_rate_relative_error": 7.258714537992152e-10,
+      "diagnostics": {
+        "period_squared_s2": 0.710612101443798,
+        "period_squared_variance": 3.0548302605582123e-16,
+        "damping_rate_s_inv": 0.028646182588957455,
+        "cycles": 6.880317608322425,
+        "residual_std_m": 7.459577659164095e-09,
+        "measured_samples": 291
+      },
+      "simulation_s": 6.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_dt_0.001",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.16,
+      "dt": 0.001,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 1.342764962464571,
+      "expected_signal": 1.3428,
+      "relative_error": 2.60928920382741e-05,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 1.342764962464571,
+        "force_variance": 1.1564823173178715e-16,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_dt_0.004",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.16,
+      "dt": 0.004,
+      "axis_z": 0.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.7106171948679698,
+      "expected_signal": 0.7106115168784337,
+      "relative_error": 7.990286395925082e-06,
+      "sample_rate_relative_error": 1.1479812182285616e-09,
+      "diagnostics": {
+        "period_squared_s2": 0.7106171948679698,
+        "period_squared_variance": 2.91028741068357e-17,
+        "damping_rate_s_inv": 0.03124998268938365,
+        "cycles": 6.8802832926757125,
+        "residual_std_m": 2.28434956000528e-09,
+        "measured_samples": 291
+      },
+      "simulation_s": 6.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_dt_0.004",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.16,
+      "dt": 0.004,
+      "axis_z": 1.0,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 1.3423051356392748,
+      "expected_signal": 1.3428,
+      "relative_error": 0.0003685316955058171,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 1.3423051356392748,
+        "force_variance": 1.0311900634935722e-14,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "martian_axis_45deg",
+      "world": "martian",
+      "gravity": 3.73,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 0.7071067811865476,
+      "locked": true,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.9494209077720549,
+      "expected_signal": 0.949502985777296,
+      "relative_error": 8.644312495118579e-05,
+      "sample_rate_relative_error": 0.0,
+      "diagnostics": {
+        "force_n": 0.9494209077720549,
+        "force_variance": 3.5772172314753904e-12,
+        "measured_samples": 51
+      },
+      "simulation_s": 4.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    },
+    {
+      "name": "orbital_unlocked_negative",
+      "world": "orbital",
+      "gravity": 0,
+      "mass": 0.16,
+      "dt": 0.002,
+      "axis_z": 0.0,
+      "locked": false,
+      "backend": "isaac",
+      "passed": true,
+      "checks": {
+        "known_load_response_within_half_percent": true,
+        "sample_rate_change_within_half_percent": true,
+        "finite_state": true,
+        "one_native_event_per_step": true
+      },
+      "measured_signal": 0.394785460925069,
+      "expected_signal": 0.3947841760435743,
+      "relative_error": 3.2546428470806607e-06,
+      "sample_rate_relative_error": 1.936829216471734e-09,
+      "diagnostics": {
+        "period_squared_s2": 0.394785460925069,
+        "period_squared_variance": 1.2494583010597635e-17,
+        "damping_rate_s_inv": 0.053126928653259006,
+        "cycles": 9.230841405512512,
+        "residual_std_m": 4.48078556781812e-09,
+        "measured_samples": 291
+      },
+      "simulation_s": 6.0,
+      "scope": "known_load_instrument_fixture_not_robot_episode"
+    }
+  ],
+  "max_relative_response_error": 0.0003685316955058171,
+  "scope": "known_load_scalar_instrument_physics_not_robot_or_real_hardware_accuracy"
+}

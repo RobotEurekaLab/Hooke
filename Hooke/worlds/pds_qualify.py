@@ -61,6 +61,7 @@ def run_case(world, backend, directory, folder, worker=None, render=False, gpu=6
     center = float(height.mean())
     camera(body, "terrain_overview", (24, -26, center + 24), (0, 0, center), 45)
     task = fixture(ET.tostring(root, encoding="unicode"), folder, f"pds_{world}")
+    task.task_info["camera_mapping"] = {"overview": "terrain_overview"}
     adapter = (
         PhysXTaskAdapter(
             task,
