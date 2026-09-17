@@ -27,15 +27,24 @@ function setMuted(muted) {
 
 soundToggle?.addEventListener('click', () => setMuted(!video.muted));
 
-// Autoplay can be blocked until a user gesture on some mobile browsers;
-// retry once on first interaction so the hero never gets stuck on a
-// frozen frame.
+// Autoplay can be blocked outright on mobile (data-saver mode, iOS Low
+// Power Mode, some in-app browsers) even with muted+playsinline set --
+// there, video.play() rejects and the hero would otherwise just show
+// the static poster forever with no way to know why. Surface an
+// explicit tap-to-play affordance instead of a silent dead screen.
+const tapToPlay = document.querySelector('.tap-to-play');
+
 function tryPlay() {
-  video?.play().catch(() => {});
+  video?.play().then(() => {
+    if (tapToPlay) tapToPlay.hidden = true;
+  }).catch(() => {
+    if (tapToPlay) tapToPlay.hidden = false;
+  });
 }
 tryPlay();
 window.addEventListener('pointerdown', tryPlay, { once: true });
 window.addEventListener('scroll', tryPlay, { once: true, passive: true });
+tapToPlay?.addEventListener('click', tryPlay);
 
 // Fade the headline/cards in once screen 2 actually enters view, rather
 // than on page load (most visitors won't have scrolled there yet).

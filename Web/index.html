@@ -26,11 +26,15 @@
     <video
       class="hero-video"
       src="../Hooke/media/teaser/video/Robot_Scientists_Teaser_web.mp4"
-      autoplay muted loop playsinline
-      poster=""
+      autoplay muted loop playsinline preload="auto"
+      poster="assets/hero-poster.jpg"
       aria-hidden="true">
     </video>
     <div class="hero-scrim"></div>
+    <button class="tap-to-play" type="button" hidden>
+      <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M8 5v14l11-7Z"/></svg>
+      <span>Tap to play</span>
+    </button>
     <button class="sound-toggle" type="button" aria-label="Turn sound on" aria-pressed="false">
       <svg class="icon-muted" viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4 9v6h4l5 5V4L8 9H4Zm12 0 5 6m0-6-5 6"/></svg>
       <svg class="icon-unmuted" viewBox="0 0 24 24" width="18" height="18" hidden><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4 9v6h4l5 5V4L8 9H4Zm12.5-2a5 5 0 0 1 0 8m2.5-11a9 9 0 0 1 0 14"/></svg>
