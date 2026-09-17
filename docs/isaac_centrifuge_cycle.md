@@ -18,7 +18,7 @@ MuJoCo 与 Isaac 最终冻结版本 `3080443` 的十种子专家均为 10/10，�
 
 最终版本的 Isaac 首个回合也已通过，实际耗时 547.472 秒。其 19,805 步完整控制、位置、速度、时间与接触数组和此前原生试验逐字段及类型相等，源数值字段、规范化 XML 与实际资产也相等；[对照记录](validation/isaac_cycle_runtime_compatibility.json)。两次耗时不作为受控性能加速结论。
 
-![实际记录的转子转速与电机控制转矩](assets/centrifuge-cycle-speed-torque.png)
+![实际记录的转子转速与电机控制转矩](assets/centrifuge-cycle-speed-torque.svg)
 
 [可编辑曲线 SVG](assets/centrifuge-cycle-speed-torque.svg) 与 [实际轨迹来源及哈希](validation/isaac_cycle_motion_plot.json)。曲线读取各引擎真实回合的关节速度和控制量，没有增加回放或新的成功回合。
 

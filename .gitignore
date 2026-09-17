@@ -13,6 +13,9 @@ uv.lock
 # Simulation-generated data (regenerate with the task scripts under Hooke/)
 Hooke/logs/
 
+# Curated documentation/demo media remain tracked; new captures are local by default.
+/docs/assets/
+
 # LeRobot-format datasets converted from Hooke/logs (regenerate with scripts/convert.py)
 openpi/data/
 openpi-pi0-legacy/data/

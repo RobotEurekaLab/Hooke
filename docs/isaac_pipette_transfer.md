@@ -32,13 +32,11 @@
 
 ## 真实画面对比
 
-18 张真实关键帧覆盖种子 0 的吸液完成、排液完成、源试管归位及三个原始相机。各引擎恢复其实际记录的关节状态与两个液面后出图。旧报告只观察到运行器回合计数为零，不能证明 Kit 内部初始化没有物理步骤；本轮独立 PhysX 回调发现初始化含内部步骤，随后恢复源状态。新离心关键帧实际记录初始化 2 步、恢复后渲染推进 0 个物理事件。相同阶段可能有不同记录时间，图像回放不计为新增闭环回合。
+历史采集的 18 张真实关键帧覆盖种子 0 的吸液完成、排液完成、源试管归位及三个原始相机。仓库仅保留吸液完成的前视示例，其余过程截图保存在本地忽略目录。各引擎恢复其实际记录的关节状态与两个液面后出图。旧报告只观察到运行器回合计数为零，不能证明 Kit 内部初始化没有物理步骤；本轮独立 PhysX 回调发现初始化含内部步骤，随后恢复源状态。新离心关键帧实际记录初始化 2 步、恢复后渲染推进 0 个物理事件。相同阶段可能有不同记录时间，图像回放不计为新增闭环回合。
 
 | 实际阶段，前视 | MuJoCo | Isaac |
 | --- | --- | --- |
 | 吸液完成 | ![MuJoCo 吸液完成](assets/transfer-mujoco-aspirated-camera-0.png) | ![Isaac 吸液完成](assets/transfer-isaac-aspirated-camera-0.png) |
-| 排液完成 | ![MuJoCo 排液完成](assets/transfer-mujoco-dispensed-camera-0.png) | ![Isaac 排液完成](assets/transfer-isaac-dispensed-camera-0.png) |
-| 源试管归位 | ![MuJoCo 源试管归位](assets/transfer-mujoco-returned-camera-0.png) | ![Isaac 源试管归位](assets/transfer-isaac-returned-camera-0.png) |
 
 [图片、实际轨迹、液面及渲染审计哈希](validation/isaac_pipette_transfer_keyframes.json)。光照、玻璃和材质响应仍有差异，未声明像素等价。
 

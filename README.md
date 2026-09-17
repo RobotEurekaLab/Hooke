@@ -4,6 +4,16 @@ Hooke is a simulation and benchmark platform for robotic automation in biology
 laboratories, built on top of [AutoBio](https://arxiv.org/abs/2505.14030)
 (originally from [autobio-bench/AutoBio](https://github.com/autobio-bench/AutoBio)).
 
+## Experiment scenes
+
+Representative laboratory scenes rendered from recorded simulations in both backends.
+
+| Experiment | MuJoCo | Isaac Sim |
+| --- | --- | --- |
+| Pipetting | ![MuJoCo pipetting](docs/assets/transfer-mujoco-aspirated-camera-0.png) | ![Isaac pipetting](docs/assets/transfer-isaac-aspirated-camera-0.png) |
+| Centrifugation | ![MuJoCo centrifugation](docs/assets/cycle-mujoco-spin_brake-camera-0.png) | ![Isaac centrifugation](docs/assets/cycle-isaac-spin_brake-camera-0.png) |
+| Vortex mixing | ![MuJoCo vortex mixing](docs/assets/shared-vortex_mixer-mujoco-mixing-camera-0.png) | ![Isaac vortex mixing](docs/assets/shared-vortex_mixer-isaac-mixing-camera-0.png) |
+
 ## Layout
 
 - `Hooke/` — the MuJoCo-based simulator, task definitions, and demonstration
@@ -47,24 +57,3 @@ See [operations and configuration](docs/isaac_operations.md),
 [actual visual comparisons](docs/isaac_visual_configuration.md), and
 [the seven acceptance areas](docs/isaac_completion_plan.md) for the current implementation,
 evidence and reduced-model limits.
-
-## Space experiment workstations
-
-The `/space-worlds` page shows orbital, lunar and Martian workstations with
-shared robot/instrument assets and explicit environmental limits. Gravity is
-applied by the selected engine; gas pressure remains a reference condition.
-See [scenes, assets, environment assumptions and actual checks](docs/space_worlds.md).
-See [open scene and asset sources](docs/space_asset_sources.md) for the researched
-ISS interior, lunar terrain, Martian terrain and experiment asset candidates.
-
-The `/space-assets` page compares three optional space scenes with attributed
-NASA/SRB assets in MuJoCo and Isaac. See [reuse, research terms and validation](docs/space_asset_reuse.md).
-
-The `/space-experiments` page provides nine continuous robot tasks across the
-orbital, lunar and Martian worlds: sample loading/return, calibrated spring
-mass measurement and mechanically gated analytic spectral measurements.
-Both engines use the same robot, scene and controller. Actual videos, public
-measurement curves and acceptance records are described in
-[space experiments](docs/space_experiments.md). Real LROC/HiRISE terrain crops
-have separate provenance and collision checks; the default robot workspaces
-retain procedural ground.

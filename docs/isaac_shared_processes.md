@@ -43,7 +43,8 @@
 | 阶段 | MuJoCo | Isaac |
 | --- | --- | --- |
 | 涡旋旋转接触 | ![MuJoCo 涡旋](assets/shared-vortex_mixer-mujoco-mixing-camera-0.png) | ![Isaac 涡旋](assets/shared-vortex_mixer-isaac-mixing-camera-0.png) |
-| 移液吸液后 | ![MuJoCo 移液](assets/shared-pipette-mujoco-aspirated-camera-0.png) | ![Isaac 移液](assets/shared-pipette-isaac-aspirated-camera-0.png) |
+
+仓库保留上述涡旋示例；其余中间截图保存在本地忽略目录。完整移液任务的代表性画面见 [移液对比](isaac_pipette_transfer.md)。
 
 ## 已完成的 MuJoCo 正式回归
 
