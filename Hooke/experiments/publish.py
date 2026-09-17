@@ -1,4 +1,4 @@
-"""Export actual episode media and public curves for the LAN gallery."""
+"""Export actual episode media and public curves to an ignored local directory."""
 
 import argparse
 import hashlib
@@ -190,7 +190,9 @@ def export_case(row, destination):
         frame_times_s=[i / fps for i in range(len(frames))],
         source_result_sha256=row["result_sha256"],
     )
-    write_json(ROOT / "docs/validation" / (base + ".json"), evidence)
+    evidence_dir = destination / "evidence"
+    evidence_dir.mkdir(parents=True, exist_ok=True)
+    write_json(evidence_dir / (base + ".json"), evidence)
     return dict(
         world=row["world"],
         operation=row["operation"],
@@ -214,7 +216,14 @@ def main():
     parser.add_argument(
         "--output",
         type=Path,
-        default=ROOT / "docs/validation/space_experiments_summary.json",
+        default=ROOT / "temp/space_experiments/publication/summary.json",
+        help="Summary path; defaults to ignored temp/space_experiments/publication/summary.json",
+    )
+    parser.add_argument(
+        "--media-dir",
+        type=Path,
+        default=ROOT / "temp/space_experiments/publication/media",
+        help="Media and evidence directory; defaults to ignored temp/space_experiments/publication/media",
     )
     args = parser.parse_args()
     rows = {}
@@ -233,7 +242,7 @@ def main():
     }
     if not expected.issubset(rows):
         raise ValueError("Both backends must finish all nine rendered tasks")
-    destination = ROOT / "docs/assets"
+    destination = args.media_dir
     destination.mkdir(parents=True, exist_ok=True)
     media = [export_case(row, destination) for row in cases if row["seed"] == 0]
     spectral_outcomes = []
@@ -285,6 +294,7 @@ def main():
             "no_llm_scientist_benchmark",
         ],
     )
+    args.output.parent.mkdir(parents=True, exist_ok=True)
     write_json(args.output, summary)
     print(
         json.dumps(

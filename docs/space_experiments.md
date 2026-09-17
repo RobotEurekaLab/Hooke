@@ -153,3 +153,9 @@ Isaac 当前仍明显更慢，玻璃、阴影、反射与视图响应也未获�
 浏览器实际截图：[空间站](assets/space-experiments-web-orbital.png)、[月球](assets/space-experiments-web-lunar.png)、[火星](assets/space-experiments-web-martian.png)、[手机页面](assets/space-experiments-web-390.png)、[实际运行](assets/space-experiments-web-live.png)。真实裁剪的 Isaac 出图：[LROC 月球](assets/space-experiment-terrain-lunar-isaac.png)、[HiRISE 火星](assets/space-experiment-terrain-martian-isaac.png)。
 
 两个后端的种子覆盖不同，实际耗时和渲染响应也不同；以上通过率不证明任意 MJCF、逐像素、轨迹或性能等价。当前仍使用确定性反馈控制器和解析光谱，默认操作地面仍为程序化工作区。
+
+### 后续生成物与仓库管理
+
+新增截图、视频、完整实验记录和原始日志放入已忽略的 `temp/`；代码、文档和精简验收摘要可正常提交。现有 `docs/assets/` 是本次保留的文档与网页演示素材。
+
+`python -m experiments.publish` 默认把摘要写入 `temp/space_experiments/publication/summary.json`，图片和视频写入其 `media/` 子目录，公开测量证据写入 `media/evidence/`。可通过 `--output`、`--media-dir` 指定其他本地输出路径；后续更新沿用忽略目录约定。
