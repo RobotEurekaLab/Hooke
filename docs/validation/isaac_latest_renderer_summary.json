@@ -1,0 +1,20 @@
+{
+  "kind": "latest_source_renderer_and_native_worker_lease",
+  "checks": [
+    {
+      "backend": "mujoco",
+      "returncode": 0,
+      "path": "temp/backend_parity/comprehensive-latest-renderer-mujoco",
+      "images": 2
+    },
+    {
+      "backend": "isaac",
+      "returncode": 0,
+      "path": "temp/backend_parity/comprehensive-latest-renderer-isaac",
+      "images": 2
+    }
+  ],
+  "passed": true,
+  "new_closed_loop_episodes": 0,
+  "scope": "Actual rendering of recorded successful episode states after shared GPU lease extraction; no additional expert success or pixel equivalence claim."
+}

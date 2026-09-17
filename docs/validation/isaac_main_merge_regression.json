@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-17",
+  "passed": true,
+  "git": {
+    "main_revision": "e09a64e4639323170490fcb60c3924dcd0302d14",
+    "feature_before_merge": "1ef46645e8847294185e91c137ae25cc1312537d",
+    "main_merge_commit": "7fc90671f805f00165dfb6fb7807a2d4df948874",
+    "merge_tree": "f5dceacab17c47e84f042276c6e58448745272ae",
+    "merge_conflicts": 0,
+    "merge_author": "universea <13444641+universea@users.noreply.github.com>"
+  },
+  "tested_code_sha256": {
+    "Hooke/archetypes/demo_export.py": "225f44bf9a2a09a7b53a305dadd183c88c52cec6a26c5eade6301e15092506c0",
+    "Hooke/archetypes/policy_client.py": "8b9f86289980636b158f135e187e12c5344bac020dca543f7435750221454a34",
+    "openpi/src/openpi/training/config.py": "ba86fb083b2e6519c9ceb7dbc9490f7b72d204950c77b01d344ba1dac0113ab9",
+    "tests/test_demo_export.py": "2aab9211dd22f65cfb12d0bbc054c68053d0f7bf5ad7d534f75a84914a8a008c"
+  },
+  "unit": {
+    "total": 156,
+    "passed": 156,
+    "elapsed_s": 29.1,
+    "log_sha256": "7264db29998f2b225bc579a6a37aaf6f27cc49bf8575e470e5aa9e20cbeb81d7",
+    "command": "cd Hooke && OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 ../.venv/bin/python -m unittest discover -s ../tests -v"
+  },
+  "catalogue": {
+    "total": 182,
+    "compiled": 182,
+    "native_preflight_passed": 182,
+    "inventory_sha256": "e81debbc61fd9a1101f68d012cd8ba6bc64dd35070280e8e23da8e2bf7b4fc03",
+    "scope": "CPU_compilation_and_structural_preflight_not_full_native_runtime_qualification"
+  },
+  "demonstration_export": {
+    "passed": true,
+    "training_configs": [
+      "pi05_hooke_push_filling_nozzle_down",
+      "pi05_hooke_hplc_injector_plunger",
+      "pi05_hooke_filter_cartridge_housing",
+      "pi05_hooke_microplate_stacker_eject",
+      "pi05_hooke_close_fume_hood"
+    ],
+    "training_config_count": 5,
+    "training_tasks_registered": true,
+    "training_config_compiles": true,
+    "bad_seed_boundary": {
+      "attempted": 2,
+      "exported": 1,
+      "failed_seed_skipped": true,
+      "next_seed_exported": true,
+      "failure_visible_in_log": true,
+      "scope": "contract_double_without_real_physics"
+    },
+    "real_demo_export": {
+      "task": "close_fume_hood",
+      "backend": "mujoco",
+      "attempted": 2,
+      "exported": 2,
+      "seeds": [
+        0,
+        1
+      ],
+      "episodes": [
+        {
+          "file": "episode_00000.npz",
+          "frames": 189,
+          "observation_state_shape": [
+            189,
+            7
+          ],
+          "image_shape": [
+            189,
+            3,
+            224,
+            224
+          ]
+        },
+        {
+          "file": "episode_00001.npz",
+          "frames": 189,
+          "observation_state_shape": [
+            189,
+            7
+          ],
+          "image_shape": [
+            189,
+            3,
+            224,
+            224
+          ]
+        }
+      ]
+    },
+    "dependencies": {
+      "msgpack": "1.2.2",
+      "websockets": "17.1",
+      "numpy": "2.5.3",
+      "mujoco": "3.3.0"
+    },
+    "scope": "merged_training_configuration_structure_and_export_pipeline_no_training_run"
+  },
+  "renderer_cleanup": {
+    "before_fix": "two_demonstrations_exported_but_interpreter_shutdown_emitted_EGL_cleanup_errors",
+    "after_fix": "two_demonstrations_exported_and_no_cleanup_traceback",
+    "before_log_sha256": "59417a0664fb911c89920ac56efa96d6c664cded1eb6e81cb1e986bc01f0f20c",
+    "after_log_sha256": "ecbb2cdd5bc8e4e4088d0c19100d5ce7cbec8ba60058f84638b2f0663888c651",
+    "missing_inference_dependencies_resolved": true
+  },
+  "paired_runtime_smoke": {
+    "expert_total": 2,
+    "expert_passed": 2,
+    "control_total": 2,
+    "control_false_successes": 0,
+    "same_duration_controls": true,
+    "paired_initial_inputs": [
+      {
+        "task": "space_martian_sample_transfer",
+        "seed": 0,
+        "passed": true,
+        "scene_xml_sha256": "5cb57f08751663249b33ab0f445ff80dd95a7cdcec6ae70e0573eedfc2c73419",
+        "compiled_fields_compared": 412,
+        "different_fields": [],
+        "comparison": "exact_array_values_with_matching_internal_nan_placeholders"
+      }
+    ],
+    "episodes": [
+      {
+        "task": "space_martian_sample_transfer",
+        "backend": "mujoco",
+        "seed": 0,
+        "status": "TASK_SUCCEEDED",
+        "simulation_s": 18.560000000000592,
+        "steps": 9280,
+        "total_wall_s": 15.59074449306354,
+        "assessment": true,
+        "within_declared_time_limit": true,
+        "rendered_frames": 38,
+        "camera": "experiment_closeup",
+        "result_sha256": "d78494cabac2404aec3af5ab752d69f6ff23bd6c1c9be2fe94498e870057ba85",
+        "no_action": {
+          "status": "CONTROL_COMPLETE",
+          "simulation_s": 18.560000000000592,
+          "steps": 9280,
+          "false_success": false,
+          "result_sha256": "c6f3a7eb9c736041e9453d6cd77e57f31fc97558144e46c8319ed8e3614a7af8"
+        },
+        "trajectory_checks": [
+          {
+            "mode": "expert",
+            "steps": 9280,
+            "all_fields_finite": true,
+            "one_row_per_step": true,
+            "timestep_s": 0.002,
+            "sha256": "ff622f8490235de96e909a8c6c87f323587380566fd0e74c26d17f07bbc73cd0"
+          },
+          {
+            "mode": "no_action",
+            "steps": 9280,
+            "all_fields_finite": true,
+            "one_row_per_step": true,
+            "timestep_s": 0.002,
+            "sha256": "44ab8c5b165841e6019ac75079fdd310358724e28f7e88f05600a32f32bc567f"
+          }
+        ]
+      },
+      {
+        "task": "space_martian_sample_transfer",
+        "backend": "isaac",
+        "seed": 0,
+        "status": "TASK_SUCCEEDED",
+        "simulation_s": 18.51,
+        "steps": 9255,
+        "total_wall_s": 103.36716923024505,
+        "assessment": true,
+        "within_declared_time_limit": true,
+        "rendered_frames": 38,
+        "camera": "experiment_closeup",
+        "result_sha256": "a760de3992b977eac59e1bfdc43622fbe01dfcfcb8b71d3a162292ee3ebfb2e6",
+        "no_action": {
+          "status": "CONTROL_COMPLETE",
+          "simulation_s": 18.51,
+          "steps": 9255,
+          "false_success": false,
+          "result_sha256": "e928119920cb5a0ad5f15a3f1639006728d8229eb4069c096092a65389b88aec"
+        },
+        "trajectory_checks": [
+          {
+            "mode": "expert",
+            "steps": 9255,
+            "all_fields_finite": true,
+            "one_row_per_step": true,
+            "timestep_s": 0.002,
+            "sha256": "8aa849d134808df6d35f04db0764b5739f2b9a2582e55c00a5868c6a801dcfbf"
+          },
+          {
+            "mode": "no_action",
+            "steps": 9255,
+            "all_fields_finite": true,
+            "one_row_per_step": true,
+            "timestep_s": 0.002,
+            "sha256": "7d49180673a1fe412e37942e9edf62b0a44a37bdf3a12a31e4c6511b4e942adb"
+          }
+        ]
+      }
+    ],
+    "scope": "one_Martian_sample_transfer_task_at_seed_zero_not_all_tasks_or_seeds"
+  },
+  "web": {
+    "passed": true,
+    "checks": [
+      {
+        "path": "/",
+        "merged_source_status": 200,
+        "live_server_status": 200
+      },
+      {
+        "path": "/backends",
+        "merged_source_status": 200,
+        "live_server_status": 200
+      },
+      {
+        "path": "/space-worlds",
+        "merged_source_status": 200,
+        "live_server_status": 200
+      },
+      {
+        "path": "/space-assets",
+        "merged_source_status": 200,
+        "live_server_status": 200
+      },
+      {
+        "path": "/space-experiments",
+        "merged_source_status": 200,
+        "live_server_status": 200
+      },
+      {
+        "path": "/api/backends/catalog",
+        "merged_source_status": 200,
+        "live_server_status": 200
+      },
+      {
+        "path": "/api/space-experiments",
+        "merged_source_status": 200,
+        "live_server_status": 200
+      },
+      {
+        "path": "/api/science/capabilities",
+        "merged_source_status": 200,
+        "live_server_status": 200
+      }
+    ],
+    "scope": "read_only_route_smoke_on_merged_source_and_existing_lan_service_no_browser_or_gpu_run"
+  },
+  "environment": {
+    "gpu": 6,
+    "driver": "535.230.02",
+    "driver_modified": false,
+    "python": "3.12.4",
+    "packages": {
+      "mujoco": "3.3.0",
+      "numpy": "2.5.3",
+      "msgpack": "1.2.2",
+      "websockets": "17.1"
+    }
+  },
+  "parity_qualified": false,
+  "scope": "fresh_main_integration_regression_separate_from_historical_acceptance_reports_no_pi05_training_run"
+}

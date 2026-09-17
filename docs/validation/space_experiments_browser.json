@@ -1,0 +1,483 @@
+{
+  "terrain_checks": [
+    {
+      "world": "lunar",
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "image_sha": true
+    },
+    {
+      "world": "martian",
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "image_sha": true
+    },
+    {
+      "world": "lunar",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image_sha": true
+    },
+    {
+      "world": "martian",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image_sha": true
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1100
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "checks": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "orbital",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "orbital",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "orbital",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "lunar",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "lunar",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "lunar",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "martian",
+      "operation": "sample_transfer",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "martian",
+      "operation": "mass_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "isaac",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "world": "martian",
+      "operation": "spectral_measurement",
+      "backend": "mujoco",
+      "image_sha": true,
+      "video_metadata": true,
+      "public_curves": true
+    }
+  ],
+  "console_errors": [],
+  "page_errors": [],
+  "passed": true
+}

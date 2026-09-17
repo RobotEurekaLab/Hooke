@@ -1,0 +1,163 @@
+{
+  "kind": "reduced_model_actual_clock_integration",
+  "results": [
+    {
+      "model": "thermal",
+      "backends": {
+        "source": {
+          "status": "CONTROL_COMPLETE",
+          "simulation_s": 89.99999999997165,
+          "wall_s": 8.102602725848556,
+          "report": {
+            "model": "two_node_thermal_v1",
+            "fidelity": "reduced_uncalibrated",
+            "valid": true,
+            "parameters": {
+              "block_capacity_j_k": 20.0,
+              "sample_capacity_j_k": 0.84,
+              "block_sample_w_k": 0.2,
+              "ambient_conductance_w_k": 0.1,
+              "max_power_w": 20.0,
+              "gain_w_k": 5.0,
+              "biot_number": 0.05
+            },
+            "block_c": 32.84313718991354,
+            "sample_c": 32.843136838632766,
+            "elapsed_s": 89.99999999997165,
+            "supplied_j": 230.03568316134647,
+            "ambient_loss_j": 66.58470441860437,
+            "stored_energy_j": 163.45097874272236,
+            "energy_residual_j": -1.9738877199415583e-11,
+            "limitations": [
+              "Well-mixed nodes; no spatial heat field, evaporation or phase changes.",
+              "Parameters are declared examples, not calibrated Eppendorf measurements."
+            ]
+          },
+          "result_sha256": "0ef6e0e6dcfc6c7fd1a5b8357ad7d8a28f9c84e7f400692e5404b7a1fa0620e0"
+        },
+        "native": {
+          "status": "CONTROL_COMPLETE",
+          "simulation_s": 90.0,
+          "wall_s": 129.0731356581673,
+          "report": {
+            "model": "two_node_thermal_v1",
+            "fidelity": "reduced_uncalibrated",
+            "valid": true,
+            "parameters": {
+              "block_capacity_j_k": 20.0,
+              "sample_capacity_j_k": 0.84,
+              "block_sample_w_k": 0.2,
+              "ambient_conductance_w_k": 0.1,
+              "max_power_w": 20.0,
+              "gain_w_k": 5.0,
+              "biot_number": 0.05
+            },
+            "block_c": 32.84313718991354,
+            "sample_c": 32.84313683863277,
+            "elapsed_s": 90.0,
+            "supplied_j": 230.0356831613719,
+            "ambient_loss_j": 66.58470441862649,
+            "stored_energy_j": 163.45097874272236,
+            "energy_residual_j": -2.3064217202772852e-11,
+            "limitations": [
+              "Well-mixed nodes; no spatial heat field, evaporation or phase changes.",
+              "Parameters are declared examples, not calibrated Eppendorf measurements."
+            ]
+          },
+          "result_sha256": "7e11e0d76d10ed51bf52249753319ffd8fae77a1785fff043e5ea6ad78ead53d"
+        }
+      },
+      "source_native_endpoint_difference": 7.105427357601002e-15,
+      "endpoint_field": "sample_c"
+    },
+    {
+      "model": "flow",
+      "backends": {
+        "source": {
+          "status": "CONTROL_COMPLETE",
+          "simulation_s": 4.999999999999671,
+          "wall_s": 19.8722269567661,
+          "report": {
+            "model": "laminar_capillary_v1",
+            "fidelity": "reduced_uncalibrated",
+            "valid": true,
+            "parameters": {
+              "radius_m": 0.0001,
+              "length_m": 0.02,
+              "viscosity_pa_s": 0.001,
+              "density_kg_m3": 1000.0
+            },
+            "elapsed_s": 4.999999999999671,
+            "transferred_m3": 4.9087385212337086e-08,
+            "flow_m3_s": 9.817477042468105e-09,
+            "max_reynolds": 62.50000000000001,
+            "reservoirs": {
+              "source": {
+                "volume_m3": 3.1415317732611316e-05,
+                "capacity_m3": 5.00861045730822e-05
+              },
+              "destination": {
+                "volume_m3": 4.9087385212337086e-08,
+                "capacity_m3": 5.00861045730822e-05
+              }
+            },
+            "conservation_error_m3": 3.90990408452585e-18,
+            "limitations": [
+              "A declared pressure boundary and a fully filled circular capillary.",
+              "No air compliance, free-surface CFD, droplets or physical pipette calibration."
+            ],
+            "pressure_boundary_pa": 5000.0,
+            "geometry_coupling": "original_container_liquid_surfaces",
+            "mechanical_mass_feedback": false
+          },
+          "result_sha256": "fae271ee7e44a8c96936bfa8e244a1a25a61f8020d1b360c863553c38e92cea4"
+        },
+        "native": {
+          "status": "CONTROL_COMPLETE",
+          "simulation_s": 5.0,
+          "wall_s": 95.90404728101566,
+          "report": {
+            "model": "laminar_capillary_v1",
+            "fidelity": "reduced_uncalibrated",
+            "valid": true,
+            "parameters": {
+              "radius_m": 0.0001,
+              "length_m": 0.02,
+              "viscosity_pa_s": 0.001,
+              "density_kg_m3": 1000.0
+            },
+            "elapsed_s": 5.0,
+            "transferred_m3": 4.9087385212340316e-08,
+            "flow_m3_s": 9.817477042468105e-09,
+            "max_reynolds": 62.50000000000001,
+            "reservoirs": {
+              "source": {
+                "volume_m3": 3.1415317732611316e-05,
+                "capacity_m3": 5.00861045730822e-05
+              },
+              "destination": {
+                "volume_m3": 4.9087385212340316e-08,
+                "capacity_m3": 5.00861045730822e-05
+              }
+            },
+            "conservation_error_m3": 3.90990408452585e-18,
+            "limitations": [
+              "A declared pressure boundary and a fully filled circular capillary.",
+              "No air compliance, free-surface CFD, droplets or physical pipette calibration."
+            ],
+            "pressure_boundary_pa": 5000.0,
+            "geometry_coupling": "original_container_liquid_surfaces",
+            "mechanical_mass_feedback": false
+          },
+          "result_sha256": "6c63858d10d6ac015c8bac1ebc09cc72d848f31d065afd7a2940af49e5b09f4b"
+        }
+      },
+      "source_native_endpoint_difference": 3.22931311140702e-21,
+      "endpoint_field": "transferred_m3"
+    }
+  ],
+  "integration_qualified": true,
+  "scientific_process_validated": false,
+  "parity_qualified": false,
+  "scope": "Declared programme boundaries, uncalibrated parameters, original instrument screen and container liquid geometry. No robot boundary-setting, mechanical mass feedback or CFD qualification."
+}

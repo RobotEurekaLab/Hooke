@@ -1,0 +1,3749 @@
+{
+  "date": "2026-09-16",
+  "tested_runtime_commit": "029ac612f749b583dcdbc729f08343e6c249a680",
+  "assessment_version": "hooke-manipulation-v3",
+  "parity_qualified": false,
+  "scientific_process_validated": false,
+  "tested_runtime_files_sha256": {
+    "Hooke/archetypes/centrifuge_insertion.py": "7342cf12eb666e86fe74b45bc8658b9bb025ea5316d43850ee44d68f02d2d926",
+    "Hooke/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+    "Hooke/load_centrifuge_5430.py": "61ae422e8dcd884b7dcc8697242b2d84a97fc89317e0eb584f46fa7d3eafcc21",
+    "Hooke/mani_centrifuge_5430_composite.py": "1a803e57a0954d51f4e05d1565b2dda798cb6d06828bc7fa71697974287ac653",
+    "Hooke/mani_vortex_mixer.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+    "Hooke/backends/assessment.py": "65e301edd07306e2d38b2408c6784873cf644e004b33c7b89607cb876f1fec40",
+    "Hooke/backends/matrix.py": "6a33069268fdbe02905558adfd691484377cca1873ead28d81f8f005d73fdd93"
+  },
+  "shared_source_comparisons": [
+    {
+      "task": "insert_centrifuge_5430",
+      "seed": 0,
+      "mode": "expert",
+      "numeric_fields_equal": 412,
+      "asset_files_equal": 109,
+      "mismatches": []
+    },
+    {
+      "task": "insert_centrifuge_5430",
+      "seed": 8,
+      "mode": "expert",
+      "numeric_fields_equal": 412,
+      "asset_files_equal": 109,
+      "mismatches": []
+    },
+    {
+      "task": "insert_centrifuge_5430",
+      "seed": 0,
+      "mode": "no_action",
+      "numeric_fields_equal": 412,
+      "asset_files_equal": 109,
+      "mismatches": []
+    },
+    {
+      "task": "composite_insert_centrifuge_5430",
+      "seed": 0,
+      "mode": "expert",
+      "numeric_fields_equal": 412,
+      "asset_files_equal": 109,
+      "mismatches": []
+    }
+  ],
+  "unit_tests": {
+    "passed": 36,
+    "failed": 0,
+    "log_sha256": "d678b9292d5b2ff76aaf3dce7d8c17b9e4c608e71fde13b201d4809d9ebaef89"
+  },
+  "reports": {
+    "pipette_native10_followup": {
+      "report_sha256": "71a6f3764bc4ab25ceff64f54259225b54b09b103e1bc401ce27d60a3b53b1cf",
+      "report": {
+        "groups": [
+          {
+            "task": "pipette",
+            "mode": "expert",
+            "backend": "isaac",
+            "requested": 10,
+            "recorded": 10,
+            "completed": 10,
+            "status_counts": {
+              "TASK_FAILED": 10
+            },
+            "legacy_successes": 0,
+            "legacy_constant_count": 0,
+            "v2_assessed": 10,
+            "v2_successes": 10,
+            "v2_successes_within_time": 10,
+            "failure_reasons": {}
+          }
+        ],
+        "pairs": [],
+        "parity_qualified": false,
+        "requested_episodes": 10,
+        "recorded_episodes": 10,
+        "results": [
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 0,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 7220,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.09003747877142346,
+                "radial_offset_m": 0.0020140486671540296,
+                "thumb_joint_rad": 0.4124305844306946,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.93,
+                  "released_under_liquid_s": 13.25,
+                  "withdrawn_s": 13.946
+                },
+                "clearance_m": 0.09003747877142346,
+                "max_depth_m": 0.010013792765661805,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 7220,
+            "simulation_s": 14.44,
+            "total_wall_s": 192.62698921980336,
+            "max_fk_position_error_m": 8.654088885450566e-07,
+            "evidence": "isaac/pipette/seed_0/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 1,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 6988,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.0900184770910532,
+                "radial_offset_m": 0.0020487273370925914,
+                "thumb_joint_rad": 0.41196078062057495,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.462,
+                  "released_under_liquid_s": 12.782,
+                  "withdrawn_s": 13.482000000000001
+                },
+                "clearance_m": 0.0900184770910532,
+                "max_depth_m": 0.010026136903683995,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6988,
+            "simulation_s": 13.976,
+            "total_wall_s": 185.94716748502105,
+            "max_fk_position_error_m": 9.308002883851993e-07,
+            "evidence": "isaac/pipette/seed_1/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 2,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 7029,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.09002364868345906,
+                "radial_offset_m": 0.001844641955080942,
+                "thumb_joint_rad": 0.4122712314128876,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.546,
+                  "released_under_liquid_s": 12.866,
+                  "withdrawn_s": 13.564
+                },
+                "clearance_m": 0.09002364868345906,
+                "max_depth_m": 0.010015465582713705,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 7029,
+            "simulation_s": 14.058,
+            "total_wall_s": 188.8873118199408,
+            "max_fk_position_error_m": 8.924322309388071e-07,
+            "evidence": "isaac/pipette/seed_2/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 3,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 7173,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.09002168898976068,
+                "radial_offset_m": 0.0020146339808009375,
+                "thumb_joint_rad": 0.41195249557495117,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.834,
+                  "released_under_liquid_s": 13.156,
+                  "withdrawn_s": 13.852
+                },
+                "clearance_m": 0.09002168898976068,
+                "max_depth_m": 0.010051909014310292,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 7173,
+            "simulation_s": 14.346,
+            "total_wall_s": 192.013257520739,
+            "max_fk_position_error_m": 8.199212503930257e-07,
+            "evidence": "isaac/pipette/seed_3/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 4,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 6891,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.090016015551313,
+                "radial_offset_m": 0.0019207951754786215,
+                "thumb_joint_rad": 0.4122651517391205,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.284,
+                  "released_under_liquid_s": 12.6,
+                  "withdrawn_s": 13.284
+                },
+                "clearance_m": 0.090016015551313,
+                "max_depth_m": 0.010022249272285153,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6891,
+            "simulation_s": 13.782,
+            "total_wall_s": 192.60198438633233,
+            "max_fk_position_error_m": 9.85152338319258e-07,
+            "evidence": "isaac/pipette/seed_4/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 5,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 7079,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.09002595913610262,
+                "radial_offset_m": 0.0016381246510425817,
+                "thumb_joint_rad": 0.41182082891464233,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.626,
+                  "released_under_liquid_s": 12.950000000000001,
+                  "withdrawn_s": 13.658
+                },
+                "clearance_m": 0.09002595913610262,
+                "max_depth_m": 0.010015920453641728,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 7079,
+            "simulation_s": 14.158,
+            "total_wall_s": 193.09487271821126,
+            "max_fk_position_error_m": 8.673462444211947e-07,
+            "evidence": "isaac/pipette/seed_5/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 6,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 6991,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.09004070162759437,
+                "radial_offset_m": 0.0021192346709014436,
+                "thumb_joint_rad": 0.4123672544956207,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.482,
+                  "released_under_liquid_s": 12.798,
+                  "withdrawn_s": 13.486
+                },
+                "clearance_m": 0.09004070162759437,
+                "max_depth_m": 0.010031531425859625,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6991,
+            "simulation_s": 13.982000000000001,
+            "total_wall_s": 198.55100235901773,
+            "max_fk_position_error_m": 9.105751378864349e-07,
+            "evidence": "isaac/pipette/seed_6/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 7,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 7059,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.09004751258616499,
+                "radial_offset_m": 0.0014881034161234451,
+                "thumb_joint_rad": 0.4118311107158661,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.582,
+                  "released_under_liquid_s": 12.908,
+                  "withdrawn_s": 13.618
+                },
+                "clearance_m": 0.09004751258616499,
+                "max_depth_m": 0.0100203536983767,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 7059,
+            "simulation_s": 14.118,
+            "total_wall_s": 195.9991204570979,
+            "max_fk_position_error_m": 8.471948429535429e-07,
+            "evidence": "isaac/pipette/seed_7/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 8,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 6910,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.09003233243322398,
+                "radial_offset_m": 0.0024049290241370163,
+                "thumb_joint_rad": 0.4120104908943176,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 9.318,
+                  "released_under_liquid_s": 12.636000000000001,
+                  "withdrawn_s": 13.326
+                },
+                "clearance_m": 0.09003233243322398,
+                "max_depth_m": 0.010021344127667704,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6910,
+            "simulation_s": 13.82,
+            "total_wall_s": 189.3742774836719,
+            "max_fk_position_error_m": 8.839211970462384e-07,
+            "evidence": "isaac/pipette/seed_8/expert/result.json"
+          },
+          {
+            "task": "pipette",
+            "backend": "isaac",
+            "seed": 9,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v2",
+              "scope": "motion_sequence_proxy",
+              "samples": 7400,
+              "legacy_constant": null,
+              "checks": {
+                "ordered_submerge_release_withdraw": true,
+                "final_clearance_50mm": true,
+                "liquid_available": true
+              },
+              "metrics": {
+                "tip_depth_m": -0.09002393743352505,
+                "radial_offset_m": 0.0016076727413693287,
+                "thumb_joint_rad": 0.41194480657577515,
+                "thumb_command": 0.4,
+                "phase": "complete",
+                "events": {
+                  "submerged_pressed_s": 10.266,
+                  "released_under_liquid_s": 13.59,
+                  "withdrawn_s": 14.298
+                },
+                "clearance_m": 0.09002393743352505,
+                "max_depth_m": 0.010022256475872526,
+                "liquid_available": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 7400,
+            "simulation_s": 14.8,
+            "total_wall_s": 198.90776584902778,
+            "max_fk_position_error_m": 8.814770943531009e-07,
+            "evidence": "isaac/pipette/seed_9/expert/result.json"
+          }
+        ],
+        "provenance": {
+          "git_head": "1d7086c602b0d4a4ff38347a02314bb15dfca635",
+          "inputs_sha256": "953d3724569058d0f756ce255e0c1e24a60d3dc85bc1969089525b6614f4b6e6",
+          "assessment_version": "hooke-manipulation-v2",
+          "python": "3.12.4",
+          "packages": {
+            "mujoco": "3.3.0",
+            "numpy": "2.5.3",
+            "scipy": "1.18.1"
+          },
+          "isaac_task_threads": "8"
+        }
+      }
+    },
+    "insertion_v3_source10": {
+      "report_sha256": "9594b30592f3745cc141ba53860a1f4bb0dba0949a72976212fe09d0e4e4a9b7",
+      "report": {
+        "schema_version": 2,
+        "groups": [
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "mode": "expert",
+            "backend": "mujoco",
+            "requested": 10,
+            "recorded": 10,
+            "completed": 10,
+            "status_counts": {
+              "TASK_SUCCEEDED": 10
+            },
+            "legacy_successes": 10,
+            "legacy_constant_count": 0,
+            "assessment_count": 10,
+            "assessment_successes": 10,
+            "assessment_successes_within_time": 10,
+            "failure_reasons": {}
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "mode": "expert",
+            "backend": "mujoco",
+            "requested": 10,
+            "recorded": 10,
+            "completed": 10,
+            "status_counts": {
+              "TASK_SUCCEEDED": 10
+            },
+            "legacy_successes": 10,
+            "legacy_constant_count": 0,
+            "assessment_count": 10,
+            "assessment_successes": 10,
+            "assessment_successes_within_time": 10,
+            "failure_reasons": {}
+          }
+        ],
+        "pairs": [],
+        "parity_qualified": false,
+        "requested_episodes": 20,
+        "recorded_episodes": 20,
+        "results": [
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 0,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6192,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 8,
+                "legacy_world_target_distance_m": 0.014000685789558535,
+                "height_m": 0.9593316271766078,
+                "target_distance_m": 0.001287817652593147,
+                "tilt_error_rad": 0.003844199610332666,
+                "released": true,
+                "stable_s": 3.028000000001011,
+                "anchor": [
+                  -0.00016995795773968756,
+                  -6.6598651562195516e-06,
+                  0.0012686848513708447
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6192,
+            "simulation_s": 12.384000000000805,
+            "total_wall_s": 33.08411602163687,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_0/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 1,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6465,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 1,
+                "legacy_world_target_distance_m": 0.05036381046619512,
+                "height_m": 0.9589905500525332,
+                "target_distance_m": 0.000537804565777251,
+                "tilt_error_rad": 0.012965057771110584,
+                "released": true,
+                "stable_s": 2.36600000000079,
+                "anchor": [
+                  0.00041925688418472024,
+                  -0.0003342801121013346,
+                  6.435496507584175e-05
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6465,
+            "simulation_s": 12.930000000000987,
+            "total_wall_s": 111.45162372523919,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_1/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 2,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6464,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 4,
+                "legacy_world_target_distance_m": 0.01092550984306675,
+                "height_m": 0.959093902929754,
+                "target_distance_m": 0.0006848543092162721,
+                "tilt_error_rad": 0.01585413941005421,
+                "released": true,
+                "stable_s": 3.0440000000010166,
+                "anchor": [
+                  2.4486806390829215e-05,
+                  -7.561257065988428e-05,
+                  0.0006564524804502761
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6464,
+            "simulation_s": 12.928000000000987,
+            "total_wall_s": 33.08040152583271,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_2/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 3,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6610,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 6,
+                "legacy_world_target_distance_m": 0.020963997466362412,
+                "height_m": 0.9591070769849772,
+                "target_distance_m": 0.000821193312703922,
+                "tilt_error_rad": 0.0039964656525596125,
+                "released": true,
+                "stable_s": 3.0400000000010152,
+                "anchor": [
+                  -9.592463745292681e-05,
+                  -1.860027456677545e-05,
+                  0.0008359164032734436
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6610,
+            "simulation_s": 13.220000000001084,
+            "total_wall_s": 32.96058964636177,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_3/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 4,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6316,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 6,
+                "legacy_world_target_distance_m": 0.020143953281677163,
+                "height_m": 0.9591134264452649,
+                "target_distance_m": 0.0008519138733444445,
+                "tilt_error_rad": 0.0034463078583951185,
+                "released": true,
+                "stable_s": 3.0380000000010146,
+                "anchor": [
+                  -0.00011120946470984691,
+                  -1.006428474561148e-05,
+                  0.0008639630670129746
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6316,
+            "simulation_s": 12.632000000000888,
+            "total_wall_s": 35.9326507197693,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_4/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 5,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6637,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 29,
+                "legacy_world_target_distance_m": 0.03553391556934203,
+                "height_m": 0.9591373671416178,
+                "target_distance_m": 0.0008554909775762274,
+                "tilt_error_rad": 0.020915731108790324,
+                "released": true,
+                "stable_s": 3.042000000001016,
+                "anchor": [
+                  -1.3472315049366528e-06,
+                  -0.00043156081933298123,
+                  0.000760272001759342
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6637,
+            "simulation_s": 13.274000000001102,
+            "total_wall_s": 41.711649565026164,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_5/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 6,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6477,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 6,
+                "legacy_world_target_distance_m": 0.01563298491233146,
+                "height_m": 0.9591392168776861,
+                "target_distance_m": 0.0009067176956894699,
+                "tilt_error_rad": 0.00533970824830942,
+                "released": true,
+                "stable_s": 3.036000000001014,
+                "anchor": [
+                  -0.00011987091642527313,
+                  -3.988738631138442e-05,
+                  0.0009170692028739652
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6477,
+            "simulation_s": 12.954000000000995,
+            "total_wall_s": 32.539972729980946,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_6/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 7,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6367,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 0,
+                "legacy_world_target_distance_m": 0.04446180032559967,
+                "height_m": 0.9590910415762426,
+                "target_distance_m": 0.0005794066974595716,
+                "tilt_error_rad": 0.01608882296221808,
+                "released": true,
+                "stable_s": 2.3580000000007875,
+                "anchor": [
+                  0.0003641694819262862,
+                  -0.00037732148311704964,
+                  0.0002711788898937318
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6367,
+            "simulation_s": 12.734000000000922,
+            "total_wall_s": 31.915362254250795,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_7/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 8,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6685,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 29,
+                "legacy_world_target_distance_m": 0.14333274789811032,
+                "height_m": 0.9591139381391883,
+                "target_distance_m": 0.0006720000357855777,
+                "tilt_error_rad": 0.019953258794140217,
+                "released": true,
+                "stable_s": 1.01800000000034,
+                "anchor": [
+                  0.0003475828862521036,
+                  -0.00042267894790609846,
+                  0.0003308539436649744
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6685,
+            "simulation_s": 13.370000000001134,
+            "total_wall_s": 32.431003846693784,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_8/expert/result.json"
+          },
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 9,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6451,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 8,
+                "legacy_world_target_distance_m": 0.013984165312251187,
+                "height_m": 0.9593257309040187,
+                "target_distance_m": 0.0012762653160493917,
+                "tilt_error_rad": 0.004491540559862778,
+                "released": true,
+                "stable_s": 3.028000000001011,
+                "anchor": [
+                  -0.00016782600950049364,
+                  -4.746907136625648e-06,
+                  0.0012568101459099984
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6451,
+            "simulation_s": 12.902000000000978,
+            "total_wall_s": 32.66644186107442,
+            "evidence": "mujoco/composite_insert_centrifuge_5430/seed_9/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 0,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6192,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 8,
+                "legacy_world_target_distance_m": 0.014000685789558535,
+                "height_m": 0.9593316271766078,
+                "target_distance_m": 0.001287817652593147,
+                "tilt_error_rad": 0.003844199610332666,
+                "released": true,
+                "stable_s": 3.028000000001011,
+                "anchor": [
+                  -0.00016995795773968756,
+                  -6.6598651562195516e-06,
+                  0.0012686848513708447
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6192,
+            "simulation_s": 12.384000000000805,
+            "total_wall_s": 32.0317173008807,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_0/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 1,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6465,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 1,
+                "legacy_world_target_distance_m": 0.05036381046619512,
+                "height_m": 0.9589905500525332,
+                "target_distance_m": 0.000537804565777251,
+                "tilt_error_rad": 0.012965057771110584,
+                "released": true,
+                "stable_s": 2.36600000000079,
+                "anchor": [
+                  0.00041925688418472024,
+                  -0.0003342801121013346,
+                  6.435496507584175e-05
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6465,
+            "simulation_s": 12.930000000000987,
+            "total_wall_s": 36.08894149074331,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_1/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 2,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6464,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 4,
+                "legacy_world_target_distance_m": 0.01092550984306675,
+                "height_m": 0.959093902929754,
+                "target_distance_m": 0.0006848543092162721,
+                "tilt_error_rad": 0.01585413941005421,
+                "released": true,
+                "stable_s": 3.0440000000010166,
+                "anchor": [
+                  2.4486806390829215e-05,
+                  -7.561257065988428e-05,
+                  0.0006564524804502761
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6464,
+            "simulation_s": 12.928000000000987,
+            "total_wall_s": 31.897159214131534,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_2/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 3,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6610,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 6,
+                "legacy_world_target_distance_m": 0.020963997466362412,
+                "height_m": 0.9591070769849772,
+                "target_distance_m": 0.000821193312703922,
+                "tilt_error_rad": 0.0039964656525596125,
+                "released": true,
+                "stable_s": 3.0400000000010152,
+                "anchor": [
+                  -9.592463745292681e-05,
+                  -1.860027456677545e-05,
+                  0.0008359164032734436
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6610,
+            "simulation_s": 13.220000000001084,
+            "total_wall_s": 32.05367436911911,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_3/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 4,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6316,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 6,
+                "legacy_world_target_distance_m": 0.020143953281677163,
+                "height_m": 0.9591134264452649,
+                "target_distance_m": 0.0008519138733444445,
+                "tilt_error_rad": 0.0034463078583951185,
+                "released": true,
+                "stable_s": 3.0380000000010146,
+                "anchor": [
+                  -0.00011120946470984691,
+                  -1.006428474561148e-05,
+                  0.0008639630670129746
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6316,
+            "simulation_s": 12.632000000000888,
+            "total_wall_s": 31.880441618151963,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_4/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 5,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6637,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 29,
+                "legacy_world_target_distance_m": 0.03553391556934203,
+                "height_m": 0.9591373671416178,
+                "target_distance_m": 0.0008554909775762274,
+                "tilt_error_rad": 0.020915731108790324,
+                "released": true,
+                "stable_s": 3.042000000001016,
+                "anchor": [
+                  -1.3472315049366528e-06,
+                  -0.00043156081933298123,
+                  0.000760272001759342
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6637,
+            "simulation_s": 13.274000000001102,
+            "total_wall_s": 31.81676146388054,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_5/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 6,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6477,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 6,
+                "legacy_world_target_distance_m": 0.01563298491233146,
+                "height_m": 0.9591392168776861,
+                "target_distance_m": 0.0009067176956894699,
+                "tilt_error_rad": 0.00533970824830942,
+                "released": true,
+                "stable_s": 3.036000000001014,
+                "anchor": [
+                  -0.00011987091642527313,
+                  -3.988738631138442e-05,
+                  0.0009170692028739652
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6477,
+            "simulation_s": 12.954000000000995,
+            "total_wall_s": 32.32201830018312,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_6/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 7,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6367,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 0,
+                "legacy_world_target_distance_m": 0.04446180032559967,
+                "height_m": 0.9590910415762426,
+                "target_distance_m": 0.0005794066974595716,
+                "tilt_error_rad": 0.01608882296221808,
+                "released": true,
+                "stable_s": 2.3580000000007875,
+                "anchor": [
+                  0.0003641694819262862,
+                  -0.00037732148311704964,
+                  0.0002711788898937318
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6367,
+            "simulation_s": 12.734000000000922,
+            "total_wall_s": 32.76494523091242,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_7/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 8,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6685,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 29,
+                "legacy_world_target_distance_m": 0.14333274789811032,
+                "height_m": 0.9591139381391883,
+                "target_distance_m": 0.0006720000357855777,
+                "tilt_error_rad": 0.019953258794140217,
+                "released": true,
+                "stable_s": 1.01800000000034,
+                "anchor": [
+                  0.0003475828862521036,
+                  -0.00042267894790609846,
+                  0.0003308539436649744
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6685,
+            "simulation_s": 13.370000000001134,
+            "total_wall_s": 55.52480539679527,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_8/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 9,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6451,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 8,
+                "legacy_world_target_distance_m": 0.013984165312251187,
+                "height_m": 0.9593257309040187,
+                "target_distance_m": 0.0012762653160493917,
+                "tilt_error_rad": 0.004491540559862778,
+                "released": true,
+                "stable_s": 3.028000000001011,
+                "anchor": [
+                  -0.00016782600950049364,
+                  -4.746907136625648e-06,
+                  0.0012568101459099984
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6451,
+            "simulation_s": 12.902000000000978,
+            "total_wall_s": 32.11916989879683,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_9/expert/result.json"
+          }
+        ],
+        "provenance": {
+          "git_head": "1d7086c602b0d4a4ff38347a02314bb15dfca635",
+          "inputs_sha256": "80689a418d749f3b8280f461c4dde3e70b8e9ab21446c6b8a27c4821d1dd7b2a",
+          "assessment_version": "hooke-manipulation-v3",
+          "python": "3.12.4",
+          "packages": {
+            "mujoco": "3.3.0",
+            "numpy": "2.5.3",
+            "scipy": "1.18.1"
+          },
+          "isaac_task_threads": "8"
+        }
+      }
+    },
+    "insertion_v3_native_trial": {
+      "report_sha256": "11f6a25c36acc3e6c8914429377b82bcd51d4f35c50bc5a21c9201fc276ebc99",
+      "report": {
+        "schema_version": 2,
+        "groups": [
+          {
+            "task": "insert_centrifuge_5430",
+            "mode": "expert",
+            "backend": "isaac",
+            "requested": 2,
+            "recorded": 2,
+            "completed": 2,
+            "status_counts": {
+              "TASK_SUCCEEDED": 2
+            },
+            "legacy_successes": 2,
+            "legacy_constant_count": 0,
+            "assessment_count": 2,
+            "assessment_successes": 2,
+            "assessment_successes_within_time": 2,
+            "failure_reasons": {}
+          }
+        ],
+        "pairs": [],
+        "parity_qualified": false,
+        "requested_episodes": 2,
+        "recorded_episodes": 2,
+        "results": [
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "isaac",
+            "seed": 0,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6184,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 8,
+                "legacy_world_target_distance_m": 0.09900970178051655,
+                "height_m": 0.9595376253128052,
+                "target_distance_m": 0.0017182832569268885,
+                "tilt_error_rad": 0.017267997611015697,
+                "released": true,
+                "stable_s": 1.588000000000001,
+                "anchor": [
+                  -0.00021268101010874863,
+                  -0.00022605660659860515,
+                  0.0015366707949632085
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6184,
+            "simulation_s": 12.368,
+            "total_wall_s": 209.30893587088212,
+            "max_fk_position_error_m": 5.472382354737618e-07,
+            "evidence": "isaac/insert_centrifuge_5430/seed_0/expert/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "isaac",
+            "seed": 8,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6695,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 29,
+                "legacy_world_target_distance_m": 0.06641773468385001,
+                "height_m": 0.9596110582351685,
+                "target_distance_m": 0.001705978529702829,
+                "tilt_error_rad": 0.010896613911436965,
+                "released": true,
+                "stable_s": 2.1880000000000006,
+                "anchor": [
+                  -0.00013115679809876568,
+                  -6.201090129420868e-05,
+                  0.0014438816201941098
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6695,
+            "simulation_s": 13.39,
+            "total_wall_s": 226.70883168792352,
+            "max_fk_position_error_m": 5.766910026733781e-07,
+            "evidence": "isaac/insert_centrifuge_5430/seed_8/expert/result.json"
+          }
+        ],
+        "provenance": {
+          "git_head": "1d7086c602b0d4a4ff38347a02314bb15dfca635",
+          "inputs_sha256": "80689a418d749f3b8280f461c4dde3e70b8e9ab21446c6b8a27c4821d1dd7b2a",
+          "assessment_version": "hooke-manipulation-v3",
+          "python": "3.12.4",
+          "packages": {
+            "mujoco": "3.3.0",
+            "numpy": "2.5.3",
+            "scipy": "1.18.1"
+          },
+          "isaac_task_threads": "8"
+        }
+      }
+    },
+    "vortex_v3_source_controls": {
+      "report_sha256": "ef6a2e1ce2d3e6d1cad230cf746b030432fa7b058ed2597d1fd7c8ee9395889e",
+      "report": {
+        "schema_version": 2,
+        "groups": [
+          {
+            "task": "vortex_mixer",
+            "mode": "expert",
+            "backend": "mujoco",
+            "requested": 1,
+            "recorded": 1,
+            "completed": 1,
+            "status_counts": {
+              "TASK_FAILED": 1
+            },
+            "legacy_successes": 0,
+            "legacy_constant_count": 1,
+            "assessment_count": 1,
+            "assessment_successes": 1,
+            "assessment_successes_within_time": 0,
+            "failure_reasons": {}
+          },
+          {
+            "task": "vortex_mixer",
+            "mode": "no_action",
+            "backend": "mujoco",
+            "requested": 1,
+            "recorded": 1,
+            "completed": 1,
+            "status_counts": {
+              "CONTROL_COMPLETE": 1
+            },
+            "legacy_successes": 0,
+            "legacy_constant_count": 1,
+            "assessment_count": 1,
+            "assessment_successes": 0,
+            "assessment_successes_within_time": 0,
+            "failure_reasons": {
+              "tube_lifted_30mm": 1,
+              "continuous_rotating_tube_contact_500ms": 1
+            }
+          }
+        ],
+        "pairs": [],
+        "parity_qualified": false,
+        "requested_episodes": 2,
+        "recorded_episodes": 2,
+        "results": [
+          {
+            "task": "vortex_mixer",
+            "backend": "mujoco",
+            "seed": 0,
+            "mode": "expert",
+            "status": "TASK_FAILED",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": false,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 33210,
+              "legacy_constant": false,
+              "checks": {
+                "tube_lifted_30mm": true,
+                "continuous_rotating_tube_contact_500ms": true,
+                "returned_within_30mm": true,
+                "tube_released": true,
+                "platform_stopped": true
+              },
+              "metrics": {
+                "lifted": true,
+                "active_run_s": 0.0,
+                "longest_active_s": 12.246000000011797,
+                "contact_s": 32.89200000000716,
+                "peak_speed_rad_s": 122.11495001620831,
+                "returned": true,
+                "released": true,
+                "stopped": true
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": false,
+              "success_within_time_limit": false,
+              "scientific_process_validated": false
+            },
+            "steps": 33210,
+            "simulation_s": 66.4200000000266,
+            "total_wall_s": 124.95707715814933,
+            "evidence": "mujoco/vortex_mixer/seed_0/expert/result.json"
+          },
+          {
+            "task": "vortex_mixer",
+            "backend": "mujoco",
+            "seed": 0,
+            "mode": "no_action",
+            "status": "CONTROL_COMPLETE",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 15000,
+              "legacy_constant": false,
+              "checks": {
+                "tube_lifted_30mm": false,
+                "continuous_rotating_tube_contact_500ms": false,
+                "returned_within_30mm": true,
+                "tube_released": true,
+                "platform_stopped": true
+              },
+              "metrics": {
+                "lifted": false,
+                "active_run_s": 0.0,
+                "longest_active_s": 0.0,
+                "contact_s": 0.0,
+                "peak_speed_rad_s": 0.0,
+                "returned": true,
+                "released": true,
+                "stopped": true
+              },
+              "failure_reasons": [
+                "tube_lifted_30mm",
+                "continuous_rotating_tube_contact_500ms"
+              ],
+              "success": false,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": false,
+              "scientific_process_validated": false
+            },
+            "steps": 15000,
+            "simulation_s": 29.99999999999425,
+            "total_wall_s": 72.58298973506317,
+            "evidence": "mujoco/vortex_mixer/seed_0/no_action/result.json"
+          }
+        ],
+        "provenance": {
+          "git_head": "1d7086c602b0d4a4ff38347a02314bb15dfca635",
+          "inputs_sha256": "80689a418d749f3b8280f461c4dde3e70b8e9ab21446c6b8a27c4821d1dd7b2a",
+          "assessment_version": "hooke-manipulation-v3",
+          "python": "3.12.4",
+          "packages": {
+            "mujoco": "3.3.0",
+            "numpy": "2.5.3",
+            "scipy": "1.18.1"
+          },
+          "isaac_task_threads": "8"
+        }
+      }
+    },
+    "insertion_v3_controls": {
+      "report_sha256": "ba5f52fbabd9b6f51b02e9f3d0fe11b18e5a571b95424fc89b16ba99eff8ef59",
+      "report": {
+        "schema_version": 2,
+        "groups": [
+          {
+            "task": "insert_centrifuge_5430",
+            "mode": "no_action",
+            "backend": "mujoco",
+            "requested": 1,
+            "recorded": 1,
+            "completed": 1,
+            "status_counts": {
+              "CONTROL_COMPLETE": 1
+            },
+            "legacy_successes": 0,
+            "legacy_constant_count": 0,
+            "assessment_count": 1,
+            "assessment_successes": 0,
+            "assessment_successes_within_time": 0,
+            "failure_reasons": {
+              "height_955_to_961mm": 1,
+              "target_within_5mm": 1,
+              "tube_axis_within_5deg": 1,
+              "seated_stable_500ms": 1
+            }
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "mode": "no_action",
+            "backend": "isaac",
+            "requested": 1,
+            "recorded": 1,
+            "completed": 1,
+            "status_counts": {
+              "CONTROL_COMPLETE": 1
+            },
+            "legacy_successes": 0,
+            "legacy_constant_count": 0,
+            "assessment_count": 1,
+            "assessment_successes": 0,
+            "assessment_successes_within_time": 0,
+            "failure_reasons": {
+              "height_955_to_961mm": 1,
+              "target_within_5mm": 1,
+              "tube_axis_within_5deg": 1,
+              "seated_stable_500ms": 1
+            }
+          }
+        ],
+        "pairs": [
+          {
+            "task": "insert_centrifuge_5430",
+            "seed": 0,
+            "mode": "no_action",
+            "completed": true,
+            "legacy_agreement": true,
+            "assessment_agreement": true
+          }
+        ],
+        "parity_qualified": false,
+        "requested_episodes": 2,
+        "recorded_episodes": 2,
+        "results": [
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "mujoco",
+            "seed": 0,
+            "mode": "no_action",
+            "status": "CONTROL_COMPLETE",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": false,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 7500,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": false,
+                "target_within_5mm": false,
+                "tube_axis_within_5deg": false,
+                "tube_released": true,
+                "seated_stable_500ms": false
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 8,
+                "legacy_world_target_distance_m": 0.6093591200859958,
+                "height_m": 0.8249498871003629,
+                "target_distance_m": 0.6093593974034764,
+                "tilt_error_rad": 0.8803100050116195,
+                "released": true,
+                "stable_s": 0.0,
+                "anchor": null
+              },
+              "failure_reasons": [
+                "height_955_to_961mm",
+                "target_within_5mm",
+                "tube_axis_within_5deg",
+                "seated_stable_500ms"
+              ],
+              "success": false,
+              "within_declared_time_limit": false,
+              "success_within_time_limit": false,
+              "scientific_process_validated": false
+            },
+            "steps": 7500,
+            "simulation_s": 15.000000000001679,
+            "total_wall_s": 25.171976749785244,
+            "evidence": "mujoco/insert_centrifuge_5430/seed_0/no_action/result.json"
+          },
+          {
+            "task": "insert_centrifuge_5430",
+            "backend": "isaac",
+            "seed": 0,
+            "mode": "no_action",
+            "status": "CONTROL_COMPLETE",
+            "source_success": false,
+            "source_check_kind": "predicate",
+            "source_check": false,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 7500,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": false,
+                "target_within_5mm": false,
+                "tube_axis_within_5deg": false,
+                "tube_released": true,
+                "seated_stable_500ms": false
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 8,
+                "legacy_world_target_distance_m": 0.6095713930694574,
+                "height_m": 0.8239802122116089,
+                "target_distance_m": 0.6094974439059541,
+                "tilt_error_rad": 0.880339027685737,
+                "released": true,
+                "stable_s": 0.0,
+                "anchor": null
+              },
+              "failure_reasons": [
+                "height_955_to_961mm",
+                "target_within_5mm",
+                "tube_axis_within_5deg",
+                "seated_stable_500ms"
+              ],
+              "success": false,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": false,
+              "scientific_process_validated": false
+            },
+            "steps": 7500,
+            "simulation_s": 15.0,
+            "total_wall_s": 224.54227725509554,
+            "max_fk_position_error_m": 3.8206813299617515e-07,
+            "evidence": "isaac/insert_centrifuge_5430/seed_0/no_action/result.json"
+          }
+        ],
+        "provenance": {
+          "git_head": "1d7086c602b0d4a4ff38347a02314bb15dfca635",
+          "inputs_sha256": "80689a418d749f3b8280f461c4dde3e70b8e9ab21446c6b8a27c4821d1dd7b2a",
+          "assessment_version": "hooke-manipulation-v3",
+          "python": "3.12.4",
+          "packages": {
+            "mujoco": "3.3.0",
+            "numpy": "2.5.3",
+            "scipy": "1.18.1"
+          },
+          "isaac_task_threads": "8"
+        }
+      }
+    },
+    "insertion_v3_composite_native": {
+      "report_sha256": "80f609c680075b25e492feafa9efb896c139f779e67ba3537bfb6529af690943",
+      "report": {
+        "schema_version": 2,
+        "groups": [
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "mode": "expert",
+            "backend": "isaac",
+            "requested": 1,
+            "recorded": 1,
+            "completed": 1,
+            "status_counts": {
+              "TASK_SUCCEEDED": 1
+            },
+            "legacy_successes": 1,
+            "legacy_constant_count": 0,
+            "assessment_count": 1,
+            "assessment_successes": 1,
+            "assessment_successes_within_time": 1,
+            "failure_reasons": {}
+          }
+        ],
+        "pairs": [],
+        "parity_qualified": false,
+        "requested_episodes": 1,
+        "recorded_episodes": 1,
+        "results": [
+          {
+            "task": "composite_insert_centrifuge_5430",
+            "backend": "isaac",
+            "seed": 0,
+            "mode": "expert",
+            "status": "TASK_SUCCEEDED",
+            "source_success": true,
+            "source_check_kind": "predicate",
+            "source_check": true,
+            "within_declared_time_limit": true,
+            "assessment": {
+              "version": "hooke-manipulation-v3",
+              "scope": "manipulation",
+              "samples": 6184,
+              "legacy_constant": null,
+              "checks": {
+                "height_955_to_961mm": true,
+                "target_within_5mm": true,
+                "tube_axis_within_5deg": true,
+                "tube_released": true,
+                "seated_stable_500ms": true
+              },
+              "metrics": {
+                "target_frame": "current_rotor_slot",
+                "slot_id": 8,
+                "legacy_world_target_distance_m": 0.09900970178051655,
+                "height_m": 0.9595376253128052,
+                "target_distance_m": 0.0017182832569268885,
+                "tilt_error_rad": 0.017267997611015697,
+                "released": true,
+                "stable_s": 1.588000000000001,
+                "anchor": [
+                  -0.00021268101010874863,
+                  -0.00022605660659860515,
+                  0.0015366707949632085
+                ]
+              },
+              "failure_reasons": [],
+              "success": true,
+              "within_declared_time_limit": true,
+              "success_within_time_limit": true,
+              "scientific_process_validated": false
+            },
+            "steps": 6184,
+            "simulation_s": 12.368,
+            "total_wall_s": 207.56668856320903,
+            "max_fk_position_error_m": 5.472382354737618e-07,
+            "evidence": "isaac/composite_insert_centrifuge_5430/seed_0/expert/result.json"
+          }
+        ],
+        "provenance": {
+          "git_head": "1d7086c602b0d4a4ff38347a02314bb15dfca635",
+          "inputs_sha256": "80689a418d749f3b8280f461c4dde3e70b8e9ab21446c6b8a27c4821d1dd7b2a",
+          "assessment_version": "hooke-manipulation-v3",
+          "python": "3.12.4",
+          "packages": {
+            "mujoco": "3.3.0",
+            "numpy": "2.5.3",
+            "scipy": "1.18.1"
+          },
+          "isaac_task_threads": "8"
+        }
+      }
+    }
+  },
+  "candidate_source": {
+    "report_sha256": "ee027ec26e4f7939876c15741893b5922f27a4216ddbeb07f95e0764c4cdfc1c",
+    "report": {
+      "requested": 30,
+      "recorded": 30,
+      "results": [
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 0,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 11.784000000000605,
+          "total_wall_s": 29.306583472061902,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 5892,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 8,
+              "legacy_world_target_distance_m": 0.011184529642176613,
+              "height_m": 0.9593315247992643,
+              "target_distance_m": 0.0012881413364746622,
+              "tilt_error_rad": 0.003943315750535044,
+              "released": true,
+              "stable_s": 2.428000000000811,
+              "anchor": [
+                -0.00016995795773968756,
+                -6.6598651562195516e-06,
+                0.0012686848513708447
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 0,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 11.784000000000605,
+          "total_wall_s": 29.755381338763982,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 5892,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 8,
+              "legacy_world_target_distance_m": 0.011184529642176613,
+              "height_m": 0.9593315247992643,
+              "target_distance_m": 0.0012881413364746622,
+              "tilt_error_rad": 0.003943315750535044,
+              "released": true,
+              "stable_s": 2.428000000000811,
+              "anchor": [
+                -0.00016995795773968756,
+                -6.6598651562195516e-06,
+                0.0012686848513708447
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 1,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.330000000000787,
+          "total_wall_s": 30.357002295088023,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6165,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 1,
+              "legacy_world_target_distance_m": 0.05290833753228806,
+              "height_m": 0.9589905408027305,
+              "target_distance_m": 0.0005376497346127456,
+              "tilt_error_rad": 0.012948665599623387,
+              "released": true,
+              "stable_s": 1.7660000000005898,
+              "anchor": [
+                0.00041925688418472024,
+                -0.0003342801121013346,
+                6.435496507584175e-05
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 1,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.330000000000787,
+          "total_wall_s": 30.206894049886614,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6165,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 1,
+              "legacy_world_target_distance_m": 0.05290833753228806,
+              "height_m": 0.9589905408027305,
+              "target_distance_m": 0.0005376497346127456,
+              "tilt_error_rad": 0.012948665599623387,
+              "released": true,
+              "stable_s": 1.7660000000005898,
+              "anchor": [
+                0.00041925688418472024,
+                -0.0003342801121013346,
+                6.435496507584175e-05
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 0,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 66.4200000000266,
+          "total_wall_s": 124.13107356568798,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 33210,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000011797,
+              "contact_s": 32.89200000000716,
+              "peak_speed_rad_s": 122.11495001620831,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 2,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.328000000000786,
+          "total_wall_s": 29.864532820880413,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6164,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 4,
+              "legacy_world_target_distance_m": 0.008754058061937436,
+              "height_m": 0.9590942072973739,
+              "target_distance_m": 0.0006825913155924318,
+              "tilt_error_rad": 0.011426600079308232,
+              "released": true,
+              "stable_s": 2.444000000000816,
+              "anchor": [
+                2.4486806390829215e-05,
+                -7.561257065988428e-05,
+                0.0006564524804502761
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 2,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.328000000000786,
+          "total_wall_s": 29.748188223224133,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6164,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 4,
+              "legacy_world_target_distance_m": 0.008754058061937436,
+              "height_m": 0.9590942072973739,
+              "target_distance_m": 0.0006825913155924318,
+              "tilt_error_rad": 0.011426600079308232,
+              "released": true,
+              "stable_s": 2.444000000000816,
+              "anchor": [
+                2.4486806390829215e-05,
+                -7.561257065988428e-05,
+                0.0006564524804502761
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 1,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 70.25800000001766,
+          "total_wall_s": 136.33510252507403,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 35129,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000014966,
+              "contact_s": 32.890000000009515,
+              "peak_speed_rad_s": 122.11494966020481,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 3,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.620000000000884,
+          "total_wall_s": 30.418573602102697,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6310,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 6,
+              "legacy_world_target_distance_m": 0.016836001164955944,
+              "height_m": 0.959107027361613,
+              "target_distance_m": 0.000822790576904825,
+              "tilt_error_rad": 0.004062782474438258,
+              "released": true,
+              "stable_s": 2.440000000000815,
+              "anchor": [
+                -9.592463745292681e-05,
+                -1.860027456677545e-05,
+                0.0008359164032734436
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 3,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.620000000000884,
+          "total_wall_s": 30.127274630125612,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6310,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 6,
+              "legacy_world_target_distance_m": 0.016836001164955944,
+              "height_m": 0.959107027361613,
+              "target_distance_m": 0.000822790576904825,
+              "tilt_error_rad": 0.004062782474438258,
+              "released": true,
+              "stable_s": 2.440000000000815,
+              "anchor": [
+                -9.592463745292681e-05,
+                -1.860027456677545e-05,
+                0.0008359164032734436
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 2,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 66.4200000000266,
+          "total_wall_s": 123.47663676319644,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 33210,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000011797,
+              "contact_s": 32.89200000000716,
+              "peak_speed_rad_s": 122.11495001620831,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 4,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.032000000000687,
+          "total_wall_s": 30.40882351109758,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6016,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 6,
+              "legacy_world_target_distance_m": 0.016163397977483,
+              "height_m": 0.9591131726198989,
+              "target_distance_m": 0.00085308325978635,
+              "tilt_error_rad": 0.003586020942093167,
+              "released": true,
+              "stable_s": 2.438000000000814,
+              "anchor": [
+                -0.00011120946470984691,
+                -1.006428474561148e-05,
+                0.0008639630670129746
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 4,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.032000000000687,
+          "total_wall_s": 30.041381596121937,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6016,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 6,
+              "legacy_world_target_distance_m": 0.016163397977483,
+              "height_m": 0.9591131726198989,
+              "target_distance_m": 0.00085308325978635,
+              "tilt_error_rad": 0.003586020942093167,
+              "released": true,
+              "stable_s": 2.438000000000814,
+              "anchor": [
+                -0.00011120946470984691,
+                -1.006428474561148e-05,
+                0.0008639630670129746
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 3,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 66.4200000000266,
+          "total_wall_s": 124.98100557317957,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 33210,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000011797,
+              "contact_s": 32.89200000000716,
+              "peak_speed_rad_s": 122.11495001620831,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 5,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.674000000000902,
+          "total_wall_s": 29.967539618257433,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6337,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 29,
+              "legacy_world_target_distance_m": 0.0287723421042501,
+              "height_m": 0.9591375196492983,
+              "target_distance_m": 0.0008601486565545713,
+              "tilt_error_rad": 0.020071619783767942,
+              "released": true,
+              "stable_s": 2.4420000000008155,
+              "anchor": [
+                -1.3472315049366528e-06,
+                -0.00043156081933298123,
+                0.000760272001759342
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 5,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.674000000000902,
+          "total_wall_s": 29.87460684031248,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6337,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 29,
+              "legacy_world_target_distance_m": 0.0287723421042501,
+              "height_m": 0.9591375196492983,
+              "target_distance_m": 0.0008601486565545713,
+              "tilt_error_rad": 0.020071619783767942,
+              "released": true,
+              "stable_s": 2.4420000000008155,
+              "anchor": [
+                -1.3472315049366528e-06,
+                -0.00043156081933298123,
+                0.000760272001759342
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 4,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 63.73000000003192,
+          "total_wall_s": 119.17341287992895,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 31865,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000012565,
+              "contact_s": 32.88400000000753,
+              "peak_speed_rad_s": 122.11494715778329,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 6,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.354000000000795,
+          "total_wall_s": 29.880613998044282,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6177,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 6,
+              "legacy_world_target_distance_m": 0.012499626177226133,
+              "height_m": 0.9591388831939396,
+              "target_distance_m": 0.0009072239796734176,
+              "tilt_error_rad": 0.0053197984320910744,
+              "released": true,
+              "stable_s": 2.4360000000008135,
+              "anchor": [
+                -0.00011987091642527313,
+                -3.988738631138442e-05,
+                0.0009170692028739652
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 6,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.354000000000795,
+          "total_wall_s": 30.366015298757702,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6177,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 6,
+              "legacy_world_target_distance_m": 0.012499626177226133,
+              "height_m": 0.9591388831939396,
+              "target_distance_m": 0.0009072239796734176,
+              "tilt_error_rad": 0.0053197984320910744,
+              "released": true,
+              "stable_s": 2.4360000000008135,
+              "anchor": [
+                -0.00011987091642527313,
+                -3.988738631138442e-05,
+                0.0009170692028739652
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 5,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 65.76600000002813,
+          "total_wall_s": 118.71309221209958,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 32883,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.24600000001189,
+              "contact_s": 32.8920000000072,
+              "peak_speed_rad_s": 122.11494161577055,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 7,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.134000000000722,
+          "total_wall_s": 29.372314212378114,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6067,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 0,
+              "legacy_world_target_distance_m": 0.048284554962227486,
+              "height_m": 0.9590906078190071,
+              "target_distance_m": 0.0005797413449877518,
+              "tilt_error_rad": 0.01606926826139446,
+              "released": true,
+              "stable_s": 1.758000000000587,
+              "anchor": [
+                0.0003641694819262862,
+                -0.00037732148311704964,
+                0.0002711788898937318
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 7,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.134000000000722,
+          "total_wall_s": 29.249088029842824,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6067,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 0,
+              "legacy_world_target_distance_m": 0.048284554962227486,
+              "height_m": 0.9590906078190071,
+              "target_distance_m": 0.0005797413449877518,
+              "tilt_error_rad": 0.01606926826139446,
+              "released": true,
+              "stable_s": 1.758000000000587,
+              "anchor": [
+                0.0003641694819262862,
+                -0.00037732148311704964,
+                0.0002711788898937318
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 6,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 63.73000000003192,
+          "total_wall_s": 118.0928432168439,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 31865,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000012565,
+              "contact_s": 32.88400000000753,
+              "peak_speed_rad_s": 122.11494715778329,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 8,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.770000000000934,
+          "total_wall_s": 30.059934951830655,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6385,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": false
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 29,
+              "legacy_world_target_distance_m": 0.1202702919509244,
+              "height_m": 0.9591128681138475,
+              "target_distance_m": 0.0006433527062962982,
+              "tilt_error_rad": 0.02064234550337367,
+              "released": true,
+              "stable_s": 0.4180000000001396,
+              "anchor": [
+                0.0003475828862521036,
+                -0.00042267894790609846,
+                0.0003308539436649744
+              ]
+            },
+            "failure_reasons": [
+              "seated_stable_500ms"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 8,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.770000000000934,
+          "total_wall_s": 30.10947987716645,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6385,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": false
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 29,
+              "legacy_world_target_distance_m": 0.1202702919509244,
+              "height_m": 0.9591128681138475,
+              "target_distance_m": 0.0006433527062962982,
+              "tilt_error_rad": 0.02064234550337367,
+              "released": true,
+              "stable_s": 0.4180000000001396,
+              "anchor": [
+                0.0003475828862521036,
+                -0.00042267894790609846,
+                0.0003308539436649744
+              ]
+            },
+            "failure_reasons": [
+              "seated_stable_500ms"
+            ],
+            "success": false,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 7,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 68.39000000002201,
+          "total_wall_s": 136.05844388809055,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 34195,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000014966,
+              "contact_s": 32.89400000002342,
+              "peak_speed_rad_s": 122.11493718024155,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 9,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.302000000000778,
+          "total_wall_s": 30.032997250091285,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6151,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 8,
+              "legacy_world_target_distance_m": 0.011168816647180085,
+              "height_m": 0.959325689133775,
+              "target_distance_m": 0.0012768035227482357,
+              "tilt_error_rad": 0.004463144435439301,
+              "released": true,
+              "stable_s": 2.428000000000811,
+              "anchor": [
+                -0.00016782600950049364,
+                -4.746907136625648e-06,
+                0.0012568101459099984
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "composite_insert_centrifuge_5430",
+          "backend": "mujoco",
+          "seed": 9,
+          "status": "TASK_SUCCEEDED",
+          "source_success": true,
+          "simulation_s": 12.302000000000778,
+          "total_wall_s": 29.96578381024301,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 6151,
+            "legacy_constant": null,
+            "checks": {
+              "height_955_to_961mm": true,
+              "target_within_5mm": true,
+              "tube_axis_within_5deg": true,
+              "tube_released": true,
+              "seated_stable_500ms": true
+            },
+            "metrics": {
+              "target_frame": "current_rotor_slot",
+              "slot_id": 8,
+              "legacy_world_target_distance_m": 0.011168816647180085,
+              "height_m": 0.959325689133775,
+              "target_distance_m": 0.0012768035227482357,
+              "tilt_error_rad": 0.004463144435439301,
+              "released": true,
+              "stable_s": 2.428000000000811,
+              "anchor": [
+                -0.00016782600950049364,
+                -4.746907136625648e-06,
+                0.0012568101459099984
+              ]
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": true,
+            "success_within_time_limit": true,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 8,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 68.39000000002201,
+          "total_wall_s": 137.02422457607463,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 34195,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000014966,
+              "contact_s": 32.89400000002342,
+              "peak_speed_rad_s": 122.11493718024155,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        },
+        {
+          "task": "vortex_mixer",
+          "backend": "mujoco",
+          "seed": 9,
+          "status": "TASK_FAILED",
+          "source_success": false,
+          "simulation_s": 67.2360000000247,
+          "total_wall_s": 132.65967784589157,
+          "assessment": {
+            "version": "hooke-manipulation-v3",
+            "scope": "manipulation",
+            "samples": 33618,
+            "legacy_constant": false,
+            "checks": {
+              "tube_lifted_30mm": true,
+              "continuous_rotating_tube_contact_500ms": true,
+              "returned_within_30mm": true,
+              "tube_released": true,
+              "platform_stopped": true
+            },
+            "metrics": {
+              "lifted": true,
+              "active_run_s": 0.0,
+              "longest_active_s": 12.246000000014966,
+              "contact_s": 32.89400000002235,
+              "peak_speed_rad_s": 122.11495039672774,
+              "returned": true,
+              "released": true,
+              "stopped": true
+            },
+            "failure_reasons": [],
+            "success": true,
+            "within_declared_time_limit": false,
+            "success_within_time_limit": false,
+            "scientific_process_validated": false
+          }
+        }
+      ]
+    },
+    "input_files": {
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_0/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_1/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_2/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_3/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_4/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_5/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_6/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_7/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_8/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/composite_insert_centrifuge_5430/seed_9/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354",
+        "temp/insertion_work/composite_candidate.py": "3ea7192a0e7ad69597cb0812a39bcbe6569efecddd85bc3b265173e7d79de85a"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_0/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_1/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_2/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_3/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_4/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_5/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_6/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_7/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_8/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/insert_centrifuge_5430/seed_9/candidate-inputs.json": {
+        "temp/insertion_work/shared_candidate.py": "68079b0679251d0e02b1c1710732b4d9f9f7d1a0052f01c87a43af8bb29d3a15",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_0/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_1/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_2/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_3/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_4/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_5/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_6/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_7/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_8/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      },
+      "process_candidate_source10/vortex_mixer/seed_9/candidate-inputs.json": {
+        "temp/vortex_work/clean.py": "5d8720028adc0b19e412559baad4f27f4813d16343a4519e58b9c583c453e3ce",
+        "temp/insertion_work/assessment_candidate.py": "a2835b27b27c6fc9f1a8d3b2048de0af3fa55ca343cc857ec009277d7b73de76",
+        "temp/insertion_work/centrifuge_insertion.py": "ebb1ce53b9a6c5a591abd81764b55532185b464fc35da187c49ea1c259c3c9a9",
+        "temp/insertion_work/contact_state.py": "b2cd58fa59a6bb3767f6f5c623e24392ff165f54441ff5128c39d84770b68354"
+      }
+    }
+  },
+  "shared_recipe_trajectory_comparison": [
+    {
+      "backend": "mujoco",
+      "seed": 0,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "4cf8ab13599e57c9119d89fdfe6d28f4fb76565e5d0d3160ec41e357c2e5c627",
+        "4cf8ab13599e57c9119d89fdfe6d28f4fb76565e5d0d3160ec41e357c2e5c627"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 1,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "7c64c897bc08f4995a63e683ee252deb78cf4cdc422ab48edc5c59d5a8038b41",
+        "7c64c897bc08f4995a63e683ee252deb78cf4cdc422ab48edc5c59d5a8038b41"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 2,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "37b377cfbb96214c259808a20cbb3bc0b2898a00a8a0ba9091b46109b709f796",
+        "37b377cfbb96214c259808a20cbb3bc0b2898a00a8a0ba9091b46109b709f796"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 3,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "ee0c5d3a00fd75eba3958f7487b4ac99c1ad8a39e4dfaaf50103b2e85cfae49d",
+        "ee0c5d3a00fd75eba3958f7487b4ac99c1ad8a39e4dfaaf50103b2e85cfae49d"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 4,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "ec5452b22d10e76ad265acaac8dcfaf2a99a4fe63e0859eee78be67cf55d33c0",
+        "ec5452b22d10e76ad265acaac8dcfaf2a99a4fe63e0859eee78be67cf55d33c0"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 5,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "8d5290bb69111443efb8ffce514b19563533ecc4fb64d288bd6d96e5957aeaad",
+        "8d5290bb69111443efb8ffce514b19563533ecc4fb64d288bd6d96e5957aeaad"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 6,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "6abc2225dec41beac993f3ffb3f45a81fe8ada7b8ede8e5ab1a9b932f118b156",
+        "6abc2225dec41beac993f3ffb3f45a81fe8ada7b8ede8e5ab1a9b932f118b156"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 7,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "446ac10c5a72a1e91f63e2115dcd5ecd59c3b132e2b931db3f8f90dbb0a638f2",
+        "446ac10c5a72a1e91f63e2115dcd5ecd59c3b132e2b931db3f8f90dbb0a638f2"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 8,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "f329926f7bd48989c120a7a6a14b7a1fcc10bf45e0c189fceaeb8895c7c17414",
+        "f329926f7bd48989c120a7a6a14b7a1fcc10bf45e0c189fceaeb8895c7c17414"
+      ]
+    },
+    {
+      "backend": "mujoco",
+      "seed": 9,
+      "equal_fields": {
+        "qpos": true,
+        "qvel": true,
+        "control": true,
+        "time": true
+      },
+      "trajectory_sha256": [
+        "736cd29b125e5564d22eb6ade84f2f2be5e58040ee58bc9cbca8e8aa1ad27f94",
+        "736cd29b125e5564d22eb6ade84f2f2be5e58040ee58bc9cbca8e8aa1ad27f94"
+      ]
+    },
+    {
+      "backend": "isaac",
+      "seed": 0,
+      "equal_fields": {
+        "control": true,
+        "qpos": true,
+        "qvel": true,
+        "time": true,
+        "contacts": true
+      },
+      "trajectory_sha256": [
+        "b7a63b188a56564bb05b7f732c1a523aa47ec3e8b00ee7f67c4d45b4283b07b1",
+        "b7a63b188a56564bb05b7f732c1a523aa47ec3e8b00ee7f67c4d45b4283b07b1"
+      ]
+    }
+  ],
+  "native_cylinder_profile": {
+    "scope": "100 native reset-control steps, no source passive residual. Profiling only; not task or dynamics qualification.",
+    "report_sha256": "429ed429042f2ef2ca081b1d30c04f8f2835d397c2fb9cebe8a4230aba7be81f",
+    "results": [
+      {
+        "approximate_cylinders": false,
+        "steps": 100,
+        "wall_s": 11.892993152141571,
+        "contacts": 429
+      },
+      {
+        "approximate_cylinders": true,
+        "steps": 100,
+        "wall_s": 1.5820354809984565,
+        "contacts": 373
+      }
+    ]
+  },
+  "limitations": [
+    "Pipette validates motion sequence only; transferred volume is not validated.",
+    "Vortex source expert exceeds its unchanged 30-second task limit.",
+    "Cylinder approximation is a diagnostic; no default collision settings changed.",
+    "Candidate source runs and final source runs are separate experiments; failed seeds are retained.",
+    "Slot frame correction changes insertion success semantics; do not infer physics improvement from pass counts alone."
+  ]
+}

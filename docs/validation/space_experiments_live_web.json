@@ -1,0 +1,41 @@
+{
+  "task": "space_martian_mass_measurement",
+  "engines": {
+    "mujoco": {
+      "job_id": "f8fa320c6af14163ac13f9eac4f36aa6",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.96200000001387,
+      "primary_camera": 2,
+      "measurement_ids": [
+        "m0001",
+        "m0002",
+        "m0003"
+      ],
+      "reanalysis_total_mass_kg": 0.14639608153415198,
+      "scope": "space_sample_experiment",
+      "public_result_whitelist_verified": true,
+      "completed_job_restored_after_server_restart": true
+    },
+    "isaac": {
+      "job_id": "55c31ebb58c645efb17bcc6671ab0474",
+      "status": "TASK_SUCCEEDED",
+      "simulation_s": 48.134,
+      "primary_camera": 2,
+      "measurement_ids": [
+        "m0001",
+        "m0002",
+        "m0003"
+      ],
+      "reanalysis_total_mass_kg": 0.14639661438513826,
+      "scope": "space_sample_experiment",
+      "public_result_whitelist_verified": true,
+      "completed_job_restored_after_server_restart": true
+    }
+  },
+  "console_errors": [],
+  "page_errors": [],
+  "paired_initial_scene_xml": true,
+  "backend_mass_estimate_difference_kg": 5.328509862789765e-07,
+  "passed": true,
+  "final_public_result_boundary_passed": true
+}

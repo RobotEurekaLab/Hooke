@@ -28,6 +28,21 @@ def neg_pose(p: Pose) -> Pose:
     mujoco.mju_negPose(res_pos, res_quat, p.pos, p.quat)
     return Pose(res_pos, res_quat)
 
+def align_axes(source: np.ndarray, target: np.ndarray) -> np.ndarray:
+    """Smallest rotation between axes, retaining unconstrained axial twist."""
+    source, target = np.asarray(source, dtype=float), np.asarray(target, dtype=float)
+    for axis in (source, target):
+        if axis.shape != (3,) or not np.isfinite(axis).all() or np.linalg.norm(axis) < 1e-12:
+            raise ValueError('Axis must be a finite, nonzero 3D vector')
+    source, target = source/np.linalg.norm(source), target/np.linalg.norm(target)
+    scalar = 1.+float(np.clip(np.dot(source, target), -1., 1.))
+    if scalar < 1e-10:
+        basis = np.eye(3)[np.argmin(np.abs(source))]
+        axis = np.cross(source, basis)
+        return np.r_[0., axis/np.linalg.norm(axis)]
+    quat = np.r_[scalar, np.cross(source, target)]
+    return quat/np.linalg.norm(quat)
+
 def slerp(q0: np.ndarray, q1: np.ndarray, amount=0.5):
     """Spherical Linear Interpolation between quaternions.
     Implemented as described in https://en.wikipedia.org/wiki/Slerp

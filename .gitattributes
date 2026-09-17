@@ -1,0 +1,4 @@
+# Preserve exact PDS archive bytes, including CRLF labels and record padding.
+Hooke/assets/space/terrain/**/source_label.lbl binary
+Hooke/assets/space/terrain/**/source_row_*.bin binary
+Hooke/assets/space/terrain/**/height_m.npy binary

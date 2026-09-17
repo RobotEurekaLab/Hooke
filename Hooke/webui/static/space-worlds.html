@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Universe · 太空实验工作区</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#10151d;color:#edf3fa;font:16px/1.65 system-ui}main{max-width:1400px;margin:auto;padding:28px 20px}h1{margin:0;font-size:28px}h2{font-size:20px}a{color:#71dfbf}select{font:inherit;background:#18212d;color:inherit;border:1px solid #304155;border-radius:8px;padding:10px;width:100%;max-width:420px}.muted{color:#aebed0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{background:#18212d;border:1px solid #304155;border-radius:12px;overflow:hidden;padding:16px;margin:16px 0}.card img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#080d14}.environments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.notice{border-left:3px solid #dfb975;padding:12px 16px;background:#24231e}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:10px;border-bottom:1px solid #304155;overflow-wrap:anywhere}.scroll{overflow:auto}@media(max-width:800px){.grid,.environments{grid-template-columns:1fr}main{padding:20px 12px}h1{font-size:24px}}
+</style>
+<main>
+<h1>Universe 太空实验工作区</h1>
+<p class="muted">空间站使用舱壁固定工作面，月球和火星使用锚固实验台；三种环境复用机械臂、样品盒与保持架。下方图片来自真实仿真。</p>
+<label for="world">实验环境</label><br><select id="world"></select>
+<p id="description"></p><p><a id="open" href="/backends">打开并运行这个场景 ↗</a> · <a href="/space-assets">开源空间资产 ↗</a> · <a href="/api/space-worlds">场景、资产与环境记录</a></p>
+<div class="environments" id="environments"></div>
+<div class="notice" id="notice"></div>
+<h2>真实场景画面</h2><label for="view">视角</label><br><select id="view"><option value="overview">工作区全景</option><option value="bench">实验台与资产</option></select>
+<div class="grid"><section class="card"><h2>Isaac · PhysX</h2><img id="isaac" alt="Isaac 实际场景"></section><section class="card"><h2>MuJoCo</h2><img id="mujoco" alt="MuJoCo 实际场景"></section></div>
+<section class="card"><h2>环境怎样影响实验</h2><ul id="considerations"></ul></section>
+<section class="card"><h2>本轮验证</h2><p id="qualification">正在读取实际结果…</p><p class="muted">本轮只验收场景、原资产复用、刚体重力与真实出图。样品锁定机构、抓取、气密性和科学实验需分别验证。</p></section>
+<p class="muted">地形与舱体为米制程序化原型。固定机械臂忽略站体反冲；太阳和热辐射采用声明的简化边界。气体流动、压差载荷、泄漏、液体相变、尘埃输运、静电、粒子辐射损伤和材料老化尚未模拟。</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);let data;
+const descriptions={orbital:'舱壁固定工作面与抓握扶手组成的空间站舱段；实验舱有气压，舱外为真空。',lunar:'带地面锚固的月球干样品实验台、封闭模块外观和程序化岩石工作区。',martian:'火星低压环境中的干样品实验台、封闭模块外观和程序化岩石工作区。'};
+const concerns={orbital:['近失重时样品保持质量与惯量；未固定样品会漂移。','实验架、机械臂和存放样品使用显式固定安装；该结构不代表自动抓取或夹具操作。','舱内有空气，但当前未模拟气流、浮力和风扇散热；舱外操作需要另行验证。'],lunar:['重力为 1.62 m/s²；物体重量和接触法向力减小，质量和惯量保持不变。','工作区采用理想真空近似。暴露湿实验不能直接沿用地球仪器流程。','太阳照射、遮阴和表面接触决定热边界；250 K 是本例设定，不是月球空气温度。','尘埃污染、静电吸附、辐射与材料真空兼容性需要后续专门模型及资产验收。'],martian:['重力采用 NASA 平均值 3.73 m/s²；低重力条件下重新验证接触与操作。','参考气压 636 Pa、以 CO₂ 为主；火星环境具有稀薄大气。','低压条件下液体相态、挥发及密封需求需要专门验证；密封外观不等于气密资格。','风、尘埃与温差会影响实验；当前未模拟气体阻力、对流和尘埃输运。']};
+function show(){const w=data.worlds.find(w=>w.name===$('world').value);$('description').textContent=descriptions[w.name];$('open').href='/backends?task='+encodeURIComponent(w.task);$('environments').replaceChildren();for(const [label,e]of [['工作区参考环境',w.workspace],['舱外参考环境',w.exterior],['封闭模块设计目标',{pressure_pa:w.protected_module.reference_pressure_pa,boundary_temperature_k:w.protected_module.reference_temperature_k}]]){const card=document.createElement('section');card.className='card';const h=document.createElement('h2');h.textContent=label;const p=document.createElement('p');p.textContent=`${e.pressure_pa.toLocaleString()} Pa · ${e.boundary_temperature_k} K`;const note=document.createElement('p');note.className='muted';note.textContent='重力 '+w.gravity_m_s2+' m/s²；压力是参考条件，气体和气密性未仿真。';card.append(h,p,note);$('environments').append(card)}$('notice').textContent='三个场景都包含真实重力、碰撞和一个未固定的干样品测试物。热辐射见证模型按实际仿真时间更新；完整环境和科学实验尚未验收。';$('considerations').replaceChildren(...concerns[w.name].map(text=>{const li=document.createElement('li');li.textContent=text;return li}));for(const backend of ['isaac','mujoco'])$(backend).src=`/api/space-worlds/${w.name}/image/${backend}/${$('view').value}`;const q=data.qualification;$('qualification').textContent=q.passed===true?'三场景 × 两引擎共 6 次真实运行通过：每次 0.5 秒，验证未固定样品的漂浮或下落，并生成两相机图片；配对源模型及实际资产一致。':'场景验证尚未完成，未计为通过。'}
+async function load(){const response=await fetch('/api/space-worlds');if(!response.ok)throw Error('场景记录读取失败');data=await response.json();$('world').replaceChildren(...data.worlds.map(w=>{const o=document.createElement('option');o.value=w.name;o.textContent=w.label;return o}));$('world').onchange=show;$('view').onchange=show;show()}load().catch(e=>$('qualification').textContent=e.message);
+</script>
+</html>

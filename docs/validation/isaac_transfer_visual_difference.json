@@ -1,0 +1,251 @@
+{
+  "kind": "paired_actual_rgb_difference",
+  "pairs": 9,
+  "results": [
+    {
+      "image": "aspirate-camera-0.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 82.68666449652778,
+      "root_mean_square_error_255": 93.26727466035149,
+      "psnr_db": 8.73621787791721,
+      "mean_rgb": {
+        "mujoco": [
+          73.06065104166667,
+          84.34536783854166,
+          96.27092122395834
+        ],
+        "isaac": [
+          162.88680989583332,
+          166.36497395833334,
+          169.51682942708334
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "8a25bcc4e01ab043a362875f13fb571b34927f069643a09f29b6f45a78a40424",
+        "isaac": "193e35b95df01b5fd81ae01e5ab55786a335e22709d73bc91d0d867a6274d941"
+      }
+    },
+    {
+      "image": "aspirate-camera-2.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 100.54064127604167,
+      "root_mean_square_error_255": 112.11432319703322,
+      "psnr_db": 7.137581617606067,
+      "mean_rgb": {
+        "mujoco": [
+          72.44460611979167,
+          87.32043619791666,
+          102.127578125
+        ],
+        "isaac": [
+          179.334853515625,
+          179.93321614583334,
+          180.562236328125
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "2c590f0cf0f90b56f46a03efe0cdfe6c31b5b7de69e9e103d5cbdd2b44795b2a",
+        "isaac": "c9095661eb8042e0cbbe9510e1b68d5e06b1cc1dafcbeae5bd8f7ecc0e01992e"
+      }
+    },
+    {
+      "image": "aspirate-camera-3.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 98.5242165798611,
+      "root_mean_square_error_255": 110.80653227804808,
+      "psnr_db": 7.239496334280824,
+      "mean_rgb": {
+        "mujoco": [
+          57.2528125,
+          72.82976888020833,
+          89.09101888020834
+        ],
+        "isaac": [
+          154.03748046875,
+          155.24441080729167,
+          156.720634765625
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "efc429cf49a964f05925a41de2a80519d6024e6e1fc578db80b5a0bb3641b6d6",
+        "isaac": "47452bdb09c3428a4330e7e5d9aff8f16a64122c1a9be7692efddc140af1d75f"
+      }
+    },
+    {
+      "image": "dispense-camera-0.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 84.79740342881945,
+      "root_mean_square_error_255": 95.12102831197073,
+      "psnr_db": 8.565272876592429,
+      "mean_rgb": {
+        "mujoco": [
+          71.91153971354167,
+          84.11997721354167,
+          96.87273111979167
+        ],
+        "isaac": [
+          164.8204296875,
+          168.29572916666666,
+          171.44094401041667
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "fb113370274e285bbc8a80514d289740d1132da771a1967580bfa8fbf4acaa43",
+        "isaac": "b010d0bbf8a51e6abe134de5d86dfcf278a6ec3b21eb45bbb035134444fdfb94"
+      }
+    },
+    {
+      "image": "dispense-camera-2.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 88.67064995659722,
+      "root_mean_square_error_255": 99.328809949048,
+      "psnr_db": 8.189298963607255,
+      "mean_rgb": {
+        "mujoco": [
+          80.228466796875,
+          92.70693684895834,
+          107.160947265625
+        ],
+        "isaac": [
+          169.04111979166666,
+          171.55445963541666,
+          175.10520182291665
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "6af1be665064b816981b5f8875f4e735e3752078ba066d952c69941d9b70c415",
+        "isaac": "d42f5994102d71586c5ac195e290af9debf1b05da2f2530c64b7e310576f3033"
+      }
+    },
+    {
+      "image": "dispense-camera-3.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 95.456845703125,
+      "root_mean_square_error_255": 107.52570457886938,
+      "psnr_db": 7.5005576683299635,
+      "mean_rgb": {
+        "mujoco": [
+          60.826214192708335,
+          74.85254231770833,
+          89.33029947916667
+        ],
+        "isaac": [
+          152.50502278645834,
+          153.67679361979165,
+          155.093408203125
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "006b3abb1a3308ec6d790d765699c06a14edf978e45f0325fbdc97c9dd442cd0",
+        "isaac": "d61b8047f3746e3fce59c6ba7d2dc2cc5b736c60f398c3e15f18361b64d47b0a"
+      }
+    },
+    {
+      "image": "return_source-camera-0.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 84.96317165798611,
+      "root_mean_square_error_255": 95.35419549627231,
+      "psnr_db": 8.544007481532713,
+      "mean_rgb": {
+        "mujoco": [
+          72.25835286458333,
+          84.24985026041666,
+          96.82990885416666
+        ],
+        "isaac": [
+          165.18083333333334,
+          168.65228841145833,
+          171.80772786458334
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "d7125beb04eda30512552984af89abbf3bb2f8d7d9888e081e355752af3c47ae",
+        "isaac": "f7a2cb269b587bf5c2b78a81a32b0d61c2bf2fcc0940283cafe327ac0d33dc12"
+      }
+    },
+    {
+      "image": "return_source-camera-2.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 99.8158279079861,
+      "root_mean_square_error_255": 111.35009640889,
+      "psnr_db": 7.19699166087728,
+      "mean_rgb": {
+        "mujoco": [
+          75.42467122395833,
+          92.01898111979166,
+          109.53944661458333
+        ],
+        "isaac": [
+          186.46213541666665,
+          187.80794270833334,
+          189.21369466145833
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "ff4780071a97540f31bb9fc06275f2a57ae6cd2da43f31ff393780e8ff1fc4e9",
+        "isaac": "5cbb4d6350a29ba3d40753d37b31801b2c8a3d538283cdd475ab5d39df07160e"
+      }
+    },
+    {
+      "image": "return_source-camera-3.png",
+      "dimensions": [
+        480,
+        640,
+        3
+      ],
+      "mean_absolute_error_255": 93.91997178819445,
+      "root_mean_square_error_255": 105.32642094976363,
+      "psnr_db": 7.680057071314509,
+      "mean_rgb": {
+        "mujoco": [
+          59.471302083333335,
+          75.66465169270833,
+          94.78729817708333
+        ],
+        "isaac": [
+          146.9136328125,
+          149.66131510416668,
+          153.84259440104168
+        ]
+      },
+      "image_sha256": {
+        "mujoco": "ca9810b03aa84866052b9b72287fdbd628b8b71166c35514bb23cbe15744a4ea",
+        "isaac": "4f50e8e95542aa24a95627e23911ec8408c09bb1977ae6adfde25b020e5a9c13"
+      }
+    }
+  ],
+  "pixel_parity_qualified": false,
+  "scope": "Phase endpoints include different actual motion and rendering; error does not isolate shader differences."
+}

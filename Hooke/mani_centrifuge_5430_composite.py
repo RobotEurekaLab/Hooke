@@ -1,97 +1,26 @@
-"""Composite task: insert a second centrifuge tube into the Eppendorf 5430
-rotor, then close and lock the lid -- a genuine two-step lab sequence (you
-don't close/lock a centrifuge lid *before* loading the samples; this is
-literally the operating order any real protocol uses), picked specifically
-because it's a real workflow, not a device pairing invented to cover more
-discipline labels (see private/technical-log.md's "Composite batch,
-corrected" entry on why that distinction matters for this catalog
-category).
+"""Insert a tube, then optionally close the lid using the existing lid recipe.
 
-Both halves already exist as separately-verified, hand-written tasks --
-`load_centrifuge_5430.py`'s `InsertCentrifuge5430` and
-`archetypes/lever_lock_centrifuge.py`'s generic lid-lever family
-(instantiated for this instrument via `archetypes/centrifuge_specs.py`'s
-`CENTRIFUGE_5430_SPEC`, i.e. `mani_centrifuge_5430.py`'s
-`Centrifuge5430Manipulate`). Both already use the same scene family (in
-fact `insert_centrifuge_5430.xml` *is* `mani_centrifuge_5430.xml` plus a
-tube rack and two tubes -- confirmed by diffing the two scene files, not
-assumed) and the same UR5e arm, so no cross-robot scene-merging problem
-exists here the way it would for `pickup_centrifuge_tube` (which uses a
-single-armed Aloha rig entirely disjoint from this one).
-
-`archetypes/composite_task.py`'s `run_composite_scripted` requires every
-step in a sequence to share one Task/Expert class (a single `reset()`
-covers the whole episode). Since the two halves were built as fully
-independent class hierarchies (different `Manager`/instrument-registration
-calls, different motion-primitive mixins), the only clean way to chain
-them without a fragile diamond-inheritance merge is to re-host both
-recipes' *logic* (not re-derive it -- transcribed from the originals,
-same numbers, same steps) against one shared instrument object and one
-shared arm, branching on `self.task`:
-- the instrument class here is `_make_instrument_class(CENTRIFUGE_5430_SPEC)`'s
-  output (gives the lid-lever `fk`/`lever_path`/`get_eef_pose` methods)
-  with `InsertCentrifuge5430`'s own `get_slot_pose`/`get_tube_pose`/
-  `rotor_perturb` added on top -- both are already subclasses of the same
-  `instrument.Centrifuge_Eppendorf_5430` base, and add non-overlapping
-  method names, so this is a safe additive subclass, not a merge of
-  conflicting logic.
-- the recipe-running `_step_*` methods for the close-lid half are
-  transcribed verbatim from `lever_lock_centrifuge.py`'s closure-based
-  versions (they can't be imported directly -- they're built as closures
-  inside `make_task_classes`, bound to a *different* instrument instance
-  than this file's).
-
-One real behavior difference from running each half standalone, worth
-stating rather than glossing over: `centrifuge_5430_close_lid` upstream
-has **no real completion check** (`lever_lock_centrifuge.py`'s own
-`check()` returns `True` unconditionally -- an already-documented
-limitation of that whole family, not something this file weakens further).
-So `check()` here is real (measures the inserted tube's position) for the
-`insert_centrifuge_5430_step` half and trivial for `close_lid_step`,
-matching each half's own upstream honesty rather than inventing a new
-untested lid-closed criterion.
+Insertion targets and controls are shared with the atomic insertion task.
+The close-lid step uses the lever-lock recipe and actual lid/lock feedback.
 """
-import math
 import numpy as np
 import mujoco
 mujoco.mj_loadPluginLibrary('./libmjlab.so.3.3.0')
 
-from kinematics import Pose, mul_pose, neg_pose
+from kinematics import Pose
 from task import Task, Expert, Manager, SCENE_ROOT
-from expert_common import UR5eArm, ExpertMotionMixin, set_gravcomp, make_topp_planner
-from archetypes.lever_lock_centrifuge import _make_instrument_class, LOCK_QUAT
+from expert_common import UR5eArm, set_gravcomp, make_topp_planner
+from archetypes.lever_lock_centrifuge import _make_instrument_class, LeverLockMotionMixin
 from archetypes.centrifuge_specs import CENTRIFUGE_5430_SPEC
+from archetypes.lid_lock import lid_lock_passes
 from load_centrifuge_5430 import CentrifugeTube, GridSlot
+from archetypes.centrifuge_insertion import RotorSlotPoses, insertion_geometry_passes, execute_insertion
 
 _LeverLockInstrumentBase = _make_instrument_class(CENTRIFUGE_5430_SPEC)
 
 
-class _CompositeCentrifuge5430Instrument(_LeverLockInstrumentBase):
-    """Adds InsertCentrifuge5430's slot/tube-position helpers on top of the
-    lever-lock family's fk/lever_path helpers -- transcribed verbatim from
-    `load_centrifuge_5430.py`'s `Centrifuge_5430`, not re-derived."""
-
-    def get_slot_pose(self, data: mujoco.MjData, slot_id: int) -> Pose:
-        if slot_id < 0 or slot_id >= self.num_slots:
-            raise ValueError(f'Invalid slot id {slot_id}')
-        pos = data.site_xpos[self.slot_sites[slot_id]]
-        mat = data.site_xmat[self.slot_sites[slot_id]]
-        quat = np.zeros(4)
-        mujoco.mju_mat2Quat(quat, mat)
-        return Pose(pos, quat)
-
-    def get_tube_pose(self, data: mujoco.MjData, slot_id: int, mode: str = "distal") -> Pose:
-        slot_pose = self.get_slot_pose(data, slot_id)
-        if mode == "distal":
-            rel_pos = np.array([0.0, 0.0, 0.005])
-        elif mode == "proximal":
-            rel_pos = np.array([0.0, 0.0, -0.03])
-        rel_quat = np.array([1.0, 0.0, 0.0, -1.0])
-        rel_quat /= np.linalg.norm(rel_quat)
-        return mul_pose(p1=slot_pose, p2=Pose(rel_pos, rel_quat))
-
-    def rotor_perturb(self):
-        return np.random.uniform(-0.1, 0.1)
+class _CompositeCentrifuge5430Instrument(RotorSlotPoses, _LeverLockInstrumentBase):
+    pass
 
 
 class CentrifugeInsertCloseComposite(Task):
@@ -162,19 +91,15 @@ class CentrifugeInsertCloseComposite(Task):
 
     def check(self):
         if self.task == 'insert_centrifuge_5430_step':
-            tube_height = self.tube.get_body_pose(self.data).pos
-            tube_pos_2 = np.array(self.tube.get_body_pose(self.data).pos)
-            site_pos = np.array(self.final_tar_tubepose.pos)
-            distance_site = math.sqrt(np.sum((tube_pos_2 - site_pos) ** 2))
-            return 0.955 < tube_height[2] < 0.961 and distance_site < 0.005
+            return insertion_geometry_passes(self)
         elif self.task == 'close_lid_step':
-            # Matches upstream (see module docstring): the lever-lock family
-            # has no real completion check for this instrument yet.
-            return True
+            return lid_lock_passes(self.data, self.instrument)
         raise ValueError(f"unknown task {self.task!r}")
 
 
-class CentrifugeInsertCloseCompositeExpert(CentrifugeInsertCloseComposite, Expert, ExpertMotionMixin):
+class CentrifugeInsertCloseCompositeExpert(CentrifugeInsertCloseComposite, Expert, LeverLockMotionMixin):
+    lever_spec = CENTRIFUGE_5430_SPEC
+
     def __init__(self, mjspec: mujoco.MjSpec, freq: int = 20):
         super().__init__(mjspec)
         self.freq = freq
@@ -212,61 +137,25 @@ class CentrifugeInsertCloseCompositeExpert(CentrifugeInsertCloseComposite, Exper
             raise ValueError(f"unknown task {self.task!r}")
         self.finish()
 
-    # --- insert half: transcribed from InsertCentrifuge5430Expert.execute() ---
     def _execute_insert(self):
-        path = self.interpolate(self.arm.get_site_pose(self.data), self.tube.get_eef_pose(self.data), 10)
-        self.path_follow(path)
-        self.gripper_control(240)
-        cur_pose = self.arm.get_site_pose(self.data)
-        self.move_to(Pose(cur_pose.pos + (0.0, 0.0, 0.1), cur_pose.quat), num_steps=20)
+        execute_insertion(self)
 
-        tube_pose = self.tube.get_body_pose(self.data)
-        site_pose = self.arm.get_site_pose(self.data)
-        rel_pose = mul_pose(p1=neg_pose(tube_pose), p2=site_pose)
-        tar_pose = mul_pose(p1=self.tar_tubepose, p2=rel_pose)
-        path = self.interpolate2(self.arm.get_site_pose(self.data), tar_pose, 20)
-        self.path_follow(path)
-
-        tar_pose = mul_pose(p1=self.final_tar_tubepose, p2=rel_pose)
-        self.move_to(tar_pose, num_steps=20)
-        self.gripper_control(190)
-        for _ in range(200):
-            self.step_and_log({})
-
-    # --- close-lid half: transcribed from lever_lock_centrifuge.py's
-    # closure-based _step_*/_run_recipe (see module docstring for why this
-    # can't just be imported) ---
-    def _step_move_to_pose(self, mode: str, num_steps: int, quat_override: str | None = None, gripper_before: float | None = None):
-        pose = self.instrument.get_eef_pose(self.data, loc='lid', mode=mode)
-        if quat_override == 'lock_quat':
-            pose.quat = LOCK_QUAT
-        if gripper_before is not None:
-            self.gripper_control(gripper_before)
-        self.move_to(pose, num_steps=num_steps)
-
-    def _step_gripper(self, value: float, delay: int = 300):
-        self.gripper_control(value, delay=delay)
-
-    def _step_lever_close(self, mode: str = '1/close'):
-        path = self.instrument.lever_path(self.data, mode=mode)
-        self.path_follow(path[:-1])
-        self._lever_end_pose = path[-1]
-
-    def _step_move_to_lever_end(self, num_steps: int):
-        assert self._lever_end_pose is not None
-        self.move_to(self._lever_end_pose, num_steps=num_steps)
-
-    def _step_force_lock(self):
-        self.data.eq_active[self.instrument.lid_lock] = 1
 
     def _step_wait(self, seconds: float):
         for _ in range(int(seconds / self.dt)):
             self.step_and_log({})
 
     def _execute_close_lid(self):
-        for step in CENTRIFUGE_5430_SPEC.recipe:
-            op = step['op']
-            getattr(self, f'_step_{op}')(**{k: v for k, v in step.items() if k != 'op'})
+        # Clear the insertion arm configuration through real actuator motion.
+        # Starting the lid recipe from the insertion IK branch jams a follower
+        # against the open lid before the finger pads can grasp its edge.
+        self.gripper_control(0)
+        approach = self.model.key_qpos[0, self.arm.jnt_span].copy()
+        self.move_joints(approach)
+        if np.max(abs(self.data.qpos[self.arm.jnt_span] - approach)) > .01:
+            raise RuntimeError('Arm did not reach the lid approach configuration')
+        self.arm.ik.initial_qpos = self.data.qpos[self.arm.jnt_span].copy()
+        self._run_recipe()
 
 
 CentrifugeInsertCloseComposite.Expert = CentrifugeInsertCloseCompositeExpert

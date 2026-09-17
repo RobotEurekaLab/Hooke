@@ -205,7 +205,9 @@ class Centrifuge_tiangen_tgear_mini(System):
         self.lid_site = self.name2id(mujoco.mjtObj.mjOBJ_SITE, 'lid')
 
 class Thermal_mixer_eppendorf_c(System):
-    def _configure(self):
+    def _configure(self, thermal_parameters=None):
+        # Opt-in keeps existing mechanical tasks' published trajectories intact.
+        self.thermal_parameters = thermal_parameters
         self.buttons = [
             ('speed', 'up', self.add_subsystem(FlatButton('button-speed-up'))),
             ('speed', 'down', self.add_subsystem(FlatButton('button-speed-down'))),
@@ -247,6 +249,11 @@ class Thermal_mixer_eppendorf_c(System):
         )
         self.ui_state = ui_state
         self.ui_state_trajectory = [deepcopy(self.ui_state)]
+        self.thermal_model = None
+        self.thermal_time = float(data.time)
+        if self.thermal_parameters is not None:
+            from science.thermal import ThermalBath
+            self.thermal_model = ThermalBath(self.thermal_parameters)
 
     def _update(self, data):
         for name, direction, button in self.buttons:
@@ -263,6 +270,13 @@ class Thermal_mixer_eppendorf_c(System):
                         self.ui_state.main_parameter.set_temperature += sign * 1.0
                     case _:
                         pass
+        if self.thermal_model is not None:
+            dt = float(data.time)-self.thermal_time
+            if dt > 0:
+                target = self.ui_state.main_parameter.set_temperature
+                self.thermal_model.step(dt,target)
+                self.ui_state.main_parameter.actual_temperature = round(self.thermal_model.block_c,3)
+                self.thermal_time = float(data.time)
         if self.ui_state == self.ui_state_trajectory[-1]:
             ui_state = self.ui_state_trajectory[-1]
         else:

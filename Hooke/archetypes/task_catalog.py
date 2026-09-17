@@ -53,6 +53,7 @@ class CatalogEntry:
     robot: str  # which robot rig the task's scene was authored for (see webui/README.md)
     camera: str
     task_override: str | None = None
+    completion_rule: str | None = None
 
     def load_classes(self):
         module = __import__(self.module, fromlist=[self.cls])
@@ -69,6 +70,49 @@ class CatalogEntry:
 
 CATALOG: dict[str, CatalogEntry] = {
     entry.name: entry for entry in [
+        *[
+            CatalogEntry(
+                name=f"space_{world}_{operation}",
+                description=f"{world}: contact-driven dry cartridge {operation.replace('_', ' ')} with explicit storage and instrument locks.",
+                category="space", module="experiments.tasks", cls=f"{world.title()}{suffix}",
+                robot="ur5e", camera="experiment_closeup", completion_rule="space_experiment",
+            )
+            for world in ("orbital", "lunar", "martian")
+            for operation, suffix in (("sample_transfer", "Transfer"), ("mass_measurement", "Mass"), ("spectral_measurement", "Spectrum"))
+        ],
+        CatalogEntry(
+            name="space_orbital_assets_workstation",
+            description="Attributed NASA ISS interior and handrail with shared Apollo sample and Mars tube; explicit collision proxies and example masses; display qualification only.",
+            category="space", module="worlds.asset_tasks", cls="OrbitalAssetsWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_lunar_assets_workstation",
+            description="Lunar workbench with attributed Apollo geometry and Mars sample tube; procedural terrain, example masses and collision proxies; display qualification only.",
+            category="space", module="worlds.asset_tasks", cls="LunarAssetsWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_martian_assets_workstation",
+            description="Martian workbench with attributed Mars sample tube and Apollo geometry; procedural terrain, example masses and collision proxies; display qualification only.",
+            category="space", module="worlds.asset_tasks", cls="MartianAssetsWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_orbital_workstation", description="Pressurized orbital cabin with a fixed robot, retained dry cartridges and an unretained microgravity witness; scene qualification only.",
+            category="space", module="worlds.tasks", cls="OrbitalWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_lunar_workstation", description="Lunar exterior workbench at 1.62 m/s² with vacuum exposure requirements, sealed sample concepts and a protected module reference; scene qualification only.",
+            category="space", module="worlds.tasks", cls="LunarWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="space_martian_workstation", description="Martian exterior workbench at 3.73 m/s² and reference 636 Pa CO2 atmosphere; gas dynamics and dust transport disabled; scene qualification only.",
+            category="space", module="worlds.tasks", cls="MartianWorkstation", robot="ur5e", camera="world_overview",
+        ),
+        CatalogEntry(
+            name="centrifuge_5430_cycle",
+            description="Insert and balance a tube, close/lock the original 5430 lid, drive a 60 RPM qualification cycle, brake and safely unlock.",
+            category="separation", module="mani_centrifuge_cycle",cls="CentrifugeCycle",
+            robot="ur5e",camera="table_cam_front",completion_rule="centrifuge_cycle",
+        ),
         CatalogEntry(
             name="pickup_centrifuge_tube",
             description="Pick up a single centrifuge tube from its rack with a dual-arm (Aloha) gripper.",
@@ -94,12 +138,14 @@ CATALOG: dict[str, CatalogEntry] = {
             description="Close and lock the lid of the Eppendorf 5430 centrifuge (grip lever, rotate, engage lock).",
             category="conditioning",
             module="mani_centrifuge_5430", cls="Centrifuge5430Manipulate", robot="ur5e", camera="table_cam_left",
+            completion_rule="lid_lock_geometry",
         ),
         CatalogEntry(
             name="centrifuge_5910_lid_close",
             description="Close and lock the lid of the Eppendorf 5910 centrifuge (grip lever, rotate, engage lock).",
             category="conditioning",
             module="mani_centrifuge_5910", cls="Centrifuge5910Manipulate", robot="ur5e", camera="table_cam_left",
+            completion_rule="lid_lock_geometry",
         ),
         CatalogEntry(
             name="insert_centrifuge_5430",
@@ -112,28 +158,38 @@ CATALOG: dict[str, CatalogEntry] = {
         ),
         CatalogEntry(
             name="thermal_mixer",
-            description="Load a tube into the Eppendorf ThermoMixer C and run a mixing/heating cycle.",
+            description="Set the Eppendorf ThermoMixer C speed, temperature and duration through robot button presses; the reduced heating model is an optional experiment.",
             category="combination",
             module="mani_thermal_mixer", cls="ThermalMixerManipulate", robot="ur5e", camera="table_cam_left",
             task_override="thermal_mixer",
         ),
         CatalogEntry(
             name="pipette",
-            description="Pipette liquid from one container to another using a two-armed UR5e pipetting rig.",
+            description="Aspirate 200 uL from a lifted tube using a two-armed UR5e pipetting rig.",
             category="transfer",
             module="mani_pipette", cls="Pipette", robot="dual_ur5e", camera="table_cam_front",
+            completion_rule="shared_process_progress",
+        ),
+        CatalogEntry(
+            name="pipette_transfer",
+            description="Aspirate 200 uL, dispense into an empty tube, withdraw and return the source using dual UR5e arms.",
+            category="transfer",
+            module="mani_pipette", cls="PipetteTransfer", robot="dual_ur5e", camera="table_cam_front",
+            completion_rule="shared_process_progress",
         ),
         CatalogEntry(
             name="vortex_mixer",
             description="Vortex-mix a tube's contents using a dual-arm Aloha setup and a Vortex-Genie 2 mixer.",
             category="combination",
             module="mani_vortex_mixer", cls="VortexMixerManipulate", robot="aloha", camera="table_cam_front",
+            completion_rule="shared_process_progress",
         ),
         CatalogEntry(
             name="centrifuge_mini_close_lid",
             description="Close the lid of the Tiangen T-Gear mini centrifuge.",
             category="conditioning",
             module="mani_centrifuge_mini", cls="CentrifugeMiniManipulate", robot="ur5e", camera="table_cam_left",
+            completion_rule="lid_standstill_geometry",
         ),
         CatalogEntry(
             name="pickup_reagent_bottle",
@@ -242,6 +298,7 @@ CATALOG: dict[str, CatalogEntry] = {
             category="composite",
             module="mani_centrifuge_5430_composite", cls="CentrifugeInsertCloseComposite",
             robot="ur5e", camera="table_cam_front", task_override="close_lid_step",
+            completion_rule="lid_lock_geometry",
         ),
 
         # --- Visual-only display scenes (archetypes/static_display.py) --

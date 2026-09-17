@@ -1,0 +1,123 @@
+<mujoco model="space_orbital_experiment">
+  <compiler angle="radian" autolimits="true" />
+  <option gravity="0 0 -0.0" timestep="0.002" integrator="implicitfast" cone="elliptic" noslip_iterations="2" density="0" viscosity="0" />
+  <visual>
+    <global offwidth="640" offheight="480" />
+  </visual>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.02 0.025 0.05" rgb2="0.04 0.05 0.08" width="512" height="3072" />
+    <model name="ur5e" file="../robot/ur5e_gripper.xml" content_type="text/xml" />
+    <model name="cartridge" file="../instrument/space_cartridge.xml" content_type="text/xml" />
+    <model name="glovebox" file="../instrument/glovebox.xml" content_type="text/xml" />
+    <model name="iss_us_lab" file="../../assets/space/iss_us_lab/asset.xml" content_type="text/xml" />
+    <model name="iss_handrail" file="../../assets/space/iss_handrail/asset.xml" content_type="text/xml" />
+    <model name="apollo_sample" file="../../assets/space/apollo_sample/asset.xml" content_type="text/xml" />
+    <model name="mars_sample_tube" file="../../assets/space/mars_sample_tube/asset.xml" content_type="text/xml" />
+    <mesh name="/apollo_display:collision_mesh" file="../../assets/space/apollo_sample/part_0.obj" />
+  </asset>
+  <worldbody>
+    <light name="work_light" directional="true" pos="0 -2 4" dir="0 0.3 -1" diffuse="0.8 0.8 0.8" ambient="0.15 0.15 0.15" />
+    <geom name="terrain" type="plane" size="10 10 0.05" pos="0 0 0" rgba="0.29 0.34 0.40 1" friction="0.8 0.01 0.001" />
+    <body name="anchored_workstation">
+      <geom name="rack_work_panel" type="box" size="0.66 0.40 0.016" pos="0 0 0.808" rgba="0.68 0.72 0.76 1" />
+      <geom name="rack_wall_bracket_0" type="box" size="0.45 0.025 0.025" pos="1.11 -0.3 0.79" rgba="0.20 0.30 0.40 1" />
+      <geom name="rack_wall_anchor_0" type="box" size="0.025 0.07 0.08" pos="1.55 -0.3 0.79" rgba="0.82 0.55 0.18 1" />
+      <geom name="rack_wall_bracket_1" type="box" size="0.45 0.025 0.025" pos="1.11 0.3 0.79" rgba="0.20 0.30 0.40 1" />
+      <geom name="rack_wall_anchor_1" type="box" size="0.025 0.07 0.08" pos="1.55 0.3 0.79" rgba="0.82 0.55 0.18 1" />
+      <geom name="robot_mount" type="box" size="0.13 0.13 0.012" pos="0.48 0.12 0.812" rgba="0.20 0.30 0.40 1" />
+      <geom name="robot_mount_bolt_0" type="cylinder" size="0.009 0.005" pos="0.38 0.02 0.829" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" />
+      <geom name="robot_mount_bolt_1" type="cylinder" size="0.009 0.005" pos="0.58 0.02 0.829" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" />
+      <geom name="robot_mount_bolt_2" type="cylinder" size="0.009 0.005" pos="0.38 0.22 0.829" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" />
+      <geom name="robot_mount_bolt_3" type="cylinder" size="0.009 0.005" pos="0.58 0.22 0.829" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" />
+      <body name="/ur" pos="0.48 0.12 0.824" quat="0 0 0 1">
+        <attach model="ur5e" body="world" prefix="/ur:" />
+      </body>
+      <body name="/apollo_display" pos="-0.53 -0.29 0.832">
+        <attach model="apollo_sample" body="asset_root" prefix="/apollo_display:" />
+        <geom name="/apollo_display:collision" type="mesh" mesh="/apollo_display:collision_mesh" group="3" mass="0" friction="0.8 0.01 0.001" />
+      </body>
+      <body name="/apollo_display_mount" pos="-0.53 -0.29 0.832">
+        <geom name="/apollo_display:mount_plate" type="box" size="0.0355234759747982 0.03300738077610731 0.004" pos="0 0 -0.004" rgba="0.18 0.28 0.38 1" contype="0" conaffinity="0" mass="0.02" />
+        <geom name="/apollo_display:mount_clip_0_-1" type="box" size="0.004 0.02700738077610731 0.006" pos="-0.0265234759747982 0 0.015427386201918124" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+        <geom name="/apollo_display:mount_clip_0_1" type="box" size="0.004 0.02700738077610731 0.006" pos="0.0265234759747982 0 0.015427386201918124" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+      </body>
+      <body name="/tube_display" pos="-0.53 -0.05 0.832">
+        <attach model="mars_sample_tube" body="asset_root" prefix="/tube_display:" />
+        <geom name="/tube_display:collision" type="capsule" size="0.016453592106699944 0.06854640133678913" pos="0 0 0.08499999344348907" rgba="0.5 0.5 0.5 1" group="3" mass="0" friction="0.8 0.01 0.001" />
+      </body>
+      <body name="/tube_display_mount" pos="-0.53 -0.05 0.832">
+        <geom name="/tube_display:mount_plate" type="box" size="0.028453592106699944 0.02642946153879166 0.004" pos="0 0 -0.004" rgba="0.18 0.28 0.38 1" contype="0" conaffinity="0" mass="0.02" />
+        <geom name="/tube_display:mount_clip_0_-1" type="box" size="0.004 0.020429461538791657 0.006" pos="-0.019453592106699943 0 0.04249999672174454" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+        <geom name="/tube_display:mount_clip_0_1" type="box" size="0.004 0.020429461538791657 0.006" pos="0.019453592106699943 0 0.04249999672174454" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+        <geom name="/tube_display:mount_clip_1_-1" type="box" size="0.004 0.020429461538791657 0.006" pos="-0.019453592106699943 0 0.1274999901652336" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+        <geom name="/tube_display:mount_clip_1_1" type="box" size="0.004 0.020429461538791657 0.006" pos="0.019453592106699943 0 0.1274999901652336" rgba="0.82 0.55 0.18 1" contype="0" conaffinity="0" mass="0.001" />
+      </body>
+      <body name="storage_reference" pos="-0.18 -0.08 0.957">
+        <geom name="storage_reference_seat" type="box" size=".032 .025 .008" pos="0 0 0" rgba=".18 .29 .39 1" />
+        <geom name="storage_reference_post" type="box" size=".018 .018 .0625" pos="0 0 -.0705" rgba=".25 .32 .38 1" />
+      </body>
+      <body name="storage_candidate" pos="0.0 -0.08 0.957">
+        <geom name="storage_candidate_seat" type="box" size=".032 .025 .008" pos="0 0 0" rgba=".18 .29 .39 1" />
+        <geom name="storage_candidate_post" type="box" size=".018 .018 .0625" pos="0 0 -.0705" rgba=".25 .32 .38 1" />
+      </body>
+      <body name="measurement_tray" pos="-.01 -.32 .957">
+        <joint name="measurement_slide" type="slide" axis="1 0 0" range="-.03 .03" stiffness="20" damping=".02" />
+        <inertial pos="0 0 0" mass=".2" diaginertia=".0002 .0002 .0002" />
+        <geom name="instrument_seat" type="box" size=".035 .027 .008" pos="0 0 0" rgba=".24 .49 .65 1" mass="0" />
+        <geom name="instrument_guide_-1" type="box" size=".003 .024 .016" pos="-0.03 0 .024" rgba=".77 .54 .17 1" mass="0" />
+        <geom name="instrument_guide_1" type="box" size=".003 .024 .016" pos="0.03 0 .024" rgba=".77 .54 .17 1" mass="0" />
+        <site name="instrument_sample_pose" pos="0.0 0.0 0.043" size=".003" group="5" />
+      </body>
+      <body name="instrument_latch" pos="-.01 -.366 .99">
+        <joint name="instrument_latch_slide" type="slide" axis="1 0 0" range="0 .025" damping="1" />
+        <geom name="instrument_latch_handle" type="box" size=".012 .008 .008" pos="0 0 0" rgba=".87 .58 .12 1" contype="0" conaffinity="0" mass=".02" />
+      </body>
+      <body name="spectrometer_shutter" pos="-.01 -.32 1.055">
+        <joint name="spectrometer_shutter_slide" type="slide" axis="1 0 0" range="0 .12" ref=".12" damping="1" />
+        <geom name="spectrometer_shutter_panel" type="box" size=".043 .030 .004" pos=".12 0 0" rgba=".15 .24 .32 1" mass=".03" />
+      </body>
+    </body>
+    <body name="/iss" pos="0 0 -0.94" quat="0.7071067811865476 0 0 0.7071067811865476">
+      <attach model="iss_us_lab" body="asset_root" prefix="/iss:" />
+    </body>
+    <geom name="iss_wall_-1" type="box" size="0.04 3.867288092209492 1.7540218234062195" pos="-1.5565723180770874 0 0.8140218234062195" rgba="0.5 0.5 0.5 1" group="3" />
+    <geom name="iss_end_-1" type="box" size="1.5565723180770874 0.04 1.7540218234062195" pos="0 -3.867288092209492 0.8140218234062195" rgba="0.5 0.5 0.5 1" group="3" />
+    <geom name="iss_wall_1" type="box" size="0.04 3.867288092209492 1.7540218234062195" pos="1.5565723180770874 0 0.8140218234062195" rgba="0.5 0.5 0.5 1" group="3" />
+    <geom name="iss_end_1" type="box" size="1.5565723180770874 0.04 1.7540218234062195" pos="0 3.867288092209492 0.8140218234062195" rgba="0.5 0.5 0.5 1" group="3" />
+    <geom name="iss_ceiling" type="box" size="1.5565723180770874 3.867288092209492 0.04" pos="0 0 2.568043646812439" rgba="0.5 0.5 0.5 1" group="3" />
+    <body name="/rail" pos="-0.55 -0.60 0.80">
+      <attach model="iss_handrail" body="asset_root" prefix="/rail:" />
+      <geom name="rail_collision" type="capsule" size="0.012 0.365" pos="-0.019 0 0.3917" rgba="0.5 0.5 0.5 1" group="3" />
+    </body>
+    <camera name="world_overview" pos="0 -2.2 1.7" xyaxes="1.0 0.0 -0.0 0.0 0.2696299255199709 0.9629640197141818" fovy="62" />
+    <camera name="asset_closeup" pos="0 -1.2 1.5" xyaxes="0.7371541402007413 0.6757246285173463 -0.0 -0.23368872053049136 0.25493314966962694 0.9382956203118212" fovy="45" />
+    <light name="cabin_fixture_0" pos="0 -2 1.92" dir="0 0 -1" directional="false" cutoff="90" diffuse="0.6 0.6 0.6" ambient="0.05 0.05 0.05" />
+    <light name="cabin_fixture_1" pos="0 0 1.92" dir="0 0 -1" directional="false" cutoff="90" diffuse="0.6 0.6 0.6" ambient="0.05 0.05 0.05" />
+    <light name="cabin_fixture_2" pos="0 2 1.92" dir="0 0 -1" directional="false" cutoff="90" diffuse="0.6 0.6 0.6" ambient="0.05 0.05 0.05" />
+    <camera name="experiment_closeup" pos="0.4 -0.94 1.55" xyaxes="0.8661855860486004 0.4997224534895772 -0.0 -0.24626591373866946 0.426860917147027 0.870139561876632" fovy="45" />
+    <body name="sample_reference" pos="-0.18 -0.08 1.0">
+      <freejoint name="sample_reference_free" />
+      <inertial pos="0 0 0" mass="0.1" diaginertia="5.416666666666667e-05 5.846666666666668e-05 3.096666666666666e-05" />
+      <geom name="sample_reference_shell" type="box" size="0.023 0.02 0.035" pos="0 0 0" rgba=".70 .76 .82 1" friction="1 .01 .001" solref=".005 1" mass="0" />
+      <geom name="sample_reference_cap" type="box" size=".023 .020 .003" pos="0 0 .038" rgba=".12 .28 .39 1" contype="0" conaffinity="0" mass="0" />
+      <site name="sample_reference_grasp" pos="0 0 .008" size=".003" group="5" />
+    </body>
+    <body name="sample_candidate" pos="0.0 -0.08 1.0">
+      <freejoint name="sample_candidate_free" />
+      <inertial pos="0 0 0" mass="0.15" diaginertia="8.125000000000001e-05 8.77e-05 4.644999999999999e-05" />
+      <geom name="sample_candidate_shell" type="box" size="0.023 0.02 0.035" pos="0 0 0" rgba=".70 .76 .82 1" friction="1 .01 .001" solref=".005 1" mass="0" />
+      <geom name="sample_candidate_cap" type="box" size=".023 .020 .003" pos="0 0 .038" rgba=".12 .28 .39 1" contype="0" conaffinity="0" mass="0" />
+      <site name="sample_candidate_grasp" pos="0 0 .008" size=".003" group="5" />
+    </body>
+  </worldbody>
+  <equality>
+    <weld name="storage_reference_lock" body1="storage_reference" body2="sample_reference" active="true" solref=".004 1" solimp=".9999 .9999 .001" />
+    <weld name="instrument_reference_lock" body1="measurement_tray" body2="sample_reference" active="false" solref=".004 1" solimp=".9999 .9999 .001" />
+    <weld name="storage_candidate_lock" body1="storage_candidate" body2="sample_candidate" active="true" solref=".004 1" solimp=".9999 .9999 .001" />
+    <weld name="instrument_candidate_lock" body1="measurement_tray" body2="sample_candidate" active="false" solref=".004 1" solimp=".9999 .9999 .001" />
+  </equality>
+  <actuator>
+    <position name="instrument_latch_drive" joint="instrument_latch_slide" kp="50" kv="2" ctrlrange="0 .025" />
+    <position name="spectrometer_shutter_drive" joint="spectrometer_shutter_slide" kp="200" kv="5" ctrlrange="0 .12" />
+  </actuator>
+</mujoco>

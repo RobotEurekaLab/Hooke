@@ -1,0 +1,64 @@
+{
+  "kind": "comprehensive_bounded_acceptance",
+  "collected_at": "2026-09-16T23:25:12.451811+00:00",
+  "requested_episodes": 160,
+  "recorded_episodes": 160,
+  "successful_experts": 80,
+  "controls_false_successes": 0,
+  "controls": 80,
+  "equal_source_input_pairs": 80,
+  "unit_tests": 118,
+  "campaign": [
+    {
+      "name": "comprehensive-final-contracts",
+      "returncode": 0
+    },
+    {
+      "name": "comprehensive-final-lids-native-pilot",
+      "returncode": 0
+    },
+    {
+      "name": "comprehensive-final-cycle-native10",
+      "returncode": 0
+    },
+    {
+      "name": "comprehensive-final-transfer-native-controls10",
+      "returncode": 0
+    },
+    {
+      "name": "comprehensive-final-lids-native8",
+      "returncode": 0
+    }
+  ],
+  "task_reports": [
+    {
+      "path": "docs/validation/isaac_pipette_transfer_ten_seed_summary.json",
+      "sha256": "138415699cbedc271c87a5286cb1ea7fc5be784a578271066374098fe197c060"
+    },
+    {
+      "path": "docs/validation/isaac_centrifuge_cycle_summary.json",
+      "sha256": "ea6853dc2688eb3bded5973d86449ee6c53bcc49b3f63c510f0b884d389bcfba"
+    },
+    {
+      "path": "docs/validation/isaac_5430_lid_summary.json",
+      "sha256": "356cfb7f1dae4ea838be1e3050efa9be61e01a4d52b7de0e91bdeb925e6a1d55"
+    },
+    {
+      "path": "docs/validation/isaac_mini_lid_summary.json",
+      "sha256": "044a9767023a020dc0e3db59db5c21b98dfd2f647ac3736911c79b81bf34dde6"
+    }
+  ],
+  "unit_test_evidence": {
+    "path": "temp/comprehensive_work/unit-tests-shared-gpu.log",
+    "sha256": "d850f6ab9a30403b42a57dc8221e82d42a0c37fff5164b47726431fd67757ea3"
+  },
+  "regression_versions": [
+    "30804431c09bbc272d615df73cb6b930bf1f0e06",
+    "5193ed37f73e07fdbb9de5a5e6021cb44f239d97",
+    "f950417200f10fea2138b8719cf71aa0d7f3598d"
+  ],
+  "passed": true,
+  "parity_qualified": false,
+  "scientific_process_validated": false,
+  "scope": "Four paired ten-seed manipulation tasks and declared time limits; simplified science and configured isolated stability are reported separately. No arbitrary MJCF, full CFD, calibrated science, dynamics, pixel or real-time equivalence certification."
+}

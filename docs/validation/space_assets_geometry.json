@@ -1,0 +1,37 @@
+{
+  "kind": "pinned_space_asset_conversion_audit",
+  "assets": [
+    {
+      "id": "iss_us_lab",
+      "faces": 25126,
+      "parts": 9,
+      "diffuse_textures": 7,
+      "passed": true
+    },
+    {
+      "id": "iss_handrail",
+      "faces": 4680,
+      "parts": 2,
+      "diffuse_textures": 2,
+      "passed": true
+    },
+    {
+      "id": "apollo_sample",
+      "faces": 1000,
+      "parts": 1,
+      "diffuse_textures": 1,
+      "passed": true
+    },
+    {
+      "id": "mars_sample_tube",
+      "faces": 17419,
+      "parts": 4,
+      "diffuse_textures": 0,
+      "passed": true
+    }
+  ],
+  "triangles": 48225,
+  "passed": true,
+  "manifest_sha256": "e07de5a10ddf15eb51fce4ffa316e764ac9d01a93b78396ca20e1f80a20cb80c",
+  "scope": "Source/export triangle corner positions, UVs, normals, decoded RGB pixels and file hashes. Does not establish PBR, measured physical properties or exact collisions."
+}

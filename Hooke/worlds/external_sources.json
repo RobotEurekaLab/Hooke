@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-17",
+  "attributions_url": "https://andrejorsula.github.io/space_robotics_bench/misc/attributions.html",
+  "assets": [
+    {
+      "id": "iss_us_lab",
+      "label": "ISS 美国实验舱",
+      "repository": "nasa/astrobee_media",
+      "commit": "1cb0620121099cc848f5a3db480464188dc91ea3",
+      "resources": [
+        {
+          "path": "astrobee_iss/meshes/us_lab.dae",
+          "sha256": "259db04d7bf93cbc8cb7c2958046b48f6a9bb59ea9e0179741b08b04650dd126"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Generic_Intersection.png",
+          "sha256": "cd671cd9e1e8f76418b596e5bf2b1c0b4d719a117f9a3998dd8c925056404de3"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Generic_Misc_Details.png",
+          "sha256": "52b49786fa9f6677c505aa779584cfe51e263068509919c9f6f58199497c6bf5"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/USLab_FWD_Bulkhead.png",
+          "sha256": "a4a30c82cce9adcd36d4381d221bd03cbf523a652f9be663982c14da2148fd4d"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/USLab_Racks_02.png",
+          "sha256": "10f810093fee6814f985708c651fada88f5f05d735cddd5c2da12f127390aa40"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Untitled.002.png",
+          "sha256": "e24d9e9b0630811ce3cd17778675b731732087954cf7ab9a6d9345e83cbd8589"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Untitled.004.png",
+          "sha256": "94092f52a9e1c9bb75c0cc77b7d9d3878cabcaea6f0fd3076f3c2f9dd887e255"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Untitled.005.png",
+          "sha256": "16884d041e0fef119b42191bc16c3b0287292b2331846a17ec78213d04eb7e5e"
+        }
+      ],
+      "terms": "LicenseRef-NASA-Media-Usage-Guidelines",
+      "terms_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "credit": "NASA Astrobee project; ISS interior from NASA IGOAL. Converted for Hooke research simulation.",
+      "academic_research_use": "permitted_educational_graphical_simulation_under_media_guidelines",
+      "usage_note": "Retain source credit and third-party notices. NASA media terms cover this asset per the upstream README; do not relabel it CC0 or imply NASA endorsement. Logos and separate third-party rights are not granted by these terms."
+    },
+    {
+      "id": "iss_handrail",
+      "label": "ISS 扶手",
+      "repository": "nasa/astrobee_media",
+      "commit": "1cb0620121099cc848f5a3db480464188dc91ea3",
+      "resources": [
+        {
+          "path": "astrobee_handrail_30/meshes/handrail_30.dae",
+          "sha256": "56fd4c7c5580fdb018aef6854fa012a010a50526926f96c5be67b62a1e6e21fd"
+        },
+        {
+          "path": "astrobee_handrail_30/media/materials/textures/blue.png",
+          "sha256": "bf31778a5f6527581edff03430027df22c3084ef335b8017e159170ba31ec8a1"
+        },
+        {
+          "path": "astrobee_handrail_30/media/materials/textures/silver.png",
+          "sha256": "e6f14720a70d313741712e29b7168704ae93c0b1ff4ef905e3a966caccc4405a"
+        }
+      ],
+      "terms": "LicenseRef-NASA-Media-Usage-Guidelines",
+      "terms_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "credit": "NASA Astrobee project; ISS handrails from NASA Robonaut2. Converted for Hooke research simulation.",
+      "academic_research_use": "permitted_educational_graphical_simulation_under_media_guidelines",
+      "usage_note": "Retain source credit and third-party notices. NASA media terms cover this asset per the upstream README; do not relabel it CC0 or imply NASA endorsement. Logos and separate third-party rights are not granted by these terms."
+    },
+    {
+      "id": "apollo_sample",
+      "label": "Apollo 样品外形 1",
+      "repository": "AndrejOrsula/srb_assets",
+      "commit": "54b1282a5f89ead8ff51b869060e68083fa3ad2f",
+      "resources": [
+        {
+          "path": "object/rock/apollo_sample1.usdz",
+          "sha256": "dee5d067194f6c42051667371e6ce2192bba2c7e3918fe0b437f7a90e1fa93a5"
+        }
+      ],
+      "terms": "CC0-1.0",
+      "terms_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "credit": "NASA Johnson Space Center; USD packaging/modifications by Space Robotics Bench contributors. Converted for Hooke research simulation.",
+      "academic_research_use": "permitted",
+      "usage_note": "SRB official attribution list identifies the Apollo samples as CC0. Credit retained for provenance. Appearance does not establish calibrated physical or chemical properties."
+    },
+    {
+      "id": "mars_sample_tube",
+      "label": "Mars 2020 采样管",
+      "repository": "AndrejOrsula/srb_assets",
+      "commit": "54b1282a5f89ead8ff51b869060e68083fa3ad2f",
+      "resources": [
+        {
+          "path": "object/sample_tube.usdc",
+          "sha256": "a926e56b106d69da5656916af5d5e04a2a74a1ade3d1dc31b7aca459a4d3955b"
+        }
+      ],
+      "terms": "LicenseRef-NASA-Media-Usage-Guidelines AND CC0-1.0-modifications",
+      "terms_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "original_resource_url": "https://science.nasa.gov/3d-resources/mars-2020-sample-tube/",
+      "credit": "NASA/JPL-Caltech; cap mesh/material modifications and USD packaging by Space Robotics Bench contributors. Converted for Hooke research simulation.",
+      "academic_research_use": "permitted_educational_graphical_simulation_under_media_guidelines",
+      "usage_note": "Original NASA 3D resource uses NASA media guidelines. SRB modifications are CC0; the underlying NASA resource is not relabeled CC0. Retain both origins. No JPL/NASA endorsement is implied."
+    }
+  ]
+}

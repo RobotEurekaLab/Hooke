@@ -1,0 +1,6692 @@
+{
+  "schema_version": 1,
+  "scope": "CPU compilation and structural preflight only; no new native physics, RGB or complete-expert coverage implied.",
+  "entries": [
+    {
+      "task": "centrifuge_5430_cycle",
+      "module": "mani_centrifuge_cycle",
+      "class": "CentrifugeCycle",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/insert_centrifuge_5430.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 2115,
+      "meshes": 110,
+      "joints": 18,
+      "actuators": 8,
+      "cameras": 3,
+      "equalities": 6,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        1,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 2.0022966912947595
+    },
+    {
+      "task": "pickup_centrifuge_tube",
+      "module": "pickup_centrifuge_tube",
+      "class": "Pickup",
+      "robot": "aloha",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/pickup.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 20,
+      "geoms": 189,
+      "meshes": 23,
+      "joints": 10,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 1,
+      "tendons": 0,
+      "plugins": 4,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        2
+      ],
+      "actuator_transmissions": [
+        0
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 1.04865865688771
+    },
+    {
+      "task": "thermal_cycler_close",
+      "module": "mani_thermal_cycler",
+      "class": "ThermalCyclerManipulate",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_thermal_cycler.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 34,
+      "geoms": 117,
+      "meshes": 44,
+      "joints": 17,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 4,
+      "tendons": 1,
+      "plugins": 1,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.6929850517772138
+    },
+    {
+      "task": "thermal_cycler_open",
+      "module": "mani_thermal_cycler",
+      "class": "ThermalCyclerManipulate",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_thermal_cycler.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 34,
+      "geoms": 117,
+      "meshes": 44,
+      "joints": 17,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 4,
+      "tendons": 1,
+      "plugins": 1,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.5547641301527619
+    },
+    {
+      "task": "centrifuge_5430_close_lid",
+      "module": "mani_centrifuge_5430",
+      "class": "Centrifuge5430Manipulate",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_centrifuge_5430.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 32,
+      "geoms": 2083,
+      "meshes": 105,
+      "joints": 16,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 4,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.4650700241327286
+    },
+    {
+      "task": "centrifuge_5910_lid_close",
+      "module": "mani_centrifuge_5910",
+      "class": "Centrifuge5910Manipulate",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_centrifuge_5910.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 40,
+      "geoms": 119,
+      "meshes": 45,
+      "joints": 24,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 4,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.490953431930393
+    },
+    {
+      "task": "insert_centrifuge_5430",
+      "module": "load_centrifuge_5430",
+      "class": "InsertCentrifuge5430",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/insert_centrifuge_5430.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 2115,
+      "meshes": 110,
+      "joints": 18,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 4,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.5134306447580457
+    },
+    {
+      "task": "thermal_mixer",
+      "module": "mani_thermal_mixer",
+      "class": "ThermalMixerManipulate",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_thermal_mixer.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 92,
+      "meshes": 34,
+      "joints": 14,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 18,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.5048170820809901
+    },
+    {
+      "task": "pipette",
+      "module": "mani_pipette",
+      "class": "Pipette",
+      "robot": "dual_ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_pipette.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 66,
+      "geoms": 241,
+      "meshes": 96,
+      "joints": 43,
+      "actuators": 25,
+      "cameras": 4,
+      "equalities": 10,
+      "tendons": 7,
+      "plugins": 2,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 1.8109504450112581
+    },
+    {
+      "task": "pipette_transfer",
+      "module": "mani_pipette",
+      "class": "PipetteTransfer",
+      "robot": "dual_ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_pipette.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 70,
+      "geoms": 312,
+      "meshes": 103,
+      "joints": 44,
+      "actuators": 25,
+      "cameras": 4,
+      "equalities": 10,
+      "tendons": 7,
+      "plugins": 4,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 1.8613213510252535
+    },
+    {
+      "task": "vortex_mixer",
+      "module": "mani_vortex_mixer",
+      "class": "VortexMixerManipulate",
+      "robot": "aloha",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/vortex_mixer.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 37,
+      "geoms": 288,
+      "meshes": 47,
+      "joints": 22,
+      "actuators": 15,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 0,
+      "plugins": 5,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        2
+      ],
+      "actuator_transmissions": [
+        0
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 1.8135325810872018
+    },
+    {
+      "task": "centrifuge_mini_close_lid",
+      "module": "mani_centrifuge_mini",
+      "class": "CentrifugeMiniManipulate",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_centrifuge_mini.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 32,
+      "geoms": 95,
+      "meshes": 44,
+      "joints": 16,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 4,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.5083082681521773
+    },
+    {
+      "task": "pickup_reagent_bottle",
+      "module": "mani_reagent_bottle",
+      "class": "PickupReagentBottle",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_reagent_bottle.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 29,
+      "geoms": 82,
+      "meshes": 29,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3732785927131772
+    },
+    {
+      "task": "close_fume_hood",
+      "module": "mani_fume_hood",
+      "class": "OperateFumeHood",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_fume_hood.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 31,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.33588984375819564
+    },
+    {
+      "task": "push_filling_nozzle_down",
+      "module": "mani_vial_filling_line",
+      "class": "PushFillingNozzle",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_vial_filling_line.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36534226732328534
+    },
+    {
+      "task": "composite_push_vial_nozzle",
+      "module": "mani_cross_instrument_composite",
+      "class": "CrossInstrumentComposite",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_cross_instrument_composite.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 33,
+      "geoms": 86,
+      "meshes": 28,
+      "joints": 16,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3685880759730935
+    },
+    {
+      "task": "composite_push_hplc_plunger",
+      "module": "mani_cross_instrument_composite",
+      "class": "CrossInstrumentComposite",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_cross_instrument_composite.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 33,
+      "geoms": 86,
+      "meshes": 28,
+      "joints": 16,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35482754930853844
+    },
+    {
+      "task": "composite_filter_cartridge_housing",
+      "module": "archetypes.composite_generated",
+      "class": "ChemistryGeneralLabCompositeTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_composite_chemistry_general_lab.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 33,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 16,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37220876989886165
+    },
+    {
+      "task": "composite_microplate_stacker_eject",
+      "module": "archetypes.composite_generated",
+      "class": "ChemistryGeneralLabCompositeTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_composite_chemistry_general_lab.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 33,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 16,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3564867088571191
+    },
+    {
+      "task": "composite_insert_centrifuge_5430",
+      "module": "mani_centrifuge_5430_composite",
+      "class": "CentrifugeInsertCloseComposite",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/insert_centrifuge_5430.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 2115,
+      "meshes": 110,
+      "joints": 18,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 4,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.5429001753218472
+    },
+    {
+      "task": "composite_centrifuge_5430_close_lid",
+      "module": "mani_centrifuge_5430_composite",
+      "class": "CentrifugeInsertCloseComposite",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/insert_centrifuge_5430.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 2115,
+      "meshes": 110,
+      "joints": 18,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 4,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.6007580049335957
+    },
+    {
+      "task": "analytical_balance_display",
+      "module": "archetypes.static_items",
+      "class": "AnalyticalBalanceTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_analytical_balance.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 85,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3843929087743163
+    },
+    {
+      "task": "hot_plate_stirrer_display",
+      "module": "archetypes.static_items",
+      "class": "HotPlateStirrerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_hot_plate_stirrer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38252919679507613
+    },
+    {
+      "task": "round_bottom_flask_stand_display",
+      "module": "archetypes.static_items",
+      "class": "RoundBottomFlaskStandTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_round_bottom_flask_stand.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37005282612517476
+    },
+    {
+      "task": "tablet_press_display",
+      "module": "archetypes.static_items",
+      "class": "TabletPressTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_tablet_press.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36388346878811717
+    },
+    {
+      "task": "laminar_flow_hood_display",
+      "module": "archetypes.static_items",
+      "class": "LaminarFlowHoodTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_laminar_flow_hood.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 85,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38809270737692714
+    },
+    {
+      "task": "autoclave_display",
+      "module": "archetypes.static_items",
+      "class": "AutoclaveTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_autoclave.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 85,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3713958072476089
+    },
+    {
+      "task": "glovebox_display",
+      "module": "archetypes.static_items",
+      "class": "GloveboxTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_glovebox.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 86,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36409894563257694
+    },
+    {
+      "task": "coin_cell_crimper_display",
+      "module": "archetypes.static_items",
+      "class": "CoinCellCrimperTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_coin_cell_crimper.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36802151799201965
+    },
+    {
+      "task": "burette_stand_display",
+      "module": "archetypes.static_items2",
+      "class": "BuretteStandTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_burette_stand.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3828695444390178
+    },
+    {
+      "task": "rotary_evaporator_display",
+      "module": "archetypes.static_items2",
+      "class": "RotaryEvaporatorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_rotary_evaporator.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37177212722599506
+    },
+    {
+      "task": "ph_meter_display",
+      "module": "archetypes.static_items2",
+      "class": "PhMeterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_ph_meter.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37705320306122303
+    },
+    {
+      "task": "vacuum_filtration_setup_display",
+      "module": "archetypes.static_items2",
+      "class": "VacuumFiltrationSetupTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_vacuum_filtration_setup.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3567209099419415
+    },
+    {
+      "task": "desiccator_display",
+      "module": "archetypes.static_items2",
+      "class": "DesiccatorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_desiccator.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.368757835123688
+    },
+    {
+      "task": "muffle_furnace_display",
+      "module": "archetypes.static_items2",
+      "class": "MuffleFurnaceTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_muffle_furnace.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3850161023437977
+    },
+    {
+      "task": "ultrasonic_cleaner_display",
+      "module": "archetypes.static_items2",
+      "class": "UltrasonicCleanerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_ultrasonic_cleaner.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3579658167436719
+    },
+    {
+      "task": "distillation_apparatus_display",
+      "module": "archetypes.static_items2",
+      "class": "DistillationApparatusTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_distillation_apparatus.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36635972280055285
+    },
+    {
+      "task": "bunsen_burner_display",
+      "module": "archetypes.static_items2",
+      "class": "BunsenBurnerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_bunsen_burner.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3513365271501243
+    },
+    {
+      "task": "uv_vis_spectrophotometer_display",
+      "module": "archetypes.static_items2",
+      "class": "UvVisSpectrophotometerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_uv_vis_spectrophotometer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3549002092331648
+    },
+    {
+      "task": "capsule_filling_machine_display",
+      "module": "archetypes.static_items2",
+      "class": "CapsuleFillingMachineTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_capsule_filling_machine.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36934858188033104
+    },
+    {
+      "task": "blister_pack_sealer_display",
+      "module": "archetypes.static_items2",
+      "class": "BlisterPackSealerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_blister_pack_sealer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35446528904139996
+    },
+    {
+      "task": "tablet_coating_pan_display",
+      "module": "archetypes.static_items2",
+      "class": "TabletCoatingPanTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_tablet_coating_pan.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36262301821261644
+    },
+    {
+      "task": "freeze_dryer_display",
+      "module": "archetypes.static_items2",
+      "class": "FreezeDryerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_freeze_dryer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36144781624898314
+    },
+    {
+      "task": "dissolution_tester_display",
+      "module": "archetypes.static_items2",
+      "class": "DissolutionTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_dissolution_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 85,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.39152247412130237
+    },
+    {
+      "task": "hardness_tester_display",
+      "module": "archetypes.static_items2",
+      "class": "HardnessTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_hardness_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35950035508722067
+    },
+    {
+      "task": "vial_filling_line_display",
+      "module": "archetypes.static_items2",
+      "class": "VialFillingLineTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_vial_filling_line.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.356214732863009
+    },
+    {
+      "task": "ampoule_sealer_display",
+      "module": "archetypes.static_items2",
+      "class": "AmpouleSealerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_ampoule_sealer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3593970499932766
+    },
+    {
+      "task": "hplc_system_display",
+      "module": "archetypes.static_items2",
+      "class": "HplcSystemTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_hplc_system.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35774131305515766
+    },
+    {
+      "task": "clean_room_pass_box_display",
+      "module": "archetypes.static_items2",
+      "class": "CleanRoomPassBoxTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_clean_room_pass_box.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35222648130729795
+    },
+    {
+      "task": "electrode_coating_machine_display",
+      "module": "archetypes.static_items2",
+      "class": "ElectrodeCoatingMachineTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_electrode_coating_machine.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36001013731583953
+    },
+    {
+      "task": "slurry_mixer_display",
+      "module": "archetypes.static_items2",
+      "class": "SlurryMixerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_slurry_mixer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3545985729433596
+    },
+    {
+      "task": "calendering_press_display",
+      "module": "archetypes.static_items2",
+      "class": "CalenderingPressTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_calendering_press.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35547878593206406
+    },
+    {
+      "task": "pouch_cell_sealer_display",
+      "module": "archetypes.static_items2",
+      "class": "PouchCellSealerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_pouch_cell_sealer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36009198101237416
+    },
+    {
+      "task": "battery_cycler_rack_display",
+      "module": "archetypes.static_items2",
+      "class": "BatteryCyclerRackTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_battery_cycler_rack.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36170673184096813
+    },
+    {
+      "task": "cell_stacking_machine_display",
+      "module": "archetypes.static_items2",
+      "class": "CellStackingMachineTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_cell_stacking_machine.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3528896071948111
+    },
+    {
+      "task": "tab_welding_station_display",
+      "module": "archetypes.static_items2",
+      "class": "TabWeldingStationTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_tab_welding_station.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35591557901352644
+    },
+    {
+      "task": "electrolyte_filling_station_display",
+      "module": "archetypes.static_items2",
+      "class": "ElectrolyteFillingStationTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_electrolyte_filling_station.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3555989363230765
+    },
+    {
+      "task": "battery_formation_chamber_display",
+      "module": "archetypes.static_items2",
+      "class": "BatteryFormationChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_battery_formation_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3685454288497567
+    },
+    {
+      "task": "cell_disassembly_station_display",
+      "module": "archetypes.static_items2",
+      "class": "CellDisassemblyStationTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_cell_disassembly_station.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3656678940169513
+    },
+    {
+      "task": "oscilloscope_display",
+      "module": "archetypes.static_items2",
+      "class": "OscilloscopeTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_oscilloscope.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3520571328699589
+    },
+    {
+      "task": "function_generator_display",
+      "module": "archetypes.static_items2",
+      "class": "FunctionGeneratorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_function_generator.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3447254663333297
+    },
+    {
+      "task": "optical_breadboard_laser_display",
+      "module": "archetypes.static_items2",
+      "class": "OpticalBreadboardLaserTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_optical_breadboard_laser.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35529959108680487
+    },
+    {
+      "task": "vacuum_chamber_display",
+      "module": "archetypes.static_items2",
+      "class": "VacuumChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_vacuum_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35320787504315376
+    },
+    {
+      "task": "soldering_station_display",
+      "module": "archetypes.static_items2",
+      "class": "SolderingStationTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_soldering_station.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3626186391338706
+    },
+    {
+      "task": "optical_microscope_display",
+      "module": "archetypes.static_items2",
+      "class": "OpticalMicroscopeTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_optical_microscope.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36468365509063005
+    },
+    {
+      "task": "water_bath_display",
+      "module": "archetypes.static_items2",
+      "class": "WaterBathTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_water_bath.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.33850885136052966
+    },
+    {
+      "task": "biosafety_cabinet_display",
+      "module": "archetypes.static_items2",
+      "class": "BiosafetyCabinetTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_biosafety_cabinet.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3590128989890218
+    },
+    {
+      "task": "orbital_shaker_display",
+      "module": "archetypes.static_items2",
+      "class": "OrbitalShakerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_orbital_shaker.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3500263197347522
+    },
+    {
+      "task": "karl_fischer_titrator_display",
+      "module": "archetypes.static_items2",
+      "class": "KarlFischerTitratorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_karl_fischer_titrator.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3591093122959137
+    },
+    {
+      "task": "tensile_testing_machine_display",
+      "module": "archetypes.static_items3",
+      "class": "TensileTestingMachineTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_tensile_testing_machine.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3419602671638131
+    },
+    {
+      "task": "rockwell_hardness_tester_display",
+      "module": "archetypes.static_items3",
+      "class": "RockwellHardnessTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_rockwell_hardness_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.34049361292272806
+    },
+    {
+      "task": "sem_chamber_display",
+      "module": "archetypes.static_items3",
+      "class": "SemChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_sem_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3951720199547708
+    },
+    {
+      "task": "xrd_diffractometer_display",
+      "module": "archetypes.static_items3",
+      "class": "XrdDiffractometerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_xrd_diffractometer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.357924051117152
+    },
+    {
+      "task": "tga_dsc_analyzer_display",
+      "module": "archetypes.static_items3",
+      "class": "TgaDscAnalyzerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_tga_dsc_analyzer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3526524961926043
+    },
+    {
+      "task": "sputter_coater_display",
+      "module": "archetypes.static_items3",
+      "class": "SputterCoaterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_sputter_coater.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36260052770376205
+    },
+    {
+      "task": "hot_press_display",
+      "module": "archetypes.static_items3",
+      "class": "HotPressTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_hot_press.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36476568691432476
+    },
+    {
+      "task": "spin_coater_display",
+      "module": "archetypes.static_items3",
+      "class": "SpinCoaterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_spin_coater.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.372183149214834
+    },
+    {
+      "task": "wire_bonder_display",
+      "module": "archetypes.static_items3",
+      "class": "WireBonderTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_wire_bonder.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35821236576884985
+    },
+    {
+      "task": "wafer_dicing_saw_display",
+      "module": "archetypes.static_items3",
+      "class": "WaferDicingSawTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_wafer_dicing_saw.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.351856570225209
+    },
+    {
+      "task": "plasma_etcher_display",
+      "module": "archetypes.static_items3",
+      "class": "PlasmaEtcherTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_plasma_etcher.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3575161308981478
+    },
+    {
+      "task": "wafer_prober_display",
+      "module": "archetypes.static_items3",
+      "class": "WaferProberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_wafer_prober.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.34888946497812867
+    },
+    {
+      "task": "wafer_inspection_station_display",
+      "module": "archetypes.static_items3",
+      "class": "WaferInspectionStationTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_wafer_inspection_station.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36420974880456924
+    },
+    {
+      "task": "photolithography_aligner_display",
+      "module": "archetypes.static_items3",
+      "class": "PhotolithographyAlignerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_photolithography_aligner.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.34641910111531615
+    },
+    {
+      "task": "texture_analyzer_display",
+      "module": "archetypes.static_items3",
+      "class": "TextureAnalyzerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_texture_analyzer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35956805013120174
+    },
+    {
+      "task": "viscometer_display",
+      "module": "archetypes.static_items3",
+      "class": "ViscometerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_viscometer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.34831662196666
+    },
+    {
+      "task": "moisture_analyzer_display",
+      "module": "archetypes.static_items3",
+      "class": "MoistureAnalyzerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_moisture_analyzer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3548557707108557
+    },
+    {
+      "task": "homogenizer_display",
+      "module": "archetypes.static_items3",
+      "class": "HomogenizerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_homogenizer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35127012990415096
+    },
+    {
+      "task": "brix_refractometer_display",
+      "module": "archetypes.static_items3",
+      "class": "BrixRefractometerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_brix_refractometer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3513460671529174
+    },
+    {
+      "task": "pasteurizer_display",
+      "module": "archetypes.static_items3",
+      "class": "PasteurizerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_pasteurizer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.352774899918586
+    },
+    {
+      "task": "environmental_chamber_display",
+      "module": "archetypes.static_items3",
+      "class": "EnvironmentalChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_environmental_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35544288298115134
+    },
+    {
+      "task": "humidity_chamber_display",
+      "module": "archetypes.static_items3",
+      "class": "HumidityChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_humidity_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36442219791933894
+    },
+    {
+      "task": "salt_spray_chamber_display",
+      "module": "archetypes.static_items3",
+      "class": "SaltSprayChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_salt_spray_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36029219906777143
+    },
+    {
+      "task": "uv_weathering_chamber_display",
+      "module": "archetypes.static_items3",
+      "class": "UvWeatheringChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_uv_weathering_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 85,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.34999777004122734
+    },
+    {
+      "task": "thermal_shock_chamber_display",
+      "module": "archetypes.static_items3",
+      "class": "ThermalShockChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_thermal_shock_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3769957930780947
+    },
+    {
+      "task": "gel_electrophoresis_rig_display",
+      "module": "archetypes.static_items3",
+      "class": "GelElectrophoresisRigTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_gel_electrophoresis_rig.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3908945177681744
+    },
+    {
+      "task": "flow_cytometer_display",
+      "module": "archetypes.static_items3",
+      "class": "FlowCytometerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_flow_cytometer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37754324125126004
+    },
+    {
+      "task": "cell_culture_incubator_display",
+      "module": "archetypes.static_items3",
+      "class": "CellCultureIncubatorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_cell_culture_incubator.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35655498085543513
+    },
+    {
+      "task": "colony_counter_display",
+      "module": "archetypes.static_items3",
+      "class": "ColonyCounterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_colony_counter.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36571598891168833
+    },
+    {
+      "task": "microplate_reader_display",
+      "module": "archetypes.static_items3",
+      "class": "MicroplateReaderTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_microplate_reader.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36231416929513216
+    },
+    {
+      "task": "cryostat_microtome_display",
+      "module": "archetypes.static_items3",
+      "class": "CryostatMicrotomeTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_cryostat_microtome.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36678824480623007
+    },
+    {
+      "task": "spectrofluorometer_display",
+      "module": "archetypes.static_items3",
+      "class": "SpectrofluorometerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_spectrofluorometer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3814526670612395
+    },
+    {
+      "task": "fdm_3d_printer_display",
+      "module": "archetypes.static_items3",
+      "class": "Fdm3dPrinterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_fdm_3d_printer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3613235307857394
+    },
+    {
+      "task": "laser_cutter_display",
+      "module": "archetypes.static_items3",
+      "class": "LaserCutterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_laser_cutter.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3622883651405573
+    },
+    {
+      "task": "cnc_mill_display",
+      "module": "archetypes.static_items3",
+      "class": "CncMillTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_cnc_mill.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.362357284873724
+    },
+    {
+      "task": "conveyor_belt_display",
+      "module": "archetypes.static_items3",
+      "class": "ConveyorBeltTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_conveyor_belt.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.360628676135093
+    },
+    {
+      "task": "pick_and_place_machine_display",
+      "module": "archetypes.static_items3",
+      "class": "PickAndPlaceMachineTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_pick_and_place_machine.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35311578307300806
+    },
+    {
+      "task": "injection_molding_machine_display",
+      "module": "archetypes.static_items3",
+      "class": "InjectionMoldingMachineTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_injection_molding_machine.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35087641095742583
+    },
+    {
+      "task": "vacuum_oven_display",
+      "module": "archetypes.static_items3",
+      "class": "VacuumOvenTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_vacuum_oven.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3619676218368113
+    },
+    {
+      "task": "vibration_test_shaker_display",
+      "module": "archetypes.static_items3",
+      "class": "VibrationTestShakerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_vibration_test_shaker.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3631965918466449
+    },
+    {
+      "task": "atomic_force_microscope_display",
+      "module": "archetypes.static_items4",
+      "class": "AtomicForceMicroscopeTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_atomic_force_microscope.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35629113111644983
+    },
+    {
+      "task": "tem_chamber_display",
+      "module": "archetypes.static_items4",
+      "class": "TemChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_tem_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36125177796930075
+    },
+    {
+      "task": "nanoparticle_synthesizer_display",
+      "module": "archetypes.static_items4",
+      "class": "NanoparticleSynthesizerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_nanoparticle_synthesizer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37728120386600494
+    },
+    {
+      "task": "dip_pen_lithography_stage_display",
+      "module": "archetypes.static_items4",
+      "class": "DipPenLithographyStageTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_dip_pen_lithography_stage.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3661290518939495
+    },
+    {
+      "task": "quartz_crystal_microbalance_display",
+      "module": "archetypes.static_items4",
+      "class": "QuartzCrystalMicrobalanceTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_quartz_crystal_microbalance.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.35807956801727414
+    },
+    {
+      "task": "langmuir_blodgett_trough_display",
+      "module": "archetypes.static_items4",
+      "class": "LangmuirBlodgettTroughTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_langmuir_blodgett_trough.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3532601138576865
+    },
+    {
+      "task": "electrospinning_setup_display",
+      "module": "archetypes.static_items4",
+      "class": "ElectrospinningSetupTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_electrospinning_setup.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.36587332515046
+    },
+    {
+      "task": "fingerprint_fuming_chamber_display",
+      "module": "archetypes.static_items4",
+      "class": "FingerprintFumingChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_fingerprint_fuming_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3570275790989399
+    },
+    {
+      "task": "alternate_light_source_display",
+      "module": "archetypes.static_items4",
+      "class": "AlternateLightSourceTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_alternate_light_source.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.40504964906722307
+    },
+    {
+      "task": "gunshot_residue_collector_display",
+      "module": "archetypes.static_items4",
+      "class": "GunshotResidueCollectorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_gunshot_residue_collector.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.39362881099805236
+    },
+    {
+      "task": "luminol_spray_station_display",
+      "module": "archetypes.static_items4",
+      "class": "LuminolSpraySationTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_luminol_spray_station.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3979017841629684
+    },
+    {
+      "task": "evidence_drying_cabinet_display",
+      "module": "archetypes.static_items4",
+      "class": "EvidenceDryingCabinetTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_evidence_drying_cabinet.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.40029231179505587
+    },
+    {
+      "task": "trace_evidence_vacuum_display",
+      "module": "archetypes.static_items4",
+      "class": "TraceEvidenceVacuumTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_trace_evidence_vacuum.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.40109331998974085
+    },
+    {
+      "task": "dna_extraction_robot_display",
+      "module": "archetypes.static_items4",
+      "class": "DnaExtractionRobotTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_dna_extraction_robot.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.39616880379617214
+    },
+    {
+      "task": "tensile_fabric_tester_display",
+      "module": "archetypes.static_items4",
+      "class": "TensileFabricTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_tensile_fabric_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.4042038111947477
+    },
+    {
+      "task": "martindale_abrasion_tester_display",
+      "module": "archetypes.static_items4",
+      "class": "MartindaleAbrasionTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_martindale_abrasion_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.4064515717327595
+    },
+    {
+      "task": "colorfastness_tester_display",
+      "module": "archetypes.static_items4",
+      "class": "ColorfastnessTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_colorfastness_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.39023232785984874
+    },
+    {
+      "task": "fabric_flammability_tester_display",
+      "module": "archetypes.static_items4",
+      "class": "FabricFlammabilityTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_fabric_flammability_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.4044894869439304
+    },
+    {
+      "task": "pilling_tester_display",
+      "module": "archetypes.static_items4",
+      "class": "PillingTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_pilling_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.4334120671264827
+    },
+    {
+      "task": "moisture_wicking_tester_display",
+      "module": "archetypes.static_items4",
+      "class": "MoistureWickingTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_moisture_wicking_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3942353706806898
+    },
+    {
+      "task": "yarn_twist_tester_display",
+      "module": "archetypes.static_items4",
+      "class": "YarnTwistTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_yarn_twist_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3896031859330833
+    },
+    {
+      "task": "distillation_column_display_display",
+      "module": "archetypes.static_items4",
+      "class": "DistillationColumnDisplayTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_distillation_column.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38094815565273166
+    },
+    {
+      "task": "catalytic_cracker_model_display",
+      "module": "archetypes.static_items4",
+      "class": "CatalyticCrackerModelTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_catalytic_cracker_model.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3924346868880093
+    },
+    {
+      "task": "flare_stack_monitor_display",
+      "module": "archetypes.static_items4",
+      "class": "FlareStackMonitorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_flare_stack_monitor.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.40701931109651923
+    },
+    {
+      "task": "pipeline_valve_actuator_display",
+      "module": "archetypes.static_items4",
+      "class": "PipelineValveActuatorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_pipeline_valve_actuator.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38751090597361326
+    },
+    {
+      "task": "oil_water_separator_display",
+      "module": "archetypes.static_items4",
+      "class": "OilWaterSeparatorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_oil_water_separator.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.39377785474061966
+    },
+    {
+      "task": "viscosity_index_tester_display",
+      "module": "archetypes.static_items4",
+      "class": "ViscosityIndexTesterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_viscosity_index_tester.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.398290378972888
+    },
+    {
+      "task": "sulfur_analyzer_display",
+      "module": "archetypes.static_items4",
+      "class": "SulfurAnalyzerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_sulfur_analyzer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3864557510241866
+    },
+    {
+      "task": "rock_crusher_display",
+      "module": "archetypes.static_items4",
+      "class": "RockCrusherTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_rock_crusher.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.4059869647026062
+    },
+    {
+      "task": "core_sample_splitter_display",
+      "module": "archetypes.static_items4",
+      "class": "CoreSampleSplitterTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_core_sample_splitter.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3897352460771799
+    },
+    {
+      "task": "sieve_shaker_display",
+      "module": "archetypes.static_items4",
+      "class": "SieveShakerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_sieve_shaker.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.46130165783688426
+    },
+    {
+      "task": "xrf_rock_analyzer_display",
+      "module": "archetypes.static_items4",
+      "class": "XrfRockAnalyzerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_xrf_rock_analyzer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.5037715956568718
+    },
+    {
+      "task": "drill_core_logger_display",
+      "module": "archetypes.static_items4",
+      "class": "DrillCoreLoggerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_drill_core_logger.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38974827993661165
+    },
+    {
+      "task": "flotation_cell_display",
+      "module": "archetypes.static_items4",
+      "class": "FlotationCellTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_flotation_cell.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38923790073022246
+    },
+    {
+      "task": "sample_pulverizer_display",
+      "module": "archetypes.static_items4",
+      "class": "SamplePulverizerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_sample_pulverizer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3968876078724861
+    },
+    {
+      "task": "anaerobic_chamber_display",
+      "module": "archetypes.static_items4",
+      "class": "AnaerobicChamberTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_anaerobic_chamber.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3844157550483942
+    },
+    {
+      "task": "microbial_incubator_shaker_display",
+      "module": "archetypes.static_items4",
+      "class": "MicrobialIncubatorShakerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_microbial_incubator_shaker.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 83,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3763748239725828
+    },
+    {
+      "task": "colony_pick_robot_display",
+      "module": "archetypes.static_items4",
+      "class": "ColonyPickRobotTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_colony_pick_robot.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.402870855294168
+    },
+    {
+      "task": "maldi_tof_analyzer_display",
+      "module": "archetypes.static_items4",
+      "class": "MaldiTofAnalyzerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_maldi_tof_analyzer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3851895588450134
+    },
+    {
+      "task": "biofilm_reactor_display",
+      "module": "archetypes.static_items4",
+      "class": "BiofilmReactorTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_biofilm_reactor.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.4146008719690144
+    },
+    {
+      "task": "petri_dish_stacker_display",
+      "module": "archetypes.static_items4",
+      "class": "PetriDishStackerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_petri_dish_stacker.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38296099891886115
+    },
+    {
+      "task": "gram_stain_station_display",
+      "module": "archetypes.static_items4",
+      "class": "GramStainStationTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_gram_stain_station.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37659119814634323
+    },
+    {
+      "task": "arc_welding_station_display",
+      "module": "archetypes.static_items4",
+      "class": "ArcWeldingStationTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_arc_welding_station.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37350394669920206
+    },
+    {
+      "task": "metallography_polisher_display",
+      "module": "archetypes.static_items4",
+      "class": "MetallographyPolisherTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_metallography_polisher.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37841458292678
+    },
+    {
+      "task": "induction_furnace_display",
+      "module": "archetypes.static_items4",
+      "class": "InductionFurnaceTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_induction_furnace.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3973524756729603
+    },
+    {
+      "task": "metal_spectrometer_display",
+      "module": "archetypes.static_items4",
+      "class": "MetalSpectrometerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_metal_spectrometer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3951896093785763
+    },
+    {
+      "task": "heat_treatment_oven_display",
+      "module": "archetypes.static_items4",
+      "class": "HeatTreatmentOvenTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_heat_treatment_oven.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 84,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3926372081041336
+    },
+    {
+      "task": "welding_positioner_display",
+      "module": "archetypes.static_items4",
+      "class": "WeldingPositionerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_welding_positioner.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.37100227922201157
+    },
+    {
+      "task": "impact_tester_charpy_display",
+      "module": "archetypes.static_items4",
+      "class": "ImpactTesterCharpyTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_impact_tester_charpy.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 82,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3843863718211651
+    },
+    {
+      "task": "hplc_injector_plunger",
+      "module": "archetypes.protocol_generated",
+      "class": "HplcInjectorPlungerTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_hplc_injector_plunger.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.4216701281256974
+    },
+    {
+      "task": "supernatant_transfer_display",
+      "module": "archetypes.protocol_generated",
+      "class": "SupernatantTransferTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_supernatant_transfer.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 29,
+      "geoms": 80,
+      "meshes": 28,
+      "joints": 14,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.3860320230014622
+    },
+    {
+      "task": "spectrophotometer_reading_display",
+      "module": "archetypes.protocol_generated",
+      "class": "SpectrophotometerReadingTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_spectrophotometer_reading.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 29,
+      "geoms": 80,
+      "meshes": 28,
+      "joints": 14,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38909721095114946
+    },
+    {
+      "task": "microplate_stacker_eject",
+      "module": "archetypes.protocol_generated",
+      "class": "MicroplateStackerEjectTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_microplate_stacker_eject.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.42309403605759144
+    },
+    {
+      "task": "supernatant_decant_display",
+      "module": "archetypes.protocol_generated",
+      "class": "SupernatantDecantTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_supernatant_decant.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 29,
+      "geoms": 80,
+      "meshes": 28,
+      "joints": 14,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.42601822316646576
+    },
+    {
+      "task": "freezer_rack_access_display",
+      "module": "archetypes.protocol_generated",
+      "class": "FreezerRackAccessTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_freezer_rack_access.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.39333353005349636
+    },
+    {
+      "task": "balance_draft_shield_display",
+      "module": "archetypes.protocol_generated",
+      "class": "BalanceDraftShieldTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_balance_draft_shield.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.38726702705025673
+    },
+    {
+      "task": "peristaltic_pump_dial_display",
+      "module": "archetypes.protocol_generated",
+      "class": "PeristalticPumpDialTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_peristaltic_pump_dial.xml",
+      "mujoco_compiles": true,
+      "display_only": true,
+      "check_constant_true": true,
+      "check_constant_false": false,
+      "bodies": 29,
+      "geoms": 80,
+      "meshes": 28,
+      "joints": 14,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.400370417162776
+    },
+    {
+      "task": "filter_cartridge_housing",
+      "module": "archetypes.protocol_generated",
+      "class": "FilterCartridgeHousingTask",
+      "robot": "ur5e",
+      "isaac_status": "unqualified",
+      "scene": "/home/amax/data/media/xyl_ps/Hooke/Hooke/model/scene/mani_filter_cartridge_housing.xml",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 30,
+      "geoms": 81,
+      "meshes": 28,
+      "joints": 15,
+      "actuators": 7,
+      "cameras": 3,
+      "equalities": 3,
+      "tendons": 1,
+      "plugins": 0,
+      "sensors": 0,
+      "timestep_s": 0.002,
+      "equality_types": [
+        0,
+        2
+      ],
+      "actuator_transmissions": [
+        0,
+        3
+      ],
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "inspect_wall_s": 0.40534284710884094
+    }
+  ],
+  "kind": "source_cpu_catalogue_structural_preflight",
+  "catalogue_size": 167,
+  "compiled": 167,
+  "can_attempt_native": 167,
+  "inventory_sha256": "df28e52adc30ed3db5d97127e3db6f381b2704be94c718443d5751c26d726975",
+  "runtime_commit": "c3a3615",
+  "capability_version": "hooke-native-capabilities-v2",
+  "parity_qualified": false,
+  "source": "temp/backend_parity/comprehensive_inventory.json"
+}

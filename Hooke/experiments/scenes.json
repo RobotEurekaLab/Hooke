@@ -1,0 +1,29 @@
+[
+  {
+    "world": "orbital",
+    "scene": "model/scene/space_orbital_experiment.gen.xml",
+    "sha256": "d088960a7691ae42d51e1b1a6636d720d1b9e6aac4cf0614fa6b4fac5b67a7ec",
+    "gravity_m_s2": 0.0,
+    "mass_sensor": "spring_encoder_inertial",
+    "hardware": "illustrative_hooke_dry_cartridge_and_fixture",
+    "seal": "closed_geometry_not_gas_qualified"
+  },
+  {
+    "world": "lunar",
+    "scene": "model/scene/space_lunar_experiment.gen.xml",
+    "sha256": "3365932baac33bc70f0c1338d2cf24b95f0d13c218887c853ee2ed07ba0f74f0",
+    "gravity_m_s2": 1.62,
+    "mass_sensor": "spring_encoder_load_cell",
+    "hardware": "illustrative_hooke_dry_cartridge_and_fixture",
+    "seal": "closed_geometry_not_gas_qualified"
+  },
+  {
+    "world": "martian",
+    "scene": "model/scene/space_martian_experiment.gen.xml",
+    "sha256": "e2f62214cdfe3734072e7b8b5eb64a4622e8cad1270ea05e5aa1ed5b42b8646f",
+    "gravity_m_s2": 3.73,
+    "mass_sensor": "spring_encoder_load_cell",
+    "hardware": "illustrative_hooke_dry_cartridge_and_fixture",
+    "seal": "closed_geometry_not_gas_qualified"
+  }
+]

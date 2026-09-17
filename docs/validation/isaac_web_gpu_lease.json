@@ -1,0 +1,24 @@
+{
+  "kind": "live_web_rejection_of_external_regression_gpu_lease",
+  "checks": [
+    {
+      "backend": "mujoco",
+      "http_status": 409,
+      "error": "GPU 6 already has a Hooke job running; wait or stop that job"
+    },
+    {
+      "backend": "isaac",
+      "http_status": 409,
+      "error": "GPU 6 already has a Hooke job running; wait or stop that job"
+    }
+  ],
+  "new_job_directories": 0,
+  "simulation_jobs_started": 0,
+  "passed": true,
+  "original_scene_picker": {
+    "http_status": 409,
+    "error": "GPU 6 already has a Hooke job running; wait or stop that job",
+    "source_initialization_may_run": true,
+    "gpu_rendering_started": false
+  }
+}

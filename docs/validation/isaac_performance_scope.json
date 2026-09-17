@@ -1,0 +1,50 @@
+{
+  "kind": "measured_performance_scope",
+  "profile": {
+    "steps": 150,
+    "wall_s": 1.4364446671679616,
+    "cprofile_s": 1.419,
+    "world_step_cumulative_s": 1.183,
+    "contact_report_cumulative_s": 0.383,
+    "observe_cumulative_s": 0.163,
+    "contact_report_included_in_world_step": true,
+    "physics_wall_includes_control_and_contacts": true,
+    "socket_receive_includes_worker_wait": true
+  },
+  "whole_expert_speedup": 1.022011403283396,
+  "whole_expert_seeds": [
+    0
+  ],
+  "transport_steps": 500,
+  "evidence": [
+    {
+      "path": "temp/backend_parity/comprehensive_profile_baseline/result.json",
+      "sha256": "c5a316b5f70a7b9ccf22ebcfe5722a88e39e31630e46dc452bc2ab1908125bc7"
+    },
+    {
+      "path": "temp/backend_parity/comprehensive_profile_baseline/profile.txt",
+      "sha256": "1f7d8a4a26b238bd21519bbb489906868cc7ef1232839ec6b463c57389133783"
+    },
+    {
+      "path": "temp/backend_parity/comprehensive_transport_benchmark/result.json",
+      "sha256": "995bb64508e91be1aefdd2ded790514553d6e14eb7ecf0a42d9d844327094fa4"
+    },
+    {
+      "path": "temp/backend_parity/comprehensive_transport_benchmark/binary-profile.txt",
+      "sha256": "97d7bdf5bb1a37954fe7a3d8463627bfb6dd371440f5813e33b7048ba6eb2006"
+    },
+    {
+      "path": "temp/backend_parity/comprehensive_transport_benchmark/json-profile.txt",
+      "sha256": "fd04ca0fa73005da6460938f9bac4ede6bfbbf31c8ecfef040891a65842cd9fe"
+    },
+    {
+      "path": "temp/backend_parity/vortex_threads_diagnostic/result.json",
+      "sha256": "a464f4cb2e81274c337d8166e3a521d191e505976b11036dcf1eb78e0afbf32f"
+    },
+    {
+      "path": "docs/validation/isaac_full_expert_performance_comparison.json",
+      "sha256": "dd02a36e1f8aa74693c6a8ac5379f46267a4f4916858f86c5c270d28aa011de7"
+    }
+  ],
+  "parity_qualified": false
+}

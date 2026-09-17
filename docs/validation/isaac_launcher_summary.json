@@ -1,0 +1,9 @@
+{
+  "launch_from": "/tmp",
+  "source_cwd": "/home/amax/data/media/xyl_ps/Hooke/Hooke",
+  "configured_host": "127.0.0.1",
+  "configured_port": 8082,
+  "catalogue_size": 167,
+  "simulation_jobs_started": 0,
+  "passed": true
+}

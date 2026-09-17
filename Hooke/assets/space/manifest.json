@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "iss_us_lab",
+      "label": "ISS 美国实验舱",
+      "repository": "nasa/astrobee_media",
+      "commit": "1cb0620121099cc848f5a3db480464188dc91ea3",
+      "resources": [
+        {
+          "path": "astrobee_iss/meshes/us_lab.dae",
+          "sha256": "259db04d7bf93cbc8cb7c2958046b48f6a9bb59ea9e0179741b08b04650dd126"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Generic_Intersection.png",
+          "sha256": "cd671cd9e1e8f76418b596e5bf2b1c0b4d719a117f9a3998dd8c925056404de3"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Generic_Misc_Details.png",
+          "sha256": "52b49786fa9f6677c505aa779584cfe51e263068509919c9f6f58199497c6bf5"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/USLab_FWD_Bulkhead.png",
+          "sha256": "a4a30c82cce9adcd36d4381d221bd03cbf523a652f9be663982c14da2148fd4d"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/USLab_Racks_02.png",
+          "sha256": "10f810093fee6814f985708c651fada88f5f05d735cddd5c2da12f127390aa40"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Untitled.002.png",
+          "sha256": "e24d9e9b0630811ce3cd17778675b731732087954cf7ab9a6d9345e83cbd8589"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Untitled.004.png",
+          "sha256": "94092f52a9e1c9bb75c0cc77b7d9d3878cabcaea6f0fd3076f3c2f9dd887e255"
+        },
+        {
+          "path": "astrobee_iss/media/materials/textures/Untitled.005.png",
+          "sha256": "16884d041e0fef119b42191bc16c3b0287292b2331846a17ec78213d04eb7e5e"
+        }
+      ],
+      "terms": "LicenseRef-NASA-Media-Usage-Guidelines",
+      "terms_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "credit": "NASA Astrobee project; ISS interior from NASA IGOAL. Converted for Hooke research simulation.",
+      "academic_research_use": "permitted_educational_graphical_simulation_under_media_guidelines",
+      "usage_note": "Retain source credit and third-party notices. NASA media terms cover this asset per the upstream README; do not relabel it CC0 or imply NASA endorsement. Logos and separate third-party rights are not granted by these terms.",
+      "bounds_original_m": [
+        [
+          -7.735807418823242,
+          -1.2018855810165405,
+          -1.939562201499939
+        ],
+        [
+          -0.00123123440425843,
+          1.9112590551376343,
+          1.5684814453125
+        ]
+      ],
+      "normalization_translation_m": [
+        3.8685193266137503,
+        -0.3546867370605469,
+        1.939562201499939
+      ],
+      "dimensions_m": [
+        7.734576184418984,
+        3.113144636154175,
+        3.508043646812439
+      ],
+      "source_faces": 25126,
+      "parts": [
+        {
+          "part": 0,
+          "faces": 422,
+          "uv_corners": 1266,
+          "material_source": "USLab_AFT_Bulkhead-effect",
+          "obj_sha256": "deec1e65b44db31368cbe29faa895cb427b7b75a6cf6fd918e4318cdb13dbb21"
+        },
+        {
+          "part": 1,
+          "faces": 11205,
+          "uv_corners": 33615,
+          "material_source": "Generic_Metals_002-effect",
+          "obj_sha256": "7e8d37922ec6d34ba72ff805cfd2baceeb184b6e363bf2cb1fed0165d8e7de17"
+        },
+        {
+          "part": 2,
+          "faces": 1033,
+          "uv_corners": 3099,
+          "material_source": "Generic_Hub_002-effect",
+          "obj_sha256": "5f83719b341e53abfda1a7568b38507675db529057df7b6c64d12f96d83dfff3"
+        },
+        {
+          "part": 3,
+          "faces": 4,
+          "uv_corners": 12,
+          "material_source": "Generic_Misc_Details_001-effect",
+          "obj_sha256": "9f32f0d7db9ae418cedb724601a35af03e9cbc8d88cb975fe221cad40ada2fca"
+        },
+        {
+          "part": 4,
+          "faces": 326,
+          "uv_corners": 978,
+          "material_source": "USLab_FWD_Bulkhead-effect",
+          "obj_sha256": "0789dea5fc63599651ae58928aa97fbfcd3d7e608742a3c20d83813a747b0201"
+        },
+        {
+          "part": 5,
+          "faces": 288,
+          "uv_corners": 864,
+          "material_source": "Generic_Lights_002-effect",
+          "obj_sha256": "bd08f2da178c580872b61834bb6d95d71115dfa50514cd96234369eae6b1f0fc"
+        },
+        {
+          "part": 6,
+          "faces": 9183,
+          "uv_corners": 27549,
+          "material_source": "USLab_Racks_01-effect",
+          "obj_sha256": "d22b6e2abab0ceaf6dac0a6b0cf7e829ed4111020b630caf7810849f7c0a1b64"
+        },
+        {
+          "part": 7,
+          "faces": 1732,
+          "uv_corners": 5196,
+          "material_source": "USLab_Racks_02-effect",
+          "obj_sha256": "144bf6ce3b8450a6578cc18ffefcbf1cc92338a8bc8b95ad37e8c954639182cd"
+        },
+        {
+          "part": 8,
+          "faces": 933,
+          "uv_corners": 2799,
+          "material_source": "USLab_Racks_03-effect",
+          "obj_sha256": "9a77c8bf63ca3940c20b00627cf32128259c23cfd4cbad4d15d9fffe6ae05282"
+        }
+      ],
+      "diffuse_textures": 7,
+      "path": "iss_us_lab/asset.xml",
+      "physical_parameters": "Illustrative 0.1 kg mass and bounding-box inertia; not measured source properties.",
+      "files": {
+        "NOTICE.md": "a2520f007ea73158ac620db1193a751b49d0c121afe50e4dc0e988333ed170fb",
+        "asset.xml": "0fdfd1b2e0a5d95884790adcaf1f6683084320b254041bd3ef11dc274c5a6a04",
+        "diffuse_0.png": "c71220fc59ede98ecb1edf1d2180f061ab2bb744e2d9f3d66a3f597180ddb06c",
+        "diffuse_1.png": "bdf76922af1ab94d3e692024a90f820e7326835d7605eac0c31b01e289b2f99b",
+        "diffuse_2.png": "b3660432592a01526222a97c1d739a8750192ed8ead2bbd5f9c5257cbb078b6c",
+        "diffuse_3.png": "45c6a5c79072cb3efd1d97b54da161d5a5be12212dc133bbe211f883b1416c33",
+        "diffuse_4.png": "a8c78a7d0e5e4f94c9df38df6dd1a8dc3e7670cbeb748134312e602286423995",
+        "diffuse_5.png": "474884ef059aa38c5a868c4c9247248609878cda9ce50832ec1147a99543a4fd",
+        "diffuse_6.png": "540af9713fc8273a9c50640aef45043b6be7a549e0a34a5d03b9fdf50368d0ed",
+        "part_0.obj": "deec1e65b44db31368cbe29faa895cb427b7b75a6cf6fd918e4318cdb13dbb21",
+        "part_1.obj": "7e8d37922ec6d34ba72ff805cfd2baceeb184b6e363bf2cb1fed0165d8e7de17",
+        "part_2.obj": "5f83719b341e53abfda1a7568b38507675db529057df7b6c64d12f96d83dfff3",
+        "part_3.obj": "9f32f0d7db9ae418cedb724601a35af03e9cbc8d88cb975fe221cad40ada2fca",
+        "part_4.obj": "0789dea5fc63599651ae58928aa97fbfcd3d7e608742a3c20d83813a747b0201",
+        "part_5.obj": "bd08f2da178c580872b61834bb6d95d71115dfa50514cd96234369eae6b1f0fc",
+        "part_6.obj": "d22b6e2abab0ceaf6dac0a6b0cf7e829ed4111020b630caf7810849f7c0a1b64",
+        "part_7.obj": "144bf6ce3b8450a6578cc18ffefcbf1cc92338a8bc8b95ad37e8c954639182cd",
+        "part_8.obj": "9a77c8bf63ca3940c20b00627cf32128259c23cfd4cbad4d15d9fffe6ae05282"
+      }
+    },
+    {
+      "id": "iss_handrail",
+      "label": "ISS 扶手",
+      "repository": "nasa/astrobee_media",
+      "commit": "1cb0620121099cc848f5a3db480464188dc91ea3",
+      "resources": [
+        {
+          "path": "astrobee_handrail_30/meshes/handrail_30.dae",
+          "sha256": "56fd4c7c5580fdb018aef6854fa012a010a50526926f96c5be67b62a1e6e21fd"
+        },
+        {
+          "path": "astrobee_handrail_30/media/materials/textures/blue.png",
+          "sha256": "bf31778a5f6527581edff03430027df22c3084ef335b8017e159170ba31ec8a1"
+        },
+        {
+          "path": "astrobee_handrail_30/media/materials/textures/silver.png",
+          "sha256": "e6f14720a70d313741712e29b7168704ae93c0b1ff4ef905e3a966caccc4405a"
+        }
+      ],
+      "terms": "LicenseRef-NASA-Media-Usage-Guidelines",
+      "terms_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "credit": "NASA Astrobee project; ISS handrails from NASA Robonaut2. Converted for Hooke research simulation.",
+      "academic_research_use": "permitted_educational_graphical_simulation_under_media_guidelines",
+      "usage_note": "Retain source credit and third-party notices. NASA media terms cover this asset per the upstream README; do not relabel it CC0 or imply NASA endorsement. Logos and separate third-party rights are not granted by these terms.",
+      "bounds_original_m": [
+        [
+          0.0011137910187244415,
+          -0.016536010429263115,
+          -0.39172759652137756
+        ],
+        [
+          0.07934863120317459,
+          0.01653493568301201,
+          0.39171940088272095
+        ]
+      ],
+      "normalization_translation_m": [
+        -0.040231211110949516,
+        5.373731255531311e-07,
+        0.39172759652137756
+      ],
+      "dimensions_m": [
+        0.07823484018445015,
+        0.033070946112275124,
+        0.7834469974040985
+      ],
+      "source_faces": 4680,
+      "parts": [
+        {
+          "part": 0,
+          "faces": 4660,
+          "uv_corners": 13980,
+          "material_source": "Material_002-effect",
+          "obj_sha256": "de5aa7173406aae3ac2be14fb2e3ae98b95b64e39062a4f7ce34d1a91aa98fdd"
+        },
+        {
+          "part": 1,
+          "faces": 20,
+          "uv_corners": 60,
+          "material_source": "Material_001-effect",
+          "obj_sha256": "e8dff882ddd8a2af422eb041b483a4771acdb0075057dc03b4213b7400493014"
+        }
+      ],
+      "diffuse_textures": 2,
+      "path": "iss_handrail/asset.xml",
+      "physical_parameters": "Illustrative 0.1 kg mass and bounding-box inertia; not measured source properties.",
+      "files": {
+        "NOTICE.md": "6894b6a42b300b9a759aba12137a2794bf4319072d99a7430966796fb60e94be",
+        "asset.xml": "6507d37efd582e49fdc5610d40d28823f498d4f046c2400d63388fe0efb7a3c4",
+        "diffuse_0.png": "72d296b393ed07079672498ab9e42c23615db101aa2a121f5a291022fd022b30",
+        "diffuse_1.png": "c161e81c36ef07da08d0f5174583677caa4e0af42be71799fb781da0e60ee067",
+        "part_0.obj": "de5aa7173406aae3ac2be14fb2e3ae98b95b64e39062a4f7ce34d1a91aa98fdd",
+        "part_1.obj": "e8dff882ddd8a2af422eb041b483a4771acdb0075057dc03b4213b7400493014"
+      }
+    },
+    {
+      "id": "apollo_sample",
+      "label": "Apollo 样品外形 1",
+      "repository": "AndrejOrsula/srb_assets",
+      "commit": "54b1282a5f89ead8ff51b869060e68083fa3ad2f",
+      "resources": [
+        {
+          "path": "object/rock/apollo_sample1.usdz",
+          "sha256": "dee5d067194f6c42051667371e6ce2192bba2c7e3918fe0b437f7a90e1fa93a5"
+        }
+      ],
+      "terms": "CC0-1.0",
+      "terms_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "credit": "NASA Johnson Space Center; USD packaging/modifications by Space Robotics Bench contributors. Converted for Hooke research simulation.",
+      "academic_research_use": "permitted",
+      "usage_note": "SRB official attribution list identifies the Apollo samples as CC0. Credit retained for provenance. Appearance does not establish calibrated physical or chemical properties.",
+      "bounds_original_m": [
+        [
+          -0.02248969115316868,
+          -0.02212955802679062,
+          -0.024586018174886703
+        ],
+        [
+          0.024557260796427727,
+          0.023885203525424004,
+          0.026838602498173714
+        ]
+      ],
+      "normalization_translation_m": [
+        -0.0010337848216295242,
+        -0.0008778227493166924,
+        0.024586018174886703
+      ],
+      "dimensions_m": [
+        0.047046951949596405,
+        0.04601476155221462,
+        0.05142462067306042
+      ],
+      "source_faces": 1000,
+      "parts": [
+        {
+          "part": 0,
+          "faces": 1000,
+          "uv_corners": 3000,
+          "material_source": "/root/_materials/apollo_rock1",
+          "obj_sha256": "4189a5136bcf45de27acb44763d5265c6ab1d2037a7e24977574023116b10c4d"
+        }
+      ],
+      "diffuse_textures": 1,
+      "path": "apollo_sample/asset.xml",
+      "physical_parameters": "Illustrative 0.1 kg mass and bounding-box inertia; not measured source properties.",
+      "files": {
+        "NOTICE.md": "76f84a48e8dbc33b6ac81775ceec967c9f977e7e6980da26e113134caa861430",
+        "apollo_rock1.jpg": "548bebb6305793f6eda94c5272337c9bdf0c311b549557b6508aec4416522c23",
+        "asset.xml": "071cc1cdc4e00f49b874802d2ef416aa01944b6f4be35309f7ef83d30d9b0e4f",
+        "diffuse_0.png": "9786cceba9c521813950dc707370cb806eae1813556bfd632a06e7bea1035190",
+        "part_0.obj": "4189a5136bcf45de27acb44763d5265c6ab1d2037a7e24977574023116b10c4d"
+      }
+    },
+    {
+      "id": "mars_sample_tube",
+      "label": "Mars 2020 采样管",
+      "repository": "AndrejOrsula/srb_assets",
+      "commit": "54b1282a5f89ead8ff51b869060e68083fa3ad2f",
+      "resources": [
+        {
+          "path": "object/sample_tube.usdc",
+          "sha256": "a926e56b106d69da5656916af5d5e04a2a74a1ade3d1dc31b7aca459a4d3955b"
+        }
+      ],
+      "terms": "LicenseRef-NASA-Media-Usage-Guidelines AND CC0-1.0-modifications",
+      "terms_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "original_resource_url": "https://science.nasa.gov/3d-resources/mars-2020-sample-tube/",
+      "credit": "NASA/JPL-Caltech; cap mesh/material modifications and USD packaging by Space Robotics Bench contributors. Converted for Hooke research simulation.",
+      "academic_research_use": "permitted_educational_graphical_simulation_under_media_guidelines",
+      "usage_note": "Original NASA 3D resource uses NASA media guidelines. SRB modifications are CC0; the underlying NASA resource is not relabeled CC0. Retain both origins. No JPL/NASA endorsement is implied.",
+      "bounds_original_m": [
+        [
+          -0.016453592106699944,
+          -0.016429461538791656,
+          0.0
+        ],
+        [
+          0.016453592106699944,
+          0.016429461538791656,
+          0.16999998688697815
+        ]
+      ],
+      "normalization_translation_m": [
+        -0.0,
+        -0.0,
+        -0.0
+      ],
+      "dimensions_m": [
+        0.03290718421339989,
+        0.03285892307758331,
+        0.16999998688697815
+      ],
+      "source_faces": 17419,
+      "parts": [
+        {
+          "part": 0,
+          "faces": 2872,
+          "uv_corners": 8616,
+          "material_source": "/root/_materials/alumina",
+          "obj_sha256": "3135c128b3ca12632972d1b9c552aebb12751e8f35d8a4206bf2595b85747e52"
+        },
+        {
+          "part": 1,
+          "faces": 1335,
+          "uv_corners": 4005,
+          "material_source": "/root/_materials/titanium",
+          "obj_sha256": "203a2cac05e8b60f91114ab2181c5e154f5c855d5746e9f23623b0945d3e6904"
+        },
+        {
+          "part": 2,
+          "faces": 11648,
+          "uv_corners": 34944,
+          "material_source": "/root/_materials/titanium_nitrade",
+          "obj_sha256": "aa433eb67e7990d7c3fc7bf822dae3013d75f9ae7cb76ee33e0c925b0eabdfec"
+        },
+        {
+          "part": 3,
+          "faces": 1564,
+          "uv_corners": 4692,
+          "material_source": "/root/_materials/gray_plastic",
+          "obj_sha256": "b9334c684e6004c0bee98c3dc32dd34008e9b3106d34745ecd77f8957f2612dc"
+        }
+      ],
+      "diffuse_textures": 0,
+      "path": "mars_sample_tube/asset.xml",
+      "physical_parameters": "Illustrative 0.1 kg mass and bounding-box inertia; not measured source properties.",
+      "files": {
+        "NOTICE.md": "c732a82f1166fe880e182461aeaf09598394da78c569e09f79412b8e157e8ce5",
+        "asset.xml": "345e2ae61e31be955a3693f115353ae3b0442f576fdd3417fd081059a70429f9",
+        "part_0.obj": "3135c128b3ca12632972d1b9c552aebb12751e8f35d8a4206bf2595b85747e52",
+        "part_1.obj": "203a2cac05e8b60f91114ab2181c5e154f5c855d5746e9f23623b0945d3e6904",
+        "part_2.obj": "aa433eb67e7990d7c3fc7bf822dae3013d75f9ae7cb76ee33e0c925b0eabdfec",
+        "part_3.obj": "b9334c684e6004c0bee98c3dc32dd34008e9b3106d34745ecd77f8957f2612dc"
+      }
+    }
+  ],
+  "scope": "Pinned visual geometry/diffuse conversion; no full PBR, calibrated properties, gas seal or scientific qualification."
+}

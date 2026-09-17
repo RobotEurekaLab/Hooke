@@ -29,6 +29,7 @@ from archetypes.task_catalog import CATALOG
 from webui.robot_registry import ROBOTS, robot_options_for
 from webui.robot_scene import compose_scene, render_robot_preview
 from webui.scene_render import render_scene
+from backends.gpu_lease import GPUBusy
 from webui.custom_gen import generate_custom_asset, GenerationError
 from PIL import Image
 import io
@@ -38,6 +39,10 @@ app = Flask(__name__, static_folder="static", static_url_path="")
 # upload for /api/generate_custom) -- not a security boundary by itself,
 # just a sane limit for a local dev server.
 app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024
+from webui.backend_api import bp as backend_blueprint
+app.register_blueprint(backend_blueprint)
+from webui.space_experiment_api import bp as space_experiment_blueprint
+app.register_blueprint(space_experiment_blueprint)
 
 
 def _robot_entry_json(entry) -> dict:
@@ -123,6 +128,8 @@ def api_scene():
             image = render_robot_preview(scene_path, camera_name=entry.camera)
             image_b64 = _png_base64(image)
             task_info = {"prefix": f"[preview only -- {ROBOTS[robot].display_name} placed in the '{task_name}' scene]"}
+    except GPUBusy as e:
+        return jsonify({"error": str(e)}), 409
     except Exception as e:
         return jsonify({"error": f"{type(e).__name__}: {e}"}), 500
 
@@ -227,4 +234,12 @@ def api_protocol_to_task():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=False)
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Hooke scene and backend interface")
+    parser.add_argument("--host", default="0.0.0.0")
+    parser.add_argument("--port", type=int, default=8080)
+    options = parser.parse_args()
+    if not 1 <= options.port <= 65535:
+        parser.error("Port must be between 1 and 65535")
+    app.run(host=options.host, port=options.port, debug=False)

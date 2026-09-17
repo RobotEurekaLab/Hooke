@@ -1,0 +1,142 @@
+{
+  "kind": "space_worlds_lan_browser_check",
+  "collected_at": "2026-09-17T02:02:42.314821+00:00",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "world": "orbital",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "orbital",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "lunar",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "lunar",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "martian",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "world": "martian",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "orbital",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "orbital",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "lunar",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "lunar",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "martian",
+      "view": "overview",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "world": "martian",
+      "view": "bench",
+      "loaded_actual_images": 2,
+      "horizontal_overflow": false
+    }
+  ],
+  "images": [
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/orbital/image/mujoco/overview",
+      "sha256": "a157cc6b1cf2f32b33b760596e4c1f4f1166216c1f39c4477a4326f53472b760"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/orbital/image/mujoco/bench",
+      "sha256": "18d33d4a2a1d8a85a1e68561d70567c024ce9dafcd791e0cebb9eb0cf4539055"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/orbital/image/isaac/overview",
+      "sha256": "ebddc31f691d84115cbd8571fcf7417481d6ca0668299f8e331630858adaaaed"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/orbital/image/isaac/bench",
+      "sha256": "73baaa566d7e8b92f00978bae0b90d28116f1292c019bd28b5cf5dfef842ef24"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/lunar/image/mujoco/overview",
+      "sha256": "0a91604eab6d8b05e504b6235ed924af50eba97c74f0e4e7b07a511feb6668df"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/lunar/image/mujoco/bench",
+      "sha256": "b0637e8a6981a86473959cb95999c7a7fcb159655abf33ac866aa6005cc211be"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/lunar/image/isaac/overview",
+      "sha256": "755232ca5b463f4ad3b046ae839c08d256fa84f94798aa8839b95177ac645ce2"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/lunar/image/isaac/bench",
+      "sha256": "6f26cda1e2866eb6ed3eb56d986a03d9cc887cfd07404dfef01b50bee5b7da9c"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/martian/image/mujoco/overview",
+      "sha256": "0f0892db2e446766e6cfc254b67cf8f8bccacab968a93aff249fd0ed8f4d2065"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/martian/image/mujoco/bench",
+      "sha256": "2cb811b309c7d7ab694d351a73d2c3960a421e51be39f3c25738bad41abefd2a"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/martian/image/isaac/overview",
+      "sha256": "5d3440ada8d1a964094b72dd148a50cfa6293d9943332e0ba550823b185b3cc0"
+    },
+    {
+      "url": "http://10.5.174.93:8080/api/space-worlds/martian/image/isaac/bench",
+      "sha256": "90f65dec0320075c8a2e2af827d9d692a45c30cde8740036a425d740ed7c3b0d"
+    }
+  ],
+  "passed": true,
+  "scope": "Desktop/mobile world selections, actual image hashes and task links. No manipulation or science qualification."
+}

@@ -1,0 +1,91 @@
+{
+  "url": "http://10.5.174.93:8080/backends",
+  "total": 167,
+  "display_tasks": 143,
+  "historical_scene_checks": 165,
+  "tasks": {
+    "pipette_transfer": {
+      "isaac": {
+        "max_fk_position_error_m": 8.654088885450566e-07,
+        "simulation_s": 33.638,
+        "source_check": true,
+        "source_check_kind": "predicate",
+        "status": "TASK_SUCCEEDED",
+        "total_wall_s": 466.5797501760535,
+        "within_declared_time_limit": true
+      },
+      "mujoco": {
+        "max_fk_position_error_m": null,
+        "simulation_s": 33.66399999999518,
+        "source_check": true,
+        "source_check_kind": "predicate",
+        "status": "TASK_SUCCEEDED",
+        "total_wall_s": 114.87725662300363,
+        "within_declared_time_limit": true
+      }
+    },
+    "centrifuge_5430_cycle": {
+      "isaac": {
+        "max_fk_position_error_m": 5.603511418070817e-07,
+        "simulation_s": 39.61,
+        "source_check": true,
+        "source_check_kind": "predicate",
+        "status": "TASK_SUCCEEDED",
+        "total_wall_s": 547.4720000391826,
+        "within_declared_time_limit": true
+      },
+      "mujoco": {
+        "max_fk_position_error_m": null,
+        "simulation_s": 39.58200000000241,
+        "source_check": true,
+        "source_check_kind": "predicate",
+        "status": "TASK_SUCCEEDED",
+        "total_wall_s": 135.66816044505686,
+        "within_declared_time_limit": true
+      }
+    },
+    "centrifuge_5430_close_lid": {
+      "isaac": {
+        "max_fk_position_error_m": 5.726543631827605e-07,
+        "simulation_s": 14.376,
+        "source_check": true,
+        "source_check_kind": "predicate",
+        "status": "TASK_SUCCEEDED",
+        "total_wall_s": 117.80441723577678,
+        "within_declared_time_limit": true
+      },
+      "mujoco": {
+        "max_fk_position_error_m": null,
+        "simulation_s": 14.37400000000147,
+        "source_check": true,
+        "source_check_kind": "predicate",
+        "status": "TASK_SUCCEEDED",
+        "total_wall_s": 10.887128373142332,
+        "within_declared_time_limit": true
+      }
+    },
+    "centrifuge_mini_close_lid": {
+      "isaac": {
+        "max_fk_position_error_m": 5.625029567263015e-07,
+        "simulation_s": 12.96,
+        "source_check": true,
+        "source_check_kind": "predicate",
+        "status": "TASK_SUCCEEDED",
+        "total_wall_s": 47.58257387811318,
+        "within_declared_time_limit": true
+      },
+      "mujoco": {
+        "max_fk_position_error_m": null,
+        "simulation_s": 12.960000000000997,
+        "source_check": true,
+        "source_check_kind": "predicate",
+        "status": "TASK_SUCCEEDED",
+        "total_wall_s": 9.981231564190239,
+        "within_declared_time_limit": true
+      }
+    }
+  },
+  "capability_version": "hooke-native-capabilities-v2",
+  "simulation_jobs_started": 0,
+  "passed": true
+}

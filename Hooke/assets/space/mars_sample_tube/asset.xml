@@ -1,0 +1,22 @@
+<mujoco model="mars_sample_tube">
+  <compiler assetdir="../.." />
+  <asset>
+    <mesh name="part_0" file="space/mars_sample_tube/part_0.obj" />
+    <material name="material_0" rgba="0.954572141 0.957333505 0.943002164 1" shininess="0.25" />
+    <mesh name="part_1" file="space/mars_sample_tube/part_1.obj" />
+    <material name="material_1" rgba="0.873012304 0.906386435 0.957333505 1" shininess="0.7999999970197678" />
+    <mesh name="part_2" file="space/mars_sample_tube/part_2.obj" />
+    <material name="material_2" rgba="0.724676967 0.580604255 0.185453981 1" shininess="0.5999999940395355" />
+    <mesh name="part_3" file="space/mars_sample_tube/part_3.obj" />
+    <material name="material_3" rgba="0.453604221 0.471777856 0.473932147 1" shininess="0.5999999940395355" />
+  </asset>
+  <worldbody>
+    <body name="asset_root">
+      <inertial pos="0 0 0.08499999344348907" mass="0.1" diaginertia="0.00024983087 0.000249857319 1.80215967e-05" />
+      <geom name="part_0" type="mesh" mesh="part_0" material="material_0" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_1" type="mesh" mesh="part_1" material="material_1" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_2" type="mesh" mesh="part_2" material="material_2" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_3" type="mesh" mesh="part_3" material="material_3" contype="0" conaffinity="0" mass="0" />
+    </body>
+  </worldbody>
+</mujoco>

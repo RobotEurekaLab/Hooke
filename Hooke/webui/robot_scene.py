@@ -181,12 +181,10 @@ def render_robot_preview(scene_path: Path, camera_name: str | None, width: int =
         mujoco.mj_resetDataKeyframe(model, data, 0)
     mujoco.mj_forward(model, data)
 
-    renderer = mujoco.Renderer(model, height, width)
-    try:
+    from backends.source_renderer import mujoco_renderer
+    with mujoco_renderer(model, width=width, height=height) as renderer:
         if camera_name:
             renderer.update_scene(data, camera=camera_name)
         else:
             renderer.update_scene(data)
         return renderer.render()
-    finally:
-        renderer.close()

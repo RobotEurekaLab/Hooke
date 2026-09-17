@@ -1,0 +1,14 @@
+<mujoco model="apollo_sample">
+  <compiler assetdir="../.." />
+  <asset>
+    <mesh name="part_0" file="space/apollo_sample/part_0.obj" />
+    <material name="material_0" rgba="1 1 1 1" shininess="0.0" texture="texture_0" />
+    <texture name="texture_0" type="2d" file="space/apollo_sample/diffuse_0.png" />
+  </asset>
+  <worldbody>
+    <body name="asset_root">
+      <inertial pos="0 0 0.02571231033653021" mass="0.1" diaginertia="3.96820824e-05 4.04825608e-05 3.60897831e-05" />
+      <geom name="part_0" type="mesh" mesh="part_0" material="material_0" contype="0" conaffinity="0" mass="0" />
+    </body>
+  </worldbody>
+</mujoco>

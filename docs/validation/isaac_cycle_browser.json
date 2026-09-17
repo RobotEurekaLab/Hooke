@@ -1,0 +1,19 @@
+{
+  "browser": "Chromium 130 / Playwright 1.48",
+  "checks": [
+    {
+      "camera": 0,
+      "loaded_images": 8
+    },
+    {
+      "camera": 2,
+      "loaded_images": 8
+    }
+  ],
+  "loaded_actual_images": 16,
+  "rotor_motion_plot_loaded": true,
+  "mobile_horizontal_overflow": false,
+  "javascript_errors": [],
+  "simulation_jobs_started": 0,
+  "passed": true
+}

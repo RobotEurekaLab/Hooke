@@ -1,0 +1,51 @@
+{
+  "kind": "recorded_trajectory_keyframe_render",
+  "closed_loop_validation": false,
+  "render_settings": {
+    "width": 640,
+    "height": 480,
+    "frames_per_second": 20.0,
+    "native_sun_intensity": 1500.0,
+    "native_ambient_intensity": 450.0,
+    "native_color_pipeline": "source_display"
+  },
+  "task": "centrifuge_5430_cycle",
+  "backend": "mujoco",
+  "seed": 0,
+  "motion_pass": true,
+  "ideal_volume_pass": null,
+  "renderer_script_sha256": "d8b71d50cfbdb7b7d7bbfe947314cf3c47042da4e6dede38af119e7431736ba2",
+  "renderer_commit": "cb94efa157f0431492aad6309e3bd736a0e2d40d",
+  "inputs_sha256": {
+    "result.json": "4647770d7fc2f898f40ea4a9d8da67b540d7d2aca2d0070e9fb768485dff0f37",
+    "trajectory.npz": "1f850c73c873380ff68815c9f127a5d51a0bfc2560fe39c2670cf1de3803b387",
+    "source/model.mjb": "62e1fe9a42cfa69be80cb577fbfc682b3d412866021633c451a487d6079baccd",
+    "source/model.npz": "49fca1542411702e549d9ada0a37a684c850d20c629565ad4f5241db0d003909",
+    "source/scene.xml": "ce874c67c9aca444cb6517036d2bd550ba1528c00fe3a7dff9105469edb081ee"
+  },
+  "liquid_log_sha256": null,
+  "frames": [
+    {
+      "phase": "safe_unlock",
+      "camera": "table_cam_front",
+      "camera_id": 0,
+      "image": "safe_unlock-camera-0.png",
+      "image_sha256": "ba6ccaf976429c7a6a510aab5c00cdc18f43f00d53b3a03e0e428bda53fbb3f5",
+      "trajectory_index": 19789,
+      "recorded_time_s": 39.58000000000241,
+      "liquid_volumes_m3": []
+    },
+    {
+      "phase": "safe_unlock",
+      "camera": "/ur:wrist_cam",
+      "camera_id": 2,
+      "image": "safe_unlock-camera-2.png",
+      "image_sha256": "3eec45dd8903a0e29640c3f296211920d0bcbebb1754fdb321c12ac8b17eb209",
+      "trajectory_index": 19789,
+      "recorded_time_s": 39.58000000000241,
+      "liquid_volumes_m3": []
+    }
+  ],
+  "parity_qualified": false,
+  "scientific_process_validated": false
+}

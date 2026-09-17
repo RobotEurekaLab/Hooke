@@ -1,0 +1,18 @@
+<mujoco model="iss_handrail">
+  <compiler assetdir="../.." />
+  <asset>
+    <mesh name="part_0" file="space/iss_handrail/part_0.obj" />
+    <material name="material_0" rgba="1 1 1 1" shininess="0.2" texture="texture_0" />
+    <texture name="texture_0" type="2d" file="space/iss_handrail/diffuse_0.png" />
+    <mesh name="part_1" file="space/iss_handrail/part_1.obj" />
+    <material name="material_1" rgba="1 1 1 1" shininess="0.2" texture="texture_1" />
+    <texture name="texture_1" type="2d" file="space/iss_handrail/diffuse_1.png" />
+  </asset>
+  <worldbody>
+    <body name="asset_root">
+      <inertial pos="0 0 0.39172349870204926" mass="0.1" diaginertia="0.00512402404 0.00516591573 6.01198141e-05" />
+      <geom name="part_0" type="mesh" mesh="part_0" material="material_0" contype="0" conaffinity="0" mass="0" />
+      <geom name="part_1" type="mesh" mesh="part_1" material="material_1" contype="0" conaffinity="0" mass="0" />
+    </body>
+  </worldbody>
+</mujoco>

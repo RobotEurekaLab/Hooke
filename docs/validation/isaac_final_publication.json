@@ -1,0 +1,145 @@
+{
+  "kind": "final_lan_publication_check",
+  "collected_at": "2026-09-16T23:26:47.642626+00:00",
+  "browser": "Chromium 130 / Playwright 1.48",
+  "simulation_jobs_started": 0,
+  "checks": [
+    {
+      "viewport": "desktop",
+      "completed_message": true,
+      "all_task_counts_correct": true,
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "completed_message": true,
+      "all_task_counts_correct": true,
+      "horizontal_overflow": false
+    }
+  ],
+  "javascript_errors": [],
+  "report_downloads": [
+    {
+      "file": "isaac_pipette_transfer_ten_seed_summary.json",
+      "sha256": "138415699cbedc271c87a5286cb1ea7fc5be784a578271066374098fe197c060",
+      "matches_tracked_report": true
+    },
+    {
+      "file": "isaac_centrifuge_cycle_summary.json",
+      "sha256": "ea6853dc2688eb3bded5973d86449ee6c53bcc49b3f63c510f0b884d389bcfba",
+      "matches_tracked_report": true
+    },
+    {
+      "file": "isaac_5430_lid_summary.json",
+      "sha256": "356cfb7f1dae4ea838be1e3050efa9be61e01a4d52b7de0e91bdeb925e6a1d55",
+      "matches_tracked_report": true
+    },
+    {
+      "file": "isaac_mini_lid_summary.json",
+      "sha256": "044a9767023a020dc0e3db59db5c21b98dfd2f647ac3736911c79b81bf34dde6",
+      "matches_tracked_report": true
+    },
+    {
+      "file": "isaac_comprehensive_acceptance.json",
+      "matches_tracked_report": true
+    },
+    {
+      "file": "isaac_latest_renderer_summary.json",
+      "matches_tracked_report": true
+    }
+  ],
+  "catalogue_total": 167,
+  "display_tasks": 143,
+  "seed_zero_expert_evidence": [
+    {
+      "task": "pipette_transfer",
+      "backend": "mujoco",
+      "max_fk_position_error_m": null,
+      "simulation_s": 33.66399999999518,
+      "source_check": true,
+      "source_check_kind": "predicate",
+      "status": "TASK_SUCCEEDED",
+      "total_wall_s": 114.87725662300363,
+      "within_declared_time_limit": true
+    },
+    {
+      "task": "pipette_transfer",
+      "backend": "isaac",
+      "max_fk_position_error_m": 8.654088885450566e-07,
+      "simulation_s": 33.638,
+      "source_check": true,
+      "source_check_kind": "predicate",
+      "status": "TASK_SUCCEEDED",
+      "total_wall_s": 466.5797501760535,
+      "within_declared_time_limit": true
+    },
+    {
+      "task": "centrifuge_5430_cycle",
+      "backend": "mujoco",
+      "max_fk_position_error_m": null,
+      "simulation_s": 39.58200000000241,
+      "source_check": true,
+      "source_check_kind": "predicate",
+      "status": "TASK_SUCCEEDED",
+      "total_wall_s": 135.66816044505686,
+      "within_declared_time_limit": true
+    },
+    {
+      "task": "centrifuge_5430_cycle",
+      "backend": "isaac",
+      "max_fk_position_error_m": 5.603511418070817e-07,
+      "simulation_s": 39.61,
+      "source_check": true,
+      "source_check_kind": "predicate",
+      "status": "TASK_SUCCEEDED",
+      "total_wall_s": 547.4720000391826,
+      "within_declared_time_limit": true
+    },
+    {
+      "task": "centrifuge_5430_close_lid",
+      "backend": "mujoco",
+      "max_fk_position_error_m": null,
+      "simulation_s": 14.37400000000147,
+      "source_check": true,
+      "source_check_kind": "predicate",
+      "status": "TASK_SUCCEEDED",
+      "total_wall_s": 10.887128373142332,
+      "within_declared_time_limit": true
+    },
+    {
+      "task": "centrifuge_5430_close_lid",
+      "backend": "isaac",
+      "max_fk_position_error_m": 5.726543631827605e-07,
+      "simulation_s": 14.376,
+      "source_check": true,
+      "source_check_kind": "predicate",
+      "status": "TASK_SUCCEEDED",
+      "total_wall_s": 117.80441723577678,
+      "within_declared_time_limit": true
+    },
+    {
+      "task": "centrifuge_mini_close_lid",
+      "backend": "mujoco",
+      "max_fk_position_error_m": null,
+      "simulation_s": 12.960000000000997,
+      "source_check": true,
+      "source_check_kind": "predicate",
+      "status": "TASK_SUCCEEDED",
+      "total_wall_s": 9.981231564190239,
+      "within_declared_time_limit": true
+    },
+    {
+      "task": "centrifuge_mini_close_lid",
+      "backend": "isaac",
+      "max_fk_position_error_m": 5.625029567263015e-07,
+      "simulation_s": 12.96,
+      "source_check": true,
+      "source_check_kind": "predicate",
+      "status": "TASK_SUCCEEDED",
+      "total_wall_s": 47.58257387811318,
+      "within_declared_time_limit": true
+    }
+  ],
+  "passed": true,
+  "parity_qualified": false
+}

@@ -1,0 +1,91 @@
+{
+  "browser": "Chromium 130 / Playwright 1.48",
+  "simulation_jobs_started": 0,
+  "intercepted_requests": [
+    {
+      "task": "thermal_mixer",
+      "seed": 0,
+      "backend": "mujoco",
+      "mode": "experiment",
+      "science_model": "thermal",
+      "seconds": 2
+    },
+    {
+      "task": "pipette_transfer",
+      "seed": 0,
+      "backend": "mujoco",
+      "mode": "experiment",
+      "science_model": "capillary",
+      "seconds": 2
+    }
+  ],
+  "checks": [
+    {
+      "task": "thermal_mixer",
+      "experiment_request": {
+        "task": "thermal_mixer",
+        "seed": 0,
+        "backend": "mujoco",
+        "mode": "experiment",
+        "science_model": "thermal",
+        "seconds": 2
+      },
+      "simulation_started": false
+    },
+    {
+      "task": "pipette_transfer",
+      "experiment_request": {
+        "task": "pipette_transfer",
+        "seed": 0,
+        "backend": "mujoco",
+        "mode": "experiment",
+        "science_model": "capillary",
+        "seconds": 2
+      },
+      "simulation_started": false
+    },
+    {
+      "page": "serial_pair_workflow",
+      "requests": [
+        {
+          "task": "centrifuge_5430_cycle",
+          "seed": 0,
+          "backend": "mujoco",
+          "mode": "preview",
+          "science_model": "",
+          "seconds": 2
+        },
+        {
+          "task": "centrifuge_5430_cycle",
+          "seed": 0,
+          "backend": "isaac",
+          "mode": "preview",
+          "science_model": "",
+          "seconds": 2
+        }
+      ],
+      "simulation_jobs_started": 0
+    },
+    {
+      "task": "centrifuge_5430_cycle",
+      "catalog_count": 167,
+      "mobile_horizontal_overflow": false
+    },
+    {
+      "page": "actual_source_display_gallery",
+      "camera": "0",
+      "loaded_images": 6
+    },
+    {
+      "page": "actual_source_display_gallery",
+      "camera": "2",
+      "loaded_images": 6
+    },
+    {
+      "page": "actual_source_display_gallery",
+      "camera": "3",
+      "loaded_images": 6
+    }
+  ],
+  "javascript_errors": []
+}

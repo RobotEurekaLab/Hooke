@@ -1,0 +1,12 @@
+{
+  "browser": "Chromium 130 / Playwright 1.48",
+  "rows": 3,
+  "progress_text_visible": true,
+  "active_episode_visible": true,
+  "active_episode_observed": "isaac / centrifuge_5430_cycle / \u79cd\u5b50 2 / no_action\uff1a48.2 \u79d2\uff0c24100 \u6b65",
+  "transition_state_previously_verified": true,
+  "mobile_horizontal_overflow": false,
+  "javascript_errors": [],
+  "simulation_jobs_started": 0,
+  "passed": true
+}

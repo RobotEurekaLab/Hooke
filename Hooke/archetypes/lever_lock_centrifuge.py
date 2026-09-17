@@ -25,7 +25,7 @@ from __future__ import annotations
 
 import dataclasses
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 import numpy as np
 import mujoco
@@ -33,6 +33,7 @@ import mujoco
 from kinematics import Pose, FK
 from task import Task, Expert, Manager, SCENE_ROOT
 from expert_common import UR5eArm, ExpertMotionMixin, set_gravcomp, qpos_interpolate, make_topp_planner
+from archetypes.lid_lock import lid_lock_passes
 
 # Shared across every instrument in this family: the wrist orientation held
 # while moving through the lock sub-sequence (not instrument-specific -- the
@@ -66,6 +67,9 @@ class LeverLockSpec:
     # falls back to the arm class's own default perturbation range instead
     # of erroring on a shape mismatch.
     arm_cls: type = UR5eArm
+    qc_vel: float = 1.5
+    qc_acc: float = 1.0
+    completion_check: Callable = lid_lock_passes
 
     @property
     def scene_path(self) -> Path:
@@ -121,6 +125,63 @@ def _make_instrument_class(spec: LeverLockSpec) -> type:
     )
 
 
+class LeverLockMotionMixin(ExpertMotionMixin):
+    """Run one lever-lock recipe against the host's actual robot controls."""
+    lever_spec: LeverLockSpec
+
+    def _run_recipe(self):
+        self._cached_poses = {}
+        self._cached_paths = {}
+        for step in self.lever_spec.recipe:
+            op = step['op']
+            getattr(self, f'_step_{op}')(**{k: v for k, v in step.items() if k != 'op'})
+
+    def _step_cache_pose(self, name: str, mode: str):
+        self._cached_poses[name] = self.instrument.get_eef_pose(self.data, loc='lid', mode=mode)
+
+    def _step_home_arm(self):
+        target = self.model.key_qpos[0,self.arm.jnt_span].copy()
+        if self.arm.dof == len(self.lever_spec.qpos_perturb_lows):
+            target += (np.asarray(self.lever_spec.qpos_perturb_lows)
+                       + np.asarray(self.lever_spec.qpos_perturb_highs))/2
+        self.move_joints(target,
+                         velocity=self.lever_spec.qc_vel,
+                         acceleration=self.lever_spec.qc_acc)
+        self.arm.ik.initial_qpos = self.data.qpos[self.arm.jnt_span].copy()
+
+    def _step_cache_lever_path(self, name: str, mode: str = '1/close'):
+        self._cached_paths[name] = self.instrument.lever_path(self.data, mode=mode)
+
+    def _step_move_to_pose(self, mode: str, num_steps: int, quat_override: str | None = None,
+                            gripper_before: float | None = None, cached_pose: str | None = None):
+        pose = (self._cached_poses[cached_pose] if cached_pose is not None else
+                self.instrument.get_eef_pose(self.data, loc='lid', mode=mode))
+        if quat_override == 'lock_quat':
+            pose.quat = LOCK_QUAT
+        if gripper_before is not None:
+            self.gripper_control(gripper_before)
+        self.move_to(pose, num_steps=num_steps)
+
+    def _step_gripper(self, value: float, delay: int = 300):
+        self.gripper_control(value, delay=delay)
+
+    def _step_lever_close(self, mode: str = '1/close', cached_path: str | None = None):
+        path = (self._cached_paths[cached_path] if cached_path is not None else
+                self.instrument.lever_path(self.data, mode=mode))
+        self.path_follow(path[:-1])
+        self._lever_end_pose = path[-1]
+
+    def _step_move_to_lever_end(self, num_steps: int):
+        assert self._lever_end_pose is not None, "lever_close must run before move_to_lever_end"
+        self.move_to(self._lever_end_pose, num_steps=num_steps)
+
+    def _step_force_lock(self):
+        self.data.eq_active[self.instrument.lid_lock] = 1
+
+    def _step_wait(self, seconds: float):
+        self.wait(seconds, {})
+
+
 def make_task_classes(spec: LeverLockSpec) -> tuple[type, type]:
     """Builds (Task, Expert) classes for `spec`, matching the structure of the
     original hand-written `Centrifuge{5430,5910}Manipulate(Expert)` classes."""
@@ -163,52 +224,20 @@ def make_task_classes(spec: LeverLockSpec) -> tuple[type, type]:
             return self.task_info
 
         def check(self):
-            # Matches upstream: neither original file implements a real
-            # completion check for this family yet (both return True
-            # unconditionally). Left as-is rather than inventing a new
-            # success criterion as part of a pure refactor.
-            return True
+            return spec.completion_check(self.data, self.instrument)
 
-    class LeverLockExpert(LeverLockTask, Expert, ExpertMotionMixin):
+    class LeverLockExpert(LeverLockTask, Expert, LeverLockMotionMixin):
+        lever_spec = spec
+
         def __init__(self, mjspec: mujoco.MjSpec, freq: int = 20):
             super().__init__(mjspec)
             self.freq = freq
             self.period = int(round(1.0 / self.dt / freq))
             self.arm.register_ik(self.data)
-            self.planner = make_topp_planner(self.arm.dof, self.arm.ik.solve)
+            self.planner = make_topp_planner(self.arm.dof, self.arm.ik.solve,
+                                           qc_vel=spec.qc_vel,qc_acc=spec.qc_acc)
             self._lever_end_pose: Pose | None = None
 
-        def _run_recipe(self):
-            for step in spec.recipe:
-                op = step['op']
-                getattr(self, f'_step_{op}')(**{k: v for k, v in step.items() if k != 'op'})
-
-        def _step_move_to_pose(self, mode: str, num_steps: int, quat_override: str | None = None,
-                                gripper_before: float | None = None):
-            pose = self.instrument.get_eef_pose(self.data, loc='lid', mode=mode)
-            if quat_override == 'lock_quat':
-                pose.quat = LOCK_QUAT
-            if gripper_before is not None:
-                self.gripper_control(gripper_before)
-            self.move_to(pose, num_steps=num_steps)
-
-        def _step_gripper(self, value: float, delay: int = 300):
-            self.gripper_control(value, delay=delay)
-
-        def _step_lever_close(self, mode: str = '1/close'):
-            path = self.instrument.lever_path(self.data, mode=mode)
-            self.path_follow(path[:-1])
-            self._lever_end_pose = path[-1]
-
-        def _step_move_to_lever_end(self, num_steps: int):
-            assert self._lever_end_pose is not None, "lever_close must run before move_to_lever_end"
-            self.move_to(self._lever_end_pose, num_steps=num_steps)
-
-        def _step_force_lock(self):
-            self.data.eq_active[self.instrument.lid_lock] = 1
-
-        def _step_wait(self, seconds: float):
-            self.wait(seconds, {})
 
         def execute(self):
             self.arm.ik.initial_qpos = self.data.qpos[self.arm.jnt_span]

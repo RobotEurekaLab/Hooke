@@ -140,6 +140,33 @@ class ExpertMotionMixin:
         path = self.interpolate(cur_pos, pose, num_steps)
         self.path_follow(path)
 
+    def move_joints(self, target, velocity: float = .8, acceleration: float = .6,
+                    settle_seconds: float = .5):
+        """Servo a smooth joint path with bounded commanded speed and acceleration.
+
+        The quintic blend has peak derivatives 1.875 and less than 5.774.
+        Joint state comes from physics; this primitive only writes actuators.
+        """
+        target = np.asarray(target, dtype=float)
+        if target.shape != (self.arm.dof,) or not np.isfinite(target).all():
+            raise ValueError('Expected one finite target per arm joint')
+        limits = np.array([velocity, acceleration, settle_seconds])
+        if not np.isfinite(limits).all() or min(velocity, acceleration) <= 0 or settle_seconds < 0:
+            raise ValueError('Expected positive speed/acceleration and nonnegative settling time')
+        start = self.data.qpos[self.arm.jnt_span].copy()
+        if not np.isfinite(start).all():
+            raise ValueError('Non-finite current arm state')
+        delta = float(np.max(abs(target - start)))
+        duration = max(1.875 * delta / velocity, np.sqrt(5.774 * delta / acceleration), self.dt)
+        steps = int(np.ceil(duration / self.dt))
+        for i in range(1, steps + 1):
+            fraction = i / steps
+            blend = fraction**3 * (10 - 15 * fraction + 6 * fraction**2)
+            self.data.ctrl[self.arm.act_span] = start + blend * (target - start)
+            self.step_and_log({})
+        for _ in range(round(settle_seconds / self.dt)):
+            self.step_and_log({})
+
     def reposition_directly(self, pose: Pose, seconds: float = 1.5):
         """Solve IK once for `pose` and servo straight there via a stiff
         position setpoint, instead of `move_to`'s multi-waypoint
@@ -187,6 +214,6 @@ class ExpertMotionMixin:
                 self.serializer.record(info)
 
 
-def make_topp_planner(dof: int, ik_solve):
+def make_topp_planner(dof: int, ik_solve, *, qc_vel: float = 1.5, qc_acc: float = 1.0):
     from topp import Topp
-    return Topp(dof=dof, qc_vel=1.5, qc_acc=1.0, ik=ik_solve)
+    return Topp(dof=dof, qc_vel=qc_vel, qc_acc=qc_acc, ik=ik_solve)

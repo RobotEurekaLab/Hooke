@@ -1,25 +1,16 @@
+"""Dual-arm vortex recipe using the shared instrument and actual contact state."""
 import mujoco
 mujoco.mj_loadPluginLibrary('./libmjlab.so.3.3.0')
 import numpy as np
-from kinematics import IK, Pose, slerp, AlohaAnalyticalIK
+from kinematics import IK, Pose, slerp, AlohaAnalyticalIK, mul_pose, neg_pose, align_axes
 from topp import Topp
 from task import Task, Expert, Manager, SCENE_ROOT
 from instrument import VortexMixerGenie2
 from liquid import ContainerSystem, ContainerCoordinator
-
-def set_gravcomp(body: mujoco.MjsBody):
-    body.gravcomp = 1
-    for child in body.bodies:
-        set_gravcomp(child)
-
-def quat_inverse(quat):
-    return np.array([quat[0], -quat[1], -quat[2], -quat[3]])
-
-def get_rotate_quat(q1, q2):
-    q1_inv = quat_inverse(q1)
-    qx = np.zeros(4)
-    mujoco.mju_mulQuat(qx, q2, q1_inv)
-    return qx
+from process_progress import ProcessProgressSystem
+from expert_common import set_gravcomp
+from contact_state import body_geoms, touching
+from control_streams import run_control_streams
 
 def rotate_quaternion_around_axis(base_quat, axis, angle):
     quat_rel = np.zeros(4)
@@ -116,17 +107,22 @@ class VortexMixerManipulate(Task):
         return spec
 
     def __init__(self, spec: mujoco.MjSpec):
-        vortex_mixer = VortexMixerGenie2("/vortex_mixer_genie_2:")
+        self.instrument = VortexMixerGenie2("/vortex_mixer_genie_2:")
         cs = ContainerSystem("1/centrifuge_15ml_body-visual")
         cc = ContainerCoordinator()
-        manager = Manager.from_spec(spec, [vortex_mixer, cs, cc])
+        self.progress = ProcessProgressSystem()
+        manager = Manager.from_spec(spec, [self.instrument, cs, cc, self.progress])
         super().__init__(manager)
         self.arm1 = AlohaArm(self.model, '1/aloha:')
         self.arm2 = AlohaArm(self.model, '2/aloha:')
         self.object = CentrifugeTube(self.model, '2/', '1/')
+        self.tube_geoms = body_geoms(self.model, self.object.body_id)
+        joint = self.model.joint('/vortex_mixer_genie_2:platform/pivot')
+        self.platform_velocity_adr = int(joint.dofadr[0])
         self.aloha2_withdraw_pose = Pose(pos=(0.0, 0.0, 0.0), quat=np.array([1.0, 0.0, 0.0, 0.0]))
         self.model.key_qpos[0] += self.model.key_qpos[1]
         self.model.key_ctrl[0] += self.model.key_ctrl[1]
+        self.progress.bind(self)
 
     def reset(self, seed: int | None = None):
         super().reset(seed=seed)
@@ -145,11 +141,15 @@ class VortexMixerManipulate(Task):
         self.data.qpos[self.object.body_pos_span] = tube_pos
         self.data.qpos[self.object.cap_pos_span] = tube_pos
         mujoco.mj_kinematics(self.model, self.data)
+        # Episode anchors belong to the randomized reset pose. The manager's
+        # earlier reset still observes the keyframe's original rack slot.
+        self.progress.reset(self.data)
 
         self.task_info = {
             'prefix': 'dual-Aloha arms mixing the centrifuge tube on the vortex mixer: one operates test tube, the other operates the vortex mixer',
             'state_indices': self.arm1.state_indices + self.arm2.state_indices,
             'action_indices': self.arm1.action_indices + self.arm2.action_indices,
+            'seed': seed,
             'camera_mapping': {
                 'image': 'table_cam_front',
                 'wrist_image': '1/aloha:wrist_cam_left',
@@ -160,10 +160,10 @@ class VortexMixerManipulate(Task):
         return self.task_info
 
     def check(self):
-        # Placeholder for task completion logic
-        return False
+        return self.progress.success
 
 class VortexMixerManipulateExpert(VortexMixerManipulate, Expert):
+    """Two cooperative arm recipes yield targets to one shared physics clock."""
     def __init__(self, spec: mujoco.MjSpec, freq: int = 20):
         super().__init__(spec)
         self.freq = freq
@@ -192,42 +192,54 @@ class VortexMixerManipulateExpert(VortexMixerManipulate, Expert):
             path.append(Pose(pos, quat))
         return path
 
-    def path_follow(self, path: list[Pose], alpha: int):
-        if alpha == 1:
-            trajectory = self.planner1.jnt_traj(path)
-            run_time = trajectory.duration + 0.2
-            num_steps = int(run_time / self.dt)
-            for step in range(num_steps):
-                if step % self.period == 0:
-                    t = step * self.dt
-                    ctrl = self.planner1.query(trajectory, t)
-                    self.data.ctrl[self.arm1.act_span] = ctrl
-                self.step_and_log({})
-        elif alpha == 2:
-            trajectory = self.planner2.jnt_traj(path)
-            run_time = trajectory.duration + 0.2
-            num_steps = int(run_time / self.dt)
-            for step in range(num_steps):
-                if step % self.period == 0:
-                    t = step * self.dt
-                    ctrl = self.planner2.query(trajectory, t)
-                    self.data.ctrl[self.arm2.act_span] = ctrl
-                self.step_and_log({})
-        else:
-            print("Wrong input")
+    def _arm_and_planner(self, arm_id: int):
+        if arm_id == 1:
+            return self.arm1, self.planner1
+        if arm_id == 2:
+            return self.arm2, self.planner2
+        raise ValueError(f'Unknown arm {arm_id}; expected 1 or 2')
 
-    def gripper_control(self, value: float, alpha: int):
-        if alpha == 1:
-            self.data.ctrl[self.arm1.gripper_id] = value
-            for _ in range(200):
-                self.step_and_log({})
-        elif alpha == 2:
-            self.data.ctrl[self.arm2.gripper_id] = value
-            for _ in range(200):
-                self.step_and_log({})
+    def wait(self, seconds: float):
+        for _ in range(round(seconds / self.dt)):
+            yield {}
 
-    def execute1(self):
-        self.gripper_control(0.030, 1)
+    def path_follow(self, path: list[Pose], arm_id: int):
+        arm, planner = self._arm_and_planner(arm_id)
+        yield from self._trajectory_actions(arm, planner, planner.jnt_traj(path))
+
+    def _trajectory_actions(self, arm, planner, trajectory):
+        for tick in range(int((trajectory.duration+.2)/self.dt)):
+            command = dict(zip(arm.act_span, planner.query(trajectory, tick*self.dt))) if tick % self.period == 0 else {}
+            yield command
+
+    def joint_move(self, pose: Pose, arm_id: int):
+        arm, planner = self._arm_and_planner(arm_id)
+        current = self.data.qpos[arm.jnt_span].copy()
+        arm.ik.initial_qpos = current.copy()
+        target = arm.ik.solve(pose.pos, pose.quat)
+        yield from self._trajectory_actions(arm, planner, planner.joint_traj([current, target]))
+
+    def gripper_control(self, value: float, arm_id: int):
+        arm, _ = self._arm_and_planner(arm_id)
+        yield {arm.gripper_id: value}
+        yield from self.wait(.4 - self.dt)
+
+    def mix(self, seconds: float, timeout: float = 5.):
+        """Require uninterrupted tube contact with the actually moving platform."""
+        elapsed = continuous = 0.
+        while elapsed < seconds + timeout:
+            yield {}
+            active = (abs(self.data.qvel[self.platform_velocity_adr]) >= 1.
+                      and touching(self.data, self.tube_geoms,
+                                   self.instrument.platform_geom_id_range))
+            continuous = continuous + self.dt if active else 0.
+            elapsed += self.dt
+            if continuous >= seconds:
+                return
+        raise RuntimeError('Vortex mixing failed: sustained contact with the moving platform was not reached')
+
+    def pick_up_tube(self):
+        yield from self.gripper_control(0.030, 1)
         eef_pose = self.object.get_end_effector_pose(self.data)
         eef_pose.quat = rotate_quaternion_around_axis(eef_pose.quat, np.array([0.0, 0.0, 1.0]), np.pi * -3 / 8)
         eef_pre_pose = Pose(pos=eef_pose.pos + (0.0, 0.0, 0.04), quat=eef_pose.quat)
@@ -235,198 +247,164 @@ class VortexMixerManipulateExpert(VortexMixerManipulate, Expert):
         path = self.interpolate(cur_pose, eef_pre_pose, 5)
         path_ = self.interpolate(eef_pre_pose, eef_pose, 10)
         path.extend(path_[1:])
-        self.path_follow(path, 1)
-        self.gripper_control(0.01, 1)
+        yield from self.path_follow(path, 1)
+        yield from self.gripper_control(0.01, 1)
         cur_pose = self.arm1.get_site_pose(self.data)
         terminal_pose = Pose(pos=cur_pose.pos + (0.0, 0.0, 0.2), quat=cur_pose.quat)
         path = self.interpolate(cur_pose, terminal_pose, 20)
-        self.path_follow(path, 1)
+        yield from self.path_follow(path, 1)
 
-    def execute2(self):
-        site_name = "/vortex_mixer_genie_2:platform-function"
-        site_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_SITE, site_name)
-        if site_id == -1:
-            print(f"Site '{site_name}' not found in the model.")
-            return
-        pos_cen_devia = self.object.get_cap_pose(self.data).pos - self.object.get_body_pose(self.data).pos
-        quat1 = self.arm1.get_site_pose(self.data).quat.copy()
-        quat1 = rotate_quaternion_around_axis(quat1, np.array([0.0, 0.0, 1.0]), np.pi / 6 * (-1.0))
-        end_pose = Pose(pos=self.data.site_xpos[site_id] + pos_cen_devia - (0.0, 0.0, 0.005), quat=quat1.copy())
-        mid_end_pose = Pose(pos=self.data.site_xpos[site_id] + pos_cen_devia + (0., 0., 0.05), quat=quat1.copy())
-        cur_pose = self.arm1.get_site_pose(self.data)
-        path = self.interpolate(cur_pose, mid_end_pose, 5)
-        path_ = self.interpolate(mid_end_pose, end_pose, 10)
-        path.extend(path_[1:])
-        self.path_follow(path, 1)
+    def place_on_platform(self):
+        site = self.model.site('/vortex_mixer_genie_2:platform-function').id
+        cur = self.arm1.get_site_pose(self.data)
+        body = self.object.get_body_pose(self.data)
+        grasp = mul_pose(neg_pose(body), cur)
+        body_quat = rotate_quaternion_around_axis(body.quat, np.array([0., 0., 1.]), -np.pi/6)
+        target_body = Pose(self.data.site_xpos[site].copy()-(0., 0., .005), body_quat)
+        pre_body = Pose(target_body.pos+(0., 0., .06), target_body.quat)
+        yield from self.joint_move(mul_pose(pre_body, grasp), 1)
+        grasp = mul_pose(neg_pose(self.object.get_body_pose(self.data)), self.arm1.get_site_pose(self.data))
+        yield from self._move_via(1, [mul_pose(target_body, grasp)])
 
-    def execute3(self):
-        site_name = "/vortex_mixer_genie_2:switch-function"
-        site_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_SITE, site_name)
-        if site_id == -1:
-            print(f"Site '{site_name}' not found in the model.")
-            return
-        quat1 = np.zeros(4)
-        mujoco.mju_mat2Quat(quat1, self.data.site_xmat[site_id])
-        site_rot_mat = self.data.site_xmat[site_id].reshape(3, 3)
-        axis_choose = np.array([0.0, 0.0, 1.0])
-        axis_local = np.dot(site_rot_mat, axis_choose)
-        quat1 = rotate_quaternion_around_axis(quat1, axis_local, np.pi / 2)
-        site_rot_mat = self.data.site_xmat[site_id].reshape(3, 3)
-        axis_choose = np.array([0.0, 1.0, 0.0])
-        axis_local = np.dot(site_rot_mat, axis_choose)
-        quat1 = rotate_quaternion_around_axis(quat1, axis_local, np.pi)
-        site_rot_mat = self.data.site_xmat[site_id].reshape(3, 3)
-        axis_choose = np.array([0.0, 0.0, 1.0])
-        axis_z = np.dot(site_rot_mat, axis_choose)
-        axis_choose = np.array([0.0, 1.0, 0.0])
-        axis_y = np.dot(site_rot_mat, axis_choose)
-        mid_end_pose1 = Pose(pos=self.data.site_xpos[site_id] + axis_y * -0.05 + axis_z * 0.02, quat=quat1.copy())
-        mid_end_pose2 = Pose(pos=self.data.site_xpos[site_id] + axis_y * -0.01 + axis_z * 0.02, quat=quat1.copy())
-        end_pose = Pose(pos=self.data.site_xpos[site_id] + axis_y * -0.01, quat=quat1.copy())
-        self.aloha2_withdraw_pose = Pose(pos=self.data.site_xpos[site_id] + axis_y * -0.06, quat=quat1.copy())
-        cur_pose = self.arm2.get_site_pose(self.data)
-        path = self.interpolate(cur_pose, mid_end_pose1, 10)
-        path_ = self.interpolate(mid_end_pose1, mid_end_pose2, 10)
-        path__ = self.interpolate(mid_end_pose2, end_pose, 10)
-        path___ = self.interpolate(end_pose, self.aloha2_withdraw_pose, 10)
-        path.extend(path_[1:])
-        path.extend(path__[1:])
-        path.extend(path___[1:])
-        self.path_follow(path, 2)
-        self.gripper_control(0.030, 2)
+    def _switch_frame(self):
+        site = self.model.site('/vortex_mixer_genie_2:switch-function').id
+        rotation = self.data.site_xmat[site].reshape(3, 3)
+        quat = np.zeros(4)
+        mujoco.mju_mat2Quat(quat, rotation.ravel())
+        quat = rotate_quaternion_around_axis(quat, rotation[:, 2], np.pi / 2)
+        quat = rotate_quaternion_around_axis(quat, rotation[:, 1], np.pi)
+        return self.data.site_xpos[site].copy(), rotation[:, 1], rotation[:, 2], quat
 
-    def execute4(self, gear: int = 1):
-        self.gripper_control(0.030, 2)
-        site_name = "/vortex_mixer_genie_2:knob-function"
-        site_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_SITE, site_name)
-        if site_id == -1:
-            print(f"Site '{site_name}' not found in the model.")
-            return
-        quat1 = np.zeros(4)
-        mujoco.mju_mat2Quat(quat1, self.data.site_xmat[site_id])
-        site_rot_mat = self.data.site_xmat[site_id].reshape(3, 3)
-        axis_choose = np.array([0.0, 1.0, 0.0])
-        axis_local = np.dot(site_rot_mat, axis_choose)
-        quat1 = rotate_quaternion_around_axis(quat1, axis_local, np.pi / 2)
-        axis_choose = np.array([0.0, 0.0, 1.0])
-        axis_local = np.dot(site_rot_mat, axis_choose)
-        site_rot_mat = self.data.site_xmat[site_id].reshape(3, 3)
-        axis_choose = np.array([0.0, 0.0, 1.0])
-        axis_z = np.dot(site_rot_mat, axis_choose)
-        cur_pose = self.arm2.get_site_pose(self.data)
-        mid_end_pose1 = Pose(pos=self.data.site_xpos[site_id] + axis_z * 0.03, quat=quat1.copy())
-        mid_end_pose2 = Pose(pos=self.data.site_xpos[site_id] + axis_z * 0.013, quat=quat1.copy())
-        path1 = self.interpolate(cur_pose, mid_end_pose1, 10)
-        path1_ = self.interpolate(mid_end_pose1, mid_end_pose2, 10)
-        path1.extend(path1_[1:])
-        self.path_follow(path1, 2)
-        self.gripper_control(0.008, 2)
-        if gear < 0 or gear > 10:
-            print(f"Wrong gear.")
-        else:
-            angle = gear * np.pi * 2 / 14
-            wrist_id = self.model.actuator(f'2/aloha:left/wrist_rotate').id
-            for n in range(50):
-                self.data.ctrl[wrist_id] += angle / 50
-                for _ in range(20):
-                    self.step_and_log({})
-        self.gripper_control(0.02, 2)
-        cur_pose = self.arm2.get_site_pose(self.data)
-        path2 = self.interpolate(cur_pose, self.aloha2_withdraw_pose, 10)
-        self.path_follow(path2, 2)
+    def _move_via(self, arm_id: int, poses: list[Pose]):
+        arm, _ = self._arm_and_planner(arm_id)
+        path = [arm.get_site_pose(self.data)]
+        for pose in poses:
+            path.extend(self.interpolate(path[-1], pose, 10)[1:])
+        yield from self.path_follow(path, arm_id)
 
-    def execute5(self):
-        self.gripper_control(0.005, 2)
-        site_name = "/vortex_mixer_genie_2:switch-function"
-        site_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_SITE, site_name)
-        if site_id == -1:
-            print(f"Site '{site_name}' not found in the model.")
-            return
-        quat1 = np.zeros(4)
-        mujoco.mju_mat2Quat(quat1, self.data.site_xmat[site_id])
-        site_rot_mat = self.data.site_xmat[site_id].reshape(3, 3)
-        axis_choose = np.array([0.0, 0.0, 1.0])
-        axis_local = np.dot(site_rot_mat, axis_choose)
-        quat1 = rotate_quaternion_around_axis(quat1, axis_local, np.pi / 2)
-        site_rot_mat = self.data.site_xmat[site_id].reshape(3, 3)
-        axis_choose = np.array([0.0, 1.0, 0.0])
-        axis_local = np.dot(site_rot_mat, axis_choose)
-        quat1 = rotate_quaternion_around_axis(quat1, axis_local, np.pi)
-        site_rot_mat = self.data.site_xmat[site_id].reshape(3, 3)
-        axis_choose = np.array([0.0, 0.0, 1.0])
-        axis_z = np.dot(site_rot_mat, axis_choose)
-        axis_choose = np.array([0.0, 1.0, 0.0])
-        axis_y = np.dot(site_rot_mat, axis_choose)
-        mid_end_pose2 = Pose(pos=self.data.site_xpos[site_id] + axis_y * -0.01 + axis_z * 0.02, quat=quat1.copy())
-        end_pose = Pose(pos=self.data.site_xpos[site_id] + axis_y * -0.01, quat=quat1.copy())
-        self.aloha2_withdraw_pose = Pose(pos=self.data.site_xpos[site_id] + axis_y * -0.06, quat=quat1.copy())
-        cur_pose = self.arm2.get_site_pose(self.data)
-        path = self.interpolate(cur_pose, end_pose, 10)
-        path_ = self.interpolate(end_pose, mid_end_pose2, 10)
-        path__ = self.interpolate(mid_end_pose2, self.aloha2_withdraw_pose, 10)
-        path___ = self.interpolate(end_pose, self.aloha2_withdraw_pose, 10)
-        path.extend(path_[1:])
-        path.extend(path__[1:])
-        self.path_follow(path, 2)
-        self.gripper_control(0.030, 2)
+    def turn_on(self):
+        yield from self.gripper_control(.008, 2)
+        position, y_axis, z_axis, quat = self._switch_frame()
+        self.aloha2_withdraw_pose = Pose(position-y_axis*.06, quat)
+        yield from self.joint_move(Pose(position-y_axis*.01+z_axis*.02, quat), 2)
+        yield from self._move_via(2, [Pose(position-y_axis*.01, quat), self.aloha2_withdraw_pose])
+        yield from self.gripper_control(.030, 2)
 
-    def execute6(self):
-        site_name = "/vortex_mixer_genie_2:platform-function"
-        site_name1 = "origin1"
-        site_name2 = "centrifuge_body"
-        site_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_SITE, site_name)
-        hole_id1 = mujoco.mj_name2id(self.data.model, mujoco.mjtObj.mjOBJ_SITE, site_name1)
-        cen_id = mujoco.mj_name2id(self.data.model, mujoco.mjtObj.mjOBJ_SITE, site_name2)
-        if site_id == -1 or hole_id1 == -1 or cen_id == -1:
-            print(f"Site '{site_name}' or '{site_name1}' or '{site_name2}' not found in the model.")
-            return
-        cur_pose = self.arm1.get_site_pose(self.data)
-        end_pose = Pose(pos=cur_pose.pos + (0.0, 0.0, 0.1), quat=cur_pose.quat)
-        path1 = self.interpolate(cur_pose, end_pose, 5)
-        self.path_follow(path1, 1)
-        hole_quat = np.zeros(4)
-        cen_quat = np.zeros(4)
-        bias_quat = np.zeros(4)
-        compensate_cur_quat = np.zeros(4)
-        for _ in range(4):
-            cur_pose = self.arm1.get_site_pose(self.data)
-            mujoco.mju_mat2Quat(hole_quat, self.data.site_xmat[hole_id1])
-            rotate_quaternion_around_axis(hole_quat, np.array([0.0, 0.0, 1.0]), np.pi / 4)
-            mujoco.mju_mat2Quat(cen_quat, self.data.site_xmat[cen_id])
-            bias_quat = get_rotate_quat(cen_quat, hole_quat)
-            mujoco.mju_mulQuat(compensate_cur_quat, bias_quat, cur_pose.quat)
-            bias_pos = np.zeros(3)
-            bias_pos = self.data.site_xpos[hole_id1] - self.data.site_xpos[cen_id]
-            if _ == 0:
-                bias_pos[2] += 0.18
-            elif _ == 1:
-                bias_pos[2] += 0.1
-            elif _ == 2:
-                bias_pos[2] += 0.06
-            elif _ == 3:
-                bias_pos[0:1] = 0.
-                bias_pos[2] += 0.
-            compensate_cur_pos = cur_pose.pos + bias_pos
-            compensate_cur_pose = Pose(pos=compensate_cur_pos, quat=compensate_cur_quat)
-            path2 = self.interpolate(cur_pose, compensate_cur_pose, 10)
-            self.path_follow(path2, 1)
-            debug_quat1 = get_rotate_quat(cen_quat, self.arm1.get_site_pose(self.data).quat)
-        self.gripper_control(0.030, 1)
-        cur_pose = self.arm1.get_site_pose(self.data)
-        New_pose = Pose(pos=cur_pose.pos + (0.0, 0.0, 0.15), quat=cur_pose.quat)
-        path2 = self.interpolate(cur_pose, New_pose, 10)
-        self.path_follow(path2, 1)
+    def set_gear(self, gear: int = 1):
+        yield from self.gripper_control(.030, 2)
+        site = self.model.site('/vortex_mixer_genie_2:knob-function').id
+        matrix = self.data.site_xmat[site].reshape(3, 3)
+        quat = np.zeros(4)
+        mujoco.mju_mat2Quat(quat, matrix.ravel())
+        quat = rotate_quaternion_around_axis(quat, matrix[:, 1], np.pi/2)
+        position = self.data.site_xpos[site].copy()
+        twist = gear*np.pi*2/14
+        initial = self.arm2.ik.initial_qpos.copy()
+        best = None
+        for rotation in (0., np.pi):
+            candidate = rotate_quaternion_around_axis(quat, matrix[:, 2], rotation)
+            self.arm2.ik.initial_qpos = initial.copy()
+            try:
+                q = self.arm2.ik.solve(position + matrix[:, 2]*.013, candidate)
+            except ValueError:
+                continue
+            wrist = self.model.actuator('2/aloha:left/wrist_rotate').id
+            lower, upper = self.model.actuator_ctrlrange[wrist]
+            if lower+.01 < q[-1] and q[-1]+twist < upper-.01:
+                cost = np.linalg.norm(q-initial)
+                if best is None or cost < best[0]:
+                    best = cost, candidate
+        self.arm2.ik.initial_qpos = initial
+        if best is None:
+            raise ValueError('Knob grasp has no feasible wrist rotation')
+        quat = best[1]
+        yield from self.joint_move(Pose(position+matrix[:, 2]*.05, quat), 2)
+        yield from self._move_via(2, [Pose(position+matrix[:, 2]*.013, quat)])
+        yield from self.gripper_control(.008, 2)
+        wrist = self.model.actuator('2/aloha:left/wrist_rotate').id
+        current = self.data.qpos[self.arm2.jnt_span].copy()
+        target = current.copy()
+        target[-1] += twist
+        lower, upper = self.model.actuator_ctrlrange[wrist]
+        if not lower <= target[-1] <= upper:
+            raise ValueError('Knob rotation exceeds the wrist actuator range')
+        yield from self._trajectory_actions(self.arm2, self.planner2, self.planner2.joint_traj([current, target]))
+        yield from self.gripper_control(.02, 2)
+        cur = self.arm2.get_site_pose(self.data)
+        yield from self._move_via(2, [Pose(cur.pos+matrix[:, 2]*.04, cur.quat)])
 
+    def turn_off(self):
+        yield from self.gripper_control(.005, 2)
+        position, y_axis, z_axis, quat = self._switch_frame()
+        self.aloha2_withdraw_pose = Pose(position - y_axis * .06, quat)
+        yield from self._move_via(2, [
+            Pose(position - y_axis * .01, quat),
+            Pose(position - y_axis * .01 + z_axis * .02, quat),
+            self.aloha2_withdraw_pose,
+        ])
+        yield from self.gripper_control(.030, 2)
 
-    def execute(self, gear: int = 0):
+    def return_tube(self):
+        origin = self.model.site('origin1').id
+        center = self.model.site('centrifuge_body').id
+        cur = self.arm1.get_site_pose(self.data)
+        lifted = Pose(cur.pos + (0., 0., .1), cur.quat)
+        yield from self.path_follow(self.interpolate(cur, lifted, 5), 1)
+        def target(clearance):
+            cur = self.arm1.get_site_pose(self.data)
+            center_quat, quat = np.zeros(4), np.zeros(4)
+            mujoco.mju_mat2Quat(center_quat, self.data.site_xmat[center])
+            center_pose = Pose(self.data.site_xpos[center].copy(), center_quat)
+            grasp = mul_pose(neg_pose(center_pose), cur)
+            axis = self.data.site_xmat[center].reshape(3, 3)[:, 2]
+            goal = self.data.site_xmat[origin].reshape(3, 3)[:, 2]
+            delta = align_axes(axis, goal)
+            mujoco.mju_mulQuat(quat, delta, center_quat)
+            return mul_pose(Pose(self.data.site_xpos[origin].copy()+(0., 0., clearance), quat), grasp)
+        yield from self.joint_move(target(.10), 1)
+        yield from self._move_via(1, [target(0.)])
+        yield from self.gripper_control(.030, 1)
+        cur = self.arm1.get_site_pose(self.data)
+        yield from self._move_via(1, [Pose(cur.pos + (0., 0., .15), cur.quat)])
+
+    def execute(self, gear: int = 3, mix_seconds: float = 1.):
+        if type(gear) is not int or not 1 <= gear <= 10:
+            raise ValueError("Mixing gear must be an integer from 1 to 10")
+        if not np.isfinite(mix_seconds) or mix_seconds < .5:
+            raise ValueError("Mixing duration must be finite and at least 0.5 seconds")
         self.arm1.ik.initial_qpos = self.data.qpos[self.arm1.jnt_span]
         self.arm2.ik.initial_qpos = self.data.qpos[self.arm2.jnt_span]
-        self.execute1()
-        self.execute2()
-        self.execute3()
-        self.execute4(gear)
-        self.execute5()
-        self.execute6()
+        state = {'ready': False, 'mixed': False, 'stopped': False}
+        self.phase_history = []
+        def phase(name, actions):
+            start = float(self.data.time)
+            yield from actions
+            row = dict(phase=name, start_s=start, end_s=float(self.data.time),
+                       switch=int(self.instrument.switch.value), gear=int(self.instrument.knob.value))
+            self.phase_history.append(row)
+        def tube():
+            yield from phase('pick_up_tube', self.pick_up_tube())
+            yield from phase('place_on_platform', self.place_on_platform())
+            while not state['ready']:
+                yield {}
+            yield from phase('mix', self.mix(mix_seconds))
+            state['mixed'] = True
+            yield from phase('return_tube', self.return_tube())
+            while not state['stopped']:
+                yield {}
+        def mixer():
+            yield from phase('set_gear', self.set_gear(gear))
+            yield from phase('turn_on', self.turn_on())
+            if self.instrument.switch.value != 2 or self.instrument.knob.value != gear:
+                raise RuntimeError('Vortex switch or gear did not reach the requested setting')
+            state['ready'] = True
+            while not state['mixed']:
+                yield {}
+            yield from phase('turn_off', self.turn_off())
+            state['stopped'] = True
+        run_control_streams(self.data.ctrl, lambda: self.step_and_log({}), tube(), mixer())
+        if self.instrument.switch.value != 1:
+            raise RuntimeError('Vortex switch did not reach the off detent')
         self.finish()
 
 VortexMixerManipulate.Expert = VortexMixerManipulateExpert

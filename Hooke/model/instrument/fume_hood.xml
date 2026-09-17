@@ -49,25 +49,18 @@
            counter; open (qpos=0.18, the joint's own upper range limit)
            raises it clear of the opening. Positioned so its *closed*
            pose sits flush across the front face. -->
-      <body name="sash" pos="0 0.01 0.10">
+      <!-- Ideal counterbalance: cancel the weight of both moving bodies,
+           retaining their inertia, guide damping and friction. No position
+           servo holds or closes the sash; the robot must move it by contact. -->
+      <body name="sash" pos="0 0.01 0.10" gravcomp="1">
         <joint name="sash_slide" type="slide" axis="0 0 1" range="0 0.18" damping="8" frictionloss="2"/>
         <geom name="sash_pane" class="sash" size="0.165 0.008 0.10"/>
-        <!-- Handle: a horizontal bar on the sash's front face, low enough
-             to grip comfortably without the arm needing to reach above
-             the housing. Cylinder's own axis is local Z by default;
-             rotated -90deg about X so it runs along local Y in the
-             instrument's own frame -- which, once attached under this
-             scene's table body (itself rotated 90deg about world Z, see
-             mani_fume_hood.xml), ends up as world X: perpendicular to
-             the arm's horizontal approach direction (world Y), the "bar
-             axis" the task's grasp-orientation logic grips
-             perpendicular to. Confirmed empirically (not assumed) by
-             querying the compiled geom's world orientation -- this
-             scene's nested body rotations are not the ones intuition
-             suggests, the same lesson as the reagent-bottle task's
-             render-preview axis bug. -->
-        <body name="handle" pos="0 -0.05 0">
-          <geom name="handle_bar" class="handle" size="0.006 0.06" quat="0.7071068 -0.7071068 0 0"/>
+        <!-- Horizontal handle runs along instrument-local X, parallel to
+             the sash. Its grasp approach is local +Y (from the open front).
+             The scene rotates both together; do not infer these axes from
+             the robot's base position. -->
+        <body name="handle" pos="0 -0.05 0" gravcomp="1">
+          <geom name="handle_bar" class="handle" size="0.006 0.06" quat="0.7071068 0 0.7071068 0"/>
           <site name="grasp_site" pos="0 0 0" size="0.005" rgba="1 0 0 1" group="4"/>
         </body>
       </body>

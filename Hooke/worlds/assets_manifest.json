@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "scenes": [
+    {
+      "world": "orbital",
+      "scene": "model/scene/space_orbital.gen.xml",
+      "sha256": "f3a2d855ff7a28df89462bc3e2262261d2c7d2c9986fcb194fa511706e589f8d",
+      "environment": {
+        "name": "orbital",
+        "label": "空间站实验舱",
+        "gravity_m_s2": 0.0,
+        "workspace": {
+          "pressure_pa": 101325.0,
+          "boundary_temperature_k": 293.15,
+          "medium": "pressurized_air"
+        },
+        "exterior": {
+          "pressure_pa": 0.0,
+          "boundary_temperature_k": 3.0,
+          "medium": "ideal_vacuum"
+        },
+        "solar_flux_w_m2": 0.0,
+        "sources": [
+          "https://www.nasa.gov/wp-content/uploads/2023/08/np-2022-06-009-jsc-iss-tech-demo-mini-book-proof-3.pdf"
+        ],
+        "gravity_vector_m_s2": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "gravity_model": "local_free_fall_frame",
+        "workstation": {
+          "support": "station_fixed_work_panel_and_wall_brackets",
+          "sample_storage": "explicit_fixed_mounts_not_weight_supported_storage",
+          "mass_measurement": "inertial_fixture_unqualified_no_gravity_balance",
+          "mount_model": "rigid_welded_bodies_no_fastener_compliance_or_latch_operation"
+        },
+        "protected_module": {
+          "reference_pressure_pa": 101325.0,
+          "reference_temperature_k": 293.15,
+          "status": "design_requirement_not_simulated_gas_or_thermal_control"
+        },
+        "implemented": [
+          "rigid_body_gravity",
+          "collision",
+          "fixed_instrument_mounts",
+          "radiative_thermal_witness"
+        ],
+        "disabled": [
+          "gas_dynamics",
+          "gas_drag",
+          "buoyancy",
+          "convection",
+          "pressure_loads",
+          "leaks",
+          "boiling",
+          "sublimation",
+          "dust_transport",
+          "electrostatics",
+          "ionizing_radiation_damage",
+          "material_aging",
+          "orbital_tides",
+          "station_recoil"
+        ],
+        "temperature_scope": "declared_scenario_boundary_not_global_air_or_regolith_temperature",
+        "scientific_process_validated": false
+      }
+    },
+    {
+      "world": "lunar",
+      "scene": "model/scene/space_lunar.gen.xml",
+      "sha256": "d2b459a7215b2ed6ff93e6b3e74dc405abffc371c339b933261efa3b307aa627",
+      "environment": {
+        "name": "lunar",
+        "label": "月球表面实验工作区",
+        "gravity_m_s2": 1.62,
+        "workspace": {
+          "pressure_pa": 0.0,
+          "boundary_temperature_k": 250.0,
+          "medium": "ideal_vacuum"
+        },
+        "exterior": {
+          "pressure_pa": 0.0,
+          "boundary_temperature_k": 250.0,
+          "medium": "ideal_vacuum"
+        },
+        "solar_flux_w_m2": 1361.0,
+        "sources": [
+          "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html"
+        ],
+        "gravity_vector_m_s2": [
+          0.0,
+          0.0,
+          -1.62
+        ],
+        "gravity_model": "uniform_local_surface",
+        "workstation": {
+          "support": "ground_anchored_table",
+          "sample_storage": "explicit_fixed_mounts_not_weight_supported_storage",
+          "mass_measurement": "gravity_balance_uncalibrated_for_local_gravity",
+          "mount_model": "rigid_welded_bodies_no_fastener_compliance_or_latch_operation"
+        },
+        "protected_module": {
+          "reference_pressure_pa": 101325.0,
+          "reference_temperature_k": 293.15,
+          "status": "design_requirement_not_simulated_gas_or_thermal_control"
+        },
+        "implemented": [
+          "rigid_body_gravity",
+          "collision",
+          "fixed_instrument_mounts",
+          "radiative_thermal_witness"
+        ],
+        "disabled": [
+          "gas_dynamics",
+          "gas_drag",
+          "buoyancy",
+          "convection",
+          "pressure_loads",
+          "leaks",
+          "boiling",
+          "sublimation",
+          "dust_transport",
+          "electrostatics",
+          "ionizing_radiation_damage",
+          "material_aging",
+          "orbital_tides",
+          "station_recoil"
+        ],
+        "temperature_scope": "declared_scenario_boundary_not_global_air_or_regolith_temperature",
+        "scientific_process_validated": false
+      }
+    },
+    {
+      "world": "martian",
+      "scene": "model/scene/space_martian.gen.xml",
+      "sha256": "cfd757cd671c36eebf158d95fb66007fe962a5fbefa80bb1fc41bfd9f79b0666",
+      "environment": {
+        "name": "martian",
+        "label": "火星表面实验工作区",
+        "gravity_m_s2": 3.73,
+        "workspace": {
+          "pressure_pa": 636.0,
+          "boundary_temperature_k": 214.0,
+          "medium": "thin_co2_atmosphere"
+        },
+        "exterior": {
+          "pressure_pa": 636.0,
+          "boundary_temperature_k": 214.0,
+          "medium": "thin_co2_atmosphere"
+        },
+        "solar_flux_w_m2": 586.2,
+        "sources": [
+          "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html"
+        ],
+        "gravity_vector_m_s2": [
+          0.0,
+          0.0,
+          -3.73
+        ],
+        "gravity_model": "uniform_local_surface",
+        "workstation": {
+          "support": "ground_anchored_table",
+          "sample_storage": "explicit_fixed_mounts_not_weight_supported_storage",
+          "mass_measurement": "gravity_balance_uncalibrated_for_local_gravity",
+          "mount_model": "rigid_welded_bodies_no_fastener_compliance_or_latch_operation"
+        },
+        "protected_module": {
+          "reference_pressure_pa": 101325.0,
+          "reference_temperature_k": 293.15,
+          "status": "design_requirement_not_simulated_gas_or_thermal_control"
+        },
+        "implemented": [
+          "rigid_body_gravity",
+          "collision",
+          "fixed_instrument_mounts",
+          "radiative_thermal_witness"
+        ],
+        "disabled": [
+          "gas_dynamics",
+          "gas_drag",
+          "buoyancy",
+          "convection",
+          "pressure_loads",
+          "leaks",
+          "boiling",
+          "sublimation",
+          "dust_transport",
+          "electrostatics",
+          "ionizing_radiation_damage",
+          "material_aging",
+          "orbital_tides",
+          "station_recoil"
+        ],
+        "temperature_scope": "declared_scenario_boundary_not_global_air_or_regolith_temperature",
+        "scientific_process_validated": false
+      }
+    }
+  ],
+  "assets": {
+    "ur5e": {
+      "path": "model/robot/ur5e_gripper.xml",
+      "sha256": "5c97d8af3091f311076c1d4bc68ab346ef93f0c6db8ccea8b111290a3be752ee",
+      "origin": "existing_hooke_asset",
+      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
+    },
+    "cartridge": {
+      "path": "model/instrument/space_cartridge.xml",
+      "sha256": "049ed66f8eff9edfe5aa64ba40dacb03b082c2c12f6382b1def35fa382d9192b",
+      "origin": "local_procedural",
+      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
+    },
+    "glovebox": {
+      "path": "model/instrument/glovebox.xml",
+      "sha256": "167a6af58cbcfc62222e6f6027a63eb7899b4d3767ddb148fea6e9c5a8a08b55",
+      "origin": "existing_hooke_asset",
+      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
+    },
+    "table": {
+      "path": "model/misc/simple_table.xml",
+      "sha256": "04e0312861751e052621ef13b8a0f9162c85587104e6738a7a2a09cfae636145",
+      "origin": "existing_hooke_asset",
+      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
+    },
+    "balance": {
+      "path": "model/instrument/analytical_balance.xml",
+      "sha256": "19bf1c04127f93973062507d210bbf31e4cf1ea91f499e062047653bc778ccf1",
+      "origin": "existing_hooke_asset",
+      "license_scope": "existing_repository_provenance_no_new_external_license_audit"
+    }
+  },
+  "geometry": "meter_scale_procedural_not_real_spacecraft_or_measured_planetary_terrain",
+  "mounts": "explicit_fixed_workstation_robot_instruments_and_retained_cartridges",
+  "qualification": "scene_and_rigid_body_tests_only_no_grasp_latch_pressure_seal_or_E1_E2_certification"
+}
