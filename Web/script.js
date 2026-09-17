@@ -4,10 +4,25 @@ const heroSection = document.getElementById('hero');
 const modulesSection = document.getElementById('modules');
 const scrollCue = document.querySelector('.scroll-cue');
 const video = document.querySelector('.hero-video');
+const soundToggle = document.querySelector('.sound-toggle');
+const iconMuted = soundToggle?.querySelector('.icon-muted');
+const iconUnmuted = soundToggle?.querySelector('.icon-unmuted');
 
 // Scroll-cue click scrolls straight to screen 2.
 scrollCue?.addEventListener('click', () => {
   modulesSection.scrollIntoView({ behavior: 'smooth' });
+});
+
+// The video must start muted or every major browser refuses to autoplay
+// it at all. Give visitors an explicit, one-click way to turn sound on
+// instead (autoplay-with-sound has no reliable cross-browser trigger).
+soundToggle?.addEventListener('click', () => {
+  if (!video) return;
+  video.muted = !video.muted;
+  soundToggle.setAttribute('aria-pressed', String(!video.muted));
+  soundToggle.setAttribute('aria-label', video.muted ? 'Turn sound on' : 'Turn sound off');
+  iconMuted.hidden = !video.muted;
+  iconUnmuted.hidden = video.muted;
 });
 
 // Autoplay can be blocked until a user gesture on some mobile browsers;
