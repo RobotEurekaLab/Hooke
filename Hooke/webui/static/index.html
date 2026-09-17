@@ -5,7 +5,26 @@
 <title>Hooke Task Scene Picker</title>
 <style>
   body { font-family: -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; color: #222; }
-  h1 { font-size: 1.4rem; }
+  .page-header { margin-bottom: 1.2rem; }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.3rem;
+    color: #1a1a2e;
+  }
+  h1 .accent { color: #4285f4; font-style: italic; }
+  .tagline {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #888;
+    margin: 0 0 0.9rem;
+  }
+  .page-header nav { display: flex; gap: 1.2rem; font-size: 0.85rem; }
+  .page-header nav a { color: #4285f4; text-decoration: none; }
+  .page-header nav a:hover { text-decoration: underline; }
   .landing { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
   .landing button { flex: 1; padding: 1rem; font-size: 1rem; cursor: pointer; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; }
   .landing button.active { background: #e8f0fe; border-color: #4285f4; }
@@ -30,9 +49,14 @@
 </style>
 </head>
 <body>
-<h1>Hooke &mdash; Task Scene Picker</h1>
-<p><a href="/backends">MuJoCo / Isaac 双后端运行与对比</a></p>
-<p><a href="/surface-missions">月球与火星探索 · 机器人户外采样</a></p>
+<header class="page-header">
+  <h1>Hooke <span class="accent">Task Scene Picker</span></h1>
+  <p class="tagline">Simulation scenes for robotic lab automation</p>
+  <nav>
+    <a href="/backends">MuJoCo / Isaac dual-backend run &amp; compare</a>
+    <a href="/surface-missions">Lunar &amp; Martian exploration — outdoor robot sampling</a>
+  </nav>
+</header>
 
 <div class="landing">
   <button id="btn-existing" class="active">Use an existing task scene</button>
@@ -40,6 +64,16 @@
 </div>
 
 <fieldset id="existing-panel">
+  <label for="simulator">Simulator</label>
+  <select id="simulator">
+    <option value="mujoco">MuJoCo</option>
+    <option value="isaac">Isaac Sim</option>
+  </select>
+  <div id="simulator-note" class="hint" style="display:none">
+    Isaac Sim previews aren't wired up on this quick picker yet — use the
+    <a href="/backends">dual-backend page</a> to run this task on Isaac Sim.
+  </div>
+
   <label for="category">Category</label>
   <select id="category"></select>
 
@@ -95,6 +129,10 @@ function showPanel(which) {
   document.getElementById('custom-panel').style.display = existing ? 'none' : '';
   document.getElementById('custom-preview').style.display = existing ? 'none' : '';
 }
+
+document.getElementById('simulator').addEventListener('change', (e) => {
+  document.getElementById('simulator-note').style.display = e.target.value === 'isaac' ? '' : 'none';
+});
 
 async function loadCatalog() {
   const res = await fetch('/api/catalog');
@@ -161,6 +199,14 @@ function onRobotChange() {
 async function generateScene() {
   const task = currentTask();
   document.getElementById('error').textContent = '';
+
+  if (document.getElementById('simulator').value === 'isaac') {
+    document.getElementById('error').textContent =
+      "Isaac Sim previews aren't wired up on this quick picker yet — use the dual-backend page to run this task on Isaac Sim.";
+    document.getElementById('preview').innerHTML = '';
+    return;
+  }
+
   document.getElementById('preview').innerHTML = 'Rendering...';
   const body = {
     task: task.name,
