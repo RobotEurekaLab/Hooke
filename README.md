@@ -1,59 +1,136 @@
 # Hooke
 
-Hooke is a simulation and benchmark platform for robotic automation in biology
-laboratories, built on top of [AutoBio](https://arxiv.org/abs/2505.14030)
-(originally from [autobio-bench/AutoBio](https://github.com/autobio-bench/AutoBio)).
+**A simulation platform for robotic laboratory automation.**
+
+Hooke brings robots, laboratory instruments and experiment tasks into one
+workspace. Browse scenes in a web interface, run scripted experiments, inspect
+recorded results and generate demonstrations for robot learning.
+
+## What you can do
+
+- **Explore laboratory scenes:** choose tasks, instruments, robot placements
+  and available asset variants.
+- **Run experiment tasks:** perform pipetting, tube handling, centrifuge
+  operation, vortex mixing and other instrument interactions.
+- **Inspect results:** view camera images, replay recorded runs and check task
+  outcomes.
+- **Build learning datasets:** export successful demonstrations with images,
+  robot states, actions and language instructions for policy training.
 
 ## Experiment scenes
 
-Representative laboratory scenes rendered from recorded simulations in both backends.
+Actual simulation images from three laboratory tasks.
 
-| Experiment | MuJoCo | Isaac Sim |
+| Pipetting | Centrifugation | Vortex mixing |
 | --- | --- | --- |
-| Pipetting | ![MuJoCo pipetting](docs/assets/transfer-mujoco-aspirated-camera-0.png) | ![Isaac pipetting](docs/assets/transfer-isaac-aspirated-camera-0.png) |
-| Centrifugation | ![MuJoCo centrifugation](docs/assets/cycle-mujoco-spin_brake-camera-0.png) | ![Isaac centrifugation](docs/assets/cycle-isaac-spin_brake-camera-0.png) |
-| Vortex mixing | ![MuJoCo vortex mixing](docs/assets/shared-vortex_mixer-mujoco-mixing-camera-0.png) | ![Isaac vortex mixing](docs/assets/shared-vortex_mixer-isaac-mixing-camera-0.png) |
+| ![Dual-arm pipetting workstation](docs/assets/transfer-isaac-aspirated-camera-0.png) | ![Robot and centrifuge workstation](docs/assets/cycle-isaac-spin_brake-camera-0.png) | ![Dual-arm vortex mixing workstation](docs/assets/shared-vortex_mixer-isaac-mixing-camera-0.png) |
 
-## Layout
+## Quick start
 
-- `Hooke/` — the MuJoCo-based simulator, task definitions, and demonstration
-  data generation/rendering pipeline. See `Hooke/README.md`.
-- `openpi/` — VLA training/inference stack (forked from
-  [Physical Intelligence's openpi](https://github.com/Physical-Intelligence/openpi)),
-  upgraded to support fine-tuning **pi0.5** on AutoBio tasks.
-- `openpi-pi0-legacy/` — the original pi0-only openpi setup, kept for reference.
-- `RoboticsDiffusionTransformer/` — RDT baseline, forked from
-  [thu-ml/RoboticsDiffusionTransformer](https://github.com/thu-ml/RoboticsDiffusionTransformer).
+### 1. Install
 
-## Status
+The current simulator environment uses Linux x86_64, Python 3.12 and MuJoCo
+3.3.0. Browser previews and rendered runs require an NVIDIA GPU with EGL
+support. The bundled native components need a compatible system environment;
+see the [setup and troubleshooting guide](docs/isaac_operations.md).
 
-Actively evolving beyond the original AutoBio release — expect the layout and
-tooling here to diverge over time as new features land.
+```bash
+git clone https://github.com/RobotEurekaLab/Hooke.git
+cd Hooke
 
-## MuJoCo / Isaac backends
+conda create -n hooke python=3.12 -y
+conda activate hooke
+pip install 'mujoco==3.3.0' numpy scipy 'jax[cpu]' toppra trimesh \
+  shapely triangle manifold3d sympy zstandard tqdm networkx usd-core \
+  'imageio[ffmpeg]' matplotlib scikit-image pillow flask msgpack websockets
+```
 
-The `/backends` web page can open catalogue scenes and run their original
-controllers with either MuJoCo or an isolated Isaac Sim 4.5 / PhysX process.
-The adapter reuses source assets and feeds actual PhysX state and contacts back
-to the task. In the recorded baseline, all 165 catalogue scenes passed a short
-load, physics-step, and RGB check. All 22 original experts completed at seed 0; Isaac reproduced
-the 18 source predicate successes (15 also within declared time limits).
-Full physical, visual, and performance equivalence remains unqualified.
+Isaac Sim 4.5 is an optional runtime for supported tasks. Follow the
+[runtime configuration guide](docs/isaac_operations.md) before selecting it
+in the interface.
 
-See [setup, validation evidence, and limitations](docs/isaac_scene_parity.md)
-for the existing server configuration, commands, and LAN comparison page.
-See the [completion metrics and remaining work](docs/isaac_status.md) for the
-experimental branch assessment and a committed seed-0 validation snapshot.
-See [shared dual-arm control and ideal pipette volume accounting](docs/isaac_shared_processes.md)
-for the reusable process modules, separate assessments, and validation scope.
-See [full two-container transfer and actual rendered keyframes](docs/isaac_pipette_transfer.md)
-for the 45-second task and historical validation. The
-[ten-seed transfer report](docs/validation/isaac_pipette_transfer_ten_seed_summary.json)
-records ten successful experts in each backend and their frozen runtime versions.
-See [continuous centrifuge insertion, closure, and locking](docs/isaac_centrifuge_chain.md)
-for the earlier protocol, and [the complete centrifuge cycle](docs/isaac_centrifuge_cycle.md)
-for measured rotor control, braking and safe unlocking.
-See [operations and configuration](docs/isaac_operations.md),
-[actual visual comparisons](docs/isaac_visual_configuration.md), and
-[the seven acceptance areas](docs/isaac_completion_plan.md) for the current implementation,
-evidence and reduced-model limits.
+### 2. Start the interface
+
+Run from the simulator directory so its native plugins resolve correctly:
+
+```bash
+cd Hooke
+export MUJOCO_GL=egl
+export HOOKE_ISAAC_GPU=0
+python -m webui.server --host 0.0.0.0 --port 8080
+```
+
+Set `HOOKE_ISAAC_GPU` to an available GPU index; the interface also uses this
+setting for scene rendering.
+
+Open `http://localhost:8080/` on the same machine. For a server, open
+`http://<server-ip>:8080/` from another device on the same network.
+
+### 3. Run an experiment
+
+1. On the home page, choose a category and task to preview its scene. Robot
+   replacement in this picker is a scene preview; it does not adapt the task's
+   controller.
+2. Open `http://<server-ip>:8080/backends` to run a task. Select the task and
+   random seed, then click **运行原任务** (Run task) in the simulator's panel.
+3. Inspect camera frames and progress during the run, then review the recorded
+   result and replay.
+
+The command-line interface is also available. From the same simulator
+directory, run a pipetting task without rendering:
+
+```bash
+python -m backends.run --task pipette_transfer --backend mujoco \
+  --mode expert --seed 0 --no-render --output ../temp/pipette-example
+```
+
+Use a new output directory for each run. Results include `result.json`,
+`trajectory.npz` and task logs; rendered runs also save camera frames.
+
+## Generate demonstrations
+
+Export demonstrations for a single-arm task from the simulator directory:
+
+```bash
+python -m archetypes.demo_export close_fume_hood --num_seeds 10
+```
+
+Successful episodes are saved under `Hooke/logs/demos/close_fume_hood/` as
+`.npz` files containing camera images, robot states, actions and a task prompt.
+The [LeRobot conversion script](openpi/examples/hooke/convert_hooke_demos_to_lerobot.py)
+prepares these files for the [policy training workflow](openpi/README.md).
+Use a separate training environment for OpenPI.
+
+## Documentation
+
+- [Simulator reference](Hooke/README.md): task files, assets and trajectory rendering.
+- [Configuration and troubleshooting](docs/isaac_operations.md): runtime setup,
+  rendering options and recovery.
+- [Pipetting task](docs/isaac_pipette_transfer.md) and
+  [centrifuge cycle](docs/isaac_centrifuge_cycle.md): task behavior and recorded results.
+- [Validation and current limitations](docs/isaac_completion_plan.md): supported
+  behavior and experimental scope.
+- [Policy training and inference](openpi/README.md).
+
+## Repository layout
+
+| Directory | Contents |
+| --- | --- |
+| `Hooke/` | Simulator, experiment tasks, assets and web interface |
+| `openpi/` | Policy training and inference, including pi0.5 configurations |
+| `openpi-pi0-legacy/` | Earlier pi0 training setup |
+| `RoboticsDiffusionTransformer/` | RDT baseline |
+| `docs/` | User guides and validation summaries |
+
+Generated screenshots, videos and raw experiment records belong in the ignored
+`temp/` directory. Simulator logs and demonstrations use `Hooke/logs/`, which
+is also ignored.
+
+## Acknowledgements and license
+
+Hooke builds on [AutoBio](https://arxiv.org/abs/2505.14030),
+[OpenPI](https://github.com/Physical-Intelligence/openpi) and
+[Robotics Diffusion Transformer](https://github.com/thu-ml/RoboticsDiffusionTransformer).
+
+Hooke is licensed under [MIT](LICENSE). Third-party code and assets retain
+their accompanying licenses and attribution notices.
