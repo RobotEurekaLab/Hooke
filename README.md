@@ -19,11 +19,22 @@ recorded results and generate demonstrations for robot learning.
 
 ## Experiment scenes
 
-Actual simulation images from three laboratory tasks.
+Actual simulation images from laboratory tasks, space station experiments and
+planetary sampling missions.
 
 | Pipetting | Centrifugation | Vortex mixing |
 | --- | --- | --- |
 | ![Dual-arm pipetting workstation](docs/assets/transfer-isaac-aspirated-camera-0.png) | ![Robot and centrifuge workstation](docs/assets/cycle-isaac-spin_brake-camera-0.png) | ![Dual-arm vortex mixing workstation](docs/assets/shared-vortex_mixer-isaac-mixing-camera-0.png) |
+
+Inside the space station, a robotic arm handles experiment samples. Surface
+missions combine humanoid collaboration and rover sampling in generated lunar
+and Martian landscapes.
+See the [station experiment guide](docs/space_experiments.md) and
+[surface mission guide](docs/surface-missions.md).
+
+| Space station | Lunar sampling | Martian sampling |
+| --- | --- | --- |
+| ![Robotic arm and experiment equipment inside a space station cabin](docs/assets/space-station-cabin.png) | ![Humanoid robot and sampling rover exploring the lunar surface](docs/assets/surface-lunar-team.png) | ![Close view of a Martian sampling rover, robotic arm and collection container](docs/assets/surface-martian-sampling.png) |
 
 ## Quick start
 
