@@ -1083,6 +1083,83 @@ _CONFIGS = [
         batch_size=16,
         num_train_steps=30_000,
     ),
+    # Three more Hooke tasks carried through the same pipeline (12/12
+    # scripted-expert episodes each, exported/converted/registered the
+    # same way as pi05_hooke_push_filling_nozzle_down above -- see
+    # Hooke's private/technical-log.md for the extension entry). Still
+    # no training run for any of these.
+    TrainConfig(
+        name="pi05_hooke_hplc_injector_plunger",
+        model=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ),
+        data=LeRoboAutoBioDataConfig(
+            repo_id="data/hplc_injector_plunger",
+            base_config=DataConfig(prompt_from_task=True),
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi05_base/params"),
+        freeze_filter=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ).get_freeze_filter(),
+        ema_decay=None,
+        batch_size=16,
+        num_train_steps=30_000,
+    ),
+    TrainConfig(
+        name="pi05_hooke_filter_cartridge_housing",
+        model=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ),
+        data=LeRoboAutoBioDataConfig(
+            repo_id="data/filter_cartridge_housing",
+            base_config=DataConfig(prompt_from_task=True),
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi05_base/params"),
+        freeze_filter=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ).get_freeze_filter(),
+        ema_decay=None,
+        batch_size=16,
+        num_train_steps=30_000,
+    ),
+    TrainConfig(
+        name="pi05_hooke_microplate_stacker_eject",
+        model=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ),
+        data=LeRoboAutoBioDataConfig(
+            repo_id="data/microplate_stacker_eject",
+            base_config=DataConfig(prompt_from_task=True),
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi05_base/params"),
+        freeze_filter=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ).get_freeze_filter(),
+        ema_decay=None,
+        batch_size=16,
+        num_train_steps=30_000,
+    ),
+    # close_fume_hood: 11/12 export (one seed hits a known, occasional
+    # IK-unreachable failure -- see demo_export.py's exception handling
+    # fix and TODO.md's entry for this task's own history). First Hooke
+    # config built from a non-100%-reliability export.
+    TrainConfig(
+        name="pi05_hooke_close_fume_hood",
+        model=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ),
+        data=LeRoboAutoBioDataConfig(
+            repo_id="data/close_fume_hood",
+            base_config=DataConfig(prompt_from_task=True),
+        ),
+        weight_loader=weight_loaders.CheckpointWeightLoader("gs://openpi-assets/checkpoints/pi05_base/params"),
+        freeze_filter=pi0_config.Pi0Config(
+            pi05=True, paligemma_variant="gemma_2b_lora", action_expert_variant="gemma_300m_lora"
+        ).get_freeze_filter(),
+        ema_decay=None,
+        batch_size=16,
+        num_train_steps=30_000,
+    ),
     # RoboArena & PolaRiS configs.
     *roboarena_config.get_roboarena_configs(),
     *polaris_config.get_polaris_configs(),
