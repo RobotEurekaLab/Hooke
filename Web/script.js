@@ -16,14 +16,16 @@ scrollCue?.addEventListener('click', () => {
 // The video must start muted or every major browser refuses to autoplay
 // it at all. Give visitors an explicit, one-click way to turn sound on
 // instead (autoplay-with-sound has no reliable cross-browser trigger).
-soundToggle?.addEventListener('click', () => {
+function setMuted(muted) {
   if (!video) return;
-  video.muted = !video.muted;
-  soundToggle.setAttribute('aria-pressed', String(!video.muted));
-  soundToggle.setAttribute('aria-label', video.muted ? 'Turn sound on' : 'Turn sound off');
-  iconMuted.hidden = !video.muted;
-  iconUnmuted.hidden = video.muted;
-});
+  video.muted = muted;
+  soundToggle?.setAttribute('aria-pressed', String(!muted));
+  soundToggle?.setAttribute('aria-label', muted ? 'Turn sound on' : 'Turn sound off');
+  if (iconMuted) iconMuted.hidden = !muted;
+  if (iconUnmuted) iconUnmuted.hidden = muted;
+}
+
+soundToggle?.addEventListener('click', () => setMuted(!video.muted));
 
 // Autoplay can be blocked until a user gesture on some mobile browsers;
 // retry once on first interaction so the hero never gets stuck on a
@@ -63,11 +65,16 @@ io.observe(modulesSection);
 
 // data-scroll attribute on <html> for any future section-aware styling
 // (e.g. hiding the top nav's background over the video vs. screen 2).
+// Also auto-mutes the still-looping background video the moment screen 2
+// comes into view, so sound a visitor turned on doesn't keep playing
+// once the video itself is out of sight.
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        document.documentElement.dataset.scroll = entry.target.id;
+      if (!entry.isIntersecting) return;
+      document.documentElement.dataset.scroll = entry.target.id;
+      if (entry.target.id === 'modules' && video && !video.muted) {
+        setMuted(true);
       }
     });
   },
