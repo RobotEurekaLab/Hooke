@@ -74,6 +74,13 @@ a{color:inherit;text-decoration:none}
   object-fit:cover;
   object-position:center;
 }
+/* The teaser is 16:9. Squeezed into a tall/portrait phone viewport,
+   object-fit:cover crops most of the frame away -- switch to contain
+   there so the whole video stays visible, letterboxed against the
+   hero's own black background instead. */
+@media (max-aspect-ratio: 1/1){
+  .hero-video{ object-fit:contain; }
+}
 .hero-scrim{
   position:absolute;inset:0;
   background:
