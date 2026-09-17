@@ -12,6 +12,44 @@ from webui.backend_api import ROOT, get_job, read_json
 bp = Blueprint("space_experiments", __name__)
 
 
+def public_qualification(report):
+    """Publish outcomes without evaluator errors that can reveal sample truth."""
+    summary = {
+        key: report[key]
+        for key in (
+            "total",
+            "passed",
+            "complete",
+            "no_action_controls",
+            "seeds_per_backend",
+            "scientific_scope",
+            "limitations",
+            "media",
+        )
+        if key in report
+    }
+    summary["cases"] = [
+        {
+            key: row[key]
+            for key in (
+                "task",
+                "world",
+                "operation",
+                "backend",
+                "seed",
+                "status",
+                "passed",
+                "simulation_s",
+                "total_wall_s",
+                "checks",
+            )
+            if key in row
+        }
+        for row in report.get("cases", [])
+    ]
+    return summary
+
+
 @bp.get("/space-experiments")
 def page():
     return send_file(Path(__file__).with_name("static") / "space-experiments.html")
@@ -30,8 +68,8 @@ def catalog():
             for p in WORLDS.values()
         ],
         operations=list(OPERATIONS),
-        qualification=read_json(
-            ROOT / "docs/validation/space_experiments_summary.json"
+        qualification=public_qualification(
+            read_json(ROOT / "docs/validation/space_experiments_summary.json")
         ),
         capabilities=ScienceRecords.capabilities(),
     )

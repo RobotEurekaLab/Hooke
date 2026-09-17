@@ -1,7 +1,7 @@
 {
-  "total": 148,
+  "total": 149,
   "passed": true,
-  "log_sha256": "ce73b634965b485c882e783a213c38232a54e719b180cf55879dce7762058706",
+  "log_sha256": "13b73dfa4d25a3ba3b06cdcd3ea9878bb620d054d32800848c1949d243dfe71d",
   "cancellation": {
     "passed": true,
     "checks": {
@@ -16,5 +16,7 @@
     "simulation_s": 10.260000000000096,
     "scope": "actual_sigterm_mujoco_partial_episode"
   },
-  "scope": "unit_contract_checks_and_actual_partial_episode_cancellation_not_native_engine_qualification"
+  "scope": "unit_contract_checks_and_actual_partial_episode_cancellation_not_native_engine_qualification",
+  "elapsed_s": 20.916,
+  "command": "cd Hooke && ../.venv/bin/python -m unittest discover -s ../tests -v"
 }

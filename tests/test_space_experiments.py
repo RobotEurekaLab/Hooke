@@ -58,6 +58,42 @@ def spectrum_record(identifier, sample, profile=0):
 
 
 class SpaceExperiments(unittest.TestCase):
+    def test_gallery_does_not_publish_evaluator_metrics_or_private_paths(self):
+        app = Flask(__name__)
+        app.register_blueprint(bp)
+        report = dict(
+            total=1,
+            passed=1,
+            complete=True,
+            metrics=dict(absolute_mass_error_kg=0.001, relative_mass_error=0.005),
+            private_campaign_key="private-key",
+            cases=[
+                dict(
+                    task="space_lunar_mass_measurement",
+                    world="lunar",
+                    operation="mass_measurement",
+                    backend="mujoco",
+                    seed=0,
+                    passed=True,
+                    checks=dict(continuous_task=True),
+                    metrics=dict(
+                        absolute_mass_error_kg=0.001, relative_mass_error=0.005
+                    ),
+                    folder="/private/evaluator",
+                    hidden_material="private-material",
+                )
+            ],
+        )
+        with patch("webui.space_experiment_api.read_json", return_value=report):
+            response = app.test_client().get("/api/space-experiments")
+        self.assertEqual(response.status_code, 200)
+        public = response.get_json()["qualification"]
+        self.assertNotIn("metrics", public)
+        self.assertNotIn("metrics", public["cases"][0])
+        self.assertEqual(public["cases"][0]["checks"], dict(continuous_task=True))
+        for value in ("private-key", "/private/evaluator", "private-material"):
+            self.assertNotIn(value, response.get_data(as_text=True))
+
     def test_qualification_cannot_overwrite_existing_episode_evidence(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
