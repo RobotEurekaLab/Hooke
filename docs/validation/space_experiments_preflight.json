@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "task": "space_orbital_sample_transfer",
+      "module": "experiments.tasks",
+      "cls": "OrbitalTransfer",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 43,
+      "geoms": 115,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    },
+    {
+      "task": "space_orbital_mass_measurement",
+      "module": "experiments.tasks",
+      "cls": "OrbitalMass",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 43,
+      "geoms": 115,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    },
+    {
+      "task": "space_orbital_spectral_measurement",
+      "module": "experiments.tasks",
+      "cls": "OrbitalSpectrum",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 43,
+      "geoms": 115,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    },
+    {
+      "task": "space_lunar_sample_transfer",
+      "module": "experiments.tasks",
+      "cls": "LunarTransfer",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 141,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    },
+    {
+      "task": "space_lunar_mass_measurement",
+      "module": "experiments.tasks",
+      "cls": "LunarMass",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 141,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    },
+    {
+      "task": "space_lunar_spectral_measurement",
+      "module": "experiments.tasks",
+      "cls": "LunarSpectrum",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 141,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    },
+    {
+      "task": "space_martian_sample_transfer",
+      "module": "experiments.tasks",
+      "cls": "MartianTransfer",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 141,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    },
+    {
+      "task": "space_martian_mass_measurement",
+      "module": "experiments.tasks",
+      "cls": "MartianMass",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 141,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    },
+    {
+      "task": "space_martian_spectral_measurement",
+      "module": "experiments.tasks",
+      "cls": "MartianSpectrum",
+      "mujoco_compiles": true,
+      "display_only": false,
+      "check_constant_true": false,
+      "check_constant_false": false,
+      "bodies": 42,
+      "geoms": 141,
+      "cameras": 4,
+      "timestep_s": 0.002,
+      "native_preflight": {
+        "version": "hooke-native-capabilities-v2",
+        "can_attempt_native": true,
+        "blockers": [],
+        "unknown_plugins": [],
+        "parity_qualified": false,
+        "scope": "Structural rejection before native startup; runtime limits still apply."
+      },
+      "scope": "static_compilation_and_feature_check_not_continuous_qualification"
+    }
+  ]
+}

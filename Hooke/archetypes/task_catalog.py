@@ -70,6 +70,16 @@ class CatalogEntry:
 
 CATALOG: dict[str, CatalogEntry] = {
     entry.name: entry for entry in [
+        *[
+            CatalogEntry(
+                name=f"space_{world}_{operation}",
+                description=f"{world}: contact-driven dry cartridge {operation.replace('_', ' ')} with explicit storage and instrument locks.",
+                category="space", module="experiments.tasks", cls=f"{world.title()}{suffix}",
+                robot="ur5e", camera="experiment_closeup", completion_rule="space_experiment",
+            )
+            for world in ("orbital", "lunar", "martian")
+            for operation, suffix in (("sample_transfer", "Transfer"), ("mass_measurement", "Mass"), ("spectral_measurement", "Spectrum"))
+        ],
         CatalogEntry(
             name="space_orbital_assets_workstation",
             description="Attributed NASA ISS interior and handrail with shared Apollo sample and Mars tube; explicit collision proxies and example masses; display qualification only.",

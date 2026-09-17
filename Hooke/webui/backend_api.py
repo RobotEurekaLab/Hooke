@@ -15,6 +15,7 @@ from archetypes.task_catalog import CATALOG
 from backends.config import isaac_gpu
 from backends.gpu_lease import GPULease
 from backends.capabilities import registry
+from experiments.private_state import persistent_host_key
 
 ROOT=Path(__file__).resolve().parents[2]
 EVIDENCE=ROOT/'temp/backend_parity'
@@ -51,6 +52,13 @@ def expert_evidence():
             summary={key:row.get(key) for key in ('status','source_check','source_check_kind','simulation_s',
                          'within_declared_time_limit','max_fk_position_error_m','total_wall_s')}
             rows.setdefault(row['task'],{})[row['backend']]=summary
+    for row in read_json(ROOT/'docs/validation/space_experiments_summary.json').get('cases',[]):
+        if row.get('seed') != 0:continue
+        rows.setdefault(row['task'],{})[row['backend']]={
+            'status':row['status'],'simulation_s':row.get('simulation_s'),
+            'within_declared_time_limit':row.get('checks',{}).get('within_limit'),
+            'source_check':row.get('passed',False),'source_check_kind':'space_sample_experiment',
+            'total_wall_s':row.get('total_wall_s')}
     return rows
 
 
@@ -232,6 +240,9 @@ def start_job():
         env=os.environ.copy();env.update(MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID=str(gpu),OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',PYTHONUNBUFFERED='1')
         if backend == 'isaac':env.setdefault('HOOKE_ISAAC_COLOR_PIPELINE','source_display')
         if mode == 'experiment':env['HOOKE_RENDER_FPS']='1'
+        if CATALOG[task].completion_rule == 'space_experiment':
+            env.setdefault('HOOKE_RENDER_FPS','2')
+            env['HOOKE_SCIENCE_CAMPAIGN_KEY']=persistent_host_key(JOBS/'.science_campaign.json')
         log=(output/'run.log').open('wb')
         command = [sys.executable,'-m','backends.run','--task',task,'--backend',backend,
                    '--mode','no_action' if mode == 'experiment' else mode,

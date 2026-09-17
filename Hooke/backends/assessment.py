@@ -224,6 +224,10 @@ class EpisodeAssessment:
         scope = 'unaudited_legacy'
         checks = {}
         metrics = dict(self.metrics)
+        if callable(getattr(self.task, 'experiment_checks', None)):
+            checks = self.task.experiment_checks()
+            metrics['sample_handling'] = self.task.mechanics.handling
+            scope = 'space_sample_experiment'
         if self.state is not None:
             checks = self.state.checks()
             metrics.update(asdict(self.state))

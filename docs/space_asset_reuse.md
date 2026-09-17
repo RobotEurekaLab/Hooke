@@ -1,6 +1,6 @@
 # 空间资产复用：范围、条款与实际验证
 
-核查日期：2026-09-17。当前只接入下表四个资产；完整 SRB、OmniLRS 和 MARTIAN 工作流尚未运行验证。
+核查日期：2026-09-17。本文记录下表四个 NASA/SRB 外观资产的复用；后续操作硬件及 LROC/HiRISE 地形裁剪见 [空间实验操作](space_experiments.md)。完整 SRB、OmniLRS 和 MARTIAN 工作流尚未运行验证。
 
 ## 平台怎样组合
 

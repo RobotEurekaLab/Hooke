@@ -41,11 +41,14 @@ class WorldRoutes(unittest.TestCase):
 
     def test_new_catalogue_entries_are_display_scenes_without_fake_success(self):
         tasks = self.client.get("/api/backends/catalog").get_json()["tasks"]
-        space = [t for t in tasks if t["category"] == "space"]
+        space = [t for t in tasks if t["category"] == "space" and t["name"].endswith("workstation")]
         self.assertEqual(len(space), 6)
         self.assertTrue(
             all(t["display_only"] and not t["check_constant_true"] for t in space)
         )
+        experiments = [t for t in tasks if t["completion_rule"] == "space_experiment"]
+        self.assertEqual(len(experiments), 9)
+        self.assertTrue(all(not t["display_only"] for t in experiments))
 
     def test_external_assets_expose_attribution_and_only_registered_images(self):
         data = self.client.get("/api/space-assets").get_json()

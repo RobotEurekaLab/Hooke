@@ -41,6 +41,8 @@ app = Flask(__name__, static_folder="static", static_url_path="")
 app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024
 from webui.backend_api import bp as backend_blueprint
 app.register_blueprint(backend_blueprint)
+from webui.space_experiment_api import bp as space_experiment_blueprint
+app.register_blueprint(space_experiment_blueprint)
 
 
 def _robot_entry_json(entry) -> dict:

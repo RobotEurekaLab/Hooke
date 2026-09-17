@@ -59,3 +59,12 @@ ISS interior, lunar terrain, Martian terrain and experiment asset candidates.
 
 The `/space-assets` page compares three optional space scenes with attributed
 NASA/SRB assets in MuJoCo and Isaac. See [reuse, research terms and validation](docs/space_asset_reuse.md).
+
+The `/space-experiments` page provides nine continuous robot tasks across the
+orbital, lunar and Martian worlds: sample loading/return, calibrated spring
+mass measurement and mechanically gated analytic spectral measurements.
+Both engines use the same robot, scene and controller. Actual videos, public
+measurement curves and acceptance records are described in
+[space experiments](docs/space_experiments.md). Real LROC/HiRISE terrain crops
+have separate provenance and collision checks; the default robot workspaces
+retain procedural ground.

@@ -119,6 +119,7 @@ def run(args,worker=None):
                 if steps%100==0:
                     write_json(output/'progress.json',{'steps':steps,'simulation_s':float(task.data.time),'contacts':task.data.ncon,
                                                       'instrument_state':instrument_state(task),
+                                                      'space_experiment':task.experiment_ui() if callable(getattr(task,'experiment_ui',None)) else None,
                                                       'scientific_model':science_model.report() if science_model is not None else None})
             task.manager.step=manager_step
             try:
@@ -162,6 +163,12 @@ def run(args,worker=None):
                           max_fk_rotation_error_rad=adapter.max_fk_rotation_error,
                           physics_options=adapter.loaded['conversion']['physics_options'])
         if task is not None:
+            if callable(getattr(task, 'experiment_report', None)):
+                result['space_experiment'] = task.experiment_report()
+                write_json(output/'evaluator_truth.json', task.evaluator_truth)
+                for measurement in [*task.mechanics.measurements.values(), *task.spectrometer.records.values()]:
+                    folder = output/'measurements';folder.mkdir(exist_ok=True)
+                    write_json(folder/(measurement['measurement_id']+'.json'), measurement)
             if getattr(task,'environment',None) is not None:result['space_environment']=task.environment.report()
             if science_model is not None:result['scientific_model']=science_model.report()
             if assessment is not None:result['assessment']=assessment.report()
@@ -186,6 +193,10 @@ def run(args,worker=None):
 
 
 def main():
+    import signal
+    def stop(signum, frame):
+        raise KeyboardInterrupt('Job cancelled')
+    signal.signal(signal.SIGTERM, stop)
     faulthandler.enable()
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--task',required=True)
