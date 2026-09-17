@@ -35,6 +35,9 @@ vendor/
 # Claude Code local session state
 .claude/
 
+# Local agent instructions
+AGENTS.md
+
 # Private/unpublished material (research proposals, drafts, notes)
 private/
 temp/
