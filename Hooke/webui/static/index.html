@@ -69,17 +69,27 @@
     display: flex; gap: 1.1rem; overflow-x: auto; scroll-behavior: smooth;
     scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
     scrollbar-width: none; -ms-overflow-style: none;
+    /* Extra vertical room so a hover-scaled video isn't clipped by the
+       strip's own scroll box (overflow-x:auto implies overflow-y:auto). */
+    padding: 22px 4px;
   }
   .examples-strip::-webkit-scrollbar { display: none; }
   .example-card { flex: 0 0 340px; scroll-snap-align: start; }
   .example-card video {
     width: 340px; height: 191px; display: block; background: #000;
     border-radius: 8px; border: 1px solid #ddd; object-fit: cover;
+    cursor: pointer; transition: transform 0.22s ease, box-shadow 0.22s ease;
+    position: relative;
+  }
+  .example-card video:hover {
+    transform: scale(1.12);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    z-index: 3;
   }
   .example-card p { margin: 0.5rem 0 0; font-size: 0.85rem; color: #444; }
   .example-card .example-engine { font-size: 0.72rem; color: #999; text-transform: uppercase; letter-spacing: 0.04em; }
   .strip-nav {
-    position: absolute; top: 96px; transform: translateY(-50%);
+    position: absolute; top: 118px; transform: translateY(-50%);
     width: 36px; height: 36px; border-radius: 50%; border: 1px solid #ccc;
     background: rgba(255,255,255,0.95); color: #333; font-size: 1.1rem;
     cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15); z-index: 2;
