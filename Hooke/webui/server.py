@@ -20,6 +20,7 @@ Then open http://localhost:8080/
 import base64
 import dataclasses
 import os
+from pathlib import Path
 
 from flask import Flask, jsonify, request, send_from_directory
 
@@ -65,6 +66,19 @@ VARIANTS = {"insert_centrifuge_5430": [10, 15, 20, 24, 30]}
 @app.get("/")
 def index():
     return send_from_directory(app.static_folder, "index.html")
+
+
+# Repo root (Hooke/webui/server.py -> webui -> Hooke -> repo root), the
+# same computation backend_api.py's ROOT already uses. Only docs/assets/
+# itself is exposed, and send_from_directory rejects any path that
+# escapes it -- this is read-only access to already-public doc media,
+# not a general file server.
+_DOCS_ASSETS = Path(__file__).resolve().parents[2] / "docs" / "assets"
+
+
+@app.get("/docs-assets/<path:filename>")
+def docs_assets(filename):
+    return send_from_directory(_DOCS_ASSETS, filename)
 
 
 @app.get("/api/catalog")

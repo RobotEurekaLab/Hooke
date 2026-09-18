@@ -46,6 +46,21 @@
   .key-note { font-size: 0.78rem; color: #2a7a2a; background: #eefbee; border: 1px solid #cdeecd; border-radius: 6px; padding: 0.5rem 0.7rem; margin-bottom: 0.8rem; }
   details { margin-top: 0.6rem; font-size: 0.85rem; }
   details pre { white-space: pre-wrap; background: #f6f6f6; border-radius: 6px; padding: 0.6rem; max-height: 16rem; overflow: auto; }
+
+  .examples { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e5e5e5; }
+  .examples h2 { font-size: 1.1rem; margin: 0 0 0.2rem; }
+  .examples .examples-sub { font-size: 0.85rem; color: #777; margin: 0 0 1rem; }
+  .examples-strip {
+    display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.6rem;
+    scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+  }
+  .example-card { flex: 0 0 240px; scroll-snap-align: start; }
+  .example-card video {
+    width: 240px; height: 135px; display: block; background: #000;
+    border-radius: 8px; border: 1px solid #ddd; object-fit: cover;
+  }
+  .example-card p { margin: 0.4rem 0 0; font-size: 0.82rem; color: #444; }
+  .example-card .example-engine { font-size: 0.72rem; color: #999; text-transform: uppercase; letter-spacing: 0.04em; }
 </style>
 </head>
 <body>
@@ -113,6 +128,58 @@
 </fieldset>
 
 <div id="custom-preview"></div>
+
+<section class="examples">
+  <h2>Examples</h2>
+  <p class="examples-sub">A few recorded runs from the space-experiment suite. Scroll to see more.</p>
+  <div class="examples-strip">
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-lunar-sample_transfer-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Lunar &middot; Sample Transfer</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-lunar-mass_measurement-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Lunar &middot; Mass Measurement</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-lunar-spectral_measurement-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Lunar &middot; Spectral Measurement</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-martian-sample_transfer-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Martian &middot; Sample Transfer</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-martian-mass_measurement-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Martian &middot; Mass Measurement</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-martian-spectral_measurement-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Martian &middot; Spectral Measurement</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-orbital-sample_transfer-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Orbital &middot; Sample Transfer</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-orbital-mass_measurement-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Orbital &middot; Mass Measurement</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+    <div class="example-card">
+      <video src="/docs-assets/space-experiment-orbital-spectral_measurement-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
+      <p>Orbital &middot; Spectral Measurement</p>
+      <span class="example-engine">MuJoCo</span>
+    </div>
+  </div>
+</section>
 
 <script>
 let CATALOG = null;
