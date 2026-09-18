@@ -50,17 +50,30 @@
   .examples { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e5e5e5; }
   .examples h2 { font-size: 1.1rem; margin: 0 0 0.2rem; }
   .examples .examples-sub { font-size: 0.85rem; color: #777; margin: 0 0 1rem; }
+  .examples-strip-wrap { position: relative; }
   .examples-strip {
-    display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.6rem;
+    display: flex; gap: 1.1rem; overflow-x: auto; scroll-behavior: smooth;
     scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; -ms-overflow-style: none;
   }
-  .example-card { flex: 0 0 240px; scroll-snap-align: start; }
+  .examples-strip::-webkit-scrollbar { display: none; }
+  .example-card { flex: 0 0 340px; scroll-snap-align: start; }
   .example-card video {
-    width: 240px; height: 135px; display: block; background: #000;
+    width: 340px; height: 191px; display: block; background: #000;
     border-radius: 8px; border: 1px solid #ddd; object-fit: cover;
   }
-  .example-card p { margin: 0.4rem 0 0; font-size: 0.82rem; color: #444; }
+  .example-card p { margin: 0.5rem 0 0; font-size: 0.85rem; color: #444; }
   .example-card .example-engine { font-size: 0.72rem; color: #999; text-transform: uppercase; letter-spacing: 0.04em; }
+  .strip-nav {
+    position: absolute; top: 96px; transform: translateY(-50%);
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid #ccc;
+    background: rgba(255,255,255,0.95); color: #333; font-size: 1.1rem;
+    cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15); z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .strip-nav:hover { background: #fff; border-color: #999; }
+  .strip-nav.prev { left: -14px; }
+  .strip-nav.next { right: -14px; }
 </style>
 </head>
 <body>
@@ -132,7 +145,10 @@
 <section class="examples">
   <h2>Examples</h2>
   <p class="examples-sub">Recorded runs across biology, chemistry and space-experiment tasks. Scroll to see more.</p>
-  <div class="examples-strip">
+  <div class="examples-strip-wrap">
+  <button class="strip-nav prev" type="button" id="examples-prev" aria-label="Scroll left">&#8249;</button>
+  <button class="strip-nav next" type="button" id="examples-next" aria-label="Scroll right">&#8250;</button>
+  <div class="examples-strip" id="examples-strip">
     <div class="example-card">
       <video src="/docs-assets/lab-task-biology-thermal_cycler_close-mujoco.mp4" controls preload="metadata" muted loop playsinline></video>
       <p>Biology &middot; Thermal Cycler Close</p>
@@ -203,6 +219,7 @@
       <p>Orbital &middot; Spectral Measurement</p>
       <span class="example-engine">MuJoCo</span>
     </div>
+  </div>
   </div>
 </section>
 
@@ -372,6 +389,28 @@ async function generateCustom() {
 document.getElementById('generate').addEventListener('click', generateScene);
 document.getElementById('generate-custom').addEventListener('click', generateCustom);
 loadCatalog();
+
+// Examples strip: arrow buttons + convert vertical mouse-wheel scroll
+// into horizontal movement (a plain overflow-x:auto strip ignores the
+// wheel by default -- only trackpad horizontal swipe/shift-wheel would
+// otherwise scroll it).
+(function () {
+  const strip = document.getElementById('examples-strip');
+  if (!strip) return;
+  const scrollByCard = () => strip.querySelector('.example-card').getBoundingClientRect().width + 18;
+
+  document.getElementById('examples-prev').addEventListener('click', () => {
+    strip.scrollBy({ left: -scrollByCard(), behavior: 'smooth' });
+  });
+  document.getElementById('examples-next').addEventListener('click', () => {
+    strip.scrollBy({ left: scrollByCard(), behavior: 'smooth' });
+  });
+  strip.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // already horizontal, let it be
+    e.preventDefault();
+    strip.scrollLeft += e.deltaY;
+  }, { passive: false });
+})();
 </script>
 </body>
 </html>
