@@ -16,7 +16,7 @@ export OMP_NUM_THREADS=1
 ../.venv/bin/python -m webui.server
 ```
 
-网页：`http://服务器局域网地址:8080/backends`。可以选择相同目录任务，分别打开两个后端。默认 GPU 为 6，也可以在未跟踪的 `temp/isaac_local.json` 中配置 `isaac_path` 和 `gpu`；环境变量优先。使用其他机器时自行填写安装路径和空闲 GPU，不复制本机账号、SSH 密钥或驱动。
+网页：`http://服务器局域网地址:8080/backends`。可以选择相同目录任务，分别打开两个后端。未配置时使用 GPU 0，本机配置使用 GPU 6；也可以在未跟踪的 `temp/isaac_local.json` 中配置 `isaac_path` 和 `gpu`；环境变量优先。使用其他机器时自行填写安装路径和空闲 GPU，不复制本机账号、SSH 密钥或驱动。
 
 也可从任意目录启动，脚本自动进入源码目录，避免插件相对路径错误：
 
@@ -27,7 +27,72 @@ export OMP_NUM_THREADS=1
 
 默认使用仓库 `.venv/bin/python`，可用 `HOOKE_SOURCE_PYTHON` 指定已有的 Source Python 可执行文件。脚本不创建环境或安装依赖。
 
-`doctor` 只读取依赖、安装路径、GPU UUID、显存和驱动，不安装软件、不启动仿真。`files_ready` 只表示必需文件存在，不能代替实际原生回合验证。
+## 其他账号与服务器部署
+
+首次安装、自动发现、一键保存、其他账号目录权限及 systemd／容器部署的
+完整步骤见[Isaac 安装说明](isaac_setup.md)。
+
+Isaac 安装和机器配置不随 Git 仓库分发。安装目录依次取自 Web 后端进程的
+`HOOKE_ISAAC_PATH`、服务账号的 `$XDG_CONFIG_HOME/hooke/isaac.json`
+（未设置 XDG 时为 `~/.config/hooke/isaac.json`）、仓库根目录下被忽略的
+`temp/isaac_local.json`；未配置时自动使用服务账号／常见共享目录中唯一可访问的安装，
+多个候选则明确报错，无候选时返回各候选的缺失／权限诊断。GPU 采用环境变量／
+账号配置／旧配置的相同优先顺序，
+默认编号为 0；启动脚本和显微工作站不会覆盖配置中的 GPU。
+路径应指向包含 `python.sh` 的安装根目录，目前支持独立安装的 Isaac Sim 4.5 布局。
+
+其他人仅访问已启动的网页时，共用该服务器进程的安装配置；如果他们在自己的
+Linux 账号或另一台服务器启动后端，则需要配置自己的可用安装。安装位于其他
+账号的 home 目录并不自动意味着不可用，但服务账号必须能遍历各级目录、读取
+所需文件并执行启动器。配置路径不能绕过 Linux 权限。
+
+由实际运行服务的账号，从仓库根目录保存配置、检查并启动：
+
+```bash
+./scripts/start_hooke_backends.sh --configure-isaac --discover
+./scripts/start_hooke_backends.sh --configure-isaac --auto --gpu 0
+# 非标准目录或多个候选时显式选择：
+./scripts/start_hooke_backends.sh --configure-isaac \
+  --isaac-path /absolute/path/to/isaacsim --gpu 0
+./scripts/start_hooke_backends.sh --doctor
+./scripts/start_hooke_backends.sh --host 0.0.0.0 --port 8080
+```
+
+配置命令先检查目录遍历权限，以及启动器、环境脚本、独立 Python 和 Carb 库的
+必要访问权限，再原子保存账号配置（文件权限为 0600），不启动 GPU、不修改安装
+目录或驱动。配置保存在仓库外，同一服务账号更换 checkout 时仍可复用。
+需要临时覆盖时，使用 `HOOKE_ISAAC_PATH` 和 `HOOKE_ISAAC_GPU`。
+
+`/backends` 和 `/microscopy` 的“服务器环境与配置帮助”显示服务账号、路径、
+配置来源与失败位置，也可读取 `GET /api/backends/environment`。这是只读检查，
+不会执行安装目录中的程序。启动检查失败时请求返回 503 和具体修复方式，不创建
+仿真任务；显微页面切换失败时保留原来正在运行的 MuJoCo 会话。
+
+例如 `/home/dongsu/humanoid/isaacsim` 属于另一个账号，只要服务账号具备必要权限，
+就可以显式配置使用。目录不存在、无法遍历、文件缺失和不能执行会分别显示。
+需要确认权限时运行 `namei -l /home/dongsu/humanoid/isaacsim/python.sh`。
+共享安装应由管理员或安装所有者按需配置访问权限，也可安装到服务账号可访问的位置。
+
+修改环境变量后重启 Web 后端，使其继承环境变量。systemd、容器或其他服务管理器
+启动的进程需要在对应服务配置中设置变量；交互终端中的 `export` 不会修改
+已经运行的服务。账号配置文件在检查和新建 worker 时读取；已运行的 worker 使用
+原来启动时的安装和 GPU，部署修改后建议重新启动服务。
+
+`doctor` 只读取依赖、安装路径、GPU UUID、显存和驱动，不安装软件、不启动仿真。
+`environment_files_ready` 包含必要文件的访问检查，不能代替实际原生回合验证。
+
+2026-09-18 本机验证：部署配置与相关回归共 47 项通过。真实浏览器在缺失的
+`/home/dongsu/...` 配置下收到 503 和具体配置帮助；原 MuJoCo 会话 ID 保持一致，
+继续推进至 0.15 秒。正常配置下，显微页面执行 150 个真实 PhysX 步，显示图像
+与 Isaac RTX 原始帧逐字节一致，并成功切回 MuJoCo；普通场景页面的
+`hplc_injector_plunger` 执行 1,000 步、2 秒，返回 `PREVIEW_COMPLETE`。
+驱动仍为 535.230.02。原始诊断、失败与复测日志保存在忽略目录
+`temp/isaac_account_fix/`。该验证不代表已经访问或修改报错用户所在的另一台服务器。
+
+当前 8084 部署再次经过真实浏览器复测：两个独立浏览器上下文读取相同的服务端
+配置与原生会话；直接打开 Isaac 显微页面、推进 150 步并核对网页图像与 RTX
+原始帧逐字节一致，浏览器脚本错误为零。该次记录与截图保存在
+`temp/isaac_account_fix/current-deployment/`，未将文件访问检查当作原生运行验证。
 
 诊断记录 MuJoCo、NumPy、SciPy、JAX、TOPPRA、Pillow、Flask 的实际版本及本地 `meshplane` 模块是否可发现；缺少依赖时仍输出其他检查，`environment_files_ready=false`。Source 的安装说明见 [模拟器 README](../Hooke/README.md)，本机 Python 3.12 已实测。原 SDF 和 `meshplane` 为本地二进制组件，复制文件或找到模块不能代替其他 Python/平台上的 ABI 验证。Isaac 使用其独立安装环境。
 

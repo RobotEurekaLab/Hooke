@@ -10,6 +10,8 @@
 </head>
 <body><main>
 <header><div><h1>Hooke 双后端实验室</h1><p class="muted">同一份场景资产、同一个任务控制器，分别运行 MuJoCo 与 Isaac。</p></div><div><a href="/space-experiments">空间实验操作 ↗</a> · <a href="/space-assets">开源空间资产 ↗</a> · <a href="/space-worlds">太空实验工作区 ↗</a> · <a href="/">返回场景选择器 ↗</a></div></header>
+<p id="backend-environment" class="muted" role="status">正在检查服务器的 Isaac 配置…</p>
+<details id="backend-environment-details"><summary>服务器环境与配置帮助</summary><pre id="backend-environment-report"></pre><button id="backend-environment-refresh">重新检查</button></details>
 <div class="controls"><div><label for="task">场景 / 任务</label><select id="task"></select></div><div><label for="seed">随机种子</label><input id="seed" type="number" min="0" max="2147483647" value="0"></div></div>
 <p id="description" class="muted"></p><div id="notice" class="notice"></div>
 <p id="validation" class="muted"></p>
@@ -18,6 +20,7 @@
 <div class="grid" id="panels"></div>
 <footer><p id="coverage">正在读取场景验证结果…</p><p>画面由服务器真实渲染。点击运行后会持续更新；完成后可拖动时间轴查看。首次启动 Isaac 需要等待环境加载。</p></footer>
 </main>
+<script src="/backend-environment.js" defer></script>
 <script>
 const $=id=>document.getElementById(id), states={}, labels={STARTING:'正在启动仿真环境…',RUNNING:'运行中',TASK_SUCCEEDED:'原任务判据通过',TASK_FAILED:'原任务判据未通过',PREVIEW_COMPLETE:'场景已加载并推进物理',DISPLAY_COMPLETE:'展示场景已运行',ERROR:'运行出错',CANCELLED:'已停止',TIME_LIMIT:'达到运行时限',INTERRUPTED:'任务已中断',STOPPED:'已停止',INVALIDATED:'旧验证结果已撤销，正在复测'};
 labels.CONTROL_COMPLETE='模型实验已完成';

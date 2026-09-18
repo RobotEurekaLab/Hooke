@@ -224,6 +224,9 @@ class EpisodeAssessment:
         scope = 'unaudited_legacy'
         checks = {}
         metrics = dict(self.metrics)
+        if callable(getattr(self.task, 'microscopy_checks', None)):
+            checks = self.task.microscopy_checks()
+            scope = 'microscopy_experiment'
         if callable(getattr(self.task, 'experiment_checks', None)):
             checks = self.task.experiment_checks()
             metrics['sample_handling'] = self.task.mechanics.handling

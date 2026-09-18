@@ -51,6 +51,11 @@ class NativeScene:
         scene.CreateGravityMagnitudeAttr(magnitude)
         scene.CreateGravityDirectionAttr(Gf.Vec3f(*map(float,gravity/magnitude if magnitude else [0,0,-1])))
         self.conversion = self.bridge.build()
+        # Display updates arrive in the source world, including cell surfaces
+        # and hoses. Translate their common parent into the solver frame.
+        from pxr import UsdGeom, Gf
+        visuals=UsdGeom.Xform.Define(self.world.stage,'/World/RuntimeVisuals')
+        visuals.AddTranslateOp().Set(Gf.Vec3d(*map(float,-self.bridge.frame.origin)))
         self.m = self.bridge.m
         self.eq_active=self.m.get('reset_eq_active',self.m['eq_active0']).copy()
         self.eq_events=[]
@@ -237,7 +242,7 @@ class NativeScene:
             if not np.isfinite(norm) or norm<1e-12:
                 raise ValueError(f'Invalid free-joint quaternion for joint {j}')
             orientation=orientation/norm
-            body.set_world_pose(qpos[qa:qa+3],orientation)
+            body.set_world_pose(self.bridge.frame.to_native(qpos[qa:qa+3]),orientation)
             r=rotation(orientation);angular=r@qvel[va+3:va+6]
             offset=r@self.bridge.mass_properties[self.bridge.free_bodies[j]]['center']
             body.set_linear_velocity(qvel[va:va+3]+np.cross(angular,offset))
@@ -261,7 +266,7 @@ class NativeScene:
                 # Float3's Python sequence conversion repeatedly crosses the
                 # binding and probes out-of-range indices. Read its three
                 # fields directly, preserving every point and impulse.
-                self.contacts.append({'geom1':b,'geom2':a,'pos':[position.x,position.y,position.z],
+                self.contacts.append({'geom1':b,'geom2':a,'pos':self.bridge.frame.to_source([position.x,position.y,position.z]).tolist(),
                                       'normal':[normal.x,normal.y,normal.z],'distance':float(p.separation),
                                       'force':[impulse.x/self.dt,impulse.y/self.dt,impulse.z/self.dt]})
 
@@ -273,11 +278,12 @@ class NativeScene:
             qvel[item['va']]=item['view'].get_dof_velocities()[0]
             for body,transform in zip(item['body_ids'],item['view'].get_link_transforms()[0]):
                 if body is not None:
-                    body_poses[body] = [float(transform[k]) for k in (0,1,2,6,3,4,5)]
+                    position=self.bridge.frame.to_source(transform[:3])
+                    body_poses[body] = [*position.tolist(),*[float(transform[k]) for k in (6,3,4,5)]]
         for j,body in self.free.items():
             qa=int(self.m['jnt_qposadr'][j]);va=int(self.m['jnt_dofadr'][j])
             position,orientation=body.get_world_pose()
-            qpos[qa:qa+3]=position
+            qpos[qa:qa+3]=self.bridge.frame.to_source(position)
             qpos[qa+3:qa+7]=orientation
             r=rotation(orientation);angular=body.get_angular_velocity()
             offset=r@self.bridge.mass_properties[self.bridge.free_bodies[j]]['center']
@@ -383,7 +389,7 @@ class NativeScene:
             if np.any(force) or np.any(torque):
                 body._rigid_prim_view.apply_forces_and_torques_at_pos(
                     forces=force[None,:],torques=torque[None,:],
-                    positions=q[None,qa:qa+3],is_global=True)
+                    positions=self.bridge.frame.to_native(q[None,qa:qa+3]),is_global=True)
         self.contacts=[]
         started=time.perf_counter()
         self.world.step(render=False)

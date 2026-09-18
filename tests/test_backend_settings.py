@@ -17,6 +17,23 @@ from backends.worker_client import IsaacWorker
 
 
 class BackendSettings(unittest.TestCase):
+    def test_native_sampling_configuration_is_explicit_and_bounded(self):
+        with mock.patch.dict(os.environ, {"HOOKE_ISAAC_SAMPLES_PER_FRAME":"16", "HOOKE_ISAAC_DENOISER":"0"}):
+            settings = RenderSettings.from_environment()
+        self.assertEqual(settings.native_samples_per_frame, 16)
+        self.assertFalse(settings.native_denoiser)
+        self.assertEqual(settings.step_interval(.001), 50, 'Image sampling must not change the physics/frame clock')
+        for samples in (0, 65, True, 1.5):
+            with self.subTest(samples=samples), self.assertRaises(ValueError):
+                RenderSettings(native_samples_per_frame=samples)
+
+    def test_invalid_denoiser_value_is_rejected_before_native_start(self):
+        with self.assertRaises(ValueError):
+            RenderSettings(native_denoiser=1)
+        with mock.patch.dict(os.environ, {"HOOKE_ISAAC_DENOISER":"maybe"}):
+            with self.assertRaises(ValueError):
+                RenderSettings.from_environment()
+
     def test_missing_dependency_is_reported_without_losing_other_checks(self):
         def version(name):
             if name == "toppra":

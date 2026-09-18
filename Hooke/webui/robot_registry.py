@@ -43,6 +43,7 @@ class RobotEntry:
     # not just visually placeable -- archetypes/lever_lock_centrifuge.py's
     # LeverLockSpec.arm_cls is how a task recipe is pointed at one of these.
     arm_cls: type | None = None
+    controller_available: bool = False
 
 
 # franka_emika_panda/panda.xml ships with no gripper-TCP site (unlike
@@ -58,8 +59,14 @@ _LITE6_MJCF = str(lite6_with_position_gripper().relative_to(MODEL_ROOT))
 ROBOTS: dict[str, RobotEntry] = {
     entry.name: entry for entry in [
         RobotEntry(
+            name="micro_workstation", display_name="Motorized XYZ Micromanipulation Workstation",
+            category="micromanipulator", mount="native_only", mjcf_path=None,
+            source="Original Hooke parametric instrument and tool assets",
+            controller_available=True,
+        ),
+        RobotEntry(
             name="g1_rover_team",
-            display_name="G1 人形机器人 + 六轮采样车",
+            display_name="G1 Humanoid + Six-Wheel Sampling Rover",
             category="mobile_manipulator",
             mount="native_only",
             mjcf_path=None,
@@ -68,7 +75,7 @@ ROBOTS: dict[str, RobotEntry] = {
         ),
         RobotEntry(
             name="surface_rover",
-            display_name="六轮采样车 + UR5e",
+            display_name="Six-Wheel Sampling Rover + UR5e",
             category="mobile_manipulator",
             mount="native_only",
             mjcf_path=None,
@@ -152,4 +159,6 @@ def robot_options_for(native_robot: str) -> list[str]:
     """All robot names selectable for a task whose native robot is
     `native_robot`: itself, any arm-mount alternative, and the floor
     bystanders."""
+    if native_robot in ROBOTS and ROBOTS[native_robot].mount == "native_only":
+        return [native_robot]
     return [native_robot] + ARM_ALTERNATIVES.get(native_robot, []) + FLOOR_BYSTANDERS

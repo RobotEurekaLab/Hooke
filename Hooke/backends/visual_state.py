@@ -98,6 +98,8 @@ class LiveVisuals:
             for i in range(self.extra_scene.ngeom):
                 geom=self.extra_scene.geoms[i]
                 geometry.append(serialize_liquid_geom(geom))
+        if callable(getattr(self.task, 'runtime_visuals', None)):
+            geometry.extend(self.task.runtime_visuals())
         return {'textures':textures,'geometry':geometry}
 
     def apply_mujoco(self, renderer, state):
@@ -109,6 +111,9 @@ class LiveVisuals:
             if scene.ngeom>=scene.maxgeom:raise RuntimeError('Runtime visual geometry exceeds renderer capacity')
             mujoco.mjv_initGeom(scene.geoms[scene.ngeom],geom['type'],np.asarray(geom['size']),
                                np.asarray(geom['pos']),np.asarray(geom['mat']).ravel(),np.asarray(geom['rgba'],dtype=np.float32))
+            if 'surface' in geom:
+                scene.geoms[scene.ngeom].specular=float(np.mean(geom['surface']['specular_color']))
+                scene.geoms[scene.ngeom].shininess=1-float(geom['surface']['roughness'])
             scene.ngeom+=1
 
     def close(self):

@@ -14,7 +14,7 @@ for what's changed and why).
 
 ### Environment setup with conda
 ```bash
-conda create -n autobio python=3.11
+conda create -n autobio python=3.12
 conda activate autobio
 pip install 'mujoco==3.3.0' numpy scipy jax[cpu] toppra trimesh shapely triangle manifold3d sympy zstandard tqdm networkx usd-core ffmpeg imageio[ffmpeg] matplotlib scikit-image
 # Optional: only needed for archetypes/compose_protocol.py (Phase I step 4,
@@ -23,6 +23,10 @@ pip install anthropic openai
 # Optional: only needed for webui/ (Phase I step 5, interactive task-scene picker)
 pip install flask
 ```
+
+Isaac runs in its own standalone installation. For automatic discovery,
+account permissions and server deployment, see the
+[Isaac installation guide](../docs/isaac_setup.md).
 
 ## File structure
 ### folders

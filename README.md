@@ -19,8 +19,8 @@ recorded results and generate demonstrations for robot learning.
 
 ## Experiment scenes
 
-Actual simulation images from laboratory tasks, space station experiments and
-planetary sampling missions.
+Actual simulation images from laboratory tasks, microscopy experiments, space
+station experiments and planetary sampling missions.
 
 | Pipetting | Centrifugation | Vortex mixing |
 | --- | --- | --- |
@@ -35,6 +35,15 @@ See the [station experiment guide](docs/space_experiments.md) and
 | Space station | Lunar sampling | Martian sampling |
 | --- | --- | --- |
 | ![Robotic arm and experiment equipment inside a space station cabin](docs/assets/space-station-cabin.png) | ![Humanoid robot and sampling rover exploring the lunar surface](docs/assets/surface-lunar-team.png) | ![Close view of a Martian sampling rover, robotic arm and collection container](docs/assets/surface-martian-sampling.png) |
+
+Microscopy experiments combine an inverted microscope, motorized
+micromanipulators and micrometre-scale simulated cells for pushing, grasping,
+transfer and pL-scale injection.
+See the [microscopy demo guide](docs/microscopy_demo.md).
+
+| Cell pushing | Cell grasp and transfer | Cell injection |
+| --- | --- | --- |
+| <img src="docs/assets/microscopy-cell-pushing.png" alt="Microscopy workstation and simulated cell pushed by a fine probe" width="288"> | <img src="docs/assets/microscopy-cell-manipulation.png" alt="Microscopy workstation and simulated cell held by microforceps, with phase-contrast and fluorescence views" width="288"> | <img src="docs/assets/microscopy-cell-injection.png" alt="Microscopy workstation and pL-scale injection into a simulated cell" width="288"> |
 
 ## Quick start
 
@@ -56,9 +65,10 @@ pip install 'mujoco==3.3.0' numpy scipy 'jax[cpu]' toppra trimesh \
   'imageio[ffmpeg]' matplotlib scikit-image pillow flask msgpack websockets
 ```
 
-Isaac Sim 4.5 is an optional runtime for supported tasks. Follow the
-[runtime configuration guide](docs/isaac_operations.md) before selecting it
-in the interface.
+Isaac Sim 4.5 is an optional runtime for supported tasks. Unconfigured servers
+automatically use a unique accessible installation in the service account's home
+or a standard shared location. For installation, automatic setup, other users'
+directories and service deployment, follow the [installation guide](docs/isaac_setup.md).
 
 ### 2. Start the interface
 

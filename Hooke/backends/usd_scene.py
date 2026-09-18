@@ -16,6 +16,7 @@ from backends.mass_properties import compose_welded_mass
 from backends.collision_rules import collision_participants
 from backends.contact_parameters import compliant_parameters,constraint_parameters
 from backends.render_settings import RenderSettings
+from backends.world_frame import WorldFrame
 
 
 def quat(q):
@@ -74,11 +75,14 @@ class SceneBridge:
             'soft_connect_constraints':os.environ.get('HOOKE_ISAAC_SOFT_CONNECT','1')=='1',
             'connect_impedance_fraction':float(os.environ.get('HOOKE_ISAAC_CONNECT_IMPEDANCE_FRACTION','0')),
             'approximate_cylinders':os.environ.get('HOOKE_ISAAC_APPROXIMATE_CYLINDERS','0')=='1',
+            'world_origin_m':[0.,0.,0.],
         }
         if physics_options:
             unknown=set(physics_options)-self.physics_options.keys()
             if unknown:raise ValueError(f'Unknown physics options: {sorted(unknown)}')
             self.physics_options.update(physics_options)
+        self.frame=WorldFrame(self.physics_options['world_origin_m'])
+        self.physics_options['world_origin_m']=self.frame.origin.tolist()
         for key in ('contact_offset_m','sdf_contact_offset_m','compliant_contact_scale'):
             value=float(self.physics_options[key])
             if not np.isfinite(value) or value<0 or (key!='compliant_contact_scale' and value==0):
@@ -158,7 +162,7 @@ class SceneBridge:
                 p=rotation(m['reset_xquat'][owner]).T@(m['reset_xpos'][i]-m['reset_xpos'][owner])
                 q=quat(m['reset_xquat'][owner]).GetInverse()*quat(m['reset_xquat'][i])
                 pose(prim,p,[q.GetReal(),*q.GetImaginary()])
-            else:pose(prim, m['reset_xpos'][i], m['reset_xquat'][i])
+            else:pose(prim, self.frame.to_native(m['reset_xpos'][i]), m['reset_xquat'][i])
             self.name(prim, 'body', i)
             if i in self.rigid:
                 UsdPhysics.RigidBodyAPI.Apply(prim)
@@ -222,7 +226,7 @@ class SceneBridge:
         source_points = create_point_lights(stage, m, self.body_paths)
         if source_points:
             self.limits.append('Fixed source point lights use an illustrative sphere-light intensity scale; source attenuation, spot cones and ambient terms are not equivalent.')
-        report = {'status': 'EXPERIMENTAL_UNQUALIFIED', 'source': str(self.source),'conversion_version':6,
+        report = {'status': 'EXPERIMENTAL_UNQUALIFIED', 'source': str(self.source),'conversion_version':7,
                   'source_point_lights': source_points,
                   'body_count': len(self.body_paths), 'geom_count': len(self.geom_paths),
                   'joint_count': len(self.joint_paths), 'camera_count': len(self.camera_paths),
@@ -303,6 +307,7 @@ class SceneBridge:
             native_material.CreateRestitutionCombineModeAttr('min')
             native_material.CreateDampingCombineModeAttr('max')
         UsdShade.MaterialBindingAPI(prim).Bind(material, UsdShade.Tokens.weakerThanDescendants, 'physics')
+        return float(rgba[3])
 
     def geometry(self, i):
         m, stage = self.m, self.stage
@@ -369,9 +374,11 @@ class SceneBridge:
         if typ in (4,6):
             UsdGeom.Xformable(prim).AddScaleOp().Set(vec(size))
         self.name(prim, 'geom', i)
-        self.material(i, prim)
+        alpha = self.material(i, prim)
         # Match default MuJoCo visual groups 0, 1, 2; retain hidden collision geometry.
-        if m['geom_group'][i] > 2:
+        # Zero opacity in PreviewSurface can still reflect/refract in RTX.
+        # An invisible source geom must contribute no surface to the image.
+        if m['geom_group'][i] > 2 or alpha == 0:
             UsdGeom.Imageable(prim).MakeInvisible()
         if i in self.colliders:
             UsdPhysics.CollisionAPI.Apply(prim)
@@ -417,7 +424,7 @@ class SceneBridge:
                     child=self.body_paths[b] if terminal else f'/World/compound{b}_{offset}'
                     if not terminal:
                         prim=UsdGeom.Xform.Define(stage,child).GetPrim()
-                        pose(prim,m['reset_xpos'][b],m['reset_xquat'][b])
+                        pose(prim,self.frame.to_native(m['reset_xpos'][b]),m['reset_xquat'][b])
                         UsdPhysics.RigidBodyAPI.Apply(prim)
                         mass=UsdPhysics.MassAPI.Apply(prim)
                         mass.CreateMassAttr(1e-6)
@@ -451,6 +458,7 @@ class SceneBridge:
             pp, pb = m['reference_xpos'][parent], m['reference_xpos'][b]
             anchor = m['jnt_pos'][j] if j >= 0 else np.zeros(3)
             local0 = rp.T @ (pb + rb@anchor - pp)
+            if not parent:local0=self.frame.to_native(local0)
             align = Gf.Rotation(Gf.Vec3d(1,0,0), Gf.Vec3d(*map(float,m['jnt_axis'][j]))).GetQuat() if j >= 0 else Gf.Quatd(1.)
             joint.CreateLocalPos0Attr(vec(local0)); joint.CreateLocalPos1Attr(vec(anchor))
             q0 = quat(m['reference_xquat'][parent]).GetInverse()*quat(m['reference_xquat'][b])*Gf.Quatf(align)
@@ -488,6 +496,7 @@ class SceneBridge:
         rp=rotation(m['reference_xquat'][parent]);rb=rotation(m['reference_xquat'][body])
         anchor=m['jnt_pos'][j]
         local=rp.T@(m['reference_xpos'][body]+rb@anchor-m['reference_xpos'][parent])
+        if not parent_path:local=self.frame.to_native(local)
         align=Gf.Quatf(Gf.Rotation(Gf.Vec3d(1,0,0),Gf.Vec3d(*map(float,m['jnt_axis'][j]))).GetQuat())
         joint.CreateLocalPos0Attr(vec(local));joint.CreateLocalPos1Attr(vec(anchor))
         joint.CreateLocalRot0Attr(quat(m['reference_xquat'][parent]).GetInverse()*quat(m['reference_xquat'][body])*align)
@@ -517,6 +526,7 @@ class SceneBridge:
                     position = frame_rotation @ (m['reference_xpos'][body]
                         + rotation(m['reference_xquat'][body]) @ point-m['reference_xpos'][owner])
                     relative = quat(m['reference_xquat'][owner]).GetInverse()*quat(m['reference_xquat'][body])
+                    if not body:position=self.frame.to_native(position)
                     return self.body_paths[owner] if body else None,vec(position),relative*quat(orientation)
                 path0,pos0,rot0 = weld_frame(a,relative_position+rotation(relative_quaternion)@anchor,relative_quaternion)
                 path1,pos1,rot1 = weld_frame(b,anchor,[1.,0.,0.,0.])
@@ -568,6 +578,7 @@ class SceneBridge:
                 def frame(body,anchor):
                     owner=int(m['body_weldid'][body]) or body
                     local=rotation(m['reference_xquat'][owner]).T@(m['reference_xpos'][body]+rotation(m['reference_xquat'][body])@anchor-m['reference_xpos'][owner])
+                    if not body:local=self.frame.to_native(local)
                     return self.body_paths[owner] if body else None,vec(local)
                 pa,xa=frame(a,m['eq_data'][i,:3]);pb,xb=frame(b,m['eq_data'][i,3:6])
                 if pa:joint.CreateBody0Rel().SetTargets([pa])

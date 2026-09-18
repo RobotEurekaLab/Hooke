@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hooke · Microscopy lab</title>
+<style>
+:root{color-scheme:dark;--bg:#101a23;--panel:#192632;--line:#304352;--text:#e7eef3;--muted:#9ab0c0;--accent:#75ddd1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:24px 32px 48px}a{color:var(--accent);text-decoration:none}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.wordmark{font-weight:800;letter-spacing:4px;font-size:20px}h1{font-size:28px;margin:8px 0}h2{font-size:17px;margin:0}p{margin:6px 0;color:var(--muted)}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:2px}.bar,.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px}.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:14px 18px;margin:20px 0}.live{margin-left:auto;color:var(--accent)}button,select,input{font:inherit;background:#223442;color:var(--text);border:1px solid #476071;border-radius:6px;padding:8px 12px}button{cursor:pointer}button.primary{background:var(--accent);color:#10282a;border-color:var(--accent);font-weight:700}button:disabled{opacity:.5;cursor:wait}input[type=number]{width:105px}select{min-width:130px}.views{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:18px}.panel{overflow:hidden}.panel-head{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line)}.viewbox{height:480px;display:flex;align-items:center;justify-content:center;background:#111e29}.viewbox img{width:100%;height:100%;object-fit:contain}.metrics{display:flex;gap:24px;padding:12px 18px;color:var(--muted);font-size:13px}.metrics strong{color:var(--text)}.bottom{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:18px;margin-top:18px}.content{padding:16px 18px}label{color:var(--muted);display:inline-flex;align-items:center;gap:8px;margin:5px 8px 5px 0;font-size:13px}.axes{display:flex;flex-wrap:wrap;margin:10px 0}small{color:var(--muted)}#error{color:#ffb2a8;min-height:24px}#checks{font-size:13px;white-space:pre-wrap;min-height:90px}.pass{color:var(--accent)}.fail{color:#ffb2a8}details{margin-top:16px;color:var(--muted)}video{display:block;width:100%;margin-top:14px;background:#0d161e;border-radius:8px}[hidden]{display:none!important}.muted{font-size:12px;color:var(--muted)}@media(max-width:1050px){.viewbox{height:370px}.bottom{grid-template-columns:1fr 1fr}.bottom>.panel:last-child{grid-column:1/-1}}@media(max-width:700px){main{padding:16px}.views,.bottom{grid-template-columns:1fr}.viewbox{height:340px}.bottom>.panel:last-child{grid-column:auto}.live{margin-left:0}h1{font-size:24px}}
+</style>
+</head>
+<body><main>
+<header><a class="wordmark" href="/">HOOKE</a><nav><a href="/">Experiments</a> &nbsp; / &nbsp; Microscopy lab</nav></header>
+<div class="eyebrow">MICROSCOPY LAB · ELECTRIC MANIPULATION</div>
+<h1>Observe, locate and manipulate</h1><p id="instrument-description">Inverted microscope · Electric stage and focus · Electric manipulators · Probe / microgripper / glass pipette</p>
+<p id="sample-scale" class="muted">Sample and pipette dimensions appear when the workstation connects.</p>
+<div class="bar">
+<select id="backend" aria-label="Simulation backend"><option value="mujoco">MuJoCo</option><option value="isaac">Isaac · PhysX</option></select>
+<select id="operation" aria-label="Experiment"><option value="push">Cell pushing with a blunt probe</option><option value="pick_place">Cell grasp and transfer</option><option value="injection">Volume-controlled cell injection · 0.5 pL</option><option value="cell_injection">Adherent-cell injection · 0.5 pL</option><option value="suction_injection">Suspended-cell holding and injection · 0.5 pL</option></select>
+<button class="primary" id="run">Run experiment</button><button id="focus">Autofocus</button><button id="reset">Reset workstation</button>
+<label>Initial position seed <input id="seed" type="number" min="0" max="1000000" value="0"></label>
+<span class="live" id="phase">Connecting to the workstation…</span>
+</div>
+<div id="error" role="alert"></div>
+<p id="backend-environment" class="muted" role="status">Checking the server Isaac configuration…</p>
+<details id="backend-environment-details"><summary>Server environment and setup help</summary><pre id="backend-environment-report" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre><button id="backend-environment-refresh">Recheck</button></details>
+<p id="render-source" class="muted">Live 3D workstation and simulated microscope images.</p>
+<section class="views">
+<div class="panel"><div class="panel-head"><h2>Workstation</h2><select id="view" aria-label="Workstation camera"><option value="overview">Overview</option><option value="closeup">Instrument detail</option><option value="sample" hidden disabled>Pipette tip and cell detail</option><option value="objective" hidden disabled>Objective and turret detail</option><option value="detection" hidden disabled>Collection optics detail</option></select></div><div class="viewbox"><img id="world-image" alt="Live 3D workstation view"></div><div class="metrics"><span>Simulation time <strong id="time">—</strong></span><span>Electric position control on all manipulator axes</span></div></div>
+<div class="panel"><div class="panel-head"><h2>Microscope View</h2><select id="image-channel" aria-label="Imaging channel" hidden><option value="phase_contrast">Phase contrast</option><option value="fluorescence">Fluorescence</option></select><small id="calibration">14 mm field of view / 512 × 512</small></div><div class="viewbox"><img id="micro-image" alt="Live microscope image with scale bar"></div><div class="metrics"><span id="volume-caption">Delivered volume</span><strong id="volume">—</strong><span>Focus <strong id="focus-value">—</strong></span></div><div class="metrics" id="cell-metrics" hidden><span>Membrane <strong id="membrane">—</strong></span><span>Force <strong id="force">—</strong></span><span>Actual pressure <strong id="actual-pressure">—</strong></span></div></div>
+</section>
+<section class="bottom">
+<div class="panel"><div class="panel-head"><h2>Electric manipulators</h2><select id="tool"><option value="probe">Solid microprobe</option><option value="gripper">Two-finger microgripper</option><option value="injector">Glass injection pipette</option><option value="holder">Holding pipette</option></select></div><div class="content"><small id="travel-hint">Motor displacement from the initial position, in µm.</small><div class="axes"><label>X <input id="x" type="number" value="0" min="-16000" max="16000" step="100"></label><label>Y <input id="y" type="number" value="0" min="-16000" max="16000" step="100"></label><label>Z <input id="z" type="number" value="0" min="-16000" max="16000" step="100"></label></div><button id="move">Move selected manipulator</button><div id="jaw-controls" style="margin-top:14px"><label>Jaw displacement µm <input id="jaw" type="number" value="1300" min="0" max="1600" step="50"></label><button id="grip">Move jaws</button></div></div></div>
+<div class="panel"><div class="panel-head"><h2>Stage and focus</h2></div><div class="content"><label>Stage X µm <input id="stage-x" type="number" value="0" min="-4000" max="4000" step="100"></label><label>Stage Y µm <input id="stage-y" type="number" value="0" min="-4000" max="4000" step="100"></label><label>Focus Z µm <input id="focus-z" type="number" value="0" min="-1000" max="1000" step="50"></label><div style="margin-top:12px"><button id="stage">Move / focus</button></div><p class="muted">Stage motion moves the sample in the microscope view. Autofocus scans for the sharpest image.</p></div></div>
+<div class="panel"><div class="panel-head"><h2>Injection pressure and results</h2></div><div class="content"><label>Command pressure Pa <input id="pressure" type="number" value="0" min="0" max="20000" step="1000"></label><label><span id="target-label">Target volume nL</span> <input id="target" type="number" value="100" min="0" max="200" step="10"></label><label id="compensation-controls" hidden>Compensation pressure Pa <input id="compensation" type="number" min="0" max="2000" step="100" value="0"></label><label id="clog-controls" hidden><input id="clog" type="checkbox">Simulate injection-pipette blockage</label><div id="holding-controls" hidden><label>Holding vacuum Pa <input id="holding-pressure" type="number" min="-5000" max="0" step="100" value="0"></label><label><input id="holding-clog" type="checkbox">Simulate holding-pipette blockage</label><button id="hold">Set holding pressure</button><p><strong id="holding-state">Not held</strong> · <span id="holding-actual">0 Pa</span><br>Load / capacity <span id="holding-force">0 / 0 nN</span></p></div><button id="inject">Advance injection</button><p class="muted" id="pressure-hint">Align the tip with the chamber to inject. Delivery stops at the target volume.</p><div id="checks">Run an experiment to review its contact, grasp, motion and volume checks.</div></div></div>
+</section>
+<details><summary>Recorded experiments</summary><p>Play cell experiments recorded with the selected simulation backend. All five experiments use micrometre-scale simulated cells; injection doses use pL.</p><select id="replay"><option value="push">Cell pushing</option><option value="pick_place">Cell grasp and transfer</option><option value="injection">Volume-controlled cell injection</option><option value="cell_injection">Adherent-cell injection</option><option value="suction_injection">Suspended-cell holding and injection</option></select><video id="video" controls preload="none"><source id="video-webm" type="video/webm"><source id="video-mp4" type="video/mp4"></video></details>
+<p id="model-hint" class="muted" style="margin-top:20px">A 1.2 mm calibration bead for contact and motion experiments. Images use estimated defocus; injection tracks transferred liquid volume.</p>
+</main>
+<script src="/backend-environment.js" defer></script>
+<script>
+const $ = id => document.getElementById(id);
+const number = id => Number($(id).value);
+let busy = false, lastState = null, stateVersion = 0;
+const phases = {
+  ready:'Ready', offline:'Offline', initializing:'Loading simulation backend…', autofocus:'Autofocus', locate_bead:'Image localisation',
+  contact_push:'Probe contact and push', probe_retreat:'Retract the probe', close_microgripper:'Close microgripper',
+  contact_lift:'Grasp and lift', place_bead:'Move and place', approach_cell_probe:'Approach with the blunt probe', push_cell:'Gently push the cell', withdraw_cell_probe:'Withdraw the probe', approach_cell_forceps:'Approach with electric microforceps', grasp_cell:'Gently grasp the cell', lift_cell:'Lift the cell', transfer_cell:'Transfer the cell', place_cell:'Place the cell', release_cell:'Release the cell', release:'Release sample',
+  align_capillary:'Align the capillary with the chamber', pressure_injection:'Inject the target volume', capillary_retreat:'Retract injection pipette',
+  locate_cell:'Locate the target cell', approach_cell:'Approach the cell', membrane_contact:'Contact and indent the membrane',
+  puncture_cell:'Puncture the membrane', cytoplasm_injection:'Cytoplasmic injection', withdraw_cell_needle:'Withdraw the needle',
+  approach_holding_pipette:'Approach with the holding pipette', establish_suction:'Establish vacuum holding', release_suction:'Release holding after withdrawal', tracer_review:'Review tracer and dose', complete:'Experiment complete', manual_control:'Manual control'
+};
+const names = {
+  cell_at_target:'Cell reaches the target', safe_cell_compression:'Cell compression stays within the nominal limit', membrane_intact:'Membrane remains intact', cell_probe_contact_50ms:'Probe contact ≥50 ms', cell_bilateral_grasp_50ms:'Bilateral cell grasp ≥50 ms', cell_lift_20um:'Cell lift ≥20 µm', grasp_maintained_until_release:'Grasp maintained until release', cell_released:'Cell released', episode_completed:'Episode completed', autofocus:'Image autofocus', finite_state:'Finite simulation state',
+  probe_contact_50ms:'Actual probe contact', bead_at_target:'Sample reaches the target', bilateral_grasp_50ms:'Bilateral grasp contact',
+  contact_lift_800um:'Grasp lift ≥800 µm', released:'Sample released', delivered_100nl:'Delivered 100 nL',
+  pressure_off:'Injection pressure off', conserved_volume:'Volume conserved', membrane_contact:'Membrane contact recorded',
+  membrane_deformation:'Membrane deformation reaches the puncture threshold', membrane_puncture:'Membrane punctured',
+  intracellular_dose:'Intracellular tracer dose: 0.5 pL', needle_withdrawn:'Needle withdrawn from the cell',
+  no_overdepth:'Safe insertion depth', nucleus_avoided:'Nucleus avoided', holding_established:'Holding established', holding_100ms:'Holding maintained ≥100 ms', held_during_injection:'Holding maintained during injection', no_premature_release:'Holding maintained until withdrawal', holding_released:'Release holding after withdrawal', vacuum_off:'Holding vacuum off', finite_cell_state:'Finite cell state'
+};
+function isCell() { return lastState?.volume_unit === 'pL'; }
+function hasHolding() { return lastState?.operation === 'suction_injection'; }
+function toolTravelHint() {
+  const limits = lastState?.command_limits_m ?? lastState?.actuator_limits_m;
+  const ranges = ['x','y','z'].map(axis => {
+    const range = limits?.[$('tool').value+'_'+axis];
+    return range ? `${axis.toUpperCase()} ${range.map(value => (value*1e6).toLocaleString('en')).join(' to ')} µm` : '';
+  }).filter(Boolean);
+  $('travel-hint').textContent = 'Tool displacement from the initial position: '+ranges.join(' / ');
+}
+function syncTool() {
+  if (!lastState) return;
+  for (const axis of ['x','y','z']) {
+    const value = lastState.encoders_m?.[$('tool').value+'_'+axis] ?? 0;
+    $(axis).value = (value*1e6).toFixed(isCell() ? 2 : 1);
+    $(axis).step = isCell() ? '.1' : '100';
+    const limits = (lastState.command_limits_m ?? lastState.actuator_limits_m)?.[$('tool').value+'_'+axis];
+    if (limits) { $(axis).min = limits[0]*1e6; $(axis).max = limits[1]*1e6; }
+  }
+  toolTravelHint();
+}
+function syncControls() {
+  syncTool();
+  if (!lastState) return;
+  for (const [id,axis] of [['stage-x','stage_x'],['stage-y','stage_y'],['focus-z','focus'],['jaw','jaw_a']]) {
+    $(id).value = ((lastState.encoders_m?.[axis] ?? 0)*1e6).toFixed(isCell() ? 2 : 1);
+    const limits = (lastState.command_limits_m ?? lastState.actuator_limits_m)?.[axis];
+    if (limits) { $(id).min = limits[0]*1e6; $(id).max = limits[1]*1e6; }
+  }
+  $('pressure').value = lastState.pressure_pa ?? 0;
+  $('compensation').value = lastState.compensation_pa ?? 0;
+  $('clog').checked = lastState.needle_clogged ?? false;
+  $('holding-pressure').value = lastState.holding_pressure_pa ?? 0;
+  $('holding-clog').checked = lastState.holding_occluded ?? false;
+  $('target').value = isCell() ? lastState.target_pl : lastState.target_nl;
+}
+function showState(s) {
+  lastState = s;
+  if (s.phase === 'offline' || s.phase === 'initializing') {
+    $('phase').textContent = phases[s.phase];
+    return;
+  }
+  $('render-source').textContent = `Workstation: ${s.world_image_source || 'MuJoCo EGL'} · Microscope: simulated images${s.native_runtime ? ' · Native physics steps '+s.native_runtime.steps : ''}`;
+  const cell = isCell();
+  $('image-channel').hidden = !s.calibration?.display_channels;
+  if (!cell) $('image-channel').value = 'phase_contrast';
+  const manipulator = s.manipulator_profile === 'parallel-v4'
+    ? 'MicroManipulatorStepper v4 CAD electric parallel manipulators'
+    : s.instrument_profile === 'cad' ? 'Zaber CAD electric manipulators' : 'Electric manipulators';
+  $('instrument-description').textContent = s.stand_profile === 'te2000-s-reference'
+    ? `TE2000-S independent dimensional and photo reference · ${manipulator} · ${s.stage_profile === 'x-asr100' ? 'X-ASR CAD stage; active X/Y range ±4 mm' : 'Electric stage'} and focus · Independently modelled pipette holders and optical accessories`
+    : s.instrument_profile === 'cad'
+    ? 'openFrame CAD stand and Zaber electric manipulators · Electric stage and focus · Original optical accessories and tools'
+    : 'Ti2-E independent photo reference · Electric stage, focus and tools';
+  $('phase').textContent = phases[s.phase] || s.phase;
+  $('time').textContent = (s.time_s ?? 0).toFixed(2)+' s';
+  $('volume').textContent = (cell ? s.delivered_pl ?? 0 : s.delivered_nl ?? 0).toFixed(cell ? 3 : 2)+(cell ? ' pL' : ' nL');
+  $('volume-caption').textContent = cell ? 'Intracellular dose' : 'Delivered volume';
+  $('focus-value').textContent = ((s.encoders_m?.focus ?? 0)*1e6).toFixed(2)+' µm';
+  const calibration = s.calibration;
+  $('calibration').textContent = calibration?.pixels
+    ? `${(calibration.field_width_m*(cell ? 1e6 : 1e3)).toFixed(0)} ${cell ? 'µm' : 'mm'} field of view / ${calibration.pixels} × ${calibration.pixels}`
+    : 'Reading the field of view…';
+  const scale = s.sample_scale;
+  const tip = scale?.probe_tip_outer_diameter_m
+    ? `Blunt probe tip diameter ${(scale.probe_tip_outer_diameter_m*1e6).toFixed(1)} µm`
+    : scale?.forceps_pad_dimensions_m
+    ? `Forceps contact pad ${scale.forceps_pad_dimensions_m.map(value => (value*1e6).toFixed(0)).join(' × ')} µm`
+    : scale ? `Pipette tip OD ${(scale.needle_tip_outer_diameter_m*1e6).toFixed(2)} µm / ID ${(scale.needle_tip_inner_diameter_m*1e6).toFixed(2)} µm` : '';
+  const angles = Object.entries(scale?.pipette_elevation_deg || {})
+    .map(([tool, angle]) => `${tool === 'holder' ? 'Holding pipette' : 'Injection pipette'} elevation ${angle.toFixed(0)}°`).join(' / ');
+  $('sample-scale').textContent = scale
+    ? cell
+      ? `Cell X × Y × Z: ${scale.diameters_m.map(value => (value*1e6).toFixed(0)).join(' × ')} µm · ${tip}${angles ? ' · ' + angles : ''} · Nominal dimensions in metres; cameras magnify the view; not biologically calibrated`
+      : `Calibration bead diameter ${(scale.diameters_m[0]*1e3).toFixed(1)} mm · Contact and motion calibration sample · Geometry in metres`
+    : 'Reading sample dimensions…';
+  $('cell-metrics').hidden = !cell;
+  $('compensation-controls').hidden = !cell;
+  $('clog-controls').hidden = !cell;
+  $('holding-controls').hidden = !hasHolding();
+  $('holding-state').textContent = s.holding_sealed ? 'Holding established' : 'Not held';
+  $('holding-actual').textContent = (s.actual_holding_pressure_pa ?? 0).toFixed(0)+' Pa';
+  $('holding-force').textContent = (s.holding_force_nn ?? 0).toFixed(1)+' / '+(s.holding_capacity_nn ?? 0).toFixed(1)+' nN';
+  $('jaw-controls').hidden = !('jaw_a' in (s.encoders_m || {}));
+  $('jaw').step = cell ? '.1' : '100';
+  const jawLimits = s.actuator_limits_m?.jaw_a;
+  if (jawLimits) { $('jaw').min = jawLimits[0]*1e6; $('jaw').max = jawLimits[1]*1e6; }
+  for (const option of $('tool').options) option.disabled = !(''+option.value+'_x' in (s.encoders_m || {}));
+  if ($('tool').selectedOptions[0].disabled) $('tool').value = 'injector';
+  toolTravelHint();
+  const sampleOption = $('view').querySelector('[value=sample]');
+  sampleOption.hidden = sampleOption.disabled = !cell;
+  if (!cell && $('view').value === 'sample') $('view').value = 'closeup';
+  const objective = s.calibration?.reference_objective;
+  const objectiveOption = $('view').querySelector('[value=objective]');
+  objectiveOption.hidden = objectiveOption.disabled = !objective;
+  if (!objective && $('view').value === 'objective') $('view').value = 'closeup';
+  const detection = calibration?.reference_detection_path;
+  const detectionOption = $('view').querySelector('option[value=detection]');
+  detectionOption.hidden = !detection;
+  detectionOption.disabled = !detection;
+  if (!detection && $('view').value === 'detection') $('view').value = 'closeup';
+  if (objective) $('sample-scale').textContent += ` · 40× appearance reference · Objective-to-glass distance ${(objective.geometric_working_distance_m*1e3).toFixed(3)} mm`;
+  $('target-label').textContent = cell ? 'Target dose pL' : 'Target volume nL';
+  $('target').max = cell ? '1' : '200';
+  $('target').step = cell ? '.05' : '10';
+  $('focus-z').step = cell ? '.5' : '50';
+  $('force').textContent = (s.force_nn ?? 0).toFixed(1)+' nN';
+  $('actual-pressure').textContent = (s.actual_pressure_pa ?? 0).toFixed(0)+' Pa';
+  $('membrane').textContent = s.withdrawn ? 'Withdrawn' : s.punctured ? 'Punctured' : 'Intact';
+  $('pressure-hint').textContent = cell
+    ? 'Liquid enters the cell only after puncture with the tip inside. Delivery stops at the target dose. Each manual command advances 0.15 s.'
+    : 'Align the tip with the chamber to inject. Delivery stops at the target volume. Each manual command advances 1 s.';
+  $('model-hint').textContent = ['push','pick_place'].includes(s.operation) && cell
+    ? 'Micrometre-scale simulated cell manipulation with compliant contact and force-limited grasping. Phase contrast shows the cell; fluorescence marks its nucleus for image feedback. Mechanical and optical parameters are estimates.'
+    : hasHolding()
+    ? 'Suspended-cell simulation with electric holding and injection pipettes. Switch to fluorescence to view the nuclear label and injected tracer. Cell mechanics, textures and optics are estimates; biological outcomes are not predicted.'
+    : cell
+    ? 'Adherent-cell simulation. Phase contrast shows unstained cells in grayscale; fluorescence shows the nuclear label and injected tracer. Cell mechanics, textures and optics are estimates; biological outcomes are not predicted.'
+    : 'A 1.2 mm calibration bead for contact and motion experiments. Images use estimated defocus; injection tracks transferred liquid volume.';
+}
+function images() {
+  const query = '?backend='+$('backend').value+'&t='+Date.now();
+  $('world-image').src = '/api/microscopy/image/'+$('view').value+query;
+  $('micro-image').src = '/api/microscopy/image/microscope'+query+'&channel='+$('image-channel').value;
+}
+async function refresh() {
+  const backend = $('backend').value, version = stateVersion;
+  try {
+    const response = await fetch('/api/microscopy/state?backend='+backend, {cache:'no-store'});
+    if (response.ok && backend === $('backend').value && version === stateVersion) {
+      const state = await response.json(); showState(state);
+      if (!['offline','initializing'].includes(state.phase)) images();
+    }
+  } catch (error) { $('error').textContent = 'Connection failed: '+error.message; }
+}
+async function command(body) {
+  if (busy) return;
+  busy = true; $('error').textContent = '';
+  body.backend = $('backend').value;
+  document.querySelectorAll('button,#operation,#backend').forEach(element => element.disabled = true);
+  const timer = setInterval(refresh,600);
+  try {
+    const response = await fetch('/api/microscopy/control', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)
+    });
+    const result = await response.json();
+    if (!response.ok) throw Error(result.error || 'Command failed');
+    stateVersion++; showState(result.state); syncControls(); images();
+    if (body.command === 'demo') {
+      $('checks').replaceChildren();
+      for (const [name,passed] of Object.entries(result.checks)) {
+        const row = document.createElement('div'); row.className = passed ? 'pass' : 'fail';
+        row.textContent = (passed ? '✓ ' : '✗ ')+(names[name] || name); $('checks').appendChild(row);
+      }
+    }
+    if (body.command === 'reset') $('checks').textContent = 'Workstation reset. Run an experiment to begin.';
+  } catch (error) { $('error').textContent = error.message; }
+  finally {
+    clearInterval(timer); busy = false;
+    document.querySelectorAll('button,#operation,#backend').forEach(element => element.disabled = false);
+  }
+}
+const reset = () => command({command:'reset',operation:$('operation').value,seed:number('seed')});
+const step = actuators => command({command:'step',actuators,seconds:.3});
+$('run').onclick = () => command({command:'demo',operation:$('operation').value,seed:number('seed')});
+$('reset').onclick = reset;
+$('operation').onchange = () => {
+  $('replay').value = $('operation').value;
+  replay();
+  reset();
+};
+$('backend').onchange = () => {
+  stateVersion++; lastState = null;
+  for (const id of ['world-image','micro-image']) $(id).removeAttribute('src');
+  replay();
+  $('phase').textContent = 'Switching simulation backend…';
+  reset();
+};
+$('focus').onclick = () => command({command:'autofocus'});
+$('move').onclick = () => step(Object.fromEntries(['x','y','z'].map(axis => [$('tool').value+'_'+axis,number(axis)*1e-6])));
+$('grip').onclick = () => step(Object.fromEntries(['jaw_a','jaw_b']
+  .filter(axis => axis in (lastState?.encoders_m || {})).map(axis => [axis,number('jaw')*1e-6])));
+$('stage').onclick = () => step({stage_x:number('stage-x')*1e-6,stage_y:number('stage-y')*1e-6,focus:number('focus-z')*1e-6});
+$('inject').onclick = () => {
+  const body = {command:'step',seconds:isCell() ? .15 : 1,actuators:{},pressure_pa:number('pressure')};
+  body[isCell() ? 'target_pl' : 'target_nl'] = number('target');
+  if (isCell()) { body.compensation_pa = number('compensation'); body.needle_clogged = $('clog').checked; }
+  if (hasHolding()) { body.holding_pressure_pa = number('holding-pressure'); body.holding_occluded = $('holding-clog').checked; }
+  command(body);
+};
+$('hold').onclick = () => command({command:'step', seconds:.2, actuators:{},
+  holding_pressure_pa:number('holding-pressure'), holding_occluded:$('holding-clog').checked});
+$('tool').onchange = syncTool;
+$('view').onchange = images;
+$('image-channel').onchange = images;
+let replayVersion = 0;
+async function replay() {
+  const version = ++replayVersion, backend = $('backend').value, operation = $('replay').value;
+  $('video').pause();
+  for (const format of ['webm','mp4']) $('video-'+format).removeAttribute('src');
+  $('video').load();
+  try {
+    const response = await fetch('/api/microscopy/recordings?backend='+backend, {cache:'no-store'});
+    const recordings = await response.json();
+    if (!response.ok) throw Error(recordings.error || 'Recording catalog unavailable');
+    if (version !== replayVersion) return;
+    const formats = recordings.operations[operation] || [];
+    if (!formats.length) throw Error('This experiment has no recording yet');
+    const source = '/api/microscopy/recording/'+operation+'?backend='+backend
+      +'&revision='+encodeURIComponent(recordings.revision);
+    for (const format of formats) $('video-'+format).src = source+'&format='+format;
+    $('video').load();
+  } catch (error) {
+    if (version === replayVersion) $('error').textContent = error.message;
+  }
+}
+$('replay').onchange = replay;
+$('video').closest('details').addEventListener('toggle', event => {
+  if (event.currentTarget.open) replay();
+});
+const parameters = new URLSearchParams(location.search);
+const experiment = parameters.get('experiment');
+if ([...$('operation').options].some(option => option.value === experiment)) $('operation').value = experiment;
+if (parameters.get('backend') === 'isaac') $('backend').value = 'isaac';
+$('replay').value = $('operation').value;
+replay();
+reset();
+</script></body></html>

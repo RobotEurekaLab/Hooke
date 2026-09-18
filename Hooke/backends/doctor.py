@@ -8,16 +8,17 @@ from pathlib import Path
 import platform
 import shutil
 import subprocess
-from backends.config import isaac_gpu, isaac_installation
+from backends.environment import isaac_environment
 from backends.capabilities import registry
 from backends.render_settings import RenderSettings
 
 
 def diagnose(gpu=None):
-    install = isaac_installation()
-    selected = isaac_gpu() if gpu is None else gpu
+    installation = isaac_environment(gpu)
+    selected = installation["gpu"]
     checks = {
-        "isaac_python_launcher": (install / "python.sh").is_file(),
+        "isaac_python_launcher": installation["checks"].get("launcher", False),
+        "isaac_installation_access": installation["installation_ready"],
         "source_plugin": (
             Path(__file__).resolve().parents[1] / "libmjlab.so.3.3.0"
         ).is_file(),
@@ -34,7 +35,8 @@ def diagnose(gpu=None):
     checks["source_packages"] = all(packages.values())
     report = dict(
         python=platform.python_version(),
-        isaac_path=str(install),
+        isaac_path=installation["isaac_path"],
+        isaac_environment=installation,
         gpu=selected,
         checks=checks,
         render_settings=RenderSettings.from_environment().report(),
@@ -75,7 +77,7 @@ def diagnose(gpu=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--gpu", type=int, default=isaac_gpu())
+    parser.add_argument("--gpu", type=int)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     result = diagnose(args.gpu)

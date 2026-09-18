@@ -14,7 +14,10 @@ uv.lock
 Hooke/logs/
 
 # Curated documentation/demo media remain tracked; new captures are local by default.
-/docs/assets/
+/docs/assets/*
+!/docs/assets/microscopy-cell-pushing.png
+!/docs/assets/microscopy-cell-manipulation.png
+!/docs/assets/microscopy-cell-injection.png
 
 # LeRobot-format datasets converted from Hooke/logs (regenerate with scripts/convert.py)
 openpi/data/

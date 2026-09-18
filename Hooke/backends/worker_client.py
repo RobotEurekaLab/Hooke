@@ -9,7 +9,8 @@ import subprocess
 import tempfile
 import time
 
-from backends.config import isaac_gpu, isaac_installation
+from backends.config import isaac_gpu
+from backends.environment import inspect_installation, IsaacConfigurationError
 from backends.gpu_lease import GPUBusy, GPULease
 from backends.ipc import read_message, write_message
 
@@ -26,11 +27,10 @@ class IsaacWorker:
         gpu = isaac_gpu() if gpu is None else gpu
         if gpu < 0:
             raise ValueError("Isaac GPU index must be nonnegative")
-        install = isaac_installation()
-        if not (install / "python.sh").is_file():
-            raise FileNotFoundError(
-                f"Isaac python.sh is missing in {install}; set HOOKE_ISAAC_PATH"
-            )
+        installation = inspect_installation()
+        if not installation["installation_ready"]:
+            raise IsaacConfigurationError(installation)
+        install = Path(installation["isaac_path"])
         try:
             self.gpu_lock = GPULease(gpu)
             query = ["nvidia-smi", "-i", str(gpu)]

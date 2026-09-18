@@ -28,6 +28,7 @@ os.environ.setdefault("MUJOCO_GL", "egl")
 
 from archetypes.task_catalog import CATALOG
 from webui.robot_registry import ROBOTS, robot_options_for
+from webui.task_navigation import task_navigation
 from webui.robot_scene import compose_scene, render_robot_preview
 from webui.scene_render import render_scene
 from backends.gpu_lease import GPUBusy
@@ -46,6 +47,8 @@ from webui.space_experiment_api import bp as space_experiment_blueprint
 app.register_blueprint(space_experiment_blueprint)
 from webui.surface_api import bp as surface_blueprint
 app.register_blueprint(surface_blueprint)
+from webui.microscopy_api import bp as microscopy_blueprint
+app.register_blueprint(microscopy_blueprint)
 
 
 def _robot_entry_json(entry) -> dict:
@@ -55,7 +58,7 @@ def _robot_entry_json(entry) -> dict:
     whether this robot is functionally controllable or placement-only."""
     d = dataclasses.asdict(entry)
     d["arm_cls"] = None
-    d["functional"] = entry.arm_cls is not None
+    d["functional"] = entry.arm_cls is not None or entry.controller_available
     return d
 
 # The only task with more than one asset variant right now (see Step 2 /
@@ -89,6 +92,7 @@ def api_catalog():
             "name": entry.name,
             "description": entry.description,
             "category": entry.category,
+            "navigation": task_navigation(entry),
             "robot": entry.robot,
             "robot_options": robot_options_for(entry.robot),
             "variants": VARIANTS.get(entry.name),

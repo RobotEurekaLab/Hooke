@@ -271,10 +271,17 @@ document.getElementById('simulator').addEventListener('change', (e) => {
 
 async function loadCatalog() {
   const res = await fetch('/api/catalog');
+  if (!res.ok) throw new Error('Could not load task catalogue');
   CATALOG = await res.json();
-  const categories = [...new Set(CATALOG.tasks.map(t => t.category))].sort();
+  const categories = new Map();
+  for (const task of CATALOG.tasks) {
+    const group = task.navigation?.category || task.category;
+    categories.set(group, task.navigation?.category_label || task.category);
+  }
+  const ordered = [...categories.keys()].sort((a, b) =>
+    categories.get(a).localeCompare(categories.get(b), 'en'));
   const categorySelect = document.getElementById('category');
-  categorySelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+  categorySelect.replaceChildren(...ordered.map(key => new Option(categories.get(key), key)));
   categorySelect.addEventListener('change', populateTasks);
   document.getElementById('task').addEventListener('change', onTaskChange);
   populateTasks();
@@ -282,9 +289,11 @@ async function loadCatalog() {
 
 function populateTasks() {
   const category = document.getElementById('category').value;
-  const tasks = CATALOG.tasks.filter(t => t.category === category);
+  const tasks = CATALOG.tasks
+    .filter(t => (t.navigation?.category || t.category) === category)
+    .sort((a, b) => (a.navigation?.task_label || a.name).localeCompare(b.navigation?.task_label || b.name, 'en'));
   const taskSelect = document.getElementById('task');
-  taskSelect.innerHTML = tasks.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
+  taskSelect.replaceChildren(...tasks.map(task => new Option(task.navigation?.task_label || task.name, task.name)));
   onTaskChange();
 }
 
@@ -296,6 +305,8 @@ function currentTask() {
 function onTaskChange() {
   const task = currentTask();
   if (!task) return;
+  document.getElementById('preview').replaceChildren();
+  document.getElementById('error').textContent = '';
 
   const robotSelect = document.getElementById('robot');
   robotSelect.innerHTML = task.robot_options.map(name => {
@@ -334,8 +345,16 @@ function onRobotChange() {
 async function generateScene() {
   const task = currentTask();
   document.getElementById('error').textContent = '';
+  const backend = document.getElementById('simulator').value;
+  if (task.navigation?.url && document.getElementById('robot').value === task.robot) {
+    const url = new URL(task.navigation.url, location.origin);
+    url.searchParams.set('backend', backend);
+    if (url.pathname === '/backends') url.hash = backend + '-preview';
+    location.assign(url.href);
+    return;
+  }
 
-  if (document.getElementById('simulator').value === 'isaac') {
+  if (backend === 'isaac') {
     document.getElementById('error').textContent =
       "Isaac Sim previews aren't wired up on this quick picker yet — use the dual-backend page to run this task on Isaac Sim.";
     document.getElementById('preview').innerHTML = '';
@@ -414,7 +433,7 @@ async function generateCustom() {
 
 document.getElementById('generate').addEventListener('click', generateScene);
 document.getElementById('generate-custom').addEventListener('click', generateCustom);
-loadCatalog();
+loadCatalog().catch(error => { document.getElementById('error').textContent = error.message; });
 
 // Examples strip: arrow buttons + convert vertical mouse-wheel scroll
 // into horizontal movement (a plain overflow-x:auto strip ignores the

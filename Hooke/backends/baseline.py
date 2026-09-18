@@ -102,7 +102,7 @@ def write_snapshot(expert, out: Path):
     names = {}
     for kind, count in [('body', model.nbody), ('joint', model.njnt), ('geom', model.ngeom),
                         ('mesh', model.nmesh), ('material', model.nmat), ('texture', model.ntex),
-                        ('camera', model.ncam), ('site', model.nsite), ('actuator', model.nu),
+                        ('camera', model.ncam), ('light', model.nlight), ('site', model.nsite), ('actuator', model.nu),
                         ('tendon', model.ntendon), ('equality', model.neq)]:
         obj = getattr(mujoco.mjtObj, 'mjOBJ_' + kind.upper())
         names[kind] = [mujoco.mj_id2name(model, obj, i) for i in range(count)]

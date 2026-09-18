@@ -96,6 +96,8 @@ def run(args,worker=None):
                         visuals.apply_mujoco(renderer,visual_state)
                         destination=folder/f'{frames:05d}.png';temporary=destination.with_suffix('.tmp')
                         Image.fromarray(renderer.render()).save(temporary,format='PNG');temporary.replace(destination)
+                if callable(getattr(task, 'capture_microscopy', None)):
+                    task.capture_microscopy(output, frames)
                 frames+=1
             capture()
             original_step=mujoco.mj_step
@@ -122,6 +124,7 @@ def run(args,worker=None):
                                                       'instrument_state':instrument_state(task),
                                                       'space_experiment':task.experiment_ui() if callable(getattr(task,'experiment_ui',None)) else None,
                                                       'surface_mission':task.mission_ui() if callable(getattr(task,'mission_ui',None)) else None,
+                                                      'microscopy':task.public_state() if callable(getattr(task,'microscopy_report',None)) else None,
                                                       'scientific_model':science_model.report() if science_model is not None else None})
             task.manager.step=manager_step
             try:
@@ -177,6 +180,8 @@ def run(args,worker=None):
         if task is not None:
             if callable(getattr(task, 'mission_report', None)):
                 result['surface_mission'] = task.mission_report()
+            if callable(getattr(task, 'microscopy_report', None)):
+                result['microscopy'] = task.microscopy_report()
             if callable(getattr(task, 'experiment_report', None)):
                 result['space_experiment'] = task.experiment_report()
                 write_json(output/'evaluator_truth.json', task.evaluator_truth)

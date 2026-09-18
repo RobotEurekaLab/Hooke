@@ -26,7 +26,8 @@ if task_threads:
  extra_args.append(f'--/plugins/carb.tasking.plugin/threadCount={task_threads}')
 app=SimulationApp({'headless':True,'active_gpu':int(os.environ.get('HOOKE_ISAAC_RENDER_GPU','6')),
  'physics_gpu':0,'multi_gpu':False,'renderer':'PathTracing','width':render_settings.width,'height':render_settings.height,
- 'samples_per_pixel_per_frame':1,'max_bounces':2,'max_specular_transmission_bounces':4,
+ 'samples_per_pixel_per_frame':render_settings.native_samples_per_frame,
+ 'denoiser':render_settings.native_denoiser,'max_bounces':2,'max_specular_transmission_bounces':4,
  'max_volume_bounces':0,'anti_aliasing':0,'extra_args':extra_args})
 if render_settings.native_color_pipeline == 'source_display':
  import carb

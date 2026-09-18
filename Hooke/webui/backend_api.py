@@ -13,6 +13,7 @@ import uuid
 from flask import Blueprint, jsonify, request, send_file, abort
 from archetypes.task_catalog import CATALOG
 from backends.config import isaac_gpu
+from backends.environment import isaac_environment, require_isaac_environment, IsaacConfigurationError
 from backends.gpu_lease import GPULease
 from backends.capabilities import registry
 from experiments.private_state import persistent_host_key
@@ -94,6 +95,13 @@ def space_world_image(world, backend, view):
 @bp.get('/api/backends/capabilities')
 def capabilities():
     return jsonify(registry())
+
+
+@bp.get('/api/backends/environment')
+def environment():
+    response = jsonify(isaac=isaac_environment())
+    response.headers['Cache-Control'] = 'no-store'
+    return response
 
 
 @bp.get('/space-assets')
@@ -229,7 +237,16 @@ def start_job():
     with _lock:
         if any(j.get('process') and j['process'].poll() is None for j in _jobs.values()):
             return jsonify(error='已有运行中的仿真任务，请等待或停止该任务后切换后端。'),409
-        gpu = isaac_gpu()
+        try:
+            if backend == 'isaac':
+                installation = require_isaac_environment()
+                gpu = installation['gpu']
+            else:
+                gpu = isaac_gpu()
+        except IsaacConfigurationError as error:
+            return jsonify(error=str(error), environment=error.report),503
+        except (ValueError, OSError) as error:
+            return jsonify(error=f'服务器 GPU 配置无效：{error}'),503
         try:
             with GPULease(gpu):pass
         except RuntimeError as exc:

@@ -71,6 +71,32 @@ class CatalogEntry:
 
 CATALOG: dict[str, CatalogEntry] = {
     entry.name: entry for entry in [
+        CatalogEntry(
+            name="microscopy_suction_injection",
+            description="Suspended-cell phantom: independent electric holding pipette, vacuum-limited seal and picolitre injection.",
+            category="microscopy", module="microscopy.suction_tasks", cls="SuctionInjection",
+            robot="micro_workstation", camera="instrument_closeup",
+            completion_rule="microscopy_experiment", max_sim_seconds=45.0,
+        ),
+        CatalogEntry(
+            name="microscopy_cell_injection",
+            description="Image-guided adherent-cell phantom: membrane deformation, puncture, picolitre injection and withdrawal.",
+            category="microscopy", module="microscopy.cell_tasks", cls="CellInjection",
+            robot="micro_workstation", camera="instrument_closeup",
+            completion_rule="microscopy_experiment", max_sim_seconds=45.0,
+        ),
+        *[
+            CatalogEntry(
+                name=f"microscopy_{operation}",
+                description=f"Micrometre-scale cell experiment: autofocus and image-guided {operation.replace('_', ' ')} with phase-contrast and fluorescence observations.",
+                category="microscopy", module=module, cls=cls,
+                robot="micro_workstation", camera="instrument_closeup",
+                completion_rule="microscopy_experiment", max_sim_seconds=45.0,
+            )
+            for operation, module, cls in (("push", "microscopy.cell_handling_tasks", "CellPush"),
+                ("pick_place", "microscopy.cell_handling_tasks", "CellPickPlace"),
+                ("injection", "microscopy.cell_tasks", "CellDoseInjection"))
+        ],
         *[
             CatalogEntry(
                 name=f"space_{world}_humanoid_rover",
