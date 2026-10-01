@@ -148,8 +148,24 @@
 
 <fieldset id="university-panel" style="display:none">
   <p class="hint">We've virtualized labs from a number of universities. Pick one, then narrow down by subject and lab.</p>
-  <p class="hint">University/subject/lab data coming soon &mdash; this panel is a placeholder.</p>
+
+  <label for="uni-university">University</label>
+  <select id="uni-university">
+    <option value="">All universities (mapping coming soon)</option>
+  </select>
+
+  <label for="uni-subject">Subject</label>
+  <select id="uni-subject"></select>
+
+  <label for="uni-lab">Lab</label>
+  <select id="uni-lab"></select>
+  <div id="uni-robot-info"></div>
+
+  <button class="primary" id="uni-generate">Generate scene</button>
+  <div id="uni-error"></div>
 </fieldset>
+
+<div id="uni-preview"></div>
 
 <fieldset id="custom-panel" style="display:none">
   <label for="description">Describe the instrument or asset</label>
@@ -269,6 +285,7 @@ function showPanel(which) {
   document.getElementById('existing-panel').style.display = which === 'existing' ? '' : 'none';
   document.getElementById('preview').style.display = which === 'existing' ? '' : 'none';
   document.getElementById('university-panel').style.display = which === 'university' ? '' : 'none';
+  document.getElementById('uni-preview').style.display = which === 'university' ? '' : 'none';
   document.getElementById('custom-panel').style.display = which === 'custom' ? '' : 'none';
   document.getElementById('custom-preview').style.display = which === 'custom' ? '' : 'none';
 }
