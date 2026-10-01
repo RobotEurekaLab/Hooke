@@ -112,6 +112,7 @@
 
 <div class="landing">
   <button id="btn-existing" class="active">Use an existing task scene</button>
+  <button id="btn-university">Lab scene from university</button>
   <button id="btn-custom">Generate a custom task scene</button>
 </div>
 
@@ -144,6 +145,11 @@
 </fieldset>
 
 <div id="preview"></div>
+
+<fieldset id="university-panel" style="display:none">
+  <p class="hint">We've virtualized labs from a number of universities. Pick one, then narrow down by subject and lab.</p>
+  <p class="hint">University/subject/lab data coming soon &mdash; this panel is a placeholder.</p>
+</fieldset>
 
 <fieldset id="custom-panel" style="display:none">
   <label for="description">Describe the instrument or asset</label>
@@ -253,16 +259,18 @@
 let CATALOG = null;
 
 document.getElementById('btn-existing').addEventListener('click', () => showPanel('existing'));
+document.getElementById('btn-university').addEventListener('click', () => showPanel('university'));
 document.getElementById('btn-custom').addEventListener('click', () => showPanel('custom'));
 
 function showPanel(which) {
-  const existing = which === 'existing';
-  document.getElementById('btn-existing').classList.toggle('active', existing);
-  document.getElementById('btn-custom').classList.toggle('active', !existing);
-  document.getElementById('existing-panel').style.display = existing ? '' : 'none';
-  document.getElementById('preview').style.display = existing ? '' : 'none';
-  document.getElementById('custom-panel').style.display = existing ? 'none' : '';
-  document.getElementById('custom-preview').style.display = existing ? 'none' : '';
+  document.getElementById('btn-existing').classList.toggle('active', which === 'existing');
+  document.getElementById('btn-university').classList.toggle('active', which === 'university');
+  document.getElementById('btn-custom').classList.toggle('active', which === 'custom');
+  document.getElementById('existing-panel').style.display = which === 'existing' ? '' : 'none';
+  document.getElementById('preview').style.display = which === 'existing' ? '' : 'none';
+  document.getElementById('university-panel').style.display = which === 'university' ? '' : 'none';
+  document.getElementById('custom-panel').style.display = which === 'custom' ? '' : 'none';
+  document.getElementById('custom-preview').style.display = which === 'custom' ? '' : 'none';
 }
 
 document.getElementById('simulator').addEventListener('change', (e) => {
