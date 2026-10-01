@@ -310,6 +310,47 @@ async function loadCatalog() {
   categorySelect.addEventListener('change', populateTasks);
   document.getElementById('task').addEventListener('change', onTaskChange);
   populateTasks();
+
+  populateUniSubjects();
+}
+
+function populateUniSubjects() {
+  const categories = new Map();
+  for (const task of CATALOG.tasks) {
+    const group = task.navigation?.category || task.category;
+    categories.set(group, task.navigation?.category_label || task.category);
+  }
+  const ordered = [...categories.keys()].sort((a, b) =>
+    categories.get(a).localeCompare(categories.get(b), 'en'));
+  const subjectSelect = document.getElementById('uni-subject');
+  subjectSelect.replaceChildren(...ordered.map(key => new Option(categories.get(key), key)));
+  subjectSelect.addEventListener('change', populateUniLabs);
+  document.getElementById('uni-lab').addEventListener('change', onUniLabChange);
+  populateUniLabs();
+}
+
+function populateUniLabs() {
+  const subject = document.getElementById('uni-subject').value;
+  const tasks = CATALOG.tasks
+    .filter(t => (t.navigation?.category || t.category) === subject)
+    .sort((a, b) => (a.navigation?.task_label || a.name).localeCompare(b.navigation?.task_label || b.name, 'en'));
+  const labSelect = document.getElementById('uni-lab');
+  labSelect.replaceChildren(...tasks.map(task => new Option(task.navigation?.task_label || task.name, task.name)));
+  onUniLabChange();
+}
+
+function currentUniTask() {
+  const name = document.getElementById('uni-lab').value;
+  return CATALOG.tasks.find(t => t.name === name);
+}
+
+function onUniLabChange() {
+  const task = currentUniTask();
+  document.getElementById('uni-error').textContent = '';
+  if (!task) { document.getElementById('uni-robot-info').textContent = ''; return; }
+  const robot = CATALOG.robots[task.robot];
+  document.getElementById('uni-robot-info').textContent =
+    `${task.description} — ${robot.category.replace('_', ' ')}, this task's native robot.`;
 }
 
 function populateTasks() {
