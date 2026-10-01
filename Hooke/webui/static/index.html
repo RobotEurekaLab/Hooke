@@ -39,9 +39,9 @@
   button.primary { background: #4285f4; color: white; border: none; border-radius: 6px; cursor: pointer; }
   button.primary:disabled { background: #aaa; cursor: not-allowed; }
   #robot-info { font-size: 0.9rem; color: #555; margin-bottom: 0.8rem; }
-  #preview, #custom-preview { text-align: center; }
-  #preview img, #custom-preview img { max-width: 100%; border: 1px solid #ccc; border-radius: 8px; }
-  #error, #custom-error { color: #c00; font-size: 0.9rem; }
+  #preview, #custom-preview, #uni-preview { text-align: center; }
+  #preview img, #custom-preview img, #uni-preview img { max-width: 100%; border: 1px solid #ccc; border-radius: 8px; }
+  #error, #custom-error, #uni-error { color: #c00; font-size: 0.9rem; }
   .hint { font-size: 0.8rem; color: #777; margin: -0.4rem 0 0.8rem; }
   .key-note { font-size: 0.78rem; color: #2a7a2a; background: #eefbee; border: 1px solid #cdeecd; border-radius: 6px; padding: 0.5rem 0.7rem; margin-bottom: 0.8rem; }
   details { margin-top: 0.6rem; font-size: 0.85rem; }
@@ -498,7 +498,46 @@ async function generateCustom() {
 }
 
 document.getElementById('generate').addEventListener('click', generateScene);
+document.getElementById('uni-generate').addEventListener('click', uniGenerateScene);
 document.getElementById('generate-custom').addEventListener('click', generateCustom);
+
+async function uniGenerateScene() {
+  const task = currentUniTask();
+  if (!task) return;
+  document.getElementById('uni-error').textContent = '';
+
+  // Tasks with their own dedicated page (microscopy, space experiments,
+  // surface missions, dual-backend) go straight there, same as the
+  // existing panel does -- this quick picker's /api/scene preview is a
+  // generic fallback, not the primary way to view those.
+  if (task.navigation?.url) {
+    location.assign(new URL(task.navigation.url, location.origin).href);
+    return;
+  }
+
+  document.getElementById('uni-preview').innerHTML = 'Rendering...';
+  const body = {
+    task: task.name,
+    robot: task.robot,
+    seed: Math.floor(Math.random() * 100000),
+  };
+  if (task.variants) body.variant = task.variants[task.variants.length - 1];
+
+  const res = await fetch('/api/scene', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    document.getElementById('uni-error').textContent = data.error || 'Unknown error';
+    document.getElementById('uni-preview').innerHTML = '';
+    return;
+  }
+  document.getElementById('uni-preview').innerHTML =
+    `<img src="data:image/png;base64,${data.image_png_base64}" alt="scene preview">
+     <p><em>${data.task_info.prefix}</em> &mdash; robot: ${data.robot.display_name}</p>`;
+}
 loadCatalog().catch(error => { document.getElementById('error').textContent = error.message; });
 
 // Examples strip: arrow buttons + convert vertical mouse-wheel scroll
