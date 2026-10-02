@@ -4,7 +4,14 @@
 <meta charset="utf-8">
 <title>Hooke Task Scene Picker</title>
 <style>
-  body { font-family: -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; color: #222; }
+  body { font-family: -apple-system, sans-serif; max-width: 1400px; margin: 2rem auto; padding: 0 2rem; box-sizing: border-box; color: #222; }
+  .picker-layout { display: grid; grid-template-columns: minmax(340px, 440px) 1fr; gap: 2.5rem; align-items: start; }
+  .controls-col { min-width: 0; }
+  .preview-col { min-width: 0; position: sticky; top: 1.5rem; }
+  @media (max-width: 900px) {
+    .picker-layout { grid-template-columns: 1fr; }
+    .preview-col { position: static; }
+  }
   .page-header { margin-bottom: 1.2rem; }
   h1 {
     font-family: Georgia, 'Times New Roman', serif;
@@ -110,6 +117,9 @@
   </nav>
 </header>
 
+<div class="picker-layout">
+<div class="controls-col">
+
 <div class="landing">
   <button id="btn-existing" class="active">Use an existing task scene</button>
   <button id="btn-university">Lab scene from university</button>
@@ -144,8 +154,6 @@
   <div id="error"></div>
 </fieldset>
 
-<div id="preview"></div>
-
 <fieldset id="university-panel" style="display:none">
   <p class="hint">We've virtualized labs from a number of universities. Pick one, then narrow down by subject and lab.</p>
   <p class="hint">University list: QS World University Rankings top 250, A&ndash;Z. Picking one doesn't narrow Subject/Lab yet &mdash; that per-university mapping is still being built.</p>
@@ -163,8 +171,6 @@
   <button class="primary" id="uni-generate">Generate scene</button>
   <div id="uni-error"></div>
 </fieldset>
-
-<div id="uni-preview"></div>
 
 <fieldset id="custom-panel" style="display:none">
   <label for="description">Describe the instrument or asset</label>
@@ -185,7 +191,15 @@
   <div id="custom-error"></div>
 </fieldset>
 
+</div>
+
+<div class="preview-col">
+<div id="preview"></div>
+<div id="uni-preview"></div>
 <div id="custom-preview"></div>
+</div>
+
+</div>
 
 <section class="examples">
   <div class="examples-inner">
