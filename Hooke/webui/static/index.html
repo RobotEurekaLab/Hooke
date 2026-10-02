@@ -8,6 +8,20 @@
   .picker-layout { display: grid; grid-template-columns: minmax(340px, 440px) 1fr; gap: 2.5rem; align-items: start; }
   .controls-col { min-width: 0; }
   .preview-col { min-width: 0; position: sticky; top: 1.5rem; }
+  /* An empty preview div has no border/background, so before a scene is
+     generated the whole right column looks like blank page rather than
+     an occupied panel -- making the controls look stuck in a left strip
+     even though the grid itself is full-width. Give the empty state a
+     visible placeholder box instead. */
+  #preview, #uni-preview, #custom-preview { min-height: 320px; }
+  #preview:empty, #uni-preview:empty, #custom-preview:empty {
+    display: flex; align-items: center; justify-content: center;
+    border: 2px dashed #ddd; border-radius: 12px; padding: 2rem;
+    color: #999; font-size: 0.9rem; text-align: center;
+  }
+  #preview:empty::before, #uni-preview:empty::before, #custom-preview:empty::before {
+    content: "Pick a task and click \"Generate\" to see a preview here.";
+  }
   @media (max-width: 900px) {
     .picker-layout { grid-template-columns: 1fr; }
     .preview-col { position: static; }
