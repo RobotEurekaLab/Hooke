@@ -3,21 +3,53 @@
 <head>
 <meta charset="utf-8">
 <title>Hooke Task Scene Picker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  body { font-family: -apple-system, sans-serif; max-width: 1400px; margin: 2rem auto; padding: 0 2rem; box-sizing: border-box; color: #222; }
-  .picker-layout { display: grid; grid-template-columns: minmax(340px, 440px) 1fr; gap: 2.5rem; align-items: start; }
-  .controls-col { min-width: 0; }
+  :root{
+    --bg: #f4f6f8;
+    --bg-raised: #ffffff;
+    --line: #e1e6eb;
+    --line-strong: #c9d1d9;
+    --ink: #17202b;
+    --ink-dim: #566072;
+    --ink-faint: #8995a4;
+    --amber: #b5700f;
+    --amber-soft: #b5700f14;
+    --amber-line: #b5700f55;
+    --cyan: #11748a;
+    --cyan-soft: #11748a14;
+    --ok: #1f7a4d;
+    --ok-soft: #e9f7ef;
+    --ok-line: #c3ead6;
+    --err: #b3261e;
+    --err-soft: #fbeceb;
+    --shadow: 0 1px 2px rgba(23,32,43,.04), 0 10px 28px rgba(23,32,43,.07);
+    --shadow-sm: 0 1px 2px rgba(23,32,43,.06);
+    --display: 'Fraunces', ui-serif, Georgia, serif;
+    --body-font: 'Public Sans', -apple-system, system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+  }
+  *{ box-sizing: border-box; }
+  body {
+    font-family: var(--body-font); max-width: 1440px; margin: 0 auto; padding: 2.5rem 2.5rem 4rem;
+    color: var(--ink); background: var(--bg); line-height: 1.5;
+  }
+  .picker-layout { display: grid; grid-template-columns: minmax(360px, 460px) 1fr; gap: 2rem; align-items: start; }
+  .controls-col { min-width: 0; display: flex; flex-direction: column; gap: 1.1rem; }
   .preview-col { min-width: 0; position: sticky; top: 1.5rem; }
   /* An empty preview div has no border/background, so before a scene is
      generated the whole right column looks like blank page rather than
      an occupied panel -- making the controls look stuck in a left strip
      even though the grid itself is full-width. Give the empty state a
      visible placeholder box instead. */
-  #preview, #uni-preview, #custom-preview { min-height: 320px; }
+  #preview, #uni-preview, #custom-preview { min-height: 340px; }
   #preview:empty, #uni-preview:empty, #custom-preview:empty {
     display: flex; align-items: center; justify-content: center;
-    border: 2px dashed #ddd; border-radius: 12px; padding: 2rem;
-    color: #999; font-size: 0.9rem; text-align: center;
+    border: 1.5px dashed var(--line-strong); border-radius: 16px; padding: 2rem;
+    background: var(--bg-raised);
+    color: var(--ink-faint); font-size: 0.92rem; text-align: center;
   }
   #preview:empty::before, #uni-preview:empty::before, #custom-preview:empty::before {
     content: "Pick a task and click \"Generate\" to see a preview here.";
@@ -25,66 +57,101 @@
   @media (max-width: 900px) {
     .picker-layout { grid-template-columns: 1fr; }
     .preview-col { position: static; }
+    body { padding: 1.6rem 1.2rem 3rem; }
   }
-  .page-header { margin-bottom: 1.2rem; }
-  h1 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin: 0 0 0.3rem;
-    color: #1a1a2e;
-  }
-  h1 .accent { color: #4285f4; font-style: italic; }
-  .tagline {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #888;
-    margin: 0 0 0.9rem;
-  }
-  .page-header nav { display: flex; gap: 1.2rem; font-size: 0.85rem; }
-  .page-header nav a { color: #4285f4; text-decoration: none; }
-  .page-header nav a:hover { text-decoration: underline; }
-  .landing { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-  .landing button { flex: 1; padding: 1rem; font-size: 1rem; cursor: pointer; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; }
-  .landing button.active { background: #e8f0fe; border-color: #4285f4; }
-  fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
-  label { display: block; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.9rem; }
-  select, textarea, input[type="text"], input[type="password"], button.primary {
-    padding: 0.5rem; font-size: 1rem; margin-bottom: 0.8rem; width: 100%; box-sizing: border-box;
-    font-family: inherit; border: 1px solid #ccc; border-radius: 6px;
-  }
-  input[type="file"] { margin-bottom: 0.8rem; }
-  textarea { resize: vertical; min-height: 4.5em; }
-  button.primary { background: #4285f4; color: white; border: none; border-radius: 6px; cursor: pointer; }
-  button.primary:disabled { background: #aaa; cursor: not-allowed; }
-  #robot-info { font-size: 0.9rem; color: #555; margin-bottom: 0.8rem; }
-  #preview, #custom-preview, #uni-preview { text-align: center; }
-  #preview img, #custom-preview img, #uni-preview img { max-width: 100%; border: 1px solid #ccc; border-radius: 8px; }
-  #error, #custom-error, #uni-error { color: #c00; font-size: 0.9rem; }
-  .hint { font-size: 0.8rem; color: #777; margin: -0.4rem 0 0.8rem; }
-  .key-note { font-size: 0.78rem; color: #2a7a2a; background: #eefbee; border: 1px solid #cdeecd; border-radius: 6px; padding: 0.5rem 0.7rem; margin-bottom: 0.8rem; }
-  details { margin-top: 0.6rem; font-size: 0.85rem; }
-  details pre { white-space: pre-wrap; background: #f6f6f6; border-radius: 6px; padding: 0.6rem; max-height: 16rem; overflow: auto; }
 
-  /* Break out of body's 720px column so ~4 cards are visible at once,
+  .page-header { margin-bottom: 2rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--line); }
+  h1 {
+    font-family: var(--display); font-weight: 700; font-variation-settings: "opsz" 40;
+    font-size: 2.3rem; letter-spacing: -0.01em; margin: 0 0 0.35rem; color: var(--ink);
+  }
+  h1 .accent { color: var(--amber); font-style: italic; font-weight: 500; }
+  .tagline {
+    font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--ink-faint); margin: 0 0 1rem;
+  }
+  .page-header nav { display: flex; gap: 1.6rem; flex-wrap: wrap; font-size: 0.86rem; }
+  .page-header nav a {
+    color: var(--cyan); text-decoration: none; font-weight: 500;
+    border-bottom: 1px solid transparent; padding-bottom: 1px;
+  }
+  .page-header nav a:hover { border-color: var(--cyan); }
+
+  .landing {
+    display: flex; gap: 0.3rem; margin-bottom: 0.2rem;
+    background: var(--bg-raised); border: 1px solid var(--line); border-radius: 12px; padding: 5px;
+    box-shadow: var(--shadow-sm);
+  }
+  .landing button {
+    flex: 1; padding: 0.7rem 0.6rem; font-size: 0.86rem; font-weight: 500; font-family: inherit;
+    cursor: pointer; border: 1px solid transparent; border-radius: 8px; background: transparent;
+    color: var(--ink-dim); transition: background .15s ease, color .15s ease, box-shadow .15s ease;
+  }
+  .landing button:hover { color: var(--ink); }
+  .landing button.active { background: var(--amber-soft); border-color: var(--amber-line); color: var(--amber); box-shadow: var(--shadow-sm); }
+
+  fieldset {
+    border: 1px solid var(--line); border-radius: 14px; padding: 1.4rem 1.4rem 1.5rem;
+    background: var(--bg-raised); box-shadow: var(--shadow); min-width: 0;
+  }
+  label {
+    display: block; margin-bottom: 0.35rem; font-family: var(--mono); font-weight: 500;
+    font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-dim);
+  }
+  select, textarea, input[type="text"], input[type="password"] {
+    padding: 0.6rem 0.7rem; font-size: 0.92rem; margin-bottom: 0.9rem; width: 100%;
+    font-family: var(--body-font); color: var(--ink); background: var(--bg-raised);
+    border: 1px solid var(--line-strong); border-radius: 8px; transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  select:hover, textarea:hover, input[type="text"]:hover, input[type="password"]:hover { border-color: var(--ink-faint); }
+  select:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
+    outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px var(--cyan-soft);
+  }
+  input[type="file"] { margin-bottom: 0.9rem; font-size: 0.86rem; font-family: var(--body-font); }
+  textarea { resize: vertical; min-height: 4.5em; }
+  button.primary {
+    display: block; width: 100%; padding: 0.75rem; font-size: 0.92rem; font-weight: 600;
+    font-family: var(--body-font); margin-bottom: 0.9rem; box-sizing: border-box;
+    background: var(--amber); color: #fff8ef; border: none; border-radius: 8px; cursor: pointer;
+    transition: background .15s ease, transform .1s ease, box-shadow .15s ease; box-shadow: var(--shadow-sm);
+  }
+  button.primary:hover { background: #9c5e0c; box-shadow: 0 4px 14px rgba(181,112,15,.3); }
+  button.primary:active { transform: translateY(1px); }
+  button.primary:disabled { background: var(--line-strong); color: var(--ink-faint); cursor: not-allowed; box-shadow: none; }
+  #robot-info, #uni-robot-info { font-size: 0.86rem; color: var(--ink-dim); margin-bottom: 0.9rem; line-height: 1.5; }
+  #preview, #custom-preview, #uni-preview { text-align: center; }
+  #preview img, #custom-preview img, #uni-preview img {
+    max-width: 100%; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+  }
+  #error, #custom-error, #uni-error { color: var(--err); font-size: 0.88rem; }
+  .hint { font-size: 0.82rem; color: var(--ink-faint); margin: -0.5rem 0 0.9rem; line-height: 1.5; }
+  .key-note {
+    font-size: 0.8rem; color: var(--ok); background: var(--ok-soft); border: 1px solid var(--ok-line);
+    border-radius: 8px; padding: 0.6rem 0.8rem; margin-bottom: 0.9rem;
+  }
+  details { margin-top: 0.7rem; font-size: 0.86rem; color: var(--ink-dim); }
+  details pre {
+    white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
+    padding: 0.7rem; max-height: 16rem; overflow: auto; font-family: var(--mono); font-size: 0.78rem;
+  }
+
+  /* Break out of body's narrow column so ~4 cards are visible at once,
      while the rest of the page (dropdowns etc.) stays narrow/readable.
      The outer element spans the full viewport (50vw/50% differ because
-     vw is always relative to the true viewport, not this element's
-     720px-wide ancestor); the inner wrapper then re-centers the actual
-     content within a wider, but still capped, column. Splitting outer
+     vw is always relative to the true viewport, not this element's own
+     ancestor); the inner wrapper then re-centers the actual content
+     within a wider, but still capped, column. Splitting outer
      (full-bleed) from inner (capped) avoids the mis-centering you get
      from putting both width:100vw and max-width on the same element. */
   .examples {
-    margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e5e5e5;
+    margin-top: 3.5rem; padding-top: 2rem; padding-bottom: 1rem; border-top: 1px solid var(--line);
     width: 100vw;
     margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
     box-sizing: border-box;
   }
-  .examples-inner { padding: 0 2rem; box-sizing: border-box; }
-  .examples h2 { font-size: 1.1rem; margin: 0 0 0.2rem; }
-  .examples .examples-sub { font-size: 0.85rem; color: #777; margin: 0 0 1rem; }
+  .examples-inner { padding: 0 2.5rem; box-sizing: border-box; }
+  .examples h2 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; margin: 0 0 0.3rem; color: var(--ink); }
+  .examples .examples-sub { font-size: 0.86rem; color: var(--ink-faint); margin: 0 0 1.2rem; }
   .examples-strip-wrap { position: relative; }
   .examples-strip {
     display: flex; gap: 1.1rem; overflow-x: auto; scroll-behavior: smooth;
@@ -97,26 +164,31 @@
   .examples-strip::-webkit-scrollbar { display: none; }
   .example-card { flex: 0 0 340px; scroll-snap-align: start; }
   .example-card video {
-    width: 340px; height: 191px; display: block; background: #000;
-    border-radius: 8px; border: 1px solid #ddd; object-fit: cover;
+    width: 340px; height: 191px; display: block; background: #0c1116;
+    border-radius: 12px; border: 1px solid var(--line); object-fit: cover;
     cursor: pointer; transition: transform 0.22s ease, box-shadow 0.22s ease;
-    position: relative;
+    position: relative; box-shadow: var(--shadow-sm);
   }
   .example-card video:hover {
     transform: scale(1.12);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 28px rgba(23,32,43,.28);
     z-index: 3;
   }
-  .example-card p { margin: 0.5rem 0 0; font-size: 0.85rem; color: #444; }
-  .example-card .example-engine { font-size: 0.72rem; color: #999; text-transform: uppercase; letter-spacing: 0.04em; }
+  .example-card p { margin: 0.55rem 0 0; font-size: 0.86rem; color: var(--ink); font-weight: 500; }
+  .example-card .example-engine {
+    display: inline-block; margin-top: 0.3rem; font-family: var(--mono); font-size: 0.68rem;
+    color: var(--cyan); background: var(--cyan-soft); padding: 2px 8px; border-radius: 99px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
   .strip-nav {
     position: absolute; top: 118px; transform: translateY(-50%);
-    width: 36px; height: 36px; border-radius: 50%; border: 1px solid #ccc;
-    background: rgba(255,255,255,0.95); color: #333; font-size: 1.1rem;
-    cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.15); z-index: 2;
+    width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-strong);
+    background: var(--bg-raised); color: var(--ink); font-size: 1.1rem;
+    cursor: pointer; box-shadow: var(--shadow); z-index: 2;
     display: flex; align-items: center; justify-content: center;
+    transition: background .15s ease, border-color .15s ease;
   }
-  .strip-nav:hover { background: #fff; border-color: #999; }
+  .strip-nav:hover { background: var(--amber-soft); border-color: var(--amber-line); color: var(--amber); }
   .strip-nav.prev { left: -14px; }
   .strip-nav.next { right: -14px; }
 </style>
