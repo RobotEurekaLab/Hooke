@@ -1729,6 +1729,70 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="UlbLimifTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_asu_liquid_handler_display",
+            description=(
+                "A Beckman Biomek-style automated liquid-handling gantry robot in the Desert "
+                "Southwest Genomics Center, Arizona State University (display only, simplified "
+                "representative geometry -- see real_lab/labs/arizona-state-university.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="AsuLiquidHandlerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_st_andrews_orbitrap_display",
+            description=(
+                "A Thermo Orbitrap Exploris-style mass spectrometer with a hinged sample-plate "
+                "loading door in the School of Chemistry analytical facilities, Purdie Building, "
+                "University of St Andrews (display only, simplified representative geometry -- "
+                "see real_lab/labs/university-of-st-andrews.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="StAndrewsOrbitrapTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ucd_conway_cytometer_display",
+            description=(
+                "A Beckman Coulter-style flow cytometer with a hinged sample access lid in the "
+                "Conway Genomics and Imaging Core, University College Dublin (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/university-college-dublin.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UcdConwayCytometerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_stockholm_university_sps_display",
+            description=(
+                "A spark plasma sintering press with a moving upper ram in the Spark Plasma "
+                "Sintering Facility, Arrhenius Laboratory, Stockholm University (display only, "
+                "simplified representative geometry -- see real_lab/labs/stockholm-university.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="StockholmUniversitySpsTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_polimi_flow_reactor_display",
+            description=(
+                "A continuous-flow chemical reactor with a swinging valve lever in BiocatLab, "
+                "Politecnico di Milano (display only, simplified representative geometry -- see "
+                "real_lab/labs/politecnico-di-milano.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="PolimiFlowReactorTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_iitm_bioincubator_fermenter_display",
+            description=(
+                "A benchtop fermenter with a hinged vessel lid in the IITM Bioincubator, IIT "
+                "Madras Research Park (display only, simplified representative geometry -- see "
+                "real_lab/labs/indian-institute-of-technology-madras-iitm.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="IitmBioincubatorFermenterTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

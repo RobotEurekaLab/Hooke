@@ -501,3 +501,69 @@ UlbLimifTask, UlbLimifExpert = make_static_task(StaticDisplaySpec(
         "real_lab/labs/universite-libre-de-bruxelles.md)"
     ),
 ))
+
+AsuLiquidHandlerTask, AsuLiquidHandlerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_asu_liquid_handler_display",
+    scene_file="mani_real_lab_asu_liquid_handler.xml",
+    prompt=(
+        "a Beckman Biomek-style automated liquid-handling gantry robot "
+        "in the Desert Southwest Genomics Center, Arizona State "
+        "University (simplified representation; see "
+        "real_lab/labs/arizona-state-university.md)"
+    ),
+))
+
+StAndrewsOrbitrapTask, StAndrewsOrbitrapExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_st_andrews_orbitrap_display",
+    scene_file="mani_real_lab_st_andrews_orbitrap.xml",
+    prompt=(
+        "a Thermo Orbitrap Exploris-style mass spectrometer with a "
+        "hinged sample-plate loading door in the School of Chemistry "
+        "analytical facilities, Purdie Building, University of St "
+        "Andrews (simplified representation; see "
+        "real_lab/labs/university-of-st-andrews.md)"
+    ),
+))
+
+UcdConwayCytometerTask, UcdConwayCytometerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_ucd_conway_cytometer_display",
+    scene_file="mani_real_lab_ucd_conway_cytometer.xml",
+    prompt=(
+        "a Beckman Coulter-style flow cytometer with a hinged sample "
+        "access lid in the Conway Genomics and Imaging Core, University "
+        "College Dublin (simplified representation; see "
+        "real_lab/labs/university-college-dublin.md)"
+    ),
+))
+
+StockholmUniversitySpsTask, StockholmUniversitySpsExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_stockholm_university_sps_display",
+    scene_file="mani_real_lab_stockholm_university_sps.xml",
+    prompt=(
+        "a spark plasma sintering press with a moving upper ram in the "
+        "Spark Plasma Sintering Facility, Arrhenius Laboratory, "
+        "Stockholm University (simplified representation; see "
+        "real_lab/labs/stockholm-university.md)"
+    ),
+))
+
+PolimiFlowReactorTask, PolimiFlowReactorExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_polimi_flow_reactor_display",
+    scene_file="mani_real_lab_polimi_flow_reactor.xml",
+    prompt=(
+        "a continuous-flow chemical reactor with a swinging valve lever "
+        "in BiocatLab, Politecnico di Milano (simplified representation; "
+        "see real_lab/labs/politecnico-di-milano.md)"
+    ),
+))
+
+IitmBioincubatorFermenterTask, IitmBioincubatorFermenterExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_iitm_bioincubator_fermenter_display",
+    scene_file="mani_real_lab_iitm_bioincubator_fermenter.xml",
+    prompt=(
+        "a benchtop fermenter with a hinged vessel lid in the IITM "
+        "Bioincubator, IIT Madras Research Park (simplified "
+        "representation; see "
+        "real_lab/labs/indian-institute-of-technology-madras-iitm.md)"
+    ),
+))
