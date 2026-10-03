@@ -1245,6 +1245,18 @@ CATALOG: dict[str, CatalogEntry] = {
             category="chemistry",
             module="archetypes.protocol_generated", cls="FilterCartridgeHousingTask", robot="ur5e", camera="table_cam_front",
         ),
+
+        # --- Real Lab Reconstruction pilot (real_lab/, QS 101-250) ---
+        CatalogEntry(
+            name="real_lab_western_university_pcr_display",
+            description=(
+                "A real-time PCR system in the Molecular Genetics Unit, Room 357, Western "
+                "Science Centre, Western University (display only, simplified representative "
+                "geometry -- see real_lab/labs/western-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WesternUniversityPcrTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
