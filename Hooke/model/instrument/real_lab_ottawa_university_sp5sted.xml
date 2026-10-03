@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_ottawa_university_sp5sted">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.11 0.13 0.015" pos="0 0 0.015" rgba="0.18 0.18 0.2 1" class="body"/>
+      <geom type="cylinder" size="0.022 0.1" pos="-0.06 -0.09 0.115" rgba="0.15 0.15 0.17 1" class="body"/>
+      <geom type="box" size="0.06 0.022 0.012" pos="-0.06 -0.03 0.21" rgba="0.15 0.15 0.17 1" class="body"/>
+      <body name="filter_turret" pos="-0.03 -0.03 0.19">
+        <joint name="filter_turret_joint" type="hinge" axis="0 0 1" range="0 3.14" damping="0.5" frictionloss="0.2"/>
+  <geom type="cylinder" size="0.02 0.012" pos="0 0 0" rgba="0.25 0.25 0.28 1" class="body"/>
+  <geom type="cylinder" size="0.005 0.025" pos="0.013 0 -0.025" rgba="0.6 0.1 0.75 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
