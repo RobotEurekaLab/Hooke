@@ -45,7 +45,7 @@ rice-university,141,Rice University,,United States,,https://www.rice.edu,,Shared
 aarhus-university,144,Aarhus University,,Denmark,,https://www.au.dk,,Department of Biomedicine / Bioimaging Core Facility,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_aarhus_university_spinning_disk_display; see real_lab/labs/aarhus-university.md
 nanjing-university,145,Nanjing University,,China (Mainland),,,,,,,pending,,
 universiti-sains-malaysia-usm,146,Universiti Sains Malaysia (USM),,Malaysia,,,,,,,pending,,
-technische-universit-t-berlin-tu-berlin,147,Technische Universität Berlin (TU Berlin),,Germany,,,,,,,pending,,
+technische-universit-t-berlin-tu-berlin,147,Technische Universität Berlin (TU Berlin),,Germany,,https://www.tu.berlin,,Chair of Environmental Microbiomics (umbio),microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_tu_berlin_flow_cytometer_display; see real_lab/labs/technische-universit-t-berlin-tu-berlin.md
 universiti-putra-malaysia-upm,148,Universiti Putra Malaysia (UPM),,Malaysia,,,,,,,pending,,
 king-abdulaziz-university-kau,149,King Abdulaziz University (KAU),,Saudi Arabia,,,,,,,pending,,
 indian-institute-of-technology-delhi-iitd,150,Indian Institute of Technology Delhi (IITD),,India,,,,,,,pending,,
@@ -122,14 +122,14 @@ universidad-nacional-de-colombia,219,Universidad Nacional de Colombia,,Colombia,
 vrije-universiteit-amsterdam,221,Vrije Universiteit Amsterdam,,Netherlands,,,,,,,pending,,
 eberhard-karls-universit-t-t-bingen,222,Eberhard Karls Universität Tübingen,,Germany,,,,,,,pending,,
 indian-institute-of-technology-kharagpur-iit-kgp,222,Indian Institute of Technology Kharagpur (IIT-KGP),,India,,,,,,,pending,,
-friedrich-alexander-universit-t-erlangen-n-rnberg,224,Friedrich-Alexander-Universität Erlangen-Nürnberg,,Germany,,,,,,,pending,,
+friedrich-alexander-universit-t-erlangen-n-rnberg,224,Friedrich-Alexander-Universität Erlangen-Nürnberg,,Germany,,https://www.cenem.fau.de,,"CENEM, Center for Nanoanalysis and Electron Microscopy",microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_fau_erlangen_cenem_display; see real_lab/labs/friedrich-alexander-universit-t-erlangen-n-rnberg.md
 loughborough-university,224,Loughborough University,,United Kingdom,,https://www.lboro.ac.uk,,Department of Chemistry / WPL.2.09 Synthesis Laboratory,chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_loughborough_university_nmr_display; see real_lab/labs/loughborough-university.md
 university-of-lausanne,224,University of Lausanne,,Switzerland,,,,,,,pending,,
 indian-institute-of-technology-madras-iitm,227,Indian Institute of Technology Madras (IITM),,India,,,,,,,pending,,
-rheinische-friedrich-wilhelms-universit-t-bonn,227,Rheinische Friedrich-Wilhelms-Universität Bonn,,Germany,,,,,,,pending,,
+rheinische-friedrich-wilhelms-universit-t-bonn,227,Rheinische Friedrich-Wilhelms-Universität Bonn,,Germany,,https://www.limes-institut-bonn.de,,LIMES Technical Platforms,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_bonn_limes_sted_display; see real_lab/labs/rheinische-friedrich-wilhelms-universit-t-bonn.md
 chulalongkorn-university,229,Chulalongkorn University,,Thailand,,https://www.chemtech.sc.chula.ac.th,,Energetic Materials Research Laboratory,chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_chulalongkorn_potentiostat_display; see real_lab/labs/chulalongkorn-university.md
 maastricht-university,230,Maastricht University,,Netherlands,,,,,,,pending,,
-universite-libre-de-bruxelles,230,Universite libre de Bruxelles,,Belgium,,,,,,,pending,,
+universite-libre-de-bruxelles,230,Universite libre de Bruxelles,,Belgium,,https://www.iribhm.be,,"Light Microscopy Facility (LiMiF), IRIBHM",microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_ulb_limif_display; see real_lab/labs/universite-libre-de-bruxelles.md
 universidade-estadual-de-campinas-unicamp,232,Universidade Estadual de Campinas (Unicamp),,Brazil,,https://www.unicamp.br,,Institute of Chemistry / LIMicro-IQ,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_unicamp_afm_display; see real_lab/labs/universidade-estadual-de-campinas-unicamp.md
 university-of-twente,233,University of Twente,,Netherlands,,https://www.utwente.nl,,MESA+ Institute for Nanotechnology / NanoLab,chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_twente_university_sputter_display; see real_lab/labs/university-of-twente.md
 technische-universit-t-dresden,234,Technische Universität Dresden,,Germany,,,,,,,pending,,

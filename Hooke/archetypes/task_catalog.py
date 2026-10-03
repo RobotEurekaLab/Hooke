@@ -1685,6 +1685,50 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="VanderbiltUniversityEsemTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_tu_berlin_flow_cytometer_display",
+            description=(
+                "A benchtop flow cytometer with a hinged sample-tube access lid in the Chair of "
+                "Environmental Microbiomics laboratory, Room BH 6-1, TU Berlin (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/technische-universit-t-berlin-tu-berlin.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TuBerlinFlowCytometerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_bonn_limes_sted_display",
+            description=(
+                "An Abberior easy3D STED super-resolution microscope with a rotating filter "
+                "turret in the LIMES Technical Platforms, University of Bonn (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/rheinische-friedrich-wilhelms-universit-t-bonn.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="BonnLimesStedTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_fau_erlangen_cenem_display",
+            description=(
+                "A dual-beam electron microscope with a hinged specimen chamber door in CENEM, "
+                "the Center for Nanoanalysis and Electron Microscopy, FAU Erlangen-Nurnberg "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/friedrich-alexander-universit-t-erlangen-n-rnberg.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="FauErlangenCenemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ulb_limif_display",
+            description=(
+                "A Zeiss LSM780-style confocal/multiphoton microscope with a rotating filter "
+                "turret in the Light Microscopy Facility (LiMiF), IRIBHM, Universite Libre de "
+                "Bruxelles (display only, simplified representative geometry -- see "
+                "real_lab/labs/universite-libre-de-bruxelles.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UlbLimifTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

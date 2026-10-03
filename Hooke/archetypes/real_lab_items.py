@@ -454,3 +454,50 @@ VanderbiltUniversityEsemTask, VanderbiltUniversityEsemExpert = make_static_task(
         "real_lab/labs/vanderbilt-university.md)"
     ),
 ))
+
+TuBerlinFlowCytometerTask, TuBerlinFlowCytometerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_tu_berlin_flow_cytometer_display",
+    scene_file="mani_real_lab_tu_berlin_flow_cytometer.xml",
+    prompt=(
+        "a benchtop flow cytometer with a hinged sample-tube access lid "
+        "in the Chair of Environmental Microbiomics laboratory, Room "
+        "BH 6-1, Technische Universitat Berlin (simplified "
+        "representation; see "
+        "real_lab/labs/technische-universit-t-berlin-tu-berlin.md)"
+    ),
+))
+
+BonnLimesStedTask, BonnLimesStedExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_bonn_limes_sted_display",
+    scene_file="mani_real_lab_bonn_limes_sted.xml",
+    prompt=(
+        "an Abberior easy3D STED super-resolution microscope with a "
+        "rotating filter turret in the LIMES Technical Platforms, "
+        "University of Bonn (simplified representation; see "
+        "real_lab/labs/rheinische-friedrich-wilhelms-universit-t-bonn.md)"
+    ),
+))
+
+FauErlangenCenemTask, FauErlangenCenemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_fau_erlangen_cenem_display",
+    scene_file="mani_real_lab_fau_erlangen_cenem.xml",
+    prompt=(
+        "a dual-beam electron microscope with a hinged specimen chamber "
+        "door in CENEM, the Center for Nanoanalysis and Electron "
+        "Microscopy, Friedrich-Alexander-Universitat Erlangen-Nurnberg "
+        "(simplified representation; see "
+        "real_lab/labs/friedrich-alexander-universit-t-erlangen-n-rnberg.md)"
+    ),
+))
+
+UlbLimifTask, UlbLimifExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_ulb_limif_display",
+    scene_file="mani_real_lab_ulb_limif.xml",
+    prompt=(
+        "a Zeiss LSM780-style confocal/multiphoton microscope with a "
+        "rotating filter turret in the Light Microscopy Facility "
+        "(LiMiF), IRIBHM, Universite Libre de Bruxelles (simplified "
+        "representation; see "
+        "real_lab/labs/universite-libre-de-bruxelles.md)"
+    ),
+))
