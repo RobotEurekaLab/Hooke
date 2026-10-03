@@ -816,3 +816,37 @@ ExeterUniversityEmTask, ExeterUniversityEmExpert = make_static_task(StaticDispla
         "real_lab/labs/the-university-of-exeter.md)"
     ),
 ))
+
+UscGenomicsCoreTask, UscGenomicsCoreExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_usc_genomics_core_display",
+    scene_file="mani_real_lab_usc_genomics_core.xml",
+    prompt=(
+        "a benchtop genomics instrument with a hinged loading lid in the "
+        "Molecular Genomics Core (MGC), Norris Research Tower, USC "
+        "Health Sciences Campus, University of Southern California "
+        "(simplified representation; see "
+        "real_lab/labs/university-of-southern-california.md)"
+    ),
+))
+
+UsmPfgeTask, UsmPfgeExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_usm_pfge_display",
+    scene_file="mani_real_lab_usm_pfge.xml",
+    prompt=(
+        "a pulsed-field gel electrophoresis (PFGE) system with a hinged "
+        "buffer-chamber lid in the INFORMM equipment facility, "
+        "Universiti Sains Malaysia (simplified representation; see "
+        "real_lab/labs/universiti-sains-malaysia-usm.md)"
+    ),
+))
+
+MsuQuantstudioTask, MsuQuantstudioExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_msu_quantstudio_display",
+    scene_file="mani_real_lab_msu_quantstudio.xml",
+    prompt=(
+        "an ABI QuantStudio 7 Flex real-time PCR system with a hinged "
+        "sample-plate loading door in the RTSF Genomics Core, Michigan "
+        "State University (simplified representation; see "
+        "real_lab/labs/michigan-state-university.md)"
+    ),
+))

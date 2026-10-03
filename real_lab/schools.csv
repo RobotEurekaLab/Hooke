@@ -23,7 +23,7 @@ western-university,120,Western University,,Canada,,https://www.uwo.ca,,Departmen
 qatar-university,122,Qatar University,,Qatar,,,,,,,pending,,
 rmit-university,123,RMIT University,,Australia,,https://www.rmit.edu.au,,RMIT Microscopy and Microanalysis Facility (RMMF),microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_rmit_university_fibsem_display; see real_lab/labs/rmit-university.md
 sungkyunkwan-university-skku,123,Sungkyunkwan University(SKKU),,South Korea,,,,,,,pending,,
-university-of-southern-california,125,University of Southern California,,United States,,,,,,,pending,,
+university-of-southern-california,125,University of Southern California,,United States,,https://uscnorriscancer.usc.edu,,Molecular Genomics Core (MGC),molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_usc_genomics_core_display; see real_lab/labs/university-of-southern-california.md
 humboldt-universit-t-zu-berlin,126,Humboldt-Universität zu Berlin,,Germany,,,,,,,pending,,
 university-college-dublin,126,University College Dublin,,Ireland,,https://www.ucd.ie,,Conway Genomics Core / Conway Imaging Core,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_ucd_conway_cytometer_display; see real_lab/labs/university-college-dublin.md
 stockholm-university,128,Stockholm University,,Sweden,,https://www.su.se,,"Spark Plasma Sintering Facility, Arrhenius Laboratory",chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_stockholm_university_sps_display; see real_lab/labs/stockholm-university.md
@@ -44,13 +44,13 @@ leiden-university,141,Leiden University,,Netherlands,,https://www.universiteitle
 rice-university,141,Rice University,,United States,,https://www.rice.edu,,Shared Equipment Authority / Rice Nanofabrication Facility,chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_rice_university_mask_aligner_display; see real_lab/labs/rice-university.md
 aarhus-university,144,Aarhus University,,Denmark,,https://www.au.dk,,Department of Biomedicine / Bioimaging Core Facility,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_aarhus_university_spinning_disk_display; see real_lab/labs/aarhus-university.md
 nanjing-university,145,Nanjing University,,China (Mainland),,,,,,,pending,,
-universiti-sains-malaysia-usm,146,Universiti Sains Malaysia (USM),,Malaysia,,,,,,,pending,,
+universiti-sains-malaysia-usm,146,Universiti Sains Malaysia (USM),,Malaysia,,https://informm.usm.my,,INFORMM equipment facility,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_usm_pfge_display; see real_lab/labs/universiti-sains-malaysia-usm.md
 technische-universit-t-berlin-tu-berlin,147,Technische Universität Berlin (TU Berlin),,Germany,,https://www.tu.berlin,,Chair of Environmental Microbiomics (umbio),microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_tu_berlin_flow_cytometer_display; see real_lab/labs/technische-universit-t-berlin-tu-berlin.md
 universiti-putra-malaysia-upm,148,Universiti Putra Malaysia (UPM),,Malaysia,,,,,,,pending,,
 king-abdulaziz-university-kau,149,King Abdulaziz University (KAU),,Saudi Arabia,,,,,,,pending,,
 indian-institute-of-technology-delhi-iitd,150,Indian Institute of Technology Delhi (IITD),,India,,,,,,,pending,,
 university-of-bath,150,University of Bath,,United Kingdom,,,,,,,pending,,
-michigan-state-university,152,Michigan State University,,United States,,,,,,,pending,,
+michigan-state-university,152,Michigan State University,,United States,,https://rtsf.natsci.msu.edu,,RTSF Genomics Core,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_msu_quantstudio_display; see real_lab/labs/michigan-state-university.md
 nagoya-university,152,Nagoya University,,Japan,,https://en.nagoya-u.ac.jp,,Institute of Transformative Bio-Molecules (ITbM) / Live Imaging Center,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_nagoya_university_palm_display; see real_lab/labs/nagoya-university.md
 texas-a-m-university,154,Texas A&M University,,United States,,,,,,,pending,,
 university-of-geneva,155,University of Geneva,,Switzerland,,https://www.unige.ch,,Faculty of Medicine / Bioimaging Core Facility,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_geneva_university_slide_scanner_display; see real_lab/labs/university-of-geneva.md

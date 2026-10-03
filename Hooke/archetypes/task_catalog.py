@@ -2034,6 +2034,39 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="ExeterUniversityEmTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_usc_genomics_core_display",
+            description=(
+                "A benchtop genomics instrument with a hinged loading lid in the Molecular "
+                "Genomics Core (MGC), Norris Research Tower, USC Health Sciences Campus (display "
+                "only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-southern-california.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UscGenomicsCoreTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_usm_pfge_display",
+            description=(
+                "A pulsed-field gel electrophoresis (PFGE) system with a hinged buffer-chamber "
+                "lid in the INFORMM equipment facility, Universiti Sains Malaysia (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/universiti-sains-malaysia-usm.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UsmPfgeTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_msu_quantstudio_display",
+            description=(
+                "An ABI QuantStudio 7 Flex real-time PCR system with a hinged sample-plate "
+                "loading door in the RTSF Genomics Core, Michigan State University (display only, "
+                "simplified representative geometry -- see real_lab/labs/michigan-state-university.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="MsuQuantstudioTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
