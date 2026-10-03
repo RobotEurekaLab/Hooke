@@ -38,3 +38,14 @@ RiceUniversityMaskAlignerTask, RiceUniversityMaskAlignerExpert = make_static_tas
         "real_lab/labs/rice-university.md)"
     ),
 ))
+
+AarhusUniversitySpinningDiskTask, AarhusUniversitySpinningDiskExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_aarhus_university_spinning_disk_display",
+    scene_file="mani_real_lab_aarhus_university_spinning_disk.xml",
+    prompt=(
+        "a spinning-disk confocal microscope with a rotating objective "
+        "turret in the Bioimaging Core Facility, Skou Building 1116 Room "
+        "256, Aarhus University (simplified representation; see "
+        "real_lab/labs/aarhus-university.md)"
+    ),
+))

@@ -1279,6 +1279,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="RiceUniversityMaskAlignerTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_aarhus_university_spinning_disk_display",
+            description=(
+                "A spinning-disk confocal microscope with a rotating objective turret in the "
+                "Bioimaging Core Facility, Skou Building 1116 Room 256, Aarhus University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/aarhus-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="AarhusUniversitySpinningDiskTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
