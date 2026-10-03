@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_geneva_university_slide_scanner">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.16 0.13 0.07" pos="0 0 0.07" rgba="0.88 0.88 0.9 1" class="body"/>
+      <geom type="box" size="0.14 0.01 0.02" pos="0 -0.13 0.09" rgba="0.1 0.1 0.12 1" class="body"/>
+      <geom type="box" size="0.03 0.02 0.01" pos="0.1 -0.1 0.145" rgba="0.1 0.35 0.75 1" class="body"/>
+      <body name="slide_tray" pos="0.0 -0.13 0.09">
+        <joint name="slide_tray_joint" type="slide" axis="0 1 0" range="0 0.12" damping="1.2" frictionloss="0.6"/>
+  <geom type="box" size="0.13 0.09 0.006" pos="0 -0.09 0" rgba="0.75 0.75 0.78 1" class="body"/>
+  <geom type="box" size="0.02 0.012 0.002" pos="-0.08 -0.09 0.008" rgba="0.9 0.9 0.92 1" class="body"/>
+  <geom type="box" size="0.02 0.012 0.002" pos="-0.03 -0.09 0.008" rgba="0.9 0.9 0.92 1" class="body"/>
+  <geom type="box" size="0.02 0.012 0.002" pos="0.02 -0.09 0.008" rgba="0.9 0.9 0.92 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

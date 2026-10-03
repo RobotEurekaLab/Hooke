@@ -1366,6 +1366,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="KhalifaUniversityTemTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_geneva_university_slide_scanner_display",
+            description=(
+                "An Olympus VS120-style slide scanner with a sliding slide tray in Room "
+                "C06.1533.a, Bioimaging Core Facility, CMU Building C, University of Geneva "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-geneva.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="GenevaUniversitySlideScannerTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

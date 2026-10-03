@@ -126,3 +126,14 @@ KhalifaUniversityTemTask, KhalifaUniversityTemExpert = make_static_task(StaticDi
         "real_lab/labs/khalifa-university-of-science-and-technology.md)"
     ),
 ))
+
+GenevaUniversitySlideScannerTask, GenevaUniversitySlideScannerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_geneva_university_slide_scanner_display",
+    scene_file="mani_real_lab_geneva_university_slide_scanner.xml",
+    prompt=(
+        "an Olympus VS120-style slide scanner with a sliding slide tray "
+        "in Room C06.1533.a, Bioimaging Core Facility, CMU Building C, "
+        "University of Geneva (simplified representation; see "
+        "real_lab/labs/university-of-geneva.md)"
+    ),
+))
