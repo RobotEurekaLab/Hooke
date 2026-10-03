@@ -1486,6 +1486,60 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="BaselUniversityLmdTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_ukm_pcr_display",
+            description=(
+                "A gradient PCR thermocycler with a hinged heating-block lid in the Genomics Lab, "
+                "INBIOSIS, Universiti Kebangsaan Malaysia (display only, simplified representative "
+                "geometry -- see real_lab/labs/universiti-kebangsaan-malaysia-ukm.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UkmPcrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_eindhoven_microfab_display",
+            description=(
+                "A femtosecond-laser micromachining setup with a swinging optics arm in the TU/e "
+                "Microfab Lab, Building 15 Gemini-Noord, Eindhoven University of Technology "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/eindhoven-university-of-technology.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="EindhovenMicrofabTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_leiden_university_cryoem_display",
+            description=(
+                "A Titan Krios-style cryo-electron microscope with a cryo-dewar and hinged "
+                "specimen airlock in the NeCEN facility, Gorlaeus Laboratory, Leiden University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/leiden-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="LeidenUniversityCryoemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_queen_mary_sequencer_display",
+            description=(
+                "A multi-capillary DNA sequencer with a hinged loading door in the Barts and the "
+                "London Genome Centre, Queen Mary University of London (display only, simplified "
+                "representative geometry -- see real_lab/labs/queen-mary-university-of-london.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="QueenMarySequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_gothenburg_university_maldi_display",
+            description=(
+                "A MALDI imaging mass spectrometer with a hinged sample-plate loading door in the "
+                "Centre for Cellular Imaging, University of Gothenburg (display only, simplified "
+                "representative geometry -- see real_lab/labs/university-of-gothenburg.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="GothenburgUniversityMaldiTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

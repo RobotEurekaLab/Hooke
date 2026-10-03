@@ -252,3 +252,58 @@ BaselUniversityLmdTask, BaselUniversityLmdExpert = make_static_task(StaticDispla
         "representation; see real_lab/labs/university-of-basel.md)"
     ),
 ))
+
+UkmPcrTask, UkmPcrExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_ukm_pcr_display",
+    scene_file="mani_real_lab_ukm_pcr.xml",
+    prompt=(
+        "a gradient PCR thermocycler with a hinged heating-block lid in "
+        "the Genomics Lab, INBIOSIS, Universiti Kebangsaan Malaysia "
+        "(simplified representation; see "
+        "real_lab/labs/universiti-kebangsaan-malaysia-ukm.md)"
+    ),
+))
+
+EindhovenMicrofabTask, EindhovenMicrofabExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_eindhoven_microfab_display",
+    scene_file="mani_real_lab_eindhoven_microfab.xml",
+    prompt=(
+        "a femtosecond-laser micromachining setup with a swinging optics "
+        "arm in the TU/e Microfab Lab, Building 15 Gemini-Noord, "
+        "Eindhoven University of Technology (simplified representation; "
+        "see real_lab/labs/eindhoven-university-of-technology.md)"
+    ),
+))
+
+LeidenUniversityCryoemTask, LeidenUniversityCryoemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_leiden_university_cryoem_display",
+    scene_file="mani_real_lab_leiden_university_cryoem.xml",
+    prompt=(
+        "a Titan Krios-style cryo-electron microscope with a cryo-dewar "
+        "and hinged specimen airlock in the NeCEN facility, Gorlaeus "
+        "Laboratory, Leiden University (simplified representation; see "
+        "real_lab/labs/leiden-university.md)"
+    ),
+))
+
+QueenMarySequencerTask, QueenMarySequencerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_queen_mary_sequencer_display",
+    scene_file="mani_real_lab_queen_mary_sequencer.xml",
+    prompt=(
+        "a multi-capillary DNA sequencer with a hinged loading door in "
+        "the Barts and the London Genome Centre, Queen Mary University "
+        "of London (simplified representation; see "
+        "real_lab/labs/queen-mary-university-of-london.md)"
+    ),
+))
+
+GothenburgUniversityMaldiTask, GothenburgUniversityMaldiExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_gothenburg_university_maldi_display",
+    scene_file="mani_real_lab_gothenburg_university_maldi.xml",
+    prompt=(
+        "a MALDI imaging mass spectrometer with a hinged sample-plate "
+        "loading door in the Centre for Cellular Imaging, University of "
+        "Gothenburg (simplified representation; see "
+        "real_lab/labs/university-of-gothenburg.md)"
+    ),
+))
