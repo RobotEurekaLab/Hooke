@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_groningen_university_cell_sorter">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.15 0.12 0.11" pos="0 0 0.11" rgba="0.85 0.85 0.87 1" class="body"/>
+      <geom type="box" size="0.045 0.006 0.0275" pos="-0.075 -0.108 0.165" rgba="0.05 0.45 0.65 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.008" pos="0.045 0.036 0.225" rgba="0.8 0.1 0.1 1" class="body"/>
+      <geom type="cylinder" size="0.012 0.015" pos="0.1 0.08 0.225" rgba="0.85 0.3 0.1 1" class="body"/>
+      <geom type="cylinder" size="0.012 0.015" pos="0.1 0.04 0.225" rgba="0.1 0.4 0.75 1" class="body"/>
+      <body name="sample_probe_arm" pos="-0.15 0.0 0.2">
+        <joint name="sample_probe_arm_joint" type="hinge" axis="0 1 0" range="-1.2 0" damping="0.5" frictionloss="0.2"/>
+  <geom type="box" size="0.06 0.012 0.01" pos="0.06 0 0" rgba="0.2 0.2 0.22 1" class="body"/>
+  <geom type="cylinder" size="0.004 0.03" pos="0.12 0 -0.03" rgba="0.75 0.75 0.78 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

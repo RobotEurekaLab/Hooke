@@ -1388,6 +1388,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="UncLightsheetTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_groningen_university_cell_sorter_display",
+            description=(
+                "A SORP BD FACSAria-style flow cytometry cell sorter with a swinging sample "
+                "probe arm in the GBB Dedicated Research Facilities, Linnaeusborg, University of "
+                "Groningen (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-groningen.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="GroningenUniversityCellSorterTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

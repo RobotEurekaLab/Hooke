@@ -149,3 +149,14 @@ UncLightsheetTask, UncLightsheetExpert = make_static_task(StaticDisplaySpec(
         "real_lab/labs/university-of-north-carolina-chapel-hill.md)"
     ),
 ))
+
+GroningenUniversityCellSorterTask, GroningenUniversityCellSorterExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_groningen_university_cell_sorter_display",
+    scene_file="mani_real_lab_groningen_university_cell_sorter.xml",
+    prompt=(
+        "a SORP BD FACSAria-style flow cytometry cell sorter with a "
+        "swinging sample probe arm in the GBB Dedicated Research "
+        "Facilities, Linnaeusborg, University of Groningen (simplified "
+        "representation; see real_lab/labs/university-of-groningen.md)"
+    ),
+))
