@@ -1300,6 +1300,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="CurtinUniversitySemTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_emory_university_sequencer_display",
+            description=(
+                "A benchtop DNA sequencer with a slide-out flow-cell drawer in the Emory "
+                "Integrated Genomics Core, Woodruff Memorial Research Building, Emory University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/emory-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="EmoryUniversitySequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

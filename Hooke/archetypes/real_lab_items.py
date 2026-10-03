@@ -59,3 +59,14 @@ CurtinUniversitySemTask, CurtinUniversitySemExpert = make_static_task(StaticDisp
         "representation; see real_lab/labs/curtin-university.md)"
     ),
 ))
+
+EmoryUniversitySequencerTask, EmoryUniversitySequencerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_emory_university_sequencer_display",
+    scene_file="mani_real_lab_emory_university_sequencer.xml",
+    prompt=(
+        "a benchtop DNA sequencer with a slide-out flow-cell drawer in "
+        "the Emory Integrated Genomics Core, Woodruff Memorial Research "
+        "Building, Emory University (simplified representation; see "
+        "real_lab/labs/emory-university.md)"
+    ),
+))

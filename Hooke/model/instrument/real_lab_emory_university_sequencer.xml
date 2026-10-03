@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_emory_university_sequencer">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.17 0.15 0.1" pos="0 0 0.1" rgba="0.95 0.95 0.96 1" class="body"/>
+      <geom type="box" size="0.051000000000000004 0.0075 0.025" pos="-0.085 -0.135 0.15000000000000002" rgba="0.1 0.3 0.8 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.008" pos="0.051000000000000004 0.045 0.20500000000000002" rgba="0.8 0.1 0.1 1" class="body"/>
+      <body name="sample_drawer" pos="0 -0.15 0.05">
+        <joint name="sample_drawer_joint" type="slide" axis="0 1 0" range="0 0.1" damping="1.2" frictionloss="0.6"/>
+  <geom type="box" size="0.1 0.015 0.015" pos="0 0 0" rgba="0.3 0.3 0.33 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
