@@ -1322,6 +1322,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="UnicampAfmTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_loughborough_university_nmr_display",
+            description=(
+                "A benchtop NMR spectrometer with a hinged sample port in the WPL.2.09 Chemistry "
+                "Synthesis Laboratory, STEMLab building, Loughborough University (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/loughborough-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="LoughboroughUniversityNmrTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

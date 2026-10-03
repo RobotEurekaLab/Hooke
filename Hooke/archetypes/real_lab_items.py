@@ -82,3 +82,14 @@ UnicampAfmTask, UnicampAfmExpert = make_static_task(StaticDisplaySpec(
         "real_lab/labs/universidade-estadual-de-campinas-unicamp.md)"
     ),
 ))
+
+LoughboroughUniversityNmrTask, LoughboroughUniversityNmrExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_loughborough_university_nmr_display",
+    scene_file="mani_real_lab_loughborough_university_nmr.xml",
+    prompt=(
+        "a benchtop NMR spectrometer with a hinged sample port in the "
+        "WPL.2.09 Chemistry Synthesis Laboratory, STEMLab building, "
+        "Loughborough University (simplified representation; see "
+        "real_lab/labs/loughborough-university.md)"
+    ),
+))
