@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_waseda_university_jem2100f">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.13 0.11 0.02" pos="0 0 0.02" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.055 0.19" pos="0 0 0.23" rgba="0.22 0.24 0.27 1" class="body"/>
+      <geom type="cylinder" size="0.03 0.02" pos="0 0 0.44" rgba="0.15 0.15 0.17 1" class="body"/>
+      <body name="goniometer_stage" pos="0.0 0.0 0.06">
+        <joint name="goniometer_stage_joint" type="hinge" axis="1 0 0" range="-0.5 0.5" damping="0.5" frictionloss="0.2"/>
+  <geom type="box" size="0.05 0.05 0.006" pos="0 0 0" rgba="0.75 0.75 0.78 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
