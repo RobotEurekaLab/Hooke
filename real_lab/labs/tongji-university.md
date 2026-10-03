@@ -24,17 +24,19 @@ Confirmed facts:
 - A primary BMSC culture and differentiation teaching module is run for medical students, published/documented since ~2012 with a 2021 blended-learning update. Source: https://pubmed.ncbi.nlm.nih.gov/38189805/
 
 Needs inference/uncertain:
-- Existence and exact composition of the "seven sub-platform public instrument platform" (flow cytometry, cell imaging, EM, etc.) — reported only through search-engine AI summaries citing life.tongji.edu.cn, not a page I fetched directly; direct fetch of the School of Life Sciences overview page did not surface this platform's own dedicated page.
+- Existence and exact composition of the "seven sub-platform public instrument platform" (flow cytometry, cell imaging, EM, etc.) — the ¥120M+/seven-sub-platform figure is now corroborated by multiple independent search results (college news, recruitment postings, and the college-overview summary), but still traces only to search-engine synthesis of life.tongji.edu.cn content, not a dedicated platform page this agent could locate and fetch directly.
 - Whether Prof. Shaorong Gao's own lab has a distinct, identifiable physical space beyond the general school.
+- A 2023-dated reference (from search synthesis, not directly fetched) names a "盛哲津" (Sheng Zhejin) as platform director — not independently confirmed and may be outdated.
 
 Key evidence gaps:
-- Could not locate and directly fetch the Public Instrument Platform's own webpage despite several targeted searches.
-- No photos, room numbers, or specific equipment model names confirmed firsthand.
+- A second, deeper search pass — including site-restricted searches on life.tongji.edu.cn and name-based searches for platform staff — still could not locate or fetch the Public Instrument Platform's own dedicated webpage (the college's navigation menu does not expose a direct link to it; it is only mentioned in passing within news articles and the college-overview page).
+- One directly fetched news article (https://life.tongji.edu.cn/67/4f/c12613a354127/page.htm, about a platform-run "Discovering the Beauty of Science" research-image competition) confirms the platform is real and active, and places an award ceremony "in the second-floor hall of our college" — but this is an event location, not the platform's own lab/instrument room.
+- No photos, room numbers, or specific equipment model names confirmed firsthand for the instrument platform itself.
 
 Material use & authorization status: unknown / not yet checked — do not claim permission was granted
 
 Screening conclusion: needs more material first
-Priority & reason: Medium priority — real department and a real, published teaching/research wet-lab protocol exist, but the strongest-sounding facility (instrument platform) is only attested second-hand via search synthesis, not a page this agent actually read. Light pass only.
-Overlap with other candidates: none noticed
-Most important next action: Directly locate and fetch the School of Life Sciences and Technology's own instrument-platform subpage (try navigating from https://life.tongji.edu.cn/main.htm rather than search) to verify the seven-sub-platform claim and get equipment models/location.
+Priority & reason: Medium priority — real department and a real, published teaching/research wet-lab protocol exist, and the instrument platform's existence/scale (seven sub-platforms, ¥120M+) is now corroborated across multiple independent sources including one directly-fetched news article confirming it is active (hosts public events, has a budget/profile worth press coverage). However, despite two search passes a dedicated platform page with room numbers or equipment models could not be located — this appears to be a genuine gap (the platform may not maintain a standalone public webpage) rather than a search-effort shortfall.
+Overlap with other candidates: Discipline overlap (public instrument/core facility model) with Emory, ASU, and Wuhan University candidates in the broader project.
+Most important next action: Try contacting the School of Life Sciences and Technology directly (or searching Chinese academic forums / Xiaohongshu / Bilibili for student lab-tour content, which sometimes surfaces platform room numbers and equipment photos that official pages omit), since two rounds of site-search and direct navigation did not surface a dedicated platform page.
 Researcher/reviewer/date: AI research agent, 2026-10-03

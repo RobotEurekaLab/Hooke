@@ -2067,6 +2067,61 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="MsuQuantstudioTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_uam_madrid_stellaris_display",
+            description=(
+                "A Leica Stellaris 8 confocal microscope with FLIM/STED modules and a rotating "
+                "filter turret in the SMOA Advanced Optical Microscopy Facility, Lab 310, CBM, "
+                "Universidad Autonoma de Madrid (display only, simplified representative "
+                "geometry -- see real_lab/labs/universidad-aut-noma-de-madrid.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UamMadridStellarisTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_minnesota_university_ctrap_display",
+            description=(
+                "A LUMICKS C-Trap optical-tweezers instrument with a sliding microfluidic chip "
+                "stage in the University Imaging Centers, Jackson Hall, University of Minnesota "
+                "Twin Cities (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-minnesota-twin-cities.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="MinnesotaUniversityCtrapTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_king_saud_gammacell_display",
+            description=(
+                "A Gammacell 220 sample irradiator with a sliding sample drawer in the Central "
+                "Laboratory, College of Science, King Saud University (display only, simplified "
+                "representative geometry -- see real_lab/labs/king-saud-university.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KingSaudGammacellTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_hamburg_university_confocal_display",
+            description=(
+                "A Leica/Nikon/Zeiss-style confocal microscope with a rotating filter turret in "
+                "the Technology Platform Light Microscopy, Universitat Hamburg (display only, "
+                "simplified representative geometry -- see real_lab/labs/universit-t-hamburg.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="HamburgUniversityConfocalTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_uclouvain_nmr_display",
+            description=(
+                "A 600 MHz FT-NMR spectrometer with a hinged sample-insertion port in the NMR "
+                "Platform, IMCN, Universite Catholique de Louvain (display only, simplified "
+                "representative geometry -- see "
+                "real_lab/labs/universit-catholique-de-louvain-uclouvain.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UclouvainNmrTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

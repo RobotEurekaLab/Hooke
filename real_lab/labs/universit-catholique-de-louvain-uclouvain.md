@@ -3,38 +3,41 @@
 lab_id: universit-catholique-de-louvain-uclouvain-01
 School/institution: Université catholique de Louvain (UCLouvain)
 Institution type: university
-Official homepage & verified domain: https://uclouvain.be (confirmed — chemistry/IMCN pages at uclouvain.be)
+Official homepage & verified domain: https://uclouvain.be (confirmed — IMCN pages at uclouvain.be)
 Department/research center: Institute of Condensed Matter and Nanosciences (IMCN), Faculty of Sciences, UCLouvain — https://uclouvain.be/en/research-institutes/imcn/most/research
-Research group or shared facility name: MOST research unit (Molecular Chemistry, Materials and Catalysis) within IMCN — comprising 12 named research groups; no single overarching "lab" name beyond MOST was found.
-PI/managing unit: 12 named PIs confirmed directly from the MOST research page: Damien Debecker, Marc de Wergifosse, Benjamin Elias, Yaroslav Filinchuk, Eric Gaigneaux, Yann Garcia, Sophie Hermans, Tom Leyssens, Ludovic Troian-Gautier, Olivier Riant, Raphaël Robiette, Michaël Singleton, Alexandru Vlad. Source: https://uclouvain.be/en/research-institutes/imcn/most/research. (Note: this list has 13 names against a stated "12 research groups" — likely one PI co-leads with another; not reconciled this round.)
-Location, room, material period: not found — no building/room address located; UCLouvain's main science campus is in Louvain-la-Neuve, Belgium (general knowledge, not independently re-confirmed via a fetched address this round).
+Research group or shared facility name: NMR Platform (Nuclear Magnetic Resonance), a shared technology platform within IMCN — https://uclouvain.be/en/research-institutes/imcn/nmr-new — serving the MOST research unit (Molecular Chemistry, Materials and Catalysis, 12 research groups) among others.
+PI/managing unit: Mrs Gabriella Barozzino Consiglio, NMR Platform Manager. Phone: 010/47.90.92. Email: gabriella.barozzino@uclouvain.be — per https://uclouvain.be/en/research-institutes/imcn/nmr-new. The MOST unit itself lists 12-13 named PIs including Damien Debecker, Benjamin Elias, Yaroslav Filinchuk, Yann Garcia, Sophie Hermans, Olivier Riant, Raphaël Robiette, Ludovic Troian-Gautier, Alexandru Vlad, among others — per https://uclouvain.be/en/research-institutes/imcn/most/research.
+Location, room, material period: Louvain-la-Neuve, Belgium (IMCN's general campus location); no specific building/room number found for the NMR platform despite a direct fetch of its own page. Material period not stated.
 
-Research area: Organic/inorganic synthesis, heterogeneous catalysis and biocatalysis, theoretical quantum chemistry, supramolecular photochemistry, metal hydrides/hydrogen storage, crystal engineering, magnetic materials, carbon nanotube/graphene functionalization, pharmaceutical crystal engineering, solar fuels, transition-metal catalysis, biomimetic/supramolecular chemistry, energy storage/electrochemistry. Source: https://uclouvain.be/en/research-institutes/imcn/most/research
-Specific experiments/research subjects: Two individually named groups with specific stated focus: Prof. Raphaël Robiette (organic/physical organic chemistry — reactivity, stereoselectivity, synthesis strategy) and Prof. Ludovic Troian-Gautier (solar-fuel photochemistry, inorganic/organic synthesis, (spectro)electrochemistry, nanomaterial design) — per earlier search-result summary citing https://uclouvain.be/en/research-institutes/imcn/most/prof-ludovic-troian-gautier (not independently re-fetched for full detail this round).
-Main equipment & unconfirmed models: Not found — the MOST unit page mentions operation of the "Lavoisier chemicals store" (a shared chemical-supply resource, confirming real, ongoing bench chemistry), but no specific instrument models or room-level lab equipment were found.
-Target room/area for reconstruction: not identified
+Research area: Organic/inorganic synthesis, heterogeneous catalysis and biocatalysis, supramolecular photochemistry, crystal engineering, energy storage/electrochemistry, and structural characterization by NMR — spanning the 12 MOST research groups. Source: https://uclouvain.be/en/research-institutes/imcn/most/research and https://uclouvain.be/en/research-institutes/imcn/nmr-new
+Specific experiments/research subjects: Structural characterization by multinuclear NMR, including DOSY (diffusion-ordered spectroscopy) and reaction-mechanism analysis, serving UCLouvain members, external academics, and industrial clients — per https://uclouvain.be/en/research-institutes/imcn/nmr-new. The platform also offers routine autonomous use after training, with staff-operated specialized measurements on the 600 MHz system.
+Main equipment & unconfirmed models: Three liquid-state FT-NMR spectrometers — two at 400 MHz and one at 600 MHz — confirmed directly from the platform's own page (https://uclouvain.be/en/research-institutes/imcn/nmr-new). Specific manufacturer/model (e.g., Bruker Avance series) was not stated on the page and remains unconfirmed. A separate UCLouvain technology-platforms directory (https://uclouvain.be/en/technology-platforms/equipement-and-infrastructure) lists other chemistry-adjacent platforms — Structural and Molecular Analysis (ASM, with ICP-MS/LC-MS-MS/X-ray diffractometer), MASSMET and MASSPROT (mass spectrometry), MOCA and LACaMI (mineral/organic chemical analysis with ICP, XRD) — but without room numbers or contact names; not independently pursued as the primary candidate this round.
+Target room/area for reconstruction: Not identified at room level — facility-level location (IMCN, Louvain-la-Neuve) only, with a named manager and specified spectrometer field strengths.
 
-Space evidence: none found (no address, photos, or floor plan)
-Equipment evidence: none found directly — only the indirect "Lavoisier chemicals store" reference confirming real wet-chemistry activity.
-Operation/process evidence: The existence of a shared chemical store for 12 groups is indirect evidence of active, ongoing synthesis lab operations — https://uclouvain.be/en/research-institutes/imcn/most/research
-Scale/dimension basis available: unknown
+Space evidence: No street address, building, or room number found despite directly fetching the facility's own page. No photographs retrieved.
+Equipment evidence: Specific spectrometer count and field strengths (2× 400 MHz, 1× 600 MHz) confirmed directly; manufacturer/model not stated.
+Operation/process evidence: Access policy described directly — trained users operate routine measurements autonomously; staff perform specialized 600 MHz measurements; service extends to external academic and industrial clients — https://uclouvain.be/en/research-institutes/imcn/nmr-new
+Scale/dimension basis available: unknown.
 
 Confirmed facts:
-- MOST (within IMCN) comprises 12 stated research groups covering a broad range of synthetic/physical chemistry topics, with the 13 PI names listed above. Source: https://uclouvain.be/en/research-institutes/imcn/most/research
-- The unit operates a shared "Lavoisier chemicals store." Source: same.
+- UCLouvain's NMR Platform, within IMCN, operates three liquid-state FT-NMR spectrometers (2× 400 MHz, 1× 600 MHz). Source: https://uclouvain.be/en/research-institutes/imcn/nmr-new
+- Gabriella Barozzino Consiglio is the named platform manager, with listed phone and email. Source: same.
+- The platform serves the 12-group MOST research unit (organic/inorganic synthesis, catalysis, materials chemistry) plus external users. Source: same and https://uclouvain.be/en/research-institutes/imcn/most/research
+- A separate, earlier search-engine summary (not independently re-confirmed by direct fetch) claimed IMCN operates two 4-hand gloveboxes with integrated microscopes and a "Solvent-box" 2-hand glovebox, installed 2013-2014 — treat as unconfirmed pending direct-page verification.
 
 Needs inference/uncertain:
-- Which, if any, individual PI's lab has a specific identifiable physical space (e.g., glovebox, Schlenk line) suitable for reconstruction — not checked at individual-group-page level this round.
-- Reconciliation of 12-groups-vs-13-names discrepancy.
+- Spectrometer manufacturer/model (likely Bruker, industry-standard, but not confirmed on the page).
+- Building/room location of the NMR platform.
+- Whether the gloveboxes reported in an earlier search summary are real, current, and co-located with the NMR platform or in a separate synthesis lab.
 
 Key evidence gaps:
-- No address, room number, equipment model, or photo found.
-- No individual lab page fetched.
+- No building/room number, photos, or floor plan for the NMR platform.
+- Glovebox claim not independently verified via direct fetch this round.
 
-Material use & authorization status: unknown / not yet checked — do not claim permission was granted
+Material use & authorization status: unknown / not yet checked — do not claim permission was granted.
 
 Screening conclusion: needs more material first
-Priority & reason: Lower-medium priority — a real, large, named synthetic-chemistry research unit with many named PIs is confirmed, but no equipment/space-level evidence was found in this light pass.
-Overlap with other candidates: Discipline overlap (organic synthesis chemistry) with Queen's University and Deakin candidates in this batch.
-Most important next action: Fetch individual PI pages (e.g., Robiette, Troian-Gautier, Riant) for lab-specific equipment (glovebox, Schlenk line, etc.) and room/building information; also check uclouvain.be/fr/facultes/fasb/infrastructure.html (found in initial search but not fetched) for shared chemistry infrastructure.
+Priority & reason: Medium priority — a real, actively operated, named shared facility with a named manager and specific equipment counts (confirmed directly from its own page), serving a large, real synthetic-chemistry research unit. Room-level location and manufacturer/model detail are still missing, and photographic evidence is entirely absent.
+Overlap with other candidates: Discipline overlap (organic synthesis / analytical chemistry core) with Queen's University, Universidad Autónoma de Madrid (if its EM/flow-cytometry cores are pursued), and Deakin candidates in this project.
+Most important next action: Directly fetch https://uclouvain.be/en/research-institutes/imcn/most/prof-ludovic-troian-gautier or https://uclouvain.be/en/research-institutes/imcn/most/prof-raphael-robiette for individual PI lab pages that may show glovebox/Schlenk-line photos and room numbers; separately, fetch the IMCN glovebox project page (if it still exists) to verify the two-glovebox claim first-hand.
 Researcher/reviewer/date: AI research agent, 2026-10-03

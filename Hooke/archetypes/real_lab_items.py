@@ -850,3 +850,60 @@ MsuQuantstudioTask, MsuQuantstudioExpert = make_static_task(StaticDisplaySpec(
         "real_lab/labs/michigan-state-university.md)"
     ),
 ))
+
+UamMadridStellarisTask, UamMadridStellarisExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_uam_madrid_stellaris_display",
+    scene_file="mani_real_lab_uam_madrid_stellaris.xml",
+    prompt=(
+        "a Leica Stellaris 8 confocal microscope with FLIM/STED modules "
+        "and a rotating filter turret in the SMOA Advanced Optical "
+        "Microscopy Facility, Lab 310, CBM, Universidad Autonoma de "
+        "Madrid (simplified representation; see "
+        "real_lab/labs/universidad-aut-noma-de-madrid.md)"
+    ),
+))
+
+MinnesotaUniversityCtrapTask, MinnesotaUniversityCtrapExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_minnesota_university_ctrap_display",
+    scene_file="mani_real_lab_minnesota_university_ctrap.xml",
+    prompt=(
+        "a LUMICKS C-Trap optical-tweezers instrument with a sliding "
+        "microfluidic chip stage in the University Imaging Centers, "
+        "Jackson Hall, University of Minnesota Twin Cities (simplified "
+        "representation; see "
+        "real_lab/labs/university-of-minnesota-twin-cities.md)"
+    ),
+))
+
+KingSaudGammacellTask, KingSaudGammacellExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_king_saud_gammacell_display",
+    scene_file="mani_real_lab_king_saud_gammacell.xml",
+    prompt=(
+        "a Gammacell 220 sample irradiator with a sliding sample drawer "
+        "in the Central Laboratory, College of Science, King Saud "
+        "University (simplified representation; see "
+        "real_lab/labs/king-saud-university.md)"
+    ),
+))
+
+HamburgUniversityConfocalTask, HamburgUniversityConfocalExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_hamburg_university_confocal_display",
+    scene_file="mani_real_lab_hamburg_university_confocal.xml",
+    prompt=(
+        "a Leica/Nikon/Zeiss-style confocal microscope with a rotating "
+        "filter turret in the Technology Platform Light Microscopy, "
+        "Universitat Hamburg (simplified representation; see "
+        "real_lab/labs/universit-t-hamburg.md)"
+    ),
+))
+
+UclouvainNmrTask, UclouvainNmrExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_uclouvain_nmr_display",
+    scene_file="mani_real_lab_uclouvain_nmr.xml",
+    prompt=(
+        "a 600 MHz FT-NMR spectrometer with a hinged sample-insertion "
+        "port in the NMR Platform, IMCN, Universite Catholique de "
+        "Louvain (simplified representation; see "
+        "real_lab/labs/universit-catholique-de-louvain-uclouvain.md)"
+    ),
+))
