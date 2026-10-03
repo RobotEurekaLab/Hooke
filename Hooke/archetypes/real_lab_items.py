@@ -738,3 +738,81 @@ CapeTownBscTask, CapeTownBscExpert = make_static_task(StaticDisplaySpec(
         "real_lab/labs/university-of-cape-town.md)"
     ),
 ))
+
+GadjahMadaPromethionTask, GadjahMadaPromethionExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_gadjah_mada_promethion_display",
+    scene_file="mani_real_lab_gadjah_mada_promethion.xml",
+    prompt=(
+        "an Oxford Nanopore PromethION 24-style sequencer with a hinged "
+        "loading lid in the Integrated Genome Factory (IGF), Faculty of "
+        "Biology, Gadjah Mada University (simplified representation; "
+        "see real_lab/labs/gadjah-mada-university.md)"
+    ),
+))
+
+DeakinUniversitySemTask, DeakinUniversitySemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_deakin_university_sem_display",
+    scene_file="mani_real_lab_deakin_university_sem.xml",
+    prompt=(
+        "a JEOL IT 300-style scanning electron microscope with a "
+        "swinging EDX detector arm in the Materials Science Labs, Deakin "
+        "University (simplified representation; see "
+        "real_lab/labs/deakin-university.md)"
+    ),
+))
+
+IitkgpFesemTask, IitkgpFesemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_iitkgp_fesem_display",
+    scene_file="mani_real_lab_iitkgp_fesem.xml",
+    prompt=(
+        "a ZEISS/JEOL-style field-emission SEM with a hinged specimen "
+        "chamber door in the Central Research Facility (CRF), IIT "
+        "Kharagpur (simplified representation; see "
+        "real_lab/labs/indian-institute-of-technology-kharagpur-iit-kgp.md)"
+    ),
+))
+
+DarmstadtAemStemTask, DarmstadtAemStemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_darmstadt_aem_stem_display",
+    scene_file="mani_real_lab_darmstadt_aem_stem.xml",
+    prompt=(
+        "a JEOL ARM 200F aberration-corrected scanning transmission "
+        "electron microscope with a tilting goniometer stage in the "
+        "Advanced Electron Microscopy Division, Building L2|01 Room 52, "
+        "Technical University of Darmstadt (simplified representation; "
+        "see real_lab/labs/technical-university-of-darmstadt.md)"
+    ),
+))
+
+PolitoUltrasonicTask, PolitoUltrasonicExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_polito_ultrasonic_display",
+    scene_file="mani_real_lab_polito_ultrasonic.xml",
+    prompt=(
+        "a Vibracell VC-505 ultrasonic processor with a hinged lid in "
+        "the Chemical Synthesis Laboratory, Technological Centre in "
+        "Alessandria, Politecnico di Torino (simplified representation; "
+        "see real_lab/labs/politecnico-di-torino.md)"
+    ),
+))
+
+MasseyUniversityAbiTask, MasseyUniversityAbiExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_massey_university_abi_display",
+    scene_file="mani_real_lab_massey_university_abi.xml",
+    prompt=(
+        "an ABI 3500xl-style capillary genetic analyzer with a hinged "
+        "loading door in the Massey Genome Service, Room ScD3.15A, "
+        "Turitea Campus, Massey University (simplified representation; "
+        "see real_lab/labs/massey-university.md)"
+    ),
+))
+
+ExeterUniversityEmTask, ExeterUniversityEmExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_exeter_university_em_display",
+    scene_file="mani_real_lab_exeter_university_em.xml",
+    prompt=(
+        "an electron microscope with a swinging EDX detector arm in the "
+        "Bioimaging Centre, Geoffrey Pope Building, University of Exeter "
+        "(simplified representation; see "
+        "real_lab/labs/the-university-of-exeter.md)"
+    ),
+))

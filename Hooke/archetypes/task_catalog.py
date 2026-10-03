@@ -1958,6 +1958,82 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="CapeTownBscTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_gadjah_mada_promethion_display",
+            description=(
+                "An Oxford Nanopore PromethION 24-style sequencer with a hinged loading lid in "
+                "the Integrated Genome Factory (IGF), Faculty of Biology, Gadjah Mada University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/gadjah-mada-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="GadjahMadaPromethionTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_deakin_university_sem_display",
+            description=(
+                "A JEOL IT 300-style scanning electron microscope with a swinging EDX detector "
+                "arm in the Materials Science Labs, Deakin University (display only, simplified "
+                "representative geometry -- see real_lab/labs/deakin-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="DeakinUniversitySemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_iitkgp_fesem_display",
+            description=(
+                "A ZEISS/JEOL-style field-emission SEM with a hinged specimen chamber door in "
+                "the Central Research Facility (CRF), IIT Kharagpur (display only, simplified "
+                "representative geometry -- see "
+                "real_lab/labs/indian-institute-of-technology-kharagpur-iit-kgp.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="IitkgpFesemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_darmstadt_aem_stem_display",
+            description=(
+                "A JEOL ARM 200F aberration-corrected STEM with a tilting goniometer stage in the "
+                "Advanced Electron Microscopy Division, Building L2|01 Room 52, TU Darmstadt "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/technical-university-of-darmstadt.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="DarmstadtAemStemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_polito_ultrasonic_display",
+            description=(
+                "A Vibracell VC-505 ultrasonic processor with a hinged lid in the Chemical "
+                "Synthesis Laboratory, Technological Centre in Alessandria, Politecnico di Torino "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/politecnico-di-torino.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="PolitoUltrasonicTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_massey_university_abi_display",
+            description=(
+                "An ABI 3500xl-style capillary genetic analyzer with a hinged loading door in "
+                "the Massey Genome Service, Room ScD3.15A, Turitea Campus, Massey University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/massey-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="MasseyUniversityAbiTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_exeter_university_em_display",
+            description=(
+                "An electron microscope with a swinging EDX detector arm in the Bioimaging "
+                "Centre, Geoffrey Pope Building, University of Exeter (display only, simplified "
+                "representative geometry -- see real_lab/labs/the-university-of-exeter.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="ExeterUniversityEmTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
