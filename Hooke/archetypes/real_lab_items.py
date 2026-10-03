@@ -104,3 +104,14 @@ TwenteUniversitySputterTask, TwenteUniversitySputterExpert = make_static_task(St
         "real_lab/labs/university-of-twente.md)"
     ),
 ))
+
+NagoyaUniversityPalmTask, NagoyaUniversityPalmExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_nagoya_university_palm_display",
+    scene_file="mani_real_lab_nagoya_university_palm.xml",
+    prompt=(
+        "a PALM Combi laser microdissection and optical-tweezers "
+        "cell-manipulation microscope with a swinging laser delivery arm "
+        "in the ITbM Live Imaging Center, Nagoya University (simplified "
+        "representation; see real_lab/labs/nagoya-university.md)"
+    ),
+))

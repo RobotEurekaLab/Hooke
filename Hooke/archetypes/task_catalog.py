@@ -1344,6 +1344,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="TwenteUniversitySputterTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_nagoya_university_palm_display",
+            description=(
+                "A PALM Combi laser microdissection and optical-tweezers cell-manipulation "
+                "microscope with a swinging laser delivery arm in the ITbM Live Imaging Center, "
+                "Nagoya University (display only, simplified representative geometry -- see "
+                "real_lab/labs/nagoya-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NagoyaUniversityPalmTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
