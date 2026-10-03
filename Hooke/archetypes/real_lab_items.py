@@ -682,3 +682,59 @@ ErasmusRotterdamBiomicsTask, ErasmusRotterdamBiomicsExpert = make_static_task(St
         "real_lab/labs/erasmus-university-rotterdam.md)"
     ),
 ))
+
+AubNgsSequencerTask, AubNgsSequencerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_aub_ngs_sequencer_display",
+    scene_file="mani_real_lab_aub_ngs_sequencer.xml",
+    prompt=(
+        "a next-generation sequencing platform with a hinged loading lid "
+        "in the Genomic Profiling Program, Aida and Halim Daniel "
+        "Academic and Clinical Center, American University of Beirut "
+        "(simplified representation; see "
+        "real_lab/labs/american-university-of-beirut-aub.md)"
+    ),
+))
+
+SussexUniversityScanrTask, SussexUniversityScanrExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_sussex_university_scanr_display",
+    scene_file="mani_real_lab_sussex_university_scanr.xml",
+    prompt=(
+        "an Olympus ScanR automated high-content screening platform with "
+        "a robotic plate-handling arm in the Wolfson Centre for "
+        "Biological Imaging, University of Sussex (simplified "
+        "representation; see real_lab/labs/university-of-sussex.md)"
+    ),
+))
+
+WellingtonUniversityVucelTask, WellingtonUniversityVucelExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_wellington_university_vucel_display",
+    scene_file="mani_real_lab_wellington_university_vucel.xml",
+    prompt=(
+        "a flow-through seawater wet-lab bench with a swinging tap lever "
+        "in the Victoria University Coastal Ecology Lab (VUCEL), "
+        "Victoria University of Wellington (simplified representation; "
+        "see real_lab/labs/victoria-university-of-wellington.md)"
+    ),
+))
+
+ChileUniversityPcrTask, ChileUniversityPcrExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_chile_university_pcr_display",
+    scene_file="mani_real_lab_chile_university_pcr.xml",
+    prompt=(
+        "a PCR thermocycler with a hinged heating-block lid in the "
+        "Laboratorio de Biologia Molecular e Ingenieria Genetica, "
+        "Universidad de Chile (simplified representation; see "
+        "real_lab/labs/universidad-de-chile.md)"
+    ),
+))
+
+CapeTownBscTask, CapeTownBscExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_cape_town_bsc_display",
+    scene_file="mani_real_lab_cape_town_bsc.xml",
+    prompt=(
+        "a Class II biosafety cabinet with a sliding sash in the "
+        "Institute of Infectious Disease and Molecular Medicine (IDM), "
+        "University of Cape Town (simplified representation; see "
+        "real_lab/labs/university-of-cape-town.md)"
+    ),
+))

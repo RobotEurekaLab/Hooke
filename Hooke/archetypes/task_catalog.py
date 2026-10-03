@@ -1904,6 +1904,60 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="ErasmusRotterdamBiomicsTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_aub_ngs_sequencer_display",
+            description=(
+                "A next-generation sequencing platform with a hinged loading lid in the Genomic "
+                "Profiling Program, Aida and Halim Daniel Academic and Clinical Center, American "
+                "University of Beirut (display only, simplified representative geometry -- see "
+                "real_lab/labs/american-university-of-beirut-aub.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="AubNgsSequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_sussex_university_scanr_display",
+            description=(
+                "An Olympus ScanR automated high-content screening platform with a robotic "
+                "plate-handling arm in the Wolfson Centre for Biological Imaging, University of "
+                "Sussex (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-sussex.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="SussexUniversityScanrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_wellington_university_vucel_display",
+            description=(
+                "A flow-through seawater wet-lab bench with a swinging tap lever in the Victoria "
+                "University Coastal Ecology Lab (VUCEL) (display only, simplified representative "
+                "geometry -- see real_lab/labs/victoria-university-of-wellington.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WellingtonUniversityVucelTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_chile_university_pcr_display",
+            description=(
+                "A PCR thermocycler with a hinged heating-block lid in the Laboratorio de "
+                "Biologia Molecular e Ingenieria Genetica, Universidad de Chile (display only, "
+                "simplified representative geometry -- see real_lab/labs/universidad-de-chile.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="ChileUniversityPcrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_cape_town_bsc_display",
+            description=(
+                "A Class II biosafety cabinet with a sliding sash in the Institute of Infectious "
+                "Disease and Molecular Medicine (IDM), University of Cape Town (display only, "
+                "simplified representative geometry -- see real_lab/labs/university-of-cape-town.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="CapeTownBscTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
