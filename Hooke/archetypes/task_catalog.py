@@ -2122,6 +2122,128 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="UclouvainNmrTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_freiburg_university_sted_display",
+            description=(
+                "A Leica TCS SP8 STED 3x super-resolution microscope with a rotating filter "
+                "turret in the Life Imaging Center (LIC), Hilde-Mangold-Haus, University of "
+                "Freiburg (display only, simplified representative geometry -- see "
+                "real_lab/labs/albert-ludwigs-universitaet-freiburg.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="FreiburgUniversityStedTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_iisc_apt_display",
+            description=(
+                "An atom probe tomography (APT) system with a tilting specimen stage in the "
+                "Advanced Facility for Microscopy and Microanalysis (AFMM), Indian Institute of "
+                "Science (display only, simplified representative geometry -- see "
+                "real_lab/labs/indian-institute-of-science.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="IiscAptTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ncku_jem1400_display",
+            description=(
+                "A JEOL JEM-1400 transmission electron microscope with a tilting goniometer "
+                "stage in the TEM service, Room 82-B139, Medical Building, National Cheng Kung "
+                "University (display only, simplified representative geometry -- see "
+                "real_lab/labs/national-cheng-kung-university-ncku.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NckuJem1400Task", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_nthu_cms_display",
+            description=(
+                "A ZEISS LSM 800 confocal microscope with Airyscan and a rotating filter turret "
+                "in the Confocal Microscope System (CMS) facility, Life Sciences Building II, "
+                "National Tsing Hua University (display only, simplified representative "
+                "geometry -- see real_lab/labs/national-tsing-hua-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NthuCmsTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_nycu_lsm900_display",
+            description=(
+                "A Carl Zeiss LSM900 confocal microscope with Airyscan2 and a rotating filter "
+                "turret in the Imaging Core Facility, Room 639, Library Building, Yang Ming "
+                "Campus, National Yang Ming Chiao Tung University (display only, simplified "
+                "representative geometry -- see "
+                "real_lab/labs/national-yang-ming-chiao-tung-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NycuLsm900Task", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_qut_carf_him_display",
+            description=(
+                "A Zeiss Helios Helium Ion Microscope with a hinged specimen chamber door in the "
+                "Central Analytical Research Facility (CARF), M Block, Queensland University of "
+                "Technology (display only, simplified representative geometry -- see "
+                "real_lab/labs/queensland-university-of-technology-qut.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="QutCarfHimTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_tel_aviv_university_lsm510_display",
+            description=(
+                "A Zeiss LSM 510-META confocal laser scanning microscope with a rotating filter "
+                "turret in the Rosalie and Harold Rae Brown Cancer Research Core Facility, Tel "
+                "Aviv University (display only, simplified representative geometry -- see "
+                "real_lab/labs/tel-aviv-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TelAvivUniversityLsm510Task", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_osu_cmif_lightsheet_display",
+            description=(
+                "A Miltenyi UltraMicroscope Blaze light-sheet microscope in Room 245A, Campus "
+                "Microscopy and Imaging Facility (CMIF), Biomedical Research Tower, Ohio State "
+                "University (display only, simplified representative geometry -- see "
+                "real_lab/labs/the-ohio-state-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="OsuCmifLightsheetTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_florida_university_flowcytometer_display",
+            description=(
+                "A BD Symphony S6-style flow cytometer/sorter with a hinged sample access lid in "
+                "the Cytometry & Optical Microscopy Core, Cancer & Genetics Research Complex, "
+                "University of Florida (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-florida.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="FloridaUniversityFlowcytometerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_maryland_university_jpk_afm_display",
+            description=(
+                "A JPK NanoWizard 4a atomic force microscope with a vertical scan head in the "
+                "CMNS Imaging Incubator, Physical Sciences Complex, University of Maryland, "
+                "College Park (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-maryland-college-park.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="MarylandUniversityJpkAfmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_otago_university_jsm6700f_display",
+            description=(
+                "A JEOL JSM-6700F field-emission SEM with a cryo-preparation stage and a "
+                "swinging EDX detector arm in the OMNI electron microscopy unit, Room B10, Lindo "
+                "Ferguson Building, University of Otago (display only, simplified representative "
+                "geometry -- see real_lab/labs/university-of-otago.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="OtagoUniversityJsm6700fTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

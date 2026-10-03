@@ -907,3 +907,132 @@ UclouvainNmrTask, UclouvainNmrExpert = make_static_task(StaticDisplaySpec(
         "real_lab/labs/universit-catholique-de-louvain-uclouvain.md)"
     ),
 ))
+
+FreiburgUniversityStedTask, FreiburgUniversityStedExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_freiburg_university_sted_display",
+    scene_file="mani_real_lab_freiburg_university_sted.xml",
+    prompt=(
+        "a Leica TCS SP8 STED 3x super-resolution microscope with a "
+        "rotating filter turret in the Life Imaging Center (LIC), "
+        "Hilde-Mangold-Haus, University of Freiburg (simplified "
+        "representation; see "
+        "real_lab/labs/albert-ludwigs-universitaet-freiburg.md)"
+    ),
+))
+
+IiscAptTask, IiscAptExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_iisc_apt_display",
+    scene_file="mani_real_lab_iisc_apt.xml",
+    prompt=(
+        "an atom probe tomography (APT) system with a tilting specimen "
+        "stage in the Advanced Facility for Microscopy and Microanalysis "
+        "(AFMM), Indian Institute of Science (simplified representation; "
+        "see real_lab/labs/indian-institute-of-science.md)"
+    ),
+))
+
+NckuJem1400Task, NckuJem1400Expert = make_static_task(StaticDisplaySpec(
+    name="real_lab_ncku_jem1400_display",
+    scene_file="mani_real_lab_ncku_jem1400.xml",
+    prompt=(
+        "a JEOL JEM-1400 transmission electron microscope with a "
+        "tilting goniometer stage in the TEM service, Room 82-B139, "
+        "Medical Building, National Cheng Kung University (simplified "
+        "representation; see "
+        "real_lab/labs/national-cheng-kung-university-ncku.md)"
+    ),
+))
+
+NthuCmsTask, NthuCmsExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_nthu_cms_display",
+    scene_file="mani_real_lab_nthu_cms.xml",
+    prompt=(
+        "a ZEISS LSM 800 confocal microscope with Airyscan and a "
+        "rotating filter turret in the Confocal Microscope System (CMS) "
+        "facility, Life Sciences Building II, National Tsing Hua "
+        "University (simplified representation; see "
+        "real_lab/labs/national-tsing-hua-university.md)"
+    ),
+))
+
+NycuLsm900Task, NycuLsm900Expert = make_static_task(StaticDisplaySpec(
+    name="real_lab_nycu_lsm900_display",
+    scene_file="mani_real_lab_nycu_lsm900.xml",
+    prompt=(
+        "a Carl Zeiss LSM900 confocal microscope with Airyscan2 and a "
+        "rotating filter turret in the Imaging Core Facility, Room 639, "
+        "Library Building, Yang Ming Campus, National Yang Ming Chiao "
+        "Tung University (simplified representation; see "
+        "real_lab/labs/national-yang-ming-chiao-tung-university.md)"
+    ),
+))
+
+QutCarfHimTask, QutCarfHimExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_qut_carf_him_display",
+    scene_file="mani_real_lab_qut_carf_him.xml",
+    prompt=(
+        "a Zeiss Helios Helium Ion Microscope with a hinged specimen "
+        "chamber door in the Central Analytical Research Facility "
+        "(CARF), M Block, Queensland University of Technology "
+        "(simplified representation; see "
+        "real_lab/labs/queensland-university-of-technology-qut.md)"
+    ),
+))
+
+TelAvivUniversityLsm510Task, TelAvivUniversityLsm510Expert = make_static_task(StaticDisplaySpec(
+    name="real_lab_tel_aviv_university_lsm510_display",
+    scene_file="mani_real_lab_tel_aviv_university_lsm510.xml",
+    prompt=(
+        "a Zeiss LSM 510-META confocal laser scanning microscope with a "
+        "rotating filter turret in the Rosalie and Harold Rae Brown "
+        "Cancer Research Core Facility, Tel Aviv University (simplified "
+        "representation; see real_lab/labs/tel-aviv-university.md)"
+    ),
+))
+
+OsuCmifLightsheetTask, OsuCmifLightsheetExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_osu_cmif_lightsheet_display",
+    scene_file="mani_real_lab_osu_cmif_lightsheet.xml",
+    prompt=(
+        "a Miltenyi UltraMicroscope Blaze light-sheet microscope in "
+        "Room 245A, Campus Microscopy and Imaging Facility (CMIF), "
+        "Biomedical Research Tower, Ohio State University (simplified "
+        "representation; see real_lab/labs/the-ohio-state-university.md)"
+    ),
+))
+
+FloridaUniversityFlowcytometerTask, FloridaUniversityFlowcytometerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_florida_university_flowcytometer_display",
+    scene_file="mani_real_lab_florida_university_flowcytometer.xml",
+    prompt=(
+        "a BD Symphony S6-style flow cytometer/sorter with a hinged "
+        "sample access lid in the Cytometry & Optical Microscopy Core, "
+        "Cancer & Genetics Research Complex, University of Florida "
+        "(simplified representation; see "
+        "real_lab/labs/university-of-florida.md)"
+    ),
+))
+
+MarylandUniversityJpkAfmTask, MarylandUniversityJpkAfmExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_maryland_university_jpk_afm_display",
+    scene_file="mani_real_lab_maryland_university_jpk_afm.xml",
+    prompt=(
+        "a JPK NanoWizard 4a atomic force microscope with a vertical "
+        "scan head in the CMNS Imaging Incubator, Physical Sciences "
+        "Complex, University of Maryland, College Park (simplified "
+        "representation; see "
+        "real_lab/labs/university-of-maryland-college-park.md)"
+    ),
+))
+
+OtagoUniversityJsm6700fTask, OtagoUniversityJsm6700fExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_otago_university_jsm6700f_display",
+    scene_file="mani_real_lab_otago_university_jsm6700f.xml",
+    prompt=(
+        "a JEOL JSM-6700F field-emission SEM with a cryo-preparation "
+        "stage and a swinging EDX detector arm in the OMNI electron "
+        "microscopy unit, Room B10, Lindo Ferguson Building, University "
+        "of Otago (simplified representation; see "
+        "real_lab/labs/university-of-otago.md)"
+    ),
+))
