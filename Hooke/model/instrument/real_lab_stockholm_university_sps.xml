@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_stockholm_university_sps">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.1 0.09 0.015" pos="0 0 0.015" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.018 0.1" pos="-0.07 -0.06 0.115" rgba="0.25 0.25 0.27 1" class="body"/>
+      <geom type="cylinder" size="0.018 0.1" pos="0.07 -0.06 0.115" rgba="0.25 0.25 0.27 1" class="body"/>
+      <geom type="box" size="0.09 0.07 0.012" pos="0 -0.06 0.215" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.03 0.015" pos="0 0 0.04" rgba="0.3 0.3 0.33 1" class="body"/>
+      <body name="upper_ram" pos="0.0 -0.06 0.2">
+        <joint name="upper_ram_joint" type="slide" axis="0 0 1" range="-0.06 0" damping="1.2" frictionloss="0.5"/>
+  <geom type="cylinder" size="0.03 0.015" pos="0 0 0" rgba="0.75 0.3 0.1 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
