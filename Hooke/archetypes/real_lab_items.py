@@ -307,3 +307,95 @@ GothenburgUniversityMaldiTask, GothenburgUniversityMaldiExpert = make_static_tas
         "real_lab/labs/university-of-gothenburg.md)"
     ),
 ))
+
+RmitUniversityFibsemTask, RmitUniversityFibsemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_rmit_university_fibsem_display",
+    scene_file="mani_real_lab_rmit_university_fibsem.xml",
+    prompt=(
+        "a JEOL/FEI-style dual-beam FIB-SEM with a hinged specimen "
+        "chamber door in the RMIT Microscopy and Microanalysis Facility, "
+        "Building 14, RMIT University (simplified representation; see "
+        "real_lab/labs/rmit-university.md)"
+    ),
+))
+
+McmasterUniversitySequencerTask, McmasterUniversitySequencerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_mcmaster_university_sequencer_display",
+    scene_file="mani_real_lab_mcmaster_university_sequencer.xml",
+    prompt=(
+        "a PacBio-style long-read DNA sequencer with a hinged loading "
+        "door in the McMaster Genomics Facility, Room 3N4, Health "
+        "Sciences Centre, McMaster University (simplified "
+        "representation; see real_lab/labs/mcmaster-university.md)"
+    ),
+))
+
+WustlHistologyTask, WustlHistologyExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_wustl_histology_display",
+    scene_file="mani_real_lab_wustl_histology.xml",
+    prompt=(
+        "a wide-field microscope for histology and fluorescence imaging "
+        "with a rotating filter turret in the Molecular Microbiology "
+        "Imaging Facility, Room 10302, McDonnell Pediatric Research "
+        "Building, Washington University in St. Louis (simplified "
+        "representation; see "
+        "real_lab/labs/washington-university-in-st-louis.md)"
+    ),
+))
+
+RochesterUniversitySonicatorTask, RochesterUniversitySonicatorExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_rochester_university_sonicator_display",
+    scene_file="mani_real_lab_rochester_university_sonicator.xml",
+    prompt=(
+        "a Covaris-style focused-ultrasonicator with a hinged water-bath "
+        "lid in the Rochester Genomics Center, James P. Wilmot Cancer "
+        "Institute, University of Rochester (simplified representation; "
+        "see real_lab/labs/university-of-rochester.md)"
+    ),
+))
+
+QueensKingstonMaldiTask, QueensKingstonMaldiExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_queens_kingston_maldi_display",
+    scene_file="mani_real_lab_queens_kingston_maldi.xml",
+    prompt=(
+        "a Bruker AutoFlex-style MALDI-TOF mass spectrometer with a "
+        "hinged sample-plate loading door in the Department of "
+        "Chemistry shared analytical facilities, Chernoff Hall, Queen's "
+        "University at Kingston (simplified representation; see "
+        "real_lab/labs/queen-s-university-at-kingston.md)"
+    ),
+))
+
+PadovaUniversityTemTask, PadovaUniversityTemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_padova_university_tem_display",
+    scene_file="mani_real_lab_padova_university_tem.xml",
+    prompt=(
+        "a FEI Tecnai G2-style transmission electron microscope with a "
+        "tilting goniometer specimen stage in the DiBio Imaging "
+        "Facility, University of Padova (simplified representation; see "
+        "real_lab/labs/universit-di-padova.md)"
+    ),
+))
+
+DtuNanolabFibsemTask, DtuNanolabFibsemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_dtu_nanolab_fibsem_display",
+    scene_file="mani_real_lab_dtu_nanolab_fibsem.xml",
+    prompt=(
+        "a dual-beam FIB-SEM with a hinged specimen chamber door in the "
+        "DTU Nanolab cleanroom, Building 347, Technical University of "
+        "Denmark (simplified representation; see "
+        "real_lab/labs/technical-university-of-denmark.md)"
+    ),
+))
+
+WuhanUniversityPlateReaderTask, WuhanUniversityPlateReaderExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_wuhan_university_platereader_display",
+    scene_file="mani_real_lab_wuhan_university_platereader.xml",
+    prompt=(
+        "a microplate reader with a hinged sample-tray lid on the "
+        "biochemical and molecular detection platform, Shared "
+        "Instrument Platform, College of Life Sciences, Wuhan "
+        "University (simplified representation; see "
+        "real_lab/labs/wuhan-university.md)"
+    ),
+))

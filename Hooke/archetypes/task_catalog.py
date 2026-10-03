@@ -1540,6 +1540,96 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="GothenburgUniversityMaldiTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_rmit_university_fibsem_display",
+            description=(
+                "A JEOL/FEI-style dual-beam FIB-SEM with a hinged specimen chamber door in the "
+                "RMIT Microscopy and Microanalysis Facility, Building 14, RMIT University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/rmit-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="RmitUniversityFibsemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_mcmaster_university_sequencer_display",
+            description=(
+                "A PacBio-style long-read DNA sequencer with a hinged loading door in the "
+                "McMaster Genomics Facility, Room 3N4, Health Sciences Centre, McMaster "
+                "University (display only, simplified representative geometry -- see "
+                "real_lab/labs/mcmaster-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="McmasterUniversitySequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_wustl_histology_display",
+            description=(
+                "A wide-field microscope for histology and fluorescence imaging with a rotating "
+                "filter turret in the Molecular Microbiology Imaging Facility, Room 10302, "
+                "McDonnell Pediatric Research Building, Washington University in St. Louis "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/washington-university-in-st-louis.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WustlHistologyTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_rochester_university_sonicator_display",
+            description=(
+                "A Covaris-style focused-ultrasonicator with a hinged water-bath lid in the "
+                "Rochester Genomics Center, James P. Wilmot Cancer Institute, University of "
+                "Rochester (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-rochester.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="RochesterUniversitySonicatorTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_queens_kingston_maldi_display",
+            description=(
+                "A Bruker AutoFlex-style MALDI-TOF mass spectrometer with a hinged sample-plate "
+                "loading door in the Department of Chemistry shared analytical facilities, "
+                "Chernoff Hall, Queen's University at Kingston (display only, simplified "
+                "representative geometry -- see real_lab/labs/queen-s-university-at-kingston.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="QueensKingstonMaldiTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_padova_university_tem_display",
+            description=(
+                "A FEI Tecnai G2-style transmission electron microscope with a tilting "
+                "goniometer specimen stage in the DiBio Imaging Facility, University of Padova "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/universit-di-padova.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="PadovaUniversityTemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_dtu_nanolab_fibsem_display",
+            description=(
+                "A dual-beam FIB-SEM with a hinged specimen chamber door in the DTU Nanolab "
+                "cleanroom, Building 347, Technical University of Denmark (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/technical-university-of-denmark.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="DtuNanolabFibsemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_wuhan_university_platereader_display",
+            description=(
+                "A microplate reader with a hinged sample-tray lid on the biochemical and "
+                "molecular detection platform, Shared Instrument Platform, College of Life "
+                "Sciences, Wuhan University (display only, simplified representative geometry -- "
+                "see real_lab/labs/wuhan-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WuhanUniversityPlateReaderTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
