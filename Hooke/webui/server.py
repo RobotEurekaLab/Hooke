@@ -29,6 +29,7 @@ os.environ.setdefault("MUJOCO_GL", "egl")
 from archetypes.task_catalog import CATALOG
 from webui.robot_registry import ROBOTS, robot_options_for
 from webui.task_navigation import task_navigation
+from university.catalog import catalogue as university_catalogue
 from webui.robot_scene import compose_scene, render_robot_preview
 from webui.scene_render import render_scene
 from backends.gpu_lease import GPUBusy
@@ -49,6 +50,8 @@ from webui.surface_api import bp as surface_blueprint
 app.register_blueprint(surface_blueprint)
 from webui.microscopy_api import bp as microscopy_blueprint
 app.register_blueprint(microscopy_blueprint)
+from webui.real_labs_api import bp as real_labs_blueprint, recorded_preview_path
+app.register_blueprint(real_labs_blueprint)
 
 
 def _robot_entry_json(entry) -> dict:
@@ -98,7 +101,12 @@ def api_catalog():
             "variants": VARIANTS.get(entry.name),
         })
     robots = {name: _robot_entry_json(r) for name, r in ROBOTS.items()}
-    return jsonify({"tasks": tasks, "robots": robots})
+    return jsonify({"tasks": tasks, "robots": robots, "university": university_catalogue()})
+
+
+@app.get("/api/university")
+def api_university():
+    return jsonify(university_catalogue())
 
 
 def _png_base64(image) -> str:
@@ -125,6 +133,27 @@ def api_scene():
     robot = body.get("robot") or entry.robot
     if robot not in robot_options_for(entry.robot):
         return jsonify({"error": f"Robot '{robot}' is not offered for task '{task_name}'"}), 400
+
+    if entry.category == "real_labs":
+        navigation = task_navigation(entry)
+        path = recorded_preview_path(entry.name.removeprefix("real_lab_"))
+        if path is None:
+            return jsonify(
+                error="No recorded laboratory preview is available. Open the instrument controls, "
+                      "or generate offline previews and configure HOOKE_REAL_LABS_OUTPUT.",
+                interaction_url=navigation["url"], render_mode="recorded_preview",
+            ), 404
+        with path.open("rb") as source:
+            image = source.read(16 * 1024 * 1024 + 1)
+        if len(image) > 16 * 1024 * 1024:
+            return jsonify(error="Recorded preview exceeds the 16 MiB image limit; regenerate a smaller overview.",
+                           interaction_url=navigation["url"]), 413
+        return jsonify(
+            image_png_base64=base64.b64encode(image).decode("ascii"),
+            task_info={"prefix": navigation["task_label"] + " — recorded CPU preview",
+                       "interaction_url": navigation["url"], "seed_applied": False},
+            render_mode="recorded_preview", robot=_robot_entry_json(ROBOTS[robot]),
+        )
 
     try:
         if robot == entry.robot:

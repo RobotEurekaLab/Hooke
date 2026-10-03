@@ -40,7 +40,14 @@ def task_navigation(entry: CatalogEntry) -> dict:
         "task_label": entry.name,
         "url": None,
     }
-    if entry.category == "microscopy":
+    if entry.category == "real_labs":
+        from real_labs.catalog import scenes
+        identifier = entry.name.removeprefix("real_lab_")
+        if identifier in scenes():
+            navigation.update(category_label="Research Laboratories",
+                              task_label=scenes()[identifier]["title"],
+                              url="/real-labs?" + urlencode({"scene": identifier}))
+    elif entry.category == "microscopy":
         operation = entry.name.removeprefix("microscopy_")
         navigation.update(
             category_label="Microscopy Lab",

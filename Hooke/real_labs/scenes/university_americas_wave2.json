@@ -1,0 +1,827 @@
+{
+  "scenes": [
+    {
+      "id": "mit_paoc_rotating_fluids",
+      "title": "PAOC Rotating Fluids Laboratory",
+      "institution": "PAOC Rotating Fluids Research and Teaching Laboratory",
+      "domain": "geophysical_fluid_dynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://paocweb.mit.edu/about/facilities/the-fluids-lab",
+        "https://paocweb.mit.edu/images/uploads/fluidlab_0_0.jpg"
+      ],
+      "reference_notes": "Actual room photograph inspected: freestanding round rotating table in the center, a wheeled round workstation near a tall window wall, black counters and pale cabinets along the room edge, overhead recording equipment. Official pages establish both research and teaching use, not just demonstration equipment. Single distorted room photograph; survey scale and exact current arrangement unverified. Mixed research/teaching facility; exclude course-only procedure claims.",
+      "observed_cues": [
+        "Central round table on a flared pedestal",
+        "Tall right-hand windows with horizontal blinds",
+        "Wall counters plus a separate wheeled round worktop with overhead imaging"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "room",
+      "room": {
+        "size": [
+          6.5,
+          5.4,
+          3.1
+        ],
+        "wall_color": [
+          0.8,
+          0.8,
+          0.75,
+          1
+        ],
+        "accent": [
+          0.47,
+          0.54,
+          0.57,
+          1
+        ],
+        "style": "mit_paoc_rotating_fluids",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.5,
+              0.52,
+              0.49,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.7,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "back_counter",
+          "pos": [
+            -0.6,
+            2.23,
+            0
+          ],
+          "size": [
+            4.4,
+            0.65,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.79,
+            0.76,
+            0.65,
+            1
+          ],
+          "top_color": [
+            0.12,
+            0.14,
+            0.14,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "side_counter",
+          "pos": [
+            -2.85,
+            0.8,
+            0
+          ],
+          "size": [
+            0.65,
+            2.1,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.79,
+            0.76,
+            0.65,
+            1
+          ],
+          "top_color": [
+            0.12,
+            0.14,
+            0.14,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "rotating_table",
+          "kind": "paoc_rotating_table",
+          "pos": [
+            -0.4,
+            0.25,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing apparatus; continuous grounded support modeled with estimated dimensions."
+          },
+          "role": "Index a rotating-tank calibration target",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://paocweb.mit.edu/about/facilities/the-fluids-lab",
+            "https://paocweb.mit.edu/images/uploads/fluidlab_0_0.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://paocweb.mit.edu/images/uploads/fluidlab_0_0.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/mit_rotating_fluids.img"
+          ],
+          "supports": "Actual room photograph inspected: freestanding round rotating table in the center, a wheeled round workstation near a tall window wall, black counters and pale cabinets along the room edge, overhead recording equipment. Official pages establish both research and teaching use, not just demonstration equipment."
+        }
+      ],
+      "layout_rationale": [
+        "Central round table on a flared pedestal",
+        "Tall right-hand windows with horizontal blinds",
+        "Wall counters plus a separate wheeled round worktop with overhead imaging",
+        "Room envelope, access openings and hidden service routes are authored estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground aisle to the test station.",
+        "service_access": "Estimated perimeter access outside moving apparatus envelope; not a safety certification."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            7.0,
+            -8.0,
+            6.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.8,
+            -2.35,
+            1.9
+          ],
+          "target": [
+            -0.5,
+            0.3,
+            1.05
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            1.5,
+            -2.0,
+            2.0
+          ],
+          "target": [
+            -0.4,
+            0.25,
+            0.95
+          ],
+          "fovy": 43
+        },
+        "source": {
+          "position": [
+            2.8,
+            -2.4,
+            2.0
+          ],
+          "target": [
+            0.0,
+            0.5,
+            1.0
+          ],
+          "fovy": 69
+        }
+      },
+      "task": {
+        "name": "Index a rotating-tank calibration target",
+        "description": "Rotate an inert attached marker and move the overhead camera along its traverse.",
+        "observable": "table_rotation, camera_traverse, calibration_target and camera_center poses.",
+        "primary_equipment": "rotating_table"
+      },
+      "limitations": [
+        "All apparatus and room dimensions are estimated from one distorted photograph.",
+        "Mechanical indexing and camera positioning only; no water flow, Coriolis force experiment or optical imaging model.",
+        "The central table and separate wheeled round workstation are distinct photographed fixtures; hidden supports are inferred.",
+        "No institution-approved survey or OEM CAD. Photographs are private research references; source media redistribution and institutional endorsement are not established."
+      ]
+    },
+    {
+      "id": "princeton_bam_closed_loop_wind_tunnel",
+      "title": "BAM Closed-Return Wind Tunnel",
+      "institution": "BAM Lab closed-loop wind tunnel at Gas Dynamics Laboratory",
+      "domain": "experimental_fluid_dynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://bamlab.princeton.edu/facilities",
+        "https://static.wixstatic.com/media/8339e9_60475f80b15d4d11b59f0eb9baeb4881~mv2.png/v1/fit/w_1000,h_1000,q_85/8339e9_60475f80b15d4d11b59f0eb9baeb4881~mv2.png"
+      ],
+      "reference_notes": "Official two-view photo inspected: full teal recirculating wind-tunnel loop in a high-bay hall, contraction and diffuser, black framed transparent test sections on braced steel legs. Official page distinguishes this Forrestal facility from the BAM headquarters and water channel. Photo is a two-view montage; hall perimeter and loop dimensions unverified. Do not place headquarters water-channel or robotics facilities inside this room.",
+      "observed_cues": [
+        "Full teal rectangular return loop with large corner turning sections",
+        "Black-framed transparent test chamber between contraction and diffuser",
+        "Exposed roof trusses and braced floor-mounted tunnel supports"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "room_and_apparatus",
+      "room": {
+        "size": [
+          13,
+          10.4,
+          7.2
+        ],
+        "wall_color": [
+          0.8,
+          0.8,
+          0.75,
+          1
+        ],
+        "accent": [
+          0.47,
+          0.54,
+          0.57,
+          1
+        ],
+        "style": "princeton_bam_closed_loop_wind_tunnel",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.5,
+              0.52,
+              0.49,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "wind_tunnel",
+          "kind": "bam_closed_return_tunnel",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing apparatus; continuous grounded support modeled with estimated dimensions."
+          },
+          "role": "Position a model and diagnostic probe inside a tunnel",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://bamlab.princeton.edu/facilities",
+            "https://static.wixstatic.com/media/8339e9_60475f80b15d4d11b59f0eb9baeb4881~mv2.png/v1/fit/w_1000,h_1000,q_85/8339e9_60475f80b15d4d11b59f0eb9baeb4881~mv2.png"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://static.wixstatic.com/media/8339e9_60475f80b15d4d11b59f0eb9baeb4881~mv2.png/v1/fit/w_1000,h_1000,q_85/8339e9_60475f80b15d4d11b59f0eb9baeb4881~mv2.png",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/princeton_bam_tunnel.img"
+          ],
+          "supports": "Official two-view photo inspected: full teal recirculating wind-tunnel loop in a high-bay hall, contraction and diffuser, black framed transparent test sections on braced steel legs. Official page distinguishes this Forrestal facility from the BAM headquarters and water channel."
+        }
+      ],
+      "layout_rationale": [
+        "Full teal rectangular return loop with large corner turning sections",
+        "Black-framed transparent test chamber between contraction and diffuser",
+        "Exposed roof trusses and braced floor-mounted tunnel supports",
+        "Room envelope, access openings and hidden service routes are authored estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground aisle to the test station.",
+        "service_access": "Estimated perimeter access outside moving apparatus envelope; not a safety certification."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "each customizable test-section cross-section",
+          "dimensions_m": [
+            1.2192,
+            1.2192
+          ],
+          "source": "https://bamlab.princeton.edu/facilities",
+          "basis": "Official text: 4 ft by 4 ft; direct unit conversion."
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            14.0,
+            -15.0,
+            11.0
+          ],
+          "target": [
+            0.0,
+            0.2,
+            1.9
+          ],
+          "fovy": 50
+        },
+        "interior": {
+          "position": [
+            5.8,
+            -4.5,
+            2.7
+          ],
+          "target": [
+            0.0,
+            -1.5,
+            2.0
+          ],
+          "fovy": 58
+        },
+        "workstation": {
+          "position": [
+            2.1,
+            -4.3,
+            3.0
+          ],
+          "target": [
+            0.0,
+            -1.8,
+            2.13
+          ],
+          "fovy": 49
+        },
+        "source": {
+          "position": [
+            6.0,
+            -4.9,
+            3.1
+          ],
+          "target": [
+            0.0,
+            0.0,
+            2.1
+          ],
+          "fovy": 62
+        }
+      },
+      "task": {
+        "name": "Position a model and diagnostic probe inside a tunnel",
+        "description": "Pitch a rigid model coupon and traverse the diagnostic tip within the transparent test section.",
+        "observable": "model_pitch, probe_traverse, airfoil_coupon and probe_tip poses.",
+        "primary_equipment": "wind_tunnel"
+      },
+      "limitations": [
+        "Test-section clear bore uses the official 4 ft square specification; axial lengths, return loop and room envelope are estimates.",
+        "Three transparent modules follow the official interchangeable-section arrangement; pipework and model fixture details are representative.",
+        "No airflow, wind-speed field, aerodynamic forces, PIV or force-balance measurement is simulated.",
+        "The source montage shows two views of one apparatus; BAM headquarters and water-channel equipment are excluded.",
+        "No institution-approved survey or OEM CAD. Photographs are private research references; source media redistribution and institutional endorsement are not established."
+      ]
+    },
+    {
+      "id": "ucsd_mccartney_geotechnical_centrifuge",
+      "title": "McCartney Geotechnical Centrifuge",
+      "institution": "McCartney Group geotechnical centrifuge laboratory",
+      "domain": "geotechnical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://mccartney.ucsd.edu/facilities",
+        "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72sGBk_yy8HwpLYNkNhZ6oDkdwAtYcKIaJhdqm7nTNPKPAtaPqdG99MYf6s3X69jI0nkQ4qY5WzIsqV4i3eR_4H6NmC_pMR517KbPUZ9CSgqiV70jiLkYdyw91Or9WTnQQceDJYoqDFavLOowfxfbwfZy5dXMIvaAhBjcEVxzJ3y7kpt2vX3gfFc23J1Ey8AXdDferwIZKGuwcOrPubjL28jQ4xRYwcZ1b-QkD5O=w1280"
+      ],
+      "reference_notes": "Official instrument photograph inspected: blue conical pedestal and long horizontal centrifuge arm, large left counterweight and right suspended white drum/basket inside a curved concrete enclosure. The page explicitly distinguishes this laboratory from ESEC and Powell shaking-table locations. Low-resolution single photo; restrict initial reconstruction to centrifuge and visible enclosure. Do not combine ESEC outdoor facilities or Powell shake table. Rotational dynamics and soil similitude require validation.",
+      "observed_cues": [
+        "Large blue flared pedestal supporting horizontal rotary beam",
+        "Asymmetric counterweight and hanging white specimen basket",
+        "Curved concrete enclosure with uncluttered tiled floor around rotation footprint"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "apparatus_and_partial_room",
+      "room": {
+        "size": [
+          6.7,
+          6.3,
+          3.4
+        ],
+        "wall_color": [
+          0.8,
+          0.8,
+          0.75,
+          1
+        ],
+        "accent": [
+          0.47,
+          0.54,
+          0.57,
+          1
+        ],
+        "style": "ucsd_mccartney_geotechnical_centrifuge",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.5,
+              0.52,
+              0.49,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.5,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "centrifuge",
+          "kind": "mccartney_swinging_basket",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing apparatus; continuous grounded support modeled with estimated dimensions."
+          },
+          "role": "Inspect centrifuge arm and specimen-basket attitude",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://mccartney.ucsd.edu/facilities",
+            "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72sGBk_yy8HwpLYNkNhZ6oDkdwAtYcKIaJhdqm7nTNPKPAtaPqdG99MYf6s3X69jI0nkQ4qY5WzIsqV4i3eR_4H6NmC_pMR517KbPUZ9CSgqiV70jiLkYdyw91Or9WTnQQceDJYoqDFavLOowfxfbwfZy5dXMIvaAhBjcEVxzJ3y7kpt2vX3gfFc23J1Ey8AXdDferwIZKGuwcOrPubjL28jQ4xRYwcZ1b-QkD5O=w1280"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72sGBk_yy8HwpLYNkNhZ6oDkdwAtYcKIaJhdqm7nTNPKPAtaPqdG99MYf6s3X69jI0nkQ4qY5WzIsqV4i3eR_4H6NmC_pMR517KbPUZ9CSgqiV70jiLkYdyw91Or9WTnQQceDJYoqDFavLOowfxfbwfZy5dXMIvaAhBjcEVxzJ3y7kpt2vX3gfFc23J1Ey8AXdDferwIZKGuwcOrPubjL28jQ4xRYwcZ1b-QkD5O=w1280",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/ucsd_centrifuge.img"
+          ],
+          "supports": "Official instrument photograph inspected: blue conical pedestal and long horizontal centrifuge arm, large left counterweight and right suspended white drum/basket inside a curved concrete enclosure. The page explicitly distinguishes this laboratory from ESEC and Powell shaking-table locations."
+        }
+      ],
+      "layout_rationale": [
+        "Large blue flared pedestal supporting horizontal rotary beam",
+        "Asymmetric counterweight and hanging white specimen basket",
+        "Curved concrete enclosure with uncluttered tiled floor around rotation footprint",
+        "Room envelope, access openings and hidden service routes are authored estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground aisle to the test station.",
+        "service_access": "Estimated perimeter access outside moving apparatus envelope; not a safety certification."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "maximum supported container footprint",
+          "dimensions_m": [
+            0.6,
+            0.7
+          ],
+          "source": "https://mccartney.ucsd.edu/facilities",
+          "basis": "Official specification; not overall apparatus dimensions."
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            7.4,
+            -7.5,
+            5.0
+          ],
+          "target": [
+            0.0,
+            0.4,
+            1.0
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            2.8,
+            -2.5,
+            1.85
+          ],
+          "target": [
+            0.0,
+            0.0,
+            0.95
+          ],
+          "fovy": 58
+        },
+        "workstation": {
+          "position": [
+            2.8,
+            -3.0,
+            2.15
+          ],
+          "target": [
+            0.2,
+            0.0,
+            1.03
+          ],
+          "fovy": 48
+        },
+        "source": {
+          "position": [
+            0.7,
+            -3.9,
+            1.9
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "fovy": 51
+        }
+      },
+      "task": {
+        "name": "Inspect centrifuge arm and specimen-basket attitude",
+        "description": "Index the bounded rotor and tilt an attached inert container under position control.",
+        "observable": "arm_index, basket_tilt and soil_analogue pose.",
+        "primary_equipment": "centrifuge"
+      },
+      "limitations": [
+        "Only the maximum supported container footprint 0.6 by 0.7 m is documented; all other machine, enclosure and room dimensions are estimates.",
+        "The low-resolution reference supports the blue pedestal, counterweight, suspended basket and curved rear enclosure, not a complete surveyed room.",
+        "Basket tilt is an authored inspection actuator; no free-swinging dynamics, high-g operation, soil deformation or geotechnical similitude is claimed.",
+        "ESEC outdoor facilities and Powell shaking tables are distinct sites and are excluded.",
+        "No institution-approved survey or OEM CAD. Photographs are private research references; source media redistribution and institutional endorsement are not established."
+      ]
+    },
+    {
+      "id": "mcgill_mmpc_water_modelling",
+      "title": "MMPC Tundish Water-Modelling Bay",
+      "institution": "McGill Metals Processing Centre \u2014 Water Modelling Laboratory",
+      "domain": "Materials / process-fluid modelling",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.mcgill.ca/metals-processing-centre/about-us/research-facilities-process-metallurgy",
+        "https://www.mcgill.ca/metals-processing-centre/sites/metals-processing-centre/files/full_scale_tundish.png"
+      ],
+      "reference_notes": "Official facility photograph shows a transparent full-scale tundish water model with bolted steel frame, elevated feed hardware and instrumentation. The official page explicitly reserves all rights. Photo is a local reference only; no CAD, measured room plan or calibrated dimensions were found.",
+      "observed_cues": [
+        "Black bolted perimeter members subdivide large transparent tank windows.",
+        "Feed assembly and access structure are elevated above the long tank.",
+        "Grating floor, hanging sensor leads and foreground measurement station define the service side."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Reconstruct the photographed apparatus and service-side bay; the complete room footprint and hidden tank plan are unverified.",
+      "room": {
+        "size": [
+          7.2,
+          6.4,
+          3.8
+        ],
+        "wall_color": [
+          0.8,
+          0.8,
+          0.75,
+          1
+        ],
+        "accent": [
+          0.47,
+          0.54,
+          0.57,
+          1
+        ],
+        "style": "mcgill_mmpc_water_modelling",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.5,
+              0.52,
+              0.49,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.7,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "daq_desk",
+          "pos": [
+            2.2,
+            -2.25,
+            0
+          ],
+          "size": [
+            1.1,
+            0.7,
+            0.9
+          ],
+          "style": "open_frame",
+          "color": [
+            0.79,
+            0.76,
+            0.65,
+            1
+          ],
+          "top_color": [
+            0.12,
+            0.14,
+            0.14,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "tundish_model",
+          "kind": "mmpc_tundish_water_model",
+          "pos": [
+            0,
+            0.4,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing apparatus; continuous grounded support modeled with estimated dimensions."
+          },
+          "role": "Position a dry diagnostic target in a water-model fixture",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.mcgill.ca/metals-processing-centre/about-us/research-facilities-process-metallurgy",
+            "https://www.mcgill.ca/metals-processing-centre/sites/metals-processing-centre/files/full_scale_tundish.png"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.mcgill.ca/metals-processing-centre/sites/metals-processing-centre/files/full_scale_tundish.png",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/mcgill_tundish.img"
+          ],
+          "supports": "Official facility photograph shows a transparent full-scale tundish water model with bolted steel frame, elevated feed hardware and instrumentation."
+        }
+      ],
+      "layout_rationale": [
+        "Black bolted perimeter members subdivide large transparent tank windows.",
+        "Feed assembly and access structure are elevated above the long tank.",
+        "Grating floor, hanging sensor leads and foreground measurement station define the service side.",
+        "Room envelope, access openings and hidden service routes are authored estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground aisle to the test station.",
+        "service_access": "Estimated perimeter access outside moving apparatus envelope; not a safety certification."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            7.8,
+            -8.2,
+            5.8
+          ],
+          "target": [
+            0.0,
+            0.1,
+            1.4
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.9,
+            -2.8,
+            2.0
+          ],
+          "target": [
+            0.0,
+            0.4,
+            1.55
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            3.5,
+            -3.4,
+            2.65
+          ],
+          "target": [
+            0.0,
+            0.4,
+            1.45
+          ],
+          "fovy": 53
+        },
+        "source": {
+          "position": [
+            0.5,
+            -4.3,
+            1.75
+          ],
+          "target": [
+            0.0,
+            0.4,
+            1.5
+          ],
+          "fovy": 57
+        }
+      },
+      "task": {
+        "name": "Position a dry diagnostic target in a water-model fixture",
+        "description": "Move an authored feed-nozzle height adjustment and traverse a rigid calibration target over the viewing volume.",
+        "observable": "feed_nozzle_height, probe_traverse, calibration_target and feed_nozzle poses.",
+        "primary_equipment": "tundish_model"
+      },
+      "limitations": [
+        "All tank, pipe, frame and room dimensions are estimated from one front-side photograph.",
+        "The official apparatus is a full-scale four-strand delta tundish; its hidden delta plan is not recoverable. This prototype uses a disclosed rectangular local viewing envelope, not a complete 1:1 tank.",
+        "The transparent vessel is dry; no water transport, mixing, residence-time response, metallurgical or casting model.",
+        "Both controlled inspection mechanisms are representative authored substitutes, not verified OEM actuator specifications.",
+        "Official source page reserves all rights; no source photo or texture is distributed with this geometry.",
+        "No institution-approved survey or OEM CAD. Photographs are private research references; source media redistribution and institutional endorsement are not established."
+      ]
+    }
+  ]
+}

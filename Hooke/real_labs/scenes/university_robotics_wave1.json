@@ -1,0 +1,272 @@
+{
+  "scenes": [
+    {
+      "id": "manchester_collaborative_robotics",
+      "title": "Manchester Collaborative Robot Inspection Bay",
+      "institution": "Robotics Research \u2014 Collaborative Manipulation Workstation",
+      "domain": "robotics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://sites.manchester.ac.uk/robotics/research/",
+        "https://sites.manchester.ac.uk/robotics/wp-content/uploads/sites/152/2019/11/Cobot-DSC_4219.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Black serial manipulator with white joint bands and white finger gripper. Table-edge mounting bracket with visible yellow cable. Window-side perimeter counters, turquoise under-bench storage and rear equipment case.",
+      "observed_cues": [
+        "Black serial manipulator with white joint bands and white finger gripper.",
+        "Table-edge mounting bracket with visible yellow cable.",
+        "Window-side perimeter counters, turquoise under-bench storage and rear equipment case."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.0,
+          4.0,
+          2.9
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "robotics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.2,
+              "width": 1,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "window_0",
+              "wall": "back",
+              "kind": "window",
+              "offset": -1.2,
+              "width": 1.6,
+              "height": 1.25,
+              "sill": 1.08
+            },
+            {
+              "id": "window_1",
+              "wall": "back",
+              "kind": "window",
+              "offset": 0.6,
+              "width": 1.6,
+              "height": 1.25,
+              "sill": 1.08
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "robot_table",
+          "pos": [
+            0,
+            -0.25,
+            0
+          ],
+          "size": [
+            2.0,
+            0.85,
+            0.85
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false,
+          "top_color": [
+            0.69,
+            0.72,
+            0.69,
+            1
+          ]
+        },
+        {
+          "id": "window_counter",
+          "pos": [
+            0,
+            1.55,
+            0
+          ],
+          "size": [
+            4.4,
+            0.6,
+            0.85
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.07,
+            0.39,
+            0.46,
+            1
+          ],
+          "accessories": false,
+          "top_color": [
+            0.69,
+            0.72,
+            0.69,
+            1
+          ]
+        },
+        {
+          "id": "left_counter",
+          "pos": [
+            -2.1,
+            0.3,
+            0
+          ],
+          "size": [
+            0.6,
+            1.9,
+            0.85
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.07,
+            0.39,
+            0.46,
+            1
+          ],
+          "accessories": false,
+          "top_color": [
+            0.69,
+            0.72,
+            0.69,
+            1
+          ]
+        }
+      ],
+      "equipment": [
+        {
+          "id": "collaborative_arm",
+          "kind": "manchester_gen3_inspection_workspace",
+          "pos": [
+            0.4,
+            -0.59,
+            0.85
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Exercise seven actual Gen3 articulated joint chains in a bounded inspection envelope around a fixed inert table target.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://sites.manchester.ac.uk/robotics/research/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Manchester Collaborative Robot Inspection Bay mechanical positioning",
+        "description": "Exercise seven actual Gen3 articulated joint chains in a bounded inspection envelope around a fixed inert table target.",
+        "primary_equipment": "collaborative_arm",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.8,
+            -7.5,
+            5.0
+          ],
+          "target": [
+            0,
+            0,
+            0.8
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            1.5,
+            -1.8,
+            1.6
+          ],
+          "target": [
+            0.05,
+            -0.25,
+            1.3
+          ],
+          "fovy": 58
+        },
+        "workstation": {
+          "position": [
+            1.05,
+            -1.65,
+            1.65
+          ],
+          "target": [
+            0.05,
+            -0.45,
+            1.35
+          ],
+          "fovy": 48
+        }
+      },
+      "layout_rationale": [
+        "Black serial manipulator with white joint bands and white finger gripper.",
+        "Table-edge mounting bracket with visible yellow cable.",
+        "Window-side perimeter counters, turquoise under-bench storage and rear equipment case.",
+        "A local BSD-3-Clause Kinova Gen3 model substitutes for the photographed Kinova/Quanser arm; this is not the same-model CAD reconstruction.",
+        "The original three-finger appearance tool is fixed open and does not implement grasping. The inert target remains clamped to its independent table fixture.",
+        "All seven controls report offsets from the imported Gen3 home pose and are restricted to +/-0.14 rad; this is not a full-workspace or OEM-performance evaluation.",
+        "The local robot license remains at Hooke/model/robot_menagerie/kinova_gen3/LICENSE; no reference photograph is redistributed."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Official promotional lab photograph; people obscure left-hand bench and room boundaries are unknown. No exact robot OEM CAD, calibration or control-performance match is claimed.",
+        "A local BSD-3-Clause Kinova Gen3 model substitutes for the photographed Kinova/Quanser arm; this is not the same-model CAD reconstruction.",
+        "The original three-finger appearance tool is fixed open and does not implement grasping. The inert target remains clamped to its independent table fixture.",
+        "All seven controls report offsets from the imported Gen3 home pose and are restricted to +/-0.14 rad; this is not a full-workspace or OEM-performance evaluation.",
+        "The local robot license remains at Hooke/model/robot_menagerie/kinova_gen3/LICENSE; no reference photograph is redistributed."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia03/manchester_cobot.jpg"
+        ],
+        "reviewed_sha256": [
+          "996f42bc0dc16dcc33f0f502a3ffc4f475f52305e7f07412e03f1a96644882d2"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    }
+  ]
+}

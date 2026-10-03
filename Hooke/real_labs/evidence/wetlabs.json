@@ -1,0 +1,108 @@
+{
+  "rochester_genomics": {
+    "sources": [
+      {
+        "page": "https://www.library.rochester.edu/studio-x/projects/genomics-shared-resource-virtual-tour",
+        "image": "https://www.library.rochester.edu/sites/default/files/images/L1382010.jpg",
+        "local_reference": "temp/research/real_labs_references/rochester_lab_full.jpg",
+        "sha256": "21365afe5db8d47db1241ec280f81c43f038a7e6cd9f7d766963dec77c2c3789",
+        "bytes": 5317110,
+        "use": "Visual inspection only; not redistributed or used as a texture"
+      }
+    ],
+    "observed": [
+      "Large white-topped glazed work enclosures dominate one bench side",
+      "Pale blue walls and warm wood-front storage",
+      "Glass sash with lower rail, upper switches, dark work tray and front ventilation slots",
+      "Tube racks, wipe boxes, stacked boxed supplies and opposite wall shelving"
+    ],
+    "implemented": [
+      "Original clean-work enclosure shell, clear sash and side glazing, upper control fascia, front slots and neutral inspection lamp",
+      "Pale blue room palette and wood-front material colors",
+      "Tube rack, bottle and wipe-pack silhouettes inside the enclosure",
+      "Bench electrical raceway and authored protocol sheet stack"
+    ],
+    "inferred": [
+      "2.34 m enclosure width, 0.70 m depth and 1.33 m height are scale estimates",
+      "Single enclosure represents the dominant visible cue; full source room includes more units",
+      "Position within a pre-existing approximate room; exact adjacency to robot deck not established",
+      "Power outlet locations and protocol sheets are plausible authored context"
+    ],
+    "unresolved": [
+      "Exact enclosure make, model and containment class",
+      "Measured floor plan, calibrated camera pose and independent room views",
+      "Sash mechanics, certified airflow and decontamination physics",
+      "Exact instrument identities and original CAD"
+    ],
+    "fidelity": "Reference-informed visible-feature reconstruction; not a surveyed digital twin"
+  },
+  "penn_pathology": {
+    "sources": [
+      {
+        "page": "https://pathology.med.upenn.edu/department/about-the-department/department-videos/follow-specimen",
+        "local_reference": "temp/research/real_labs_references/penn.jpg",
+        "sha256": "29f42100f4b77c0f9ce361454c2b6fe99c8ee078bc218c5220e401e052cc3ac1",
+        "use": "Visual inspection only; not redistributed or used as a texture"
+      }
+    ],
+    "observed": [
+      "Parallel benches with glazed overhead cupboards",
+      "Darker grey-green cabinet frames and visible stock/binders",
+      "Two longitudinal ceiling-light rows",
+      "Computer stations, paperwork and backed laboratory task seating"
+    ],
+    "implemented": [
+      "Clear glazed cupboard leaves with separate metal stiles and rails",
+      "Varied bottle and binder silhouettes, one open binder bay",
+      "Longitudinal diffuser rows replacing generic transverse fixtures",
+      "Paper stacks, power channels and a backed task chair"
+    ],
+    "inferred": [
+      "Cupboard count, fixture dimensions and open bay location",
+      "Precise service outlet placement, paperwork and stock inventory",
+      "Room size, bench spacing and device models remain authored estimates"
+    ],
+    "unresolved": [
+      "Only one uncalibrated partially occluded still available",
+      "Hidden ends of room and doorway positions unmeasured",
+      "Institutional review and calibrated camera comparison absent",
+      "Exact photographed device models not reproduced"
+    ],
+    "fidelity": "Reference-informed visible-feature reconstruction; not a surveyed digital twin"
+  },
+  "uw_isolab": {
+    "sources": [
+      {
+        "page": "https://isolab.ess.washington.edu/resources/videos.php",
+        "local_reference": "temp/research/real_labs_references/uw_prep.jpg",
+        "sha256": "794bff8ff078e4f44bbd8249230ec8550bf9def23753eb185a32a1605e12ced3",
+        "use": "Visual inspection only; not redistributed or used as a texture"
+      },
+      {
+        "page": "https://isolab.ess.washington.edu/resources/videos.php",
+        "local_reference": "temp/research/real_labs_references/uw_water.jpg",
+        "sha256": "820423a24320928f2b5409f326f539c97335ab650c628d5b325998308cf4f6ed",
+        "use": "Visual inspection only; not redistributed or used as a texture"
+      }
+    ],
+    "observed": [
+      "Rack-supported preparation manifold with controllers, wiring, valves and Dewar shields",
+      "Water-isotope station adjacent to restrained green and burgundy gas cylinders"
+    ],
+    "implemented": [
+      "Rack controller housings, display windows and feed wiring",
+      "Distinct cylinder colors, regulator bodies and pressure-gauge geometry"
+    ],
+    "inferred": [
+      "All gauge needle angles are fixed visual context, not measured pressure",
+      "Exact pipe connectivity, panel readings and regulator dimensions",
+      "Compact scene zoning and adjacency remain inferred"
+    ],
+    "unresolved": [
+      "Pressure, gas chemistry and temperature are not simulated",
+      "No calibrated drawing for the photographed preparation assembly",
+      "Exact room adjacency and surveyed footprint unavailable"
+    ],
+    "fidelity": "Reference-informed apparatus context within estimated two-zone subset"
+  }
+}

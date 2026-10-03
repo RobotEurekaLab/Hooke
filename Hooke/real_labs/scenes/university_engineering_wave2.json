@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "scenes": [
+    {
+      "id": "sorbonne_isir_covr",
+      "title": "Sorbonne ISIR CoVR Haptic Arena",
+      "institution": "ISIR \u2014 CoVR Cartesian Haptic Arena",
+      "domain": "robotics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.isir.upmc.fr/projets/covr-plateforme-haptique-pour-la-realite-virtuelle/",
+        "https://www.isir.upmc.fr/wp-content/uploads/2024/02/plateforme-covr.png"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Overhead black gantry rails supported by tall metal columns. Suspended tall plywood prop with two circular openings. Floor arena marked with tape, perimeter benches with shelves and exposed ceiling services. Single real arena photograph; room dimensions, overhead load rating and motion limits not published. Exclude people and reproduce mechanical positioning only, without claims about perception or haptic fidelity.",
+      "observed_cues": [
+        "Overhead black gantry rails supported by tall metal columns.",
+        "Suspended tall plywood prop with two circular openings.",
+        "Floor arena marked with tape, perimeter benches with shelves and exposed ceiling services."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          7,
+          7,
+          4.0
+        ],
+        "wall_color": [
+          0.72,
+          0.79,
+          0.81,
+          1
+        ],
+        "accent": [
+          0.15,
+          0.31,
+          0.4,
+          1
+        ],
+        "style": "robotics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.55,
+              0.57,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.0
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "wall": "left",
+              "offset": -2.3,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "rear_window",
+              "kind": "window",
+              "wall": "back",
+              "offset": -0.5,
+              "width": 2.8,
+              "height": 1.1,
+              "sill": 1.65
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "rear_electronics_counter",
+          "pos": [
+            0,
+            2.92,
+            0
+          ],
+          "size": [
+            5.8,
+            0.7,
+            0.89
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.25,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "side_electronics_counter",
+          "pos": [
+            2.98,
+            0.4,
+            0
+          ],
+          "size": [
+            3.6,
+            0.62,
+            0.89
+          ],
+          "yaw": 1.5707963267948966,
+          "style": "cabinet",
+          "color": [
+            0.12,
+            0.42,
+            0.53,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "covr_retained_prop_gantry",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position a retained plywood interaction panel using two overhead Cartesian axes.",
+          "evidence": "Original geometry based on actual inspected official photograph; detailed layout estimated",
+          "source_urls": [
+            "https://www.isir.upmc.fr/projets/covr-plateforme-haptique-pour-la-realite-virtuelle/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous floor columns; EPFL stands extend through the open grate to the lower structural slab"
+          }
+        }
+      ],
+      "task": {
+        "name": "Sorbonne ISIR CoVR Haptic Arena mechanical inspection",
+        "description": "Position a retained plywood interaction panel using two overhead Cartesian axes.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Bounded mechanical positioning; no haptic or acoustic measurement is synthesized."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            8,
+            -10,
+            7
+          ],
+          "target": [
+            0,
+            0.3,
+            1.3
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            -2.6,
+            -2.9,
+            1.7
+          ],
+          "target": [
+            0.4,
+            0.3,
+            1.7
+          ],
+          "fovy": 66
+        },
+        "workstation": {
+          "position": [
+            1.5,
+            -2.3,
+            1.9
+          ],
+          "target": [
+            0.5,
+            0.25,
+            1.7
+          ],
+          "fovy": 53
+        }
+      },
+      "layout_rationale": [
+        "Overhead black gantry rails supported by tall metal columns.",
+        "Suspended tall plywood prop with two circular openings.",
+        "Floor arena marked with tape, perimeter benches with shelves and exposed ceiling services.",
+        "Single real arena photograph; room dimensions, overhead load rating and motion limits not published. Exclude people and reproduce mechanical positioning only, without claims about perception or haptic fidelity.",
+        "Use original geometry and inert targets; no scientific-performance or institutional-endorsement claim."
+      ],
+      "limitations": [
+        "Reference-informed prototype, not surveyed, institution-approved or endorsed.",
+        "Unknown dimensions, loads and motion limits are authored estimates.",
+        "Scientific process and manufacturer performance are not established by the mechanical checks.",
+        "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
+        "Source reference media are private review inputs and are not distributed with authored assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia03/sorbonne_covr.png"
+        ],
+        "reviewed_sha256": [
+          "fde72ac35b892ccde442b8dae3453f92aa072dedcd7842b16f8709e7e3eb7ab8"
+        ],
+        "reviewed_at": "2026-10-04",
+        "dimension_confidence": "Only EPFL absorber depth of 1 m is sourced; all other dimensions and mechanisms estimated",
+        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
+      }
+    },
+    {
+      "id": "epfl_lwe_anechoic_acoustics",
+      "title": "EPFL LWE Anechoic Inspection Room",
+      "institution": "Laboratory of Wave Engineering \u2014 Acoustic Anechoic Room",
+      "domain": "acoustics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.epfl.ch/labs/lwe/facilities/anechoic-room-acoustics/",
+        "https://www.epfl.ch/labs/lwe/wp-content/uploads/2025/08/EPFL_anechoic1-1024x683.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Walls and ceiling covered by alternating horizontal and vertical deep pale acoustic wedges. Raised metal mesh walking floor reveals lower void. Circular apparatus-support fixtures project through the floor near the perimeter. Room footprint is not surveyed; one-metre absorber depth is published, but individual wedge widths and floor height require estimation. No acoustic propagation, chamber certification or measurement accuracy is simulated.",
+      "observed_cues": [
+        "Walls and ceiling covered by alternating horizontal and vertical deep pale acoustic wedges.",
+        "Raised metal mesh walking floor reveals lower void.",
+        "Circular apparatus-support fixtures project through the floor near the perimeter."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          6,
+          7,
+          4.6
+        ],
+        "wall_color": [
+          0.59,
+          0.57,
+          0.49,
+          1
+        ],
+        "accent": [
+          0.15,
+          0.31,
+          0.4,
+          1
+        ],
+        "style": "acoustics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.4,
+              0.4,
+              0.35,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.0
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "wall": "left",
+              "offset": 0,
+              "width": 1.2,
+              "height": 2.45,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "epfl_anechoic_inspection_stands",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Rotate a retained reference and translate a microphone fixture inside a wedge-lined chamber.",
+          "evidence": "Original geometry based on actual inspected official photograph; detailed layout estimated",
+          "source_urls": [
+            "https://www.epfl.ch/labs/lwe/facilities/anechoic-room-acoustics/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous floor columns; EPFL stands extend through the open grate to the lower structural slab"
+          }
+        }
+      ],
+      "task": {
+        "name": "EPFL LWE Anechoic Inspection Room mechanical inspection",
+        "description": "Rotate a retained reference and translate a microphone fixture inside a wedge-lined chamber.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Bounded mechanical positioning; no haptic or acoustic measurement is synthesized."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            8,
+            -9,
+            7
+          ],
+          "target": [
+            0,
+            0,
+            1.0
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            1.8,
+            -2.2,
+            1.65
+          ],
+          "target": [
+            -0.3,
+            0.7,
+            1.7
+          ],
+          "fovy": 69
+        },
+        "workstation": {
+          "position": [
+            1.5,
+            -1.6,
+            1.75
+          ],
+          "target": [
+            -0.2,
+            0.35,
+            1.1
+          ],
+          "fovy": 57
+        }
+      },
+      "layout_rationale": [
+        "Walls and ceiling covered by alternating horizontal and vertical deep pale acoustic wedges.",
+        "Raised metal mesh walking floor reveals lower void.",
+        "Circular apparatus-support fixtures project through the floor near the perimeter.",
+        "Room footprint is not surveyed; one-metre absorber depth is published, but individual wedge widths and floor height require estimation. No acoustic propagation, chamber certification or measurement accuracy is simulated.",
+        "Use original geometry and inert targets; no scientific-performance or institutional-endorsement claim."
+      ],
+      "limitations": [
+        "Reference-informed prototype, not surveyed, institution-approved or endorsed.",
+        "Unknown dimensions, loads and motion limits are authored estimates.",
+        "Scientific process and manufacturer performance are not established by the mechanical checks.",
+        "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
+        "Source reference media are private review inputs and are not distributed with authored assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia03/epfl_anechoic.jpg"
+        ],
+        "reviewed_sha256": [
+          "8839f856f0d11a9fa86d2c7dd7fa5a327073d86650905d06ec457086d3f494b2"
+        ],
+        "reviewed_at": "2026-10-04",
+        "dimension_confidence": "Only EPFL absorber depth of 1 m is sourced; all other dimensions and mechanisms estimated",
+        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
+      }
+    }
+  ]
+}

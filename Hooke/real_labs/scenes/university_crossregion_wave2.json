@@ -1,0 +1,567 @@
+{
+  "scenes": [
+    {
+      "id": "kfupm_superconductivity_spectroscopy",
+      "title": "KFUPM FluoroMax sample-compartment inspection",
+      "institution": "Superconductivity Laboratory \u2014 Optical Spectroscopy Station",
+      "domain": "materials_metrology",
+      "university_expansion": true,
+      "source_urls": [
+        "https://physics.kfupm.edu.sa/facilities/superconductivity",
+        "https://physics.kfupm.edu.sa/images/default-source/default-album/horiba.jpg?sfvrsn=5b477b1d_1"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Long rounded white enclosure with central blue sample-compartment lid. Low gray plinth on a wood-topped storage cabinet. Dark blue backdrop and vertical window-blind edge to the right. The external apparatus and support are visible, but internal optics, sample holder layout, exact dimensions and whole room are unverified. Interior mechanics must be labelled original proxy.",
+      "observed_cues": [
+        "Long rounded white enclosure with central blue sample-compartment lid.",
+        "Low gray plinth on a wood-topped storage cabinet.",
+        "Dark blue backdrop and vertical window-blind edge to the right."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the reviewed workstation; no complete surveyed floor plan.",
+      "room": {
+        "size": [
+          3.8,
+          3.6,
+          2.8
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "kfupm_superconductivity_spectroscopy",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.1,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "spectrometer_cabinet",
+          "pos": [
+            -0.25,
+            0.5,
+            0
+          ],
+          "size": [
+            1.35,
+            0.9,
+            0.85
+          ],
+          "style": "cabinet",
+          "color": [
+            0.45,
+            0.3,
+            0.14,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "spectrometer",
+          "kind": "kfupm_fluoromax_dry_inspection",
+          "pos": [
+            -0.25,
+            0.5,
+            0.85
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "KFUPM FluoroMax sample-compartment inspection",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://physics.kfupm.edu.sa/facilities/superconductivity",
+            "https://physics.kfupm.edu.sa/images/default-source/default-album/horiba.jpg?sfvrsn=5b477b1d_1"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://physics.kfupm.edu.sa/images/default-source/default-album/horiba.jpg?sfvrsn=5b477b1d_1",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/references/asia03/kfupm_raman.jpg"
+          ],
+          "supports": "Official laboratory page and its installed apparatus photograph reviewed. Long rounded white enclosure with central blue sample-compartment lid. Low gray plinth on a wood-topped storage cabinet. Dark blue backdrop and vertical window-blind edge to the right."
+        }
+      ],
+      "layout_rationale": [
+        "Long rounded white enclosure with central blue sample-compartment lid.",
+        "Low gray plinth on a wood-topped storage cabinet.",
+        "Dark blue backdrop and vertical window-blind edge to the right.",
+        "The reviewed white rounded spectrofluorometer sits on an estimated wood-topped cabinet beside blinds and a dark backdrop.",
+        "The blue cover is deliberately pre-open for mechanical inspection; its unseen hinge and specimen stage are authored."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            4.5,
+            -5.0,
+            3.6
+          ],
+          "target": [
+            0.0,
+            0.35,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.35,
+            -1.2,
+            1.45
+          ],
+          "target": [
+            -0.25,
+            0.5,
+            1.06
+          ],
+          "fovy": 52
+        },
+        "workstation": {
+          "position": [
+            -0.1,
+            -0.45,
+            1.43
+          ],
+          "target": [
+            -0.25,
+            0.48,
+            1.06
+          ],
+          "fovy": 45
+        },
+        "source": {
+          "position": [
+            0.65,
+            -0.8,
+            1.52
+          ],
+          "target": [
+            -0.25,
+            0.5,
+            1.12
+          ],
+          "fovy": 47
+        }
+      },
+      "task": {
+        "name": "KFUPM FluoroMax sample-compartment inspection",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "spectrometer",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No spectroscopy, optical propagation, superconductivity or chemistry model.",
+        "Only one workstation photo is evidenced; full laboratory layout is not inferred."
+      ]
+    },
+    {
+      "id": "science_tokyo_thermal_storage_metrology",
+      "title": "Science Tokyo TG3 thermobalance inspection station",
+      "institution": "Zero-Carbon Energy Laboratory \u2014 Thermobalance Station",
+      "domain": "clean_energy",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.zc.iir.isct.ac.jp/en/research/facilities/",
+        "https://www.zc.iir.isct.ac.jp/en/research/facilities/images/f-yukitaka.png"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Cream measurement enclosure on dark thick plinth. Tall vertical assembly and foil-clad connections above the enclosure supported by a frame. Wood-topped steel bench, separate left instrumentation rail and right control display. Only the thermochemical-storage metrology station is reconstructed; unrelated nuclear facilities on the page must not be combined. Apparatus dimensions and hidden internals unverified; no heating, chemical reaction or process control model.",
+      "observed_cues": [
+        "Cream measurement enclosure on dark thick plinth.",
+        "Tall vertical assembly and foil-clad connections above the enclosure supported by a frame.",
+        "Wood-topped steel bench, separate left instrumentation rail and right control display."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the reviewed workstation; no complete surveyed floor plan.",
+      "room": {
+        "size": [
+          4.6,
+          3.8,
+          3.1
+        ],
+        "wall_color": [
+          0.78,
+          0.76,
+          0.66,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "science_tokyo_thermal_storage_metrology",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.2,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "thermobalance",
+          "kind": "science_tokyo_tg3_dry_inspection",
+          "pos": [
+            0.2,
+            0.65,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Science Tokyo TG3 thermobalance inspection station",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.zc.iir.isct.ac.jp/en/research/facilities/",
+            "https://www.zc.iir.isct.ac.jp/en/research/facilities/images/f-yukitaka.png"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.zc.iir.isct.ac.jp/en/research/facilities/images/f-yukitaka.png",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/references/asia03/tokyo_thermobalance.png"
+          ],
+          "supports": "Official laboratory page and its installed apparatus photograph reviewed. Cream measurement enclosure on dark thick plinth. Tall vertical assembly and foil-clad connections above the enclosure supported by a frame. Wood-topped steel bench, separate left instrumentation rail and right control display."
+        }
+      ],
+      "layout_rationale": [
+        "Cream measurement enclosure on dark thick plinth.",
+        "Tall vertical assembly and foil-clad connections above the enclosure supported by a frame.",
+        "Wood-topped steel bench, separate left instrumentation rail and right control display.",
+        "Cream TG3 exterior, black plinth, upper vertical head, foiled connections, independent left utility frame and right display follow the reviewed photo.",
+        "The rigid inert tray and its front opening are authored for inspection, not inferred to be OEM sample-loading geometry."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.2,
+            -5.8,
+            4.1
+          ],
+          "target": [
+            0.0,
+            0.45,
+            1.2
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.7,
+            -1.5,
+            1.7
+          ],
+          "target": [
+            0.1,
+            0.6,
+            1.4
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            0.6,
+            -0.7,
+            1.32
+          ],
+          "target": [
+            0.0,
+            0.43,
+            1.09
+          ],
+          "fovy": 43
+        },
+        "source": {
+          "position": [
+            1.3,
+            -1.35,
+            1.7
+          ],
+          "target": [
+            0.05,
+            0.55,
+            1.4
+          ],
+          "fovy": 58
+        }
+      },
+      "task": {
+        "name": "Science Tokyo TG3 thermobalance inspection station",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "thermobalance",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No thermal response, reaction, process gas, mass-change or energy-storage physics.",
+        "Other unrelated research facilities on the official page are excluded."
+      ]
+    },
+    {
+      "id": "kfupm_high_voltage_insulation",
+      "title": "KFUPM de-energized test-hall mechanical inspection",
+      "institution": "Applied Research Center for Metrology \u2014 High Voltage Laboratory",
+      "domain": "electrical_metrology",
+      "university_expansion": true,
+      "source_urls": [
+        "https://ri.kfupm.edu.sa/arc-mst/facilities/facility-details/high-voltage-laboratory-%28hvl%29",
+        "https://ri.kfupm.edu.sa/images/arcformetrologystandardsandtestinglibraries/default-album/high-voltage-laboratory-(hvl).png?sfvrsn=a2e093f7_1"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Bulky radiator-sided equipment sits behind a low fenced exclusion bay. Tall green screened test enclosure dominates the central hall. Yellow overhead structural/crane beams and high clerestory windows establish industrial scale. Photograph does not prove which listed source corresponds to each visible enclosure; exact positions and hidden geometry remain uncertain. Reconstruct de-energized exterior and inert mechanical handling only. No voltage, discharge, circuit implementation, electrical safety or test protocol.",
+      "observed_cues": [
+        "Bulky radiator-sided equipment sits behind a low fenced exclusion bay.",
+        "Tall green screened test enclosure dominates the central hall.",
+        "Yellow overhead structural/crane beams and high clerestory windows establish industrial scale."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the reviewed room; no complete surveyed floor plan.",
+      "room": {
+        "size": [
+          12.0,
+          16.0,
+          10.0
+        ],
+        "wall_color": [
+          0.64,
+          0.71,
+          0.55,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "kfupm_high_voltage_insulation",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.45,
+              0.49,
+              0.43,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -7.3,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "deenergized_fixture",
+          "kind": "kfupm_deenergized_insulation_bay",
+          "pos": [
+            -1.7,
+            -1.3,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "KFUPM de-energized test-hall mechanical inspection",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://ri.kfupm.edu.sa/arc-mst/facilities/facility-details/high-voltage-laboratory-%28hvl%29",
+            "https://ri.kfupm.edu.sa/images/arcformetrologystandardsandtestinglibraries/default-album/high-voltage-laboratory-(hvl).png?sfvrsn=a2e093f7_1"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://ri.kfupm.edu.sa/images/arcformetrologystandardsandtestinglibraries/default-album/high-voltage-laboratory-(hvl).png?sfvrsn=a2e093f7_1",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/references/asia03/kfupm_hv.png"
+          ],
+          "supports": "Official laboratory page and its installed apparatus photograph reviewed. Bulky radiator-sided equipment sits behind a low fenced exclusion bay. Tall green screened test enclosure dominates the central hall. Yellow overhead structural/crane beams and high clerestory windows establish industrial scale."
+        }
+      ],
+      "layout_rationale": [
+        "Bulky radiator-sided equipment sits behind a low fenced exclusion bay.",
+        "Tall green screened test enclosure dominates the central hall.",
+        "Yellow overhead structural/crane beams and high clerestory windows establish industrial scale.",
+        "A radiator-faced exterior stands behind a low fence in front of a large green-screened enclosure and yellow overhead beams.",
+        "The photograph does not identify which listed voltage source or fog chamber is visible; no listed chamber dimensions are assigned to this geometry.",
+        "An original de-energized inspection fixture is added at the near aisle; source apparatus remains static."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            17.0,
+            -22.0,
+            16.0
+          ],
+          "target": [
+            0.0,
+            0.8,
+            3.1
+          ],
+          "fovy": 52
+        },
+        "interior": {
+          "position": [
+            4.5,
+            -6.0,
+            2.3
+          ],
+          "target": [
+            0.0,
+            1.7,
+            3.0
+          ],
+          "fovy": 72
+        },
+        "workstation": {
+          "position": [
+            1.0,
+            -4.55,
+            1.8
+          ],
+          "target": [
+            -0.55,
+            -2.8,
+            1.38
+          ],
+          "fovy": 44
+        },
+        "source": {
+          "position": [
+            -4.4,
+            -5.5,
+            2.6
+          ],
+          "target": [
+            0.7,
+            1.5,
+            3.5
+          ],
+          "fovy": 74
+        }
+      },
+      "task": {
+        "name": "KFUPM de-energized test-hall mechanical inspection",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "deenergized_fixture",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No electrical energization, voltage, discharge, circuit implementation, insulation response, safety interlock or test procedure.",
+        "Published 6 by 6 by 9 m fog-chamber size has unconfirmed correspondence to the photo and is not used for geometry.",
+        "Tall hall and screened enclosure dimensions are estimates from one view."
+      ]
+    }
+  ]
+}

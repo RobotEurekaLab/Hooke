@@ -1,0 +1,768 @@
+{
+  "scenes": [
+    {
+      "id": "ntu_coeb_nanophotonics",
+      "title": "NTU COEB Near-Field Optical Workstation",
+      "institution": "COEB Nanophotonics Laboratory",
+      "domain": "nanophotonics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.ntu.edu.sg/coeb/research-capabilities/equipment",
+        "https://www.ntu.edu.sg/media/images/librariesprovider41/default-album/equipment/nsom-1ead8d34f-9b40-4fc2-bacf-e7f0a5dcf5e7.tmb-listing.jpg?sfvrsn=5b630351_2"
+      ],
+      "reference_notes": "Opened official equipment page and visually checked its SNOM photograph: microscope on an optical table with adjacent imaging display. Page associates the Nanophotonics facility with S1-B2A-02. Photograph supports a local workstation only. Do not combine equipment from COEB's other separately named rooms.",
+      "observed_cues": [
+        "Perforated black optical table supporting an upright microscope and raised optical components.",
+        "Tall silver microscope frame with coarse focus knobs and a compact sample region.",
+        "Large monitor immediately right of apparatus; dark optical-bay background."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          4.8,
+          4.0,
+          2.95
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "nanophotonics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.0,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "snom_isolation_bench",
+          "pos": [
+            -0.3,
+            0.35,
+            0
+          ],
+          "size": [
+            2.5,
+            1.2,
+            0.87
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "coeb_side_counter",
+          "pos": [
+            1.77,
+            0.72,
+            0
+          ],
+          "size": [
+            0.78,
+            1.9,
+            0.8
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "snom_station",
+          "kind": "nearfield_optical_station",
+          "pos": [
+            -0.35,
+            0.25,
+            0.87
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Move a visible inert coupon in coarse XY and adjust probe clearance above it; near-field optical physics is absent.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://www.ntu.edu.sg/coeb/research-capabilities/equipment"
+          ]
+        }
+      ],
+      "task": {
+        "name": "NTU COEB Near-Field Optical Workstation mechanical positioning",
+        "description": "Move a visible inert coupon in coarse XY and adjust probe clearance above it; near-field optical physics is absent.",
+        "primary_equipment": "snom_station",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.5,
+            -7.3,
+            5.2
+          ],
+          "target": [
+            0,
+            0.2,
+            0.8
+          ],
+          "fovy": 42
+        },
+        "interior": {
+          "position": [
+            1.15,
+            -1.4,
+            1.65
+          ],
+          "target": [
+            -0.3,
+            0.25,
+            1.3
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            0.7,
+            -1.15,
+            1.75
+          ],
+          "target": [
+            -0.35,
+            0.25,
+            1.2
+          ],
+          "fovy": 44
+        }
+      },
+      "layout_rationale": [
+        "Perforated optical table, white microscope, tall external probe head and adjacent large display follow the inspected local photo.",
+        "A dark rear light screen is reference-informed context; room perimeter and side counter are estimated.",
+        "The microscope frame supports the probe head and specimen stages; the display has an explicit foot and post seated on the same board."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "The target is an inert coupon, not a validated photonic specimen.",
+        "No nanoscale motion accuracy, near-field imaging or spectroscopy is claimed.",
+        "Only COEB Nanophotonics S1-B2A-02 is targeted; other COEB rooms are excluded.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/research/qs_asia_visual_checks/ntu_nsnom.jpg"
+        ],
+        "reviewed_sha256": [
+          "ae81aeb533bd5c43ae7ac22013691c9c4d22b0d1b5e29e5d3a7b043f00222da0"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    },
+    {
+      "id": "ntu_intelligent_materials",
+      "title": "NTU Multiport Vacuum Inspection Laboratory",
+      "institution": "Intelligent Materials and Systems Laboratory",
+      "domain": "thin_film_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://personal.ntu.edu.sg/wensiang/equipment.html",
+        "https://personal.ntu.edu.sg/wensiang/images/aja-sputter2.jpg"
+      ],
+      "reference_notes": "Opened official group equipment page and visually inspected the AJA chamber photograph: metal chamber, viewports, flanges and service lines. The page labels this an eight-target UHV sputtering system. Close-up lacks whole-room layout. The PAR electrodeposition card uses an Unsplash image; exclude that stock image as facility evidence.",
+      "observed_cues": [
+        "Large circular lid with vertical bellows and paired upright guides.",
+        "Angled radial vacuum flanges and a front oblique viewport.",
+        "Foil insulation around cylindrical vessel, dense service hoses and a front square inspection piece."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.4,
+          4.8,
+          3.15
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "thin_film_instrumentation",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.4,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "aja_inspection_bench",
+          "pos": [
+            -1.92,
+            1.35,
+            0
+          ],
+          "size": [
+            1.3,
+            1.8,
+            0.86
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "aja_inspection_station",
+          "kind": "multiport_vacuum_inspection_station",
+          "pos": [
+            -0.35,
+            0.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Move a guided lid and inert witness-coupon inspection fixture in an authored maintenance pose; vacuum and deposition processes are absent.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://personal.ntu.edu.sg/wensiang/equipment.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support from machine frame to laboratory floor; independently inspect geometry"
+          }
+        }
+      ],
+      "task": {
+        "name": "NTU Multiport Vacuum Inspection Laboratory mechanical positioning",
+        "description": "Move a guided lid and inert witness-coupon inspection fixture in an authored maintenance pose; vacuum and deposition processes are absent.",
+        "primary_equipment": "aja_inspection_station",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.1,
+            -8.1,
+            5.5
+          ],
+          "target": [
+            0,
+            0.2,
+            1.0
+          ],
+          "fovy": 43
+        },
+        "interior": {
+          "position": [
+            1.25,
+            -1.55,
+            1.65
+          ],
+          "target": [
+            -0.25,
+            0.2,
+            1.3
+          ],
+          "fovy": 63
+        },
+        "workstation": {
+          "position": [
+            1.05,
+            -1.65,
+            2.05
+          ],
+          "target": [
+            -0.35,
+            0.2,
+            1.35
+          ],
+          "fovy": 43
+        }
+      },
+      "layout_rationale": [
+        "Cylindrical metallic body, large upper plate, bellows, guide rods and bolted side flanges follow the installed photograph.",
+        "The default open inspection pose and top witness-coupon fixture are original mechanics introduced to expose a visible inert test target; they do not reproduce an OEM interior.",
+        "Four floor-contact legs support the chamber base and guide rods; a separate floor rack carries readout enclosures.",
+        "Clear front access separates the chamber, side inspection bench and control rack."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "No vacuum chamber interior, gas manifold, process setpoints, sputtering, plasma, deposition or thermal physics.",
+        "Historical equipment page establishes apparatus identity, not a measured current room layout or complete eight-target configuration.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/research/qs_asia_visual_checks/ntu_aja.jpg"
+        ],
+        "reviewed_sha256": [
+          "53adcc05fa355421feb630f64a9d31254e29308292c92c2b6ad577e49cb072db"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    },
+    {
+      "id": "nus_e6nanofab_l1",
+      "title": "NUS E6NanoFab Mask Alignment Room",
+      "institution": "E6NanoFab L1 SUSS MA8 lithography station",
+      "domain": "nanofabrication",
+      "university_expansion": true,
+      "source_urls": [
+        "https://cde.nus.edu.sg/e6nanofab/facility-cleanrooms/",
+        "https://cde.nus.edu.sg/e6nanofab/wp-content/uploads/2019/05/L1-CR_Mask-Aligner-MA8.jpg"
+      ],
+      "reference_notes": "Opened the official MA8 page and viewed the installed cleanroom photograph. It shows the aligner on its own supported frame, a projecting binocular head, adjacent rack electronics, flexible ducting, yellow lighting and a perforated raised floor. The official device location is E6-01-03. Actual installed photo now inspected. It supports local cleanroom context and nearby surfaces, not the footprint or placement of other E6NanoFab devices.",
+      "observed_cues": [
+        "Yellow room lighting and square perforated raised-floor tiles surround the installation.",
+        "The microscope/alignment head projects forward over a central sample stage between upright supports.",
+        "A large flexible silver duct curves from the upper-right equipment housing toward the side of the frame."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.4,
+          4.4,
+          3.1
+        ],
+        "wall_color": [
+          0.83,
+          0.71,
+          0.4,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "nanofabrication",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.56,
+              0.48,
+              0.29,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.2000000000000002,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "mask_preparation_counter",
+          "pos": [
+            1.83,
+            0.6,
+            0
+          ],
+          "size": [
+            1.2,
+            1.8,
+            0.88
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "ma8_alignment_workspace",
+          "kind": "e6_mask_alignment_station",
+          "pos": [
+            -0.45,
+            0.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position and rotate a visible 150 mm inert wafer below a raised mask frame in the reference-shaped aligner; no lithography process is simulated.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://cde.nus.edu.sg/e6nanofab/facility-cleanrooms/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support from machine frame to laboratory floor; independently inspect geometry"
+          }
+        }
+      ],
+      "task": {
+        "name": "NUS E6NanoFab Mask Alignment Room mechanical positioning",
+        "description": "Position and rotate a visible 150 mm inert wafer below a raised mask frame in the reference-shaped aligner; no lithography process is simulated.",
+        "primary_equipment": "ma8_alignment_workspace",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.0,
+            -8.1,
+            5.6
+          ],
+          "target": [
+            0,
+            0.15,
+            0.9
+          ],
+          "fovy": 43
+        },
+        "interior": {
+          "position": [
+            1.3,
+            -1.45,
+            1.62
+          ],
+          "target": [
+            -0.3,
+            0.35,
+            1.35
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            0.85,
+            -1.75,
+            1.85
+          ],
+          "target": [
+            -0.4,
+            0.15,
+            1.3
+          ],
+          "fovy": 46
+        }
+      },
+      "layout_rationale": [
+        "The supported open frame, two tall columns, projecting binocular head and U-shaped flexible duct reproduce the actual MA8 installation cues.",
+        "Amber room tones and perforated floor markings reproduce photographic appearance without claiming a certified lighting spectrum or cleanroom grade.",
+        "The wafer chuck rests on nested XY/theta carriers; raised mask glass overlaps its four supporting frame bars.",
+        "Preparation counter remains separated by an access gap; unrelated E6NanoFab floors and equipment are excluded."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "No exposure, resist chemistry, imprinting, deposition or manufacturer-level alignment accuracy.",
+        "E6-01-03 is the official source location; full-room dimensions and certification remain unverified.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation.",
+        "The linear-bearing surface uses ideal normal-only contact; friction, compliance and controller calibration are not reproduced."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/asia_01_images/nus_ma8.jpg"
+        ],
+        "reviewed_sha256": [
+          "ea8963ea53f5a4e0930a2e14a4fe0f2762988aa42088caab308f3f653cadfa34"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    },
+    {
+      "id": "hkust_geotechnical_centrifuge",
+      "title": "HKUST GCF Robotic Model Test Bay",
+      "institution": "Geotechnical Centrifuge Facility robotic model test station",
+      "domain": "geotechnical_testing",
+      "university_expansion": true,
+      "source_urls": [
+        "https://gcf.hkust.edu.hk/",
+        "https://skl-crcc.hkust.edu.hk/sites/default/files/2026-03/geotechnical_centrifuge_facility_1_1_0.jpg"
+      ],
+      "reference_notes": "Reviewed official central-facility pages and the labelled actual-photo collage. It contains installed beam and drum centrifuges, a robotic manipulator over a stiffened model container, a shake table and an environmental enclosure. The robot/model-container panel is a local reconstruction anchor; the collage does not document a common room layout. A multi-panel collage of separate apparatus views, not a panorama. Installed supports and local model-container geometry are visible; exact spatial relationships and dimensions are unknown.",
+      "observed_cues": [
+        "A perforated silver bridge with contrasting pink end plates spans the model-container opening.",
+        "Parallel edge guides and exposed round drive elements sit above the container lip.",
+        "The deep metal container uses a repeated diamond-pattern stiffening structure on its outer walls."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          6.4,
+          5.6,
+          3.6
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "geotechnical_testing",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.7999999999999998,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "gcf_measurement_desk",
+          "pos": [
+            2.56,
+            1.25,
+            0
+          ],
+          "size": [
+            0.95,
+            1.8,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "gcf_model_testbed",
+          "kind": "geotechnical_robotic_testbed",
+          "pos": [
+            0,
+            0.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position a four-axis inspection tool over a visible rigid model pier in a stiffened soil-model container; the scene does not spin or simulate soil response.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://gcf.hkust.edu.hk/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support from machine frame to laboratory floor; independently inspect geometry"
+          }
+        }
+      ],
+      "task": {
+        "name": "HKUST GCF Robotic Model Test Bay mechanical positioning",
+        "description": "Position a four-axis inspection tool over a visible rigid model pier in a stiffened soil-model container; the scene does not spin or simulate soil response.",
+        "primary_equipment": "gcf_model_testbed",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            8.3,
+            -9.2,
+            6.0
+          ],
+          "target": [
+            0,
+            0.1,
+            0.9
+          ],
+          "fovy": 44
+        },
+        "interior": {
+          "position": [
+            2.4,
+            -1.8,
+            1.7
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 62
+        },
+        "workstation": {
+          "position": [
+            2.35,
+            -2.15,
+            2.45
+          ],
+          "target": [
+            0,
+            0.2,
+            1.02
+          ],
+          "fovy": 48
+        }
+      },
+      "layout_rationale": [
+        "The stiffened metal tank, spanning silver beam with actual open ring apertures, pink side plates and edge rails follow the robot panel in the official actual-photo collage.",
+        "The rig occupies a standalone service bay; beam centrifuge, drum centrifuge and environmental chamber photos are not combined into a fictional common room.",
+        "Floor-contact feet carry the tank walls and rails; the bridge carries the trolley, Z slide and rotator.",
+        "A rigid model pier visibly rests on the inert bed and remains separate from the clearance-positioned tool."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "No centrifuge rotation, hypergravity, seismic shaking, soil deformation, penetration, loading or environmental physics.",
+        "Four mechanical axes are authored proxies; no claim of exact GCF robot kinematics, instrumentation or control logic.",
+        "Only workstation evidence is available; surrounding bay dimensions and desk placement are estimated.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/asia_01_images/hkust_centrifuge.jpg"
+        ],
+        "reviewed_sha256": [
+          "fbabb92730d92359a3c824e9468faa958b0d3ff2820ea402082608e30cb96ab3"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    }
+  ]
+}

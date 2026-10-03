@@ -1,0 +1,882 @@
+{
+  "scenes": [
+    {
+      "id": "epfl_lspn_chemistry",
+      "title": "EPFL LSPN Twin Chemistry Hood Bay",
+      "institution": "Epfl \u2014 Laboratory of Synthesis and Natural Products laboratory hood bay",
+      "institution_id": "epfl",
+      "domain": "chemistry",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.epfl.ch/labs/lspn/group/lab-tour/"
+      ],
+      "reference_notes": "Inspected two adjacent installed glazed fume hoods: vertical clamp lattices, round-bottom glassware, blue/white hotplates on laboratory jacks, wash bottles and vials. Service taps run across the front fascias and utilities hang within the enclosures; a yellow stool is at the work position. The image supports the hood bay, not a measured full-room layout. Image URL indicates 2019; present-day configuration and whole-room dimensions remain unconfirmed. Other equipment images on the page should be reconstructed as separate documented positions.",
+      "observed_cues": [
+        "Inspected two adjacent installed glazed fume hoods: vertical clamp lattices, round-bottom glassware, blue/white hotplates on laboratory jacks, wash bottles and vials. Service taps run across the front fascias and utilities hang within the enclosures; a yellow stool is at the work position. The image supports the hood bay, not a measured full-room layout."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5.6,
+          4.0,
+          2.9
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "bay_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.95,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "left_hood",
+          "kind": "epfl_synthesis_hood",
+          "pos": [
+            -0.97,
+            1.02,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Primary glazed hood with supported inert flask lift",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        },
+        {
+          "id": "right_hood",
+          "kind": "epfl_synthesis_hood",
+          "pos": [
+            0.97,
+            1.02,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Adjacent glazed hood with independent sash and inert flask lift",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Access and position an inert flask in a laboratory hood",
+        "description": "Open the sash and position the sealed inert flask on a supported lifting stage. Two adjacent installed hood silhouettes, service controls and restrained glassware follow the reference; no chemistry, heating or extraction simulation.",
+        "primary_equipment": "left_hood",
+        "observable": "Sash displacement and lift-mounted flask height"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.0,
+            -6.1,
+            4.2
+          ],
+          "target": [
+            0.0,
+            0.65,
+            1.24
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.15,
+            -1.65,
+            1.68
+          ],
+          "target": [
+            -0.18,
+            1.02,
+            1.4
+          ],
+          "fovy": 69
+        },
+        "workstation": {
+          "position": [
+            0.25,
+            -0.85,
+            1.95
+          ],
+          "target": [
+            -0.97,
+            1.0,
+            1.38
+          ],
+          "fovy": 53
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_access",
+          "minimum_xy": [
+            -2.45,
+            -1.76
+          ],
+          "maximum_xy": [
+            2.4,
+            -0.75
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_access",
+          "minimum_xy": [
+            -2.5,
+            -0.7
+          ],
+          "maximum_xy": [
+            -1.91,
+            1.7
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Two side-by-side glazed fume hoods reproduce the photographed bay relationship; service taps, clamp grid, supported hotplates, restrained bottles and yellow stools retain its distinctive appearance.",
+        "Only the evidenced workstation is modeled. Authored surrounding wall and door provide access, not a measured LSPN floor plan.",
+        "Sash and lift each have continuous guides and a visible inert flask; the guided lift is an explicit mechanical surrogate for the photographed jack."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Source image is dated 2019. Current arrangement, exact hood dimensions, room footprint and manufacturer internals are unverified.",
+        "No extraction airflow, chemical reaction, heating, vacuum, chemical recipes or certified handling operation. The source photograph is not redistributed."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave3": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/epfl_lspn_room.jpg",
+              "sha256": "a159e03a0a8ee7d6350db21e5b3252b9d1bb04c09ec76ece40cea881087549c4",
+              "page": "https://www.epfl.ch/labs/lspn/group/lab-tour/",
+              "image_url": "https://www.epfl.ch/labs/lspn/wp-content/uploads/2019/07/IMG_20190711_145334-1024x484.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Inspected two adjacent installed glazed fume hoods: vertical clamp lattices, round-bottom glassware, blue/white hotplates on laboratory jacks, wash bottles and vials. Service taps run across the front fascias and utilities hang within the enclosures; a yellow stool is at the work position. The image supports the hood bay, not a measured full-room layout."
+          ],
+          "implemented": [
+            "Two side-by-side glazed fume hoods reproduce the photographed bay relationship; service taps, clamp grid, supported hotplates, restrained bottles and yellow stools retain its distinctive appearance.",
+            "Only the evidenced workstation is modeled. Authored surrounding wall and door provide access, not a measured LSPN floor plan.",
+            "Sash and lift each have continuous guides and a visible inert flask; the guided lift is an explicit mechanical surrogate for the photographed jack."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Source image is dated 2019. Current arrangement, exact hood dimensions, room footprint and manufacturer internals are unverified.",
+            "No extraction airflow, chemical reaction, heating, vacuum, chemical recipes or certified handling operation. The source photograph is not redistributed."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "kth_robot_design_prototyping",
+      "title": "KTH Robot Design Prototyping Room",
+      "institution": "Kth Royal Institute Of Technology \u2014 Robot Design Lab mechatronic prototyping room",
+      "institution_id": "kth_royal_institute_of_technology",
+      "domain": "robotics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.kth.se/mmk/mechatronics/laboratories/robot-design-lab"
+      ],
+      "reference_notes": "Real workroom contains an instrumented assembly bench below dense hand-tool pegboards and component bins. Several enclosed desktop printers and an open-frame printer stand along a window-side workbench. Central workstations contain clamped mechanical extrusions, prototype parts, electronics and monitor arms. This is a hands-on prototyping laboratory with physical tools, printers and assembly fixtures, not a generic computer office. Exact printer model, unseen room perimeter and prototype dimensions are unverified. People and screen contents must not be copied into the scene.",
+      "observed_cues": [
+        "Real workroom contains an instrumented assembly bench below dense hand-tool pegboards and component bins. Several enclosed desktop printers and an open-frame printer stand along a window-side workbench. Central workstations contain clamped mechanical extrusions, prototype parts, electronics and monitor arms."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          6.6,
+          5.8,
+          2.85
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "workroom_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.9,
+              "width": 1.15,
+              "height": 2.25,
+              "sill": 0
+            },
+            {
+              "id": "printer_windows",
+              "wall": "back",
+              "kind": "window",
+              "offset": 0.9,
+              "width": 4.1,
+              "height": 1.45,
+              "sill": 1.15
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "printer_left",
+          "kind": "kth_enclosed_prototyping_printer",
+          "pos": [
+            -0.1,
+            1.95,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Enclosed dry-positioning printer beside window",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        },
+        {
+          "id": "printer_middle",
+          "kind": "kth_enclosed_prototyping_printer",
+          "pos": [
+            0.97,
+            1.95,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Second installed-style printer with retained prototype",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        },
+        {
+          "id": "printer_right",
+          "kind": "kth_enclosed_prototyping_printer",
+          "pos": [
+            2.04,
+            1.95,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Third printer representing the photographed equipment row",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Position a retained prototype bracket inside an enclosed printer",
+        "description": "Translate the dry toolhead and elevate the build plate holding a rigid bracket. Nearby assembly fixtures, inert electronics and a dense tool wall preserve the hands-on prototyping context; no generated printing or extrusion.",
+        "primary_equipment": "printer_middle",
+        "observable": "Toolhead traverse and retained-coupon elevation"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.8,
+            -8.2,
+            5.7
+          ],
+          "target": [
+            -0.25,
+            0.1,
+            1.0
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            2.6,
+            -2.34,
+            1.64
+          ],
+          "target": [
+            -0.58,
+            0.86,
+            1.27
+          ],
+          "fovy": 75
+        },
+        "workstation": {
+          "position": [
+            2.34,
+            0.08,
+            1.78
+          ],
+          "target": [
+            0.92,
+            1.95,
+            1.28
+          ],
+          "fovy": 54
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_route",
+          "minimum_xy": [
+            -3.02,
+            -2.66
+          ],
+          "maximum_xy": [
+            2.82,
+            -1.52
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "work_aisle",
+          "minimum_xy": [
+            -1.92,
+            -0.22
+          ],
+          "maximum_xy": [
+            2.87,
+            1.44
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "A window-side row of three enclosed desktop printers is separated from the left tool-wall bench and central electronics/assembly worktop, as observed in the official room photograph.",
+        "Tool pegboard, shallow shelves of labelled component bins, clamped aluminium extrusions, inert circuit boards and mounted screen/task lamp distinguish a physical prototyping workroom.",
+        "Printers have their own continuous supporting tables; retained prototype brackets and dry positioning axes are original mechanical surrogates, not identified OEM kinematics."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Only one room photograph establishes layout. Exact room perimeter, windows, door, printer dimensions, unseen benches and current equipment models are unverified.",
+        "No extrusion, heating, generated material, slicer output or certified printer control. No people, faces, screen content, trademark logos or source photo pixels reproduced.",
+        "KTH CloudGripper is not counted as a separate laboratory here."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave3": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/kth_robot_design.jpg",
+              "sha256": "7d806f474a24602574fb450ff508501e082406bfc9ddd8745bc9082c9092c5a2",
+              "page": "https://www.kth.se/mmk/mechatronics/laboratories/robot-design-lab",
+              "image_url": "https://www.kth.se/polopoly_fs/1.1479242.1780266502!/image/Robot_Design_Lab_Facilities_2_2000_812.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Real workroom contains an instrumented assembly bench below dense hand-tool pegboards and component bins. Several enclosed desktop printers and an open-frame printer stand along a window-side workbench. Central workstations contain clamped mechanical extrusions, prototype parts, electronics and monitor arms."
+          ],
+          "implemented": [
+            "A window-side row of three enclosed desktop printers is separated from the left tool-wall bench and central electronics/assembly worktop, as observed in the official room photograph.",
+            "Tool pegboard, shallow shelves of labelled component bins, clamped aluminium extrusions, inert circuit boards and mounted screen/task lamp distinguish a physical prototyping workroom.",
+            "Printers have their own continuous supporting tables; retained prototype brackets and dry positioning axes are original mechanical surrogates, not identified OEM kinematics."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Only one room photograph establishes layout. Exact room perimeter, windows, door, printer dimensions, unseen benches and current equipment models are unverified.",
+            "No extrusion, heating, generated material, slicer output or certified printer control. No people, faces, screen content, trademark logos or source photo pixels reproduced.",
+            "KTH CloudGripper is not counted as a separate laboratory here."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "manchester_hv_dielectric_fluids",
+      "title": "Manchester Unpowered Dielectric-Fluid Workcell",
+      "institution": "University Of Manchester \u2014 High Voltage Lab dielectric-fluid experimental workstation",
+      "institution_id": "university_of_manchester",
+      "domain": "electrical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.scieng.manchester.ac.uk/tomorrowlabs/high-voltage-lab/"
+      ],
+      "reference_notes": "Official insulating-liquid research section shows a transparent cylindrical vessel filled with a dark liquid. The circular top flange carries a central vertical rod and yellow upper fitting; metal inserts are visible inside. A black structural frame surrounds the experimental vessel; background cables and adjacent equipment are visible but largely cropped. The source proves a real experimental fixture, not a complete measured high-voltage hall. Another same-page photograph shows analytical instrumentation but does not establish adjacency. No high-voltage field, dielectric breakdown or thermal-fluid physics is implemented by a geometric reconstruction. CDN image is embedded by the official university page.",
+      "observed_cues": [
+        "Official insulating-liquid research section shows a transparent cylindrical vessel filled with a dark liquid. The circular top flange carries a central vertical rod and yellow upper fitting; metal inserts are visible inside. A black structural frame surrounds the experimental vessel; background cables and adjacent equipment are visible but largely cropped."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          3.8,
+          3.6,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "local_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.9,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "dielectric_cell",
+          "kind": "manchester_unpowered_dielectric_cell",
+          "pos": [
+            0,
+            0.22,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Transparent reference-informed vessel with unpowered mechanical service controls",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Position an inert material coupon inside a transparent workcell",
+        "description": "Raise the supported service lid and adjust a mechanically retained inert coupon. Transparent shell, visible rod, circular flange, yellow fitting and black frame reproduce the photographed device subset; all electrical and fluid processes are absent.",
+        "primary_equipment": "dielectric_cell",
+        "observable": "Service-lid height and retained specimen position"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            3.4,
+            -4.7,
+            3.4
+          ],
+          "target": [
+            0.0,
+            0.25,
+            1.0
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            1.42,
+            -1.44,
+            1.56
+          ],
+          "target": [
+            0.0,
+            0.21,
+            1.1
+          ],
+          "fovy": 58
+        },
+        "workstation": {
+          "position": [
+            0.8,
+            -1.36,
+            1.63
+          ],
+          "target": [
+            0.0,
+            0.22,
+            1.16
+          ],
+          "fovy": 46
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "operator_approach",
+          "minimum_xy": [
+            -1.67,
+            -1.56
+          ],
+          "maximum_xy": [
+            1.57,
+            -0.58
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_access",
+          "minimum_xy": [
+            -1.67,
+            -0.55
+          ],
+          "maximum_xy": [
+            -0.77,
+            1.49
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The scene reconstructs only the official close-up vessel: transparent cylinder, round flanged lid, yellow central fitting, internal rod and dark rectangular support frame.",
+        "An estimated floor support and guided service-lid mechanism provide continuous mechanical support; an inert coupon visibly follows its retained carrier.",
+        "A small authored backdrop is labelled as a selected workcell. Other analytical instruments pictured on the university page are not merged into an unsupported room layout."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "The photo is cropped; tank diameter, support height, floor connection, wider hall, actual specimen identity and OEM actuation are unknown. All dimensions and motion ranges are estimates.",
+        "No voltage source, electric fields, dielectric breakdown, energized electrodes, thermal/fluid solver, liquid chemistry or experimental operating procedure. Liquid is a static visual approximation."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave3": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/manchester_hv.jpg",
+              "sha256": "36d7c4b2b564a226736115edfc14b93caf659f23908c4136b9fb993239f8a5f7",
+              "page": "https://www.scieng.manchester.ac.uk/tomorrowlabs/high-voltage-lab/",
+              "image_url": "https://assets.foleon.com/eu-central-1/de-uploads-7e3kk3/49762/highvoltagelab-impact-1.40442ab30ebd.jpg?ext=webp",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Official insulating-liquid research section shows a transparent cylindrical vessel filled with a dark liquid. The circular top flange carries a central vertical rod and yellow upper fitting; metal inserts are visible inside. A black structural frame surrounds the experimental vessel; background cables and adjacent equipment are visible but largely cropped."
+          ],
+          "implemented": [
+            "The scene reconstructs only the official close-up vessel: transparent cylinder, round flanged lid, yellow central fitting, internal rod and dark rectangular support frame.",
+            "An estimated floor support and guided service-lid mechanism provide continuous mechanical support; an inert coupon visibly follows its retained carrier.",
+            "A small authored backdrop is labelled as a selected workcell. Other analytical instruments pictured on the university page are not merged into an unsupported room layout."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "The photo is cropped; tank diameter, support height, floor connection, wider hall, actual specimen identity and OEM actuation are unknown. All dimensions and motion ranges are estimates.",
+            "No voltage source, electric fields, dielectric breakdown, energized electrodes, thermal/fluid solver, liquid chemistry or experimental operating procedure. Liquid is a static visual approximation."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "birmingham_chbh_mri",
+      "title": "Birmingham CHBH Inert Phantom Scanner Room",
+      "institution": "University Of Birmingham \u2014 Centre for Human Brain Health MRI scanner room",
+      "institution_id": "university_of_birmingham",
+      "domain": "research_imaging",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.birmingham.ac.uk/research/centres-institutes/human-brain-health/faciities/magnetic-resonance-imaging"
+      ],
+      "reference_notes": "An actual scanner-room image shows a broad circular MRI bore with rounded grey housing, a long mobile patient table and padded support, shelving at the left wall and a suspended ceiling. A person and attendant show front access and approximate scale. Only the bore/table side of the room is visible. Rear service space, shielding and control-room location are unknown. Use inert phantoms; do not simulate medical diagnosis, magnetic/RF fields, human procedures or claim a manufacturer-certified model.",
+      "observed_cues": [
+        "An actual scanner-room image shows a broad circular MRI bore with rounded grey housing, a long mobile patient table and padded support, shelving at the left wall and a suspended ceiling. A person and attendant show front access and approximate scale."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          4.5,
+          5.8,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "scanner_room_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.95,
+              "width": 1.15,
+              "height": 2.25,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "scanner",
+          "kind": "birmingham_mri_phantom_station",
+          "pos": [
+            0,
+            0.38,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Original MRI-shaped hollow shell with mechanically supported inert phantom table",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Position an inert phantom at a scanner-shaped bore",
+        "description": "Elevate and translate a supported table carrying a restrained cylindrical phantom. The hollow circular bore, silver rim, mobile-style table, storage shelves and ceiling grid follow the source image. No human, magnetic fields, MR images or clinical procedure are modeled.",
+        "primary_equipment": "scanner",
+        "observable": "Table elevation and inert phantom displacement relative to hollow bore"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.4,
+            -6.8,
+            4.2
+          ],
+          "target": [
+            0.0,
+            0.1,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.63,
+            -2.4,
+            1.6
+          ],
+          "target": [
+            -0.15,
+            0.6,
+            1.07
+          ],
+          "fovy": 63
+        },
+        "workstation": {
+          "position": [
+            0.98,
+            -1.63,
+            1.48
+          ],
+          "target": [
+            0.0,
+            0.17,
+            1.03
+          ],
+          "fovy": 53
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_access",
+          "minimum_xy": [
+            -1.96,
+            -2.64
+          ],
+          "maximum_xy": [
+            1.9,
+            -1.96
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_side_access",
+          "minimum_xy": [
+            -1.96,
+            -1.9
+          ],
+          "maximum_xy": [
+            -0.56,
+            -0.38
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The source photo establishes a broad circular scanner face, long table, left storage shelves and a suspended ceiling. These remain the dominant and distinctive room cues.",
+        "The shell has a physically open bore. The inert cylindrical phantom is visibly retained on a padded carrier; its insertion and table lift remain mechanically supported throughout travel.",
+        "Only the scanner-room subset is reconstructed. Unseen control rooms, shielding, equipment service routes and institutional floor plan are not invented."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Although the official page identifies Siemens MAGNETOM Prisma, the geometry is an original reference-informed surrogate with estimated dimensions and authored table kinematics, not manufacturer-certified CAD.",
+        "No human patient, diagnosis, medical image synthesis, magnetic/RF fields, pulse sequences, shielding calculation, MRI safety certification or clinical operating workflow. Only inert phantom positioning."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave3": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/birmingham_mri.png",
+              "sha256": "ed3904b882676d7a5f49415b87d0eb020b20ad754bc3c8851cae78c1f9e9b852",
+              "page": "https://www.birmingham.ac.uk/research/centres-institutes/human-brain-health/faciities/magnetic-resonance-imaging",
+              "image_url": "https://www.birmingham.ac.uk/media-library/mri-168.x0be7c3e3.png?w=1000&h=650&q=80&fit=crop",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "An actual scanner-room image shows a broad circular MRI bore with rounded grey housing, a long mobile patient table and padded support, shelving at the left wall and a suspended ceiling. A person and attendant show front access and approximate scale."
+          ],
+          "implemented": [
+            "The source photo establishes a broad circular scanner face, long table, left storage shelves and a suspended ceiling. These remain the dominant and distinctive room cues.",
+            "The shell has a physically open bore. The inert cylindrical phantom is visibly retained on a padded carrier; its insertion and table lift remain mechanically supported throughout travel.",
+            "Only the scanner-room subset is reconstructed. Unseen control rooms, shielding, equipment service routes and institutional floor plan are not invented."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Although the official page identifies Siemens MAGNETOM Prisma, the geometry is an original reference-informed surrogate with estimated dimensions and authored table kinematics, not manufacturer-certified CAD.",
+            "No human patient, diagnosis, medical image synthesis, magnetic/RF fields, pulse sequences, shielding calculation, MRI safety certification or clinical operating workflow. Only inert phantom positioning."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    }
+  ]
+}

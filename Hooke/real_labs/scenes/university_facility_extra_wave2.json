@@ -1,0 +1,816 @@
+{
+  "scenes": [
+    {
+      "id": "glasgow_jwnc_wafer_loading",
+      "title": "Glasgow JWNC retained-wafer loading workstation",
+      "institution": "James Watt Nanofabrication Centre \u2014 Wafer Loading Workstation",
+      "domain": "semiconductor_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.gla.ac.uk/research/az/jwnc/",
+        "https://www.gla.ac.uk/media/Media_703827_smxx.jpg"
+      ],
+      "reference_notes": "The actual institutional photograph shows two dark circular wafers retained side by side in machined metal fixtures, shaped clamp fingers, a large metal loading bed and an adjacent guarded machine edge. The separately inspected official-linked Matterport thumbnail is a photographic dollhouse capture of the cleanroom suite; it establishes a multi-bay facility but does not locate this exact workstation. Only the photograph-supported loading workcell should be authored; do not recreate the entire cleanroom from a small dollhouse preview. Equipment model identity and dimensions are not verified. Matterport image is a source-linked photographic reconstruction preview, not a raw measured plan or a completed virtual-tour review. No lithography, etching, chemical processing, vacuum or semiconductor performance.",
+      "observed_cues": [
+        "Side-by-side circular workpiece fixtures in a silver machined loading tray",
+        "Multiple small clamp fingers and locating stops surrounding each wafer",
+        "Selected cleanroom workcell context, without claiming an unseen full-room plan"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the photograph-supported local apparatus or selected bay; not a surveyed complete laboratory.",
+      "room": {
+        "size": [
+          3.4,
+          3.0,
+          2.8
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "glasgow_jwnc_wafer_loading",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "loading_bench",
+          "pos": [
+            0,
+            0.35,
+            0
+          ],
+          "size": [
+            1.5,
+            0.95,
+            0.9
+          ],
+          "style": "optical",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "wafer_loading",
+          "kind": "glasgow_jwnc_dual_wafer_carrier",
+          "pos": [
+            0,
+            0.35,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Glasgow JWNC retained-wafer loading workstation",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.gla.ac.uk/research/az/jwnc/",
+            "https://www.gla.ac.uk/media/Media_703827_smxx.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.gla.ac.uk/media/Media_703827_smxx.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/europe_03_media/glasgow_jwnc.jpg"
+          ],
+          "supports": "The actual institutional photograph shows two dark circular wafers retained side by side in machined metal fixtures, shaped clamp fingers, a large metal loading bed and an adjacent guarded machine edge. The separately inspected official-linked Matterport thumbnail is a photographic dollhouse capture of the cleanroom suite; it establishes a multi-bay facility but does not locate this exact workstation."
+        },
+        {
+          "url": "https://my.matterport.com/api/v1/player/models/NFkiqLfFD2Y/thumb",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/europe_03_media/glasgow_tour_thumb.jpg"
+          ],
+          "supports": "The actual institutional photograph shows two dark circular wafers retained side by side in machined metal fixtures, shaped clamp fingers, a large metal loading bed and an adjacent guarded machine edge. The separately inspected official-linked Matterport thumbnail is a photographic dollhouse capture of the cleanroom suite; it establishes a multi-bay facility but does not locate this exact workstation."
+        }
+      ],
+      "layout_rationale": [
+        "Side-by-side circular workpiece fixtures in a silver machined loading tray",
+        "Multiple small clamp fingers and locating stops surrounding each wafer",
+        "Selected cleanroom workcell context, without claiming an unseen full-room plan",
+        "Two side-by-side dark retained wafers, three-finger clamps, machined loading plate and adjacent guard edge follow the source crop.",
+        "Only a local loading workcell is reconstructed; the Matterport dollhouse does not establish this station position or a measured full-room layout."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            4.1,
+            -4.6,
+            3.5
+          ],
+          "target": [
+            0.0,
+            0.25,
+            0.9
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.0,
+            -1.05,
+            1.48
+          ],
+          "target": [
+            0.0,
+            0.35,
+            0.95
+          ],
+          "fovy": 44
+        },
+        "workstation": {
+          "position": [
+            0.24,
+            -0.04,
+            1.3
+          ],
+          "target": [
+            0.0,
+            0.35,
+            0.976
+          ],
+          "fovy": 46
+        },
+        "source": {
+          "position": [
+            0.42,
+            -0.25,
+            1.47
+          ],
+          "target": [
+            0.0,
+            0.35,
+            0.985
+          ],
+          "fovy": 48
+        }
+      },
+      "task": {
+        "name": "Glasgow JWNC retained-wafer loading workstation",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "wafer_loading",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No lithography, etching, chemical processing, vacuum or semiconductor response.",
+        "Nominal 100 mm inert disks, room and mechanical travel are estimates; not documented dimensions."
+      ]
+    },
+    {
+      "id": "kth_l2000_wind_tunnel",
+      "title": "KTH L2000 octagonal model-alignment section",
+      "institution": "Engineering Mechanics \u2014 L2000 Wind Tunnel",
+      "domain": "aerodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.kth.se/en/tekmek/infrastruktur/vindtunnel-l2000-1.1244292",
+        "https://www.kth.se/polopoly_fs/1.1292662.1699265785!/image/IMG_9191.JPEG"
+      ],
+      "reference_notes": "An actual photograph looks along the white octagonal test section towards a dark opening. Repeated lights occupy the sloping upper and lower wall facets. A large left observation window exposes a neighbouring instrument cabinet. A slender triangular braced support holds a wing model at the far end. Official page confirms pitch/yaw rig but exact linkage, model shape and room length are estimated. No airflow, aerodynamic balance, pressures or aeroelasticity. Do not count adjacent FPL facilities separately without independent lab identity.",
+      "observed_cues": [
+        "White octagonal 2 m by 2 m test section with a dark downstream opening",
+        "Long observation glazing in the left wall and repeated sloped light panels",
+        "Slender braced wing-model support at the downstream end"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the photograph-supported local apparatus or selected bay; not a surveyed complete laboratory.",
+      "room": {
+        "size": [
+          5.6,
+          8.0,
+          3.6
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "kth_l2000_wind_tunnel",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -3.3,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "wind_tunnel",
+          "kind": "kth_l2000_octagonal_section",
+          "pos": [
+            0.35,
+            0.4,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "KTH L2000 octagonal model-alignment section",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.kth.se/en/tekmek/infrastruktur/vindtunnel-l2000-1.1244292",
+            "https://www.kth.se/polopoly_fs/1.1292662.1699265785!/image/IMG_9191.JPEG"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.kth.se/polopoly_fs/1.1292662.1699265785!/image/IMG_9191.JPEG",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/europe_03_media/kth_l2000.jpg"
+          ],
+          "supports": "An actual photograph looks along the white octagonal test section towards a dark opening. Repeated lights occupy the sloping upper and lower wall facets. A large left observation window exposes a neighbouring instrument cabinet. A slender triangular braced support holds a wing model at the far end."
+        }
+      ],
+      "layout_rationale": [
+        "White octagonal 2 m by 2 m test section with a dark downstream opening",
+        "Long observation glazing in the left wall and repeated sloped light panels",
+        "Slender braced wing-model support at the downstream end",
+        "Published clear 2 m by 2 m octagonal section anchors scale; the local 5.6 m length is estimated.",
+        "Sloped light panels, left observation glazing and a slender triangulated downstream model support follow the actual photo.",
+        "Interior cameras are placed inside the test section, not outside a closed wall."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "octagonal clear width and height",
+          "value_m": [
+            2.0,
+            2.0
+          ],
+          "source_url": "https://www.kth.se/en/tekmek/infrastruktur/vindtunnel-l2000-1.1244292",
+          "scope": "cross-section only; axial length remains estimated"
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            6.5,
+            -8.0,
+            5.5
+          ],
+          "target": [
+            0.0,
+            0.6,
+            1.2
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            0.15,
+            -2.12,
+            1.4
+          ],
+          "target": [
+            0.35,
+            1.7,
+            1.38
+          ],
+          "fovy": 78
+        },
+        "workstation": {
+          "position": [
+            0.6,
+            0.33,
+            1.43
+          ],
+          "target": [
+            0.35,
+            1.75,
+            1.33
+          ],
+          "fovy": 59
+        },
+        "source": {
+          "position": [
+            0.1,
+            -2.1,
+            1.25
+          ],
+          "target": [
+            0.35,
+            1.7,
+            1.35
+          ],
+          "fovy": 80
+        }
+      },
+      "task": {
+        "name": "KTH L2000 octagonal model-alignment section",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "wind_tunnel",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No airflow, pressure, aerodynamic balance, force or aeroelasticity model."
+      ]
+    },
+    {
+      "id": "eth_experimental_petrology_multianvil",
+      "title": "ETH multianvil laboratory inert-specimen access",
+      "institution": "Experimental Petrology \u2014 Multianvil Laboratory",
+      "domain": "materials_testing",
+      "university_expansion": true,
+      "source_urls": [
+        "https://highpressure.ethz.ch/facilities/experimental.html",
+        "https://highpressure.ethz.ch/facilities/experimental/_jcr_content/par/fullwidthimage/image.imageformat.1286.1406008947.jpg"
+      ],
+      "reference_notes": "A panoramic real workroom photo shows an orange rectangular gantry/press at left, a blue front-centre frame with yellow cylindrical ram, and a tall dark blue four-column press to the right. Green-topped wooden islands sit in the left aisle; computers are on a freestanding white table by the right press. Red overhead crane rails and services span the ceiling; a yellow rear cabinet stands near a porthole door and short dark steps. Panorama is photographic, not a measured floor plan. Visible press label does not validate performance. No pressure generation, heating, material transformation, force calibration or high-pressure operating sequence. Only mechanically supported inert specimen access.",
+      "observed_cues": [
+        "Three visibly different orange/blue press structures with large central ram volumes",
+        "Green wooden preparation islands and a white computer table between machines",
+        "Red overhead service/crane rails and yellow rear cabinet beside stepped door access"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the photograph-supported local apparatus or selected bay; not a surveyed complete laboratory.",
+      "room": {
+        "size": [
+          9.0,
+          7.0,
+          3.6
+        ],
+        "wall_color": [
+          0.78,
+          0.79,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "eth_experimental_petrology_multianvil",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.56,
+              0.57,
+              0.36,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.8,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "green_prep_island",
+          "pos": [
+            -2.75,
+            -1.42,
+            0
+          ],
+          "size": [
+            1.2,
+            1.65,
+            0.92
+          ],
+          "style": "cabinet",
+          "color": [
+            0.16,
+            0.45,
+            0.23,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "computer_table",
+          "pos": [
+            1.72,
+            -1.45,
+            0
+          ],
+          "size": [
+            1.5,
+            0.8,
+            0.85
+          ],
+          "style": "optical",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "multianvil_access",
+          "kind": "eth_multianvil_dry_access",
+          "pos": [
+            -0.2,
+            -0.5,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "ETH multianvil laboratory inert-specimen access",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://highpressure.ethz.ch/facilities/experimental.html",
+            "https://highpressure.ethz.ch/facilities/experimental/_jcr_content/par/fullwidthimage/image.imageformat.1286.1406008947.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://highpressure.ethz.ch/facilities/experimental/_jcr_content/par/fullwidthimage/image.imageformat.1286.1406008947.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/europe_03_media/eth_multianvil.jpg"
+          ],
+          "supports": "A panoramic real workroom photo shows an orange rectangular gantry/press at left, a blue front-centre frame with yellow cylindrical ram, and a tall dark blue four-column press to the right. Green-topped wooden islands sit in the left aisle; computers are on a freestanding white table by the right press. Red overhead crane rails and services span the ceiling; a yellow rear cabinet stands near a porthole door and short dark steps."
+        }
+      ],
+      "layout_rationale": [
+        "Three visibly different orange/blue press structures with large central ram volumes",
+        "Green wooden preparation islands and a white computer table between machines",
+        "Red overhead service/crane rails and yellow rear cabinet beside stepped door access",
+        "Distinct orange left frame, blue/yellow front press and tall blue right four-column press follow the real panoramic arrangement.",
+        "Green sample-preparation island, separate white computer table, yellow cabinet and red overhead rails preserve source-specific room context.",
+        "Front press drawer and side service panel are deliberately unpowered original inspection affordances.",
+        "The right-hand stored-disc stack has an inferred continuous spindle joining the middle platen; it is an authored support, not measured press internals."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            10.0,
+            -11.0,
+            7.4
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.25
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            3.7,
+            -2.8,
+            1.8
+          ],
+          "target": [
+            -0.2,
+            0.6,
+            1.4
+          ],
+          "fovy": 75
+        },
+        "workstation": {
+          "position": [
+            1.05,
+            -2.05,
+            1.93
+          ],
+          "target": [
+            -0.2,
+            -0.78,
+            1.68
+          ],
+          "fovy": 46
+        },
+        "source": {
+          "position": [
+            0.0,
+            -2.9,
+            1.7
+          ],
+          "target": [
+            0.0,
+            0.55,
+            1.4
+          ],
+          "fovy": 86
+        }
+      },
+      "task": {
+        "name": "ETH multianvil laboratory inert-specimen access",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "multianvil_access",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No pressure, heating, hydraulic actuation, force calibration or phase-transformation response.",
+        "The panoramic image provides layout evidence but no surveyed floor plan or verified machine dimensions."
+      ]
+    },
+    {
+      "id": "epfl_lch_hydraulic_flume",
+      "title": "EPFL LCH dry hydraulic-bay probe alignment",
+      "institution": "Hydraulic Constructions Platform \u2014 Experimental Flume Hall",
+      "domain": "hydraulics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.epfl.ch/labs/lch/infrastructure/hydraulic-laboratory/",
+        "https://www.epfl.ch/labs/lch/wp-content/uploads/2023/12/DSCF3866-1024x683.jpg"
+      ],
+      "reference_notes": "The official hall overview shows a long elevated narrow channel along the left, dense silver support/guard rails, an inclined conveyor or ladder-like component, a rectangular glass-sided rig at front-right beside an orange control cabinet, and a yellow elevated control booth beneath an overhead yellow bridge crane. A separate close-up shows a cable-connected probe on a metal carrier over a granular bed; its exact location relative to the overview is not established. Use a selected bay; the whole 1775 square metre two-level facility is not reconstructed from one view. Probe detail informs component style only, not its exact placement in the overview. No flowing water, sediment transport, cavitation, erosion, pump dynamics or hydraulic validation.",
+      "observed_cues": [
+        "Long narrow elevated channel beside a larger glass-sided experimental rig",
+        "Orange front control cabinet and yellow elevated rear observation booth",
+        "Dense silver access rails beneath a yellow overhead crane"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the photograph-supported local apparatus or selected bay; not a surveyed complete laboratory.",
+      "room": {
+        "size": [
+          12.0,
+          13.0,
+          7.5
+        ],
+        "wall_color": [
+          0.57,
+          0.6,
+          0.56,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "epfl_lch_hydraulic_flume",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.37,
+              0.4,
+              0.39,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -5.8,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "probe_rig",
+          "kind": "epfl_lch_dry_probe_bay",
+          "pos": [
+            1.45,
+            -1.0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "EPFL LCH dry hydraulic-bay probe alignment",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.epfl.ch/labs/lch/infrastructure/hydraulic-laboratory/",
+            "https://www.epfl.ch/labs/lch/wp-content/uploads/2023/12/DSCF3866-1024x683.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.epfl.ch/labs/lch/wp-content/uploads/2023/12/DSCF3866-1024x683.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/europe_03_media/epfl_lch_overview.jpg"
+          ],
+          "supports": "The official hall overview shows a long elevated narrow channel along the left, dense silver support/guard rails, an inclined conveyor or ladder-like component, a rectangular glass-sided rig at front-right beside an orange control cabinet, and a yellow elevated control booth beneath an overhead yellow bridge crane. A separate close-up shows a cable-connected probe on a metal carrier over a granular bed; its exact location relative to the overview is not established."
+        },
+        {
+          "url": "https://www.epfl.ch/labs/lch/wp-content/uploads/2023/12/DSCF3860-1024x683.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/europe_03_media/epfl_lch_sedmix.jpg"
+          ],
+          "supports": "The official hall overview shows a long elevated narrow channel along the left, dense silver support/guard rails, an inclined conveyor or ladder-like component, a rectangular glass-sided rig at front-right beside an orange control cabinet, and a yellow elevated control booth beneath an overhead yellow bridge crane. A separate close-up shows a cable-connected probe on a metal carrier over a granular bed; its exact location relative to the overview is not established."
+        }
+      ],
+      "layout_rationale": [
+        "Long narrow elevated channel beside a larger glass-sided experimental rig",
+        "Orange front control cabinet and yellow elevated rear observation booth",
+        "Dense silver access rails beneath a yellow overhead crane",
+        "Selected bay retains the left narrow elevated flume, right glass-sided rig, orange control cabinet, inclined carrier, high yellow booth and yellow crane.",
+        "The separately photographed probe informs exterior style only; exact placement in the overview is unregistered and authored.",
+        "A narrow top inspection strip makes the inert dry bed target and probe visible; no water is present."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            16.0,
+            -19.0,
+            14.0
+          ],
+          "target": [
+            0.0,
+            0.5,
+            2.1
+          ],
+          "fovy": 52
+        },
+        "interior": {
+          "position": [
+            4.6,
+            -5.4,
+            2.5
+          ],
+          "target": [
+            -0.1,
+            0.3,
+            2.0
+          ],
+          "fovy": 75
+        },
+        "workstation": {
+          "position": [
+            0.1,
+            -2.8,
+            1.65
+          ],
+          "target": [
+            1.45,
+            -1.05,
+            1.25
+          ],
+          "fovy": 52
+        },
+        "source": {
+          "position": [
+            -0.75,
+            -5.7,
+            3.0
+          ],
+          "target": [
+            0.1,
+            0.3,
+            2.05
+          ],
+          "fovy": 72
+        }
+      },
+      "task": {
+        "name": "EPFL LCH dry hydraulic-bay probe alignment",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "probe_rig",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No water flow, sediment transport, cavitation, erosion, pump dynamics or hydraulic validation.",
+        "The 1775 square metre two-level facility is not recreated; all local dimensions and equipment placement are estimated from the reviewed views."
+      ]
+    }
+  ]
+}

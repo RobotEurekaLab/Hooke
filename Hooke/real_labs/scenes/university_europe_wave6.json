@@ -1,0 +1,655 @@
+{
+  "scenes": [
+    {
+      "id": "imperial_thinfilm_bessemer",
+      "title": "Imperial Thin Film Technology Lab (2018 Bessemer)",
+      "institution": "Imperial College London \u2014 Thin Film Technology Laboratory, photographed Bessemer setup",
+      "institution_id": "imperial_college_london",
+      "domain": "materials_physics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://blogs.imperial.ac.uk/photography/2018/02/06/featured-lab-the-thin-film-technology-lab/"
+      ],
+      "reference_notes": "A working-lab photo shows densely packed stainless multi-port vacuum chambers on metal frames, angled flanged source arms, foil-wrapped pipe sections, blue/yellow service lines and control racks. Exposed ceiling ducts and cable trays run above a narrow operator gap. Historical 2018 Bessemer photograph; source mentions a planned move to White City, so this must be labeled a dated reference and not a verified current location. No vacuum, deposition kinetics or recipe simulation. Exact equipment geometry and clearances require further views.",
+      "observed_cues": [
+        "A working-lab photo shows densely packed stainless multi-port vacuum chambers on metal frames, angled flanged source arms, foil-wrapped pipe sections, blue/yellow service lines and control racks. Exposed ceiling ducts and cable trays run above a narrow operator gap."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          6.2,
+          5.4,
+          3.2
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "operator_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.72,
+              "width": 1.15,
+              "height": 2.25,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "thinfilm_cluster",
+          "kind": "imperial_historical_thinfilm_cluster",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Historical paired multiport chamber silhouettes with authored dry mechanical access fixture",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect and position a retained inert thin-film coupon",
+        "description": "Open the representative access door and translate an inert solid coupon on a supported carrier. Main multiport vessels, lower cabinets, cabling and overhead services follow the 2018 Bessemer image; no deposition or vacuum process.",
+        "primary_equipment": "thinfilm_cluster",
+        "observable": "Access-door angle and retained-coupon displacement"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.2,
+            -7.1,
+            5.0
+          ],
+          "target": [
+            0.0,
+            0.15,
+            1.18
+          ],
+          "fovy": 50
+        },
+        "interior": {
+          "position": [
+            -0.1,
+            -2.37,
+            1.63
+          ],
+          "target": [
+            0.2,
+            0.2,
+            1.25
+          ],
+          "fovy": 79
+        },
+        "workstation": {
+          "position": [
+            1.68,
+            -2.08,
+            1.61
+          ],
+          "target": [
+            0.94,
+            -0.72,
+            1.08
+          ],
+          "fovy": 57
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_access",
+          "minimum_xy": [
+            -2.84,
+            -2.42
+          ],
+          "maximum_xy": [
+            2.85,
+            -1.65
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_operator",
+          "minimum_xy": [
+            -2.72,
+            -1.45
+          ],
+          "maximum_xy": [
+            -1.8,
+            0.7
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Two stainless multiport chamber assemblies on cabinet frames preserve the photograph\u2019s left-near/right-far arrangement and operator gap. Bolted flanges, upper feedthroughs, angled lower branches and restrained cables provide the apparatus silhouette.",
+        "Green overhead pipes, rectangular services, monitor desk and separate electronics racks retain the visible facility character. Exact ceiling routing, boundaries and workstation spacing remain estimates.",
+        "A dry hollow access station and retained inert coupon carrier are explicitly authored mechanical task fixtures, distinct from the real apparatus internals."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Historical 2018 Bessemer location. The source mentions a later move; this scene does not claim a verified current White City layout.",
+        "No manufacturer CAD, surveyed dimensions, vacuum, thin-film deposition, plasma, chemical delivery, temperature control or validated film performance."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave6": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/imperial_thinfilm.jpg",
+              "sha256": "71c89c87c73fecb104454b12cca9719984f4139c188b5fcf1cfc8afaaafdb772",
+              "page": "https://blogs.imperial.ac.uk/photography/2018/02/06/featured-lab-the-thin-film-technology-lab/",
+              "image_url": "https://blogs.imperial.ac.uk/photography/files/2018/02/751_180118_tft_lab_peter_petrov_002.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "A working-lab photo shows densely packed stainless multi-port vacuum chambers on metal frames, angled flanged source arms, foil-wrapped pipe sections, blue/yellow service lines and control racks. Exposed ceiling ducts and cable trays run above a narrow operator gap."
+          ],
+          "implemented": [
+            "Two stainless multiport chamber assemblies on cabinet frames preserve the photograph\u2019s left-near/right-far arrangement and operator gap. Bolted flanges, upper feedthroughs, angled lower branches and restrained cables provide the apparatus silhouette.",
+            "Green overhead pipes, rectangular services, monitor desk and separate electronics racks retain the visible facility character. Exact ceiling routing, boundaries and workstation spacing remain estimates.",
+            "A dry hollow access station and retained inert coupon carrier are explicitly authored mechanical task fixtures, distinct from the real apparatus internals."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Historical 2018 Bessemer location. The source mentions a later move; this scene does not claim a verified current White City layout.",
+            "No manufacturer CAD, surveyed dimensions, vacuum, thin-film deposition, plasma, chemical delivery, temperature control or validated film performance."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "nottingham_food_process_hall",
+      "title": "Nottingham Food Process Hall (Historical Brochure)",
+      "institution": "University Of Nottingham \u2014 Sutton Bonington Food Processing Facilities production hall",
+      "institution_id": "university_of_nottingham",
+      "domain": "process_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.nottingham.ac.uk/biosciences/documents/business/food-processing-equipment-and-facilities.pdf"
+      ],
+      "reference_notes": "The top photograph on brochure page 4 shows a high food-processing hall with sloped glazing at the right, long stainless service benches behind wire guarding, multiple wheeled white worktables, rear processing equipment and a left-wall sink. Page 9 separately illustrates jacketed pans and a wheeled ice-cream machine. PDF metadata dates the brochure to 2013; present arrangement is not verified. The lower page-4 photograph is a separate quality-control laboratory and is not combined with the hall. Page-9 equipment placement in the hall is unknown. No food thermal/rheological process or biological model.",
+      "observed_cues": [
+        "The top photograph on brochure page 4 shows a high food-processing hall with sloped glazing at the right, long stainless service benches behind wire guarding, multiple wheeled white worktables, rear processing equipment and a left-wall sink. Page 9 separately illustrates jacketed pans and a wheeled ice-cream machine."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          8,
+          7,
+          4.2
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "hall_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.53,
+              "width": 1.22,
+              "height": 2.45,
+              "sill": 0
+            },
+            {
+              "id": "daylight_band",
+              "wall": "right",
+              "kind": "window",
+              "offset": 0.6,
+              "width": 4.9,
+              "height": 2.75,
+              "sill": 1.2
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "dry_pan",
+          "kind": "nottingham_jacketed_pan_fixture",
+          "pos": [
+            1.12,
+            -1.34,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Source-informed mobile jacketed-pan exterior with dry inspection mechanics",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Tilt a dry pan and inspect a retained inert coupon",
+        "description": "Position the unloaded trunnion-mounted pan and open its mechanical inspection cover. A visible rigid inert coupon stays clamped inside. The hall follows the brochure upper photograph; no food processing or fluid dynamics.",
+        "primary_equipment": "dry_pan",
+        "observable": "Pan angle, cover angle and retained-coupon pose"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            8.4,
+            -8.5,
+            6.1
+          ],
+          "target": [
+            0.0,
+            0.3,
+            1.25
+          ],
+          "fovy": 50
+        },
+        "interior": {
+          "position": [
+            1.5,
+            -3.0,
+            1.62
+          ],
+          "target": [
+            0.0,
+            0.65,
+            1.17
+          ],
+          "fovy": 79
+        },
+        "workstation": {
+          "position": [
+            1.72,
+            -1.94,
+            2.44
+          ],
+          "target": [
+            1.12,
+            -1.34,
+            0.97
+          ],
+          "fovy": 51
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_hall_route",
+          "minimum_xy": [
+            -3.7,
+            -3.15
+          ],
+          "maximum_xy": [
+            3.14,
+            -2.14
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "between_banks",
+          "minimum_xy": [
+            -2.3,
+            0.79
+          ],
+          "maximum_xy": [
+            2.3,
+            1.43
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The 2013-era official brochure shows a high hall, right sloping daylight glazing, long parallel stainless work banks with low mesh guards, foreground mobile tables, left sink and rear enclosed equipment. These are modeled as one selected hall subset.",
+        "The separately photographed approximately 25 L jacketed pan has a white braced wheeled base, side trunnions, handles and metallic bowl. Its placement at the foreground right is an explicit authoring estimate, not a photographed position.",
+        "The distinct quality-control room shown below the hall in the PDF is not merged into this scene. The retained inspection coupon and cover task are original dry mechanical fixtures."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Historical brochure, not a verified current facility plan. Hall dimensions, slope of glazing, exact bench separations, pan exterior dimensions and cover travel are estimates; 25 L is documented working capacity only.",
+        "No steam, heating, mixing, product preparation, fermentation, sterility, liquids, process recipes or food quality prediction."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave6": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/nottingham_food_page4.png",
+              "sha256": "d3b93e0d5f3b8a18be773095eea51374cc4105bda5d8ada0bea301fe78bf5e73",
+              "page": "https://www.nottingham.ac.uk/biosciences/documents/business/food-processing-equipment-and-facilities.pdf",
+              "image_url": "https://www.nottingham.ac.uk/biosciences/documents/business/food-processing-equipment-and-facilities.pdf#page=4",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/nottingham_food_page9.png",
+              "sha256": "06ab86398de8e98cb8979ee63348e9a79fa02441c3c5cdf3a4327244331e7e94",
+              "page": "https://www.nottingham.ac.uk/biosciences/documents/business/food-processing-equipment-and-facilities.pdf",
+              "image_url": "https://www.nottingham.ac.uk/biosciences/documents/business/food-processing-equipment-and-facilities.pdf#page=9",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "The top photograph on brochure page 4 shows a high food-processing hall with sloped glazing at the right, long stainless service benches behind wire guarding, multiple wheeled white worktables, rear processing equipment and a left-wall sink. Page 9 separately illustrates jacketed pans and a wheeled ice-cream machine."
+          ],
+          "implemented": [
+            "The 2013-era official brochure shows a high hall, right sloping daylight glazing, long parallel stainless work banks with low mesh guards, foreground mobile tables, left sink and rear enclosed equipment. These are modeled as one selected hall subset.",
+            "The separately photographed approximately 25 L jacketed pan has a white braced wheeled base, side trunnions, handles and metallic bowl. Its placement at the foreground right is an explicit authoring estimate, not a photographed position.",
+            "The distinct quality-control room shown below the hall in the PDF is not merged into this scene. The retained inspection coupon and cover task are original dry mechanical fixtures."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Historical brochure, not a verified current facility plan. Hall dimensions, slope of glazing, exact bench separations, pan exterior dimensions and cover travel are estimates; 25 L is documented working capacity only.",
+            "No steam, heating, mixing, product preparation, fermentation, sterility, liquids, process recipes or food quality prediction."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "warwick_highfield_nmr_1ghz",
+      "title": "Warwick 1 GHz NMR Apparatus (Installation Reference)",
+      "institution": "University Of Warwick \u2014 UK High-Field Solid-State NMR Facility, 1 GHz magnet room",
+      "institution_id": "university_of_warwick",
+      "domain": "magnetic_resonance",
+      "university_expansion": true,
+      "source_urls": [
+        "https://warwick.ac.uk/fac/sci/physics/research/condensedmatt/nmr/850/"
+      ],
+      "reference_notes": "The official installation photographs show a tall cylindrical magnet supported on three isolated columns, a temporary mobile scaffold, a low pump cart, long overhead service ducts and high wall windows. A close view establishes top service necks and flexible connections; the room corner and side workbench are visible. The operational facility is confirmed by its current official page, while the reviewed geometry photos document 2021 installation/commissioning. Scaffolding, crates and coverings are temporary and must not be presented as the permanent experiment layout. No current whole-room survey, OEM CAD, magnetic field, RF or spectral solver is verified.",
+      "observed_cues": [
+        "The official installation photographs show a tall cylindrical magnet supported on three isolated columns, a temporary mobile scaffold, a low pump cart, long overhead service ducts and high wall windows. A close view establishes top service necks and flexible connections; the room corner and side workbench are visible."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5.9,
+          5.8,
+          4.4
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "spectrometer_room_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.93,
+              "width": 1.13,
+              "height": 2.4,
+              "sill": 0
+            },
+            {
+              "id": "high_rear_glazing",
+              "wall": "back",
+              "kind": "window",
+              "offset": 0.06,
+              "width": 2.58,
+              "height": 2.44,
+              "sill": 1.55
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "nmr_cryostat",
+          "kind": "warwick_nmr_cryostat_fixture",
+          "pos": [
+            -0.15,
+            0.0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Source-informed tall cryostat and isolation-column exterior with original dry inspection carrier",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Position a retained inert dummy below the cryostat",
+        "description": "Lift the original dry inspection carrier and rotate its retained solid dummy. Motion stops below the apparatus bore; this is not an operating NMR sample-loading or cryogenic maintenance procedure.",
+        "primary_equipment": "nmr_cryostat",
+        "observable": "Dry carrier height, holder orientation and retained-dummy pose"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.1,
+            -6.8,
+            5.5
+          ],
+          "target": [
+            0.0,
+            0.24,
+            1.74
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            2.51,
+            -2.36,
+            1.68
+          ],
+          "target": [
+            -0.15,
+            0.13,
+            1.84
+          ],
+          "fovy": 80
+        },
+        "workstation": {
+          "position": [
+            0.85,
+            -1.11,
+            1.14
+          ],
+          "target": [
+            -0.15,
+            -0.2,
+            0.79
+          ],
+          "fovy": 52
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_room_route",
+          "minimum_xy": [
+            -2.67,
+            -2.61
+          ],
+          "maximum_xy": [
+            2.59,
+            -1.35
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_access",
+          "minimum_xy": [
+            -2.68,
+            -1.31
+          ],
+          "maximum_xy": [
+            -1.53,
+            0.29
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The official installation images show a tall cream cylindrical cryostat supported by three high isolation columns, black isolation stacks, upper service necks and a small pump cart. These establish the apparatus silhouette and continuous supports.",
+        "The selected room retains high glazing, light walls, perimeter timber work surfaces, red service pipe and high ventilation duct; unobserved room dimensions and exact adjacencies are estimates.",
+        "Temporary installation scaffolds, crates and covers are not treated as permanent operational furniture. The retained dry dummy and under-cryostat inspection carrier are original authored mechanisms with conservative travel below the bore."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Photos are from the 2021 installation gallery, while the university separately confirms the active facility. This scene is not a surveyed current operating-room plan.",
+        "No manufacturer CAD, calibrated magnetic field, RF excitation, NMR spectra, cryogenic transfer, vacuum, acquisition sequence or scientific measurement."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave6": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/warwick_nmr_legs.jpg",
+              "sha256": "1f64e6dc866860a56cc9ec01feaa77d69f4f2a7fb4a77f1d5e305d268c09a700",
+              "page": "https://warwick.ac.uk/fac/sci/physics/research/condensedmatt/nmr/850/",
+              "image_url": "https://warwick.ac.uk/fac/sci/physics/research/condensedmatt/nmr/850/1ghzinstallation/magnet_on_legs.jpg?maxWidth=1000&maxHeight=1000",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/warwick_nmr_room.jpg",
+              "sha256": "1d4f07403f9a97b4da1b9e2c7f4817d01af7c2d952556e8d73a6e9a2195b67bb",
+              "page": "https://warwick.ac.uk/fac/sci/physics/research/condensedmatt/nmr/850/",
+              "image_url": "https://warwick.ac.uk/fac/sci/physics/research/condensedmatt/nmr/850/1ghzinstallation/magnet_in_room.jpg?maxWidth=1000&maxHeight=1000",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/warwick_nmr_installed.jpg",
+              "sha256": "9d94b64ccf3a136a576390f4c31c358c94566855c0e2965de252415f8735a2f5",
+              "page": "https://warwick.ac.uk/fac/sci/physics/research/condensedmatt/nmr/850/",
+              "image_url": "https://warwick.ac.uk/fac/sci/physics/research/condensedmatt/nmr/850/1ghzinstallation/install_7.jpg?maxWidth=1000&maxHeight=1000",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "The official installation photographs show a tall cylindrical magnet supported on three isolated columns, a temporary mobile scaffold, a low pump cart, long overhead service ducts and high wall windows. A close view establishes top service necks and flexible connections; the room corner and side workbench are visible."
+          ],
+          "implemented": [
+            "The official installation images show a tall cream cylindrical cryostat supported by three high isolation columns, black isolation stacks, upper service necks and a small pump cart. These establish the apparatus silhouette and continuous supports.",
+            "The selected room retains high glazing, light walls, perimeter timber work surfaces, red service pipe and high ventilation duct; unobserved room dimensions and exact adjacencies are estimates.",
+            "Temporary installation scaffolds, crates and covers are not treated as permanent operational furniture. The retained dry dummy and under-cryostat inspection carrier are original authored mechanisms with conservative travel below the bore."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Photos are from the 2021 installation gallery, while the university separately confirms the active facility. This scene is not a surveyed current operating-room plan.",
+            "No manufacturer CAD, calibrated magnetic field, RF excitation, NMR spectra, cryogenic transfer, vacuum, acquisition sequence or scientific measurement."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1802 @@
+{
+  "schema_version": 1,
+  "scenes": [
+    {
+      "id": "rochester_genomics",
+      "title": "Genomics Automation Laboratory",
+      "institution": "University of Rochester — Genomics Shared Resource",
+      "domain": "genomics",
+      "source_urls": [
+        "https://www.library.rochester.edu/studio-x/projects/genomics-shared-resource-virtual-tour"
+      ],
+      "reference_notes": "The official tour documents nine 360-degree scenes, robotic pipetting and a NovaSeq X Plus sequencer. Two inspected small stills show a long crowded bench, honey-colored underbench cabinets, and an enclosed Opentrons robot. The implementation uses a representative Opentrons-style gantry and manufacturer-sized sequencer; robot model, bench separation and room dimensions are inferred.",
+      "observed_cues": [
+        "Photograph: long linear bench with upper shelving and wood-colored lower cabinets.",
+        "Tour still: black/white Opentrons enclosure and visible internal pipetting deck.",
+        "Official text: NovaSeq X Plus sequencing instrument."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          7.8,
+          6.0,
+          3.3
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.12,
+          0.36,
+          0.57,
+          1
+        ],
+        "style": "wetlab"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "automation_bench",
+          "pos": [
+            -1.6,
+            -0.1,
+            0
+          ],
+          "size": [
+            2.5,
+            1.15,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "preparation_bench",
+          "pos": [
+            1.25,
+            -0.65,
+            0
+          ],
+          "size": [
+            2.0,
+            0.95,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "reagent_bench",
+          "pos": [
+            -1.1,
+            2.0,
+            0
+          ],
+          "size": [
+            3.7,
+            0.75,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "liquid_handler",
+          "kind": "liquid_handler",
+          "pos": [
+            -1.55,
+            -0.1,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "reference_family": "Opentrons; exact tour model unconfirmed"
+          },
+          "role": "Automated plate handling and pipette-axis positioning",
+          "evidence": "representative",
+          "source_urls": [
+            "https://www.library.rochester.edu/studio-x/projects/genomics-shared-resource-virtual-tour"
+          ]
+        },
+        {
+          "id": "sequencer",
+          "kind": "sequencer",
+          "pos": [
+            2.5,
+            1.75,
+            0
+          ],
+          "yaw": 0,
+          "params": {
+            "reference_family": "Illumina NovaSeq X Plus",
+            "reference_dimensions_m": [
+              0.864,
+              0.933,
+              1.588
+            ]
+          },
+          "role": "Flow-cell and reagent loading bay",
+          "evidence": "representative",
+          "source_urls": [
+            "https://www.library.rochester.edu/studio-x/projects/genomics-shared-resource-virtual-tour"
+          ]
+        },
+        {
+          "id": "centrifuge",
+          "kind": "reuse",
+          "pos": [
+            1.45,
+            -0.62,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/centrifuge_tiangen_tgear_mini.xml"
+          },
+          "role": "Library-preparation tube centrifuge; existing detailed Hooke asset",
+          "evidence": "representative",
+          "source_urls": [
+            "https://www.library.rochester.edu/studio-x/projects/genomics-shared-resource-virtual-tour"
+          ]
+        },
+        {
+          "id": "tip_box",
+          "kind": "reuse",
+          "pos": [
+            0.62,
+            -0.7,
+            0.95
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "object/tip_box.gen.xml"
+          },
+          "role": "Pipetting consumables staged beside liquid handler",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "pcr_plate",
+          "kind": "reuse",
+          "pos": [
+            0.95,
+            -0.75,
+            0.94
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "object/pcr_plate_96well.gen.xml"
+          },
+          "role": "Standard 96-well sample plate",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "reagent_bottle",
+          "kind": "reuse",
+          "pos": [
+            -0.55,
+            2,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/reagent_bottle.xml"
+          },
+          "role": "Reagent storage bottle",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Load and prepare a sequencing plate",
+        "description": "Stage a plate and pipette consumables, actuate the liquid-handler axes, then inspect the sequencer loading interface.",
+        "primary_equipment": "liquid_handler",
+        "observable": "Pipette head reaches target deck positions and access controls reach valid loading states."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "No DNA library preparation, optical base calling, or sequencing chemistry is simulated.",
+        "The reused centrifuge model is a functional substitute; its manufacturer is not verified as installed at Rochester."
+      ]
+    },
+    {
+      "id": "indiana_microfluidics",
+      "title": "Microfluidics and Cell Imaging Laboratory",
+      "institution": "Indiana University — Jacobson Research Group",
+      "domain": "microfluidics",
+      "source_urls": [
+        "https://stephenjacobson.lab.iu.edu/lab-tour.html"
+      ],
+      "reference_notes": "The official tour transcript at 6:27–7:02 describes vacuum-actuated valves, bacterial trapping, medium delivery, and fluorescence microscopy. These are verified experimental functions. No calibrated multi-view room images were obtained; the microscopy island and wet-preparation bench are engineering estimates. Microscope geometry is a representative inverted research microscope, not a confirmed brand replica.",
+      "observed_cues": [
+        "Tour transcript: microscope and a vacuum-controlled microfluidic valve system used together.",
+        "Tour transcript: bacteria are trapped, supplied with medium and imaged over time."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          7.4,
+          5.8,
+          3.2
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.48,
+          0.15,
+          0.19,
+          1
+        ],
+        "style": "wetlab"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "imaging_island",
+          "pos": [
+            -1.15,
+            -0.25,
+            0
+          ],
+          "size": [
+            2.75,
+            1.25,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "sample_preparation",
+          "pos": [
+            1.7,
+            -0.4,
+            0
+          ],
+          "size": [
+            1.7,
+            0.95,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "fluidics_service",
+          "pos": [
+            0.05,
+            1.9,
+            0
+          ],
+          "size": [
+            4.7,
+            0.8,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "microfluidic_station",
+          "kind": "microfluidic_station",
+          "pos": [
+            -1.1,
+            -0.25,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "channel_width_m": 0.0001,
+            "sample_scale": "micrometre",
+            "valve_control": "vacuum; simplified actuator model"
+          },
+          "role": "Inverted microscopy, chip stage and fluid-control interface",
+          "evidence": "representative",
+          "source_urls": [
+            "https://stephenjacobson.lab.iu.edu/lab-tour.html"
+          ]
+        },
+        {
+          "id": "centrifuge",
+          "kind": "reuse",
+          "pos": [
+            1.8,
+            -0.35,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/centrifuge_tiangen_tgear_mini.xml"
+          },
+          "role": "Prepare aliquots before loading the chip",
+          "evidence": "representative",
+          "source_urls": [
+            "https://stephenjacobson.lab.iu.edu/lab-tour.html"
+          ]
+        },
+        {
+          "id": "cell_dish",
+          "kind": "reuse",
+          "pos": [
+            1.2,
+            -0.5,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "object/cell_dish_100.gen.xml"
+          },
+          "role": "Sample-handling dish",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "reagent_bottle",
+          "kind": "reuse",
+          "pos": [
+            0.45,
+            1.9,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/reagent_bottle.xml"
+          },
+          "role": "Culture-medium reservoir substitute",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "oscilloscope",
+          "kind": "reuse",
+          "pos": [
+            -1.0,
+            1.9,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/oscilloscope.xml"
+          },
+          "role": "Readout instrument for microfluidic sensor experiments",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Position and inspect a microfluidic specimen",
+        "description": "Position the microscope stage and sample, change the fluid-control actuator, and inspect the imaging workspace.",
+        "primary_equipment": "microfluidic_station",
+        "observable": "XY stage and focus reach requested positions; valve-control state is observable."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "No bacteria growth, nutrient transport, fluorescence photophysics, or Navier–Stokes microchannel flow is implemented.",
+        "The 100 micrometre channel dimension is a representative scenario parameter, not an inferred dimension from the Jacobson device."
+      ]
+    },
+    {
+      "id": "uw_isolab",
+      "title": "Stable Isotope Preparation Laboratory",
+      "institution": "University of Washington — IsoLab",
+      "domain": "geochemistry",
+      "source_urls": [
+        "https://isolab.ess.washington.edu/laboratory/facility.php",
+        "https://isolab.ess.washington.edu/resources/videos.php"
+      ],
+      "reference_notes": "The official facility page distinguishes an 890 sq ft analysis laboratory and a 780 sq ft preparation laboratory. It documents mass spectrometers, cavity-ring-down lasers, glass vacuum preparation lines, balances and a muffle furnace. This compact scene combines selected preparation and loading workstations from those separate spaces; it is not their literal floor plan. Inspected official instructional-video thumbnails show a Picarro water-isotope instrument with an overhead autosampler, chained gas cylinders, and a separate black-topped vacuum preparation bench.",
+      "observed_cues": [
+        "Official facility description: instrument analysis and sample preparation occupy separate rooms.",
+        "Official videos: water isotope analysis, carbonate preparation, tube making and furnace procedures.",
+        "Official equipment list: balances, muffle furnace, glass vacuum lines and automated analyzers.",
+        "Instructional-video still: Picarro-marked water-isotope analyzer, overhead autosampler and secured gas cylinders.",
+        "Preparation-video still: black benchtop, glass vacuum line, metal shielding and cylindrical vessels."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          8.0,
+          6.0,
+          3.3
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.25,
+          0.32,
+          0.53,
+          1
+        ],
+        "style": "wetlab"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "analysis_bench",
+          "pos": [
+            -1.35,
+            -0.3,
+            0
+          ],
+          "size": [
+            3.0,
+            1.1,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "weighing_bench",
+          "pos": [
+            1.8,
+            -0.4,
+            0
+          ],
+          "size": [
+            1.6,
+            0.85,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "preparation_bench",
+          "pos": [
+            0.0,
+            2.0,
+            0
+          ],
+          "size": [
+            5.8,
+            0.95,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "isotope_analyzer",
+          "kind": "isotope_analyzer",
+          "pos": [
+            -1.35,
+            -0.3,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "reference_family": "Picarro CRDS water-isotope analyzer; exact generation and dimensions unconfirmed"
+          },
+          "role": "Representative water-isotope analyzer and autosampler",
+          "evidence": "representative",
+          "source_urls": [
+            "https://isolab.ess.washington.edu/laboratory/facility.php",
+            "https://isolab.ess.washington.edu/resources/videos.php"
+          ]
+        },
+        {
+          "id": "analytical_balance",
+          "kind": "reuse",
+          "pos": [
+            1.8,
+            -0.4,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/analytical_balance.xml"
+          },
+          "role": "Weigh sample aliquots before analysis",
+          "evidence": "representative",
+          "source_urls": [
+            "https://isolab.ess.washington.edu/laboratory/facility.php"
+          ]
+        },
+        {
+          "id": "muffle_furnace",
+          "kind": "reuse",
+          "pos": [
+            -1.6,
+            2.0,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/muffle_furnace.xml"
+          },
+          "role": "Sample-preparation furnace control; compact legacy geometry",
+          "evidence": "representative",
+          "source_urls": [
+            "https://isolab.ess.washington.edu/laboratory/facility.php"
+          ]
+        },
+        {
+          "id": "reagent_bottle",
+          "kind": "reuse",
+          "pos": [
+            0.0,
+            2.0,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/reagent_bottle.xml"
+          },
+          "role": "Standard and reagent container",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "water_bath",
+          "kind": "reuse",
+          "pos": [
+            1.5,
+            2.0,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/water_bath.xml"
+          },
+          "role": "Preparation bath control substitute",
+          "evidence": "representative",
+          "source_urls": [
+            "https://isolab.ess.washington.edu/resources/videos.php"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Load a water-isotope sample sequence",
+        "description": "Prepare sample and reference vials, position the autosampler, and inspect the analysis inlet.",
+        "primary_equipment": "isotope_analyzer",
+        "observable": "Autosampler tray and injector loading state can be read and actuated."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "Mass-spectrometer internals, isotope-ratio accuracy and chemical pretreatment are not modeled.",
+        "Existing muffle furnace and balance geometry is schematic and is not a dimensional replica of IsoLab instruments."
+      ]
+    },
+    {
+      "id": "uva_deposition",
+      "title": "Thin Film Deposition Laboratory",
+      "institution": "University of Virginia — Ihlefeld Group",
+      "domain": "materials science",
+      "source_urls": [
+        "https://engineering.virginia.edu/department/materials-science-and-engineering/academics/graduate-programs/mse-lab-tours",
+        "https://engineering.virginia.edu/faculty/jon-ihlefeld"
+      ],
+      "reference_notes": "The official group tour explicitly demonstrates deposition equipment. The faculty page verifies sputtering, pulsed-laser deposition, ALD and chemical-solution deposition. This scene selects a generic sputter-deposition workflow with a vacuum chamber, substrate preparation and process control; source photos were blocked to direct retrieval, so chamber dimensions and room arrangement remain estimates.",
+      "observed_cues": [
+        "Official tour: dedicated deposition equipment and process demonstration.",
+        "Faculty research page: thin-film sputtering, ALD, laser ablation and solution deposition."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          8.0,
+          6.0,
+          3.5
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.16,
+          0.31,
+          0.46,
+          1
+        ],
+        "style": "cleanroom"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "deposition_bench",
+          "pos": [
+            -1.15,
+            -0.2,
+            0
+          ],
+          "size": [
+            3.0,
+            1.2,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "substrate_preparation",
+          "pos": [
+            1.9,
+            -0.35,
+            0
+          ],
+          "size": [
+            1.9,
+            1.0,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "measurement_bench",
+          "pos": [
+            0,
+            2,
+            0
+          ],
+          "size": [
+            5.9,
+            0.9,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "deposition_chamber",
+          "kind": "deposition_chamber",
+          "pos": [
+            -1.15,
+            -0.2,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "process": "representative sputter deposition",
+            "diameter_m": 0.48
+          },
+          "role": "Vacuum process vessel, substrate holder and access door",
+          "evidence": "representative",
+          "source_urls": [
+            "https://engineering.virginia.edu/department/materials-science-and-engineering/academics/graduate-programs/mse-lab-tours",
+            "https://engineering.virginia.edu/faculty/jon-ihlefeld"
+          ]
+        },
+        {
+          "id": "spin_coater",
+          "kind": "reuse",
+          "pos": [
+            1.8,
+            -0.35,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/spin_coater.xml"
+          },
+          "role": "Substrate-preparation lid and spinner interface",
+          "evidence": "representative",
+          "source_urls": [
+            "https://engineering.virginia.edu/faculty/jon-ihlefeld"
+          ]
+        },
+        {
+          "id": "quartz_microbalance",
+          "kind": "reuse",
+          "pos": [
+            -1.7,
+            2,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/quartz_crystal_microbalance.xml"
+          },
+          "role": "Film-monitor sensor loading interface; representative accessory",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "analytical_balance",
+          "kind": "reuse",
+          "pos": [
+            0,
+            2,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/analytical_balance.xml"
+          },
+          "role": "Pre-process sample weighing",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "reagent_bottle",
+          "kind": "reuse",
+          "pos": [
+            1.55,
+            2,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/reagent_bottle.xml"
+          },
+          "role": "Cleaning reagent container",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Load and seal a deposition substrate",
+        "description": "Access the vacuum chamber, position a substrate carrier, close the chamber and inspect the process-control interfaces.",
+        "primary_equipment": "deposition_chamber",
+        "observable": "Chamber access joint and substrate-carrier joint reach requested states."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "Vacuum pump curves, plasma, film growth, contamination and material properties are not simulated.",
+        "Cleanroom-style finishes are a workflow design choice; the source does not establish this room as a certified cleanroom."
+      ]
+    },
+    {
+      "id": "purdue_phenotyping",
+      "title": "Plant Phenotyping and Imaging Facility",
+      "institution": "Purdue University — Ag Alumni Seed Phenotyping Facility",
+      "domain": "plant science",
+      "source_urls": [
+        "https://ag.purdue.edu/aapf/virtual-tour.html",
+        "https://ag.purdue.edu/department/arge/industry/sparc/plant-sciences.html"
+      ],
+      "reference_notes": "Three inspected official stills show metal conveyor lanes with red guides, rows of potted cereal plants under dense overhead growth lamps, and a light-shielded hyperspectral booth with orange cameras on rails. The real facility uses distinct growth chambers and imaging booths. This 8x6 metre scene is a compact representative section; it does not reproduce the full facility or its plant capacity.",
+      "observed_cues": [
+        "Photograph: conveyor carriers with gray pots and red guide mechanisms.",
+        "Photograph: dense ceiling-mounted grow lights above parallel crop rows.",
+        "Booth photograph: vertical camera rails and dark optical backdrop, with front and overhead illumination.",
+        "Official process description: stationary plant with translating top and side hyperspectral cameras."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          8.0,
+          6.0,
+          4.0
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.4,
+          0.2,
+          1
+        ],
+        "style": "greenhouse"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "sample_prep",
+          "pos": [
+            -2.6,
+            -1.4,
+            0
+          ],
+          "size": [
+            1.5,
+            0.8,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "irrigation_service",
+          "pos": [
+            -2.6,
+            1.8,
+            0
+          ],
+          "size": [
+            1.5,
+            0.85,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "phenotyping_booth",
+          "kind": "phenotyping_booth",
+          "pos": [
+            0.7,
+            0.3,
+            0
+          ],
+          "yaw": 0,
+          "params": {
+            "crop": "maize",
+            "imaging": "RGB and representative hyperspectral carriage",
+            "reference_vnir_nm": [
+              400,
+              1000
+            ],
+            "reference_swir_nm": [
+              1000,
+              2500
+            ]
+          },
+          "role": "Conveyor-fed, light-shielded plant imaging booth",
+          "evidence": "representative",
+          "source_urls": [
+            "https://ag.purdue.edu/aapf/virtual-tour.html",
+            "https://ag.purdue.edu/department/arge/industry/sparc/plant-sciences.html"
+          ]
+        },
+        {
+          "id": "analytical_balance",
+          "kind": "reuse",
+          "pos": [
+            -2.75,
+            -1.4,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/analytical_balance.xml"
+          },
+          "role": "Bench sample weighing; not the facility industrial pot-weighing station",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "ph_meter",
+          "kind": "reuse",
+          "pos": [
+            -2.65,
+            1.8,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/ph_meter.xml"
+          },
+          "role": "Irrigation-solution preparation accessory",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "reagent_bottle",
+          "kind": "reuse",
+          "pos": [
+            -2.2,
+            1.8,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/reagent_bottle.xml"
+          },
+          "role": "Irrigation reference-solution bottle",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Position a plant for repeatable imaging",
+        "description": "Move a plant carrier into the imaging booth and scan the camera carriage through a calibrated acquisition pose.",
+        "primary_equipment": "phenotyping_booth",
+        "observable": "Carrier and imaging-axis positions determine whether the plant is aligned for image capture."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "Optical images are rendered RGB; hyperspectral bands, X-ray CT, plant growth and physiological responses are not simulated.",
+        "The greenhouse room style denotes crop-growth infrastructure; actual imaging occurs in an opaque booth."
+      ]
+    },
+    {
+      "id": "epfl_microbiorobotics",
+      "title": "Microbiorobotics Experimental Laboratory",
+      "institution": "EPFL — MicroBioRobotic Systems Laboratory",
+      "domain": "microrobotics",
+      "source_urls": [
+        "https://www.epfl.ch/labs/microbs/",
+        "https://www.epfl.ch/research/domains/robotics/virtual-lab-tour/",
+        "https://actu.epfl.ch/news/microcatheter-delivers-therapies-to-the-tiniest--2/"
+      ],
+      "reference_notes": "The official research pages establish robotic microsurgery, microswimmers and magnetically guided microcatheters. An inspected laboratory image shows a machined XYZ micromanipulation assembly, thin tubing, cabling and an angled tool. The implemented magnetic manipulation workspace is a representative apparatus for the documented research topic; its coil arrangement is not claimed to be the observed EPFL instrument.",
+      "observed_cues": [
+        "Official apparatus photo: bolted metal stages, compact linear guide, wired motors and a slender angled tool.",
+        "Official research topic: externally controlled microswimmers and magnetic microcatheters."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          7.4,
+          5.8,
+          3.3
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.52,
+          0.15,
+          0.21,
+          1
+        ],
+        "style": "wetlab"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "microrobot_workspace",
+          "pos": [
+            -1.15,
+            -0.1,
+            0
+          ],
+          "size": [
+            2.8,
+            1.2,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "sample_preparation",
+          "pos": [
+            1.75,
+            -0.5,
+            0
+          ],
+          "size": [
+            1.7,
+            0.85,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "electronics_bench",
+          "pos": [
+            0.0,
+            1.9,
+            0
+          ],
+          "size": [
+            5.2,
+            0.8,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "magnetic_microrobot",
+          "kind": "magnetic_microrobot",
+          "pos": [
+            -1.15,
+            -0.1,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "sample_scale": "micrometre",
+            "apparatus_fidelity": "representative research apparatus, not exact MICROBS geometry"
+          },
+          "role": "Representative electromagnetic micromanipulation and microscope workspace",
+          "evidence": "representative",
+          "source_urls": [
+            "https://www.epfl.ch/labs/microbs/",
+            "https://actu.epfl.ch/news/microcatheter-delivers-therapies-to-the-tiniest--2/"
+          ]
+        },
+        {
+          "id": "cell_dish",
+          "kind": "reuse",
+          "pos": [
+            1.55,
+            -0.5,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "object/cell_dish_100.gen.xml"
+          },
+          "role": "Microrobot medium and sample-handling dish",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "oscilloscope",
+          "kind": "reuse",
+          "pos": [
+            -1.3,
+            1.9,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/oscilloscope.xml"
+          },
+          "role": "Electrical drive signal monitoring",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "function_generator",
+          "kind": "reuse",
+          "pos": [
+            0.1,
+            1.9,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/function_generator.xml"
+          },
+          "role": "Drive waveform configuration accessory",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "reagent_bottle",
+          "kind": "reuse",
+          "pos": [
+            1.5,
+            1.9,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/reagent_bottle.xml"
+          },
+          "role": "Fluid-medium reservoir",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Align a microscopic manipulation workspace",
+        "description": "Place the sample carrier and adjust the observation/manipulation axes to a target pose.",
+        "primary_equipment": "magnetic_microrobot",
+        "observable": "Stage or manipulator joint positions and microscope target pose are available for inspection."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "No validated magnetic-field solver, microswimmer hydrodynamics, tissue mechanics or surgical outcome is included.",
+        "Coil geometry and workstation layout are inferred from general apparatus design, not reconstructed from calibrated MICROBS footage."
+      ]
+    },
+    {
+      "id": "waterloo_robohub",
+      "title": "Heterogeneous Robotics Research Hall",
+      "institution": "University of Waterloo — RoboHub",
+      "domain": "robotics",
+      "source_urls": [
+        "https://uwaterloo.ca/robohub/about/space",
+        "https://uwaterloo.ca/robohub/about/fleet"
+      ],
+      "reference_notes": "The official space description verifies three glass walls, a room-spanning powered gantry, indoor tracking, a dedicated control centre and a 2x3 metre in-floor maglev area. The inspected spherical-video thumbnail shows a tall bright glass enclosure and open shared robot floor. This compact bay uses representative mobile and fixed-base robots; it is a selected workflow subset rather than a recreation of the complete fleet.",
+      "observed_cues": [
+        "360-degree thumbnail: tall transparent enclosure and unobstructed shared floor.",
+        "Official description: overhead gantry and tracking infrastructure.",
+        "Official fleet: fixed-base manipulators, mobile platforms, humanoids and aerial robots."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          8.0,
+          6.0,
+          4.2
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.68,
+          0.49,
+          0.12,
+          1
+        ],
+        "style": "robotics"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "handoff_station",
+          "pos": [
+            1.35,
+            0.6,
+            0
+          ],
+          "size": [
+            2.2,
+            0.9,
+            0.78
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "control_workbench",
+          "pos": [
+            -2.25,
+            1.8,
+            0
+          ],
+          "size": [
+            1.75,
+            0.8,
+            0.78
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "robot_arm",
+          "kind": "robot_arm",
+          "pos": [
+            1.4,
+            0.6,
+            0.78
+          ],
+          "yaw": 0,
+          "params": {
+            "reference_family": "collaborative research manipulator; simplified morphology"
+          },
+          "role": "Representative articulated arm for handoff and reach studies",
+          "evidence": "representative",
+          "source_urls": [
+            "https://uwaterloo.ca/robohub/about/fleet"
+          ]
+        },
+        {
+          "id": "mobile_robot",
+          "kind": "mobile_robot",
+          "pos": [
+            -0.8,
+            -0.8,
+            0
+          ],
+          "yaw": 0,
+          "params": {
+            "reference_family": "indoor mobile base; not a manufacturer CAD replica"
+          },
+          "role": "Representative mobile cargo platform for cooperative positioning",
+          "evidence": "representative",
+          "source_urls": [
+            "https://uwaterloo.ca/robohub/about/fleet"
+          ]
+        },
+        {
+          "id": "oscilloscope",
+          "kind": "reuse",
+          "pos": [
+            -2.5,
+            1.8,
+            0.78
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/oscilloscope.xml"
+          },
+          "role": "Robot electronics diagnostic station",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "function_generator",
+          "kind": "reuse",
+          "pos": [
+            -1.9,
+            1.8,
+            0.78
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/function_generator.xml"
+          },
+          "role": "Bench controller/measurement accessory",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Coordinate a mobile platform and fixed manipulator",
+        "description": "Move the platform toward a handoff zone and actuate the arm to an observation or transfer pose.",
+        "primary_equipment": "robot_arm",
+        "observable": "Arm joint state and mobile-platform state can be inspected; an exact handoff requires a task controller."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "The complete RoboHub fleet, full-scale room and in-floor maglev are not reconstructed.",
+        "No humanoid policy, multi-agent planner or validated grasp controller is provided by the scene alone."
+      ]
+    },
+    {
+      "id": "penn_pathology",
+      "title": "Pathology Specimen Processing Laboratory",
+      "institution": "University of Pennsylvania — Pathology and Laboratory Medicine",
+      "domain": "pathology",
+      "source_urls": [
+        "https://pathology.med.upenn.edu/department/about-the-department/department-videos/follow-specimen"
+      ],
+      "reference_notes": "The official Follow the Specimen page supplies a real-laboratory workflow video. Its inspected thumbnail shows two parallel working benches, upper glazed storage cabinets, desktop terminals, pale flooring and an enclosed back instrument area. The complete video was not downloaded or step-annotated; the specimen-processing machine and routing task are representative and require protocol validation.",
+      "observed_cues": [
+        "Official video thumbnail: parallel instrument benches and upper glass-front cabinets.",
+        "Official source establishes real clinical specimen handling; individual task steps are not yet exhaustively verified."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          7.6,
+          6.0,
+          3.2
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.24,
+          0.39,
+          0.4,
+          1
+        ],
+        "style": "pathology"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "processing_bench",
+          "pos": [
+            -1.35,
+            -0.25,
+            0
+          ],
+          "size": [
+            2.8,
+            1.1,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "accession_bench",
+          "pos": [
+            1.7,
+            -0.3,
+            0
+          ],
+          "size": [
+            1.8,
+            0.9,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "slide_preparation",
+          "pos": [
+            0.0,
+            1.95,
+            0
+          ],
+          "size": [
+            5.6,
+            0.9,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "sample_processor",
+          "kind": "sample_processor",
+          "pos": [
+            -1.35,
+            -0.25,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "sample_type": "synthetic anonymized specimen containers"
+          },
+          "role": "Representative enclosed specimen processor with loadable sample carrier",
+          "evidence": "representative",
+          "source_urls": [
+            "https://pathology.med.upenn.edu/department/about-the-department/department-videos/follow-specimen"
+          ]
+        },
+        {
+          "id": "centrifuge",
+          "kind": "reuse",
+          "pos": [
+            1.85,
+            -0.3,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/centrifuge_tiangen_tgear_mini.xml"
+          },
+          "role": "Representative small-volume specimen centrifuge",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "water_bath",
+          "kind": "reuse",
+          "pos": [
+            -1.2,
+            1.95,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/water_bath.xml"
+          },
+          "role": "Slide-preparation bath access interface",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "cell_dish",
+          "kind": "reuse",
+          "pos": [
+            1.1,
+            -0.35,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "object/cell_dish_100.gen.xml"
+          },
+          "role": "Synthetic specimen staging dish",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "reagent_bottle",
+          "kind": "reuse",
+          "pos": [
+            0.9,
+            1.95,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/reagent_bottle.xml"
+          },
+          "role": "Reagent container for representative staining workflow",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Load and route a synthetic specimen",
+        "description": "Place an anonymized specimen carrier into the processor, close the access interface and inspect its routing state.",
+        "primary_equipment": "sample_processor",
+        "observable": "Processor access door and sample-carrier loading state are visible."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "No patient data or original clinical specimen images are included.",
+        "Histology, fixation, sectioning quality, staining chemistry and diagnosis are not simulated.",
+        "The source has not yet been fully step-annotated; the previous task-ready label was only a candidate-screening assessment."
+      ]
+    },
+    {
+      "id": "eth_air_quality",
+      "title": "Aerosol Sampling and Exposure Laboratory",
+      "institution": "ETH Zurich — Air Quality and Particle Technology",
+      "domain": "environmental science",
+      "source_urls": [
+        "https://ie.ifu.ethz.ch/forschung/studies-labs/labs.html"
+      ],
+      "reference_notes": "The official Wang Group laboratory page identifies airborne-pollutant sampling, airborne bacteria detection, particle or virus exposure to lung cells, and biosensors. Its tour thumbnail was inspected and shows a crowded instrument bench, sample vials, a secured gas cylinder and an extraction duct. Other still images on the page are from a partner-laboratory visit in China and were excluded as ETH layout evidence. This sampling bay has estimated geometry.",
+      "observed_cues": [
+        "Official tour description: aerosol sampling and airborne-pollutant measurement.",
+        "Official tour description: particle exposure and biosensor experiments.",
+        "Official tour thumbnail: benchtop enclosed instrument, vial rack, secured gas cylinder and vertical ventilation duct."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          7.8,
+          6.0,
+          3.3
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.18,
+          0.4,
+          0.48,
+          1
+        ],
+        "style": "wetlab"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "sampling_bench",
+          "pos": [
+            -1.15,
+            -0.1,
+            0
+          ],
+          "size": [
+            3.0,
+            1.1,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "filter_preparation",
+          "pos": [
+            1.75,
+            -0.45,
+            0
+          ],
+          "size": [
+            1.8,
+            0.9,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "analysis_bench",
+          "pos": [
+            0.0,
+            2.0,
+            0
+          ],
+          "size": [
+            5.6,
+            0.9,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "aerosol_sampler",
+          "kind": "aerosol_sampler",
+          "pos": [
+            -1.15,
+            -0.1,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "reference_family": "laboratory aerosol sampling rig; exact model unconfirmed"
+          },
+          "role": "Representative inlet, filter holder, tubing and sampling control assembly",
+          "evidence": "representative",
+          "source_urls": [
+            "https://ie.ifu.ethz.ch/forschung/studies-labs/labs.html"
+          ]
+        },
+        {
+          "id": "analytical_balance",
+          "kind": "reuse",
+          "pos": [
+            1.7,
+            -0.4,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/analytical_balance.xml"
+          },
+          "role": "Gravimetric filter handling accessory",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "cell_dish",
+          "kind": "reuse",
+          "pos": [
+            1.15,
+            -0.5,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "object/cell_dish_100.gen.xml"
+          },
+          "role": "Collection or exposure specimen holder",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "reagent_bottle",
+          "kind": "reuse",
+          "pos": [
+            -0.7,
+            2.0,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/reagent_bottle.xml"
+          },
+          "role": "Collection-fluid reservoir",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "ph_meter",
+          "kind": "reuse",
+          "pos": [
+            1.2,
+            2.0,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/ph_meter.xml"
+          },
+          "role": "Collection-medium preparation accessory",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Load and configure an aerosol collection stage",
+        "description": "Access the filter holder, position a collection carrier and inspect the sampler control interface.",
+        "primary_equipment": "aerosol_sampler",
+        "observable": "Filter access state and sampling control positions are observable."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "No validated aerosol transport, pathogen viability, deposition efficiency or cell exposure biology is included.",
+        "Only a single laboratory thumbnail was inspected; room-layout confidence is lower than Purdue and Waterloo."
+      ]
+    },
+    {
+      "id": "nasa_planetary",
+      "title": "Planetary Mobility Ground Test Laboratory",
+      "institution": "NASA Glenn SLOPE / JPL robotics references",
+      "domain": "planetary robotics",
+      "source_urls": [
+        "https://www.nasa.gov/glenn/virtual-tours/slope360/",
+        "https://ntrs.nasa.gov/api/citations/20220005514/downloads/ASCE%20E%26S%202022%20SLOPE%20Update%20Presentation%20Final.pdf",
+        "https://robotics.jpl.nasa.gov/"
+      ],
+      "reference_notes": "NASA documentation specifies long soil lanes, a hydraulic tiltbed, rover traction testing and optical motion tracking. The real SLOPE facility is 4368 sq ft; published soil lanes are 11.8 m long. This compact scene recreates a representative soil-test bay and sample-inspection zone using Earth gravity, with a generic six-wheel rover. JPL provides sampling context, not a shared floor plan with Glenn. The inspected official tour preview shows a steep soil-covered tiltbed, a rover, metal guard rails, overhead services and a high-bay interior.",
+      "observed_cues": [
+        "Official SLOPE report: separate high-sinkage and GRC-1 soil lanes and a tiltbed.",
+        "Official report: rover mobility, wheel slip, drawbar pull and motion-capture measurement.",
+        "Published facility dimensions exceed the compact 8x6 metre scene.",
+        "Official tour preview: steep soil-covered ramp, rover, guard rails and exposed high-bay building services."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          8.0,
+          6.0,
+          4.0
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.43,
+          0.36,
+          0.24,
+          1
+        ],
+        "style": "testhall"
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "sample_inspection",
+          "pos": [
+            2.7,
+            1.7,
+            0
+          ],
+          "size": [
+            1.7,
+            0.9,
+            0.92
+          ],
+          "yaw": 0
+        },
+        {
+          "id": "measurement_station",
+          "pos": [
+            -2.7,
+            1.75,
+            0
+          ],
+          "size": [
+            1.5,
+            0.9,
+            0.92
+          ],
+          "yaw": 0
+        }
+      ],
+      "equipment": [
+        {
+          "id": "rover",
+          "kind": "rover",
+          "pos": [
+            -0.45,
+            -0.35,
+            0
+          ],
+          "yaw": 0,
+          "params": {
+            "reference_family": "generic planetary rover; not VIPER or Perseverance CAD",
+            "environment": "terrestrial ground-test analog",
+            "gravity_m_s2": 9.81
+          },
+          "role": "Representative articulated-wheel rover for indoor planetary mobility tests",
+          "evidence": "representative",
+          "source_urls": [
+            "https://ntrs.nasa.gov/api/citations/20220005514/downloads/ASCE%20E%26S%202022%20SLOPE%20Update%20Presentation%20Final.pdf",
+            "https://robotics.jpl.nasa.gov/"
+          ]
+        },
+        {
+          "id": "xrf_analyzer",
+          "kind": "reuse",
+          "pos": [
+            2.8,
+            1.7,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/xrf_rock_analyzer.xml"
+          },
+          "role": "Representative sample-characterization accessory; not documented as installed in SLOPE",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "analytical_balance",
+          "kind": "reuse",
+          "pos": [
+            2.15,
+            1.7,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/analytical_balance.xml"
+          },
+          "role": "Sample mass measurement accessory",
+          "evidence": "representative",
+          "source_urls": []
+        },
+        {
+          "id": "sieve_shaker",
+          "kind": "reuse",
+          "pos": [
+            -2.7,
+            1.75,
+            0.92
+          ],
+          "yaw": 0,
+          "params": {
+            "asset": "instrument/sieve_shaker.xml"
+          },
+          "role": "Representative soil-preparation accessory",
+          "evidence": "representative",
+          "source_urls": []
+        }
+      ],
+      "task": {
+        "name": "Traverse and inspect a planetary test bay",
+        "description": "Actuate rover joints within a terrestrial test hall and stage samples at the inspection bench.",
+        "primary_equipment": "rover",
+        "observable": "Wheel and suspension joint states are readable; traversability requires a terrain/contact model and controller."
+      },
+      "limitations": [
+        "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
+        "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
+        "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
+        "Granular soil sinkage, calibrated terramechanics, dust, excavation forces and drawbar-pull instrumentation are not validated.",
+        "This is an Earth ground-test laboratory; lunar or Martian gravity must be configured in separate planetary scenarios.",
+        "NASA Glenn and JPL are distinct facilities. Their references support different functions and are not presented as a single real room."
+      ]
+    }
+  ]
+}

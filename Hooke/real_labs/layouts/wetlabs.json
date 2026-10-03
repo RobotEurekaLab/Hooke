@@ -1,0 +1,665 @@
+{
+  "rochester_genomics": {
+    "room": {
+      "size": [
+        8.4,
+        3.8,
+        2.85
+      ],
+      "wall_color": [
+        0.59,
+        0.7,
+        0.7,
+        1
+      ],
+      "accent": [
+        0.62,
+        0.39,
+        0.17,
+        1
+      ],
+      "style": "wetlab",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.6,
+            0.59,
+            0.51,
+            1
+          ],
+          "pattern": "plain",
+          "spacing": 0.6
+        },
+        "openings": [
+          {
+            "id": "sequencing_access",
+            "wall": "back",
+            "kind": "door",
+            "offset": 2.34,
+            "width": 0.95,
+            "height": 2.12,
+            "sill": 0
+          }
+        ],
+        "ceiling": "suspended",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "automation_bench",
+        "pos": [
+          -0.95,
+          1.33,
+          0
+        ],
+        "size": [
+          5.5,
+          1.0,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "cabinet",
+        "color": [
+          0.62,
+          0.39,
+          0.17,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "preparation_bench",
+        "pos": [
+          -0.6,
+          -0.75,
+          0
+        ],
+        "size": [
+          4.3,
+          0.85,
+          0.92
+        ],
+        "yaw": 3.141592653589793,
+        "style": "cabinet",
+        "color": [
+          0.62,
+          0.39,
+          0.17,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "reagent_bench",
+        "pos": [
+          -3.7,
+          -0.7,
+          0
+        ],
+        "size": [
+          1.7,
+          0.65,
+          0.92
+        ],
+        "yaw": 1.5707963267948966,
+        "style": "cabinet",
+        "color": [
+          0.62,
+          0.39,
+          0.17,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "liquid_handler": {
+        "pos": [
+          -1.7,
+          1.3,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "sequencer": {
+        "pos": [
+          3.5,
+          0.75,
+          0
+        ],
+        "yaw": 0
+      },
+      "centrifuge": {
+        "pos": [
+          0.1,
+          -0.75,
+          0.92
+        ],
+        "yaw": 3.141592653589793
+      },
+      "tip_box": {
+        "pos": [
+          -0.55,
+          1.2,
+          0.95
+        ],
+        "yaw": 0
+      },
+      "pcr_plate": {
+        "pos": [
+          -0.2,
+          1.2,
+          0.94
+        ],
+        "yaw": 0
+      },
+      "reagent_bottle": {
+        "pos": [
+          -3.7,
+          -0.65,
+          0.92
+        ],
+        "yaw": 1.5707963267948966
+      }
+    },
+    "layout_rationale": [
+      "Observed: the official recording photograph shows a dense, narrow laboratory with a continuous wood-cabinet bench, overbench storage and opposite facing work surfaces; the enclosed pipetting deck is visible in a separate tour still.",
+      "Changed from three isolated islands to a rear automation run, facing preparation run and short side storage return. Fronts face the work aisle, and the sequencer is floor-mounted beside a reserved rear access opening.",
+      "Estimated: the 8.4 x 3.8 m room, counter lengths and positions are authored dimensions; the principal bench-to-bench clear gap is 1.155 m. No measured Rochester plan was available.",
+      "The approximately 1 m aisle is an engineering layout target, not a verified accessibility, egress or installation-compliance assessment. The compact robot is a dimensional surrogate, not identified as the exact tour unit.",
+      "The Flex surrogate keeps 0.255 m rear-wall clearance, more than 0.2 m beside the enclosure, and a stationary 1.0 m-deep counter, following https://docs.opentrons.com/flex/installation/requirements/. The overhead shelf is authored with 0.275 m above the 0.84 m-high housing; actual bench load rating is not validated.",
+      "Revision 3 inspected the original 5.32 MB Rochester photograph, not only its 220-pixel thumbnail: pale blue walls, large glazed clean-work enclosures, warm wood fronts, white plenum housings, switch fascia, tissue packs and orange tube racks are visible.",
+      "One original glazed clean-work enclosure now occupies the facing preparation counter. Its sash opening, work tray and upper housing reproduce visible cues; 2.34 m overall width and the counter placement are authored estimates. Its model, biological containment class and airflow are unverified; it has no sterilization or airflow simulation.",
+      "The neutral cabinet inspection light is a presentation lamp. The blue cast in the source photograph is not treated as evidence for an operating UV lamp. Photograph labels and vendor logos are not copied as textures."
+    ],
+    "camera": {
+      "overview": {
+        "position": [
+          7.9,
+          -8.8,
+          6.5
+        ],
+        "target": [
+          0,
+          0.15,
+          1.0
+        ],
+        "fovy": 46
+      },
+      "workstation": {
+        "position": [
+          -0.5,
+          0.15,
+          1.82
+        ],
+        "target": [
+          -1.7,
+          1.27,
+          1.35
+        ],
+        "fovy": 48
+      },
+      "interior": {
+        "position": [
+          2.55,
+          0.13,
+          1.62
+        ],
+        "target": [
+          -2.9,
+          0.25,
+          1.33
+        ],
+        "fovy": 68
+      },
+      "instrument": {
+        "position": [
+          -1.02,
+          0.35,
+          1.67
+        ],
+        "target": [
+          -1.7,
+          1.3,
+          1.35
+        ],
+        "fovy": 42
+      }
+    }
+  },
+  "uw_isolab": {
+    "room": {
+      "size": [
+        10.8,
+        5.8,
+        3.05
+      ],
+      "wall_color": [
+        0.84,
+        0.85,
+        0.8,
+        1
+      ],
+      "accent": [
+        0.39,
+        0.47,
+        0.57,
+        1
+      ],
+      "style": "wetlab",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.48,
+            0.5,
+            0.48,
+            1
+          ],
+          "pattern": "plain",
+          "spacing": 0.6
+        },
+        "openings": [
+          {
+            "id": "analysis_entry",
+            "wall": "back",
+            "kind": "door",
+            "offset": -4.65,
+            "width": 0.95,
+            "height": 2.12,
+            "sill": 0
+          },
+          {
+            "id": "prep_entry",
+            "wall": "back",
+            "kind": "door",
+            "offset": 4.65,
+            "width": 0.95,
+            "height": 2.12,
+            "sill": 0
+          }
+        ],
+        "ceiling": "suspended",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "analysis_bench",
+        "pos": [
+          -2.3,
+          1.93,
+          0
+        ],
+        "size": [
+          3.7,
+          1.0,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "cabinet",
+        "color": [
+          0.39,
+          0.47,
+          0.57,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "weighing_bench",
+        "pos": [
+          -3.1,
+          -1.55,
+          0
+        ],
+        "size": [
+          2.0,
+          0.85,
+          0.92
+        ],
+        "yaw": 3.141592653589793,
+        "style": "cabinet",
+        "color": [
+          0.39,
+          0.47,
+          0.57,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "preparation_bench",
+        "pos": [
+          2.7,
+          1.95,
+          0
+        ],
+        "size": [
+          2.8,
+          0.95,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "cabinet",
+        "color": [
+          0.55,
+          0.37,
+          0.2,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "isotope_analyzer": {
+        "pos": [
+          -2.45,
+          1.93,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "analytical_balance": {
+        "pos": [
+          -3.1,
+          -1.55,
+          0.92
+        ],
+        "yaw": 3.141592653589793
+      },
+      "muffle_furnace": {
+        "pos": [
+          3.72,
+          1.95,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "reagent_bottle": {
+        "pos": [
+          2.77,
+          1.95,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "water_bath": {
+        "pos": [
+          1.75,
+          1.95,
+          0.92
+        ],
+        "yaw": 0
+      }
+    },
+    "layout_rationale": [
+      "Observed in official facility documentation: analysis and sample preparation are separate rooms, reported as 890 and 780 square feet; glass vacuum lines, balances, furnace and gas racks are documented. Inspected instructional stills show tall manifold supports, valves, shields, Dewar vessels and an overhead autosampler.",
+      "The reconstruction now separates the analysis and preparation zones with a full-height partition and a 1.2 m opening. An analysis bench and opposing balance station occupy the left zone; a dedicated vacuum-preparation run and open service space occupy the right.",
+      "Estimated: the 10.8 x 5.8 m enclosure is a compact two-zone subset, not the 1670 square-foot facility floor plan; actual room adjacency and entry locations are unknown. The vacuum line is a visual process-context assembly, not a pressure solver or certified apparatus.",
+      "Gas cylinders are restrained beside the analysis equipment, rather than standing in an approach aisle. Doorways have a reserved bench-free strip. Furnace and balance are in separate zones to avoid implying they share a vibration-sensitive weighing counter.",
+      "Upper glazing in the inter-zone partition is an explicit cutaway/viewing convention, not an observed IsoLab architectural detail; separation of preparation and analysis is the source-supported fact.",
+      "Revision 3 adds controller housings and feed wiring visible above the preparation manifold, plus green/burgundy cylinder finishes and regulator/gauge silhouettes from the water-analysis still. Gauge angles are fixed decorative geometry and are not pressure measurements; actual gas/thermal processes remain unsupported."
+    ],
+    "camera": {
+      "overview": {
+        "position": [
+          10.6,
+          -11.5,
+          7.8
+        ],
+        "target": [
+          0.1,
+          0.45,
+          1.1
+        ],
+        "fovy": 45
+      },
+      "workstation": {
+        "position": [
+          -0.35,
+          -0.45,
+          2.5
+        ],
+        "target": [
+          -2.15,
+          1.87,
+          1.39
+        ],
+        "fovy": 44
+      },
+      "interior": {
+        "position": [
+          -4.4,
+          -1.05,
+          1.62
+        ],
+        "target": [
+          -0.1,
+          1.7,
+          1.43
+        ],
+        "fovy": 72
+      }
+    }
+  },
+  "penn_pathology": {
+    "room": {
+      "size": [
+        3.6,
+        9.0,
+        2.8
+      ],
+      "wall_color": [
+        0.78,
+        0.8,
+        0.74,
+        1
+      ],
+      "accent": [
+        0.71,
+        0.74,
+        0.72,
+        1
+      ],
+      "style": "pathology",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.72,
+            0.73,
+            0.66,
+            1
+          ],
+          "pattern": "tiles",
+          "spacing": 0.6
+        },
+        "openings": [
+          {
+            "id": "rear_access",
+            "wall": "back",
+            "kind": "door",
+            "offset": 0.1,
+            "width": 1.0,
+            "height": 2.12,
+            "sill": 0
+          }
+        ],
+        "ceiling": "suspended",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "processing_bench",
+        "pos": [
+          -1.3,
+          -0.4,
+          0
+        ],
+        "size": [
+          6.2,
+          0.9,
+          0.92
+        ],
+        "yaw": 1.5707963267948966,
+        "style": "cabinet",
+        "color": [
+          0.71,
+          0.74,
+          0.72,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "accession_bench",
+        "pos": [
+          1.3,
+          -0.4,
+          0
+        ],
+        "size": [
+          6.2,
+          0.9,
+          0.92
+        ],
+        "yaw": -1.5707963267948966,
+        "style": "cabinet",
+        "color": [
+          0.71,
+          0.74,
+          0.72,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "slide_preparation",
+        "pos": [
+          -1.13,
+          4.0,
+          0
+        ],
+        "size": [
+          1.15,
+          0.8,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "cabinet",
+        "color": [
+          0.71,
+          0.74,
+          0.72,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "sample_processor": {
+        "pos": [
+          -1.3,
+          -1.15,
+          0.92
+        ],
+        "yaw": 1.5707963267948966
+      },
+      "centrifuge": {
+        "pos": [
+          1.3,
+          0.5,
+          0.92
+        ],
+        "yaw": -1.5707963267948966
+      },
+      "water_bath": {
+        "pos": [
+          -1.13,
+          4.0,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "cell_dish": {
+        "pos": [
+          1.3,
+          -2.0,
+          0.92
+        ],
+        "yaw": -1.5707963267948966
+      },
+      "reagent_bottle": {
+        "pos": [
+          -1.3,
+          1.4,
+          0.92
+        ],
+        "yaw": 1.5707963267948966
+      }
+    },
+    "layout_rationale": [
+      "Observed: the official video still shows a long straight laboratory aisle bounded by parallel workbenches, glazed overhead cupboards, desktop workstations, pale flooring and a rear equipment area.",
+      "Changed from three detached central islands to two 6.2 m facing bench runs, with sidewall cupboard banks, specimen trays and computer stations; the microtome work position faces into the aisle. A short rear bath counter is separated from the rear access opening.",
+      "Estimated: 3.6 x 9.0 m dimensions and 1.7 m bench-to-bench spacing were authored from this single view, not a measured Penn floor plan. Exact instrument locations, units and protocols are unverified.",
+      "This is a representative pathology bench environment referenced to an observed room image. It does not assert that the illustrative microtome, reused centrifuge or bath are the units visible in that room.",
+      "Revision 3 follows additional visible cues from the official video still: two continuous longitudinal ceiling-light rows, darker grey-green cupboard frames, clear glazed leaves, a binder-storage bay, desktop paperwork and a backed laboratory task chair.",
+      "Cupboard stock, cable/electrical raceways and paper positions are authored context. Cabinet counts, lamp dimensions and seating coordinates remain inferred; no original floor plan, photogrammetric calibration or institutional validation was available."
+    ],
+    "camera": {
+      "overview": {
+        "position": [
+          7.1,
+          -11.5,
+          7.3
+        ],
+        "target": [
+          0,
+          0.1,
+          1.03
+        ],
+        "fovy": 47
+      },
+      "workstation": {
+        "position": [
+          0.8,
+          -3.0,
+          1.98
+        ],
+        "target": [
+          -1.28,
+          -1.14,
+          1.12
+        ],
+        "fovy": 43
+      },
+      "interior": {
+        "position": [
+          0.1,
+          -3.9,
+          1.62
+        ],
+        "target": [
+          0.03,
+          3.8,
+          1.43
+        ],
+        "fovy": 65
+      },
+      "instrument": {
+        "position": [
+          -0.3,
+          -0.23,
+          1.55
+        ],
+        "target": [
+          -1.26,
+          -1.15,
+          1.09
+        ],
+        "fovy": 40
+      }
+    }
+  }
+}

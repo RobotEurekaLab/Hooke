@@ -1,0 +1,516 @@
+{
+  "scenes": [
+    {
+      "id": "anu_climate_fluid_physics",
+      "title": "ANU Large Rotating Annulus",
+      "institution": "Climate and Fluid Physics Laboratory \u2014 Large Rotating Annulus",
+      "domain": "fluid_physics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://cfplab.org/facilities/",
+        "https://cfplab.org/wp-content/uploads/2023/10/03_lra_photo.jpeg?w=1024"
+      ],
+      "reference_notes": "Official laboratory facility page and its installed Large Rotating Annulus photo were reviewed. ANU university tour page establishes the laboratory affiliation. The published annulus outer diameter is 1.6 m and its depth is 0.4 m; the full laboratory tour was not reviewed. Only the tank outer diameter and depth are published here. Ring thickness, pedestal, probe travel, room envelope and equipment offsets remain estimates. No thermal-fluid model or rotation-rate performance is inferred.",
+      "observed_cues": [
+        "Faceted transparent circular tank surrounds a prominent hollow copper inner cylinder.",
+        "Black curtains enclose the rear and side of the annulus; a tall profiling probe support rises over the rim.",
+        "Adjacent computer desk and floor-standing instrument rack remain separate from the rotating apparatus."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.8,
+          5.2,
+          3.0
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "fluid_physics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.6,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "acquisition_desk",
+          "pos": [
+            1.29,
+            0.83,
+            0
+          ],
+          "size": [
+            1.25,
+            0.73,
+            0.76
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "large_rotating_annulus",
+          "kind": "rotating_annulus_station",
+          "pos": [
+            -0.7,
+            0.1,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Rotate the tank and translate the supported profiling probe around a visible inert calibration target.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://cfplab.org/facilities/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support from machine frame to laboratory floor; independently inspect geometry"
+          }
+        }
+      ],
+      "task": {
+        "name": "ANU Large Rotating Annulus mechanical positioning",
+        "description": "Rotate the tank and translate the supported profiling probe around a visible inert calibration target.",
+        "primary_equipment": "large_rotating_annulus",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.4,
+            -7.5,
+            5.7
+          ],
+          "target": [
+            0,
+            0.1,
+            0.8
+          ],
+          "fovy": 44
+        },
+        "interior": {
+          "position": [
+            2.4,
+            -2.35,
+            2.0
+          ],
+          "target": [
+            -0.3,
+            0.4,
+            1.05
+          ],
+          "fovy": 59
+        },
+        "workstation": {
+          "position": [
+            1.3,
+            -1.9,
+            2.12
+          ],
+          "target": [
+            -0.6,
+            0.2,
+            1.15
+          ],
+          "fovy": 47
+        }
+      },
+      "layout_rationale": [
+        "The annulus occupies a screened optical/thermal observation corner; an adjacent control desk and separate electronics rack follow the source photograph.",
+        "A clear front approach is kept outside the authored rotating envelope. Black curtains provide local apparatus context without claiming the unreviewed 400 square metre facility layout.",
+        "The published 1.6 m tank outer diameter and 0.4 m depth guide the hollow faceted tank. Pedestal, inner cylinder and probe-rail dimensions remain estimates."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "Water is a static transparent annular mesh, not a fluid solver. Temperature gradients, thermistor output and optical images are not simulated.",
+        "Tank rotation is a bounded position surrogate; actual steady rotation speed and instrument performance are not claimed.",
+        "The raised inert calibration target and its stem are original additions for mechanical inspection.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/anu_annulus.jpg"
+        ],
+        "reviewed_sha256": [
+          "0b95ad2b2106a30adf8e489722e59f90eeb4a6106828ff36ad967a2a94f9836e"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    },
+    {
+      "id": "sydney_fluids_convection",
+      "title": "Sydney Convection Imaging Tank",
+      "institution": "Fluids and Convection Laboratories \u2014 Side-heated Tank",
+      "domain": "fluid_physics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.sydney.edu.au/engineering/our-research/laboratories-and-facilities/fluids-laboratory.html",
+        "https://www.sydney.edu.au/content/dam/corporate/images/faculty-of-engineering-and-information-technologies/research/laboratories-and-facilities/laboratories-hero-fluids-laboratory-and-wave-flume-heated-tank.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+      ],
+      "reference_notes": "The official Fluids and Convection Laboratories page and its heated-tank photograph were inspected. The photographed local glass apparatus matches the page discussion of side-heated convection experiments; it is not the separately described 30 m wave flume. Tank dimensions are not published on this page; do not substitute dimensions from the separately listed 30 m wave flume. Hidden plumbing, full room layout, thermal properties and flow-imaging physics are not reconstructed.",
+      "observed_cues": [
+        "Broad vertical rectangular transparent tank has dense bolts along its metal upper and lower frame.",
+        "A substantial right-end metal plate and external vertical pipes distinguish the side-heated geometry.",
+        "Black upper/lower optical baffles and blue background illumination frame the tank; its supports are visible beneath."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.3,
+          4.7,
+          2.8
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "fluid_physics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.35,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "side_heated_tank",
+          "kind": "convection_imaging_tank",
+          "pos": [
+            0,
+            0.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate a supported inert calibration plate horizontally and vertically in the local glass-tank viewing region.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://www.sydney.edu.au/engineering/our-research/laboratories-and-facilities/fluids-laboratory.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support from machine frame to laboratory floor; independently inspect geometry"
+          }
+        }
+      ],
+      "task": {
+        "name": "Sydney Convection Imaging Tank mechanical positioning",
+        "description": "Translate a supported inert calibration plate horizontally and vertically in the local glass-tank viewing region.",
+        "primary_equipment": "side_heated_tank",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.3,
+            -6.1,
+            4.7
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 44
+        },
+        "interior": {
+          "position": [
+            2.2,
+            -1.95,
+            1.95
+          ],
+          "target": [
+            0.1,
+            0.3,
+            1.1
+          ],
+          "fovy": 58
+        },
+        "workstation": {
+          "position": [
+            1.45,
+            -1.35,
+            1.64
+          ],
+          "target": [
+            0.1,
+            0.22,
+            1.32
+          ],
+          "fovy": 49
+        }
+      },
+      "layout_rationale": [
+        "The narrow transparent heated tank, metal bolted perimeter, substantial right-end heat exchanger and black optical baffles follow the reviewed official image.",
+        "A blue backing screen and separate supported camera represent the local imaging arrangement. Surrounding insulated-panel room extent and all equipment dimensions are estimated.",
+        "Keep the long front approach clear. The compact tank is not the separately documented 30 m wave flume or a reconstruction of the entire 500 square metre laboratory."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "Tank length, depth, height and plumbing offsets are photo-informed estimates; no measurements of this particular apparatus were found.",
+        "The two-axis probe gantry and inert plate are original mechanical inspection aids, not a verified manufacturer assembly.",
+        "The liquid is a static visual body. Heat exchange, convection, optical flow imaging and data acquisition are not simulated.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/sydney_fluids.jpg"
+        ],
+        "reviewed_sha256": [
+          "555575f0d5d4d46186b32fe6c3403d457e5181328c40fb783981a46ed75e537b"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    },
+    {
+      "id": "unsw_tyree_xray",
+      "title": "UNSW CoreTOM Specimen Positioning Bay",
+      "institution": "Tyree X-ray CT Facility \u2014 CoreTOM Micro CT-1",
+      "domain": "materials_imaging",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.unsw.edu.au/research/facilities-and-infrastructure/find-an-instrument/micro-ct-instruments/coretom-micro-ct-1",
+        "https://www.unsw.edu.au/content/dam/images/research-and-enterprise/mwac/tyree-micro-ct/instruments/2024-10-research-website-update/Micro-CT%20lab%20instruments-4.cropimg.width=700.crop=square.jpg"
+      ],
+      "reference_notes": "The dedicated CoreTOM instrument page and its installed source/specimen/detector photograph were inspected. It identifies LG22 in the Tyree Energy Technology Building and a 970 mm source-detector distance. This is CoreTOM evidence, distinct from the previously unreviewed Heliscan tour. Only source-detector separation is treated as published geometry. Photo does not establish a complete shielded room plan. Two authored sample axes are a subset of the nine listed motorized stages; no X-ray production, radiation shielding certification, reconstruction or porous-media physics.",
+      "observed_cues": [
+        "Left source housing with visible red/blue service cables faces a large upright detector on the right.",
+        "Central slender dark core capsule is held by a white cylindrical rotary chuck above black translation stages.",
+        "A tall granite column and aluminium profiles form the rear mechanical structure."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          4.8,
+          4.4,
+          2.85
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "materials_imaging",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.2000000000000002,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "coretom_sample_station",
+          "kind": "coretom_positioning_station",
+          "pos": [
+            0,
+            0.1,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position and rotate a supported inert core capsule between static source and detector exteriors.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://www.unsw.edu.au/research/facilities-and-infrastructure/find-an-instrument/micro-ct-instruments/coretom-micro-ct-1"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support from machine frame to laboratory floor; independently inspect geometry"
+          }
+        }
+      ],
+      "task": {
+        "name": "UNSW CoreTOM Specimen Positioning Bay mechanical positioning",
+        "description": "Position and rotate a supported inert core capsule between static source and detector exteriors.",
+        "primary_equipment": "coretom_sample_station",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.0,
+            -5.9,
+            4.5
+          ],
+          "target": [
+            0,
+            0.2,
+            0.9
+          ],
+          "fovy": 43
+        },
+        "interior": {
+          "position": [
+            1.95,
+            -1.85,
+            1.94
+          ],
+          "target": [
+            0,
+            0.1,
+            1.4
+          ],
+          "fovy": 57
+        },
+        "workstation": {
+          "position": [
+            0.15,
+            -1.66,
+            1.83
+          ],
+          "target": [
+            0,
+            0.1,
+            1.51
+          ],
+          "fovy": 47
+        }
+      },
+      "layout_rationale": [
+        "Source housing and service cables on the left, white central rotary chuck, black translation stages, right detector and rear granite column follow the actual CoreTOM photograph.",
+        "The published 970 mm source-detector separation is represented by explicit named aperture and detector sites. Source height, housing dimensions and core size are estimates.",
+        "Room envelope is an authored local inspection bay; the photo provides no full lead-lined room plan. An open front access region exposes the mechanical arrangement for review."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "Only two sample axes are modeled; the source lists nine stages for the installed instrument. Travel limits and bearing geometry are original approximations.",
+        "This exposed apparatus vignette does not claim the certified radiation enclosure or implement an operating procedure.",
+        "No X-rays, exposure control, CT projections, reconstruction, microstructure or core transport physics are simulated.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/unsw_coretom.jpg"
+        ],
+        "reviewed_sha256": [
+          "dd54b2904c16764957b012bc580cd3599b1611be4ed734ddd9f98bdb0d9ca565"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    }
+  ]
+}

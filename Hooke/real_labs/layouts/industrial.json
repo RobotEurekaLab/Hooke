@@ -1,0 +1,675 @@
+{
+  "purdue_phenotyping": {
+    "room": {
+      "size": [
+        13,
+        9,
+        5
+      ],
+      "wall_color": [
+        0.85,
+        0.85,
+        0.79,
+        1
+      ],
+      "accent": [
+        0.41,
+        0.44,
+        0.42,
+        1
+      ],
+      "style": "phenotyping_facility",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.48,
+            0.47,
+            0.42,
+            1
+          ],
+          "pattern": "seams",
+          "spacing": 3
+        },
+        "openings": [
+          {
+            "id": "service_door",
+            "wall": "back",
+            "kind": "door",
+            "offset": 0.25,
+            "width": 1.0,
+            "height": 2.2,
+            "sill": 0
+          }
+        ],
+        "ceiling": "exposed",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "sample_prep",
+        "pos": [
+          4.9,
+          -2.2,
+          0
+        ],
+        "size": [
+          1.8,
+          0.8,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.53,
+          0.56,
+          0.56,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "irrigation_service",
+        "pos": [
+          2.0,
+          3.5,
+          0
+        ],
+        "size": [
+          2,
+          0.9,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.53,
+          0.56,
+          0.56,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "phenotyping_booth": {
+        "pos": [
+          2,
+          -0.15,
+          0
+        ],
+        "yaw": 0
+      },
+      "analytical_balance": {
+        "pos": [
+          4.85,
+          -2.2,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "ph_meter": {
+        "pos": [
+          1.5,
+          3.5,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "reagent_bottle": {
+        "pos": [
+          2.6,
+          3.5,
+          0.92
+        ],
+        "yaw": 0
+      }
+    },
+    "reference_notes": "Inspected official AAPF 360-degree stills show an enclosed growth chamber with dense reflector lamps, broad-bladed maize/cereal canopies, tapered grey pots on round black carriers, parallel metal transport profiles and red stops. Separate hallway and hyperspectral stills show drainage, tanks, conduits, wash facilities, a dark imaging backdrop and bracketed lighting. Revision 3 refines those observed components within the previously estimated 13x9x5 m combined envelope. The 28 maize specimens, 56 lamps, their dimensions and coordinates are authored estimates; the stills do not establish exact counts or dimensions. Specimen leaf morphology is illustrative, not a calibrated plant phenotype.",
+    "layout_rationale": [
+      "Separate crop growth, plant loading, light-shielded imaging and nutrient preparation zones, following the distinct spaces in the official tour.",
+      "Twenty-eight tapered pots and rounded carriers occupy four dense crop lanes. Continuous curved leaf blades, paired transport profiles, red carrier stops, motor housings and 56 reflector luminaires replace the sparse plant and conveyor placeholders.",
+      "A drain and clear service corridor separate wet preparation tanks from the plant carriers; the booth has an unobstructed south-facing operator approach.",
+      "The static loading conveyor and articulated booth are separate modules; automatic transfer through the entire facility has not been implemented.",
+      "The crop chamber front and part of its east wall are deliberately cut away to expose the growth system in the overview, with this presentation simplification recorded.",
+      "The growth chamber has a separate 4.22 m estimated reflective ceiling, removed only in overview/detail cutaway views; the service hallway keeps exposed overhead conduits."
+    ],
+    "observed_cues": [
+      "Official north-wall still: floor drain, yellow marked service path, large nutrient tanks, exposed overhead pipes and low metal conveyors.",
+      "Official growth-chamber still: insulated panels and reflective upper walls, dense broad-bladed maize and cereal crops in tapered grey pots, round black carriers, closely spaced metal track lanes, red guides, motor caps and recessed reflector grow lights.",
+      "Official hyperspectral still: tall dark backdrop, rail-mounted camera and surrounding illumination."
+    ],
+    "layout_evidence": [
+      {
+        "url": "https://ag.purdue.edu/aapf/virtual-tour.html",
+        "local_stills": [
+          "temp/research/real_labs_references/purdue_hall.jpg",
+          "temp/research/real_labs_references/purdue_growth.jpg",
+          "temp/research/real_labs_references/purdue_booth.jpg"
+        ],
+        "supports": "Distinct growth chamber, imaging booth and service corridor; no measured floor plan."
+      }
+    ],
+    "camera": {
+      "overview": {
+        "position": [
+          13.8,
+          -17.5,
+          12.5
+        ],
+        "target": [
+          0,
+          0.3,
+          1.2
+        ],
+        "fovy": 35
+      },
+      "workstation": {
+        "position": [
+          4.5,
+          -3.8,
+          2.9
+        ],
+        "target": [
+          2,
+          -0.15,
+          1.25
+        ],
+        "fovy": 52
+      },
+      "interior": {
+        "position": [
+          1.05,
+          -3.45,
+          1.68
+        ],
+        "target": [
+          1.45,
+          1.8,
+          1.6
+        ],
+        "fovy": 75
+      },
+      "reference": {
+        "position": [
+          -5.98,
+          -3.18,
+          1.85
+        ],
+        "target": [
+          -3.35,
+          2.2,
+          1.65
+        ],
+        "fovy": 68
+      }
+    },
+    "limitations": [
+      "Room envelopes and equipment coordinates are designed estimates, not a surveyed or institution-approved floor plan.",
+      "Source media were inspected as references; no original photograph or university trademark texture is included in the generated geometry.",
+      "Mechanical articulation does not validate the scientific process, manufacturer performance, safety certification or facility operating procedures.",
+      "Front/right building boundaries and selected internal walls are shown as cutaways for inspection; these views do not represent an unenclosed real facility.",
+      "No spectral imaging, X-ray CT, irrigation hydraulics, plant growth or air-conditioning physics is simulated.",
+      "The carrier rows and solution tanks are static environmental structures; only the primary booth exposes actuated carrier and camera axes.",
+      "Leaf blades, reflector lamp geometry and transport mechanisms are original photo-informed visual models; plant morphology, lighting spectra, actual crop counts and track tolerances are not measured. The showcased crop is representative maize; cereal diversity visible in the source is not fully replicated."
+    ]
+  },
+  "waterloo_robohub": {
+    "room": {
+      "size": [
+        12,
+        10,
+        5.4
+      ],
+      "wall_color": [
+        0.8,
+        0.83,
+        0.82,
+        1
+      ],
+      "accent": [
+        0.41,
+        0.44,
+        0.42,
+        1
+      ],
+      "style": "robotics_hall",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.52,
+            0.54,
+            0.55,
+            1
+          ],
+          "pattern": "seams",
+          "spacing": 3
+        },
+        "openings": [
+          {
+            "id": "atrium_back",
+            "wall": "back",
+            "kind": "glazing",
+            "offset": 0,
+            "width": 11.5,
+            "height": 5.15,
+            "sill": 0
+          },
+          {
+            "id": "atrium_left",
+            "wall": "left",
+            "kind": "glazing",
+            "offset": 0,
+            "width": 9.6,
+            "height": 5.15,
+            "sill": 0
+          }
+        ],
+        "ceiling": "none",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "handoff_station",
+        "pos": [
+          2.4,
+          0.6,
+          0
+        ],
+        "size": [
+          2.2,
+          0.9,
+          0.78
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.53,
+          0.56,
+          0.56,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "control_workbench",
+        "pos": [
+          -3.0,
+          3.7,
+          0
+        ],
+        "size": [
+          4.2,
+          0.9,
+          0.78
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.53,
+          0.56,
+          0.56,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "robot_arm": {
+        "pos": [
+          2.4,
+          0.6,
+          0.78
+        ],
+        "yaw": 0
+      },
+      "mobile_robot": {
+        "pos": [
+          0.2,
+          -1.1,
+          0
+        ],
+        "yaw": 0
+      },
+      "oscilloscope": {
+        "pos": [
+          -2.8,
+          3.7,
+          0.78
+        ],
+        "yaw": 0
+      },
+      "function_generator": {
+        "pos": [
+          -1.9,
+          3.7,
+          0.78
+        ],
+        "yaw": 0
+      }
+    },
+    "reference_notes": "The official RoboHub space page verifies three floor-to-ceiling glass facades, a full-room powered gantry, indoor positioning infrastructure, a dedicated control centre and a 2x3 m in-floor magnetic-levitation installation. The spherical-tour thumbnail was visually inspected. Revision 2 models a 12x10x5.4 m open robotics hall with a perimeter diagnostics area and a separate manipulator workcell. This envelope and all equipment positions are inferred; only the 2x3 m maglev footprint uses a published dimension. The third facade and full roof are cut away to expose the arena.",
+    "layout_rationale": [
+      "Preserve a large central robot floor rather than filling a laboratory-style room with cabinet benches.",
+      "Place the fixed manipulator and handoff table at the right edge, clear of the maglev patch and central mobile-robot route.",
+      "Put diagnostic electronics, telemetry displays and the server cabinet along the rear perimeter, leaving an open operator approach.",
+      "Use published room-spanning gantry and glass facades as defining structures; the exact gantry cross-sections, tracking camera positions and light-grid spacing are estimates.",
+      "Keep the 2x3 m maglev area flush with the floor; it is a visual footprint without magnetic-levitation forces."
+    ],
+    "layout_evidence": [
+      {
+        "url": "https://uwaterloo.ca/robohub/about/space",
+        "local_stills": [
+          "temp/research/real_labs_references/waterloo.jpg"
+        ],
+        "supports": "Glass facades, room-spanning gantry, tracking, control facilities and published 2x3 m maglev footprint."
+      }
+    ],
+    "verified_spatial_dimensions": [
+      {
+        "feature": "in-floor maglev footprint",
+        "size_m": [
+          2,
+          3
+        ],
+        "source": "https://uwaterloo.ca/robohub/about/space"
+      }
+    ],
+    "camera": {
+      "overview": {
+        "position": [
+          14,
+          -17,
+          10.5
+        ],
+        "target": [
+          0,
+          0.3,
+          1.1
+        ],
+        "fovy": 35
+      },
+      "workstation": {
+        "position": [
+          4.9,
+          -2.9,
+          2.5
+        ],
+        "target": [
+          2.35,
+          0.55,
+          1.05
+        ],
+        "fovy": 53
+      },
+      "interior": {
+        "position": [
+          -0.6,
+          -4.1,
+          1.68
+        ],
+        "target": [
+          1.1,
+          1.2,
+          1.4
+        ],
+        "fovy": 72
+      }
+    },
+    "limitations": [
+      "Room envelopes and equipment coordinates are designed estimates, not a surveyed or institution-approved floor plan.",
+      "Source media were inspected as references; no original photograph or university trademark texture is included in the generated geometry.",
+      "Mechanical articulation does not validate the scientific process, manufacturer performance, safety certification or facility operating procedures.",
+      "Front/right building boundaries and selected internal walls are shown as cutaways for inspection; these views do not represent an unenclosed real facility.",
+      "The floor plan and complete RoboHub fleet are not reconstructed. The robots are representative mechanical models, not the institution's manufacturer CAD assets.",
+      "Tracking housings, gantry and maglev patch are visual infrastructure; tracking calibration, gantry drive and magnetic levitation are not simulated.",
+      "The default mobile robot remains anchored for repeatable independent wheel-control checks; a free-base option exists separately."
+    ]
+  },
+  "nasa_planetary": {
+    "institution": "NASA Glenn SLOPE Laboratory \u2014 reference-informed ground-test reconstruction",
+    "room": {
+      "size": [
+        20,
+        16,
+        6
+      ],
+      "wall_color": [
+        0.8,
+        0.8,
+        0.72,
+        1
+      ],
+      "accent": [
+        0.41,
+        0.44,
+        0.42,
+        1
+      ],
+      "style": "planetary_test_hall",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.49,
+            0.49,
+            0.46,
+            1
+          ],
+          "pattern": "seams",
+          "spacing": 3
+        },
+        "openings": [
+          {
+            "id": "equipment_shutter",
+            "wall": "back",
+            "kind": "shutter",
+            "offset": 1.25,
+            "width": 3.2,
+            "height": 3.6,
+            "sill": 0
+          },
+          {
+            "id": "personnel_door",
+            "wall": "left",
+            "kind": "door",
+            "offset": 5.8,
+            "width": 1.1,
+            "height": 2.3,
+            "sill": 0
+          }
+        ],
+        "ceiling": "exposed",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "sample_inspection",
+        "pos": [
+          -3.9,
+          6.65,
+          0
+        ],
+        "size": [
+          2.8,
+          0.95,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.53,
+          0.56,
+          0.56,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "measurement_station",
+        "pos": [
+          -7.5,
+          6.65,
+          0
+        ],
+        "size": [
+          2,
+          0.95,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.53,
+          0.56,
+          0.56,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "rover": {
+        "pos": [
+          -4.7,
+          -0.3,
+          0.43
+        ],
+        "yaw": 0,
+        "params": {
+          "authored_pose": "Supported service inspection on a stand above a rigid soil-bin surface; not a driving trial."
+        }
+      },
+      "xrf_analyzer": {
+        "pos": [
+          -3.4,
+          6.65,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "analytical_balance": {
+        "pos": [
+          -4.65,
+          6.65,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "sieve_shaker": {
+        "pos": [
+          -7.5,
+          6.65,
+          0.92
+        ],
+        "yaw": 0
+      }
+    },
+    "source_urls": [
+      "https://www.nasa.gov/glenn/virtual-tours/slope360/",
+      "https://ares.jsc.nasa.gov/projects/simulants/dust-testing-facilities/glenn-research-center.html",
+      "https://ntrs.nasa.gov/api/citations/20220005304/downloads/TM-20220005304.pdf"
+    ],
+    "reference_notes": "Official NASA references describe two nominal 12x3 m fixed soil tanks and a nominal 6x5 m adjustable tilt tank. The inspected SLOPE tour preview shows the tilted soil bed, guard rails, rover and exposed high-bay services. Revision 2 places these published-size tank footprints within an inferred 20x16x6 m high-bay envelope, replacing the earlier undersized 8x6 m generic room. This is a reconstructed arrangement, not the measured SLOPE floor plan. The tiltbed is fixed at about 17 degrees. The rover is a generic supported mechanical model; the XRF accessory is a workflow addition not documented as installed in SLOPE.",
+    "observed_cues": [
+      "NASA ARES facility description: nominal 12x3 m GRC-1 and sink tanks; nominal 6x5 m adjustable tiltbed.",
+      "NASA tour preview: soil-covered tiltbed, metal safety rails, rover and overhead building services.",
+      "NASA motion-tracking report: wall-mounted cameras at approximately 4.3 m, with two higher cameras behind the tiltbed."
+    ],
+    "layout_rationale": [
+      "Preserve full published nominal tank footprints, rather than compressing long soil lanes into a tabletop-sized sand patch.",
+      "Place two parallel rigid soil lanes with perimeter access, and a raised tilted bed in a separate right-hand bay.",
+      "Separate soil storage and sample worktops from the tank footprints; additional XRF and balance accessories remain explicitly representative.",
+      "Use a 6 m high industrial envelope with columns, roof members, ventilation trunk and tracking-camera housings, informed by the tour preview.",
+      "Retain Earth gravity and ambient laboratory conditions. This facility is a ground analogue, not a vacuum or reduced-gravity lunar room.",
+      "Show the rover on a stand with wheels clear of the soil for independent mechanism inspection; driving, granular sinkage and calibrated traction are separate unimplemented experiments."
+    ],
+    "layout_evidence": [
+      {
+        "url": "https://www.nasa.gov/glenn/virtual-tours/slope360/",
+        "local_stills": [
+          "temp/research/real_labs_references/nasa_preview.jpg"
+        ],
+        "supports": "High-bay building services, tilted soil bed and guard rails."
+      },
+      {
+        "url": "https://ares.jsc.nasa.gov/projects/simulants/dust-testing-facilities/glenn-research-center.html",
+        "supports": "Nominal soil-tank footprints and terrestrial ambient environment."
+      },
+      {
+        "url": "https://ntrs.nasa.gov/api/citations/20220005304/downloads/TM-20220005304.pdf",
+        "supports": "Wall-mounted tracking camera elevations; exact camera array is not reconstructed."
+      }
+    ],
+    "verified_spatial_dimensions": [
+      {
+        "feature": "two fixed soil tank footprints",
+        "size_m": [
+          12,
+          3
+        ],
+        "source": "https://ares.jsc.nasa.gov/projects/simulants/dust-testing-facilities/glenn-research-center.html"
+      },
+      {
+        "feature": "tilt tank footprint",
+        "size_m": [
+          6,
+          5
+        ],
+        "source": "https://ares.jsc.nasa.gov/projects/simulants/dust-testing-facilities/glenn-research-center.html"
+      }
+    ],
+    "camera": {
+      "overview": {
+        "position": [
+          22,
+          -26,
+          19
+        ],
+        "target": [
+          0,
+          0,
+          1.2
+        ],
+        "fovy": 35
+      },
+      "workstation": {
+        "position": [
+          -2.5,
+          -3.1,
+          2.55
+        ],
+        "target": [
+          -4.7,
+          -0.3,
+          1.0
+        ],
+        "fovy": 54
+      },
+      "interior": {
+        "position": [
+          -8.2,
+          -2.65,
+          1.68
+        ],
+        "target": [
+          -1.8,
+          0.5,
+          1.2
+        ],
+        "fovy": 68
+      }
+    },
+    "limitations": [
+      "Room envelopes and equipment coordinates are designed estimates, not a surveyed or institution-approved floor plan.",
+      "Source media were inspected as references; no original photograph or university trademark texture is included in the generated geometry.",
+      "Mechanical articulation does not validate the scientific process, manufacturer performance, safety certification or facility operating procedures.",
+      "Front/right building boundaries and selected internal walls are shown as cutaways for inspection; these views do not represent an unenclosed real facility.",
+      "Soil bins have rigid contact surfaces with shallow visual soil relief; granular sinkage, dust, excavation forces, wheel slip and drawbar-pull calibration are not simulated.",
+      "The tiltbed has a fixed authored pose rather than an actuated hydraulic mechanism.",
+      "This is an Earth ground-test laboratory with 9.81 m/s\u00b2 gravity and ambient air.",
+      "The public sources give nominal tank dimensions with differences between reports; this model uses the NASA ARES nominal sizes and does not claim surveyed millimetre accuracy."
+    ]
+  }
+}

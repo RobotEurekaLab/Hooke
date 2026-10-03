@@ -1,0 +1,766 @@
+{
+  "scenes": [
+    {
+      "id": "lmu_hybrid_snom",
+      "title": "LMU Hybrid Nanosystems near-field inspection laboratory",
+      "institution": "Hybrid Nanosystems \u2014 Scanning Near-Field Microscopy Laboratory",
+      "domain": "optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.physik.lmu.de/hybridnano/en/research/facilities/",
+        "https://cms-cdn.lmu.de/media/17-physik/17-hybridnano/photos/snom__nanoinstitute_3_2_format_s.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. A broad perforated optical table carries long silver enclosures and multiple smaller sources. A cable-dense vertical rack rises behind the middle of the table. Dark blinds screen the two adjacent window walls; supported optical posts surround the near-field station. The photo documents one optical room corner only. Instrument internals, exact light paths and dimensions are unknown. No optical response, nanometre accuracy or source-media redistribution is authorized.",
+      "observed_cues": [
+        "A broad perforated optical table carries long silver enclosures and multiple smaller sources.",
+        "A cable-dense vertical rack rises behind the middle of the table.",
+        "Dark blinds screen the two adjacent window walls; supported optical posts surround the near-field station."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the reviewed room; no complete surveyed floor plan.",
+      "room": {
+        "size": [
+          5.4,
+          5.2,
+          3.2
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "lmu_hybrid_snom",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.9000000000000001,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "snom_table",
+          "kind": "lmu_snom_inspection_table",
+          "pos": [
+            0,
+            0.25,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "LMU Hybrid Nanosystems near-field inspection laboratory",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.physik.lmu.de/hybridnano/en/research/facilities/",
+            "https://cms-cdn.lmu.de/media/17-physik/17-hybridnano/photos/snom__nanoinstitute_3_2_format_s.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://cms-cdn.lmu.de/media/17-physik/17-hybridnano/photos/snom__nanoinstitute_3_2_format_s.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/references/asia03/lmu_snom.jpg"
+          ],
+          "supports": "Official laboratory page and its installed apparatus photograph reviewed. A broad perforated optical table carries long silver enclosures and multiple smaller sources. A cable-dense vertical rack rises behind the middle of the table. Dark blinds screen the two adjacent window walls; supported optical posts surround the near-field station."
+        }
+      ],
+      "layout_rationale": [
+        "A broad perforated optical table carries long silver enclosures and multiple smaller sources.",
+        "A cable-dense vertical rack rises behind the middle of the table.",
+        "Dark blinds screen the two adjacent window walls; supported optical posts surround the near-field station.",
+        "Dual screened wall corners, parallel source housings and the rack are source-observed; hidden wall extents are estimated.",
+        "The front-right near-field inspection target remains deliberately visible."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            6.0,
+            -7.0,
+            4.8
+          ],
+          "target": [
+            0.0,
+            0.3,
+            1.05
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.1,
+            -2.05,
+            1.72
+          ],
+          "target": [
+            0.0,
+            0.5,
+            1.12
+          ],
+          "fovy": 59
+        },
+        "workstation": {
+          "position": [
+            1.6,
+            -0.8,
+            1.55
+          ],
+          "target": [
+            0.89,
+            0.3,
+            1.03
+          ],
+          "fovy": 48
+        },
+        "source": {
+          "position": [
+            2.2,
+            -1.8,
+            1.95
+          ],
+          "target": [
+            0.0,
+            0.6,
+            1.15
+          ],
+          "fovy": 60
+        }
+      },
+      "task": {
+        "name": "LMU Hybrid Nanosystems near-field inspection laboratory",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "snom_table",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No light-path, near-field imaging, probe interaction or nanoscale accuracy model."
+      ]
+    },
+    {
+      "id": "copenhagen_nbi_surface_metrology",
+      "title": "Copenhagen NBI surface-metrology workstation",
+      "institution": "Niels Bohr Institute Cleanroom \u2014 Surface Metrology Station",
+      "domain": "materials_metrology",
+      "university_expansion": true,
+      "source_urls": [
+        "https://nbi.ku.dk/english/research_infrastructure/nbi-cleanroom/",
+        "http://nbi.ku.dk/forskningsinfrastruktur/nbi-cleanroom/billeder/cleanRoom5.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Large dark blue profiler head over a broad black sample deck. Metal objective turret beneath the head and rear right structural pillar. Nearby cleanroom benches and cables visible behind the workstation. Operator occludes some structure; whole cleanroom footprint and exact model, dimensions and adjacent-tool placement are unverified.",
+      "observed_cues": [
+        "Large dark blue profiler head over a broad black sample deck.",
+        "Metal objective turret beneath the head and rear right structural pillar.",
+        "Nearby cleanroom benches and cables visible behind the workstation."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the reviewed workstation; no complete surveyed floor plan.",
+      "room": {
+        "size": [
+          4.8,
+          3.8,
+          3.0
+        ],
+        "wall_color": [
+          0.76,
+          0.8,
+          0.71,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "copenhagen_nbi_surface_metrology",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.2,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "profiler_bench",
+          "pos": [
+            -0.45,
+            0.3,
+            0
+          ],
+          "size": [
+            1.55,
+            1.22,
+            0.9
+          ],
+          "style": "optical",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "control_bench",
+          "pos": [
+            1.3,
+            0.38,
+            0
+          ],
+          "size": [
+            1.22,
+            1.12,
+            0.9
+          ],
+          "style": "optical",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "surface_profiler",
+          "kind": "copenhagen_sensofar_xy_profiler",
+          "pos": [
+            -0.45,
+            0.3,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Copenhagen NBI surface-metrology workstation",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://nbi.ku.dk/english/research_infrastructure/nbi-cleanroom/",
+            "http://nbi.ku.dk/forskningsinfrastruktur/nbi-cleanroom/billeder/cleanRoom5.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "http://nbi.ku.dk/forskningsinfrastruktur/nbi-cleanroom/billeder/cleanRoom5.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/references/asia03/copenhagen_cleanroom.jpg"
+          ],
+          "supports": "Official laboratory page and its installed apparatus photograph reviewed. Large dark blue profiler head over a broad black sample deck. Metal objective turret beneath the head and rear right structural pillar. Nearby cleanroom benches and cables visible behind the workstation."
+        }
+      ],
+      "layout_rationale": [
+        "Large dark blue profiler head over a broad black sample deck.",
+        "Metal objective turret beneath the head and rear right structural pillar.",
+        "Nearby cleanroom benches and cables visible behind the workstation.",
+        "A local installed profiler station is reconstructed; the rest of the NBI cleanroom is not inferred as a surveyed room.",
+        "The broad specimen deck is exposed from the front beneath a rear-supported blue optical head."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.0,
+            -5.5,
+            4.0
+          ],
+          "target": [
+            0.0,
+            0.2,
+            1.2
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.8,
+            -1.5,
+            1.7
+          ],
+          "target": [
+            -0.3,
+            0.3,
+            1.4
+          ],
+          "fovy": 57
+        },
+        "workstation": {
+          "position": [
+            0.3,
+            -0.9,
+            1.52
+          ],
+          "target": [
+            -0.45,
+            0.25,
+            1.21
+          ],
+          "fovy": 43
+        },
+        "source": {
+          "position": [
+            0.15,
+            -1.1,
+            1.62
+          ],
+          "target": [
+            -0.45,
+            0.3,
+            1.36
+          ],
+          "fovy": 49
+        }
+      },
+      "task": {
+        "name": "Copenhagen NBI surface-metrology workstation",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "surface_profiler",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No optical surface measurements or metrology accuracy model.",
+        "Instrument type is identifiable; precise model and occluded support proportions remain unverified."
+      ]
+    },
+    {
+      "id": "heidelberg_jochim_quantum_architecture",
+      "title": "Heidelberg Jochim HQA optical-alignment apparatus",
+      "institution": "Jochim Labs \u2014 Heidelberg Quantum Architecture Optical Station",
+      "domain": "optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://ultracold.physi.uni-heidelberg.de/02research/",
+        "https://ultracold.physi.uni-heidelberg.de/02research/img/HQA_Setup.JPG"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Central metal multiport assembly with round optical windows. Angled cage-system optics and horizontally stacked black support plates. Red instrument housings, peripheral cables and overhead perforated cover. Photograph proves a local apparatus only; chamber internals, full room geometry and dimensions are unknown. Optical alignment mechanical proxy only; no quantum dynamics, vacuum performance or operating procedure.",
+      "observed_cues": [
+        "Central metal multiport assembly with round optical windows.",
+        "Angled cage-system optics and horizontally stacked black support plates.",
+        "Red instrument housings, peripheral cables and overhead perforated cover."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the reviewed workstation; no complete surveyed floor plan.",
+      "room": {
+        "size": [
+          4.8,
+          4.2,
+          3.0
+        ],
+        "wall_color": [
+          0.44,
+          0.42,
+          0.42,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "heidelberg_jochim_quantum_architecture",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.33,
+              0.33,
+              0.33,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.4000000000000001,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "hqa_alignment",
+          "kind": "heidelberg_hqa_alignment_assembly",
+          "pos": [
+            0,
+            0.3,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Heidelberg Jochim HQA optical-alignment apparatus",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://ultracold.physi.uni-heidelberg.de/02research/",
+            "https://ultracold.physi.uni-heidelberg.de/02research/img/HQA_Setup.JPG"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://ultracold.physi.uni-heidelberg.de/02research/img/HQA_Setup.JPG",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/references/asia03/heidelberg_hqa.jpg"
+          ],
+          "supports": "Official laboratory page and its installed apparatus photograph reviewed. Central metal multiport assembly with round optical windows. Angled cage-system optics and horizontally stacked black support plates. Red instrument housings, peripheral cables and overhead perforated cover."
+        }
+      ],
+      "layout_rationale": [
+        "Central metal multiport assembly with round optical windows.",
+        "Angled cage-system optics and horizontally stacked black support plates.",
+        "Red instrument housings, peripheral cables and overhead perforated cover.",
+        "Local multiport optical assembly only; hidden room boundaries are authored.",
+        "Horizontal black optical decks, angled cage systems and red housings share a grounded support frame.",
+        "An exposed inert foreground gimbal provides reversible mechanical alignment without inventing quantum outcomes."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.2,
+            -6.2,
+            4.3
+          ],
+          "target": [
+            0.0,
+            0.3,
+            1.2
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.9,
+            -1.75,
+            1.7
+          ],
+          "target": [
+            0.0,
+            0.4,
+            1.25
+          ],
+          "fovy": 59
+        },
+        "workstation": {
+          "position": [
+            1.1,
+            -1.02,
+            1.38
+          ],
+          "target": [
+            0.2,
+            -0.19,
+            1.14
+          ],
+          "fovy": 48
+        },
+        "source": {
+          "position": [
+            -0.6,
+            -1.2,
+            1.55
+          ],
+          "target": [
+            -0.2,
+            0.3,
+            1.3
+          ],
+          "fovy": 68
+        }
+      },
+      "task": {
+        "name": "Heidelberg Jochim HQA optical-alignment apparatus",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "hqa_alignment",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No vacuum, atom handling, laser beam, trapping, or quantum-dynamics model."
+      ]
+    },
+    {
+      "id": "fuberlin_franke_surface_physics",
+      "title": "FU Berlin Franke external surface-holder inspection",
+      "institution": "Franke Research Group \u2014 Surface Physics Microscopy Station",
+      "domain": "materials_metrology",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.physik.fu-berlin.de/en/langenacht/inhalt/labor/franke.html",
+        "https://www.physik.fu-berlin.de/en/forschung/bilder-forschung/physikforschung.jpg?width=1000"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Dense low metal flange assembly with angled access ports. Tall stainless vessel and contrasting purple vertical positioning drive on the right. Rear control monitor and cables between installed devices. Photo credit Bernd Wannenmacher; major areas are occluded and internal stage geometry is unknown. Workstation exterior only, no atomic imaging claim.",
+      "observed_cues": [
+        "Dense low metal flange assembly with angled access ports.",
+        "Tall stainless vessel and contrasting purple vertical positioning drive on the right.",
+        "Rear control monitor and cables between installed devices."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the reviewed workstation; no complete surveyed floor plan.",
+      "room": {
+        "size": [
+          4.6,
+          4.2,
+          3.0
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "fuberlin_franke_surface_physics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.4000000000000001,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "surface_holder",
+          "kind": "fuberlin_franke_external_holder",
+          "pos": [
+            0,
+            0.5,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "FU Berlin Franke external surface-holder inspection",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.physik.fu-berlin.de/en/langenacht/inhalt/labor/franke.html",
+            "https://www.physik.fu-berlin.de/en/forschung/bilder-forschung/physikforschung.jpg?width=1000"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.physik.fu-berlin.de/en/forschung/bilder-forschung/physikforschung.jpg?width=1000",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/references/asia03/fuberlin_franke.jpg"
+          ],
+          "supports": "Official laboratory page and its installed apparatus photograph reviewed. Dense low metal flange assembly with angled access ports. Tall stainless vessel and contrasting purple vertical positioning drive on the right. Rear control monitor and cables between installed devices."
+        }
+      ],
+      "layout_rationale": [
+        "Dense low metal flange assembly with angled access ports.",
+        "Tall stainless vessel and contrasting purple vertical positioning drive on the right.",
+        "Rear control monitor and cables between installed devices.",
+        "A low flange assembly, tall stainless column, purple vertical drive and rear monitor follow the reviewed local workstation.",
+        "No operator or inferred full laboratory floor plan is included.",
+        "The source-occluded sample-access mechanics are labelled as an original reversible dry proxy."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.0,
+            -6.0,
+            4.1
+          ],
+          "target": [
+            0.0,
+            0.5,
+            1.2
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.6,
+            -1.75,
+            1.65
+          ],
+          "target": [
+            0.0,
+            0.5,
+            1.18
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            -0.85,
+            -0.85,
+            1.35
+          ],
+          "target": [
+            -0.25,
+            0.2,
+            1.05
+          ],
+          "fovy": 44
+        },
+        "source": {
+          "position": [
+            -0.65,
+            -1.1,
+            1.65
+          ],
+          "target": [
+            0.2,
+            0.6,
+            1.38
+          ],
+          "fovy": 54
+        }
+      },
+      "task": {
+        "name": "FU Berlin Franke external surface-holder inspection",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "surface_holder",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No STM image, tunneling current, vacuum, material response or atomic-resolution claim."
+      ]
+    }
+  ]
+}

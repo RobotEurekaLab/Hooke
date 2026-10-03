@@ -1,0 +1,800 @@
+{
+  "scenes": [
+    {
+      "id": "kyoto_kawayama_terahertz",
+      "title": "Kyoto Kawayama Terahertz Optical Workstation",
+      "institution": "Kawayama Laboratory laser terahertz emission microscopy station",
+      "domain": "terahertz_optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://dpe.energy.kyoto-u.ac.jp/en/research/facilities/",
+        "https://dpe.energy.kyoto-u.ac.jp/wp-content/uploads/2023/09/device_03.jpg"
+      ],
+      "reference_notes": "Opened the official Kawayama facility page and viewed the actual installed photograph labelled Laser Terahertz Emission Microscope. The image shows a two-level optical assembly supported above a perforated breadboard, with vertical camera/optic columns, rotation mounts and visible cables.",
+      "observed_cues": [
+        "A tall rectangular black support bridge carries optics above the lower table.",
+        "Two vertical cylindrical optical columns rise from the upper assembly, with rectangular camera modules on top.",
+        "Large round adjustment mounts and a lower optical row occupy different heights in front of the window blinds."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          4.6,
+          3.4,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "terahertz_optics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.9,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "rear_window",
+              "wall": "back",
+              "kind": "window",
+              "offset": -0.3,
+              "width": 2.7,
+              "height": 1.15,
+              "sill": 1.13
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "thz_isolation_table",
+          "pos": [
+            -0.3,
+            0.35,
+            0
+          ],
+          "size": [
+            2.6,
+            1.35,
+            0.86
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "thz_alignment",
+          "kind": "terahertz_alignment_workspace",
+          "pos": [
+            -0.3,
+            0.35,
+            0.86
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate a visible 20 mm inert coupon in coarse XY beneath the two-level optical bridge.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://dpe.energy.kyoto-u.ac.jp/en/research/facilities/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Kyoto Kawayama Terahertz Optical Workstation mechanical positioning",
+        "description": "Translate a visible 20 mm inert coupon in coarse XY beneath the two-level optical bridge.",
+        "primary_equipment": "thz_alignment",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.7,
+            -6.2,
+            4.5
+          ],
+          "target": [
+            0,
+            0.2,
+            0.85
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            1.2,
+            -1.35,
+            1.65
+          ],
+          "target": [
+            -0.3,
+            0.35,
+            1.45
+          ],
+          "fovy": 59
+        },
+        "workstation": {
+          "position": [
+            0.75,
+            -1.15,
+            1.93
+          ],
+          "target": [
+            -0.3,
+            0.35,
+            1.36
+          ],
+          "fovy": 49
+        }
+      },
+      "layout_rationale": [
+        "A tall rectangular black support bridge carries optics above the lower table.",
+        "Two vertical cylindrical optical columns rise from the upper assembly, with rectangular camera modules on top.",
+        "Large round adjustment mounts and a lower optical row occupy different heights in front of the window blinds.",
+        "No laser/terahertz beams, materials response or measured alignment accuracy."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Installed instrument photograph only; full room geometry and adjacency to other listed sputtering or cryogenic equipment are unknown.",
+        "No laser/terahertz beams, materials response or measured alignment accuracy."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/asia_01_images/kyoto_terahertz.jpg"
+        ],
+        "reviewed_sha256": [
+          "97d391a79c4494746cb1706446b1dc173f60469eea58d8342857e3a1bf244ad3"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "cityu_rogach_photoluminescence",
+      "title": "CityU Rogach Photoluminescence Service Bay",
+      "institution": "Rogach Group Optics Laboratory \u2014 Photoluminescence Station",
+      "domain": "materials_optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://personal.cityu.edu.hk/arogatch/lab.htm",
+        "https://personal.cityu.edu.hk/arogatch/img/lab%20and%20projects/Optics%20Lab%202.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Long contiguous white spectroscopy housings span a dark laboratory workbench. A circular black-rimmed top access lid sits over the central sample compartment, with a detector attachment projecting forward. Thick service hoses enter the left module; the monitor sits on an articulated support at right.",
+      "observed_cues": [
+        "Long contiguous white spectroscopy housings span a dark laboratory workbench.",
+        "A circular black-rimmed top access lid sits over the central sample compartment, with a detector attachment projecting forward.",
+        "Thick service hoses enter the left module; the monitor sits on an articulated support at right."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.2,
+          3.8,
+          2.85
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "materials_optics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "spectroscopy_counter",
+          "pos": [
+            0,
+            0.5,
+            0
+          ],
+          "size": [
+            3.0,
+            1.4,
+            0.86
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "pl_service",
+          "kind": "photoluminescence_service_workspace",
+          "pos": [
+            0,
+            0.5,
+            0.86
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Rotate a visible inert coupon and move a supported service lid in an original inspection vignette.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://personal.cityu.edu.hk/arogatch/lab.htm"
+          ]
+        }
+      ],
+      "task": {
+        "name": "CityU Rogach Photoluminescence Service Bay mechanical positioning",
+        "description": "Rotate a visible inert coupon and move a supported service lid in an original inspection vignette.",
+        "primary_equipment": "pl_service",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.0,
+            -6.8,
+            4.6
+          ],
+          "target": [
+            0,
+            0.3,
+            0.85
+          ],
+          "fovy": 40
+        },
+        "interior": {
+          "position": [
+            1.6,
+            -1.55,
+            1.66
+          ],
+          "target": [
+            0,
+            0.45,
+            1.2
+          ],
+          "fovy": 60
+        },
+        "workstation": {
+          "position": [
+            1.0,
+            -1.65,
+            2.0
+          ],
+          "target": [
+            0,
+            0.35,
+            1.2
+          ],
+          "fovy": 50
+        }
+      },
+      "layout_rationale": [
+        "Long contiguous white spectroscopy housings span a dark laboratory workbench.",
+        "A circular black-rimmed top access lid sits over the central sample compartment, with a detector attachment projecting forward.",
+        "Thick service hoses enter the left module; the monitor sits on an articulated support at right.",
+        "The photographed spectrometer is closed; this demonstration introduces an open service aperture and original lift mechanism so the coupon remains visible.",
+        "No fluorescence, cryogenic control, spectroscopy or OEM mechanism claim."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Photograph supports this PL workstation only; do not merge separately shown chemistry, absorption or microscopy rooms. Internal optics, sample motions and dimensions are unverified. No spectra or cryogenic performance are reproduced.",
+        "The photographed spectrometer is closed; this demonstration introduces an open service aperture and original lift mechanism so the coupon remains visible.",
+        "No fluorescence, cryogenic control, spectroscopy or OEM mechanism claim."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/cityu_rogach_optics.jpg"
+        ],
+        "reviewed_sha256": [
+          "3b7c274acadd715af672b9485a4015b484f545b069e9bff48ed0eed8ef183230"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "polyu_materials_tribology",
+      "title": "PolyU Materials Tribology Workstation",
+      "institution": "Materials and Mechanics Technology Laboratory \u2014 UMT Station",
+      "domain": "materials_mechanics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.polyu.edu.hk/me/research/laboratories/materials-and-mechanics-technology-laboratory/",
+        "https://www.polyu.edu.hk/me/-/media/department/me/content/research/laboratories/materials-and-mechanics-technology/materials-and-mechanics-technology-2/mmtlab-03.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Curved transparent front enclosure wraps around the testing cavity beneath a wide dark top housing. A horizontal specimen stage sits low in the cavity with a vertical loading mechanism above. The rounded dark lower base has front controls and rests on a light benchtop beside a wall.",
+      "observed_cues": [
+        "Curved transparent front enclosure wraps around the testing cavity beneath a wide dark top housing.",
+        "A horizontal specimen stage sits low in the cavity with a vertical loading mechanism above.",
+        "The rounded dark lower base has front controls and rests on a light benchtop beside a wall."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          4.2,
+          3.4,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "materials_mechanics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "umt_counter",
+          "pos": [
+            -0.45,
+            0.6,
+            0
+          ],
+          "size": [
+            1.65,
+            1.05,
+            0.85
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "side_records",
+          "pos": [
+            1.5,
+            0.72,
+            0
+          ],
+          "size": [
+            0.6,
+            1.6,
+            0.8
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "umt_station",
+          "kind": "umt_mechanical_workspace",
+          "pos": [
+            -0.45,
+            0.6,
+            0.85
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate a supported inert coupon and adjust non-contact probe clearance inside the rounded transparent enclosure.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://www.polyu.edu.hk/me/research/laboratories/materials-and-mechanics-technology-laboratory/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "PolyU Materials Tribology Workstation mechanical positioning",
+        "description": "Translate a supported inert coupon and adjust non-contact probe clearance inside the rounded transparent enclosure.",
+        "primary_equipment": "umt_station",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.4,
+            -5.8,
+            4.3
+          ],
+          "target": [
+            0,
+            0.25,
+            0.85
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            1.05,
+            -1.25,
+            1.65
+          ],
+          "target": [
+            -0.45,
+            0.6,
+            1.25
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            0.35,
+            -0.7,
+            1.6
+          ],
+          "target": [
+            -0.45,
+            0.6,
+            1.3
+          ],
+          "fovy": 38
+        }
+      },
+      "layout_rationale": [
+        "Curved transparent front enclosure wraps around the testing cavity beneath a wide dark top housing.",
+        "A horizontal specimen stage sits low in the cavity with a vertical loading mechanism above.",
+        "The rounded dark lower base has front controls and rests on a light benchtop beside a wall.",
+        "Rounded transparent guard and tall rear loading spine follow the small reference; all hidden mechanics are estimates.",
+        "Probe retains clearance at full travel; no actual friction or wear result."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Only a 400 by 300 image is available in the inspected reference; it supports instrument silhouette and local bench placement, not room layout or concealed mechanisms. Do not claim calibrated force, friction, wear or instrument travel.",
+        "Rounded transparent guard and tall rear loading spine follow the small reference; all hidden mechanics are estimates.",
+        "Probe retains clearance at full travel; no actual friction or wear result."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/polyu_umt.jpg"
+        ],
+        "reviewed_sha256": [
+          "40c662ea0a32ca8f4c995c264776c9139e41901a9de23a50e196167f6f90acc2"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "cuhk_mpil_ultrafast_optics",
+      "title": "CUHK MPIL Room 303 Optical Bay",
+      "institution": "Multiscale Precision Instrumentation Laboratory \u2014 Room 303 Ultrafast Laser Lab",
+      "domain": "ultrafast_optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.mpil.mae.cuhk.edu.hk/facilities",
+        "https://static.wixstatic.com/media/2c4d17_5ac50f1428f749baa183afbdeb62b551~mv2.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Long dense optical workbench carries white laser enclosures interspersed with black beam partitions and lens posts. Aluminium extrusion frames span above the tables and carry cables and power distribution. Monitors stand within the optical bay; an aisle follows the right edge beside blue-framed side benches.",
+      "observed_cues": [
+        "Long dense optical workbench carries white laser enclosures interspersed with black beam partitions and lens posts.",
+        "Aluminium extrusion frames span above the tables and carry cables and power distribution.",
+        "Monitors stand within the optical bay; an aisle follows the right edge beside blue-framed side benches."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          6.2,
+          6.8,
+          3.05
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "ultrafast_optics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.6,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "rear_window",
+              "wall": "back",
+              "kind": "window",
+              "offset": -0.4,
+              "width": 2.5,
+              "height": 1.0,
+              "sill": 1.3
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "long_optical_table",
+          "pos": [
+            -0.6,
+            0,
+            0
+          ],
+          "size": [
+            2.5,
+            4.4,
+            0.88
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "blue_side_counter",
+          "pos": [
+            2.4,
+            0.2,
+            0
+          ],
+          "size": [
+            0.7,
+            5.6,
+            0.84
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.14,
+            0.42,
+            0.54,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "ultrafast_alignment",
+          "kind": "mpil_ultrafast_alignment_workspace",
+          "pos": [
+            -0.6,
+            -0.85,
+            0.88
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate an inert alignment coupon and rotate a separately mounted optic inside a dense, non-emitting optical workspace.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://www.mpil.mae.cuhk.edu.hk/facilities"
+          ]
+        }
+      ],
+      "task": {
+        "name": "CUHK MPIL Room 303 Optical Bay mechanical positioning",
+        "description": "Translate an inert alignment coupon and rotate a separately mounted optic inside a dense, non-emitting optical workspace.",
+        "primary_equipment": "ultrafast_alignment",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.9,
+            -9.0,
+            6.2
+          ],
+          "target": [
+            0,
+            0,
+            0.95
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            -0.4,
+            -2.9,
+            1.7
+          ],
+          "target": [
+            -0.4,
+            -0.15,
+            1.35
+          ],
+          "fovy": 64
+        },
+        "workstation": {
+          "position": [
+            -0.1,
+            -2.8,
+            1.95
+          ],
+          "target": [
+            -0.6,
+            -0.9,
+            1.18
+          ],
+          "fovy": 59
+        }
+      },
+      "layout_rationale": [
+        "Long dense optical workbench carries white laser enclosures interspersed with black beam partitions and lens posts.",
+        "Aluminium extrusion frames span above the tables and carry cables and power distribution.",
+        "Monitors stand within the optical bay; an aisle follows the right edge beside blue-framed side benches.",
+        "Only Room 303 is represented; G06 and Room 306 equipment are excluded.",
+        "Right-side aisle remains open beside the long table; four table-mounted uprights support the overhead frame."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Use only the explicitly captioned Room 303 photograph; Room G06 Micro-FAB and Room 306 Biomedical Optics are separate. Floor-plan dimensions, laser paths and individual equipment-to-room assignments remain incomplete. No laser propagation or experimental performance.",
+        "Only Room 303 is represented; G06 and Room 306 equipment are excluded.",
+        "Right-side aisle remains open beside the long table; four table-mounted uprights support the overhead frame."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/cuhk_mpil_303.jpg"
+        ],
+        "reviewed_sha256": [
+          "f0fffb57c4cc40fa2c58905584717e3f75c0d4a25ddf581a0d67c056fec348ea"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    }
+  ]
+}

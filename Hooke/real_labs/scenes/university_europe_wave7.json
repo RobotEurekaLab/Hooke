@@ -1,0 +1,841 @@
+{
+  "scenes": [
+    {
+      "id": "leeds_environmental_tribology",
+      "title": "Leeds Environmental Tribology Workstation",
+      "institution": "University Of Leeds \u2014 Advanced Coatings and Environmental Tribology Suite \u2014 Environmental Tribometer",
+      "institution_id": "university_of_leeds",
+      "domain": "materials_physics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.leeds.ac.uk/experimental-facilities/dir-record/profiles/23792/advanced-coatings-system-and-environmental-tribology-suite"
+      ],
+      "reference_notes": "The installed workstation has a front-opening rectangular metal chamber with a thick left-hinged door and circular viewport. Inside, a circular copper-ringed sample stage sits below a long contact arm with a vertical pin. A monitor/keyboard is immediately right, a control box is left and supported hoses, regulator hardware and a secured gas cylinder sit behind. Reconstruct only the observed tribometer workstation; do not merge adjacent coating/deposition equipment into one imagined room. Copper rings and service hardware are appearance only. No friction coefficient, wear, heating, gas flow, vacuum or calibrated force testing.",
+      "observed_cues": [
+        "The installed workstation has a front-opening rectangular metal chamber with a thick left-hinged door and circular viewport. Inside, a circular copper-ringed sample stage sits below a long contact arm with a vertical pin. A monitor/keyboard is immediately right, a control box is left and supported hoses, regulator hardware and a secured gas cylinder sit behind."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5,
+          4.5,
+          3
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.35,
+              "width": 1.1,
+              "height": 2.3,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "tribology",
+          "kind": "leeds_dry_tribology_station",
+          "pos": [
+            0,
+            0.72,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Photo-informed chamber, concentric copper stage, contact arm, adjacent electronics and monitor",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect an inert tribology coupon",
+        "description": "Open a representative chamber door and move a dry contact arm vertically above a retained solid disk. No surface contact experiment or environmental process is performed.",
+        "primary_equipment": "tribology",
+        "observable": "Door angle and non-contact approach height"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            4.8,
+            -5.5,
+            3.9
+          ],
+          "target": [
+            0.0,
+            0.6,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            0.2,
+            -1.8,
+            1.65
+          ],
+          "target": [
+            0.0,
+            0.8,
+            1.12
+          ],
+          "fovy": 69
+        },
+        "workstation": {
+          "position": [
+            0.66,
+            -0.82,
+            1.62
+          ],
+          "target": [
+            0.06,
+            0.65,
+            1.12
+          ],
+          "fovy": 48
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_aisle",
+          "minimum_xy": [
+            -2.22,
+            -1.98
+          ],
+          "maximum_xy": [
+            2.15,
+            -0.45
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "A hollow steel chamber, outward-swinging viewport door and copper-ringed specimen stage preserve the source workstation arrangement.",
+        "The left control chassis and right keyboard/monitor are supported on separate compact frames; a restrained passive cylinder and wall pipes preserve observed context.",
+        "Room boundary and access placement are estimated; the controllable dry approach fixture is an original simplification."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "No heat, friction, wear, force, gas, vacuum or environmental tribology simulation.",
+        "Approach travel intentionally remains above the specimen; a completed command does not mean a scientific test succeeded."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave7": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/leeds_tribology_room.jpg",
+              "sha256": "208b9e8cc3c9106fead7d0eccd384895dbdedefbaf22a990d131cac6a2f8573e",
+              "page": "https://www.leeds.ac.uk/experimental-facilities/dir-record/profiles/23792/advanced-coatings-system-and-environmental-tribology-suite",
+              "image_url": "https://www.leeds.ac.uk/images/resized/800x400-0-0-1-80-033026JSP_UoL_Materials_0105_800x400.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/leeds_tribology.jpg",
+              "sha256": "1b13e7ec31371630b989df87390320f7be387fdf974eedfa30b70438c613fae8",
+              "page": "https://www.leeds.ac.uk/experimental-facilities/dir-record/profiles/23792/advanced-coatings-system-and-environmental-tribology-suite",
+              "image_url": "https://www.leeds.ac.uk/images/resized/600x400-0-0-1-80-033026JSP_UoL_Materials_0084__1__600x400.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "The installed workstation has a front-opening rectangular metal chamber with a thick left-hinged door and circular viewport. Inside, a circular copper-ringed sample stage sits below a long contact arm with a vertical pin. A monitor/keyboard is immediately right, a control box is left and supported hoses, regulator hardware and a secured gas cylinder sit behind."
+          ],
+          "implemented": [
+            "A hollow steel chamber, outward-swinging viewport door and copper-ringed specimen stage preserve the source workstation arrangement.",
+            "The left control chassis and right keyboard/monitor are supported on separate compact frames; a restrained passive cylinder and wall pipes preserve observed context.",
+            "Room boundary and access placement are estimated; the controllable dry approach fixture is an original simplification."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "No heat, friction, wear, force, gas, vacuum or environmental tribology simulation.",
+            "Approach travel intentionally remains above the specimen; a completed command does not mean a scientific test succeeded."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "copenhagen_pice_ice_workroom",
+      "title": "Copenhagen PICE Ice-Core Workroom",
+      "institution": "University Of Copenhagen \u2014 Niels Bohr Institute PICE \u2014 Priorparken Ice Core Working Room",
+      "institution_id": "university_of_copenhagen",
+      "domain": "earth_science",
+      "university_expansion": true,
+      "source_urls": [
+        "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/"
+      ],
+      "reference_notes": "Two complementary official photos show a small cold working room with white insulated wall panels, a central rear freezer door, grey metal shelving, wood-topped blue-steel workbenches and a bandsaw between two benchtops. The saw sits on a lower metal stand with a guarded red guide and open upper wheel cover; storage bins and a small cart are below and beside work surfaces. Only Priorparken working room is selected. Do not mix in distinct ice storage aisles or other NBI extraction labs. Temperatures, ice phase change, cutting fracture, isotope chemistry and real handling/cutting protocols are not modeled. Room dimensions and original unpowered task fixtures remain estimates.",
+      "observed_cues": [
+        "Two complementary official photos show a small cold working room with white insulated wall panels, a central rear freezer door, grey metal shelving, wood-topped blue-steel workbenches and a bandsaw between two benchtops. The saw sits on a lower metal stand with a guarded red guide and open upper wheel cover; storage bins and a small cart are below and beside work surfaces."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5,
+          4.5,
+          2.9
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.55,
+              "width": 1.1,
+              "height": 2.3,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "ice_station",
+          "kind": "copenhagen_dry_ice_workcell",
+          "pos": [
+            0,
+            1.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Photographed compact bandsaw bay with an original separated dry sample carriage",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect a retained inert ice-look core",
+        "description": "Open the unpowered wheel guard and translate a retained rigid dummy on a short dry carriage. The carrier stays away from the passive blade envelope.",
+        "primary_equipment": "ice_station",
+        "observable": "Guard angle and dry core-carriage position"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.2,
+            -5.8,
+            4.0
+          ],
+          "target": [
+            0.0,
+            0.4,
+            0.95
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            0.65,
+            -1.82,
+            1.65
+          ],
+          "target": [
+            0.0,
+            1.1,
+            1.0
+          ],
+          "fovy": 70
+        },
+        "workstation": {
+          "position": [
+            0.76,
+            -0.1,
+            1.69
+          ],
+          "target": [
+            0.0,
+            1.03,
+            1.1
+          ],
+          "fovy": 48
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_entry",
+          "minimum_xy": [
+            0.38,
+            -1.99
+          ],
+          "maximum_xy": [
+            2.13,
+            -0.55
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "central_access",
+          "minimum_xy": [
+            -0.35,
+            -0.5
+          ],
+          "maximum_xy": [
+            0.69,
+            0.59
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "White insulated panel seams, rear freezer door and blue steel/timber benches reproduce the source workroom character.",
+        "The compact saw stands on a low metal base between the two long benches; grey bins, a pedal and a separate near table reproduce observed furniture relationships.",
+        "The dry core carriage is an original interaction fixture outside the blade envelope; hidden room boundaries and door placement are estimated."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "No powered cutting, blade dynamics, fracture, temperature, melting, refrigeration or geochemical analysis.",
+        "Rigid translucent sample is an inert visual proxy; guard motion is not a validated machine operating sequence."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave7": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/copenhagen_work.jpg",
+              "sha256": "a36cf78ff518920a32f001648143cf44db46bbed6864b36ec031ba098d9e47a8",
+              "page": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/",
+              "image_url": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/slideshow/slideshow4.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/copenhagen_work2.jpg",
+              "sha256": "c5177de3d3f96bf41319420a68059bf09b8df69425c3f75e1f07085fdfbe8601",
+              "page": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/",
+              "image_url": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/slideshow/slideshow5.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Two complementary official photos show a small cold working room with white insulated wall panels, a central rear freezer door, grey metal shelving, wood-topped blue-steel workbenches and a bandsaw between two benchtops. The saw sits on a lower metal stand with a guarded red guide and open upper wheel cover; storage bins and a small cart are below and beside work surfaces."
+          ],
+          "implemented": [
+            "White insulated panel seams, rear freezer door and blue steel/timber benches reproduce the source workroom character.",
+            "The compact saw stands on a low metal base between the two long benches; grey bins, a pedal and a separate near table reproduce observed furniture relationships.",
+            "The dry core carriage is an original interaction fixture outside the blade envelope; hidden room boundaries and door placement are estimated."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "No powered cutting, blade dynamics, fracture, temperature, melting, refrigeration or geochemical analysis.",
+            "Rigid translucent sample is an inert visual proxy; guard motion is not a validated machine operating sequence."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "lund_maxiv_nanomax_eh1",
+      "title": "Lund MAX IV NanoMAX Imaging Endstation",
+      "institution": "Lund University \u2014 MAX IV Laboratory \u2014 NanoMAX Imaging Endstation EH1",
+      "institution_id": "lund_university",
+      "domain": "physics_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.maxiv.lu.se/beamlines-accelerators/beamlines/nanomax/imaging-station/"
+      ],
+      "reference_notes": "A real installed hutch photo shows a square multiport steel chamber at left connected to a long horizontal cylindrical flight tube running diagonally to a rear flange. Granite support blocks and an aluminium rail base support the entire assembly. A cantilevered actuator/slide projects into the right aisle; the rear wall/door is red, with high cable trays and a silver extraction duct. Lund University hosts MAX IV; retain that institutional attribution. EH1 and EH2 are endstations of the same NanoMAX laboratory and must not be counted separately. No X-rays, radiation, vacuum, fluorescence, ptychography, nanometre precision or microscope imaging is simulated.",
+      "observed_cues": [
+        "A real installed hutch photo shows a square multiport steel chamber at left connected to a long horizontal cylindrical flight tube running diagonally to a rear flange. Granite support blocks and an aluminium rail base support the entire assembly. A cantilevered actuator/slide projects into the right aisle; the rear wall/door is red, with high cable trays and a silver extraction duct."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5.5,
+          7,
+          3.3
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.41,
+              "width": 1.1,
+              "height": 2.3,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "nanomax",
+          "kind": "lund_nanomax_dry_endstation",
+          "pos": [
+            0,
+            0.36,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Granite-supported square chamber and long flight tube, with original dry retained-coupon access",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect an inert endstation coupon",
+        "description": "Open the representative chamber access door and position a retained solid coupon on a supported short carrier. The long flight tube and side cantilever are passive structural context.",
+        "primary_equipment": "nanomax",
+        "observable": "Access-door angle and retained-coupon displacement"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.6,
+            -7.1,
+            4.8
+          ],
+          "target": [
+            0.0,
+            0.5,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.75,
+            -2.88,
+            1.71
+          ],
+          "target": [
+            0.1,
+            0.24,
+            1.29
+          ],
+          "fovy": 70
+        },
+        "workstation": {
+          "position": [
+            0.88,
+            -2.3,
+            1.76
+          ],
+          "target": [
+            0.0,
+            -0.78,
+            1.34
+          ],
+          "fovy": 54
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_aisle",
+          "minimum_xy": [
+            -2.44,
+            -3.22
+          ],
+          "maximum_xy": [
+            2.41,
+            -1.95
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_access",
+          "minimum_xy": [
+            -2.31,
+            -1.85
+          ],
+          "maximum_xy": [
+            -1.29,
+            2.7
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "right_access",
+          "minimum_xy": [
+            1.51,
+            -1.8
+          ],
+          "maximum_xy": [
+            2.39,
+            2.48
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The source rectangular chamber, segmented flight tube, granite support blocks and aluminium rail bed form one continuous supported endstation.",
+        "Round bolted ports, a red-ended side cantilever, fixed cable routing and rear red hutch/duct retain the photograph\u2019s distinctive structure.",
+        "A hollow access chamber and dry specimen carriage are original mechanical simplifications; inaccessible instrument internals are not reconstructed."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "No X-rays, radiation, vacuum, fluorescence, diffraction, ptychography, detector data or nanometre precision.",
+        "The source provides one installed view; room size, door and service placement remain estimates. EH1 is counted once as part of NanoMAX, not as a second lab separate from another endstation."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave7": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/lund_nanomax.webp",
+              "sha256": "b8bc72124f83a74e91f738b13cf5c5fd069ccf085727cd649d69d93d9e4851ed",
+              "page": "https://www.maxiv.lu.se/beamlines-accelerators/beamlines/nanomax/imaging-station/",
+              "image_url": "https://www.maxiv.lu.se/wp-content/uploads/2023/09/nanomax_img_station-1-1024x768.webp",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "A real installed hutch photo shows a square multiport steel chamber at left connected to a long horizontal cylindrical flight tube running diagonally to a rear flange. Granite support blocks and an aluminium rail base support the entire assembly. A cantilevered actuator/slide projects into the right aisle; the rear wall/door is red, with high cable trays and a silver extraction duct."
+          ],
+          "implemented": [
+            "The source rectangular chamber, segmented flight tube, granite support blocks and aluminium rail bed form one continuous supported endstation.",
+            "Round bolted ports, a red-ended side cantilever, fixed cable routing and rear red hutch/duct retain the photograph\u2019s distinctive structure.",
+            "A hollow access chamber and dry specimen carriage are original mechanical simplifications; inaccessible instrument internals are not reconstructed."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "No X-rays, radiation, vacuum, fluorescence, diffraction, ptychography, detector data or nanometre precision.",
+            "The source provides one installed view; room size, door and service placement remain estimates. EH1 is counted once as part of NanoMAX, not as a second lab separate from another endstation."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "uppsala_freia_gersemi",
+      "title": "Uppsala FREIA Gersemi Cryostat Bay",
+      "institution": "Uppsala University \u2014 FREIA Laboratory \u2014 Gersemi Vertical Cryostat Bay",
+      "institution_id": "uppsala_university",
+      "domain": "physics_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.uu.se/en/department/physics-and-astronomy/infrastructure/freia-laboratory/gersemi-vertical-cryostat"
+      ],
+      "reference_notes": "Two real photos establish a circular bolted cryostat top in a recessed central bay, dense valve/feedthrough posts and flexible hoses. The wider vertical photo shows railings around the recess, a tall narrow cylindrical service vessel at rear left, white electrical cabinets on the far platform and overhead pipe/cable racks. Select only the Gersemi bay; do not count HNOSS or other FREIA equipment as separate laboratories. No cryogenic cooling, helium transfer, RF excitation, superconductivity, pressure/vacuum control or measured apparatus performance. Exact dimensions and cover/lift fixture are authored estimates.",
+      "observed_cues": [
+        "Two real photos establish a circular bolted cryostat top in a recessed central bay, dense valve/feedthrough posts and flexible hoses. The wider vertical photo shows railings around the recess, a tall narrow cylindrical service vessel at rear left, white electrical cabinets on the far platform and overhead pipe/cable racks."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          6.2,
+          6.4,
+          3.2
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.37,
+              "width": 1.1,
+              "height": 2.3,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "gersemi",
+          "kind": "uppsala_gersemi_dry_bay",
+          "pos": [
+            0,
+            0.35,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Recessed cryostat top surrounded by raised walkways, service vessel and rear cabinets; original dry external lift",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect a dry cryostat access fixture",
+        "description": "Open a representative top inspection cover and raise an inert insert on an external supported lift. The lift remains outside the vessel; no cryogenic loading sequence is represented.",
+        "primary_equipment": "gersemi",
+        "observable": "Inspection-cover angle and external dry insert height"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.9,
+            -7.1,
+            5.2
+          ],
+          "target": [
+            0.0,
+            0.35,
+            1.05
+          ],
+          "fovy": 50
+        },
+        "interior": {
+          "position": [
+            0.2,
+            -2.55,
+            2.34
+          ],
+          "target": [
+            0.0,
+            0.48,
+            1.12
+          ],
+          "fovy": 81
+        },
+        "workstation": {
+          "position": [
+            1.0,
+            -1.25,
+            2.6
+          ],
+          "target": [
+            0.6,
+            -0.05,
+            1.03
+          ],
+          "fovy": 65
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_cross_aisle",
+          "minimum_xy": [
+            -2.83,
+            -2.97
+          ],
+          "maximum_xy": [
+            2.75,
+            -1.59
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "right_floor_access",
+          "minimum_xy": [
+            1.84,
+            -1.5
+          ],
+          "maximum_xy": [
+            2.7,
+            2.43
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The top flange lies below two raised platforms, reproducing the photographed pit relationship rather than placing the cryostat on a tabletop.",
+        "Radial feedthroughs/valves, the tall left service vessel, rear cabinets, guardrails and overhead services preserve the two reference photographs.",
+        "Platforms, stairs and external dry insert lift are estimated access geometry; the lift is explicitly separate from real cryogenic operations."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "No helium, cooling, pressure/vacuum, superconductivity, RF, control interlocks or validated thermal process.",
+        "The source does not provide a measured floor plan; heights, cover travel and external lift are original estimates."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave7": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/uppsala_gersemi.jpg",
+              "sha256": "180562cc77d26865b96609b62dd044e1a1f108a72afd35b91544f65838bf81bd",
+              "page": "https://www.uu.se/en/department/physics-and-astronomy/infrastructure/freia-laboratory/gersemi-vertical-cryostat",
+              "image_url": "https://www.uu.se/images/200.21e11cd618fa418474b2e52f/1716989395405/GERSEMI,%20vertikala%20kryostat.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/uppsala_gersemi_insert.jpg",
+              "sha256": "65dc1b9fe37d39b84566a6d99c7ed1c2b0dfcdef0d5d786a587e7117214a6031",
+              "page": "https://www.uu.se/en/department/physics-and-astronomy/infrastructure/freia-laboratory/gersemi-vertical-cryostat",
+              "image_url": "https://www.uu.se/images/200.3917f3d718bab88808dbac0/1699622881029/Gersemi,%20vertikal%20kryostat.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Two real photos establish a circular bolted cryostat top in a recessed central bay, dense valve/feedthrough posts and flexible hoses. The wider vertical photo shows railings around the recess, a tall narrow cylindrical service vessel at rear left, white electrical cabinets on the far platform and overhead pipe/cable racks."
+          ],
+          "implemented": [
+            "The top flange lies below two raised platforms, reproducing the photographed pit relationship rather than placing the cryostat on a tabletop.",
+            "Radial feedthroughs/valves, the tall left service vessel, rear cabinets, guardrails and overhead services preserve the two reference photographs.",
+            "Platforms, stairs and external dry insert lift are estimated access geometry; the lift is explicitly separate from real cryogenic operations."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "No helium, cooling, pressure/vacuum, superconductivity, RF, control interlocks or validated thermal process.",
+            "The source does not provide a measured floor plan; heights, cover travel and external lift are original estimates."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    }
+  ]
+}

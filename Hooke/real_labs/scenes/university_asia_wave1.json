@@ -1,0 +1,815 @@
+{
+  "scenes": [
+    {
+      "id": "kyoto_yokokawa_nanometrics",
+      "title": "Yokokawa Curtain-Screened Optical Laboratory",
+      "institution": "Yokokawa Laboratory Nanometrics experimental room cB1S03",
+      "domain": "optical_microsystems",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.mbsys.me.kyoto-u.ac.jp/album/lab/",
+        "https://www.mbsys.me.kyoto-u.ac.jp/wp-content/uploads/2023/09/Nano1-1-scaled.jpg",
+        "https://www.mbsys.me.kyoto-u.ac.jp/wp-content/uploads/2023/09/Nano3-1-scaled.jpg"
+      ],
+      "reference_notes": "Official labelled lab album and two actual photographs were reviewed. Entrance-side photo shows curtains, optical workstations, computers and a doorway into a separate brighter bench area. A labelled TIRF photo shows a microscope coupled to external optics on a perforated table. Photographs establish local layout and the cB1S03 room label, not a measured footprint. The album separately shows offices, a biomechanics room and a shared cleanroom.",
+      "observed_cues": [
+        "Full-height black curtains separate optical work areas.",
+        "A central rectangular doorway connects the dim entrance-side workstation area to a brighter wet-bench space.",
+        "The inverted microscope occupies one end of a broad optical table, with external cameras and separate lens mounts distributed across the remaining surface."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          6,
+          6.4,
+          3.05
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "optical_microsystems",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.2,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "tirf_isolation_table",
+          "pos": [
+            0.4,
+            -0.6,
+            0
+          ],
+          "size": [
+            2.6,
+            1.5,
+            0.82
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "rear_preparation_bench",
+          "pos": [
+            0.1,
+            2.75,
+            0
+          ],
+          "size": [
+            2.6,
+            0.75,
+            0.87
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "acquisition_desk",
+          "pos": [
+            -2.25,
+            -0.45,
+            0
+          ],
+          "size": [
+            0.85,
+            1.5,
+            0.75
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "tirf_workspace",
+          "kind": "optical_manipulation_workspace",
+          "pos": [
+            0.4,
+            -0.6,
+            0.82
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate a glass-slide inert target along two axes and adjust objective clearance without simulating fluorescence.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://www.mbsys.me.kyoto-u.ac.jp/album/lab/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Yokokawa Curtain-Screened Optical Laboratory mechanical positioning",
+        "description": "Translate a glass-slide inert target along two axes and adjust objective clearance without simulating fluorescence.",
+        "primary_equipment": "tirf_workspace",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.7,
+            -10.5,
+            8.2
+          ],
+          "target": [
+            0,
+            0.25,
+            1.0
+          ],
+          "fovy": 44
+        },
+        "interior": {
+          "position": [
+            -1.85,
+            -2.75,
+            1.64
+          ],
+          "target": [
+            0.3,
+            0.1,
+            1.3
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            2.05,
+            -2.45,
+            1.9
+          ],
+          "target": [
+            0.44,
+            -0.48,
+            1.07
+          ],
+          "fovy": 48
+        }
+      },
+      "layout_rationale": [
+        "Black curtains and a perforated optical table reproduce directly observed arrangement cues.",
+        "An opening separates the dim optical area from the brighter preparation bay; its exact location and room boundaries are estimated.",
+        "A clear front aisle and left approach connect the entry to the table; specimen slide rests on nested supported carriers."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "No TIRF optical path solution, fluorescence model or biological process is implemented.",
+        "The distinct biomechanics lab and communal cleanroom on the source album are excluded.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/asia_01_images/kyoto_nano_room.jpg",
+          "temp/university/expansion_100_20261003/research/asia_01_images/kyoto_nano_tirf.jpg"
+        ],
+        "reviewed_sha256": [
+          "edd66d07bca744b4f88fcd2e80d7c999dd7415b9b78db9eee9f1e5e23e8f2183",
+          "061efd718d73b950466c0e51b004bc40344b18067a7247d29e314578be8569ca"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    },
+    {
+      "id": "sjtu_deepwater_offshore_basin",
+      "title": "SJTU Offshore Basin and Towing Carriage",
+      "institution": "Deepwater Offshore Basin",
+      "domain": "ocean_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://oe.sjtu.edu.cn/list.php?id=26&t=3",
+        "https://oe.sjtu.edu.cn/upfiles/201806/12/1528776283_56.jpg",
+        "https://oe.sjtu.edu.cn/upfiles/201806/12/1528776297_47.jpg"
+      ],
+      "reference_notes": "Reviewed the official deepwater-basin page and two actual experiment photos. A wide interior view shows the large water basin, blue spanning steel carriage, perimeter walkway and a sloped slatted edge. The detail photo shows a small offshore platform model with tethers and floating markers in the water. A wide hall photo and model detail support the basin/overhead-carriage arrangement. Exact basin dimensions, submerged deep-well geometry and positions of pumps/control rooms remain unverified.",
+      "observed_cues": [
+        "A large open water surface fills most of a high industrial hall.",
+        "A blue lattice carriage spans the basin above the water and connects its opposite sides.",
+        "A long slatted/sloping edge and perimeter access strip are visible alongside the basin, unlike a small benchtop tank."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          25,
+          34,
+          9.7
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "ocean_engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "hall_entry",
+              "wall": "left",
+              "kind": "shutter",
+              "offset": -14.8,
+              "width": 2.1,
+              "height": 3.0,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "basin_control_desk",
+          "pos": [
+            -10.6,
+            14.8,
+            0
+          ],
+          "size": [
+            2.1,
+            1.1,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "offshore_towing_rig",
+          "kind": "towing_carriage_basin",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Move a visible supported offshore-platform model along longitudinal carriage and transverse trolley axes. Water is a static visual proxy.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://oe.sjtu.edu.cn/list.php?id=26&t=3"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support from machine frame to laboratory floor; independently inspect geometry"
+          }
+        }
+      ],
+      "task": {
+        "name": "SJTU Offshore Basin and Towing Carriage mechanical positioning",
+        "description": "Move a visible supported offshore-platform model along longitudinal carriage and transverse trolley axes. Water is a static visual proxy.",
+        "primary_equipment": "offshore_towing_rig",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            31,
+            -41,
+            29
+          ],
+          "target": [
+            0,
+            0,
+            2.3
+          ],
+          "fovy": 36
+        },
+        "interior": {
+          "position": [
+            -10.4,
+            -14.9,
+            2.15
+          ],
+          "target": [
+            0,
+            3.5,
+            3.1
+          ],
+          "fovy": 64
+        },
+        "workstation": {
+          "position": [
+            6,
+            -7,
+            5.0
+          ],
+          "target": [
+            0,
+            0,
+            2.6
+          ],
+          "fovy": 50
+        }
+      },
+      "layout_rationale": [
+        "The basin occupies most of the tall industrial hall; blue spanning lattice carriage and slatted front edge reproduce observed features.",
+        "The estimated basin is a compact display-scale reconstruction, not a measured SJTU building or deep-well model.",
+        "Continuous floor-mounted rail columns support the moving bridge, trolley, vertical model mount and rigid platform.",
+        "Side and end walkways surround the large rig; wall openings avoid the basin footprint."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "Water, wave streaks and platform are geometrical surrogates; no fluid simulation or buoyant free-body dynamics.",
+        "No deep well, pump networks or calibrated wave/towing instrumentation is claimed.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/asia_01_images/sjtu_basin1.jpg",
+          "temp/university/expansion_100_20261003/research/asia_01_images/sjtu_basin2.jpg"
+        ],
+        "reviewed_sha256": [
+          "8ebe612929160664d54a9f3b28e320eccccbfad6903cc76623ebaf210b15535c",
+          "0655c6635a52bd9b4ff5deb8f75929cb16d782f79881bcffc06eb7c94566f5b1"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    },
+    {
+      "id": "kaist_usdl_magnetic_probe",
+      "title": "KAIST Magnetic Microscopy Probe Laboratory",
+      "institution": "Ultrafast Spin Dynamics Laboratory magnetic microscopy probe station",
+      "domain": "magnetic_characterization",
+      "university_expansion": true,
+      "source_urls": [
+        "https://spintronics.kaist.ac.kr/facilities.html",
+        "https://spintronics.kaist.ac.kr/images/fac/version2/VNA.jpg",
+        "https://spintronics.kaist.ac.kr/images/fac/version2/Laser.jpg"
+      ],
+      "reference_notes": "Opened the official USDL site and equipment page; inspected actual installed LSMM and magnetic-field MOKE probe-station photographs. The selected MOKE station shows a Nikon LV-IM microscope over a thick perforated support platform, multiple micromanipulator probes around a central opening and a copper coil below. The LSMM image is a separate optical-workstation reference. Detailed local instrument photos, no room plan or confirmed adjacency between optical stations. Some page entries explicitly belong to or are shared with NanoSpintronics Laboratory; do not assume they are all in USDL.",
+      "observed_cues": [
+        "A white microscope head hangs over a large central cut-out in a thick silver support plate.",
+        "Several independently mounted probe manipulators approach the central specimen from different sides.",
+        "A copper-wound coil sits below the specimen plane, and rigid posts carry the microscope and plate assembly."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.2,
+          4.4,
+          2.95
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "magnetic_characterization",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.2000000000000002,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "magnetic_optical_bench",
+          "pos": [
+            -0.4,
+            0.35,
+            0
+          ],
+          "size": [
+            2.5,
+            1.5,
+            0.88
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "side_acquisition_counter",
+          "pos": [
+            -2.12,
+            1.25,
+            0
+          ],
+          "size": [
+            0.72,
+            1.4,
+            0.78
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "moke_probe_workspace",
+          "kind": "magnetic_microscopy_probe",
+          "pos": [
+            -0.4,
+            0.35,
+            0.88
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate a visible inert semiconductor coupon in XY and adjust microscope clearance above stationary probes; field and electrical response are not modeled.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://spintronics.kaist.ac.kr/facilities.html"
+          ]
+        }
+      ],
+      "task": {
+        "name": "KAIST Magnetic Microscopy Probe Laboratory mechanical positioning",
+        "description": "Translate a visible inert semiconductor coupon in XY and adjust microscope clearance above stationary probes; field and electrical response are not modeled.",
+        "primary_equipment": "moke_probe_workspace",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.8,
+            -7.8,
+            5.4
+          ],
+          "target": [
+            0,
+            0.15,
+            0.9
+          ],
+          "fovy": 44
+        },
+        "interior": {
+          "position": [
+            1.35,
+            -1.55,
+            1.65
+          ],
+          "target": [
+            -0.35,
+            0.45,
+            1.25
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            0.55,
+            -0.75,
+            1.92
+          ],
+          "target": [
+            -0.4,
+            0.35,
+            1.3
+          ],
+          "fovy": 44
+        }
+      },
+      "layout_rationale": [
+        "The white industrial microscope, four-post plate, central opening, surrounding probes and copper coil follow the inspected installed photograph.",
+        "Main optical bench and right-hand readout rack create an L-shaped local workstation; surrounding room and desk dimensions are estimated.",
+        "Four posts carry the plate, a separate column carries the microscope and the coil pedestal supports the XY sample carrier.",
+        "Entry and front aisle remain clear of the rack and table."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "No magnetic fields, spin dynamics, Kerr optics, electrical measurement or probe contact simulation.",
+        "LSMM, shared NSL cryostat and other separate listed facilities are not merged into this scene.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/asia_01_images/kaist_moke.jpg",
+          "temp/university/expansion_100_20261003/research/asia_01_images/kaist_lsmm.jpg"
+        ],
+        "reviewed_sha256": [
+          "af4d1a1de403c0a3039ab7887c477bb3ac70845c711804ce3df95ed19b0c4466",
+          "a24e78a7d785882f081078d9e4e5c2164ee3f9a4d3c115558385ffc7317e0199"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    },
+    {
+      "id": "hkust_aaf_wind_tunnel",
+      "title": "HKUST AAF Glazed Wind Tunnel Test Section",
+      "institution": "AAF large low-speed wind tunnel test section",
+      "domain": "experimental_aerodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://aaf.ust.hk/fac/1/",
+        "https://aaf.ust.hk/media/news_pics/Hydrofoil_kiel_probe_2_NKil5ob.JPG"
+      ],
+      "reference_notes": "Official facility page and installed hydrofoil test-section photograph reviewed. The actual photograph shows a model suspended from an overhead support, dark chamber walls, transparent side access, ceiling lamps and a floor panel. The homepage images depict CAD layouts and were explicitly excluded from real-photo evidence. Local interior view of one test section; no photographic validation of the complete return circuit or building footprint. The official page gives full test-section dimensions, but the image does not show all of that length.",
+      "observed_cues": [
+        "The model is suspended centrally from a long thin overhead support, leaving open clearance below.",
+        "Dark ceiling and end-wall panels contrast with bright rectangular ceiling lamps.",
+        "Large transparent side panels provide optical access while a pale rectangular insert interrupts the darker floor."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          8.2,
+          18,
+          4.4
+        ],
+        "wall_color": [
+          0.8,
+          0.81,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.3,
+          0.43,
+          0.47,
+          1
+        ],
+        "style": "experimental_aerodynamics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.48,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "tunnel_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -7.6,
+              "width": 1.2,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "tunnel_service_desk",
+          "pos": [
+            2.8,
+            5.8,
+            0
+          ],
+          "size": [
+            1.4,
+            1.8,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "suspended_model_section",
+          "kind": "windtunnel_model_stage",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Adjust yaw and pitch of a visible overhead-supported hydrofoil model inside the straight glazed test section; aerodynamic forces are absent.",
+          "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://aaf.ust.hk/fac/1/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support from machine frame to laboratory floor; independently inspect geometry"
+          }
+        }
+      ],
+      "task": {
+        "name": "HKUST AAF Glazed Wind Tunnel Test Section mechanical positioning",
+        "description": "Adjust yaw and pitch of a visible overhead-supported hydrofoil model inside the straight glazed test section; aerodynamic forces are absent.",
+        "primary_equipment": "suspended_model_section",
+        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            12,
+            -20,
+            12
+          ],
+          "target": [
+            0,
+            0,
+            1.4
+          ],
+          "fovy": 42
+        },
+        "interior": {
+          "position": [
+            2.85,
+            -3.8,
+            1.75
+          ],
+          "target": [
+            0,
+            0,
+            1.8
+          ],
+          "fovy": 64
+        },
+        "workstation": {
+          "position": [
+            0.75,
+            -2.9,
+            1.6
+          ],
+          "target": [
+            0,
+            0,
+            1.85
+          ],
+          "fovy": 54
+        }
+      },
+      "layout_rationale": [
+        "Clear test-section L/W/H follows the published 14/2.5/2m dimensions; frame, hall and apparatus placement remain estimates.",
+        "The real suspended-model photo anchors the long overhead support, glazed sides, dark surfaces, bright ceiling fixtures and pale floor insert.",
+        "Floor pedestals, side columns and bridge members carry the overhead yaw/pitch mount continuously.",
+        "The primary specimen camera looks into the test section; side and front aisles remain outside its equipment footprint."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "All room dimensions and unreported instrument dimensions are authored estimates. Source photos are not redistributed.",
+        "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
+        "The homepage CAD render is not used to claim an observed building layout or validated complete return circuit.",
+        "No CFD, pressure, lift, drag, acoustics or tunnel-drive process model is implemented.",
+        "The acoustic laboratory is a separate facility and is excluded.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/asia_01_images/hkust_windtunnel_test.jpg"
+        ],
+        "reviewed_sha256": [
+          "fe46c91d38c49b0aa48928777ba6a4ec908b27cbaf0fabae10304c3e6f0d1ff3"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
+        "rights": "Original authored geometry only; no source media release authorization"
+      }
+    }
+  ]
+}

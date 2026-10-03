@@ -1,0 +1,793 @@
+{
+  "scenes": [
+    {
+      "id": "brown_breuer_afam_tunnel",
+      "title": "AFAM Pitch-Yaw Test Section",
+      "institution": "Brown Breuer Lab \u2014 Animal Flight and Aeromechanics Wind Tunnel",
+      "domain": "experimental_aerodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://sites.brown.edu/breuerlab/animal-flight-and-aeromechanics-wind-tunnel/",
+        "https://sites.brown.edu/breuerlab/files/2020/01/TestSection-300x200.jpg"
+      ],
+      "reference_notes": "Official test-section photo inspected: long black-framed transparent chamber on blue braced supports, side access windows and a nearby instrument rack. The facility page documents a computer-controlled pitch-yaw model positioner and cross-stream probe traverse. Only test-section room is photographed; return-loop location and room perimeter are not reconstructed. Use inert engineering coupons only; no animal experiment, airflow or biological containment model.",
+      "observed_cues": [
+        "Black removable side-window panels with numerous handles and latches.",
+        "Bright blue support legs and braces under the long clear test section.",
+        "White enclosed testing room with instrument rack beside the far chamber end."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "apparatus_and_partial_room",
+      "room": {
+        "size": [
+          8.0,
+          5.2,
+          3.2
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "brown_breuer_afam_tunnel",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.5,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "afam_test_section",
+          "kind": "brown_afam_pitch_yaw_section",
+          "pos": [
+            -0.5,
+            0.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "AFAM Pitch-Yaw Test Section",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://sites.brown.edu/breuerlab/animal-flight-and-aeromechanics-wind-tunnel/",
+            "https://sites.brown.edu/breuerlab/files/2020/01/TestSection-300x200.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://sites.brown.edu/breuerlab/files/2020/01/TestSection-300x200.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/brown_tunnel.img"
+          ],
+          "supports": "Official test-section photo inspected: long black-framed transparent chamber on blue braced supports, side access windows and a nearby instrument rack. The facility page documents a computer-controlled pitch-yaw model positioner and cross-stream probe traverse."
+        }
+      ],
+      "layout_rationale": [
+        "Black removable side-window panels with numerous handles and latches.",
+        "Bright blue support legs and braces under the long clear test section.",
+        "White enclosed testing room with instrument rack beside the far chamber end.",
+        "Only the photographed straight transparent test section is reconstructed, with broad black access-window rims and blue braced supports.",
+        "Published 4.0 by 1.2 by 1.2 m clear dimensions constrain the central section; hidden return loop is omitted."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "test-section clear cross-section and length",
+          "dimensions_m": [
+            1.2,
+            1.2,
+            4.0
+          ],
+          "source": "https://sites.brown.edu/breuerlab/animal-flight-and-aeromechanics-wind-tunnel/",
+          "basis": "Official AFAM specifications; room and external casing dimensions not supplied."
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            9.0,
+            -9.0,
+            6.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            3.3,
+            -2.2,
+            1.75
+          ],
+          "target": [
+            -0.5,
+            0.3,
+            1.4
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            0.55,
+            -1.7,
+            1.7
+          ],
+          "target": [
+            -0.5,
+            0.2,
+            1.4
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            2.5,
+            -1.8,
+            1.65
+          ],
+          "target": [
+            -0.75,
+            0.2,
+            1.45
+          ],
+          "fovy": 63
+        }
+      },
+      "task": {
+        "name": "AFAM Pitch-Yaw Test Section",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "afam_test_section",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "Only the explicitly listed test-section clear dimensions are verified; all room dimensions and other geometry remain estimates.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "Inert engineering coupon only; no animals or biological experiments.",
+        "Pitch/yaw mechanisms represent documented functions with estimated internal geometry; no CFD or aerodynamic forces."
+      ]
+    },
+    {
+      "id": "ubc_hassan_legoflume",
+      "title": "Hassan LegoFlume River-Bed Inspection Bay",
+      "institution": "UBC Hassan Geomorphology and Hydrology Laboratory \u2014 LegoFlume",
+      "domain": "geomorphology_hydraulics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://geog.ubc.ca/news/cutting-edge-river-science-and-engineering-tools-in-action-the-hassan-labs-legoflume-launches/",
+        "https://geog.ubc.ca/wp-content/uploads/sites/26/2024/12/DSC06132_edit-768x512.jpg"
+      ],
+      "reference_notes": "Official unveiling photos inspected; they show an operating gravel-bed artificial river channel with metal side railing, overhead cross-rails and feed equipment in a high service hall. The page states variable width, length, height and incline with overhead imaging. People occlude parts of the apparatus, and no measured width, length or exact actuator travel is provided. Geometry supports a local river-bed bay; no sediment transport, water solver or claimed whole-building survey. Public geography page and images fetched normally without bypassing the separate UBC verification pages encountered earlier.",
+      "observed_cues": [
+        "Broad shallow gravel/sand bed instead of a narrow clear-water towing tank.",
+        "Dense rectangular overhead rails and hoists span the channel.",
+        "Raised perimeter railing, inlet hardware and exposed wall pipes define the working bay."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "room",
+      "room": {
+        "size": [
+          7.0,
+          9.0,
+          4.2
+        ],
+        "wall_color": [
+          0.55,
+          0.59,
+          0.6,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "ubc_hassan_legoflume",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.47,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -3.5,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "river_flume",
+          "kind": "ubc_legoflume_camera_inlet",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Hassan LegoFlume River-Bed Inspection Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://geog.ubc.ca/news/cutting-edge-river-science-and-engineering-tools-in-action-the-hassan-labs-legoflume-launches/",
+            "https://geog.ubc.ca/wp-content/uploads/sites/26/2024/12/DSC06132_edit-768x512.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://geog.ubc.ca/wp-content/uploads/sites/26/2024/12/DSC06132_edit-768x512.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/ubc_legoflume_clear.img"
+          ],
+          "supports": "Official unveiling photos inspected; they show an operating gravel-bed artificial river channel with metal side railing, overhead cross-rails and feed equipment in a high service hall. The page states variable width, length, height and incline with overhead imaging."
+        },
+        {
+          "url": "https://geog.ubc.ca/wp-content/uploads/sites/26/2024/12/DSC06108_edit-768x512.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/ubc_legoflume.img"
+          ],
+          "supports": "Official unveiling photos inspected; they show an operating gravel-bed artificial river channel with metal side railing, overhead cross-rails and feed equipment in a high service hall. The page states variable width, length, height and incline with overhead imaging."
+        }
+      ],
+      "layout_rationale": [
+        "Broad shallow gravel/sand bed instead of a narrow clear-water towing tank.",
+        "Dense rectangular overhead rails and hoists span the channel.",
+        "Raised perimeter railing, inlet hardware and exposed wall pipes define the working bay.",
+        "Broad shallow fixed gravel bed, right raised access walkway and dense overhead rails reproduce the river-bay character.",
+        "Feed roller and wood chute remain separate from the authored adjustable dry inlet panel; hidden actuator details are estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            9.0,
+            -12.0,
+            8.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.8,
+            -3.5,
+            1.85
+          ],
+          "target": [
+            0.0,
+            1.1,
+            1.2
+          ],
+          "fovy": 63
+        },
+        "workstation": {
+          "position": [
+            2.4,
+            -2.8,
+            2.7
+          ],
+          "target": [
+            0.0,
+            -0.2,
+            1.0
+          ],
+          "fovy": 55
+        },
+        "source": {
+          "position": [
+            2.5,
+            -2.5,
+            1.9
+          ],
+          "target": [
+            0.0,
+            1.9,
+            1.2
+          ],
+          "fovy": 64
+        }
+      },
+      "task": {
+        "name": "Hassan LegoFlume River-Bed Inspection Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "river_flume",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No water or movable sediment; static gravel and calibration marker only.",
+        "All dimensions, camera travel, dry gate actuation and unseen support details remain estimates.",
+        "The scene represents one photographed river-bed bay, not the entire laboratory hall."
+      ]
+    },
+    {
+      "id": "boston_photonics_pml_sem",
+      "title": "PML Electron-Microscope Inspection Bay",
+      "institution": "Boston University Photonics Center \u2014 Precision Measurement Laboratory SEM bay",
+      "domain": "electron_microscopy",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.bu.edu/photonics/sharedfacilities/pml/",
+        "https://www.bu.edu/photonics/files/2016/08/IMG_0650-.jpg"
+      ],
+      "reference_notes": "Official PML operator photograph inspected at full available resolution: installed field-emission microscope with large vented upper casing, multiport lower specimen chamber and a three-monitor console. Page lists Zeiss Supra systems, but the photographed model suffix is not legible. Photo supports only one SEM bay; exact Supra model and hidden chamber internals unverified. Operators partially occlude the lower access region. No electron optics or imaging solver; neighboring PML rooms must not be merged.",
+      "observed_cues": [
+        "Tall cream column with dark vented front cover and looped upper service cable.",
+        "Angled side detector and horizontally accessed specimen chamber over a floor cabinet.",
+        "Curved multi-knob console and three-monitor station immediately adjacent to the microscope."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "apparatus_and_partial_room",
+      "room": {
+        "size": [
+          4.8,
+          4.0,
+          2.9
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "boston_photonics_pml_sem",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.25,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "sem_station",
+          "kind": "boston_pml_sem_inspection",
+          "pos": [
+            -0.8,
+            0.45,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "PML Electron-Microscope Inspection Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.bu.edu/photonics/sharedfacilities/pml/",
+            "https://www.bu.edu/photonics/files/2016/08/IMG_0650-.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.bu.edu/photonics/files/2016/08/IMG_0650-.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/bu_pml.img"
+          ],
+          "supports": "Official PML operator photograph inspected at full available resolution: installed field-emission microscope with large vented upper casing, multiport lower specimen chamber and a three-monitor console. Page lists Zeiss Supra systems, but the photographed model suffix is not legible."
+        }
+      ],
+      "layout_rationale": [
+        "Tall cream column with dark vented front cover and looped upper service cable.",
+        "Angled side detector and horizontally accessed specimen chamber over a floor cabinet.",
+        "Curved multi-knob console and three-monitor station immediately adjacent to the microscope.",
+        "Vented tall cream column, looped service cable and angled detector reproduce the visible SEM exterior.",
+        "Three monitors and multi-knob console sit immediately beside the microscope on a supported desk."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            6.0,
+            -7.0,
+            5.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.05,
+            -1.65,
+            1.7
+          ],
+          "target": [
+            -0.2,
+            0.35,
+            1.2
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            0.4,
+            -1.55,
+            1.55
+          ],
+          "target": [
+            -0.75,
+            0.15,
+            1.16
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            1.8,
+            -1.7,
+            1.7
+          ],
+          "target": [
+            -0.15,
+            0.35,
+            1.25
+          ],
+          "fovy": 60
+        }
+      },
+      "task": {
+        "name": "PML Electron-Microscope Inspection Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "sem_station",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "Model suffix and chamber internals are unverified; sample cassette is an authored open mechanical surrogate.",
+        "No electron beam, vacuum, image formation, X-ray spectrum or material response model.",
+        "Only one SEM operator bay is represented; other PML rooms are excluded."
+      ]
+    },
+    {
+      "id": "chicago_mineralphysics_laser_bay",
+      "title": "Room 520 Covered Mineral-Optics Workstation",
+      "institution": "University of Chicago Laboratory for Mineral Physics \u2014 room 520 optical bay",
+      "domain": "experimental_mineral_physics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://mineralphysics.uchicago.edu/labtour.html",
+        "https://mineralphysics.uchicago.edu/images/labtour/IMG_0669.JPG"
+      ],
+      "reference_notes": "Official numbered room-tour photograph 69, optical-table header and room plan inspected. The plan registers point 69 inside research room 520. Photo shows a large covered optical table on cylindrical isolators, laser curtains and adjacent equipment racks; header reveals lens mounts and translation stages but is not spatially registered to the covered table. Two room photos out of 25 numbered views were reviewed; not a complete tour. Header optics cannot be assumed to belong at exact locations beneath the cover. Plan gives room 520 area of 1006 square feet, but no surveyed edge lengths; apparatus dimensions and optical response unverified.",
+      "observed_cues": [
+        "Large stainless removable optical-table enclosure with individual top-panel handles.",
+        "Heavy cylindrical isolation legs and floor-standing instrument racks flank the optical table.",
+        "Black movable laser curtains subdivide a mapped research room rather than permanent identical small rooms."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Local optical bay visible in registered room 520 photograph 69; not the full 93.46045824 m\u00b2 room.",
+      "room": {
+        "size": [
+          6.4,
+          5.6,
+          3.2
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "chicago_mineralphysics_laser_bay",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.95,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "side_service_desk",
+          "pos": [
+            -2.22,
+            -0.4,
+            0
+          ],
+          "size": [
+            1.3,
+            1.8,
+            0.82
+          ],
+          "style": "open_frame",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "covered_optical_table",
+          "kind": "chicago_covered_mineral_optics",
+          "pos": [
+            0.3,
+            0.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Room 520 Covered Mineral-Optics Workstation",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://mineralphysics.uchicago.edu/labtour.html",
+            "https://mineralphysics.uchicago.edu/images/labtour/IMG_0669.JPG"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://mineralphysics.uchicago.edu/images/labtour/IMG_0669.JPG",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/chicago_room69.img"
+          ],
+          "supports": "Official numbered room-tour photograph 69, optical-table header and room plan inspected. The plan registers point 69 inside research room 520. Photo shows a large covered optical table on cylindrical isolators, laser curtains and adjacent equipment racks; header reveals lens mounts and translation stages but is not spatially registered to the covered table."
+        },
+        {
+          "url": "https://mineralphysics.uchicago.edu/images/LHtable.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/chicago_mineral.img"
+          ],
+          "supports": "Official numbered room-tour photograph 69, optical-table header and room plan inspected. The plan registers point 69 inside research room 520. Photo shows a large covered optical table on cylindrical isolators, laser curtains and adjacent equipment racks; header reveals lens mounts and translation stages but is not spatially registered to the covered table."
+        },
+        {
+          "url": "https://mineralphysics.uchicago.edu/images/labtour/labmap.png",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/chicago_map.img"
+          ],
+          "supports": "Official numbered room-tour photograph 69, optical-table header and room plan inspected. The plan registers point 69 inside research room 520. Photo shows a large covered optical table on cylindrical isolators, laser curtains and adjacent equipment racks; header reveals lens mounts and translation stages but is not spatially registered to the covered table."
+        }
+      ],
+      "layout_rationale": [
+        "Large stainless removable optical-table enclosure with individual top-panel handles.",
+        "Heavy cylindrical isolation legs and floor-standing instrument racks flank the optical table.",
+        "Black movable laser curtains subdivide a mapped research room rather than permanent identical small rooms.",
+        "Covered steel optical table on cylindrical isolators, left equipment racks and black movable curtain preserve photo 69 spatial cues.",
+        "This is a local authored bay inside room 520; the published total room area is retained only as source evidence.",
+        "One front cover panel is omitted and one top panel pre-opened to expose a clearly labeled authored dry inspection fixture."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "room 520 published floor area",
+          "area_m2": 93.46045824,
+          "source": "https://mineralphysics.uchicago.edu/images/labtour/labmap.png",
+          "basis": "1006 square feet printed on official floor plan, converted using 0.09290304 m2 per square foot; no linear room dimensions inferred."
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            8.0,
+            -8.0,
+            6.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.7,
+            -2.3,
+            1.85
+          ],
+          "target": [
+            0.1,
+            0.45,
+            1.35
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            1.4,
+            -1.75,
+            1.85
+          ],
+          "target": [
+            0.3,
+            -0.15,
+            1.13
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            2.5,
+            -2.3,
+            1.75
+          ],
+          "target": [
+            0.2,
+            0.4,
+            1.2
+          ],
+          "fovy": 62
+        }
+      },
+      "task": {
+        "name": "Room 520 Covered Mineral-Optics Workstation",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "covered_optical_table",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "The 93.46045824 m\u00b2 published room area is not the area of the modeled local bay; no measured room edges or full tour reconstruction.",
+        "Header optics photograph is not spatially registered; modeled internals are minimal authored surrogates.",
+        "No laser heating, pressure generation, spectroscopy or mineral response model."
+      ]
+    }
+  ]
+}

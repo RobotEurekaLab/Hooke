@@ -241,8 +241,8 @@
 </fieldset>
 
 <fieldset id="university-panel" style="display:none">
-  <p class="hint">We've virtualized labs from a number of universities. Pick one, then narrow down by subject and lab.</p>
-  <p class="hint">University list: QS World University Rankings top 250, A&ndash;Z. Picking one doesn't narrow Subject/Lab yet &mdash; that per-university mapping is still being built.</p>
+  <p class="hint">Browse reconstructed university laboratories. Pick a university, then choose a subject and lab.</p>
+  <p class="hint" id="uni-scope-hint">Loading university directory&hellip;</p>
 
   <label for="uni-university">University</label>
   <select id="uni-university"></select>
@@ -254,7 +254,7 @@
   <select id="uni-lab"></select>
   <div id="uni-robot-info"></div>
 
-  <button class="primary" id="uni-generate">Generate scene</button>
+  <button class="primary" id="uni-generate" disabled>Generate scene</button>
   <div id="uni-error"></div>
 </fieldset>
 
@@ -371,264 +371,6 @@
 </section>
 
 <script>
-// QS World University Rankings 2025, ranks 1-250, sorted alphabetically
-// (not by rank -- that's the dropdown's whole point). Real university
-// names; there is no real university<->subject/lab mapping in the
-// catalog yet, so picking one doesn't narrow Subject/Lab below -- see
-// the panel's own note.
-const QS_TOP_250 = [
-  "Aalto University",
-  "Aarhus University",
-  "Al-Farabi Kazakh National University",
-  "Albert-Ludwigs-Universitaet Freiburg",
-  "Alma Mater Studiorum - University of Bologna",
-  "American University of Beirut (AUB)",
-  "Arizona State University",
-  "Beijing Normal University",
-  "Boston University",
-  "Brown University",
-  "California Institute of Technology (Caltech)",
-  "Cardiff University",
-  "Carnegie Mellon University",
-  "Chalmers University of Technology",
-  "Charles University",
-  "Chulalongkorn University",
-  "City University of Hong Kong",
-  "Columbia University",
-  "Complutense University of Madrid",
-  "Cornell University",
-  "Curtin University",
-  "Dartmouth College",
-  "Deakin University",
-  "Delft University of Technology",
-  "Duke University",
-  "Durham University",
-  "Eberhard Karls Universität Tübingen",
-  "Ecole des Ponts ParisTech",
-  "Eindhoven University of Technology",
-  "Emory University",
-  "EPFL",
-  "Erasmus University Rotterdam",
-  "ETH Zurich - Swiss Federal Institute of Technology",
-  "Freie Universitaet Berlin",
-  "Friedrich-Alexander-Universität Erlangen-Nürnberg",
-  "Fudan University",
-  "Gadjah Mada University",
-  "Georgia Institute of Technology",
-  "Ghent University",
-  "Hamad Bin Khalifa University",
-  "Hanyang University",
-  "Harvard University",
-  "Hokkaido University",
-  "Humboldt-Universität zu Berlin",
-  "Imperial College London",
-  "Indian Institute of Science",
-  "Indian Institute of Technology Bombay (IITB)",
-  "Indian Institute of Technology Delhi (IITD)",
-  "Indian Institute of Technology Kharagpur (IIT-KGP)",
-  "Indian Institute of Technology Madras (IITM)",
-  "Institut Polytechnique de Paris",
-  "Johns Hopkins University",
-  "KAIST - Korea Advanced Institute of Science & Technology",
-  "Keio University",
-  "Khalifa University of Science and Technology",
-  "King Abdulaziz University (KAU)",
-  "King Fahd University of Petroleum & Minerals",
-  "King Saud University",
-  "King's College London",
-  "KIT, Karlsruhe Institute of Technology",
-  "Korea University",
-  "KTH Royal Institute of Technology",
-  "KU Leuven",
-  "Kyoto University",
-  "Kyushu University",
-  "La Trobe University",
-  "Lancaster University",
-  "Leiden University",
-  "Lomonosov Moscow State University",
-  "Loughborough University",
-  "Ludwig-Maximilians-Universität München",
-  "Lund University",
-  "Maastricht University",
-  "Macquarie University",
-  "Massachusetts Institute of Technology (MIT)",
-  "Massey University",
-  "McGill University",
-  "McMaster University",
-  "Michigan State University",
-  "Monash University",
-  "Nagoya University",
-  "Nanjing University",
-  "Nanyang Technological University, Singapore (NTU)",
-  "National Cheng Kung University (NCKU)",
-  "National Taiwan University (NTU)",
-  "National Tsing Hua University",
-  "National University of Singapore (NUS)",
-  "National Yang Ming Chiao Tung University",
-  "New York University (NYU)",
-  "Newcastle University",
-  "Northwestern University",
-  "Osaka University",
-  "Peking University",
-  "Pennsylvania State University",
-  "Pohang University of Science And Technology (POSTECH)",
-  "Politecnico di Milano",
-  "Politecnico di Torino",
-  "Pontificia Universidad Católica de Chile (UC)",
-  "Princeton University",
-  "Purdue University",
-  "Qatar University",
-  "Queen Mary University of London",
-  "Queen's University at Kingston",
-  "Queen's University Belfast",
-  "Queensland University of Technology (QUT)",
-  "Rheinische Friedrich-Wilhelms-Universität Bonn",
-  "Rice University",
-  "RMIT University",
-  "Ruprecht-Karls-Universität Heidelberg",
-  "RWTH Aachen University",
-  "Sapienza University of Rome",
-  "Seoul National University",
-  "Shanghai Jiao Tong University",
-  "Sorbonne University",
-  "Stanford University",
-  "Stockholm University",
-  "Sungkyunkwan University(SKKU)",
-  "Technical University of Darmstadt",
-  "Technical University of Denmark",
-  "Technical University of Munich",
-  "Technische Universität Berlin (TU Berlin)",
-  "Technische Universität Dresden",
-  "Technische Universität Wien",
-  "Tecnológico de Monterrey",
-  "Tel Aviv University",
-  "Texas A&M University",
-  "The Australian National University",
-  "The Chinese University of Hong Kong (CUHK)",
-  "The Hong Kong Polytechnic University",
-  "The Hong Kong University of Science and Technology",
-  "The London School of Economics and Political Science (LSE)",
-  "The Ohio State University",
-  "The University of Adelaide",
-  "The University of Auckland",
-  "The University of Edinburgh",
-  "The University of Exeter",
-  "The University of Hong Kong",
-  "The University of Manchester",
-  "The University of Melbourne",
-  "The University of New South Wales (UNSW Sydney)",
-  "The University of Newcastle, Australia (UON)",
-  "The University of Queensland",
-  "The University of Sheffield",
-  "The University of Sydney",
-  "The University of Tokyo",
-  "The University of Warwick",
-  "The University of Western Australia",
-  "Tohoku University",
-  "Tokyo Institute of Technology (Tokyo Tech)",
-  "Trinity College Dublin, The University of Dublin",
-  "Tsinghua University",
-  "UCL",
-  "Universidad Autónoma de Madrid",
-  "Universidad de Buenos Aires (UBA)",
-  "Universidad de Chile",
-  "Universidad de los Andes",
-  "Universidad Nacional Autónoma de México (UNAM)",
-  "Universidad Nacional de Colombia",
-  "Universidade de São Paulo",
-  "Universidade Estadual de Campinas (Unicamp)",
-  "Universitas Indonesia",
-  "Universitat Autònoma de Barcelona",
-  "Universitat de Barcelona",
-  "Universite libre de Bruxelles",
-  "Universiti Kebangsaan Malaysia (UKM)",
-  "Universiti Malaya (UM)",
-  "Universiti Putra Malaysia (UPM)",
-  "Universiti Sains Malaysia (USM)",
-  "Universiti Teknologi Malaysia",
-  "University College Dublin",
-  "University of Aberdeen",
-  "University of Alberta",
-  "University of Amsterdam",
-  "University of Basel",
-  "University of Bath",
-  "University of Bern",
-  "University of Birmingham",
-  "University of Bristol",
-  "University of British Columbia",
-  "University of Calgary",
-  "University of California, Berkeley (UCB)",
-  "University of California, Davis",
-  "University of California, Los Angeles (UCLA)",
-  "University of California, San Diego (UCSD)",
-  "University of California, Santa Barbara (UCSB)",
-  "University of Cambridge",
-  "University of Cape Town",
-  "University of Chicago",
-  "University of Copenhagen",
-  "University of Florida",
-  "University of Geneva",
-  "University of Glasgow",
-  "University of Gothenburg",
-  "University of Groningen",
-  "University of Helsinki",
-  "University of Illinois at Urbana-Champaign",
-  "University of Lausanne",
-  "University of Leeds",
-  "University of Liverpool",
-  "University of Macau",
-  "University of Maryland, College Park",
-  "University of Michigan-Ann Arbor",
-  "University of Minnesota Twin Cities",
-  "University of Navarra",
-  "University of North Carolina, Chapel Hill",
-  "University of Nottingham",
-  "University of Oslo",
-  "University of Otago",
-  "University of Ottawa",
-  "University of Oxford",
-  "University of Pennsylvania",
-  "University of Reading",
-  "University of Rochester",
-  "University of Science and Technology of China",
-  "University of Southampton",
-  "University of Southern California",
-  "University of St Andrews",
-  "University of Sussex",
-  "University of Technology Sydney",
-  "University of Texas at Austin",
-  "University of Toronto",
-  "University of Twente",
-  "University of Vienna",
-  "University of Waikato",
-  "University of Washington",
-  "University of Waterloo",
-  "University of Wisconsin-Madison",
-  "University of Wollongong",
-  "University of York",
-  "University of Zurich",
-  "Università di Padova",
-  "Universität Hamburg",
-  "Université catholique de Louvain (UCLouvain)",
-  "Université de Montréal",
-  "Université Paris-Saclay",
-  "Université PSL",
-  "Uppsala University",
-  "Utrecht University",
-  "Vanderbilt University",
-  "Victoria University of Wellington",
-  "Vrije Universiteit Amsterdam",
-  "Wageningen University & Research",
-  "Waseda University",
-  "Washington University in St. Louis",
-  "Western University",
-  "Wuhan University",
-  "Yale University",
-  "Yonsei University",
-  "Zhejiang University",
-  "École Normale Supérieure de Lyon"
-];
-
 let CATALOG = null;
 
 document.getElementById('btn-existing').addEventListener('click', () => showPanel('existing'));
@@ -672,52 +414,102 @@ async function loadCatalog() {
   populateUniSubjects();
 }
 
+function universityLabs() {
+  const directory = CATALOG?.university;
+  const universities = Array.isArray(directory?.universities) ? directory.universities : [];
+  const institutions = new Set(universities.filter(u => u?.id).map(u => u.id));
+  const tasks = new Set((CATALOG?.tasks || []).map(t => t.name));
+  return (Array.isArray(directory?.labs) ? directory.labs : []).filter(lab =>
+    lab?.scene_id && lab.subject_id && institutions.has(lab.institution_id) && tasks.has(lab.task_name));
+}
+
+function selectedUniversityLabs() {
+  const institution = document.getElementById('uni-university').value;
+  return universityLabs().filter(lab => !institution || lab.institution_id === institution);
+}
+
 function populateUniUniversities() {
+  const directory = CATALOG?.university;
+  const universities = (Array.isArray(directory?.universities) ? directory.universities : [])
+    .filter(u => u?.id && u.name)
+    .sort((a, b) => a.name.localeCompare(b.name, 'en'));
   const universitySelect = document.getElementById('uni-university');
   universitySelect.replaceChildren(
     new Option('All universities', ''),
-    ...QS_TOP_250.map(name => new Option(name, name)),
+    ...universities.map(u => new Option(u.name, u.id)),
   );
+  const ranking = directory?.ranking;
+  document.getElementById('uni-scope-hint').textContent = ranking?.edition
+    ? `Research scope: ${ranking.title || 'QS World University Rankings'} ${ranking.edition}, ranks 1–100. Built labs outside this scope are also listed. Universities and labs are sorted A–Z.`
+    : 'Universities and labs are sorted A–Z. Research ranking details are unavailable.';
 }
 
 function populateUniSubjects() {
-  const categories = new Map();
-  for (const task of CATALOG.tasks) {
-    const group = task.navigation?.category || task.category;
-    categories.set(group, task.navigation?.category_label || task.category);
+  const subjects = new Map();
+  for (const lab of selectedUniversityLabs()) {
+    subjects.set(lab.subject_id, lab.subject_label || lab.subject_id);
   }
-  const ordered = [...categories.keys()].sort((a, b) =>
-    categories.get(a).localeCompare(categories.get(b), 'en'));
+  const ordered = [...subjects.keys()].sort((a, b) =>
+    subjects.get(a).localeCompare(subjects.get(b), 'en'));
   const subjectSelect = document.getElementById('uni-subject');
-  subjectSelect.replaceChildren(...ordered.map(key => new Option(categories.get(key), key)));
-  subjectSelect.addEventListener('change', populateUniLabs);
-  document.getElementById('uni-lab').addEventListener('change', onUniLabChange);
+  subjectSelect.replaceChildren(...ordered.map(key => new Option(subjects.get(key), key)));
+  subjectSelect.disabled = !ordered.length;
+  if (!ordered.length) subjectSelect.add(new Option('No subjects available', ''));
   populateUniLabs();
 }
 
 function populateUniLabs() {
   const subject = document.getElementById('uni-subject').value;
-  const tasks = CATALOG.tasks
-    .filter(t => (t.navigation?.category || t.category) === subject)
-    .sort((a, b) => (a.navigation?.task_label || a.name).localeCompare(b.navigation?.task_label || b.name, 'en'));
+  const labs = selectedUniversityLabs()
+    .filter(lab => lab.subject_id === subject);
+  const nameOf = lab => lab.lab_name || lab.title || lab.scene_id;
+  const names = new Map();
+  for (const lab of labs) names.set(nameOf(lab), (names.get(nameOf(lab)) || 0) + 1);
+  const options = labs.map(lab => {
+    const name = nameOf(lab);
+    const label = names.get(name) > 1 ? `${name} — ${lab.title || lab.scene_id}` : name;
+    return new Option(label, lab.scene_id);
+  }).sort((a, b) => a.text.localeCompare(b.text, 'en'));
   const labSelect = document.getElementById('uni-lab');
-  labSelect.replaceChildren(...tasks.map(task => new Option(task.navigation?.task_label || task.name, task.name)));
+  labSelect.replaceChildren(...options);
+  labSelect.disabled = !labs.length;
+  if (!labs.length) labSelect.add(new Option('No reconstructed labs available', ''));
   onUniLabChange();
 }
 
+function currentUniLab() {
+  const scene = document.getElementById('uni-lab').value;
+  const subject = document.getElementById('uni-subject').value;
+  return selectedUniversityLabs().find(lab => lab.scene_id === scene && lab.subject_id === subject);
+}
+
 function currentUniTask() {
-  const name = document.getElementById('uni-lab').value;
-  return CATALOG.tasks.find(t => t.name === name);
+  const lab = currentUniLab();
+  return lab && (CATALOG?.tasks || []).find(task => task.name === lab.task_name);
 }
 
 function onUniLabChange() {
   const task = currentUniTask();
+  document.getElementById('uni-preview').replaceChildren();
   document.getElementById('uni-error').textContent = '';
-  if (!task) { document.getElementById('uni-robot-info').textContent = ''; return; }
-  const robot = CATALOG.robots[task.robot];
-  document.getElementById('uni-robot-info').textContent =
-    `${task.description} — ${robot.category.replace('_', ' ')}, this task's native robot.`;
+  document.getElementById('uni-generate').disabled = !task;
+  const info = document.getElementById('uni-robot-info');
+  if (!task) {
+    info.textContent = document.getElementById('uni-university').value
+      ? 'No reconstructed labs are available for this university yet.'
+      : 'No reconstructed university labs are available yet.';
+    return;
+  }
+  const robot = CATALOG?.robots?.[task.robot];
+  const description = task.description || currentUniLab().title || currentUniLab().lab_name;
+  info.textContent = robot?.category
+    ? `${description} — ${robot.category.replaceAll('_', ' ')}, this task's native robot.`
+    : description || '';
 }
+
+document.getElementById('uni-university').addEventListener('change', populateUniSubjects);
+document.getElementById('uni-subject').addEventListener('change', populateUniLabs);
+document.getElementById('uni-lab').addEventListener('change', onUniLabChange);
 
 function populateTasks() {
   const category = document.getElementById('category').value;
@@ -868,16 +660,14 @@ document.getElementById('uni-generate').addEventListener('click', uniGenerateSce
 document.getElementById('generate-custom').addEventListener('click', generateCustom);
 
 async function uniGenerateScene() {
+  const lab = currentUniLab();
   const task = currentUniTask();
-  if (!task) return;
+  if (!lab || !task) return;
   document.getElementById('uni-error').textContent = '';
 
-  // Tasks with their own dedicated page (microscopy, space experiments,
-  // surface missions, dual-backend) go straight there, same as the
-  // existing panel does -- this quick picker's /api/scene preview is a
-  // generic fallback, not the primary way to view those.
-  if (task.navigation?.url) {
-    location.assign(new URL(task.navigation.url, location.origin).href);
+  const destination = lab.url || task.navigation?.url;
+  if (destination) {
+    location.assign(new URL(destination, location.origin).href);
     return;
   }
 
@@ -895,6 +685,7 @@ async function uniGenerateScene() {
     body: JSON.stringify(body),
   });
   const data = await res.json();
+  if (currentUniLab()?.scene_id !== lab.scene_id) return;
   if (!res.ok) {
     document.getElementById('uni-error').textContent = data.error || 'Unknown error';
     document.getElementById('uni-preview').innerHTML = '';

@@ -42,6 +42,8 @@ Each entry:
 """
 import dataclasses
 
+from real_labs.catalog import scenes as _reference_labs
+
 
 @dataclasses.dataclass(frozen=True)
 class CatalogEntry:
@@ -1247,6 +1249,21 @@ CATALOG: dict[str, CatalogEntry] = {
         ),
     ]
 }
+
+
+# Public-reference scene previews have a dedicated direct-instrument control UI.
+# They deliberately have no autonomous experiment completion rule.
+for _id, _lab in _reference_labs().items():
+    _key = "real_lab_" + _id
+    CATALOG[_key] = CatalogEntry(
+        name=_key,
+        description=_lab["title"] + " (reference-informed room; instrument controls)",
+        category="real_labs",
+        module="real_labs.tasks",
+        cls=_id,
+        robot="lab_instruments",
+        camera="overview",
+    )
 
 
 def catalog_prompt_listing() -> str:

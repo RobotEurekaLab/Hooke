@@ -1,0 +1,190 @@
+{
+  "scenes": [
+    {
+      "id": "yonsei_mics_rf_probe",
+      "title": "Yonsei MICS RF Probe Workstation",
+      "institution": "MICS Laboratory \u2014 RF Probe Workstation",
+      "domain": "electronic_metrology",
+      "university_expansion": true,
+      "source_urls": [
+        "https://mics.yonsei.ac.kr/equipment/",
+        "https://mics.yonsei.ac.kr/wp-content/uploads/2024/11/mics-main-img-v10-1-840x562.jpeg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. A round silver sample chuck carries a small rectangular substrate and a tiny central device. Two black RF probe heads approach from opposing sides, with thick coaxial lines receding upward. A third rear multi-contact head connects to a flat ribbon cable; clamping screws and dark adjustment hardware surround the chuck.",
+      "observed_cues": [
+        "A round silver sample chuck carries a small rectangular substrate and a tiny central device.",
+        "Two black RF probe heads approach from opposing sides, with thick coaxial lines receding upward.",
+        "A third rear multi-contact head connects to a flat ribbon cable; clamping screws and dark adjustment hardware surround the chuck."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          3.4,
+          2.8,
+          2.65
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "electronic_metrology",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "electronics_table",
+          "pos": [
+            0,
+            0.25,
+            0
+          ],
+          "size": [
+            1.7,
+            0.82,
+            0.84
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "rf_probe",
+          "kind": "mics_rf_probe_workspace",
+          "pos": [
+            0,
+            0.25,
+            0.84
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate an inert electronic coupon and retract one supported RF probe head while showing the three-sided probe arrangement.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://mics.yonsei.ac.kr/equipment/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Yonsei MICS RF Probe Workstation mechanical positioning",
+        "description": "Translate an inert electronic coupon and retract one supported RF probe head while showing the three-sided probe arrangement.",
+        "primary_equipment": "rf_probe",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            4.2,
+            -4.7,
+            3.3
+          ],
+          "target": [
+            0,
+            0.2,
+            0.7
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            0.7,
+            -0.82,
+            1.4
+          ],
+          "target": [
+            0,
+            0.25,
+            0.98
+          ],
+          "fovy": 53
+        },
+        "workstation": {
+          "position": [
+            0.25,
+            -0.21,
+            1.16
+          ],
+          "target": [
+            0,
+            0.25,
+            0.935
+          ],
+          "fovy": 42
+        }
+      },
+      "layout_rationale": [
+        "A round silver sample chuck carries a small rectangular substrate and a tiny central device.",
+        "Two black RF probe heads approach from opposing sides, with thick coaxial lines receding upward.",
+        "A third rear multi-contact head connects to a flat ribbon cable; clamping screws and dark adjustment hardware surround the chuck.",
+        "The official reference is only a close-up; the surrounding room and bench are explicitly generic estimates.",
+        "The 4.8 x 4.0 mm inert coupon and all apparatus dimensions are authored estimates. No RF response, contact calibration or hardware precision is implied.",
+        "No microscope stand was invented because the close-up does not show one."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "The official laboratory page presents this close-up as its probe station, but it gives no wider bench view or dimensions. Reconstruct only the apparatus work area, with any microscope stand, room and hidden mechanics explicitly estimated. No RF signal model or contact metrology is verified.",
+        "The official reference is only a close-up; the surrounding room and bench are explicitly generic estimates.",
+        "The 4.8 x 4.0 mm inert coupon and all apparatus dimensions are authored estimates. No RF response, contact calibration or hardware precision is implied.",
+        "No microscope stand was invented because the close-up does not show one."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/yonsei_mics_probe.jpeg"
+        ],
+        "reviewed_sha256": [
+          "4b8af9c08a3534c80ad2242f5dd3493af314c7eb74bb598ab388924c9df65e4e"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    }
+  ]
+}
