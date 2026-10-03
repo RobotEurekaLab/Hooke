@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_cape_town_bsc">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.14 0.1 0.012" pos="0 0 0.012" rgba="0.92 0.92 0.94 1" class="body"/>
+      <geom type="box" size="0.012 0.1 0.09" pos="-0.13 0 0.1" rgba="0.92 0.92 0.94 1" class="body"/>
+      <geom type="box" size="0.012 0.1 0.09" pos="0.13 0 0.1" rgba="0.92 0.92 0.94 1" class="body"/>
+      <geom type="box" size="0.13 0.1 0.012" pos="0 0 0.195" rgba="0.92 0.92 0.94 1" class="body"/>
+      <body name="sash" pos="0 0.095 0.1">
+        <joint name="sash_joint" type="slide" axis="0 0 1" range="0 0.08" damping="1.0" frictionloss="0.4"/>
+  <geom type="box" size="0.12 0.004 0.08" pos="0 0 0" rgba="0.6 0.8 0.9 0.35" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
