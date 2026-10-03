@@ -27,3 +27,14 @@ LancasterUniversityConfocalTask, LancasterUniversityConfocalExpert = make_static
         "real_lab/labs/lancaster-university.md)"
     ),
 ))
+
+RiceUniversityMaskAlignerTask, RiceUniversityMaskAlignerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_rice_university_mask_aligner_display",
+    scene_file="mani_real_lab_rice_university_mask_aligner.xml",
+    prompt=(
+        "a photolithography mask aligner chamber in the Rice "
+        "Nanofabrication Facility, Space Science and Technology Building, "
+        "Rice University (simplified representation; see "
+        "real_lab/labs/rice-university.md)"
+    ),
+))

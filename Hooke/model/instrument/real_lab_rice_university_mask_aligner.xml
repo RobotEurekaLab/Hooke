@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_rice_university_mask_aligner">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.12 0.01 0.1" pos="0 0.1 0.1" rgba="0.55 0.58 0.62 1" class="body"/>
+      <geom type="box" size="0.01 0.1 0.1" pos="-0.12 0 0.1" rgba="0.55 0.58 0.62 1" class="body"/>
+      <geom type="box" size="0.01 0.1 0.1" pos="0.12 0 0.1" rgba="0.55 0.58 0.62 1" class="body"/>
+      <geom type="box" size="0.12 0.1 0.01" pos="0 0 0.2" rgba="0.55 0.58 0.62 1" class="body"/>
+      <geom type="box" size="0.12 0.1 0.005" pos="0 0 0.002" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.03 0.004" pos="0 0 0.1" rgba="0.15 0.4 0.75 0.9" class="body"/>
+      <body name="door" pos="-0.1 0.0 0.1">
+        <joint name="door_joint" type="hinge" axis="0 0 1" range="0 1.8" damping="0.6" frictionloss="0.3"/>
+  <geom type="box" size="0.1 0.005 0.1" pos="0.1 0 0" rgba="0.6 0.8 0.9 0.35" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

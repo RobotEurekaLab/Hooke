@@ -1268,6 +1268,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="LancasterUniversityConfocalTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_rice_university_mask_aligner_display",
+            description=(
+                "A photolithography mask aligner chamber in the Rice Nanofabrication Facility, "
+                "Space Science and Technology Building, Rice University (display only, "
+                "simplified representative geometry -- see real_lab/labs/rice-university.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="RiceUniversityMaskAlignerTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
