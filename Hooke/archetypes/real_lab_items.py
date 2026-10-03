@@ -399,3 +399,58 @@ WuhanUniversityPlateReaderTask, WuhanUniversityPlateReaderExpert = make_static_t
         "real_lab/labs/wuhan-university.md)"
     ),
 ))
+
+TohokuUniversityMriTask, TohokuUniversityMriExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_tohoku_university_mri_display",
+    scene_file="mani_real_lab_tohoku_university_mri.xml",
+    prompt=(
+        "a 3.0T MRI scanner bore with a sliding patient table in the "
+        "ToMMo biobank/genome-medicine facility, Seiryo campus, Tohoku "
+        "University (simplified representation; see "
+        "real_lab/labs/tohoku-university.md)"
+    ),
+))
+
+IitbNmrTask, IitbNmrExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_iitb_nmr_display",
+    scene_file="mani_real_lab_iitb_nmr.xml",
+    prompt=(
+        "a 500 MHz NMR spectrometer with a hinged sample-insertion port "
+        "in the IOE facility, Room 212, Department of Chemistry, Indian "
+        "Institute of Technology Bombay (simplified representation; see "
+        "real_lab/labs/indian-institute-of-technology-bombay-iitb.md)"
+    ),
+))
+
+ChulalongkornPotentiostatTask, ChulalongkornPotentiostatExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_chulalongkorn_potentiostat_display",
+    scene_file="mani_real_lab_chulalongkorn_potentiostat.xml",
+    prompt=(
+        "a GAMRY-style benchtop potentiostat with a hinged electrode "
+        "access lid in the Energetic Materials Research Laboratory, "
+        "Chulalongkorn University (simplified representation; see "
+        "real_lab/labs/chulalongkorn-university.md)"
+    ),
+))
+
+KyushuUniversityLaserTask, KyushuUniversityLaserExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_kyushu_university_laser_display",
+    scene_file="mani_real_lab_kyushu_university_laser.xml",
+    prompt=(
+        "an ultrafast laser spectroscopy bench with a swinging optics "
+        "arm in the Laboratory of Spectrochemistry, Room B1009, Ito "
+        "Campus, Kyushu University (simplified representation; see "
+        "real_lab/labs/kyushu-university.md)"
+    ),
+))
+
+VanderbiltUniversityEsemTask, VanderbiltUniversityEsemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_vanderbilt_university_esem_display",
+    scene_file="mani_real_lab_vanderbilt_university_esem.xml",
+    prompt=(
+        "an environmental scanning electron microscope with a swinging "
+        "EDX detector arm in the Cell Imaging Shared Resource, "
+        "Vanderbilt University (simplified representation; see "
+        "real_lab/labs/vanderbilt-university.md)"
+    ),
+))

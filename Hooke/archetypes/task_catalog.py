@@ -1630,6 +1630,61 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="WuhanUniversityPlateReaderTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_tohoku_university_mri_display",
+            description=(
+                "A 3.0T MRI scanner bore with a sliding patient table in the ToMMo "
+                "biobank/genome-medicine facility, Seiryo campus, Tohoku University (display "
+                "only, simplified representative geometry -- see "
+                "real_lab/labs/tohoku-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TohokuUniversityMriTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_iitb_nmr_display",
+            description=(
+                "A 500 MHz NMR spectrometer with a hinged sample-insertion port in the IOE "
+                "facility, Room 212, Department of Chemistry, IIT Bombay (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/indian-institute-of-technology-bombay-iitb.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="IitbNmrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_chulalongkorn_potentiostat_display",
+            description=(
+                "A GAMRY-style benchtop potentiostat with a hinged electrode access lid in the "
+                "Energetic Materials Research Laboratory, Chulalongkorn University (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/chulalongkorn-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="ChulalongkornPotentiostatTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_kyushu_university_laser_display",
+            description=(
+                "An ultrafast laser spectroscopy bench with a swinging optics arm in the "
+                "Laboratory of Spectrochemistry, Room B1009, Ito Campus, Kyushu University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/kyushu-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KyushuUniversityLaserTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_vanderbilt_university_esem_display",
+            description=(
+                "An environmental scanning electron microscope with a swinging EDX detector arm "
+                "in the Cell Imaging Shared Resource, Vanderbilt University (display only, "
+                "simplified representative geometry -- see real_lab/labs/vanderbilt-university.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="VanderbiltUniversityEsemTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
