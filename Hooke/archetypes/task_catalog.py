@@ -1399,6 +1399,93 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="GroningenUniversityCellSorterTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_boston_university_widefield_display",
+            description=(
+                "A Nikon-style deconvolution wide-field epifluorescence microscope with a "
+                "rotating filter turret in the Cellular Imaging Core, Evans Biomedical Research "
+                "Center Basement B15, Boston University (display only, simplified representative "
+                "geometry -- see real_lab/labs/boston-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="BostonUniversityWidefieldTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_waterloo_university_gel_imager_display",
+            description=(
+                "A gel-imaging system with a hinged UV-transilluminator lid in the Molecular "
+                "Biology Core Facility, Room B1-371, Biology 1 building, University of Waterloo "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-waterloo.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WaterlooUniversityGelImagerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_utrecht_university_fibsem_display",
+            description=(
+                "A dual-beam FIB-SEM with a hinged specimen chamber door in the Cell Microscopy "
+                "Core, Room H02.313, Utrecht University (display only, simplified representative "
+                "geometry -- see real_lab/labs/utrecht-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UtrechtUniversityFibsemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_uppsala_university_multiphoton_display",
+            description=(
+                "A Leica DIVE-style multiphoton microscope with a rotating filter turret in the "
+                "BioVis imaging core facility, Rudbeck Laboratory, Uppsala University (display "
+                "only, simplified representative geometry -- see "
+                "real_lab/labs/uppsala-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UppsalaUniversityMultiphotonTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_kfupm_sem_display",
+            description=(
+                "A field-emission SEM with a swinging EDX detector arm in the Chemistry "
+                "Department Microscopy Laboratory, Building 4 Room 157, King Fahd University of "
+                "Petroleum and Minerals (display only, simplified representative geometry -- see "
+                "real_lab/labs/king-fahd-university-of-petroleum-minerals.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KfupmSemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_kit_karlsruhe_tem_display",
+            description=(
+                "A transmission electron microscope with a tilting goniometer specimen stage in "
+                "the Laboratory for Electron Microscopy, Building 30.22 Room 228, Karlsruhe "
+                "Institute of Technology (display only, simplified representative geometry -- see "
+                "real_lab/labs/kit-karlsruhe-institute-of-technology.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KitKarlsruheTemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_sheffield_university_chromium_display",
+            description=(
+                "A 10x Genomics Chromium Controller with a hinged chip-loading lid in the "
+                "Multiomics Facility, Sheffield Institute for Translational Neuroscience, "
+                "University of Sheffield (display only, simplified representative geometry -- see "
+                "real_lab/labs/the-university-of-sheffield.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="SheffieldUniversityChromiumTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_basel_university_lmd_display",
+            description=(
+                "A Leica LMD7-style laser microdissection microscope with a rotating "
+                "objective/laser-path turret in the Imaging Core Facility, Biozentrum, University "
+                "of Basel (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-basel.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="BaselUniversityLmdTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

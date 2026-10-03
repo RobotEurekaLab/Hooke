@@ -160,3 +160,95 @@ GroningenUniversityCellSorterTask, GroningenUniversityCellSorterExpert = make_st
         "representation; see real_lab/labs/university-of-groningen.md)"
     ),
 ))
+
+BostonUniversityWidefieldTask, BostonUniversityWidefieldExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_boston_university_widefield_display",
+    scene_file="mani_real_lab_boston_university_widefield.xml",
+    prompt=(
+        "a Nikon-style deconvolution wide-field epifluorescence "
+        "microscope with a rotating filter turret in the Cellular "
+        "Imaging Core, Evans Biomedical Research Center Basement B15, "
+        "Boston University (simplified representation; see "
+        "real_lab/labs/boston-university.md)"
+    ),
+))
+
+WaterlooUniversityGelImagerTask, WaterlooUniversityGelImagerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_waterloo_university_gel_imager_display",
+    scene_file="mani_real_lab_waterloo_university_gel_imager.xml",
+    prompt=(
+        "a gel-imaging system with a hinged UV-transilluminator lid in "
+        "the Molecular Biology Core Facility, Room B1-371, Biology 1 "
+        "building, University of Waterloo (simplified representation; "
+        "see real_lab/labs/university-of-waterloo.md)"
+    ),
+))
+
+UtrechtUniversityFibsemTask, UtrechtUniversityFibsemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_utrecht_university_fibsem_display",
+    scene_file="mani_real_lab_utrecht_university_fibsem.xml",
+    prompt=(
+        "a dual-beam FIB-SEM with a hinged specimen chamber door in the "
+        "Cell Microscopy Core, Room H02.313, Utrecht University "
+        "(simplified representation; see "
+        "real_lab/labs/utrecht-university.md)"
+    ),
+))
+
+UppsalaUniversityMultiphotonTask, UppsalaUniversityMultiphotonExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_uppsala_university_multiphoton_display",
+    scene_file="mani_real_lab_uppsala_university_multiphoton.xml",
+    prompt=(
+        "a Leica DIVE-style multiphoton microscope with a rotating "
+        "filter turret in the BioVis imaging core facility, Rudbeck "
+        "Laboratory, Uppsala University (simplified representation; see "
+        "real_lab/labs/uppsala-university.md)"
+    ),
+))
+
+KfupmSemTask, KfupmSemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_kfupm_sem_display",
+    scene_file="mani_real_lab_kfupm_sem.xml",
+    prompt=(
+        "a field-emission SEM with a swinging EDX detector arm in the "
+        "Chemistry Department Microscopy Laboratory, Building 4 Room "
+        "157, King Fahd University of Petroleum and Minerals "
+        "(simplified representation; see "
+        "real_lab/labs/king-fahd-university-of-petroleum-minerals.md)"
+    ),
+))
+
+KitKarlsruheTemTask, KitKarlsruheTemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_kit_karlsruhe_tem_display",
+    scene_file="mani_real_lab_kit_karlsruhe_tem.xml",
+    prompt=(
+        "a transmission electron microscope with a tilting goniometer "
+        "specimen stage in the Laboratory for Electron Microscopy, "
+        "Building 30.22 Room 228, Karlsruhe Institute of Technology "
+        "(simplified representation; see "
+        "real_lab/labs/kit-karlsruhe-institute-of-technology.md)"
+    ),
+))
+
+SheffieldUniversityChromiumTask, SheffieldUniversityChromiumExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_sheffield_university_chromium_display",
+    scene_file="mani_real_lab_sheffield_university_chromium.xml",
+    prompt=(
+        "a 10x Genomics Chromium Controller with a hinged chip-loading "
+        "lid in the Multiomics Facility, Sheffield Institute for "
+        "Translational Neuroscience, University of Sheffield "
+        "(simplified representation; see "
+        "real_lab/labs/the-university-of-sheffield.md)"
+    ),
+))
+
+BaselUniversityLmdTask, BaselUniversityLmdExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_basel_university_lmd_display",
+    scene_file="mani_real_lab_basel_university_lmd.xml",
+    prompt=(
+        "a Leica LMD7-style laser microdissection microscope with a "
+        "rotating objective/laser-path turret in the Imaging Core "
+        "Facility, Biozentrum, University of Basel (simplified "
+        "representation; see real_lab/labs/university-of-basel.md)"
+    ),
+))
