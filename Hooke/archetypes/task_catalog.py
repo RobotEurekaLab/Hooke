@@ -1377,6 +1377,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="GenevaUniversitySlideScannerTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_unc_lightsheet_display",
+            description=(
+                "A light-sheet fluorescence microscope with a translating sample mount in the "
+                "Biology Microscopy Core, Genome Sciences Building Room 1152, University of North "
+                "Carolina at Chapel Hill (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-north-carolina-chapel-hill.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UncLightsheetTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

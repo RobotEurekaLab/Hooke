@@ -137,3 +137,15 @@ GenevaUniversitySlideScannerTask, GenevaUniversitySlideScannerExpert = make_stat
         "real_lab/labs/university-of-geneva.md)"
     ),
 ))
+
+UncLightsheetTask, UncLightsheetExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_unc_lightsheet_display",
+    scene_file="mani_real_lab_unc_lightsheet.xml",
+    prompt=(
+        "a light-sheet fluorescence microscope with a translating sample "
+        "mount in the Biology Microscopy Core, Genome Sciences Building "
+        "Room 1152, University of North Carolina at Chapel Hill "
+        "(simplified representation; see "
+        "real_lab/labs/university-of-north-carolina-chapel-hill.md)"
+    ),
+))
