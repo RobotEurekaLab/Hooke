@@ -70,3 +70,15 @@ EmoryUniversitySequencerTask, EmoryUniversitySequencerExpert = make_static_task(
         "real_lab/labs/emory-university.md)"
     ),
 ))
+
+UnicampAfmTask, UnicampAfmExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_unicamp_afm_display",
+    scene_file="mani_real_lab_unicamp_afm.xml",
+    prompt=(
+        "an atomic force microscope with a vertical scan head in the "
+        "LIMicro-IQ microscopy core facility, Room D106, Institute of "
+        "Chemistry, Universidade Estadual de Campinas (simplified "
+        "representation; see "
+        "real_lab/labs/universidade-estadual-de-campinas-unicamp.md)"
+    ),
+))

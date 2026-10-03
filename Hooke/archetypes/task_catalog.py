@@ -1311,6 +1311,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="EmoryUniversitySequencerTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_unicamp_afm_display",
+            description=(
+                "An atomic force microscope with a vertical scan head in the LIMicro-IQ "
+                "microscopy core facility, Room D106, Institute of Chemistry, Universidade "
+                "Estadual de Campinas (display only, simplified representative geometry -- see "
+                "real_lab/labs/universidade-estadual-de-campinas-unicamp.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UnicampAfmTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
