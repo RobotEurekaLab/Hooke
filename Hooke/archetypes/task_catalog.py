@@ -1355,6 +1355,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="NagoyaUniversityPalmTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_khalifa_university_tem_display",
+            description=(
+                "A transmission electron microscope with a hinged specimen airlock port in the "
+                "Electron Microscopy Facility, Building L Room 1020, Khalifa University (display "
+                "only, simplified representative geometry -- see "
+                "real_lab/labs/khalifa-university-of-science-and-technology.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KhalifaUniversityTemTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

@@ -115,3 +115,14 @@ NagoyaUniversityPalmTask, NagoyaUniversityPalmExpert = make_static_task(StaticDi
         "representation; see real_lab/labs/nagoya-university.md)"
     ),
 ))
+
+KhalifaUniversityTemTask, KhalifaUniversityTemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_khalifa_university_tem_display",
+    scene_file="mani_real_lab_khalifa_university_tem.xml",
+    prompt=(
+        "a transmission electron microscope with a hinged specimen "
+        "airlock port in the Electron Microscopy Facility, Building L "
+        "Room 1020, Khalifa University (simplified representation; see "
+        "real_lab/labs/khalifa-university-of-science-and-technology.md)"
+    ),
+))
