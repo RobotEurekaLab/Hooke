@@ -16,3 +16,14 @@ WesternUniversityPcrTask, WesternUniversityPcrExpert = make_static_task(StaticDi
         "representation; see real_lab/labs/western-university.md)"
     ),
 ))
+
+LancasterUniversityConfocalTask, LancasterUniversityConfocalExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_lancaster_university_confocal_display",
+    scene_file="mani_real_lab_lancaster_university_confocal.xml",
+    prompt=(
+        "an inverted confocal microscope in the Advanced Light Microscopy "
+        "Facility, Division of Biomedical and Life Sciences, Lancaster "
+        "University (simplified representation; see "
+        "real_lab/labs/lancaster-university.md)"
+    ),
+))

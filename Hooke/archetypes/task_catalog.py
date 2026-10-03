@@ -1257,6 +1257,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="WesternUniversityPcrTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_lancaster_university_confocal_display",
+            description=(
+                "An inverted confocal microscope in the Advanced Light Microscopy Facility, "
+                "Division of Biomedical and Life Sciences, Lancaster University (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/lancaster-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="LancasterUniversityConfocalTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
