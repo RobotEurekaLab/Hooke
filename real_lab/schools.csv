@@ -6,7 +6,7 @@ university-of-st-andrews,104,University of St Andrews,,United Kingdom,,https://w
 the-university-of-sheffield,105,The University of Sheffield,,United Kingdom,,https://www.sheffield.ac.uk,,"Multiomics Facility, SITraN",molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_sheffield_university_chromium_display; see real_lab/labs/the-university-of-sheffield.md
 utrecht-university,105,Utrecht University,,Netherlands,,https://www.uu.nl,,Cell Microscopy Core (CMC),microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_utrecht_university_fibsem_display; see real_lab/labs/utrecht-university.md
 tohoku-university,107,Tohoku University,,Japan,,https://www.megabank.tohoku.ac.jp,,ToMMo biobank/genome-medicine facility,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_tohoku_university_mri_display; see real_lab/labs/tohoku-university.md
-university-of-nottingham,108,University of Nottingham,,United Kingdom,,,,,,,pending,,
+university-of-nottingham,108,University of Nottingham,,United Kingdom,,https://www.nottingham.ac.uk,,Post-Genomic Technologies Facility,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_nottingham_genomics_display; see real_lab/labs/university-of-nottingham.md
 boston-university,108,Boston University,,United States,,https://www.bu.edu,,"Cellular Imaging Core, Evans Biomedical Research Center",microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_boston_university_widefield_display; see real_lab/labs/boston-university.md
 technical-university-of-denmark,109,Technical University of Denmark,,Denmark,,https://www.dtu.dk,,DTU Nanolab,chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_dtu_nanolab_fibsem_display; see real_lab/labs/technical-university-of-denmark.md
 university-of-zurich,109,University of Zurich,,Switzerland,,,,,,,pending,,
@@ -14,10 +14,10 @@ politecnico-di-milano,111,Politecnico di Milano,,Italy,,https://www.polimi.it,,B
 aalto-university,113,Aalto University,,Finland,,,,,,,pending,,
 georgia-institute-of-technology,114,Georgia Institute of Technology,,United States,,,,,,,pending,,
 university-of-waterloo,115,University of Waterloo,,Canada,,https://uwaterloo.ca,,Molecular Biology Core Facility,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_waterloo_university_gel_imager_display; see real_lab/labs/university-of-waterloo.md
-university-of-wisconsin-madison,116,University of Wisconsin-Madison,,United States,,,,,,,pending,,
-university-of-helsinki,117,University of Helsinki,,Finland,,,,,,,pending,,
+university-of-wisconsin-madison,116,University of Wisconsin-Madison,,United States,,https://biotech.wisc.edu,,UW Biotech Center DNA Sequencing Facility,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_wisconsin_madison_novaseq_display; see real_lab/labs/university-of-wisconsin-madison.md
+university-of-helsinki,117,University of Helsinki,,Finland,,https://www.helsinki.fi,,DNA Sequencing and Genomics Laboratory (BIDGEN),molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_helsinki_university_sequencer_display; see real_lab/labs/university-of-helsinki.md
 indian-institute-of-technology-bombay-iitb,118,Indian Institute of Technology Bombay (IITB),,India,,https://www.chem.iitb.ac.in,,Department of Chemistry shared instrumentation (IOE/RIFC/FIST),chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_iitb_nmr_display; see real_lab/labs/indian-institute-of-technology-bombay-iitb.md
-university-of-oslo,119,University of Oslo,,Norway,,,,,,,pending,,
+university-of-oslo,119,University of Oslo,,Norway,,https://www.ous-research.no,,Advanced Light Microscopy core facility,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_oslo_university_livecell_display; see real_lab/labs/university-of-oslo.md
 queen-mary-university-of-london,120,Queen Mary University of London,,United Kingdom,,https://www.qmul.ac.uk,,Barts and the London Genome Centre,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_queen_mary_sequencer_display; see real_lab/labs/queen-mary-university-of-london.md
 western-university,120,Western University,,Canada,,https://www.uwo.ca,,Department of Biology / Molecular Genetics Unit,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_western_university_pcr_display; see real_lab/labs/western-university.md
 qatar-university,122,Qatar University,,Qatar,,,,,,,pending,,

@@ -1793,6 +1793,50 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="IitmBioincubatorFermenterTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_wisconsin_madison_novaseq_display",
+            description=(
+                "An Illumina NovaSeq X Plus-style sequencer with a hinged loading door in the UW "
+                "Biotech Center DNA Sequencing Facility, Room 1250, 425 Henry Mall, University of "
+                "Wisconsin-Madison (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-wisconsin-madison.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WisconsinMadisonNovaseqTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_helsinki_university_sequencer_display",
+            description=(
+                "A benchtop DNA sequencer with a hinged flow-cell loading lid in the DNA "
+                "Sequencing and Genomics Laboratory (BIDGEN), Biocenter 2, Viikki campus, "
+                "University of Helsinki (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-helsinki.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="HelsinkiUniversitySequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_nottingham_genomics_display",
+            description=(
+                "A genomics array scanner with a hinged sample-tray lid in the Post-Genomic "
+                "Technologies Facility, A Floor West Block, Queen's Medical Centre, University of "
+                "Nottingham (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-nottingham.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NottinghamGenomicsTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_oslo_university_livecell_display",
+            description=(
+                "A live-cell confocal imaging microscope with a rotating filter turret in the "
+                "Advanced Light Microscopy core facility, Rikshospitalet, University of Oslo "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-oslo.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="OsloUniversityLivecellTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

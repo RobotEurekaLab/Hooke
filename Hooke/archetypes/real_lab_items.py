@@ -567,3 +567,48 @@ IitmBioincubatorFermenterTask, IitmBioincubatorFermenterExpert = make_static_tas
         "real_lab/labs/indian-institute-of-technology-madras-iitm.md)"
     ),
 ))
+
+WisconsinMadisonNovaseqTask, WisconsinMadisonNovaseqExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_wisconsin_madison_novaseq_display",
+    scene_file="mani_real_lab_wisconsin_madison_novaseq.xml",
+    prompt=(
+        "an Illumina NovaSeq X Plus-style sequencer with a hinged "
+        "loading door in the UW Biotech Center DNA Sequencing Facility, "
+        "Room 1250, 425 Henry Mall, University of Wisconsin-Madison "
+        "(simplified representation; see "
+        "real_lab/labs/university-of-wisconsin-madison.md)"
+    ),
+))
+
+HelsinkiUniversitySequencerTask, HelsinkiUniversitySequencerExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_helsinki_university_sequencer_display",
+    scene_file="mani_real_lab_helsinki_university_sequencer.xml",
+    prompt=(
+        "a benchtop DNA sequencer with a hinged flow-cell loading lid in "
+        "the DNA Sequencing and Genomics Laboratory (BIDGEN), Biocenter "
+        "2, Viikki campus, University of Helsinki (simplified "
+        "representation; see real_lab/labs/university-of-helsinki.md)"
+    ),
+))
+
+NottinghamGenomicsTask, NottinghamGenomicsExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_nottingham_genomics_display",
+    scene_file="mani_real_lab_nottingham_genomics.xml",
+    prompt=(
+        "a genomics array scanner with a hinged sample-tray lid in the "
+        "Post-Genomic Technologies Facility, A Floor West Block, Queen's "
+        "Medical Centre, University of Nottingham (simplified "
+        "representation; see real_lab/labs/university-of-nottingham.md)"
+    ),
+))
+
+OsloUniversityLivecellTask, OsloUniversityLivecellExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_oslo_university_livecell_display",
+    scene_file="mani_real_lab_oslo_university_livecell.xml",
+    prompt=(
+        "a live-cell confocal imaging microscope with a rotating filter "
+        "turret in the Advanced Light Microscopy core facility, "
+        "Rikshospitalet, University of Oslo (simplified representation; "
+        "see real_lab/labs/university-of-oslo.md)"
+    ),
+))
