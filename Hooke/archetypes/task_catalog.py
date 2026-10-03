@@ -1290,6 +1290,16 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="AarhusUniversitySpinningDiskTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_curtin_university_sem_display",
+            description=(
+                "An electron microscope with a specimen load-lock chamber in the John de Laeter "
+                "Centre, Curtin University (display only, simplified representative geometry -- "
+                "see real_lab/labs/curtin-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="CurtinUniversitySemTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

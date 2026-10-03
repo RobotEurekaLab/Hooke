@@ -49,3 +49,13 @@ AarhusUniversitySpinningDiskTask, AarhusUniversitySpinningDiskExpert = make_stat
         "real_lab/labs/aarhus-university.md)"
     ),
 ))
+
+CurtinUniversitySemTask, CurtinUniversitySemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_curtin_university_sem_display",
+    scene_file="mani_real_lab_curtin_university_sem.xml",
+    prompt=(
+        "an electron microscope with a specimen load-lock chamber in the "
+        "John de Laeter Centre, Curtin University (simplified "
+        "representation; see real_lab/labs/curtin-university.md)"
+    ),
+))
