@@ -2333,6 +2333,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="TuwienUstemNeoarmTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_hbku_qbri_imagestream_display",
+            description=(
+                "An Amnis ImageStream MKII imaging flow cytometer with a hinged sample access lid "
+                "in the QBRI Imaging and Flow Cytometry Core, Hamad Bin Khalifa University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/hamad-bin-khalifa-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="HbkuQbriImagestreamTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

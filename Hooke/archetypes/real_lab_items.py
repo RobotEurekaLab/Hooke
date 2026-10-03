@@ -1130,3 +1130,14 @@ TuwienUstemNeoarmTask, TuwienUstemNeoarmExpert = make_static_task(StaticDisplayS
         "see real_lab/labs/technische-universit-t-wien.md)"
     ),
 ))
+
+HbkuQbriImagestreamTask, HbkuQbriImagestreamExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_hbku_qbri_imagestream_display",
+    scene_file="mani_real_lab_hbku_qbri_imagestream.xml",
+    prompt=(
+        "an Amnis ImageStream MKII imaging flow cytometer with a hinged "
+        "sample access lid in the QBRI Imaging and Flow Cytometry Core, "
+        "Hamad Bin Khalifa University (simplified representation; see "
+        "real_lab/labs/hamad-bin-khalifa-university.md)"
+    ),
+))
