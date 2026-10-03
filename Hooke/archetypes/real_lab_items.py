@@ -612,3 +612,73 @@ OsloUniversityLivecellTask, OsloUniversityLivecellExpert = make_static_task(Stat
         "see real_lab/labs/university-of-oslo.md)"
     ),
 ))
+
+DartmouthCollegeDragonflyTask, DartmouthCollegeDragonflyExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_dartmouth_college_dragonfly_display",
+    scene_file="mani_real_lab_dartmouth_college_dragonfly.xml",
+    prompt=(
+        "an Andor Dragonfly-style spinning-disk confocal microscope with "
+        "a rotating filter turret in the Life Sciences Light Microscopy "
+        "Facility, Class of 1978 Life Sciences Center, Dartmouth College "
+        "(simplified representation; see "
+        "real_lab/labs/dartmouth-college.md)"
+    ),
+))
+
+CalgaryUniversityAfmTask, CalgaryUniversityAfmExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_calgary_university_afm_display",
+    scene_file="mani_real_lab_calgary_university_afm.xml",
+    prompt=(
+        "a Bruker NanoWizard IV atomic force microscope with a vertical "
+        "scan head in the Microscopy and Imaging Facility (Charbonneau "
+        "Microscopy Facility), University of Calgary (simplified "
+        "representation; see real_lab/labs/university-of-calgary.md)"
+    ),
+))
+
+AberdeenUniversityCelldiscovererTask, AberdeenUniversityCelldiscovererExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_aberdeen_university_celldiscoverer_display",
+    scene_file="mani_real_lab_aberdeen_university_celldiscoverer.xml",
+    prompt=(
+        "a ZEISS Celldiscoverer 7 high-content imaging platform with a "
+        "robotic plate-handling arm in the Microscopy and Histology Core "
+        "Facility, Institute of Medical Sciences, University of Aberdeen "
+        "(simplified representation; see "
+        "real_lab/labs/university-of-aberdeen.md)"
+    ),
+))
+
+TubingenUniversityEmTask, TubingenUniversityEmExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_tubingen_university_em_display",
+    scene_file="mani_real_lab_tubingen_university_em.xml",
+    prompt=(
+        "an electron microscope with a swinging EDX detector arm in the "
+        "Tubingen Structural Microscopy (TSM) Core Facility, Campus "
+        "Morgenstelle, Eberhard Karls Universitat Tubingen (simplified "
+        "representation; see "
+        "real_lab/labs/eberhard-karls-universit-t-t-bingen.md)"
+    ),
+))
+
+BernUniversityLsmTask, BernUniversityLsmExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_bern_university_lsm_display",
+    scene_file="mani_real_lab_bern_university_lsm.xml",
+    prompt=(
+        "a Zeiss LSM710-style confocal laser scanning microscope with a "
+        "rotating filter turret in the Microscopy Imaging Center (MIC), "
+        "University of Bern (simplified representation; see "
+        "real_lab/labs/university-of-bern.md)"
+    ),
+))
+
+ErasmusRotterdamBiomicsTask, ErasmusRotterdamBiomicsExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_erasmus_rotterdam_biomics_display",
+    scene_file="mani_real_lab_erasmus_rotterdam_biomics.xml",
+    prompt=(
+        "a benchtop genomics sequencer with a hinged loading lid in the "
+        "Erasmus Center for Biomics, Department of Molecular Genetics, "
+        "Erasmus MC, Erasmus University Rotterdam (simplified "
+        "representation; see "
+        "real_lab/labs/erasmus-university-rotterdam.md)"
+    ),
+))

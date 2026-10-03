@@ -1837,6 +1837,73 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="OsloUniversityLivecellTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_dartmouth_college_dragonfly_display",
+            description=(
+                "An Andor Dragonfly-style spinning-disk confocal microscope with a rotating "
+                "filter turret in the Life Sciences Light Microscopy Facility, Class of 1978 Life "
+                "Sciences Center, Dartmouth College (display only, simplified representative "
+                "geometry -- see real_lab/labs/dartmouth-college.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="DartmouthCollegeDragonflyTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_calgary_university_afm_display",
+            description=(
+                "A Bruker NanoWizard IV atomic force microscope with a vertical scan head in the "
+                "Microscopy and Imaging Facility (Charbonneau Microscopy Facility), University of "
+                "Calgary (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-calgary.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="CalgaryUniversityAfmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_aberdeen_university_celldiscoverer_display",
+            description=(
+                "A ZEISS Celldiscoverer 7 high-content imaging platform with a robotic "
+                "plate-handling arm in the Microscopy and Histology Core Facility, Institute of "
+                "Medical Sciences, University of Aberdeen (display only, simplified "
+                "representative geometry -- see real_lab/labs/university-of-aberdeen.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="AberdeenUniversityCelldiscovererTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_tubingen_university_em_display",
+            description=(
+                "An electron microscope with a swinging EDX detector arm in the Tubingen "
+                "Structural Microscopy (TSM) Core Facility, Campus Morgenstelle (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/eberhard-karls-universit-t-t-bingen.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TubingenUniversityEmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_bern_university_lsm_display",
+            description=(
+                "A Zeiss LSM710-style confocal laser scanning microscope with a rotating filter "
+                "turret in the Microscopy Imaging Center (MIC), University of Bern (display only, "
+                "simplified representative geometry -- see real_lab/labs/university-of-bern.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="BernUniversityLsmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_erasmus_rotterdam_biomics_display",
+            description=(
+                "A benchtop genomics sequencer with a hinged loading lid in the Erasmus Center "
+                "for Biomics, Department of Molecular Genetics, Erasmus MC (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/erasmus-university-rotterdam.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="ErasmusRotterdamBiomicsTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
