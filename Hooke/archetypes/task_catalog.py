@@ -1333,6 +1333,17 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="LoughboroughUniversityNmrTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_twente_university_sputter_display",
+            description=(
+                "A thin-film deposition chamber with a hinged viewport hatch in the MESA+ "
+                "Institute NanoLab cleanroom, University of Twente (display only, simplified "
+                "representative geometry -- see real_lab/labs/university-of-twente.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TwenteUniversitySputterTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

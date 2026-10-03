@@ -93,3 +93,14 @@ LoughboroughUniversityNmrTask, LoughboroughUniversityNmrExpert = make_static_tas
         "real_lab/labs/loughborough-university.md)"
     ),
 ))
+
+TwenteUniversitySputterTask, TwenteUniversitySputterExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_twente_university_sputter_display",
+    scene_file="mani_real_lab_twente_university_sputter.xml",
+    prompt=(
+        "a thin-film deposition chamber with a hinged viewport hatch in "
+        "the MESA+ Institute NanoLab cleanroom, University of Twente "
+        "(simplified representation; see "
+        "real_lab/labs/university-of-twente.md)"
+    ),
+))

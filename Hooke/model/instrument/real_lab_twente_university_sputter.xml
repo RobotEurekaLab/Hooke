@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_twente_university_sputter">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="cylinder" size="0.09 0.09" pos="0 0 0.09" rgba="0.45 0.47 0.5 1" class="body"/>
+      <geom type="box" size="0.1 0.1 0.004" pos="0 0 0.002" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.03 0.015" pos="0 0 0.185" rgba="0.25 0.25 0.27 1" class="body"/>
+      <body name="load_hatch" pos="0.09 0.0 0.09">
+        <joint name="load_hatch_joint" type="hinge" axis="0 1 0" range="0 1.4" damping="0.6" frictionloss="0.25"/>
+  <geom type="box" size="0.004 0.07 0.07" pos="0.002 0 0" rgba="0.55 0.75 0.85 0.4" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
