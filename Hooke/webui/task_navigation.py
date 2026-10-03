@@ -7,6 +7,7 @@ and protocol composition. Resolving an entry never loads a simulator.
 from urllib.parse import urlencode
 
 from archetypes.task_catalog import CatalogEntry
+from webui.real_lab_navigation_data import REAL_LAB_UNIVERSITIES
 
 
 WORLD_LABELS = {
@@ -65,4 +66,14 @@ def task_navigation(entry: CatalogEntry) -> dict:
                 if operation == "humanoid_rover":
                     parameters["scenario"] = "team"
                 navigation["url"] = "/surface-missions?" + urlencode(parameters)
+    elif entry.category == "real_lab":
+        info = REAL_LAB_UNIVERSITIES.get(entry.name)
+        if info:
+            navigation.update(
+                category=info["discipline"],
+                category_label=info["discipline"].replace("_", " ").title(),
+                task_label=info["facility"],
+                university=info["university"],
+                facility=info["facility"],
+            )
     return navigation
