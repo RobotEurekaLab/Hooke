@@ -76,19 +76,19 @@ curtin-university,174,Curtin University,,Australia,,https://www.curtin.edu.au,,J
 universitat-aut-noma-de-barcelona,175,Universitat Autònoma de Barcelona,,Spain,,,,,,,pending,,
 mcmaster-university,176,McMaster University,,Canada,,https://www.mcmaster.ca,,McMaster Genomics Facility,molecular_biology_and_genomics,,scene_built,2026-10-03,CatalogEntry real_lab_mcmaster_university_sequencer_display; see real_lab/labs/mcmaster-university.md
 washington-university-in-st-louis,176,Washington University in St. Louis,,United States,,https://www.wustl.edu,,Molecular Microbiology Imaging Facility,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_wustl_histology_display; see real_lab/labs/washington-university-in-st-louis.md
-university-of-california-santa-barbara-ucsb,178,"University of California, Santa Barbara (UCSB)",,United States,,,,,,,pending,,
-the-university-of-newcastle-australia-uon,179,"The University of Newcastle, Australia (UON)",,Australia,,,,,,,pending,,
-universidad-de-los-andes,179,Universidad de los Andes,,Colombia,,,,,,,pending,,
+university-of-california-santa-barbara-ucsb,178,"University of California, Santa Barbara (UCSB)",,United States,,https://microscopy.nri.ucsb.edu,,NRI-MCDB Microscopy Facility,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_ucsb_nanolive_display; see real_lab/labs/university-of-california-santa-barbara-ucsb.md
+the-university-of-newcastle-australia-uon,179,"The University of Newcastle, Australia (UON)",,Australia,,https://www.newcastle.edu.au,,Central Analytical Facilities (CAF),chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_newcastle_au_orbitrap_display; see real_lab/labs/the-university-of-newcastle-australia-uon.md
+universidad-de-los-andes,179,Universidad de los Andes,,Colombia,,https://corefacilities.uniandes.edu.co,,Centro de Microscopia (MicroCore),microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_uniandes_tescan_display; see real_lab/labs/universidad-de-los-andes.md
 universiti-teknologi-malaysia,181,Universiti Teknologi Malaysia,,Malaysia,,,,,,,pending,,
-waseda-university,181,Waseda University,,Japan,,,,,,,pending,,
+waseda-university,181,Waseda University,,Japan,,https://www.waseda.jp,,"Analytical Instrument Laboratory, Kagami Memorial Research Institute",microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_waseda_university_jem2100f_display; see real_lab/labs/waseda-university.md
 hamad-bin-khalifa-university,183,Hamad Bin Khalifa University,,Qatar,,,,,,,pending,,
-university-of-york,184,University of York,,United Kingdom,,,,,,,pending,,
+university-of-york,184,University of York,,United Kingdom,,https://www.york.ac.uk,,Technology Facility Imaging and Cytometry Laboratory,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_york_university_elyra7_display; see real_lab/labs/university-of-york.md
 tecnol-gico-de-monterrey,185,Tecnológico de Monterrey,,Mexico,,,,,,,pending,,
 cardiff-university,186,Cardiff University,,United Kingdom,,,,,,,pending,,
 cole-normale-sup-rieure-de-lyon,187,École Normale Supérieure de Lyon,,France,,,,,,,pending,,
-keio-university,188,Keio University,,Japan,,,,,,,pending,,
-university-of-ottawa,189,University of Ottawa,,Canada,,,,,,,pending,,
-technische-universit-t-wien,190,Technische Universität Wien,,Austria,,,,,,,pending,,
+keio-university,188,Keio University,,Japan,,https://sites.google.com,,Electron Microscope Center,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_keio_university_multisem_display; see real_lab/labs/keio-university.md
+university-of-ottawa,189,University of Ottawa,,Canada,,https://www.uottawa.ca,,CBIA Core Facility,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_ottawa_university_sp5sted_display; see real_lab/labs/university-of-ottawa.md
+technische-universit-t-wien,190,Technische Universität Wien,,Austria,,https://www.tuwien.at,,USTEM,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_tuwien_ustem_neoarm_display; see real_lab/labs/technische-universit-t-wien.md
 universit-t-hamburg,191,Universität Hamburg,,Germany,,https://www.uni-hamburg.de,,Technology Platform Light Microscopy,microscopy_and_cell_manipulation,,scene_built,2026-10-03,CatalogEntry real_lab_hamburg_university_confocal_display; see real_lab/labs/universit-t-hamburg.md
 tongji-university,192,Tongji University,,China (Mainland),,,,,,,pending,,
 queen-s-university-at-kingston,193,Queen's University at Kingston,,Canada,,https://www.queensu.ca,,"Department of Chemistry shared analytical facilities, Chernoff Hall",chemistry_and_synthesis,,scene_built,2026-10-03,CatalogEntry real_lab_queens_kingston_maldi_display; see real_lab/labs/queen-s-university-at-kingston.md

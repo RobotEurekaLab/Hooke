@@ -1036,3 +1036,97 @@ OtagoUniversityJsm6700fTask, OtagoUniversityJsm6700fExpert = make_static_task(St
         "real_lab/labs/university-of-otago.md)"
     ),
 ))
+
+UcsbNanoliveTask, UcsbNanoliveExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_ucsb_nanolive_display",
+    scene_file="mani_real_lab_ucsb_nanolive.xml",
+    prompt=(
+        "a Nanolive 3D Cell Explorer label-free live-cell tomography "
+        "microscope with a rotating filter turret in the NRI-MCDB "
+        "Microscopy Facility, Bio2 Building Room 5173B, UC Santa Barbara "
+        "(simplified representation; see "
+        "real_lab/labs/university-of-california-santa-barbara-ucsb.md)"
+    ),
+))
+
+NewcastleAuOrbitrapTask, NewcastleAuOrbitrapExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_newcastle_au_orbitrap_display",
+    scene_file="mani_real_lab_newcastle_au_orbitrap.xml",
+    prompt=(
+        "a Thermo Q Exactive Orbitrap mass spectrometer with a hinged "
+        "sample-plate loading door in the Central Analytical Facilities "
+        "(CAF), Life Sciences Building, University of Newcastle "
+        "Australia (simplified representation; see "
+        "real_lab/labs/the-university-of-newcastle-australia-uon.md)"
+    ),
+))
+
+UniandesTescanTask, UniandesTescanExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_uniandes_tescan_display",
+    scene_file="mani_real_lab_uniandes_tescan.xml",
+    prompt=(
+        "a Tescan Lyra 3 dual-beam FIB-SEM with a hinged specimen "
+        "chamber door in the Centro de Microscopia (MicroCore), Lab "
+        "B101-B102, Universidad de los Andes (simplified "
+        "representation; see "
+        "real_lab/labs/universidad-de-los-andes.md)"
+    ),
+))
+
+WasedaUniversityJem2100fTask, WasedaUniversityJem2100fExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_waseda_university_jem2100f_display",
+    scene_file="mani_real_lab_waseda_university_jem2100f.xml",
+    prompt=(
+        "a JEOL JEM-2100F field-emission scanning transmission electron "
+        "microscope with a tilting goniometer stage in the Analytical "
+        "Instrument Laboratory, Building 42-1 Room 212, Waseda "
+        "University (simplified representation; see "
+        "real_lab/labs/waseda-university.md)"
+    ),
+))
+
+YorkUniversityElyra7Task, YorkUniversityElyra7Expert = make_static_task(StaticDisplaySpec(
+    name="real_lab_york_university_elyra7_display",
+    scene_file="mani_real_lab_york_university_elyra7.xml",
+    prompt=(
+        "a Carl Zeiss ELYRA 7 super-resolution SIM/PALM/STORM microscope "
+        "with a rotating filter turret in the Technology Facility "
+        "Imaging and Cytometry Laboratory, University of York "
+        "(simplified representation; see "
+        "real_lab/labs/university-of-york.md)"
+    ),
+))
+
+KeioUniversityMultisemTask, KeioUniversityMultisemExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_keio_university_multisem_display",
+    scene_file="mani_real_lab_keio_university_multisem.xml",
+    prompt=(
+        "a Zeiss MultiSEM 505 multi-beam scanning electron microscope "
+        "with a swinging EDX detector arm in the Electron Microscope "
+        "Center, Preventive Medicine Building, Keio University "
+        "(simplified representation; see "
+        "real_lab/labs/keio-university.md)"
+    ),
+))
+
+OttawaUniversitySp5stedTask, OttawaUniversitySp5stedExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_ottawa_university_sp5sted_display",
+    scene_file="mani_real_lab_ottawa_university_sp5sted.xml",
+    prompt=(
+        "a Leica TCS SP5-STED super-resolution confocal microscope with "
+        "a rotating filter turret in the CBIA Core Facility, 451 Smyth "
+        "Road, University of Ottawa (simplified representation; see "
+        "real_lab/labs/university-of-ottawa.md)"
+    ),
+))
+
+TuwienUstemNeoarmTask, TuwienUstemNeoarmExpert = make_static_task(StaticDisplaySpec(
+    name="real_lab_tuwien_ustem_neoarm_display",
+    scene_file="mani_real_lab_tuwien_ustem_neoarm.xml",
+    prompt=(
+        "a JEOL NeoARM 200 aberration-corrected transmission electron "
+        "microscope with a tilting goniometer stage in USTEM, Room "
+        "057-02, Freihaus building, TU Wien (simplified representation; "
+        "see real_lab/labs/technische-universit-t-wien.md)"
+    ),
+))

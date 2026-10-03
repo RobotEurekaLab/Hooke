@@ -2244,6 +2244,95 @@ CATALOG: dict[str, CatalogEntry] = {
             category="real_lab",
             module="archetypes.real_lab_items", cls="OtagoUniversityJsm6700fTask", robot="ur5e", camera="table_cam_front",
         ),
+        CatalogEntry(
+            name="real_lab_ucsb_nanolive_display",
+            description=(
+                "A Nanolive 3D Cell Explorer label-free live-cell tomography microscope with a "
+                "rotating filter turret in the NRI-MCDB Microscopy Facility, Bio2 Building Room "
+                "5173B, UC Santa Barbara (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-california-santa-barbara-ucsb.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UcsbNanoliveTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_newcastle_au_orbitrap_display",
+            description=(
+                "A Thermo Q Exactive Orbitrap mass spectrometer with a hinged sample-plate "
+                "loading door in the Central Analytical Facilities (CAF), Life Sciences Building, "
+                "University of Newcastle Australia (display only, simplified representative "
+                "geometry -- see real_lab/labs/the-university-of-newcastle-australia-uon.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NewcastleAuOrbitrapTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_uniandes_tescan_display",
+            description=(
+                "A Tescan Lyra 3 dual-beam FIB-SEM with a hinged specimen chamber door in the "
+                "Centro de Microscopia (MicroCore), Lab B101-B102, Universidad de los Andes "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/universidad-de-los-andes.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UniandesTescanTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_waseda_university_jem2100f_display",
+            description=(
+                "A JEOL JEM-2100F field-emission STEM with a tilting goniometer stage in the "
+                "Analytical Instrument Laboratory, Building 42-1 Room 212, Waseda University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/waseda-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WasedaUniversityJem2100fTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_york_university_elyra7_display",
+            description=(
+                "A Carl Zeiss ELYRA 7 super-resolution SIM/PALM/STORM microscope with a rotating "
+                "filter turret in the Technology Facility Imaging and Cytometry Laboratory, "
+                "University of York (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-york.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="YorkUniversityElyra7Task", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_keio_university_multisem_display",
+            description=(
+                "A Zeiss MultiSEM 505 multi-beam scanning electron microscope with a swinging "
+                "EDX detector arm in the Electron Microscope Center, Preventive Medicine "
+                "Building, Keio University (display only, simplified representative geometry -- "
+                "see real_lab/labs/keio-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KeioUniversityMultisemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ottawa_university_sp5sted_display",
+            description=(
+                "A Leica TCS SP5-STED super-resolution confocal microscope with a rotating "
+                "filter turret in the CBIA Core Facility, 451 Smyth Road, University of Ottawa "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-ottawa.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="OttawaUniversitySp5stedTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_tuwien_ustem_neoarm_display",
+            description=(
+                "A JEOL NeoARM 200 aberration-corrected TEM with a tilting goniometer stage in "
+                "USTEM, Room 057-02, Freihaus building, TU Wien (display only, simplified "
+                "representative geometry -- see real_lab/labs/technische-universit-t-wien.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TuwienUstemNeoarmTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 
