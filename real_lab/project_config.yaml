@@ -1,0 +1,41 @@
+project_name: Hooke Real Lab Reconstruction — QS 101-250 pilot
+coordinator: Alfredo
+target_disciplines:
+  - molecular_biology_and_genomics
+  - microscopy_and_cell_manipulation
+  - chemistry_and_synthesis
+  - any_other_real_experimental_lab   # "other/all" selected — no hard restriction
+target_experiment_types: []            # not pre-restricted this round
+target_regions: []                      # global, matches the QS 101-250 pool as-is
+included_institution_types:
+  - university_research_group
+  - department_shared_facility
+  - university_core_facility
+excluded_institutions_or_groups: []     # none configured yet
+existing_scene_registry: Hooke/archetypes/task_catalog.py
+reconstruction_scope: identification_and_research_phase_only   # see note below
+required_capability_levels: []          # not yet reached — see note
+target_simulation_backends: []          # not yet reached — see note
+asset_formats: []                       # not yet reached — see note
+ui_language: en
+source_and_evidence_storage: real_lab/labs/*.md (one file per school)
+generated_output_root: temp/lab_reconstruction/
+download_approval_rule: not yet exercised this round
+compute_resource_rule: not yet exercised this round
+external_contact_owner: unset
+submission_and_publication_rule: unset
+review_milestones:
+  - "Phase 1: school/lab candidate identification (Sections 3-8 of the guide), QS rank 101-250"
+
+# --- Honest scope note (not part of the guide's own template, added here) ---
+# This pilot covers Section 1-8 of private/real_lab_reconstruction_collaboration_guide.md:
+# building the candidate pool and identifying real labs per school, with sourced
+# evidence pointers (URLs, what each source does/doesn't confirm).
+#
+# It does NOT cover Sections 9-11 (actual 3D space/equipment reconstruction,
+# mechanical validation, high-fidelity checks) -- that requires real CAD/asset
+# tooling and per-equipment manufacturer research this session doesn't have.
+# Producing fabricated "3D scenes" without that evidence chain would violate
+# the guide's own core principle (Section 1.2, item 7: "record uncertainty",
+# and Section 6.5: "do not cover material gaps by mirroring, adding arbitrary
+# equipment, or splicing unrelated rooms").
