@@ -75,5 +75,6 @@ def task_navigation(entry: CatalogEntry) -> dict:
                 task_label=info["facility"],
                 university=info["university"],
                 facility=info["facility"],
+                video=f"/docs-assets/real-lab-{info['school_id']}-mujoco.mp4",
             )
     return navigation

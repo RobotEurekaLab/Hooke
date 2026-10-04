@@ -120,7 +120,8 @@
   button.primary:disabled { background: var(--line-strong); color: var(--ink-faint); cursor: not-allowed; box-shadow: none; }
   #robot-info, #uni-robot-info { font-size: 0.86rem; color: var(--ink-dim); margin-bottom: 0.9rem; line-height: 1.5; }
   #preview, #custom-preview, #uni-preview { text-align: center; }
-  #preview img, #custom-preview img, #uni-preview img {
+  #preview img, #custom-preview img, #uni-preview img,
+  #preview video, #custom-preview video, #uni-preview video {
     max-width: 100%; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
   }
   #error, #custom-error, #uni-error { color: var(--err); font-size: 0.88rem; }
@@ -242,7 +243,7 @@
 
 <fieldset id="university-panel" style="display:none">
   <p class="hint">We've virtualized labs from a number of universities. Pick one, then narrow down by subject and lab.</p>
-  <p class="hint">Each entry below is a real, sourced lab facility (QS World University Rankings 101&ndash;250). Picking a university filters Subject and Lab to that school's reconstructed scene(s).</p>
+  <p class="hint">Each entry below is a real, sourced lab facility (QS World University Rankings 101&ndash;250). Picking a university filters Subject and Lab to that school's reconstructed scene(s) and plays its clip right away &mdash; "Generate scene" renders a fresh live snapshot on top of that.</p>
 
   <label for="uni-university">University</label>
   <select id="uni-university"></select>
@@ -471,10 +472,25 @@ function currentUniTask() {
 function onUniLabChange() {
   const task = currentUniTask();
   document.getElementById('uni-error').textContent = '';
-  if (!task) { document.getElementById('uni-robot-info').textContent = ''; return; }
+  if (!task) {
+    document.getElementById('uni-robot-info').textContent = '';
+    document.getElementById('uni-preview').innerHTML = '';
+    return;
+  }
   const robot = CATALOG.robots[task.robot];
   document.getElementById('uni-robot-info').textContent =
     `${task.description} — ${robot.category.replace('_', ' ')}, this task's native robot.`;
+
+  // Real-lab tasks ship a pre-recorded clip of their one moving part, so
+  // the simulation is viewable the instant a lab is picked -- no need to
+  // wait on a live /api/scene render just to see what the scene looks like.
+  if (task.navigation?.video) {
+    document.getElementById('uni-preview').innerHTML =
+      `<video src="${task.navigation.video}" autoplay loop muted playsinline controls></video>
+       <p><em>${task.navigation.university} — ${task.navigation.facility}</em></p>`;
+  } else {
+    document.getElementById('uni-preview').innerHTML = '';
+  }
 }
 
 function populateTasks() {
