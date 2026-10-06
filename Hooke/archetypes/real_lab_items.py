@@ -30,7 +30,7 @@ LancasterUniversityConfocalTask, LancasterUniversityConfocalExpert = make_static
 
 RiceUniversityMaskAlignerTask, RiceUniversityMaskAlignerExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_rice_university_mask_aligner_display",
-    scene_file="mani_real_lab_rice_university_mask_aligner.xml",
+    scene_file="mani_real_lab_rice_room.xml",
     prompt=(
         "a photolithography mask aligner chamber in the Rice "
         "Nanofabrication Facility, Space Science and Technology Building, "
@@ -107,7 +107,7 @@ TwenteUniversitySputterTask, TwenteUniversitySputterExpert = make_static_task(St
 
 NagoyaUniversityPalmTask, NagoyaUniversityPalmExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_nagoya_university_palm_display",
-    scene_file="mani_real_lab_nagoya_university_palm.xml",
+    scene_file="mani_real_lab_nagoya_room.xml",
     prompt=(
         "a PALM Combi laser microdissection and optical-tweezers "
         "cell-manipulation microscope with a swinging laser delivery arm "
@@ -152,7 +152,7 @@ UncLightsheetTask, UncLightsheetExpert = make_static_task(StaticDisplaySpec(
 
 GroningenUniversityCellSorterTask, GroningenUniversityCellSorterExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_groningen_university_cell_sorter_display",
-    scene_file="mani_real_lab_groningen_university_cell_sorter.xml",
+    scene_file="mani_real_lab_groningen_room.xml",
     prompt=(
         "a SORP BD FACSAria-style flow cytometry cell sorter with a "
         "swinging sample probe arm in the GBB Dedicated Research "
@@ -435,7 +435,7 @@ ChulalongkornPotentiostatTask, ChulalongkornPotentiostatExpert = make_static_tas
 
 KyushuUniversityLaserTask, KyushuUniversityLaserExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_kyushu_university_laser_display",
-    scene_file="mani_real_lab_kyushu_university_laser.xml",
+    scene_file="mani_real_lab_kyushu_room.xml",
     prompt=(
         "an ultrafast laser spectroscopy bench with a swinging optics "
         "arm in the Laboratory of Spectrochemistry, Room B1009, Ito "
@@ -808,7 +808,7 @@ MasseyUniversityAbiTask, MasseyUniversityAbiExpert = make_static_task(StaticDisp
 
 ExeterUniversityEmTask, ExeterUniversityEmExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_exeter_university_em_display",
-    scene_file="mani_real_lab_exeter_university_em.xml",
+    scene_file="mani_real_lab_exeter_room.xml",
     prompt=(
         "an electron microscope with a swinging EDX detector arm in the "
         "Bioimaging Centre, Geoffrey Pope Building, University of Exeter "
