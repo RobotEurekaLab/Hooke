@@ -1,0 +1,140 @@
+<mujoco model="real_lab_western_university_room">
+
+    <option integrator="implicitfast" impratio="10" cone="elliptic" noslip_iterations="2">
+        <flag multiccd="enable"/>
+    </option>
+    <visual>
+        <global azimuth="200" elevation="-14" offwidth="1280" offheight="960"/>
+    </visual>
+
+    <default>
+        <default class="body"><geom contype="1" conaffinity="1"/></default>
+    </default>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <texture type="2d" name="floortex" builtin="checker" mark="edge" rgb1="0.83 0.82 0.78" rgb2="0.78 0.77 0.73" markrgb="0.86 0.85 0.81" width="300" height="300"/>
+        <material name="floormat" texture="floortex" texuniform="true" texrepeat="10 10"/>
+
+        <model name="table" file="../misc/simple_table.xml" content_type="text/xml" />
+        <model name="centrifuge" file="../instrument/real_lab_western_university_centrifuge.xml" content_type="text/xml" />
+        <model name="biosafety" file="../instrument/real_lab_western_university_biosafety.xml" content_type="text/xml" />
+        <model name="ur5e" file="../robot/ur5e_gripper.xml" content_type="text/xml" />
+    </asset>
+
+    <worldbody>
+        <light directional="true" diffuse="0.8 0.8 0.78" ambient="0.35 0.35 0.35" pos="0 0 5" dir="0 0 -1"/>
+        <light directional="true" diffuse="0.25 0.25 0.25" ambient="0.1 0.1 0.1" pos="-3 -2 4" dir="0.4 0.3 -1"/>
+        <geom name="floor" pos="0 0 0" size="3.6 4.2 0.05" type="plane" material="floormat"/>
+        <geom name="wall_back" type="box" pos="0 3.2 1.3" size="3.4 0.05 1.3" rgba="0.93 0.93 0.91 1"/>
+        <geom name="wall_left" type="box" pos="-3.4 0.1 1.3" size="0.05 3.1 1.3" rgba="0.93 0.93 0.91 1"/>
+        <geom name="wall_right" type="box" pos="3.4 0.1 1.3" size="0.05 3.1 1.3" rgba="0.93 0.93 0.91 1"/>
+        <geom name="ceiling" type="box" pos="0 0.1 2.62" size="3.4 3.15 0.03" rgba="0.88 0.88 0.87 1"/>
+        <light directional="true" diffuse="0.55 0.55 0.55" ambient="0.55 0.55 0.55" pos="0 0 2.5" dir="0 0.3 -1"/>
+        <light directional="true" diffuse="0.35 0.35 0.35" ambient="0.2 0.2 0.2" pos="0 -2 2.5" dir="0 -0.3 -1"/>
+        <!-- recessed fluorescent light panels, matching the bright even
+             overhead lighting visible in presults.jpg -->
+        <geom type="box" pos="-1.5 0.5 2.595" size="0.5 0.3 0.008" rgba="1 1 1 1"/>
+        <geom type="box" pos="0 0.5 2.595" size="0.5 0.3 0.008" rgba="1 1 1 1"/>
+        <geom type="box" pos="1.5 0.5 2.595" size="0.5 0.3 0.008" rgba="1 1 1 1"/>
+        <geom type="box" pos="-1.5 -1.5 2.595" size="0.5 0.3 0.008" rgba="1 1 1 1"/>
+        <geom type="box" pos="0 -1.5 2.595" size="0.5 0.3 0.008" rgba="1 1 1 1"/>
+        <geom type="box" pos="1.5 -1.5 2.595" size="0.5 0.3 0.008" rgba="1 1 1 1"/>
+
+        <!-- back-wall glassware shelving, left of center -->
+        <body name="shelf_unit" pos="-0.9 2.95 0">
+            
+      <!-- open shelving unit, back wall, holding glassware (per presults.jpg) -->
+      <geom type="box" size="0.02 0.18 0.9" pos="-1.55 0 0.9" rgba="0.85 0.85 0.86 1"/>
+      <geom type="box" size="0.02 0.18 0.9" pos="1.55 0 0.9" rgba="0.85 0.85 0.86 1"/>
+      <geom type="box" size="1.57 0.18 0.015" pos="0 0 0.55" rgba="0.82 0.82 0.83 1"/>
+      <geom type="box" size="1.57 0.18 0.015" pos="0 0 0.95" rgba="0.82 0.82 0.83 1"/>
+      <geom type="box" size="1.57 0.18 0.015" pos="0 0 1.35" rgba="0.82 0.82 0.83 1"/>
+            <geom type="cylinder" size="0.032 0.030" pos="-0.220 0.000 0.595" rgba="0.70 0.80 0.82 0.55" class="body"/>
+      <geom type="cylinder" size="0.026 0.045" pos="-0.138 0.000 0.610" rgba="0.68 0.78 0.80 0.55" class="body"/>
+      <geom type="cylinder" size="0.018 0.029" pos="-0.053 0.000 0.594" rgba="0.72 0.82 0.84 0.55" class="body"/>
+      <geom type="cylinder" size="0.018 0.055" pos="0.007 0.000 0.620" rgba="0.64 0.74 0.76 0.55" class="body"/>
+      <geom type="cylinder" size="0.034 0.034" pos="0.075 0.000 0.599" rgba="0.73 0.83 0.85 0.55" class="body"/>
+      <geom type="cylinder" size="0.027 0.026" pos="0.154 0.000 0.591" rgba="0.74 0.84 0.86 0.55" class="body"/>
+            <geom type="cylinder" size="0.034 0.063" pos="-0.220 0.000 1.028" rgba="0.56 0.66 0.68 0.55" class="body"/>
+      <geom type="cylinder" size="0.031 0.058" pos="-0.139 0.000 1.023" rgba="0.68 0.78 0.80 0.55" class="body"/>
+      <geom type="cylinder" size="0.028 0.049" pos="-0.059 0.000 1.014" rgba="0.67 0.77 0.79 0.55" class="body"/>
+      <geom type="cylinder" size="0.025 0.042" pos="0.012 0.000 1.007" rgba="0.69 0.79 0.81 0.55" class="body"/>
+      <geom type="cylinder" size="0.027 0.063" pos="0.102 0.000 1.028" rgba="0.64 0.74 0.76 0.55" class="body"/>
+      <geom type="cylinder" size="0.018 0.026" pos="0.174 0.000 0.991" rgba="0.64 0.74 0.76 0.55" class="body"/>
+            <geom type="cylinder" size="0.027 0.035" pos="-0.220 0.000 1.400" rgba="0.62 0.72 0.74 0.55" class="body"/>
+      <geom type="cylinder" size="0.019 0.050" pos="-0.137 0.000 1.415" rgba="0.55 0.65 0.67 0.55" class="body"/>
+      <geom type="cylinder" size="0.022 0.035" pos="-0.064 0.000 1.400" rgba="0.75 0.85 0.87 0.55" class="body"/>
+      <geom type="cylinder" size="0.026 0.058" pos="0.004 0.000 1.423" rgba="0.68 0.78 0.80 0.55" class="body"/>
+      <geom type="cylinder" size="0.033 0.050" pos="0.071 0.000 1.415" rgba="0.65 0.75 0.77 0.55" class="body"/>
+      <geom type="cylinder" size="0.019 0.052" pos="0.169 0.000 1.417" rgba="0.70 0.80 0.82 0.55" class="body"/>
+        </body>
+        <!-- tall storage cabinet + coat hook, right side against back wall -->
+        <body name="cabinet" pos="2.9 2.9 0">
+            
+      <!-- tall white storage cabinet + coat hook, matching the cabinet/coat
+           visible at the edge of presults.jpg -->
+      <geom type="box" size="0.28 0.22 0.95" pos="0 0 0.95" rgba="0.93 0.93 0.94 1"/>
+      <geom type="box" size="0.002 0.22 0.95" pos="0.278 0 0.95" rgba="0.8 0.8 0.81 1"/>
+      <geom type="cylinder" size="0.012 0.05" pos="0.3 0.1 1.75" quat="0.707 0 0.707 0" rgba="0.3 0.3 0.32 1"/>
+        </body>
+
+        <!-- Bench A: QX200 Droplet Digital PCR System -- robot's working bench. -->
+        <body name="benchA" pos="0 -1.3 0" quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="/benchA:"/>
+            <body name="dropletdigital" pos="0 0 0.824" quat="0.707107 0 0 -0.707107">
+                
+      <geom type="box" size="0.08 0.09 0.045" pos="-0.085 0 0.045" rgba="0.87 0.84 0.77 1" class="body"/>
+      <geom type="box" size="0.095 0.09 0.055" pos="0.1 0 0.055" rgba="0.92 0.92 0.93 1" class="body"/>
+      <geom type="box" size="0.03 0.015 0.012" pos="0.1 0.06 0.123" rgba="0.1 0.1 0.12 1" class="body"/>
+      <geom type="cylinder" size="0.025 0.02" pos="-0.085 0 0.105" rgba="0.75 0.1 0.1 1" class="body"/>
+            </body>
+            <body name="1/ur5e" pos="0.5 -0. 0.824" quat="0 0 0 1">
+                <attach model="ur5e" body="world" prefix="/ur:"/>
+            </body>
+        </body>
+
+        <!-- Bench B: Bio-Rad Experion -->
+        <body name="benchB" pos="-1.9 1.75 0" quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="/benchB:"/>
+            <body name="experion" pos="0 0 0.824" quat="0.707107 0 0 -0.707107">
+                
+      <geom type="box" size="0.08 0.075 0.085" pos="0 0 0.085" rgba="0.88 0.85 0.78 1" class="body"/>
+      <geom type="box" size="0.08 0.075 0.012" pos="0 0 0.012" rgba="0.1 0.55 0.35 1" class="body"/>
+      <geom type="box" size="0.06 0.055 0.045" pos="0.01 -0.01 0.19" rgba="0.1 0.5 0.3 0.75" quat="0.985 0.174 0 0" class="body"/>
+      <geom type="cylinder" size="0.012 0.004" pos="0 0.078 0.06" quat="0.707 0.707 0 0" rgba="0.5 0.5 0.52 1" class="body"/>
+            </body>
+        </body>
+
+        <!-- Bench C: Thermo NanoDrop 2000C -->
+        <body name="benchC" pos="-0.65 1.75 0" quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="/benchC:"/>
+            <body name="nanodrop" pos="0 0 0.824" quat="0.707107 0 0 -0.707107">
+                
+      <geom type="box" size="0.045 0.07 0.075" pos="0 0 0.075" rgba="0.92 0.9 0.87 1" class="body"/>
+      <geom type="cylinder" size="0.04 0.05" pos="0 -0.02 0.185" quat="0.707 0.707 0 0" rgba="0.5 0.5 0.52 1" class="body"/>
+      <geom type="box" size="0.03 0.012 0.008" pos="-0.02 -0.071 0.03" rgba="0.75 0.1 0.1 1" class="body"/>
+            </body>
+        </body>
+
+        <!-- Bench D: Sorvall RC-5B refrigerated centrifuge -->
+        <body name="benchD" pos="0.6 1.75 0" quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="/benchD:"/>
+            <body name="centrifuge" pos="0.0 0.0 0.824">
+                <attach model="centrifuge" body="base" prefix="/centrifuge:" />
+            </body>
+        </body>
+
+        <!-- Bench E: laminar flow / biosafety cabinet -->
+        <body name="benchE" pos="1.85 1.75 0" quat="1 0 0 1">
+            <attach model="table" body="vention table" prefix="/benchE:"/>
+            <body name="biosafety" pos="0.0 0.0 0.824">
+                <attach model="biosafety" body="base" prefix="/biosafety:" />
+            </body>
+        </body>
+
+        <camera name="table_cam_front" pos="0 -4.4 1.9" quat="0.74967818 0.66180256 0 0" fovy="62" resolution="1280 960"/>
+        <camera name="table_cam_left" pos="-3.0 -1.5 2.0" quat="0.65 0.42 -0.32 -0.54" fovy="55" resolution="1280 960"/>
+    </worldbody>
+
+</mujoco>
