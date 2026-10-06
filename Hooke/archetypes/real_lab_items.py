@@ -288,7 +288,7 @@ LeidenUniversityCryoemTask, LeidenUniversityCryoemExpert = make_static_task(Stat
 
 QueenMarySequencerTask, QueenMarySequencerExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_queen_mary_sequencer_display",
-    scene_file="mani_real_lab_queen_mary_sequencer.xml",
+    scene_file="mani_real_lab_queen_mary_room.xml",
     prompt=(
         "a multi-capillary DNA sequencer with a hinged loading door in "
         "the Barts and the London Genome Centre, Queen Mary University "
@@ -527,7 +527,7 @@ StAndrewsOrbitrapTask, StAndrewsOrbitrapExpert = make_static_task(StaticDisplayS
 
 UcdConwayCytometerTask, UcdConwayCytometerExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_ucd_conway_cytometer_display",
-    scene_file="mani_real_lab_ucd_conway_cytometer.xml",
+    scene_file="mani_real_lab_ucd_room.xml",
     prompt=(
         "a Beckman Coulter-style flow cytometer with a hinged sample "
         "access lid in the Conway Genomics and Imaging Core, University "
@@ -570,7 +570,7 @@ IitmBioincubatorFermenterTask, IitmBioincubatorFermenterExpert = make_static_tas
 
 WisconsinMadisonNovaseqTask, WisconsinMadisonNovaseqExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_wisconsin_madison_novaseq_display",
-    scene_file="mani_real_lab_wisconsin_madison_novaseq.xml",
+    scene_file="mani_real_lab_wisconsin_madison_room.xml",
     prompt=(
         "an Illumina NovaSeq X Plus-style sequencer with a hinged "
         "loading door in the UW Biotech Center DNA Sequencing Facility, "
@@ -819,7 +819,7 @@ ExeterUniversityEmTask, ExeterUniversityEmExpert = make_static_task(StaticDispla
 
 UscGenomicsCoreTask, UscGenomicsCoreExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_usc_genomics_core_display",
-    scene_file="mani_real_lab_usc_genomics_core.xml",
+    scene_file="mani_real_lab_usc_room.xml",
     prompt=(
         "a benchtop genomics instrument with a hinged loading lid in the "
         "Molecular Genomics Core (MGC), Norris Research Tower, USC "
