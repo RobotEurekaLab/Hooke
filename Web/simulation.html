@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulation — Robot Scientists — Hooke</title>
+<meta name="description" content="100 real university labs rebuilt from their own photos, planetary sampling on two physics backends, and micrometre-scale cell manipulation — all running in Hooke's simulators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="simulation.css">
+</head>
+<body class="sim-page">
+
+  <header class="topnav">
+    <a class="wordmark" href="index.html">
+      <span class="bit"></span>Robot&nbsp;Scientists
+    </a>
+    <a class="gh-link" href="https://github.com/RobotEurekaLab/Hooke" target="_blank" rel="noopener">
+      GitHub
+      <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38l-.01-1.49c-2.22.48-2.69-1.07-2.69-1.07-.36-.92-.89-1.16-.89-1.16-.72-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48l-.01 2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+    </a>
+  </header>
+
+  <section class="sim-hero">
+    <p class="sim-eyebrow"><a href="index.html">← Robot Scientists</a></p>
+    <h1>What we've built in simulation</h1>
+    <p class="sim-lede">Real laboratories rebuilt from their own photographs, planetary sampling validated on two
+      physics backends side by side, and micrometre-scale cell manipulation with quantitative pass criteria —
+      this is the simulation substrate everything else at Hooke is trained and tested against.</p>
+
+    <div class="sim-stats">
+      <div class="stat"><span class="n">100</span><span class="l">real university labs<br>QS rank 101–250</span></div>
+      <div class="stat"><span class="n">500+</span><span class="l">simulated tasks<br>across every domain</span></div>
+      <div class="stat"><span class="n">2</span><span class="l">physics backends<br>MuJoCo &amp; Isaac Sim</span></div>
+      <div class="stat"><span class="n">3</span><span class="l">planetary environments<br>Moon, Mars, orbit</span></div>
+    </div>
+
+    <div class="sim-cta">
+      <a class="btn btn-primary" href="https://tennessee-power-symptoms-hay.trycloudflare.com" target="_blank" rel="noopener">Open the live simulator →</a>
+      <a class="btn btn-ghost" href="https://github.com/RobotEurekaLab/Hooke/tree/main/real_lab" target="_blank" rel="noopener">Browse the source on GitHub</a>
+    </div>
+    <p class="sim-tunnel-note">The live simulator runs on a rotating tunnel address — if the link above is stale, it's between restarts.</p>
+  </section>
+
+  <section class="sim-section" aria-labelledby="h-reallab">
+    <div class="sim-section-head">
+      <span class="sim-tag amber">01 · Real Lab Reconstruction</span>
+      <h2 id="h-reallab">Not a generic bench — the actual room</h2>
+      <p>For each university we went to the lab's own homepage, press materials, or facility photos and rebuilt the
+        room against what's actually visible in them — wall color, shelving, windows, the specific instruments —
+        instead of a plausible-looking guess. Every scene's sourcing is written down, including an honest tier for
+        what's confirmed from a real photo versus representative where no photo exists.</p>
+    </div>
+    <div class="video-grid" id="reallab-grid"></div>
+    <p class="sim-more">+ 88 more universities, QS rank 101–250 →
+      <a href="https://github.com/RobotEurekaLab/Hooke/blob/main/real_lab/schools.csv" target="_blank" rel="noopener">see the full list and sourcing on GitHub</a>
+    </p>
+  </section>
+
+  <section class="sim-section alt" aria-labelledby="h-space">
+    <div class="sim-section-head">
+      <span class="sim-tag cyan">02 · Space &amp; Planetary Science</span>
+      <h2 id="h-space">The same task, two physics engines, one answer</h2>
+      <p>Sample loading, mass measurement and spectral analysis run identically on the Moon, Mars and in orbit —
+        each task implemented once and executed on both MuJoCo and NVIDIA Isaac Sim (PhysX), so the two backends can
+        be checked against each other rather than trusted on faith.</p>
+    </div>
+    <div class="pair-grid" id="space-grid"></div>
+    <p class="sim-more">
+      <a href="https://tennessee-power-symptoms-hay.trycloudflare.com/space-experiments" target="_blank" rel="noopener">Explore every environment and task live →</a>
+    </p>
+  </section>
+
+  <section class="sim-section" aria-labelledby="h-micro">
+    <div class="sim-section-head">
+      <span class="sim-tag amber">03 · Microscopy &amp; Cell Manipulation</span>
+      <h2 id="h-micro">Micrometre scale, quantitative pass criteria</h2>
+      <p>A 36 µm phantom cell, a 4 µm probe tip, forceps driven independently of each other — pushing, grasping and
+        volume-controlled injection all score against explicit numeric thresholds (contact duration, placement
+        error, injected volume) rather than a subjective "looks right."</p>
+    </div>
+    <div class="shot-grid" id="micro-grid"></div>
+    <p class="sim-more">
+      <a href="https://tennessee-power-symptoms-hay.trycloudflare.com/microscopy" target="_blank" rel="noopener">Open the microscopy workstation live →</a>
+    </p>
+  </section>
+
+  <section class="sim-closing">
+    <h2>This is an early-stage research program.</h2>
+    <p>Simulation is the substrate — not the finish line. Physical robots closing the sim-to-real gap are scoped next.</p>
+    <div class="sim-cta">
+      <a class="btn btn-primary" href="https://tennessee-power-symptoms-hay.trycloudflare.com" target="_blank" rel="noopener">Open the live simulator →</a>
+      <a class="btn btn-ghost" href="https://github.com/RobotEurekaLab/Hooke" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </section>
+
+  <script src="simulation.js"></script>
+</body>
+</html>
