@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_massey_monitor">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.05 0.04 0.01" pos="0 -0.1 0.01" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.1" pos="0 -0.1 0.11" rgba="0.2 0.2 0.22 1" class="body"/>
+      <body name="monitor_tilt" pos="0 -0.1 0.28">
+        <joint name="monitor_tilt_joint" type="hinge" axis="1 0 0" range="-0.2 0.2" damping="0.4" frictionloss="0.15"/>
+  <geom type="box" size="0.11 0.008 0.08" pos="0 0 0" rgba="0.08 0.08 0.1 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
