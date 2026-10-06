@@ -9,7 +9,7 @@ from archetypes.static_display import StaticDisplaySpec, make_static_task
 
 WesternUniversityPcrTask, WesternUniversityPcrExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_western_university_pcr_display",
-    scene_file="mani_real_lab_western_university_pcr.xml",
+    scene_file="mani_real_lab_western_university_room.xml",
     prompt=(
         "a real-time PCR system in the Molecular Genetics Unit, Room 357, "
         "Western Science Centre, Western University (simplified "
@@ -19,7 +19,7 @@ WesternUniversityPcrTask, WesternUniversityPcrExpert = make_static_task(StaticDi
 
 LancasterUniversityConfocalTask, LancasterUniversityConfocalExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_lancaster_university_confocal_display",
-    scene_file="mani_real_lab_lancaster_university_confocal.xml",
+    scene_file="mani_real_lab_lancaster_room.xml",
     prompt=(
         "an inverted confocal microscope in the Advanced Light Microscopy "
         "Facility, Division of Biomedical and Life Sciences, Lancaster "
@@ -255,7 +255,7 @@ BaselUniversityLmdTask, BaselUniversityLmdExpert = make_static_task(StaticDispla
 
 UkmPcrTask, UkmPcrExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_ukm_pcr_display",
-    scene_file="mani_real_lab_ukm_pcr.xml",
+    scene_file="mani_real_lab_ukm_room.xml",
     prompt=(
         "a gradient PCR thermocycler with a hinged heating-block lid in "
         "the Genomics Lab, INBIOSIS, Universiti Kebangsaan Malaysia "
@@ -266,7 +266,7 @@ UkmPcrTask, UkmPcrExpert = make_static_task(StaticDisplaySpec(
 
 EindhovenMicrofabTask, EindhovenMicrofabExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_eindhoven_microfab_display",
-    scene_file="mani_real_lab_eindhoven_microfab.xml",
+    scene_file="mani_real_lab_eindhoven_room.xml",
     prompt=(
         "a femtosecond-laser micromachining setup with a swinging optics "
         "arm in the TU/e Microfab Lab, Building 15 Gemini-Noord, "
@@ -797,7 +797,7 @@ PolitoUltrasonicTask, PolitoUltrasonicExpert = make_static_task(StaticDisplaySpe
 
 MasseyUniversityAbiTask, MasseyUniversityAbiExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_massey_university_abi_display",
-    scene_file="mani_real_lab_massey_university_abi.xml",
+    scene_file="mani_real_lab_massey_room.xml",
     prompt=(
         "an ABI 3500xl-style capillary genetic analyzer with a hinged "
         "loading door in the Massey Genome Service, Room ScD3.15A, "
@@ -969,7 +969,7 @@ NycuLsm900Task, NycuLsm900Expert = make_static_task(StaticDisplaySpec(
 
 QutCarfHimTask, QutCarfHimExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_qut_carf_him_display",
-    scene_file="mani_real_lab_qut_carf_him.xml",
+    scene_file="mani_real_lab_qut_room2.xml",
     prompt=(
         "a Zeiss Helios Helium Ion Microscope with a hinged specimen "
         "chamber door in the Central Analytical Research Facility "
