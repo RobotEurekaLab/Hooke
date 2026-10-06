@@ -52,7 +52,7 @@ AarhusUniversitySpinningDiskTask, AarhusUniversitySpinningDiskExpert = make_stat
 
 CurtinUniversitySemTask, CurtinUniversitySemExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_curtin_university_sem_display",
-    scene_file="mani_real_lab_curtin_university_sem.xml",
+    scene_file="mani_real_lab_curtin_room.xml",
     prompt=(
         "an electron microscope with a specimen load-lock chamber in the "
         "John de Laeter Centre, Curtin University (simplified "
@@ -332,7 +332,7 @@ McmasterUniversitySequencerTask, McmasterUniversitySequencerExpert = make_static
 
 WustlHistologyTask, WustlHistologyExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_wustl_histology_display",
-    scene_file="mani_real_lab_wustl_histology.xml",
+    scene_file="mani_real_lab_wustl_room.xml",
     prompt=(
         "a wide-field microscope for histology and fluorescence imaging "
         "with a rotating filter turret in the Molecular Microbiology "
@@ -708,7 +708,7 @@ SussexUniversityScanrTask, SussexUniversityScanrExpert = make_static_task(Static
 
 WellingtonUniversityVucelTask, WellingtonUniversityVucelExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_wellington_university_vucel_display",
-    scene_file="mani_real_lab_wellington_university_vucel.xml",
+    scene_file="mani_real_lab_wellington_room.xml",
     prompt=(
         "a flow-through seawater wet-lab bench with a swinging tap lever "
         "in the Victoria University Coastal Ecology Lab (VUCEL), "
@@ -774,7 +774,7 @@ IitkgpFesemTask, IitkgpFesemExpert = make_static_task(StaticDisplaySpec(
 
 DarmstadtAemStemTask, DarmstadtAemStemExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_darmstadt_aem_stem_display",
-    scene_file="mani_real_lab_darmstadt_aem_stem.xml",
+    scene_file="mani_real_lab_darmstadt_room.xml",
     prompt=(
         "a JEOL ARM 200F aberration-corrected scanning transmission "
         "electron microscope with a tilting goniometer stage in the "
@@ -933,7 +933,7 @@ IiscAptTask, IiscAptExpert = make_static_task(StaticDisplaySpec(
 
 NckuJem1400Task, NckuJem1400Expert = make_static_task(StaticDisplaySpec(
     name="real_lab_ncku_jem1400_display",
-    scene_file="mani_real_lab_ncku_jem1400.xml",
+    scene_file="mani_real_lab_ncku_room.xml",
     prompt=(
         "a JEOL JEM-1400 transmission electron microscope with a "
         "tilting goniometer stage in the TEM service, Room 82-B139, "
@@ -1003,7 +1003,7 @@ OsuCmifLightsheetTask, OsuCmifLightsheetExpert = make_static_task(StaticDisplayS
 
 FloridaUniversityFlowcytometerTask, FloridaUniversityFlowcytometerExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_florida_university_flowcytometer_display",
-    scene_file="mani_real_lab_florida_university_flowcytometer.xml",
+    scene_file="mani_real_lab_florida_room.xml",
     prompt=(
         "a BD Symphony S6-style flow cytometer/sorter with a hinged "
         "sample access lid in the Cytometry & Optical Microscopy Core, "
@@ -1087,7 +1087,7 @@ WasedaUniversityJem2100fTask, WasedaUniversityJem2100fExpert = make_static_task(
 
 YorkUniversityElyra7Task, YorkUniversityElyra7Expert = make_static_task(StaticDisplaySpec(
     name="real_lab_york_university_elyra7_display",
-    scene_file="mani_real_lab_york_university_elyra7.xml",
+    scene_file="mani_real_lab_york_room.xml",
     prompt=(
         "a Carl Zeiss ELYRA 7 super-resolution SIM/PALM/STORM microscope "
         "with a rotating filter turret in the Technology Facility "
