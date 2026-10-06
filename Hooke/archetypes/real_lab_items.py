@@ -163,7 +163,7 @@ GroningenUniversityCellSorterTask, GroningenUniversityCellSorterExpert = make_st
 
 BostonUniversityWidefieldTask, BostonUniversityWidefieldExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_boston_university_widefield_display",
-    scene_file="mani_real_lab_boston_university_widefield.xml",
+    scene_file="mani_real_lab_boston_university_room.xml",
     prompt=(
         "a Nikon-style deconvolution wide-field epifluorescence "
         "microscope with a rotating filter turret in the Cellular "
@@ -379,7 +379,7 @@ PadovaUniversityTemTask, PadovaUniversityTemExpert = make_static_task(StaticDisp
 
 DtuNanolabFibsemTask, DtuNanolabFibsemExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_dtu_nanolab_fibsem_display",
-    scene_file="mani_real_lab_dtu_nanolab_fibsem.xml",
+    scene_file="mani_real_lab_dtu_nanolab_room.xml",
     prompt=(
         "a dual-beam FIB-SEM with a hinged specimen chamber door in the "
         "DTU Nanolab cleanroom, Building 347, Technical University of "
@@ -515,7 +515,7 @@ AsuLiquidHandlerTask, AsuLiquidHandlerExpert = make_static_task(StaticDisplaySpe
 
 StAndrewsOrbitrapTask, StAndrewsOrbitrapExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_st_andrews_orbitrap_display",
-    scene_file="mani_real_lab_st_andrews_orbitrap.xml",
+    scene_file="mani_real_lab_st_andrews_room.xml",
     prompt=(
         "a Thermo Orbitrap Exploris-style mass spectrometer with a "
         "hinged sample-plate loading door in the School of Chemistry "
@@ -549,7 +549,7 @@ StockholmUniversitySpsTask, StockholmUniversitySpsExpert = make_static_task(Stat
 
 PolimiFlowReactorTask, PolimiFlowReactorExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_polimi_flow_reactor_display",
-    scene_file="mani_real_lab_polimi_flow_reactor.xml",
+    scene_file="mani_real_lab_polimi_room.xml",
     prompt=(
         "a continuous-flow chemical reactor with a swinging valve lever "
         "in BiocatLab, Politecnico di Milano (simplified representation; "
@@ -719,7 +719,7 @@ WellingtonUniversityVucelTask, WellingtonUniversityVucelExpert = make_static_tas
 
 ChileUniversityPcrTask, ChileUniversityPcrExpert = make_static_task(StaticDisplaySpec(
     name="real_lab_chile_university_pcr_display",
-    scene_file="mani_real_lab_chile_university_pcr.xml",
+    scene_file="mani_real_lab_chile_room.xml",
     prompt=(
         "a PCR thermocycler with a hinged heating-block lid in the "
         "Laboratorio de Biologia Molecular e Ingenieria Genetica, "
