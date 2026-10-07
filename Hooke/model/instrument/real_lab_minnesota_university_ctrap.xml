@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_minnesota_university_ctrap">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.12 0.1 0.015" pos="0 0 0.015" rgba="0.14 0.14 0.16 1" class="body"/>
+      <geom type="cylinder" size="0.02 0.09" pos="-0.07 -0.06 0.105" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="box" size="0.09 0.02 0.012" pos="-0.025 -0.06 0.16" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="cylinder" size="0.01 0.03" pos="0.02 -0.06 0.145" rgba="0.85 0.15 0.15 1" class="body"/>
+      <body name="microfluidic_chip_stage" pos="0.0 -0.06 0.08">
+        <joint name="microfluidic_chip_stage_joint" type="slide" axis="1 0 0" range="-0.03 0.03" damping="1.0" frictionloss="0.4"/>
+  <geom type="box" size="0.04 0.025 0.004" pos="0 0 0" rgba="0.55 0.75 0.85 0.5" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

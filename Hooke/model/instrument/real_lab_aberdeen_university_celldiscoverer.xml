@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_aberdeen_university_celldiscoverer">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.13 0.11 0.06" pos="0 0 0.06" rgba="0.95 0.95 0.96 1" class="body"/>
+      <geom type="box" size="0.03 0.03 0.03" pos="0.0 0.02 0.14" rgba="0.2 0.2 0.22 1" class="body"/>
+      <geom type="box" size="0.1 0.02 0.01" pos="0 -0.12 0.09" rgba="0.75 0.75 0.78 0.9" class="body"/>
+      <body name="pick_arm" pos="0.1 0.0 0.14">
+        <joint name="pick_arm_joint" type="hinge" axis="0 0 1" range="-1.2 0" damping="0.6" frictionloss="0.25"/>
+  <geom type="box" size="0.07 0.012 0.01" pos="0.055 0 0" rgba="0.2 0.2 0.22 1" class="body"/>
+  <geom type="box" size="0.02 0.03 0.004" pos="0.12 0 -0.012" rgba="0.1 0.4 0.75 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

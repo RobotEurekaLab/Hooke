@@ -1247,6 +1247,1105 @@ CATALOG: dict[str, CatalogEntry] = {
             category="chemistry",
             module="archetypes.protocol_generated", cls="FilterCartridgeHousingTask", robot="ur5e", camera="table_cam_front",
         ),
+
+        # --- Real Lab Reconstruction pilot (real_lab/, QS 101-250) ---
+        CatalogEntry(
+            name="real_lab_western_university_pcr_display",
+            description=(
+                "A real-time PCR system in the Molecular Genetics Unit, Room 357, Western "
+                "Science Centre, Western University (display only, simplified representative "
+                "geometry -- see real_lab/labs/western-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WesternUniversityPcrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_lancaster_university_confocal_display",
+            description=(
+                "An inverted confocal microscope in the Advanced Light Microscopy Facility, "
+                "Division of Biomedical and Life Sciences, Lancaster University (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/lancaster-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="LancasterUniversityConfocalTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_rice_university_mask_aligner_display",
+            description=(
+                "A photolithography mask aligner chamber in the Rice Nanofabrication Facility, "
+                "Space Science and Technology Building, Rice University (display only, "
+                "simplified representative geometry -- see real_lab/labs/rice-university.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="RiceUniversityMaskAlignerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_aarhus_university_spinning_disk_display",
+            description=(
+                "A spinning-disk confocal microscope with a rotating objective turret in the "
+                "Bioimaging Core Facility, Skou Building 1116 Room 256, Aarhus University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/aarhus-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="AarhusUniversitySpinningDiskTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_curtin_university_sem_display",
+            description=(
+                "An electron microscope with a specimen load-lock chamber in the John de Laeter "
+                "Centre, Curtin University (display only, simplified representative geometry -- "
+                "see real_lab/labs/curtin-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="CurtinUniversitySemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_emory_university_sequencer_display",
+            description=(
+                "A benchtop DNA sequencer with a slide-out flow-cell drawer in the Emory "
+                "Integrated Genomics Core, Woodruff Memorial Research Building, Emory University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/emory-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="EmoryUniversitySequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_unicamp_afm_display",
+            description=(
+                "An atomic force microscope with a vertical scan head in the LIMicro-IQ "
+                "microscopy core facility, Room D106, Institute of Chemistry, Universidade "
+                "Estadual de Campinas (display only, simplified representative geometry -- see "
+                "real_lab/labs/universidade-estadual-de-campinas-unicamp.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UnicampAfmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_loughborough_university_nmr_display",
+            description=(
+                "A benchtop NMR spectrometer with a hinged sample port in the WPL.2.09 Chemistry "
+                "Synthesis Laboratory, STEMLab building, Loughborough University (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/loughborough-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="LoughboroughUniversityNmrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_twente_university_sputter_display",
+            description=(
+                "A thin-film deposition chamber with a hinged viewport hatch in the MESA+ "
+                "Institute NanoLab cleanroom, University of Twente (display only, simplified "
+                "representative geometry -- see real_lab/labs/university-of-twente.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TwenteUniversitySputterTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_nagoya_university_palm_display",
+            description=(
+                "A PALM Combi laser microdissection and optical-tweezers cell-manipulation "
+                "microscope with a swinging laser delivery arm in the ITbM Live Imaging Center, "
+                "Nagoya University (display only, simplified representative geometry -- see "
+                "real_lab/labs/nagoya-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NagoyaUniversityPalmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_khalifa_university_tem_display",
+            description=(
+                "A transmission electron microscope with a hinged specimen airlock port in the "
+                "Electron Microscopy Facility, Building L Room 1020, Khalifa University (display "
+                "only, simplified representative geometry -- see "
+                "real_lab/labs/khalifa-university-of-science-and-technology.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KhalifaUniversityTemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_geneva_university_slide_scanner_display",
+            description=(
+                "An Olympus VS120-style slide scanner with a sliding slide tray in Room "
+                "C06.1533.a, Bioimaging Core Facility, CMU Building C, University of Geneva "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-geneva.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="GenevaUniversitySlideScannerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_unc_lightsheet_display",
+            description=(
+                "A light-sheet fluorescence microscope with a translating sample mount in the "
+                "Biology Microscopy Core, Genome Sciences Building Room 1152, University of North "
+                "Carolina at Chapel Hill (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-north-carolina-chapel-hill.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UncLightsheetTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_groningen_university_cell_sorter_display",
+            description=(
+                "A SORP BD FACSAria-style flow cytometry cell sorter with a swinging sample "
+                "probe arm in the GBB Dedicated Research Facilities, Linnaeusborg, University of "
+                "Groningen (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-groningen.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="GroningenUniversityCellSorterTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_boston_university_widefield_display",
+            description=(
+                "A Nikon-style deconvolution wide-field epifluorescence microscope with a "
+                "rotating filter turret in the Cellular Imaging Core, Evans Biomedical Research "
+                "Center Basement B15, Boston University (display only, simplified representative "
+                "geometry -- see real_lab/labs/boston-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="BostonUniversityWidefieldTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_waterloo_university_gel_imager_display",
+            description=(
+                "A gel-imaging system with a hinged UV-transilluminator lid in the Molecular "
+                "Biology Core Facility, Room B1-371, Biology 1 building, University of Waterloo "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-waterloo.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WaterlooUniversityGelImagerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_utrecht_university_fibsem_display",
+            description=(
+                "A dual-beam FIB-SEM with a hinged specimen chamber door in the Cell Microscopy "
+                "Core, Room H02.313, Utrecht University (display only, simplified representative "
+                "geometry -- see real_lab/labs/utrecht-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UtrechtUniversityFibsemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_uppsala_university_multiphoton_display",
+            description=(
+                "A Leica DIVE-style multiphoton microscope with a rotating filter turret in the "
+                "BioVis imaging core facility, Rudbeck Laboratory, Uppsala University (display "
+                "only, simplified representative geometry -- see "
+                "real_lab/labs/uppsala-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UppsalaUniversityMultiphotonTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_kfupm_sem_display",
+            description=(
+                "A field-emission SEM with a swinging EDX detector arm in the Chemistry "
+                "Department Microscopy Laboratory, Building 4 Room 157, King Fahd University of "
+                "Petroleum and Minerals (display only, simplified representative geometry -- see "
+                "real_lab/labs/king-fahd-university-of-petroleum-minerals.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KfupmSemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_kit_karlsruhe_tem_display",
+            description=(
+                "A transmission electron microscope with a tilting goniometer specimen stage in "
+                "the Laboratory for Electron Microscopy, Building 30.22 Room 228, Karlsruhe "
+                "Institute of Technology (display only, simplified representative geometry -- see "
+                "real_lab/labs/kit-karlsruhe-institute-of-technology.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KitKarlsruheTemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_sheffield_university_chromium_display",
+            description=(
+                "A 10x Genomics Chromium Controller with a hinged chip-loading lid in the "
+                "Multiomics Facility, Sheffield Institute for Translational Neuroscience, "
+                "University of Sheffield (display only, simplified representative geometry -- see "
+                "real_lab/labs/the-university-of-sheffield.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="SheffieldUniversityChromiumTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_basel_university_lmd_display",
+            description=(
+                "A Leica LMD7-style laser microdissection microscope with a rotating "
+                "objective/laser-path turret in the Imaging Core Facility, Biozentrum, University "
+                "of Basel (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-basel.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="BaselUniversityLmdTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ukm_pcr_display",
+            description=(
+                "A gradient PCR thermocycler with a hinged heating-block lid in the Genomics Lab, "
+                "INBIOSIS, Universiti Kebangsaan Malaysia (display only, simplified representative "
+                "geometry -- see real_lab/labs/universiti-kebangsaan-malaysia-ukm.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UkmPcrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_eindhoven_microfab_display",
+            description=(
+                "A femtosecond-laser micromachining setup with a swinging optics arm in the TU/e "
+                "Microfab Lab, Building 15 Gemini-Noord, Eindhoven University of Technology "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/eindhoven-university-of-technology.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="EindhovenMicrofabTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_leiden_university_cryoem_display",
+            description=(
+                "A Titan Krios-style cryo-electron microscope with a cryo-dewar and hinged "
+                "specimen airlock in the NeCEN facility, Gorlaeus Laboratory, Leiden University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/leiden-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="LeidenUniversityCryoemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_queen_mary_sequencer_display",
+            description=(
+                "A multi-capillary DNA sequencer with a hinged loading door in the Barts and the "
+                "London Genome Centre, Queen Mary University of London (display only, simplified "
+                "representative geometry -- see real_lab/labs/queen-mary-university-of-london.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="QueenMarySequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_gothenburg_university_maldi_display",
+            description=(
+                "A MALDI imaging mass spectrometer with a hinged sample-plate loading door in the "
+                "Centre for Cellular Imaging, University of Gothenburg (display only, simplified "
+                "representative geometry -- see real_lab/labs/university-of-gothenburg.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="GothenburgUniversityMaldiTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_rmit_university_fibsem_display",
+            description=(
+                "A JEOL/FEI-style dual-beam FIB-SEM with a hinged specimen chamber door in the "
+                "RMIT Microscopy and Microanalysis Facility, Building 14, RMIT University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/rmit-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="RmitUniversityFibsemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_mcmaster_university_sequencer_display",
+            description=(
+                "A PacBio-style long-read DNA sequencer with a hinged loading door in the "
+                "McMaster Genomics Facility, Room 3N4, Health Sciences Centre, McMaster "
+                "University (display only, simplified representative geometry -- see "
+                "real_lab/labs/mcmaster-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="McmasterUniversitySequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_wustl_histology_display",
+            description=(
+                "A wide-field microscope for histology and fluorescence imaging with a rotating "
+                "filter turret in the Molecular Microbiology Imaging Facility, Room 10302, "
+                "McDonnell Pediatric Research Building, Washington University in St. Louis "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/washington-university-in-st-louis.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WustlHistologyTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_rochester_university_sonicator_display",
+            description=(
+                "A Covaris-style focused-ultrasonicator with a hinged water-bath lid in the "
+                "Rochester Genomics Center, James P. Wilmot Cancer Institute, University of "
+                "Rochester (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-rochester.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="RochesterUniversitySonicatorTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_queens_kingston_maldi_display",
+            description=(
+                "A Bruker AutoFlex-style MALDI-TOF mass spectrometer with a hinged sample-plate "
+                "loading door in the Department of Chemistry shared analytical facilities, "
+                "Chernoff Hall, Queen's University at Kingston (display only, simplified "
+                "representative geometry -- see real_lab/labs/queen-s-university-at-kingston.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="QueensKingstonMaldiTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_padova_university_tem_display",
+            description=(
+                "A FEI Tecnai G2-style transmission electron microscope with a tilting "
+                "goniometer specimen stage in the DiBio Imaging Facility, University of Padova "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/universit-di-padova.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="PadovaUniversityTemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_dtu_nanolab_fibsem_display",
+            description=(
+                "A dual-beam FIB-SEM with a hinged specimen chamber door in the DTU Nanolab "
+                "cleanroom, Building 347, Technical University of Denmark (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/technical-university-of-denmark.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="DtuNanolabFibsemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_wuhan_university_platereader_display",
+            description=(
+                "A microplate reader with a hinged sample-tray lid on the biochemical and "
+                "molecular detection platform, Shared Instrument Platform, College of Life "
+                "Sciences, Wuhan University (display only, simplified representative geometry -- "
+                "see real_lab/labs/wuhan-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WuhanUniversityPlateReaderTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_tohoku_university_mri_display",
+            description=(
+                "A 3.0T MRI scanner bore with a sliding patient table in the ToMMo "
+                "biobank/genome-medicine facility, Seiryo campus, Tohoku University (display "
+                "only, simplified representative geometry -- see "
+                "real_lab/labs/tohoku-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TohokuUniversityMriTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_iitb_nmr_display",
+            description=(
+                "A 500 MHz NMR spectrometer with a hinged sample-insertion port in the IOE "
+                "facility, Room 212, Department of Chemistry, IIT Bombay (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/indian-institute-of-technology-bombay-iitb.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="IitbNmrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_chulalongkorn_potentiostat_display",
+            description=(
+                "A GAMRY-style benchtop potentiostat with a hinged electrode access lid in the "
+                "Energetic Materials Research Laboratory, Chulalongkorn University (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/chulalongkorn-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="ChulalongkornPotentiostatTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_kyushu_university_laser_display",
+            description=(
+                "An ultrafast laser spectroscopy bench with a swinging optics arm in the "
+                "Laboratory of Spectrochemistry, Room B1009, Ito Campus, Kyushu University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/kyushu-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KyushuUniversityLaserTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_vanderbilt_university_esem_display",
+            description=(
+                "An environmental scanning electron microscope with a swinging EDX detector arm "
+                "in the Cell Imaging Shared Resource, Vanderbilt University (display only, "
+                "simplified representative geometry -- see real_lab/labs/vanderbilt-university.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="VanderbiltUniversityEsemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_tu_berlin_flow_cytometer_display",
+            description=(
+                "A benchtop flow cytometer with a hinged sample-tube access lid in the Chair of "
+                "Environmental Microbiomics laboratory, Room BH 6-1, TU Berlin (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/technische-universit-t-berlin-tu-berlin.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TuBerlinFlowCytometerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_bonn_limes_sted_display",
+            description=(
+                "An Abberior easy3D STED super-resolution microscope with a rotating filter "
+                "turret in the LIMES Technical Platforms, University of Bonn (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/rheinische-friedrich-wilhelms-universit-t-bonn.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="BonnLimesStedTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_fau_erlangen_cenem_display",
+            description=(
+                "A dual-beam electron microscope with a hinged specimen chamber door in CENEM, "
+                "the Center for Nanoanalysis and Electron Microscopy, FAU Erlangen-Nurnberg "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/friedrich-alexander-universit-t-erlangen-n-rnberg.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="FauErlangenCenemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ulb_limif_display",
+            description=(
+                "A Zeiss LSM780-style confocal/multiphoton microscope with a rotating filter "
+                "turret in the Light Microscopy Facility (LiMiF), IRIBHM, Universite Libre de "
+                "Bruxelles (display only, simplified representative geometry -- see "
+                "real_lab/labs/universite-libre-de-bruxelles.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UlbLimifTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_asu_liquid_handler_display",
+            description=(
+                "A Beckman Biomek-style automated liquid-handling gantry robot in the Desert "
+                "Southwest Genomics Center, Arizona State University (display only, simplified "
+                "representative geometry -- see real_lab/labs/arizona-state-university.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="AsuLiquidHandlerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_st_andrews_orbitrap_display",
+            description=(
+                "A Thermo Orbitrap Exploris-style mass spectrometer with a hinged sample-plate "
+                "loading door in the School of Chemistry analytical facilities, Purdie Building, "
+                "University of St Andrews (display only, simplified representative geometry -- "
+                "see real_lab/labs/university-of-st-andrews.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="StAndrewsOrbitrapTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ucd_conway_cytometer_display",
+            description=(
+                "A Beckman Coulter-style flow cytometer with a hinged sample access lid in the "
+                "Conway Genomics and Imaging Core, University College Dublin (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/university-college-dublin.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UcdConwayCytometerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_stockholm_university_sps_display",
+            description=(
+                "A spark plasma sintering press with a moving upper ram in the Spark Plasma "
+                "Sintering Facility, Arrhenius Laboratory, Stockholm University (display only, "
+                "simplified representative geometry -- see real_lab/labs/stockholm-university.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="StockholmUniversitySpsTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_polimi_flow_reactor_display",
+            description=(
+                "A continuous-flow chemical reactor with a swinging valve lever in BiocatLab, "
+                "Politecnico di Milano (display only, simplified representative geometry -- see "
+                "real_lab/labs/politecnico-di-milano.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="PolimiFlowReactorTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_iitm_bioincubator_fermenter_display",
+            description=(
+                "A benchtop fermenter with a hinged vessel lid in the IITM Bioincubator, IIT "
+                "Madras Research Park (display only, simplified representative geometry -- see "
+                "real_lab/labs/indian-institute-of-technology-madras-iitm.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="IitmBioincubatorFermenterTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_wisconsin_madison_novaseq_display",
+            description=(
+                "An Illumina NovaSeq X Plus-style sequencer with a hinged loading door in the UW "
+                "Biotech Center DNA Sequencing Facility, Room 1250, 425 Henry Mall, University of "
+                "Wisconsin-Madison (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-wisconsin-madison.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WisconsinMadisonNovaseqTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_helsinki_university_sequencer_display",
+            description=(
+                "A benchtop DNA sequencer with a hinged flow-cell loading lid in the DNA "
+                "Sequencing and Genomics Laboratory (BIDGEN), Biocenter 2, Viikki campus, "
+                "University of Helsinki (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-helsinki.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="HelsinkiUniversitySequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_nottingham_genomics_display",
+            description=(
+                "A genomics array scanner with a hinged sample-tray lid in the Post-Genomic "
+                "Technologies Facility, A Floor West Block, Queen's Medical Centre, University of "
+                "Nottingham (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-nottingham.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NottinghamGenomicsTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_oslo_university_livecell_display",
+            description=(
+                "A live-cell confocal imaging microscope with a rotating filter turret in the "
+                "Advanced Light Microscopy core facility, Rikshospitalet, University of Oslo "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-oslo.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="OsloUniversityLivecellTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_dartmouth_college_dragonfly_display",
+            description=(
+                "An Andor Dragonfly-style spinning-disk confocal microscope with a rotating "
+                "filter turret in the Life Sciences Light Microscopy Facility, Class of 1978 Life "
+                "Sciences Center, Dartmouth College (display only, simplified representative "
+                "geometry -- see real_lab/labs/dartmouth-college.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="DartmouthCollegeDragonflyTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_calgary_university_afm_display",
+            description=(
+                "A Bruker NanoWizard IV atomic force microscope with a vertical scan head in the "
+                "Microscopy and Imaging Facility (Charbonneau Microscopy Facility), University of "
+                "Calgary (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-calgary.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="CalgaryUniversityAfmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_aberdeen_university_celldiscoverer_display",
+            description=(
+                "A ZEISS Celldiscoverer 7 high-content imaging platform with a robotic "
+                "plate-handling arm in the Microscopy and Histology Core Facility, Institute of "
+                "Medical Sciences, University of Aberdeen (display only, simplified "
+                "representative geometry -- see real_lab/labs/university-of-aberdeen.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="AberdeenUniversityCelldiscovererTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_tubingen_university_em_display",
+            description=(
+                "An electron microscope with a swinging EDX detector arm in the Tubingen "
+                "Structural Microscopy (TSM) Core Facility, Campus Morgenstelle (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/eberhard-karls-universit-t-t-bingen.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TubingenUniversityEmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_bern_university_lsm_display",
+            description=(
+                "A Zeiss LSM710-style confocal laser scanning microscope with a rotating filter "
+                "turret in the Microscopy Imaging Center (MIC), University of Bern (display only, "
+                "simplified representative geometry -- see real_lab/labs/university-of-bern.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="BernUniversityLsmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_erasmus_rotterdam_biomics_display",
+            description=(
+                "A benchtop genomics sequencer with a hinged loading lid in the Erasmus Center "
+                "for Biomics, Department of Molecular Genetics, Erasmus MC (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/erasmus-university-rotterdam.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="ErasmusRotterdamBiomicsTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_aub_ngs_sequencer_display",
+            description=(
+                "A next-generation sequencing platform with a hinged loading lid in the Genomic "
+                "Profiling Program, Aida and Halim Daniel Academic and Clinical Center, American "
+                "University of Beirut (display only, simplified representative geometry -- see "
+                "real_lab/labs/american-university-of-beirut-aub.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="AubNgsSequencerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_sussex_university_scanr_display",
+            description=(
+                "An Olympus ScanR automated high-content screening platform with a robotic "
+                "plate-handling arm in the Wolfson Centre for Biological Imaging, University of "
+                "Sussex (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-sussex.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="SussexUniversityScanrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_wellington_university_vucel_display",
+            description=(
+                "A flow-through seawater wet-lab bench with a swinging tap lever in the Victoria "
+                "University Coastal Ecology Lab (VUCEL) (display only, simplified representative "
+                "geometry -- see real_lab/labs/victoria-university-of-wellington.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WellingtonUniversityVucelTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_chile_university_pcr_display",
+            description=(
+                "A PCR thermocycler with a hinged heating-block lid in the Laboratorio de "
+                "Biologia Molecular e Ingenieria Genetica, Universidad de Chile (display only, "
+                "simplified representative geometry -- see real_lab/labs/universidad-de-chile.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="ChileUniversityPcrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_cape_town_bsc_display",
+            description=(
+                "A Class II biosafety cabinet with a sliding sash in the Institute of Infectious "
+                "Disease and Molecular Medicine (IDM), University of Cape Town (display only, "
+                "simplified representative geometry -- see real_lab/labs/university-of-cape-town.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="CapeTownBscTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_gadjah_mada_promethion_display",
+            description=(
+                "An Oxford Nanopore PromethION 24-style sequencer with a hinged loading lid in "
+                "the Integrated Genome Factory (IGF), Faculty of Biology, Gadjah Mada University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/gadjah-mada-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="GadjahMadaPromethionTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_deakin_university_sem_display",
+            description=(
+                "A JEOL IT 300-style scanning electron microscope with a swinging EDX detector "
+                "arm in the Materials Science Labs, Deakin University (display only, simplified "
+                "representative geometry -- see real_lab/labs/deakin-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="DeakinUniversitySemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_iitkgp_fesem_display",
+            description=(
+                "A ZEISS/JEOL-style field-emission SEM with a hinged specimen chamber door in "
+                "the Central Research Facility (CRF), IIT Kharagpur (display only, simplified "
+                "representative geometry -- see "
+                "real_lab/labs/indian-institute-of-technology-kharagpur-iit-kgp.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="IitkgpFesemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_darmstadt_aem_stem_display",
+            description=(
+                "A JEOL ARM 200F aberration-corrected STEM with a tilting goniometer stage in the "
+                "Advanced Electron Microscopy Division, Building L2|01 Room 52, TU Darmstadt "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/technical-university-of-darmstadt.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="DarmstadtAemStemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_polito_ultrasonic_display",
+            description=(
+                "A Vibracell VC-505 ultrasonic processor with a hinged lid in the Chemical "
+                "Synthesis Laboratory, Technological Centre in Alessandria, Politecnico di Torino "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/politecnico-di-torino.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="PolitoUltrasonicTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_massey_university_abi_display",
+            description=(
+                "An ABI 3500xl-style capillary genetic analyzer with a hinged loading door in "
+                "the Massey Genome Service, Room ScD3.15A, Turitea Campus, Massey University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/massey-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="MasseyUniversityAbiTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_exeter_university_em_display",
+            description=(
+                "An electron microscope with a swinging EDX detector arm in the Bioimaging "
+                "Centre, Geoffrey Pope Building, University of Exeter (display only, simplified "
+                "representative geometry -- see real_lab/labs/the-university-of-exeter.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="ExeterUniversityEmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_usc_genomics_core_display",
+            description=(
+                "A benchtop genomics instrument with a hinged loading lid in the Molecular "
+                "Genomics Core (MGC), Norris Research Tower, USC Health Sciences Campus (display "
+                "only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-southern-california.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UscGenomicsCoreTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_usm_pfge_display",
+            description=(
+                "A pulsed-field gel electrophoresis (PFGE) system with a hinged buffer-chamber "
+                "lid in the INFORMM equipment facility, Universiti Sains Malaysia (display only, "
+                "simplified representative geometry -- see "
+                "real_lab/labs/universiti-sains-malaysia-usm.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UsmPfgeTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_msu_quantstudio_display",
+            description=(
+                "An ABI QuantStudio 7 Flex real-time PCR system with a hinged sample-plate "
+                "loading door in the RTSF Genomics Core, Michigan State University (display only, "
+                "simplified representative geometry -- see real_lab/labs/michigan-state-university.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="MsuQuantstudioTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_uam_madrid_stellaris_display",
+            description=(
+                "A Leica Stellaris 8 confocal microscope with FLIM/STED modules and a rotating "
+                "filter turret in the SMOA Advanced Optical Microscopy Facility, Lab 310, CBM, "
+                "Universidad Autonoma de Madrid (display only, simplified representative "
+                "geometry -- see real_lab/labs/universidad-aut-noma-de-madrid.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UamMadridStellarisTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_minnesota_university_ctrap_display",
+            description=(
+                "A LUMICKS C-Trap optical-tweezers instrument with a sliding microfluidic chip "
+                "stage in the University Imaging Centers, Jackson Hall, University of Minnesota "
+                "Twin Cities (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-minnesota-twin-cities.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="MinnesotaUniversityCtrapTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_king_saud_gammacell_display",
+            description=(
+                "A Gammacell 220 sample irradiator with a sliding sample drawer in the Central "
+                "Laboratory, College of Science, King Saud University (display only, simplified "
+                "representative geometry -- see real_lab/labs/king-saud-university.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KingSaudGammacellTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_hamburg_university_confocal_display",
+            description=(
+                "A Leica/Nikon/Zeiss-style confocal microscope with a rotating filter turret in "
+                "the Technology Platform Light Microscopy, Universitat Hamburg (display only, "
+                "simplified representative geometry -- see real_lab/labs/universit-t-hamburg.md "
+                "for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="HamburgUniversityConfocalTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_uclouvain_nmr_display",
+            description=(
+                "A 600 MHz FT-NMR spectrometer with a hinged sample-insertion port in the NMR "
+                "Platform, IMCN, Universite Catholique de Louvain (display only, simplified "
+                "representative geometry -- see "
+                "real_lab/labs/universit-catholique-de-louvain-uclouvain.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UclouvainNmrTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_freiburg_university_sted_display",
+            description=(
+                "A Leica TCS SP8 STED 3x super-resolution microscope with a rotating filter "
+                "turret in the Life Imaging Center (LIC), Hilde-Mangold-Haus, University of "
+                "Freiburg (display only, simplified representative geometry -- see "
+                "real_lab/labs/albert-ludwigs-universitaet-freiburg.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="FreiburgUniversityStedTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_iisc_apt_display",
+            description=(
+                "An atom probe tomography (APT) system with a tilting specimen stage in the "
+                "Advanced Facility for Microscopy and Microanalysis (AFMM), Indian Institute of "
+                "Science (display only, simplified representative geometry -- see "
+                "real_lab/labs/indian-institute-of-science.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="IiscAptTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ncku_jem1400_display",
+            description=(
+                "A JEOL JEM-1400 transmission electron microscope with a tilting goniometer "
+                "stage in the TEM service, Room 82-B139, Medical Building, National Cheng Kung "
+                "University (display only, simplified representative geometry -- see "
+                "real_lab/labs/national-cheng-kung-university-ncku.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NckuJem1400Task", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_nthu_cms_display",
+            description=(
+                "A ZEISS LSM 800 confocal microscope with Airyscan and a rotating filter turret "
+                "in the Confocal Microscope System (CMS) facility, Life Sciences Building II, "
+                "National Tsing Hua University (display only, simplified representative "
+                "geometry -- see real_lab/labs/national-tsing-hua-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NthuCmsTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_nycu_lsm900_display",
+            description=(
+                "A Carl Zeiss LSM900 confocal microscope with Airyscan2 and a rotating filter "
+                "turret in the Imaging Core Facility, Room 639, Library Building, Yang Ming "
+                "Campus, National Yang Ming Chiao Tung University (display only, simplified "
+                "representative geometry -- see "
+                "real_lab/labs/national-yang-ming-chiao-tung-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NycuLsm900Task", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_qut_carf_him_display",
+            description=(
+                "A Zeiss Helios Helium Ion Microscope with a hinged specimen chamber door in the "
+                "Central Analytical Research Facility (CARF), M Block, Queensland University of "
+                "Technology (display only, simplified representative geometry -- see "
+                "real_lab/labs/queensland-university-of-technology-qut.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="QutCarfHimTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_tel_aviv_university_lsm510_display",
+            description=(
+                "A Zeiss LSM 510-META confocal laser scanning microscope with a rotating filter "
+                "turret in the Rosalie and Harold Rae Brown Cancer Research Core Facility, Tel "
+                "Aviv University (display only, simplified representative geometry -- see "
+                "real_lab/labs/tel-aviv-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TelAvivUniversityLsm510Task", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_osu_cmif_lightsheet_display",
+            description=(
+                "A Miltenyi UltraMicroscope Blaze light-sheet microscope in Room 245A, Campus "
+                "Microscopy and Imaging Facility (CMIF), Biomedical Research Tower, Ohio State "
+                "University (display only, simplified representative geometry -- see "
+                "real_lab/labs/the-ohio-state-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="OsuCmifLightsheetTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_florida_university_flowcytometer_display",
+            description=(
+                "A BD Symphony S6-style flow cytometer/sorter with a hinged sample access lid in "
+                "the Cytometry & Optical Microscopy Core, Cancer & Genetics Research Complex, "
+                "University of Florida (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-florida.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="FloridaUniversityFlowcytometerTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_maryland_university_jpk_afm_display",
+            description=(
+                "A JPK NanoWizard 4a atomic force microscope with a vertical scan head in the "
+                "CMNS Imaging Incubator, Physical Sciences Complex, University of Maryland, "
+                "College Park (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-maryland-college-park.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="MarylandUniversityJpkAfmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_otago_university_jsm6700f_display",
+            description=(
+                "A JEOL JSM-6700F field-emission SEM with a cryo-preparation stage and a "
+                "swinging EDX detector arm in the OMNI electron microscopy unit, Room B10, Lindo "
+                "Ferguson Building, University of Otago (display only, simplified representative "
+                "geometry -- see real_lab/labs/university-of-otago.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="OtagoUniversityJsm6700fTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ucsb_nanolive_display",
+            description=(
+                "A Nanolive 3D Cell Explorer label-free live-cell tomography microscope with a "
+                "rotating filter turret in the NRI-MCDB Microscopy Facility, Bio2 Building Room "
+                "5173B, UC Santa Barbara (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-california-santa-barbara-ucsb.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UcsbNanoliveTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_newcastle_au_orbitrap_display",
+            description=(
+                "A Thermo Q Exactive Orbitrap mass spectrometer with a hinged sample-plate "
+                "loading door in the Central Analytical Facilities (CAF), Life Sciences Building, "
+                "University of Newcastle Australia (display only, simplified representative "
+                "geometry -- see real_lab/labs/the-university-of-newcastle-australia-uon.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="NewcastleAuOrbitrapTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_uniandes_tescan_display",
+            description=(
+                "A Tescan Lyra 3 dual-beam FIB-SEM with a hinged specimen chamber door in the "
+                "Centro de Microscopia (MicroCore), Lab B101-B102, Universidad de los Andes "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/universidad-de-los-andes.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="UniandesTescanTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_waseda_university_jem2100f_display",
+            description=(
+                "A JEOL JEM-2100F field-emission STEM with a tilting goniometer stage in the "
+                "Analytical Instrument Laboratory, Building 42-1 Room 212, Waseda University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/waseda-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="WasedaUniversityJem2100fTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_york_university_elyra7_display",
+            description=(
+                "A Carl Zeiss ELYRA 7 super-resolution SIM/PALM/STORM microscope with a rotating "
+                "filter turret in the Technology Facility Imaging and Cytometry Laboratory, "
+                "University of York (display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-york.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="YorkUniversityElyra7Task", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_keio_university_multisem_display",
+            description=(
+                "A Zeiss MultiSEM 505 multi-beam scanning electron microscope with a swinging "
+                "EDX detector arm in the Electron Microscope Center, Preventive Medicine "
+                "Building, Keio University (display only, simplified representative geometry -- "
+                "see real_lab/labs/keio-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="KeioUniversityMultisemTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_ottawa_university_sp5sted_display",
+            description=(
+                "A Leica TCS SP5-STED super-resolution confocal microscope with a rotating "
+                "filter turret in the CBIA Core Facility, 451 Smyth Road, University of Ottawa "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/university-of-ottawa.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="OttawaUniversitySp5stedTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_tuwien_ustem_neoarm_display",
+            description=(
+                "A JEOL NeoARM 200 aberration-corrected TEM with a tilting goniometer stage in "
+                "USTEM, Room 057-02, Freihaus building, TU Wien (display only, simplified "
+                "representative geometry -- see real_lab/labs/technische-universit-t-wien.md for "
+                "sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="TuwienUstemNeoarmTask", robot="ur5e", camera="table_cam_front",
+        ),
+        CatalogEntry(
+            name="real_lab_hbku_qbri_imagestream_display",
+            description=(
+                "An Amnis ImageStream MKII imaging flow cytometer with a hinged sample access lid "
+                "in the QBRI Imaging and Flow Cytometry Core, Hamad Bin Khalifa University "
+                "(display only, simplified representative geometry -- see "
+                "real_lab/labs/hamad-bin-khalifa-university.md for sourcing)."
+            ),
+            category="real_lab",
+            module="archetypes.real_lab_items", cls="HbkuQbriImagestreamTask", robot="ur5e", camera="table_cam_front",
+        ),
     ]
 }
 

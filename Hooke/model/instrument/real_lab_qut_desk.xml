@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_qut_desk">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+
+      <geom type="box" size="0.09 0.055 0.012" pos="0 0 0.012" rgba="0.5 0.52 0.55 1" class="body"/>
+      <geom type="box" size="0.002 0.1 0.065" pos="-0.05 -0.03 0.09" rgba="0.08 0.08 0.1 1" class="body"/>
+      <geom type="box" size="0.002 0.1 0.065" pos="0.02 -0.03 0.09" rgba="0.08 0.08 0.1 1" class="body"/>
+      <geom type="box" size="0.05 0.02 0.006" pos="0.07 0.02 0.03" rgba="0.1 0.1 0.12 1" class="body"/>
+      <geom type="box" size="0.02 0.015 0.012" pos="0.07 -0.015 0.045" rgba="0.1 0.1 0.12 1" class="body"/>
+
+    </body>
+  </worldbody>
+</mujoco>

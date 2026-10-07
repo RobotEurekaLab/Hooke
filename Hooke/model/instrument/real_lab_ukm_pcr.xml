@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="real_lab_ukm_pcr">
+  <compiler angle="radian" autolimits="true"/>
+  <default>
+    <default class="body"><geom contype="1" conaffinity="1"/></default>
+  </default>
+  <worldbody>
+    <body name="base">
+      <geom type="box" size="0.09 0.07 0.05" pos="0 0 0.05" rgba="0.92 0.92 0.94 1" class="body"/>
+      <body name="lid" pos="0 -0.07 0.1">
+        <joint name="lid_joint" type="hinge" axis="0 1 0" range="0 1.5" damping="0.6" frictionloss="0.25"/>
+  <geom type="box" size="0.09 0.015 0.012" pos="0 0 0.012" rgba="0.25 0.25 0.27 1" class="body"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
