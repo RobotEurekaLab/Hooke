@@ -1,0 +1,803 @@
+{
+  "scenes": [
+    {
+      "id": "yale_becton_cleanroom_metrology",
+      "title": "Becton Cleanroom Wafer Inspection Bay",
+      "institution": "Yale University \u2014 Becton Cleanroom",
+      "domain": "semiconductor metrology",
+      "university_expansion": true,
+      "source_urls": [
+        "https://research.yale.edu/cores/cleanroom",
+        "https://news.yale.edu/sites/default/files/ynews-12-03-52_r5a_0133.jpg",
+        "https://research.yale.edu/sites/default/files/styles/760w/public/2026-08/cleanroom_layout.png?itok=Qamj71pO"
+      ],
+      "reference_notes": "Official instrument-operation photograph and labelled main-campus plan inspected. Photo shows a binocular inspection microscope beside a guided benchtop tool; plan distinguishes metrology, plasma, deposition, wet-process, lithography, entry and gowning bays. The pictured manual handling arrangement is represented by a three-axis motorized mechanical surrogate; exact model, dimensions and placement on the source floor plan are not known.",
+      "observed_cues": [
+        "Upright binocular inspection head over a flat workpiece fixture.",
+        "Orange workpiece handling supports and an open worktop.",
+        "Cleanroom surroundings; official floor plan distinguishes the metrology zone."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "A local metrology bay; not the full Becton cleanroom or a surveyed floorplan.",
+      "room": {
+        "size": [
+          4.4,
+          3.6,
+          2.8
+        ],
+        "wall_color": [
+          0.87,
+          0.85,
+          0.71,
+          1
+        ],
+        "accent": [
+          0.68,
+          0.67,
+          0.56,
+          1
+        ],
+        "style": "cleanroom_metrology",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.62,
+              0.63,
+              0.59,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.9,
+              "width": 0.95,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": true
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "metrology_bench",
+          "pos": [
+            0.2,
+            0.68,
+            0
+          ],
+          "size": [
+            2.2,
+            0.85,
+            0.9
+          ],
+          "style": "open_frame",
+          "color": [
+            0.77,
+            0.79,
+            0.76,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "wafer_inspection",
+          "kind": "becton_wafer_inspection",
+          "pos": [
+            -0.12,
+            0.59,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Binocular microscope head and articulated wafer fixture",
+          "evidence": "photo-informed exterior, estimated scale and mechanism",
+          "source_urls": [
+            "https://research.yale.edu/cores/cleanroom",
+            "https://news.yale.edu/sites/default/files/ynews-12-03-52_r5a_0133.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://news.yale.edu/sites/default/files/ynews-12-03-52_r5a_0133.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/yale_becton_microscope.img"
+          ],
+          "supports": "Local microscope/fixture form or cleanroom zoning; no measured registration of the photograph to the plan."
+        },
+        {
+          "url": "https://research.yale.edu/sites/default/files/styles/760w/public/2026-08/cleanroom_layout.png?itok=Qamj71pO",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/yale_becton_plan.img"
+          ],
+          "supports": "Local microscope/fixture form or cleanroom zoning; no measured registration of the photograph to the plan."
+        }
+      ],
+      "layout_rationale": [
+        "Retain a broad open-frame inspection worktop and operator aisle.",
+        "Keep the stereo head over the wafer stage with a grounded bench and continuous column.",
+        "Room perimeter and entry are estimated context; do not merge unphotographed cleanroom process rooms."
+      ],
+      "circulation": {
+        "operator_approach": "Front and left aisle to the inspection fixture.",
+        "service_access": "Rear bench service strip; authored clearance, not certification."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.1,
+            -5.5,
+            4.1
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            1.6,
+            -1.3,
+            1.65
+          ],
+          "target": [
+            -0.1,
+            0.55,
+            1.18
+          ],
+          "fovy": 56
+        },
+        "workstation": {
+          "position": [
+            0.8,
+            -0.56,
+            1.64
+          ],
+          "target": [
+            -0.12,
+            0.57,
+            1.13
+          ],
+          "fovy": 38
+        },
+        "source": {
+          "position": [
+            0.48,
+            -0.38,
+            1.35
+          ],
+          "target": [
+            -0.14,
+            0.55,
+            1.18
+          ],
+          "fovy": 39
+        }
+      },
+      "task": {
+        "name": "Position a wafer coupon for visual inspection",
+        "description": "Move the clamped inert coupon in XY and adjust the head height; inspect joint and specimen poses.",
+        "primary_equipment": "wafer_inspection",
+        "observable": "stage_x, stage_y, focus_height and wafer_coupon pose."
+      },
+      "limitations": [
+        "Exterior and travel are authored estimates, not manufacturer CAD or institution-approved dimensions.",
+        "No microscope image formation, scientific wafer metrology or cleanroom process simulation.",
+        "Source images remain external references; redistribution rights and institutional endorsement are not established."
+      ]
+    },
+    {
+      "id": "texas_ferguson_structural_test_hall",
+      "title": "Ferguson Structural Test Hall",
+      "institution": "University of Texas at Austin \u2014 Ferguson Structural Engineering Laboratory",
+      "domain": "structural engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://fsel.engr.utexas.edu/",
+        "https://fsel.engr.utexas.edu/images/featured/facilities3.jpg"
+      ],
+      "reference_notes": "Official wide interior photograph inspected: tall long-span hall with red reaction portals, horizontal concrete beam specimens, overhead yellow gantry crane, large strong-floor work area and high side windows. The official site identifies a structural research facility at Pickle Research Campus. The portal, loading stroke and sensor rail are original mechanical estimates. No structural response or actual FSEL controller is reproduced.",
+      "observed_cues": [
+        "Multiple red steel reaction portals aligned along a long high-bay hall",
+        "Full-size concrete beams on supports and loading heads",
+        "Yellow overhead bridge crane beneath high side windows and exposed services"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Photo-informed multi-bay high hall; dimensions and experiment layout estimated.",
+      "room": {
+        "size": [
+          18,
+          26,
+          9.2
+        ],
+        "wall_color": [
+          0.61,
+          0.62,
+          0.58,
+          1
+        ],
+        "accent": [
+          0.26,
+          0.29,
+          0.31,
+          1
+        ],
+        "style": "structural_high_bay",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.47,
+              0.46,
+              0.42,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "shutter",
+              "offset": -7.5,
+              "width": 2.4,
+              "height": 3.6,
+              "sill": 0
+            },
+            {
+              "id": "clerestory",
+              "wall": "back",
+              "kind": "window",
+              "offset": 0,
+              "width": 15,
+              "height": 1.4,
+              "sill": 6.7
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "beam_test",
+          "kind": "ferguson_reaction_frame",
+          "pos": [
+            -2.2,
+            -2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "support": {
+            "type": "floor",
+            "evidence": "Portal feet and beam cribs contact z=0; crib caps continuously support the slab."
+          },
+          "role": "Large reaction portal, inert slab and sensor traverse",
+          "evidence": "photo-informed exterior; authored loading approach and sensor motion",
+          "source_urls": [
+            "https://fsel.engr.utexas.edu/",
+            "https://fsel.engr.utexas.edu/images/featured/facilities3.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://fsel.engr.utexas.edu/images/featured/facilities3.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/texas_ferguson.img"
+          ],
+          "supports": "Red reaction portals, long concrete slabs, high service rails, overhead yellow crane and side aisles."
+        }
+      ],
+      "layout_rationale": [
+        "Preserve the high hall and two longitudinal test bays.",
+        "Keep the primary slab supported on two full-height cribbed piers and the portal independently grounded.",
+        "Retain side access aisles and overhead structural rails; estimates are not surveyed FSEL dimensions."
+      ],
+      "circulation": {
+        "operator_approach": "Left/front aisle, outside the static test specimen and reaction posts.",
+        "service_access": "Wide side aisles; no building-code or full machinery-safety certification."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            21,
+            -27,
+            19
+          ],
+          "target": [
+            0,
+            0,
+            3.2
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            6.8,
+            -10,
+            2.4
+          ],
+          "target": [
+            -1,
+            1.4,
+            2.7
+          ],
+          "fovy": 62
+        },
+        "workstation": {
+          "position": [
+            4.7,
+            -9.0,
+            4.6
+          ],
+          "target": [
+            -2.0,
+            -1.1,
+            2.0
+          ],
+          "fovy": 58
+        },
+        "source": {
+          "position": [
+            6.7,
+            -11.0,
+            6.1
+          ],
+          "target": [
+            0,
+            4,
+            3.0
+          ],
+          "fovy": 58
+        }
+      },
+      "task": {
+        "name": "Approach a structural specimen and position its inspection head",
+        "description": "Move a rigid loading platen toward an inert beam and translate the observation head along it.",
+        "primary_equipment": "beam_test",
+        "observable": "load_ram, sensor_traverse, loading_platen and beam_specimen poses."
+      },
+      "limitations": [
+        "Hall, beam, frame and mechanical travel dimensions are estimates from a single official photograph.",
+        "The beam remains rigid; no hydraulic loading physics, strain, fracture, concrete damage or calibrated load-cell output.",
+        "Source images remain external references; no institutional endorsement or media release permission established."
+      ]
+    },
+    {
+      "id": "berkeley_richmond_towing_tank",
+      "title": "Richmond 64 m Towing Tank Hall",
+      "institution": "University of California, Berkeley \u2014 FLOW Lab",
+      "domain": "experimental hydrodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://flow-lab-berkeley.netlify.app/physical-model-test-facility",
+        "https://me.berkeley.edu/research-areas-and-major-fields/laboratories/flow-lab/",
+        "https://flow.berkeley.edu/facilities-equipment/",
+        "https://flow.berkeley.edu/wp-content/uploads/2018/06/20180612_141024.jpg"
+      ],
+      "reference_notes": "Official laboratory facility page identifies the 64 m towing/wave tank at Richmond Field Station; its interior photo shows the tank, carriage rails and service aisle. Tank clear length, width and depth are published. Shed, carriage, attachment and service-floor elevation are estimated; the 8 m positioning window is a mechanical demonstrator.",
+      "observed_cues": [
+        "A very long open tank occupies most of a narrow corrugated-metal shed.",
+        "Parallel tank-side rails and hanging looped supply cables follow the entire experiment axis.",
+        "A narrow right-side walkway contains service consoles under exposed roof trusses and fluorescent luminaires."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Full published tank envelope in an estimated long shed, with a local carriage demonstration window.",
+      "room": {
+        "size": [
+          6.6,
+          70,
+          5.6
+        ],
+        "wall_color": [
+          0.42,
+          0.43,
+          0.4,
+          1
+        ],
+        "accent": [
+          0.23,
+          0.28,
+          0.25,
+          1
+        ],
+        "style": "long_towing_shed",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.42,
+              0.41,
+              0.36,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 4
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -33.6,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "towing_facility",
+          "kind": "richmond_towing_carriage",
+          "pos": [
+            -0.8,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous tank foundation and solid service platform rest at z=0; carriage wheels seat on full-length wall rails."
+          },
+          "role": "64 m tank envelope, supported carriage and rigid mounted model",
+          "evidence": "published tank dimensions; photograph-informed and estimated secondary geometry",
+          "source_urls": [
+            "https://flow-lab-berkeley.netlify.app/physical-model-test-facility",
+            "https://flow.berkeley.edu/wp-content/uploads/2018/06/20180612_141024.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://flow.berkeley.edu/wp-content/uploads/2018/06/20180612_141024.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/berkeley_towing.img"
+          ],
+          "supports": "Long narrow tank shed, exposed roof members, wall corrugations, looped cable services and right-side operator walkway."
+        }
+      ],
+      "layout_rationale": [
+        "Preserve the 64 m long axis and source-published 2.40 m width / 1.80 m clear depth.",
+        "Keep the model carriage spanning the tank rails and the operator route on the right.",
+        "A raised service datum and access steps are authored to reconcile the above-floor model with waist-height viewing; actual tank embedment is unknown."
+      ],
+      "circulation": {
+        "operator_approach": "Front steps to the right-side elevated service walkway.",
+        "service_access": "Long right-side route; no egress, guardrail or accessibility compliance claim."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "component": "tank clear interior",
+          "dimensions_m": [
+            2.4,
+            64,
+            1.8
+          ],
+          "axis_order": "width,length,depth",
+          "url": "https://flow-lab-berkeley.netlify.app/physical-model-test-facility"
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            44,
+            -67,
+            37
+          ],
+          "target": [
+            -0.4,
+            0,
+            1.1
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            2.17,
+            -31,
+            2.48
+          ],
+          "target": [
+            -0.8,
+            2,
+            1.9
+          ],
+          "fovy": 58
+        },
+        "workstation": {
+          "position": [
+            2.3,
+            -26.0,
+            3.45
+          ],
+          "target": [
+            -0.8,
+            -21.0,
+            2.0
+          ],
+          "fovy": 56
+        },
+        "source": {
+          "position": [
+            2.05,
+            -32.0,
+            2.52
+          ],
+          "target": [
+            -0.8,
+            16,
+            2.0
+          ],
+          "fovy": 60
+        }
+      },
+      "task": {
+        "name": "Position a mounted hydrodynamic test model",
+        "description": "Move the carriage through an 8 m demonstration window and adjust the rigid model mounting height.",
+        "primary_equipment": "towing_facility",
+        "observable": "carriage_travel, model_immersion and tow_model pose."
+      },
+      "limitations": [
+        "The water surface is visual only; no buoyancy, drag, waves or fluid measurements are calculated.",
+        "Tank dimensions are documented, while the shed, walkway datum, carriage form, end absorber and stroke are estimated.",
+        "The scene does not reproduce published maximum carriage speed or scientific accuracy.",
+        "Source media remain external references and no institutional approval or reuse license is established."
+      ]
+    },
+    {
+      "id": "cmu_edl_electrochemical_testing",
+      "title": "EDL Electrochemical Test Workbench",
+      "institution": "Carnegie Mellon University \u2014 Electrochemical Decarbonization Laboratory",
+      "domain": "electrochemical energy systems",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.cmu.edu/me/tpes/facilities/tpes-lab.html",
+        "https://www.cmu.edu/me/tpes/facilities/test-stand-2.jpg",
+        "https://www.cmu.edu/me/tpes/facilities/corner-lab.jpg"
+      ],
+      "reference_notes": "Official facility photos show the electrochemical test bench and wider experimental lab; visible nameplates identify an 850e fuel-cell test system and 850BP pressure-control unit. Cabinet sizes, dry specimen fixture and its actuation are original estimates. The wider lab photograph informs furnishings, not a measured registration of benches.",
+      "observed_cues": [
+        "Tall 850e cabinet and shorter gauge-covered 850BP unit occupy the grey worktop beside a restrained cylinder rack.",
+        "White tubing and thick electrical leads connect bench hardware beneath an overhead utility shelf.",
+        "The wider room has pale wood base cabinets, a large end-of-island sink and stainless drying pegboard."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Local testbench and nearby sink/cylinder furnishings in an estimated room.",
+      "room": {
+        "size": [
+          6.8,
+          6.0,
+          3.0
+        ],
+        "wall_color": [
+          0.88,
+          0.89,
+          0.86,
+          1
+        ],
+        "accent": [
+          0.63,
+          0.52,
+          0.35,
+          1
+        ],
+        "style": "electrochemical_energy",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.55,
+              0.55,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.8,
+              "width": 1.0,
+              "height": 2.15,
+              "sill": 0
+            },
+            {
+              "id": "rear_glazing",
+              "wall": "back",
+              "kind": "window",
+              "offset": 1.2,
+              "width": 2.5,
+              "height": 1.2,
+              "sill": 1.25
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "edl_test_bench",
+          "pos": [
+            0,
+            1.0,
+            0
+          ],
+          "size": [
+            2.8,
+            1.5,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.65,
+            0.51,
+            0.32,
+            1
+          ],
+          "top_color": [
+            0.23,
+            0.25,
+            0.25,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "electrochemical_test",
+          "kind": "edl_fuel_cell_testbench",
+          "pos": [
+            0,
+            1.0,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Photo-informed tester cabinets and articulated inert-coupon fixture",
+          "evidence": "visible 850e/850BP styling; dimensions and dry-fixture control are estimated",
+          "source_urls": [
+            "https://www.cmu.edu/me/tpes/facilities/tpes-lab.html",
+            "https://www.cmu.edu/me/tpes/facilities/test-stand-2.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.cmu.edu/me/tpes/facilities/test-stand-2.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/cmu_edl_teststand.img"
+          ],
+          "supports": "Tester face details, white tubing, restrained cylinders, pale wood base cabinets, overhead utility shelf or sink/pegboard island."
+        },
+        {
+          "url": "https://www.cmu.edu/me/tpes/facilities/corner-lab.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/cmu_edl_corner.img"
+          ],
+          "supports": "Tester face details, white tubing, restrained cylinders, pale wood base cabinets, overhead utility shelf or sink/pegboard island."
+        }
+      ],
+      "layout_rationale": [
+        "Keep the compact tester/pressure-control pair on a grounded wide workbench.",
+        "Add the distinct restrained cylinder rack and a sink island with drying pegs.",
+        "Furniture identity follows two official photos; relative bench placement and room perimeter remain authored estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Front aisle between the dry coupon fixture and sink island.",
+        "service_access": "Right side access around the restrained cylinders; no gas-system or layout compliance certification."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            8.8,
+            -9.2,
+            6.4
+          ],
+          "target": [
+            0,
+            0.4,
+            1.0
+          ],
+          "fovy": 46
+        },
+        "interior": {
+          "position": [
+            2.6,
+            -2.3,
+            1.7
+          ],
+          "target": [
+            -0.1,
+            0.9,
+            1.25
+          ],
+          "fovy": 60
+        },
+        "workstation": {
+          "position": [
+            1.25,
+            -0.68,
+            2.1
+          ],
+          "target": [
+            0,
+            0.98,
+            1.26
+          ],
+          "fovy": 48
+        },
+        "source": {
+          "position": [
+            1.4,
+            -0.15,
+            1.65
+          ],
+          "target": [
+            0.2,
+            1.05,
+            1.35
+          ],
+          "fovy": 54
+        }
+      },
+      "task": {
+        "name": "Access an inert electrochemical specimen fixture",
+        "description": "Translate the dry sample drawer and open its perimeter clamp while observing the dummy coupon pose.",
+        "primary_equipment": "electrochemical_test",
+        "observable": "specimen_drawer, clamp_lift and electrode_coupon poses."
+      },
+      "limitations": [
+        "850e/850BP exterior styling is identifiable, but all dimensions and the articulated dry fixture are estimates.",
+        "No fuel, gas, pressure, electrical current, reaction products or electrochemical scientific response is simulated.",
+        "The example fixture does not reproduce an OEM test protocol or equipment controller.",
+        "Reference photographs remain external and have no verified redistribution license; no institutional endorsement."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "qs2027_labs_20261003",
+  "ranking_edition": 2027,
+  "required_new_labs": 10,
+  "baseline_scene_ids": [
+    "rochester_genomics",
+    "indiana_microfluidics",
+    "uw_isolab",
+    "uva_deposition",
+    "purdue_phenotyping",
+    "epfl_microbiorobotics",
+    "waterloo_robohub",
+    "penn_pathology",
+    "eth_air_quality",
+    "nasa_planetary"
+  ],
+  "baseline_catalog_sha256": "57e59d764f24c4832c99661117e5f2c9c4a58b61b72ed681c16704a5f2369e9c",
+  "scene_ids": [
+    "harvard_cns_cambridge",
+    "caltech_stoltz_schlinger",
+    "cornell_schlom_mbe",
+    "stanford_biomechatronics_gait",
+    "anu_shrimp_geochronology",
+    "oxford_bonilla_semiconductor",
+    "ntu_sgsr_characterization",
+    "ntu_smtc_membranes",
+    "tsinghua_rush3d",
+    "uq_moreton_aquarium"
+  ],
+  "scope": "Ten additional laboratory reconstructions; visual/source fidelity and mechanical validation are separate review gates."
+}

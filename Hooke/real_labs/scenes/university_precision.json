@@ -1,0 +1,805 @@
+{
+  "scenes": [
+    {
+      "id": "ntu_sgsr_characterization",
+      "title": "SGSR Characterization Suite",
+      "institution": "Nanyang Technological University \u2014 SGSR shared laboratories",
+      "domain": "materials",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.ntu.edu.sg/mse/research/sgsr/facilities",
+        "https://www.ntu.edu.sg/media/images/librariesprovider121/research/sgsr/facilities/lab1.jpg?sfvrsn=1f529923_3"
+      ],
+      "reference_notes": "Inspected the official labelled suite floor plan and linked Instron 6800 brochure and Bruker Dimension Icon equipment sheet. The reconstruction preserves left meeting zone, central dry-lab islands, paired BSC compartments, south battery zone and eastern analytical/wet/confocal/AFM/optics/XRD zones. The floor plan has no verified scale or revision; 19.6 by 9.8 m is authored, and some openings are inferred. No equipment from Lab 2/3/4 has been imported. Only the two evidenced active instruments are modeled; the suite may span administrative room boundaries.",
+      "observed_cues": [
+        "Labelled compartment adjacency from NTU plan: central dry lab and BSC pair, battery zone below, analytical suite to right.",
+        "Source lists Instron 68TM and identifies AFM as Bruker Dimension Icon; AFM sheet includes an apparatus photo and 210 mm chuck.",
+        "Instron OEM sheet shows twin dark columns, crosshead, interchangeable grips and a side dashboard; published standard frame is 0.760 by 0.715 by 1.640 m."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "room": {
+        "size": [
+          19.6,
+          9.8,
+          3.1
+        ],
+        "wall_color": [
+          0.88,
+          0.89,
+          0.85,
+          1
+        ],
+        "accent": [
+          0.38,
+          0.52,
+          0.59,
+          1
+        ],
+        "style": "characterization",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.53,
+              0.55,
+              0.53,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -3.0,
+              "width": 1.25,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "load_frame_bench",
+          "pos": [
+            -5.11,
+            -0.42,
+            0
+          ],
+          "size": [
+            1.75,
+            1.4,
+            0.6
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.75,
+            0.77,
+            0.76,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "dry_island_west",
+          "pos": [
+            -5.18,
+            2.2,
+            0
+          ],
+          "size": [
+            1.15,
+            2.0,
+            0.84
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.75,
+            0.77,
+            0.76,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "dry_island_east",
+          "pos": [
+            -2.52,
+            2.2,
+            0
+          ],
+          "size": [
+            1.15,
+            2.0,
+            0.84
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.75,
+            0.77,
+            0.76,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "dry_rear_counter",
+          "pos": [
+            -4.2,
+            4.03,
+            0
+          ],
+          "size": [
+            3.9,
+            0.75,
+            0.84
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.75,
+            0.77,
+            0.76,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "dry_optical_table",
+          "pos": [
+            -2.73,
+            -1.82,
+            0
+          ],
+          "size": [
+            1.6,
+            0.95,
+            0.78
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.75,
+            0.77,
+            0.76,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "afm_isolation_table",
+          "pos": [
+            8.82,
+            0.32,
+            0
+          ],
+          "size": [
+            1.05,
+            1.1,
+            0.76
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.75,
+            0.77,
+            0.76,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "analytical_counter",
+          "pos": [
+            7.28,
+            4.03,
+            0
+          ],
+          "size": [
+            3.75,
+            0.75,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.75,
+            0.77,
+            0.76,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "battery_unassigned_counter",
+          "pos": [
+            0.9,
+            -4.22,
+            0
+          ],
+          "size": [
+            3.2,
+            0.68,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.75,
+            0.77,
+            0.76,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "meeting_table",
+          "pos": [
+            -8.0,
+            -0.1,
+            0
+          ],
+          "size": [
+            1.75,
+            0.85,
+            0.74
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.77,
+            0.67,
+            0.5,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "mechanical_tester",
+          "kind": "precision_load_frame",
+          "pos": [
+            -5.25,
+            -0.42,
+            0.6
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "OEM-sized dual-column load-frame exterior with reduced crosshead/grip control surrogates",
+          "evidence": "reference-informed exterior; mechanical surrogate",
+          "source_urls": [
+            "https://www.ntu.edu.sg/mse/research/sgsr/facilities"
+          ]
+        },
+        {
+          "id": "dimension_icon",
+          "kind": "afm_scanning_station",
+          "pos": [
+            8.82,
+            0.36,
+            0.76
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Bruker Dimension Icon-inspired coarse positioning stage, scan-head exterior and visible inert sample disk",
+          "evidence": "reference-informed exterior; mechanical surrogate",
+          "source_urls": [
+            "https://www.ntu.edu.sg/mse/research/sgsr/facilities"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Inspect a material characterization suite",
+        "description": "Exercise the material-tester crosshead and upper grip, then position an inert disk with the AFM coarse stage; scientific testing and autonomous inter-room transfer remain unimplemented.",
+        "primary_equipment": "mechanical_tester",
+        "observable": "Declared joints track bounded target positions; inert sample holders remain visible and supported."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            18,
+            -22,
+            19
+          ],
+          "target": [
+            0.2,
+            0.2,
+            0.4
+          ],
+          "fovy": 38
+        },
+        "interior": {
+          "position": [
+            -1.55,
+            -3.2,
+            1.7
+          ],
+          "target": [
+            -4.6,
+            1.0,
+            1.0
+          ],
+          "fovy": 66
+        },
+        "workstation": {
+          "position": [
+            -3.25,
+            -2.45,
+            1.85
+          ],
+          "target": [
+            -5.15,
+            -0.33,
+            1.47
+          ],
+          "fovy": 43
+        },
+        "afm_detail": {
+          "position": [
+            9.15,
+            -0.37,
+            1.39
+          ],
+          "target": [
+            8.82,
+            0.37,
+            1.08
+          ],
+          "fovy": 49
+        }
+      },
+      "layout_rationale": [
+        "Adjacency from the public low-resolution plan is preserved; partition coordinates, door widths, room heights and scale are authored estimates.",
+        "Central and southern circulation gaps separate dry-lab islands from the BSC/battery compartments and the eastern rooms; clearances require institutional review.",
+        "The frame sits on an independent load-bearing table and the AFM on its own isolation-style support, whose vibration performance is not simulated.",
+        "Unknown BSC, battery, wet/confocal and XRD contents are intentionally left as room/counter context; a room label does not establish a particular installed instrument.",
+        "AFM room identity is supported by the inventory, but exact placement of the frame or AFM within the pictured footprint is unconfirmed."
+      ],
+      "limitations": [
+        "Original authored geometry from publicly viewable references; no institutional endorsement or permission to redistribute source media is implied.",
+        "Reference-informed prototype, not a surveyed or institution-validated digital twin. All room dimensions, materials, unseen surfaces and unconfirmed equipment positions are estimates.",
+        "Articulated controls validate mechanical positioning only. No calibrated scientific measurements, material behavior, biological process or optics are implemented.",
+        "MuJoCo CPU controls are testable; exported USD/GLB/Blender are visual snapshots without validated Isaac articulation.",
+        "The Instron capacity, selected grips and dashboard arrangement at NTU are unconfirmed; no force or material deformation model. AFM coarse-stage travel does not represent nanometre tip scanning.",
+        "Partition adjacency is reference-derived; original plan and later equipment inventory may represent different dates."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/research/qs_asia_visual_checks/ntu_sgsr.jpg",
+          "temp/research/university_precision/instron.png",
+          "temp/research/university_precision/afm.png"
+        ],
+        "reviewed_at": "2026-10-03",
+        "device_identity": "Instron 68TM family and Bruker Dimension Icon supported by official linked PDFs",
+        "dimension_confidence": "OEM standard frame confirmed; all room and AFM envelope dimensions estimated",
+        "rights": "Original procedural geometry; university photos/PDFs remain local references only."
+      }
+    },
+    {
+      "id": "tsinghua_rush3d",
+      "title": "RUSH3D Optical Imaging Workstation",
+      "institution": "Tsinghua University \u2014 Imaging and Intelligence Laboratory",
+      "domain": "optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.tsinghua.edu.cn/info/3155/119959.htm"
+      ],
+      "reference_notes": "Inspected the actual RUSH3D apparatus photograph in the July 2025 university feature. It shows a perforated optical table, heavy right pedestal with red bridge, multilevel lower optical assembly, long horizontal lens train, overhead extrusion enclosure, wiring and black curtains. The single view establishes local apparatus silhouette, not full room dimensions or hidden optics. The enclosure, controller side table and blank room envelope are estimated.",
+      "observed_cues": [
+        "Heavy right black pedestal and red platform under the transverse camera/relay arm.",
+        "Several levels of machined plates and vertical posts around a downward-facing objective.",
+        "Dense black cables, pale flexible conduit, overhead frame and blackout curtain."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          6.4,
+          5.8,
+          3.2
+        ],
+        "wall_color": [
+          0.75,
+          0.77,
+          0.77,
+          1
+        ],
+        "accent": [
+          0.25,
+          0.29,
+          0.32,
+          1
+        ],
+        "style": "optics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.53,
+              0.55,
+              0.53,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.95,
+              "width": 0.95,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "optical_isolation_table",
+          "pos": [
+            0,
+            0.55,
+            0
+          ],
+          "size": [
+            2.45,
+            1.65,
+            0.78
+          ],
+          "yaw": 0,
+          "style": "optical",
+          "color": [
+            0.32,
+            0.35,
+            0.37,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "operator_table",
+          "pos": [
+            2.15,
+            0.65,
+            0
+          ],
+          "size": [
+            1.2,
+            2.0,
+            0.8
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.6,
+            0.62,
+            0.61,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "rush3d_microscope",
+          "kind": "rush3d_optical_station",
+          "pos": [
+            0,
+            0.45,
+            0.78
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Reference-informed custom optical instrument with motorized XY carrier and objective-focus surrogate",
+          "evidence": "reference-informed exterior; mechanical surrogate",
+          "source_urls": [
+            "https://www.tsinghua.edu.cn/info/3155/119959.htm"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Position an inert optical calibration target",
+        "description": "Command the visible sample carrier along X and Y and adjust objective clearance inside the reconstructed RUSH3D apparatus.",
+        "primary_equipment": "rush3d_microscope",
+        "observable": "Three mechanical axes track position commands; a 75 mm slide carries a visible 2 mm inert target. No imaging performance metric is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.2,
+            -8.5,
+            6.9
+          ],
+          "target": [
+            0,
+            0.6,
+            1.05
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            2.45,
+            -2.1,
+            1.72
+          ],
+          "target": [
+            -0.15,
+            0.65,
+            1.58
+          ],
+          "fovy": 62
+        },
+        "workstation": {
+          "position": [
+            1.58,
+            -1.3,
+            1.93
+          ],
+          "target": [
+            0,
+            0.52,
+            1.75
+          ],
+          "fovy": 51
+        }
+      },
+      "layout_rationale": [
+        "Local assembly arrangement follows the reference photo; full laboratory architecture is not known.",
+        "Black curtains and the upper frame form a distinct light-controlled optical bay. The specimen region remains accessible from the front.",
+        "Optical table feet support the whole instrument; electronics remain on a separate right operator table. Wiring is original geometric context, not functional electrical routing.",
+        "The sample is an inert calibration slide, not an invented cell image or a claim of RUSH3D optical performance."
+      ],
+      "limitations": [
+        "Original authored geometry from publicly viewable references; no institutional endorsement or permission to redistribute source media is implied.",
+        "Reference-informed prototype, not a surveyed or institution-validated digital twin. All room dimensions, materials, unseen surfaces and unconfirmed equipment positions are estimates.",
+        "Articulated controls validate mechanical positioning only. No calibrated scientific measurements, material behavior, biological process or optics are implemented.",
+        "MuJoCo CPU controls are testable; exported USD/GLB/Blender are visual snapshots without validated Isaac articulation.",
+        "No detailed OEM CAD or measured optical train is available from the single reference. Internal lenses, beam paths, optical response and scanner timing are not reproduced."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/research/qs_asia_visual_checks/qinghua_rush3d.jpg"
+        ],
+        "reviewed_at": "2026-10-03",
+        "reference_family": "RUSH3D July 2025 workstation; distinct from earlier RUSH system",
+        "dimension_confidence": "All geometry estimated; millimetre slide/target sizes are authored calibration objects",
+        "rights": "No source media are redistributed."
+      }
+    },
+    {
+      "id": "stanford_biomechatronics_gait",
+      "title": "Biomechatronics Gait Test Station",
+      "institution": "Stanford University \u2014 Biomechatronics Laboratory",
+      "domain": "biomechatronics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://biomechatronics.stanford.edu/"
+      ],
+      "reference_notes": "Two official experiment photographs show a treadmill, handrails, wearable-leg apparatus, support frame, electronics racks and an adjacent operator station; the second view also shows laboratory blinds. This local-station reconstruction combines those visible cues. The authored suspended mechanical leg fixture replaces source-photo human subjects and does not reproduce a particular exoskeleton.",
+      "observed_cues": [
+        "Side-by-side belt surfaces, white tubular handrails and a low treadmill deck.",
+        "Rear vertical support structure and high cable routes to wearable apparatus.",
+        "Control rack and operator screens immediately beside the treadmill."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          7.4,
+          5.8,
+          3.3
+        ],
+        "wall_color": [
+          0.81,
+          0.85,
+          0.85,
+          1
+        ],
+        "accent": [
+          0.41,
+          0.45,
+          0.48,
+          1
+        ],
+        "style": "biomechatronics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.53,
+              0.55,
+              0.53,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.9,
+              "width": 1.05,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "rear_glazing",
+              "wall": "back",
+              "kind": "window",
+              "offset": -0.7,
+              "width": 4.8,
+              "height": 1.55,
+              "sill": 1.0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "gait_control_desk",
+          "pos": [
+            2.5,
+            0.15,
+            0
+          ],
+          "size": [
+            1.35,
+            1.8,
+            0.77
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.65,
+            0.67,
+            0.65,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "fixture_service_bench",
+          "pos": [
+            -2.7,
+            1.65,
+            0
+          ],
+          "size": [
+            1.25,
+            1.1,
+            0.86
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.67,
+            0.7,
+            0.71,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "gait_test_rig",
+          "kind": "split_belt_gait_station",
+          "pos": [
+            -0.55,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Treadmill roller-drive and unloaded lift surrogates around an original mechanical ankle fixture",
+          "evidence": "reference-informed exterior; mechanical surrogate",
+          "source_urls": [
+            "https://biomechatronics.stanford.edu/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Four leveler feet under the treadmill base and four bolted support-frame footplates touch the floor; source station footprint estimated."
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect a gait-system mechanical test fixture",
+        "description": "Command independent treadmill drive rollers and adjust unloaded support-fixture height. The fixed belt surfaces and mechanical legs are inspection geometry; no walking experiment is claimed.",
+        "primary_equipment": "gait_test_rig",
+        "observable": "Left/right roller angular velocities and lift height respond independently; no human-subject measurement is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            8.4,
+            -9.8,
+            7.4
+          ],
+          "target": [
+            0,
+            0.3,
+            0.9
+          ],
+          "fovy": 45
+        },
+        "interior": {
+          "position": [
+            2.95,
+            -2.2,
+            1.68
+          ],
+          "target": [
+            -0.6,
+            0.1,
+            1.3
+          ],
+          "fovy": 67
+        },
+        "workstation": {
+          "position": [
+            1.6,
+            -2.2,
+            1.77
+          ],
+          "target": [
+            -0.55,
+            0,
+            1.0
+          ],
+          "fovy": 62
+        }
+      },
+      "layout_rationale": [
+        "Station-level arrangement uses the official photographs: treadmill central, control rack behind/right, operator desk to its right.",
+        "The structural gantry uses floor plates and crossmembers, independent of handrails; source dimensions and load ratings are not available.",
+        "The fixture contains two clearly mechanical legs and no source human likenesses. It supports geometric inspection, not biomechanics.",
+        "Rollers physically rotate under commanded drives, while belt surfaces remain static; tests cannot claim gait contact dynamics."
+      ],
+      "limitations": [
+        "Original authored geometry from publicly viewable references; no institutional endorsement or permission to redistribute source media is implied.",
+        "Reference-informed prototype, not a surveyed or institution-validated digital twin. All room dimensions, materials, unseen surfaces and unconfirmed equipment positions are estimates.",
+        "Articulated controls validate mechanical positioning only. No calibrated scientific measurements, material behavior, biological process or optics are implemented.",
+        "MuJoCo CPU controls are testable; exported USD/GLB/Blender are visual snapshots without validated Isaac articulation.",
+        "No human motion, force-plate solver, moving-belt contact or biomechanics model. The mechanical leg fixture and support-lift mechanism are authored surrogates."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/research/qs_lab_page_audit/stills/stanford_biomechatronics_1.img",
+          "temp/research/qs_lab_page_audit/stills/stanford_biomechatronics_2.img"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "All apparatus dimensions and manufacturer details estimated",
+        "rights": "Human subjects in reference photographs are not reproduced; no original media are distributed."
+      }
+    }
+  ]
+}

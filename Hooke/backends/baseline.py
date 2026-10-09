@@ -63,6 +63,11 @@ def write_snapshot(expert, out: Path):
     for element in tree.findall('./asset/mesh'):
         source_mesh = meshes[element.get('name')]
         element.set('inertia', source_mesh.inertia.name.removeprefix('mjMESH_INERTIA_').lower())
+        # MjSpec.to_xml() rounds inline vertices to six significant digits.
+        # This can distort thin walls and rotate the principal axes of nearly
+        # symmetric meshes. Preserve the source values before recompiling.
+        if len(source_mesh.uservert):
+            element.set('vertex', ' '.join(format(float(v), '.17g') for v in source_mesh.uservert))
     source_assets = {}
     asset_dir = Path(__file__).resolve().parents[1] / 'assets'
     for element in tree.iter():

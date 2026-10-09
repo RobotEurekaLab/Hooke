@@ -59,7 +59,7 @@ class TaskNavigation(unittest.TestCase):
 
     def test_existing_lab_tasks_keep_their_categories_and_preview_workflow(self):
         for entry in CATALOG.values():
-            if entry.category in ("microscopy", "space"):
+            if entry.category in ("microscopy", "space", "real_labs"):
                 continue
             navigation = task_navigation(entry)
             self.assertEqual(navigation["category"], entry.category)

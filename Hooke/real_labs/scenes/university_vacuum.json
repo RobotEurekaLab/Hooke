@@ -1,0 +1,411 @@
+{
+  "scenes": [
+    {
+      "id": "cornell_schlom_mbe",
+      "title": "Schlom Oxide MBE Apparatus Bay",
+      "institution": "Cornell University \u2014 Schlom Group",
+      "domain": "thin film materials",
+      "university_expansion": true,
+      "source_urls": [
+        "https://schlom.mse.cornell.edu/labtour",
+        "https://schlom.mse.cornell.edu/sites/default/files/MBE.jpg"
+      ],
+      "reference_notes": "The inspected official photograph supports paired tall stainless process chambers, multiple bolted ports, lower source sticks, cable bundles, open steel support frames and a right-hand load-lock/transfer assembly. The legacy full-room tour is unavailable. This reconstruction therefore covers an estimated apparatus bay, not a recovered Cornell room perimeter. Geometry and control strokes are original estimates; no OEM CAD or validated interlocks are included.",
+      "observed_cues": [
+        "Paired cylindrical vessels with dense bolted flanges and upper service stalks.",
+        "Open metal frames, low source feedthroughs and cable looms.",
+        "Smaller transfer/loading assembly to the right of the growth vessels."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Local apparatus bay; room perimeter, access door and service coordinates are authored.",
+      "room": {
+        "size": [
+          6.4,
+          4.4,
+          3.2
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.79,
+          1
+        ],
+        "accent": [
+          0.47,
+          0.5,
+          0.48,
+          1
+        ],
+        "style": "vacuum_apparatus",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.37,
+              0.39,
+              0.38,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.25,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "cornell_control_desk",
+          "pos": [
+            2.56,
+            0.92,
+            0
+          ],
+          "size": [
+            1.45,
+            0.78,
+            0.82
+          ],
+          "yaw": -1.57079632679,
+          "style": "open_frame",
+          "color": [
+            0.61,
+            0.65,
+            0.64,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "oxide_mbe",
+          "kind": "oxide_mbe_cluster",
+          "pos": [
+            -0.23,
+            0.13,
+            0
+          ],
+          "yaw": 0,
+          "params": {
+            "authored_pose": "Floor-mounted frames and electronics chassis; room perimeter is not source measured."
+          },
+          "support": {
+            "type": "floor",
+            "evidence": "Authored leveling feet, steel legs and crossmembers rest on z=0."
+          },
+          "role": "Paired oxide growth chambers, load-lock hatch and clamped substrate-transfer rod",
+          "evidence": "reference-informed exterior; representative mechanical controls",
+          "source_urls": [
+            "https://schlom.mse.cornell.edu/labtour",
+            "https://schlom.mse.cornell.edu/sites/default/files/MBE.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://schlom.mse.cornell.edu/sites/default/files/MBE.jpg",
+          "local_stills": [
+            "temp/research/qs_lab_page_audit/stills/cornell_schlom_13.img"
+          ],
+          "supports": "Two tall vessels, surrounding framework, multiple ports and right-hand transfer region; no room measurements."
+        }
+      ],
+      "layout_rationale": [
+        "Keep the cylindrical multi-chamber footprint as the room focal point, with a front operator aisle and rear service zone.",
+        "Use independent four-post frames with grounded feet; the right-hand transfer station is a lower supported assembly.",
+        "Do not infer Cornell room dimensions from the isolated apparatus photograph; all room boundaries and the side desk are authored context."
+      ],
+      "circulation": {
+        "operator_approach": "Front aisle; estimated unobstructed approach from left entry.",
+        "service_access": "Rear service strip is visual context; no building-code clearance certification."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            7.7,
+            -8.3,
+            6.4
+          ],
+          "target": [
+            0,
+            0.2,
+            1.0
+          ],
+          "fovy": 45
+        },
+        "interior": {
+          "position": [
+            2.0,
+            -1.9,
+            1.8
+          ],
+          "target": [
+            -0.3,
+            0.25,
+            1.35
+          ],
+          "fovy": 64
+        },
+        "workstation": {
+          "position": [
+            2.6,
+            -2.3,
+            2.15
+          ],
+          "target": [
+            0.25,
+            0.1,
+            1.25
+          ],
+          "fovy": 56
+        },
+        "source": {
+          "position": [
+            2.1,
+            -2.3,
+            2.05
+          ],
+          "target": [
+            -0.2,
+            0.25,
+            1.3
+          ],
+          "fovy": 54
+        }
+      },
+      "task": {
+        "name": "Inspect and position an MBE substrate carrier",
+        "description": "Exercise the load-lock hatch and transfer holder, and observe substrate and door-handle poses. These are geometry and access operations only.",
+        "primary_equipment": "oxide_mbe",
+        "observable": "Measured load_lock_door and transfer_rod joint states and clamped substrate site."
+      },
+      "limitations": [
+        "Room size, placement and mechanism strokes are authored estimates; no surveyed or institution-approved floor plan.",
+        "No vacuum, thermal control, film deposition, RHEED or scientific measurement process is implemented.",
+        "Independent joint tests are mechanical checks, not an actual safe vacuum-system operating sequence.",
+        "Source images are external references; no original photographs, logos or OEM CAD are embedded.",
+        "The model is an original research reconstruction with no institutional endorsement or verified source-media redistribution permission."
+      ]
+    },
+    {
+      "id": "anu_shrimp_geochronology",
+      "title": "SHRIMP Ion Microprobe Instrument Room",
+      "institution": "Australian National University \u2014 SHRIMP facility",
+      "domain": "geoscience",
+      "university_expansion": true,
+      "source_urls": [
+        "https://science.anu.edu.au/study/360-virtual-tours/sensitive-high-resolution-ion-microprobe-shrimp-360deg-facility-tour",
+        "https://science.anu.edu.au/sites/prod.science.sca-lws06.anu.edu.au/files/styles/medium_768_432_scale_crop/public/20240417_SHRIMPLab-04420.jpg.webp?h=56d0ca2e&itok=GVTlNkhE"
+      ],
+      "reference_notes": "Inspected the official SHRIMP RG facility preview. Its long white cabinet base, curved vacuum/analyzer region, tall right-side source assembly, numerous flanges, cable looms, overhead ventilation boxes and green wall stripe inform the model. The 360 interface and room perimeter have not been measured. Magnet/source interiors and load-lock controls are authored surrogates, not a surveyed instrument twin.",
+      "observed_cues": [
+        "Large contiguous white cabinet chassis with controls and vented access panels.",
+        "Curved vacuum/analyzer hardware and a tall stainless source assembly on the right.",
+        "Multiple flange ports, thin cable bundles, corrugated hoses and overhead service boxes."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Instrument-room preview reconstruction; cabinet scale, beamline geometry and room boundaries estimated.",
+      "room": {
+        "size": [
+          7.2,
+          5.0,
+          3.25
+        ],
+        "wall_color": [
+          0.84,
+          0.87,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.37,
+          0.53,
+          0.47,
+          1
+        ],
+        "style": "ion_microprobe",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.27,
+              0.31,
+              0.32,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.1
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.5,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "anu_control_desk",
+          "pos": [
+            2.91,
+            0.72,
+            0
+          ],
+          "size": [
+            1.6,
+            0.75,
+            0.84
+          ],
+          "yaw": -1.57079632679,
+          "style": "open_frame",
+          "color": [
+            0.72,
+            0.76,
+            0.74,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "shrimp_rg",
+          "kind": "shrimp_ion_microprobe",
+          "pos": [
+            -0.15,
+            0.25,
+            0
+          ],
+          "yaw": 0,
+          "params": {
+            "authored_pose": "Grounded white modular cabinet chassis; source exterior and analyzer are static. Mechanism strokes are representative."
+          },
+          "support": {
+            "type": "floor",
+            "evidence": "Ten rectangular leveling feet and stems beneath a full-width instrument cabinet."
+          },
+          "role": "Room-scale ion microprobe exterior with load-lock, mineral-mount translation and rotation",
+          "evidence": "reference-informed exterior; representative mechanical controls",
+          "source_urls": [
+            "https://science.anu.edu.au/study/360-virtual-tours/sensitive-high-resolution-ion-microprobe-shrimp-360deg-facility-tour",
+            "https://science.anu.edu.au/sites/prod.science.sca-lws06.anu.edu.au/files/styles/medium_768_432_scale_crop/public/20240417_SHRIMPLab-04420.jpg.webp?h=56d0ca2e&itok=GVTlNkhE"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://science.anu.edu.au/sites/prod.science.sca-lws06.anu.edu.au/files/styles/medium_768_432_scale_crop/public/20240417_SHRIMPLab-04420.jpg.webp?h=56d0ca2e&itok=GVTlNkhE",
+          "local_stills": [
+            "temp/research/qs_lab_page_audit/stills/anu_shrimp_lab.img"
+          ],
+          "supports": "Room-scale white instrument cabinet, curved analyzer region, tall vacuum source, cables, overhead air boxes and green wall stripe."
+        }
+      ],
+      "layout_rationale": [
+        "A broad instrument chassis occupies the room center rather than a generic tabletop vacuum box.",
+        "Keep an operator aisle across the front and a side control desk; their exact distances are authored estimates.",
+        "The instrument model preserves the dominant large analyzer and tall source silhouette; no claim is made about measured field-sector angles or internal beam trajectories."
+      ],
+      "circulation": {
+        "operator_approach": "Clear estimated front approach from left entry.",
+        "service_access": "Authored rear zone; actual maintenance access and building code compliance remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            8.7,
+            -9.9,
+            6.5
+          ],
+          "target": [
+            -0.05,
+            0.4,
+            1.0
+          ],
+          "fovy": 45
+        },
+        "interior": {
+          "position": [
+            2.6,
+            -2.1,
+            1.8
+          ],
+          "target": [
+            -0.4,
+            0.35,
+            1.25
+          ],
+          "fovy": 70
+        },
+        "workstation": {
+          "position": [
+            2.1,
+            -2.2,
+            2.1
+          ],
+          "target": [
+            1.15,
+            0.1,
+            1.43
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            3.1,
+            -3.5,
+            2.1
+          ],
+          "target": [
+            -0.2,
+            0.3,
+            1.26
+          ],
+          "fovy": 58
+        }
+      },
+      "limitations": [
+        "Room and instrument dimensions are estimated from a preview, not a measured 360 reconstruction or OEM drawing.",
+        "No charged-particle optics, magnetic field, vacuum, detection physics, isotopic ratios or geological-age calculation is implemented.",
+        "Independent access/translation/rotation controls serve geometry review and do not implement actual SHRIMP operational interlocks.",
+        "Original institution media, trademarks and OEM CAD are not distributed in the modeled geometry; no endorsement is implied."
+      ],
+      "task": {
+        "name": "Position an ion-microprobe mineral mount",
+        "description": "Inspect the load-lock, translate its clamped carrier and rotate the mount while reading measured joint states. Scientific analysis is outside this task.",
+        "primary_equipment": "shrimp_rg",
+        "observable": "Measured load_lock_door, sample_transfer and sample_rotation states and mineral_mount site."
+      }
+    }
+  ]
+}

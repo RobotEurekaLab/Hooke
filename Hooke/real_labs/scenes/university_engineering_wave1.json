@@ -1,0 +1,696 @@
+{
+  "schema_version": 1,
+  "scenes": [
+    {
+      "id": "auckland_aerodynamics_tunnel",
+      "title": "Auckland Glazed Wind-Tunnel Test Bay",
+      "institution": "Aerodynamics Laboratory \u2014 Boundary Layer Wind Tunnel",
+      "domain": "Wind engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.auckland.ac.nz/en/news/2026/09/01/my-space-wind-tunnel.html",
+        "https://www.auckland.ac.nz/en/engineering/our-research/engineering-research/research-areas-and-facilities/wind-tunnel-hall.html",
+        "https://www.auckland.ac.nz/content/auckland/en/news/2026/09/01/my-space-wind-tunnel/_jcr_content/leftpar/imagecomponent_879629879/image.img.480.low.jpg/1788212503655.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Transparent side panels expose a long white interior test corridor. A tall clear vertical fixture with circular endplate stands near the glazed wall. Dark exterior framing and adjoining instrument space contrast with the white tunnel lining. The reviewed view is a local side view with reflections; floor plan and hidden return paths are not known. A mechanical calibration specimen may replace pictured test articles; aerodynamic forces remain unmodeled.",
+      "observed_cues": [
+        "Transparent side panels expose a long white interior test corridor.",
+        "A tall clear vertical fixture with circular endplate stands near the glazed wall.",
+        "Dark exterior framing and adjoining instrument space contrast with the white tunnel lining."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          9,
+          8,
+          3.8
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.79,
+          1
+        ],
+        "accent": [
+          0.2,
+          0.3,
+          0.35,
+          1
+        ],
+        "style": "engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.28,
+              0.3,
+              0.31,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.0
+          },
+          "ceiling": "exposed",
+          "service_strip": false,
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "wall": "back",
+              "offset": 3.6,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ]
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "auckland_glazed_test_segment",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate and yaw a retained transparent calibration foil in a glazed local tunnel segment.",
+          "evidence": "Independently authored exterior based on actual reviewed university photograph; detailed dimensions estimated",
+          "source_urls": [
+            "https://www.auckland.ac.nz/en/news/2026/09/01/my-space-wind-tunnel.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored floor support"
+          }
+        }
+      ],
+      "task": {
+        "name": "Auckland Glazed Wind-Tunnel Test Bay mechanical inspection",
+        "description": "Translate and yaw a retained transparent calibration foil in a glazed local tunnel segment.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Visible bounded dry mechanical motion; no scientific measurement is synthesized."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            9,
+            -11,
+            7
+          ],
+          "target": [
+            0,
+            0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            3.8,
+            -3.4,
+            1.65
+          ],
+          "target": [
+            0,
+            0,
+            1.5
+          ],
+          "fovy": 66
+        },
+        "workstation": {
+          "position": [
+            1.6,
+            -3,
+            1.65
+          ],
+          "target": [
+            0,
+            0,
+            1.45
+          ],
+          "fovy": 56
+        }
+      },
+      "layout_rationale": [
+        "The visible white-lined corridor, dark frame and clear vertical article with circular endplate follow the official side photograph.",
+        "Published test section is 20 x 3.6 x 2.5 m. This local reconstruction models only 6 m of length while preserving the published cross-section.",
+        "Room boundaries, exterior clearance and the specimen stage mechanism are authored estimates. No return circuit is invented."
+      ],
+      "limitations": [
+        "Reference-informed prototype, not surveyed, institution-approved or endorsed.",
+        "Unknown dimensions, loads and motion limits are authored estimates.",
+        "Scientific process and manufacturer performance are not established by the mechanical checks.",
+        "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
+        "Source reference media are private review inputs and are not distributed with authored assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia03/auckland_tunnel.jpg"
+        ],
+        "reviewed_sha256": [
+          "b76b6d282f78a4075e0bd401e238237a55fc195113bc26fa4a514ca52eec1ca4"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Only separately attributed published dimensions are verified; remaining geometry estimated",
+        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
+      }
+    },
+    {
+      "id": "kfupm_building_materials",
+      "title": "KFUPM Building-Materials Grip Test Bay",
+      "institution": "Building Materials Laboratory \u2014 Mechanical Test Frame",
+      "domain": "Construction materials testing",
+      "university_expansion": true,
+      "source_urls": [
+        "https://ri.kfupm.edu.sa/irc-cbm/facilities/facility-details/building-materials-lab",
+        "https://ri.kfupm.edu.sa/images/ircforconstructionandbuildingmaterialslibraries/default-album/img_0531.jpg?sfvrsn=96dffbb5_1"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Two polished cylindrical columns support a heavy black top crosshead. Opposed large steel grip blocks fill the center opening, with prominent round adjustment hardware. The test frame sits in a working bay with wall-mounted records and side electronics. Single close photograph, partly occluded by an operator. Room plan, full frame dimensions and true grip actuation are not available. Original benign mechanical motion and inert coupon only; no material failure law or certified load rating.",
+      "observed_cues": [
+        "Two polished cylindrical columns support a heavy black top crosshead.",
+        "Opposed large steel grip blocks fill the center opening, with prominent round adjustment hardware.",
+        "The test frame sits in a working bay with wall-mounted records and side electronics."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5,
+          6,
+          3.0
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.79,
+          1
+        ],
+        "accent": [
+          0.2,
+          0.3,
+          0.35,
+          1
+        ],
+        "style": "engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.62,
+              0.61,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.0
+          },
+          "ceiling": "suspended",
+          "service_strip": false,
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "wall": "left",
+              "offset": -1.8,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ]
+        }
+      },
+      "benches": [
+        {
+          "id": "control_desk",
+          "pos": [
+            1.4,
+            1.4,
+            0
+          ],
+          "size": [
+            1.0,
+            0.72,
+            0.77
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.68,
+            0.67,
+            0.6,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "kfupm_wedge_grip_frame",
+          "pos": [
+            -0.45,
+            1.1,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position an upper crosshead and lower grip around a visible retained inert metal strip.",
+          "evidence": "Independently authored exterior based on actual reviewed university photograph; detailed dimensions estimated",
+          "source_urls": [
+            "https://ri.kfupm.edu.sa/irc-cbm/facilities/facility-details/building-materials-lab"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored floor support"
+          }
+        }
+      ],
+      "task": {
+        "name": "KFUPM Building-Materials Grip Test Bay mechanical inspection",
+        "description": "Position an upper crosshead and lower grip around a visible retained inert metal strip.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Visible bounded dry mechanical motion; no scientific measurement is synthesized."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.8,
+            -7.5,
+            5.3
+          ],
+          "target": [
+            0,
+            0.5,
+            1
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            1.7,
+            -2.3,
+            1.65
+          ],
+          "target": [
+            -0.45,
+            1.1,
+            1.35
+          ],
+          "fovy": 56
+        },
+        "workstation": {
+          "position": [
+            0.3,
+            -0.9,
+            1.6
+          ],
+          "target": [
+            -0.45,
+            1.1,
+            1.38
+          ],
+          "fovy": 43
+        }
+      },
+      "layout_rationale": [
+        "Polished twin columns, heavy dark crosshead, opposed wedge-grip blocks and round front adjustment hardware follow the actual apparatus photograph.",
+        "Wall records and adjacent work electronics provide the documented local context; the partially occluded room footprint is estimated.",
+        "The two vertical inspection movements and metal strip are explicit task aids; no tensile load, strain or material failure is simulated."
+      ],
+      "limitations": [
+        "Reference-informed prototype, not surveyed, institution-approved or endorsed.",
+        "Unknown dimensions, loads and motion limits are authored estimates.",
+        "Scientific process and manufacturer performance are not established by the mechanical checks.",
+        "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
+        "Source reference media are private review inputs and are not distributed with authored assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia03/kfupm_building.jpg"
+        ],
+        "reviewed_sha256": [
+          "0abc626524cf0e48fb8bc0497561d1056317d2947ce71a631b0f1328e3733172"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Only separately attributed published dimensions are verified; remaining geometry estimated",
+        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
+      }
+    },
+    {
+      "id": "cambridge_whittle_low_speed_turbine",
+      "title": "Cambridge Whittle Low-Speed Turbine Rig",
+      "institution": "Whittle Laboratory \u2014 Large Scale Low Speed Turbine",
+      "domain": "mechanical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www-g.eng.cam.ac.uk/whittle/rigs/rigs.html",
+        "https://www-g.eng.cam.ac.uk/whittle/rigs/rigs-peregrine-1.gif"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Very large teal circular inlet with central hub and radial spokes. Long horizontal cylindrical flow path with contrasting annular sections. Floor-supported frame, access steps, nearby ladder and overhead ducting. Historical official photo; exact date, current building arrangement, internal rotor structure and all dimensions remain unverified. Reconstruct the visible rig only, without turbine aerodynamics.",
+      "observed_cues": [
+        "Very large teal circular inlet with central hub and radial spokes.",
+        "Long horizontal cylindrical flow path with contrasting annular sections.",
+        "Floor-supported frame, access steps, nearby ladder and overhead ducting."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          8,
+          8,
+          5.0
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.79,
+          1
+        ],
+        "accent": [
+          0.2,
+          0.3,
+          0.35,
+          1
+        ],
+        "style": "engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.54,
+              0.53,
+              0.48,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.0
+          },
+          "ceiling": "exposed",
+          "service_strip": false,
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "wall": "back",
+              "offset": -3.0,
+              "width": 1.2,
+              "height": 2.3,
+              "sill": 0
+            }
+          ]
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "whittle_low_speed_rig",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position an external dry probe over a retained reference block beside the historical turbine-rig shell.",
+          "evidence": "Independently authored exterior based on actual reviewed university photograph; detailed dimensions estimated",
+          "source_urls": [
+            "https://www-g.eng.cam.ac.uk/whittle/rigs/rigs.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored floor support"
+          }
+        }
+      ],
+      "task": {
+        "name": "Cambridge Whittle Low-Speed Turbine Rig mechanical inspection",
+        "description": "Position an external dry probe over a retained reference block beside the historical turbine-rig shell.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Visible bounded dry mechanical motion; no scientific measurement is synthesized."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            9,
+            -10,
+            7.5
+          ],
+          "target": [
+            0,
+            0,
+            1.5
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            3.4,
+            -3.4,
+            1.8
+          ],
+          "target": [
+            0,
+            0,
+            1.8
+          ],
+          "fovy": 76
+        },
+        "workstation": {
+          "position": [
+            1.65,
+            -0.8,
+            1.95
+          ],
+          "target": [
+            2.14,
+            0.6,
+            1.6
+          ],
+          "fovy": 51
+        }
+      },
+      "layout_rationale": [
+        "The historical official photo anchors the large teal inlet screen, central hub, annular contrasting sections, floor stands and access steps.",
+        "All detailed dimensions, local hall bounds and present-day equipment arrangement remain unverified.",
+        "No hidden rotor is fabricated. The external dry reference traverse is an authored mechanism; turbine flow and efficiency remain outside scope."
+      ],
+      "limitations": [
+        "Reference-informed prototype, not surveyed, institution-approved or endorsed.",
+        "Unknown dimensions, loads and motion limits are authored estimates.",
+        "Scientific process and manufacturer performance are not established by the mechanical checks.",
+        "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
+        "Source reference media are private review inputs and are not distributed with authored assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia03/cambridge_turbine.gif"
+        ],
+        "reviewed_sha256": [
+          "06c984b074a1736f9458f7dd99d3a6a8d406f4151e4bd5608ad897da1769ebb2"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Only separately attributed published dimensions are verified; remaining geometry estimated",
+        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
+      }
+    },
+    {
+      "id": "birmingham_advanced_micro_edm",
+      "title": "Birmingham Micro-EDM Workroom",
+      "institution": "Advanced Manufacturing Research Group \u2014 Micro EDM Laboratory",
+      "domain": "mechanical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.birmingham.ac.uk/research/centres-institutes/research-in-mechanical-engineering/advanced-manufacturing-research-group/facilities",
+        "https://www.birmingham.ac.uk/Images/College-EPS-only/mechanical/research/advanced-manufacturing/micro-edm1.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Tall rectangular glazed machine front with visible paired wire wheels and central work tray. Angled controller to the right and adjacent second tool projecting into foreground. Narrow rust-red floor aisle, wall conduits and separate computer cart. Machine model details and dimensions are not verified; room boundaries inferred from one view. Mechanical fixture positioning only, without energized discharge or manufacturing process.",
+      "observed_cues": [
+        "Tall rectangular glazed machine front with visible paired wire wheels and central work tray.",
+        "Angled controller to the right and adjacent second tool projecting into foreground.",
+        "Narrow rust-red floor aisle, wall conduits and separate computer cart."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          4,
+          5,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.79,
+          1
+        ],
+        "accent": [
+          0.2,
+          0.3,
+          0.35,
+          1
+        ],
+        "style": "engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.16,
+              0.095,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.0
+          },
+          "ceiling": "suspended",
+          "service_strip": false,
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "wall": "left",
+              "offset": -1.65,
+              "width": 0.95,
+              "height": 2.1,
+              "sill": 0
+            }
+          ]
+        }
+      },
+      "benches": [
+        {
+          "id": "computer_cart",
+          "pos": [
+            -1.42,
+            0.2,
+            0
+          ],
+          "size": [
+            0.62,
+            0.55,
+            0.76
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.57,
+            0.47,
+            0.3,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "birmingham_wire_fixture",
+          "pos": [
+            -0.3,
+            0.7,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Move a retained inert metal coupon on the dry XY fixture inside a reconstructed wire-machine facade.",
+          "evidence": "Independently authored exterior based on actual reviewed university photograph; detailed dimensions estimated",
+          "source_urls": [
+            "https://www.birmingham.ac.uk/research/centres-institutes/research-in-mechanical-engineering/advanced-manufacturing-research-group/facilities"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored floor support"
+          }
+        }
+      ],
+      "task": {
+        "name": "Birmingham Micro-EDM Workroom mechanical inspection",
+        "description": "Move a retained inert metal coupon on the dry XY fixture inside a reconstructed wire-machine facade.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Visible bounded dry mechanical motion; no scientific measurement is synthesized."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5,
+            -6,
+            4.3
+          ],
+          "target": [
+            0,
+            0.3,
+            0.85
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            0,
+            -2.1,
+            1.62
+          ],
+          "target": [
+            -0.15,
+            0.6,
+            1.04
+          ],
+          "fovy": 67
+        },
+        "workstation": {
+          "position": [
+            -0.65,
+            -0.95,
+            1.3
+          ],
+          "target": [
+            -0.3,
+            0.7,
+            1.09
+          ],
+          "fovy": 48
+        }
+      },
+      "layout_rationale": [
+        "Cream glazed machine frame, exposed guide wheels, work tray and inclined right controller reproduce the installed-machine photograph.",
+        "Rust-red aisle, side computer cart, wall conduits and the cropped casing of a second machine follow visible room cues.",
+        "Room dimensions, wire-machine model and interior mechanisms are unverified. No energized discharge, liquid dielectric or machining process is simulated."
+      ],
+      "limitations": [
+        "Reference-informed prototype, not surveyed, institution-approved or endorsed.",
+        "Unknown dimensions, loads and motion limits are authored estimates.",
+        "Scientific process and manufacturer performance are not established by the mechanical checks.",
+        "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
+        "Source reference media are private review inputs and are not distributed with authored assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia03/birmingham_edm.jpg"
+        ],
+        "reviewed_sha256": [
+          "452e40213ac855eec6b716ccb94700049c5361e5afb8d61ac439500ef4b3ffe0"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Only separately attributed published dimensions are verified; remaining geometry estimated",
+        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
+      }
+    }
+  ]
+}

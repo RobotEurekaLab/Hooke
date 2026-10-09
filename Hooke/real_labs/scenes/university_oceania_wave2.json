@@ -1,0 +1,514 @@
+{
+  "schema_version": 1,
+  "scenes": [
+    {
+      "id": "uwa_ngcf_c72",
+      "title": "UWA C72 Centrifuge Service Bay",
+      "institution": "National Geotechnical Centrifuge Facility \u2014 C72 bay",
+      "domain": "geotechnical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://ngcf.edu.au/",
+        "https://ngcf.edu.au/resized-uploads/ngcf-c72-beam-centrifuge_resized_5e3be45cdd0905121f708f66154fe9d1c18908c4.jpg",
+        "https://www.uwa.edu.au/research/-/media/project/uwa/uwa/uwa-corporate/hero/geotechnical-centrifuge-iomrc-1776_x_568.jpg?w=1440&hash=98FB02F50649988760B557EA916AC9C7"
+      ],
+      "reference_notes": "Actual C72 installation and close view inspected: teal tapered central pedestal, upright front drive motor, pale horizontal arm and hanging bucket on one end, paired cylindrical counterweight stacks on the opposite end, upper service platform and square ceiling access opening. Local machine bay is visible, not a measured room plan. C61 and C72 images on the same website are different machines and must not be fused. Current wall dimensions and hidden drive internals are unknown.",
+      "observed_cues": [
+        "Teal tapering central support with arched openings",
+        "White cantilever arm and hanging bucket contrasted with metal counterweight stacks",
+        "Square ceiling service opening above grated access platform"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          12,
+          11,
+          5.1
+        ],
+        "wall_color": [
+          0.81,
+          0.82,
+          0.79,
+          1
+        ],
+        "accent": [
+          0.1,
+          0.3,
+          0.45,
+          1
+        ],
+        "style": "geotechnical_engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.62,
+              0.63,
+              0.6,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.5
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "sill": 0,
+              "wall": "left",
+              "offset": 3.7,
+              "width": 1.3,
+              "height": 2.3
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "uwa_c72_beam_centrifuge",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position the bounded beam azimuth and hanging basket attitude around a retained dry calibration block.",
+          "evidence": "Original geometry derived from inspected official apparatus photos; unreported details estimated",
+          "source_urls": [
+            "https://ngcf.edu.au/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support to the laboratory floor; basin recessed below the floor datum where applicable"
+          }
+        }
+      ],
+      "task": {
+        "name": "UWA C72 Centrifuge Service Bay mechanical positioning",
+        "description": "Position the bounded beam azimuth and hanging basket attitude around a retained dry calibration block.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Visible bounded mechanical movement only; no calibrated scientific outcome is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            11,
+            -13,
+            9
+          ],
+          "target": [
+            0,
+            0,
+            1.65
+          ],
+          "fovy": 45
+        },
+        "interior": {
+          "position": [
+            4.8,
+            -4.8,
+            2.0
+          ],
+          "target": [
+            -0.6,
+            0,
+            2.25
+          ],
+          "fovy": 64
+        },
+        "workstation": {
+          "position": [
+            -2.4,
+            -1.3,
+            2.3
+          ],
+          "target": [
+            -4.3,
+            0,
+            1.4
+          ],
+          "fovy": 55
+        }
+      },
+      "layout_rationale": [
+        "Teal tapered pedestal with arch openings, upright drive motor, pale asymmetric beam, two counterweight stacks and hanging bucket follow the selected C72 photograph.",
+        "The upper service platform aligns with a genuine square ceiling opening. Detailed support geometry and room extents are estimates.",
+        "This is the C72 machine only; the distinct C61 photograph is excluded. The published nominal 10 m rotor diameter provides an approximate scale anchor."
+      ],
+      "limitations": [
+        "Reference-informed local prototype; not surveyed, institution-approved or endorsed.",
+        "Unreported room dimensions, machinery dimensions, loads and motion limits are authored estimates.",
+        "Mechanical surrogates do not establish geotechnical, hydrodynamic, crane safety, robot autonomy or manufacturer-performance validation.",
+        "CPU MuJoCo mechanics are testable. Blender/GLB/USD exports are visual snapshots and do not establish Isaac runtime validation.",
+        "Source reference media are not included in distributable scene assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/oceania_02_media/uwa_c72.jpg",
+          "temp/university/expansion_100_20261003/research/oceania_02_media/uwa_centrifuge.jpg"
+        ],
+        "reviewed_sha256": [
+          "cd461769c61850f53de039735a4a0ce9c9839fc3a140648cadb039d2842473d3",
+          "1274c5fb7c7d62e103d121024ebc840f95e7facd8d59d379957d44e676d01ec2"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Published partial dimensions are identified separately; all remaining geometry is estimated",
+        "rights": "Official publicly viewable references; no open media license or derivative-asset redistribution permission verified. Source images retained privately under ignored temp/."
+      }
+    },
+    {
+      "id": "uts_infrastructure_robotics",
+      "title": "UTS Infrastructure Robotics Test Bay",
+      "institution": "Infrastructure Robotics Laboratory CB01.02.082",
+      "domain": "infrastructure_robotics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.uts.edu.au/research/centres/robotics-institute/our-research/research-labs/infrastructure-robotics-lab",
+        "https://www.uts.edu.au/globalassets/sites/default/files/styles/wysiwyg_generic_large_x1/public/2021-09/lab_inf_pano_01_0.png"
+      ],
+      "reference_notes": "Official panorama inspected: recessed concrete water tank occupies the left foreground, metal guard rail bounds its edge, yellow overhead bridge crane sits on blue steel girders, and tool drawers, assembly benches and inspection fixtures occupy the right and rear work area. Panorama distortion prevents metric floorplan recovery. Exact robot models and fixtures are not identifiable at this resolution; do not invent a specific deployed robot from adjacent page text. Source states a 45 kL tank but no verified dimensions.",
+      "observed_cues": [
+        "Large recessed concrete tank left of a mixed assembly bay",
+        "Yellow crane supported by blue columns and runway beams",
+        "Wall-side benches and drawers around a clear central access area"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          12,
+          10,
+          5.3
+        ],
+        "wall_color": [
+          0.81,
+          0.82,
+          0.79,
+          1
+        ],
+        "accent": [
+          0.1,
+          0.3,
+          0.45,
+          1
+        ],
+        "style": "infrastructure_robotics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.51,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.5
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "sill": 0,
+              "wall": "back",
+              "offset": 4.4,
+              "width": 1.2,
+              "height": 2.25
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "wall_assembly_bench",
+          "pos": [
+            2.3,
+            2.75,
+            0
+          ],
+          "size": [
+            3.2,
+            0.8,
+            0.91
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.67,
+            0.65,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "uts_inspection_bridge_crane",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate the crane bridge and trolley over a recessed test tank with a retained inert inspection dummy.",
+          "evidence": "Original geometry derived from inspected official apparatus photos; unreported details estimated",
+          "source_urls": [
+            "https://www.uts.edu.au/research/centres/robotics-institute/our-research/research-labs/infrastructure-robotics-lab"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support to the laboratory floor; basin recessed below the floor datum where applicable"
+          }
+        }
+      ],
+      "task": {
+        "name": "UTS Infrastructure Robotics Test Bay mechanical positioning",
+        "description": "Translate the crane bridge and trolley over a recessed test tank with a retained inert inspection dummy.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Visible bounded mechanical movement only; no calibrated scientific outcome is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            13,
+            -14,
+            12
+          ],
+          "target": [
+            0,
+            0,
+            1.0
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            5,
+            -4.5,
+            1.9
+          ],
+          "target": [
+            -2.0,
+            0.4,
+            1.0
+          ],
+          "fovy": 73
+        },
+        "workstation": {
+          "position": [
+            3,
+            -7.4,
+            5.5
+          ],
+          "target": [
+            -2.7,
+            0.0,
+            1.4
+          ],
+          "fovy": 57
+        }
+      },
+      "layout_rationale": [
+        "The official distorted panorama anchors a recessed concrete water tank left, blue crane runways and yellow bridge above, and separate right-hand assembly work areas.",
+        "Tank volume is published as 45 kL. A 5 x 6 x 1.5 m void is an authored choice consistent with that volume; those dimensions were not measured.",
+        "No particular inspection robot is identifiable from the photograph. The suspended inert dummy and pipe fixtures are explicit task aids, not claimed deployed UTS robots."
+      ],
+      "limitations": [
+        "Reference-informed local prototype; not surveyed, institution-approved or endorsed.",
+        "Unreported room dimensions, machinery dimensions, loads and motion limits are authored estimates.",
+        "Mechanical surrogates do not establish geotechnical, hydrodynamic, crane safety, robot autonomy or manufacturer-performance validation.",
+        "CPU MuJoCo mechanics are testable. Blender/GLB/USD exports are visual snapshots and do not establish Isaac runtime validation.",
+        "Source reference media are not included in distributable scene assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/oceania_02_media/uts_infrastructure.png"
+        ],
+        "reviewed_sha256": [
+          "79e8a41dd3a66c19a6035e50ec8ffbb69d31a2790255cf6aa415acbcc5157986"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Published partial dimensions are identified separately; all remaining geometry is estimated",
+        "rights": "Official publicly viewable references; no open media license or derivative-asset redistribution permission verified. Source images retained privately under ignored temp/."
+      }
+    },
+    {
+      "id": "unsw_wrl_wave_basin",
+      "title": "UNSW WRL Segmented Wave-Paddle Bay",
+      "institution": "Water Research Laboratory \u2014 segmented wave-basin bay",
+      "domain": "coastal_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.unsw.edu.au/research/wrl/facilities-and-equipment",
+        "https://www.unsw.edu.au/content/dam/images/engineering/civil-environmental/buildings-facilities/2023-10-wrl-research/2023-10-wrl-Wave-Basin-2022.png"
+      ],
+      "reference_notes": "Actual wave-basin image inspected: long row of narrow silver wavemaker paddles with blue vertical trim, exposed top-mounted motors and cables, corrugated metal wall and structural columns behind the array. Only the paddle-side local bay is visible. Photo supports the wavemaker side only. Other WRL flumes have their own different dimensions and are separate facilities; do not assign their widths or lengths to this basin. Visible real waves are not evidence that a static render simulates hydrodynamics.",
+      "observed_cues": [
+        "Repeated silver and blue paddle faces with separate top-mounted motors",
+        "Industrial corrugated wall and floor-supported columns behind the array",
+        "Local concrete basin edge, without invented complete basin floorplan"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          12,
+          7.6,
+          3.6
+        ],
+        "wall_color": [
+          0.81,
+          0.82,
+          0.79,
+          1
+        ],
+        "accent": [
+          0.1,
+          0.3,
+          0.45,
+          1
+        ],
+        "style": "coastal_engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.51,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.5
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "kind": "door",
+              "sill": 0,
+              "wall": "left",
+              "offset": -3.2,
+              "width": 1.0,
+              "height": 2.2
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "unsw_wrl_piston_array",
+          "pos": [
+            0,
+            1.4,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Set twenty independent paddle positions beside a supported reference gauge; inspect mechanical motion only.",
+          "evidence": "Original geometry derived from inspected official apparatus photos; unreported details estimated",
+          "source_urls": [
+            "https://www.unsw.edu.au/research/wrl/facilities-and-equipment"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous authored support to the laboratory floor; basin recessed below the floor datum where applicable"
+          }
+        }
+      ],
+      "task": {
+        "name": "UNSW WRL Segmented Wave-Paddle Bay mechanical positioning",
+        "description": "Set twenty independent paddle positions beside a supported reference gauge; inspect mechanical motion only.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Visible bounded mechanical movement only; no calibrated scientific outcome is generated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            11,
+            -12,
+            8
+          ],
+          "target": [
+            0,
+            0.1,
+            0.65
+          ],
+          "fovy": 46
+        },
+        "interior": {
+          "position": [
+            4.8,
+            -3.1,
+            1.72
+          ],
+          "target": [
+            0,
+            1.9,
+            0.96
+          ],
+          "fovy": 70
+        },
+        "workstation": {
+          "position": [
+            3.3,
+            -0.4,
+            1.7
+          ],
+          "target": [
+            4.1,
+            1.95,
+            1.05
+          ],
+          "fovy": 55
+        }
+      },
+      "layout_rationale": [
+        "Twenty narrow silver paddle faces with blue trim and individual elevated motors follow the actual wave-basin image.",
+        "Corrugated metal wall, dark structural columns and local concrete basin edges reproduce visible bay cues; the full basin footprint is not known.",
+        "Lengths and paddle strokes are estimated for this bay. Dimensions of other WRL flumes do not apply. The water body is static visual geometry, not simulated waves."
+      ],
+      "limitations": [
+        "Reference-informed local prototype; not surveyed, institution-approved or endorsed.",
+        "Unreported room dimensions, machinery dimensions, loads and motion limits are authored estimates.",
+        "Mechanical surrogates do not establish geotechnical, hydrodynamic, crane safety, robot autonomy or manufacturer-performance validation.",
+        "CPU MuJoCo mechanics are testable. Blender/GLB/USD exports are visual snapshots and do not establish Isaac runtime validation.",
+        "Source reference media are not included in distributable scene assets."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/oceania_02_media/unsw_basin.png"
+        ],
+        "reviewed_sha256": [
+          "37ed9e820ac0cb6615e1b588cb18dfee13629fa9d736c727444af1c218dc0743"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Published partial dimensions are identified separately; all remaining geometry is estimated",
+        "rights": "Official publicly viewable references; no open media license or derivative-asset redistribution permission verified. Source images retained privately under ignored temp/."
+      }
+    }
+  ]
+}

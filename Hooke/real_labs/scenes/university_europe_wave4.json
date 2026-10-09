@@ -1,0 +1,838 @@
+{
+  "scenes": [
+    {
+      "id": "ku_leuven_iglis1_laser",
+      "title": "KU Leuven IGLIS-1 Laser Alignment Bay",
+      "institution": "Ku Leuven \u2014 IGLIS-1 dedicated laser laboratory",
+      "institution_id": "ku_leuven",
+      "domain": "optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://fys.kuleuven.be/iks/ns/experimental-facilities/iglis/IGLIS-1"
+      ],
+      "reference_notes": "A real installed laboratory view shows several adjacent optical tables carrying long blue laser enclosures and silver pump units. Two monitor screens face the near aisle; rear instrument shelves, beam components, cable routing and a window blind establish the room context. Only the 2021-captioned room view is established; exact table scale, current placement and internal laser paths are unknown. The neighboring Jetlab is a separate facility and must not be folded into this room. No laser propagation or ionization solver.",
+      "observed_cues": [
+        "A real installed laboratory view shows several adjacent optical tables carrying long blue laser enclosures and silver pump units. Two monitor screens face the near aisle; rear instrument shelves, beam components, cable routing and a window blind establish the room context."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5.6,
+          4.8,
+          2.75
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "laser_room_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.76,
+              "width": 0.95,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "rear_blinded_window",
+              "wall": "back",
+              "kind": "window",
+              "offset": 1.42,
+              "width": 1.5,
+              "height": 1.3,
+              "sill": 1.05
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "alignment_table",
+          "kind": "iglis_blue_laser_alignment_table",
+          "pos": [
+            0.4,
+            0.54,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Installed-style blue laser enclosures surrounding an authored inert target XY mount",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Translate an inert optical alignment target",
+        "description": "Move a retained crosshair coupon across a supported XY stage beside inert laser housings. The compact room keeps perpendicular blue enclosures, silver pump housings and paired monitors visible; no laser emission or optical response.",
+        "primary_equipment": "alignment_table",
+        "observable": "Target X and Y displacement"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.6,
+            -6.3,
+            4.4
+          ],
+          "target": [
+            -0.05,
+            0.38,
+            1.03
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            2.1,
+            -1.97,
+            1.6
+          ],
+          "target": [
+            -0.42,
+            0.7,
+            1.18
+          ],
+          "fovy": 76
+        },
+        "workstation": {
+          "position": [
+            2.1,
+            -0.65,
+            1.9
+          ],
+          "target": [
+            0.96,
+            0.24,
+            1.19
+          ],
+          "fovy": 51
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_front",
+          "minimum_xy": [
+            -2.53,
+            -2.18
+          ],
+          "maximum_xy": [
+            2.44,
+            -1.34
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "table_front",
+          "minimum_xy": [
+            -1.05,
+            -1.27
+          ],
+          "maximum_xy": [
+            2.43,
+            -0.15
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The compact bay preserves a large perpendicular blue amplifier enclosure at the left and blue/silver laser tables at centre and rear, with paired monitors and an electronics rack.",
+        "A visible inert crosshair target sits on an authored supported XY fixture. It is a mechanical positioning task, not a claim that the source contains this exact stage.",
+        "Photo proportions establish arrangement only. The separate Jetlab and its vacuum/ion optics are not merged into this dedicated laser room."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Official source last updated 2021; present room configuration, dimensions, doors and exact laser internals are unverified. The room perimeter is an authored selected-bay boundary.",
+        "No laser emission, optical propagation, gain medium, spectrum, ionization, nuclear process, laser tuning procedure or scientific performance reproduction."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave4": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/leuven_iglis.png",
+              "sha256": "921c073d1eabb30fc11cb92dadcf36dcc1271082e1cacce75dee85fe4f66101f",
+              "page": "https://fys.kuleuven.be/iks/ns/experimental-facilities/iglis/IGLIS-1",
+              "image_url": "https://fys.kuleuven.be/iks/ns/experimental-facilities/iglis/image-1.png/@@images/image-400-7615a1ad16c9da471461d75b5782f3ab.png",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "A real installed laboratory view shows several adjacent optical tables carrying long blue laser enclosures and silver pump units. Two monitor screens face the near aisle; rear instrument shelves, beam components, cable routing and a window blind establish the room context."
+          ],
+          "implemented": [
+            "The compact bay preserves a large perpendicular blue amplifier enclosure at the left and blue/silver laser tables at centre and rear, with paired monitors and an electronics rack.",
+            "A visible inert crosshair target sits on an authored supported XY fixture. It is a mechanical positioning task, not a claim that the source contains this exact stage.",
+            "Photo proportions establish arrangement only. The separate Jetlab and its vacuum/ion optics are not merged into this dedicated laser room."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Official source last updated 2021; present room configuration, dimensions, doors and exact laser internals are unverified. The room perimeter is an authored selected-bay boundary.",
+            "No laser emission, optical propagation, gain medium, spectrum, ionization, nuclear process, laser tuning procedure or scientific performance reproduction."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "paris_saclay_lmps_astree",
+      "title": "Paris-Saclay ASTREE Triaxial Loading Workcell",
+      "institution": "Universite Paris Saclay \u2014 LMPS ASTREE triaxial testing station at ENS Paris-Saclay",
+      "institution_id": "universite_paris_saclay",
+      "domain": "mechanical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://lmps.ens-paris-saclay.fr/fr/moyens-sur-le-site-de-lens-paris-saclay"
+      ],
+      "reference_notes": "The installed apparatus photograph shows large opposing horizontal loading heads around a central specimen mount, with a vertical head above, a perforated circular base below and tall polished structural columns. An operator accesses the center from behind the loading heads. The source establishes the apparatus and operator access, not a complete room. The photograph filename is historical; current room/configuration is unverified. No hydraulic calibration, stresses, fracture or material response.",
+      "observed_cues": [
+        "The installed apparatus photograph shows large opposing horizontal loading heads around a central specimen mount, with a vertical head above, a perforated circular base below and tall polished structural columns. An operator accesses the center from behind the loading heads."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5.8,
+          5.8,
+          3.55
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "loading_bay_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.65,
+              "width": 1.15,
+              "height": 2.35,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "astree_frame",
+          "kind": "astree_triaxial_loading_frame",
+          "pos": [
+            0,
+            0.18,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Six visible orthogonal loading housings with two restricted unloaded approach controls",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Approach an inert structural specimen with two supported loading heads",
+        "description": "Position one horizontal and one vertical head around a retained rigid coupon. Source-supported orthogonal housings, four polished columns and perforated round platen remain visible. The task concerns mechanical access and positioning; it does not execute calibrated loading.",
+        "primary_equipment": "astree_frame",
+        "observable": "Horizontal and vertical unloaded head displacement; fixed retained specimen"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.5,
+            -7.2,
+            5.1
+          ],
+          "target": [
+            0.0,
+            0.18,
+            1.4
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.13,
+            -2.26,
+            1.73
+          ],
+          "target": [
+            0.0,
+            0.19,
+            1.5
+          ],
+          "fovy": 76
+        },
+        "workstation": {
+          "position": [
+            1.15,
+            -1.52,
+            1.9
+          ],
+          "target": [
+            0.0,
+            0.18,
+            1.41
+          ],
+          "fovy": 56
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_front",
+          "minimum_xy": [
+            -2.62,
+            -2.62
+          ],
+          "maximum_xy": [
+            2.47,
+            -1.44
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_service",
+          "minimum_xy": [
+            -2.62,
+            -1.36
+          ],
+          "maximum_xy": [
+            -1.6,
+            2.45
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The apparatus retains four polished vertical columns, six orthogonal cylinder directions and a circular perforated lower platen, rather than a generic rectangular testing machine.",
+        "Official test-space and stroke specifications anchor scale. The exterior frame, support sections and inert central specimen fixture are explicit estimates.",
+        "Only the photographed ASTREE machine bay is reconstructed. Separate Hexapode, mini-ASTREE, X-ray and impact facilities on the same page are not merged or counted again."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "The official image is a historical close-up. Room perimeter, exact crosshead shape, controller location and unseen service connections are estimates; no surveyed whole-room plan.",
+        "Only two unloaded approach axes within the published cylinder stroke are controlled. No hydraulic operation, calibrated force, stress/strain, deformation, fracture, stereo-correlation or full six-axis loading cycle."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave4": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/saclay_astree.jpg",
+              "sha256": "6a31f65a8444b21a906272266e7adfd83b9653f350f19c20b9c2d882840e2c64",
+              "page": "https://lmps.ens-paris-saclay.fr/fr/moyens-sur-le-site-de-lens-paris-saclay",
+              "image_url": "https://lmps.ens-paris-saclay.fr/sites/lmt/files/styles/img__480x360__crop_main/public/media/images/cnrs_20050001_0910.jpg?itok=EeqtEmFT",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "The installed apparatus photograph shows large opposing horizontal loading heads around a central specimen mount, with a vertical head above, a perforated circular base below and tall polished structural columns. An operator accesses the center from behind the loading heads."
+          ],
+          "implemented": [
+            "The apparatus retains four polished vertical columns, six orthogonal cylinder directions and a circular perforated lower platen, rather than a generic rectangular testing machine.",
+            "Official test-space and stroke specifications anchor scale. The exterior frame, support sections and inert central specimen fixture are explicit estimates.",
+            "Only the photographed ASTREE machine bay is reconstructed. Separate Hexapode, mini-ASTREE, X-ray and impact facilities on the same page are not merged or counted again."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "The official image is a historical close-up. Room perimeter, exact crosshead shape, controller location and unseen service connections are estimates; no surveyed whole-room plan.",
+            "Only two unloaded approach axes within the published cylinder stroke are controlled. No hydraulic operation, calibrated force, stress/strain, deformation, fracture, stereo-correlation or full six-axis loading cycle."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "glasgow_iset_exploration",
+      "title": "Glasgow I-SET Space-Hardware Prototyping Room",
+      "institution": "University Of Glasgow \u2014 Integrated Space and Exploration Technology laboratory",
+      "institution_id": "university_of_glasgow",
+      "domain": "space_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.gla.ac.uk/research/az/space-exploration-technology/facilities/"
+      ],
+      "reference_notes": "The installed lab view shows central white workbenches, an upright mechanical test frame, several framed prototyping enclosures, wheeled instrument cabinets and a tall machine at the right wall. Orange floor markings define a clear aisle; broad windows, shelves and a tiled ceiling establish the room. The visible I-SET room is distinct from the separately listed ESA plume facility, Govan lab, MachLab and attitude-control lab; do not combine them. Photo does not identify each machine model or prove its function. Space environment, drilling and material-response models are unverified.",
+      "observed_cues": [
+        "The installed lab view shows central white workbenches, an upright mechanical test frame, several framed prototyping enclosures, wheeled instrument cabinets and a tall machine at the right wall. Orange floor markings define a clear aisle; broad windows, shelves and a tiled ceiling establish the room."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          7.3,
+          6.4,
+          3.0
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "iset_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.42,
+              "width": 1.13,
+              "height": 2.3,
+              "sill": 0
+            },
+            {
+              "id": "instrument_windows",
+              "wall": "left",
+              "kind": "window",
+              "offset": 0.85,
+              "width": 3.8,
+              "height": 1.35,
+              "sill": 1.2
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "prototype_frame",
+          "kind": "iset_framed_prototype_station",
+          "pos": [
+            1.59,
+            0.78,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Source-informed red/aluminium frame with explicitly authored dry prototype-positioning fixture",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Position an inert space-hardware coupon for dry inspection",
+        "description": "Translate a restrained rigid payload-shaped coupon and an inspection head inside a supported frame. The surrounding central instrument island, window-side stacked instruments, foreground grey cabinet and orange aisle follow the official room photograph.",
+        "primary_equipment": "prototype_frame",
+        "observable": "Inspection-head X and retained prototype Y displacement"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.4,
+            -8.4,
+            5.6
+          ],
+          "target": [
+            -0.35,
+            0.35,
+            1.03
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            3.18,
+            -2.74,
+            1.66
+          ],
+          "target": [
+            -0.45,
+            0.82,
+            1.16
+          ],
+          "fovy": 80
+        },
+        "workstation": {
+          "position": [
+            2.87,
+            -0.93,
+            1.86
+          ],
+          "target": [
+            1.59,
+            0.78,
+            1.09
+          ],
+          "fovy": 58
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_front",
+          "minimum_xy": [
+            -3.34,
+            -2.96
+          ],
+          "maximum_xy": [
+            3.29,
+            -2.36
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "right_circulation",
+          "minimum_xy": [
+            2.84,
+            -2.28
+          ],
+          "maximum_xy": [
+            3.34,
+            2.93
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The photograph supports central white instrument tables, left/window-side densely stacked instruments, a foreground mobile grey cabinet, a right red/aluminium framed unit and orange circulation markings.",
+        "The frame exact equipment identity is unconfirmed. Its retained original payload-shaped coupon and two dry-positioning axes are explicitly authored mechanical surrogates for hands-on prototype work.",
+        "The separate ESA plume/regolith, Govan, MachLab, attitude-control and environmental-chamber facilities mentioned on the same page are neither merged nor counted as extra laboratories."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "The selected I-SET room is confirmed by an official institutional photograph, but precise floor plan, device models, fixture internal mechanisms and dimensions are unverified.",
+        "No rocket, propellant, high vacuum, vibration, magnetic-field, 3D-printing, granular-terrain or spacecraft qualification process is implemented; mechanical positioning only."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave4": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/glasgow_iset.jpg",
+              "sha256": "090cc57ee72664bb9c476bde914b7a1391f94c3d38724f24da67c8487416fd97",
+              "page": "https://www.gla.ac.uk/research/az/space-exploration-technology/facilities/",
+              "image_url": "https://www.gla.ac.uk/media/Media_933999_smxx.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "The installed lab view shows central white workbenches, an upright mechanical test frame, several framed prototyping enclosures, wheeled instrument cabinets and a tall machine at the right wall. Orange floor markings define a clear aisle; broad windows, shelves and a tiled ceiling establish the room."
+          ],
+          "implemented": [
+            "The photograph supports central white instrument tables, left/window-side densely stacked instruments, a foreground mobile grey cabinet, a right red/aluminium framed unit and orange circulation markings.",
+            "The frame exact equipment identity is unconfirmed. Its retained original payload-shaped coupon and two dry-positioning axes are explicitly authored mechanical surrogates for hands-on prototype work.",
+            "The separate ESA plume/regolith, Govan, MachLab, attitude-control and environmental-chamber facilities mentioned on the same page are neither merged nor counted as extra laboratories."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "The selected I-SET room is confirmed by an official institutional photograph, but precise floor plan, device models, fixture internal mechanisms and dimensions are unverified.",
+            "No rocket, propellant, high vacuum, vibration, magnetic-field, 3D-printing, granular-terrain or spacecraft qualification process is implemented; mechanical positioning only."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "uppsala_tandem_pelletron",
+      "title": "Uppsala Tandem Pelletron Beamline Bay",
+      "institution": "Uppsala University \u2014 Tandem Laboratory Pelletron beamline bay",
+      "institution_id": "uppsala_university",
+      "domain": "experimental_physics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.uu.se/en/centre/tandemlab/infrastructure/accelerators"
+      ],
+      "reference_notes": "A real laboratory photo shows a large horizontal cream cylindrical vessel at the back, a thin stainless beamline extending forward on blue steel supports, flanged connections, a compact pump assembly and nearby yellow equipment. People stand in the service aisle below ceiling cable routes. Only a selected beamline bay is observed, not all six lines or the whole accelerator hall. Scientific ion optics, radiation transport, material modification and operating sequences are out of scope. Overall vessel dimensions and current setup need additional evidence.",
+      "observed_cues": [
+        "A real laboratory photo shows a large horizontal cream cylindrical vessel at the back, a thin stainless beamline extending forward on blue steel supports, flanged connections, a compact pump assembly and nearby yellow equipment. People stand in the service aisle below ceiling cable routes."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          9.1,
+          6.0,
+          3.7
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "beamline_service_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.82,
+              "width": 1.22,
+              "height": 2.4,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "pelletron_bay",
+          "kind": "uppsala_pelletron_beamline",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Unpowered cream tank and blue-supported beamline with representative mechanical coupon access",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Access and orient an inert beamline coupon",
+        "description": "Open a mechanical end-station viewport and rotate a retained rigid coupon. The large cream horizontal tank, bolted face, narrow flanged beam tube, blue support portals and instrument console preserve the reference bay. No accelerated beam or material measurement is produced.",
+        "primary_equipment": "pelletron_bay",
+        "observable": "End-station door angle and retained coupon orientation"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            8.4,
+            -8.8,
+            5.7
+          ],
+          "target": [
+            -0.5,
+            0.5,
+            1.2
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            3.57,
+            -2.41,
+            1.73
+          ],
+          "target": [
+            -0.54,
+            0.54,
+            1.4
+          ],
+          "fovy": 84
+        },
+        "workstation": {
+          "position": [
+            3.03,
+            -0.72,
+            1.87
+          ],
+          "target": [
+            2.18,
+            0.48,
+            1.49
+          ],
+          "fovy": 50
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_service",
+          "minimum_xy": [
+            -4.21,
+            -2.68
+          ],
+          "maximum_xy": [
+            4.2,
+            -1.19
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "right_service",
+          "minimum_xy": [
+            3.12,
+            -1.1
+          ],
+          "maximum_xy": [
+            4.18,
+            2.68
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "A cream horizontal accelerator enclosure dominates the left of the selected bay; a narrow flanged tube runs across floor-supported blue portals towards a compact end station, as in the official photograph.",
+        "Tank bolting, consoles, low service lines and yellow floor instrumentation are source-informed exterior details; all connections remain unpowered.",
+        "A visible inert coupon and outward-opening end-station access cover provide representative mechanical tasks. Exact end-station internals and OEM controls are not visible in the source and are labelled as authored."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Source photo establishes only one installed bay. Tank dimensions, room perimeter, support spacing, service console positions and end-station geometry are estimates. Other accelerators and beamlines on the page are not merged or counted again.",
+        "No high voltage, ion generation, accelerator/beam optics, radiation, vacuum dynamics, materials modification, measurement results or operating procedure is implemented."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave4": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/uppsala_tandem.jpg",
+              "sha256": "1cb116e0e7073c51b940620c6a5b8d8c76291628feb4a7487a73e7c1c52b7a9b",
+              "page": "https://www.uu.se/en/centre/tandemlab/infrastructure/accelerators",
+              "image_url": "https://www.uu.se/images/200.4032e90218c8acf88513b40f/1705401446923/Tandem_16_9.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "A real laboratory photo shows a large horizontal cream cylindrical vessel at the back, a thin stainless beamline extending forward on blue steel supports, flanged connections, a compact pump assembly and nearby yellow equipment. People stand in the service aisle below ceiling cable routes."
+          ],
+          "implemented": [
+            "A cream horizontal accelerator enclosure dominates the left of the selected bay; a narrow flanged tube runs across floor-supported blue portals towards a compact end station, as in the official photograph.",
+            "Tank bolting, consoles, low service lines and yellow floor instrumentation are source-informed exterior details; all connections remain unpowered.",
+            "A visible inert coupon and outward-opening end-station access cover provide representative mechanical tasks. Exact end-station internals and OEM controls are not visible in the source and are labelled as authored."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Source photo establishes only one installed bay. Tank dimensions, room perimeter, support spacing, service console positions and end-station geometry are estimates. Other accelerators and beamlines on the page are not merged or counted again.",
+            "No high voltage, ion generation, accelerator/beam optics, radiation, vacuum dynamics, materials modification, measurement results or operating procedure is implemented."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    }
+  ]
+}

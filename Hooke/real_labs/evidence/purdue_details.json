@@ -1,0 +1,47 @@
+{
+  "purdue_phenotyping": {
+    "revision": 3,
+    "source_urls": [
+      "https://ag.purdue.edu/aapf/virtual-tour.html"
+    ],
+    "inspected_local_references": [
+      "temp/research/real_labs_references/purdue_growth.jpg",
+      "temp/research/real_labs_references/purdue_hall.jpg",
+      "temp/research/real_labs_references/purdue_booth.jpg"
+    ],
+    "observed": [
+      "Dense maize/cereal canopy on parallel metal transport lanes; tapered grey pots supported by round black carriers with red guides.",
+      "Closely spaced reflector lamp array, insulated chamber panels and reflective upper wall finish.",
+      "Hallway overhead conduits, nutrient tanks in a yellow bund, drain channel, wash station and dark process panels.",
+      "Hyperspectral booth dark background, vertical camera carriage, articulated lamp brackets and cables."
+    ],
+    "inferred": [
+      "Crop morphology and all leaf dimensions are original representative maize geometry, not reconstructed individual plants.",
+      "28 potted crops, four static lanes and 56 reflector lamps are chosen to represent observed density within the estimated room envelope.",
+      "Reflector type, intensity and spectral output are uncalibrated; pipe routes and fixture placements are estimated.",
+      "The imaging booth retains its existing functional surrogate axes and dimensions; added specimen and light geometry is illustrative."
+    ],
+    "implemented": [
+      "Reusable closed tapered leaf ribbon meshes with a center fold and curved drooping tips; hollow tapered pot body and ID tabs.",
+      "Paired profile conveyors with belts, extrusion slots, idlers, motors, levelers and red stop handles.",
+      "Separate internal growth-room ceiling, reflector lamp array and hall service geometry.",
+      "Refined maize specimen attached to the mechanically operated imaging turntable, retaining conveyor, rotation and camera-height controls.",
+      "Imaging specimen uses a smaller young-maize morphology. Conveyor stroke reduced from 1.08 m to 0.80 m because the former full-travel endpoint pushed even the pot through the rear backdrop. A geometric audit samples 51 transformed poses and conservatively bounds the whole yaw sweep.",
+      "Reflector lamps use hollow eight-sided tapered cups with recessed bulbs instead of stacked flat panels. Reflector dimensions and brightness remain estimates."
+    ],
+    "unresolved": [
+      "No measured facility floor plan or calibrated reference camera registration.",
+      "Original mixed crop species, actual lamp count, manufacturer-specific conveyor CAD and exact booth geometry are not reconstructed.",
+      "No simulated growth, nutrient hydraulics, photometric calibration or hyperspectral measurement."
+    ],
+    "source_media_policy": "Existing stills used for observation only; no source media embedded as texture or redistributed, and no new media downloaded.",
+    "validation": {
+      "test": "tests/test_real_labs_purdue_geometry.py",
+      "conveyor_stroke_m": 0.8,
+      "overhead_clearance_m": 0.34709700053384274,
+      "rear_clearance_all_yaw_m": 0.07633580921002237,
+      "side_clearance_all_yaw_m": 0.3563358092100222,
+      "scope": "Original young-maize visual bounds in authored surrogate enclosure; no plant contact mechanics or measured-source geometry"
+    }
+  }
+}

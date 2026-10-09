@@ -255,7 +255,7 @@
   <select id="uni-lab"></select>
   <div id="uni-robot-info"></div>
 
-  <button class="primary" id="uni-generate">Generate scene</button>
+  <button class="primary" id="uni-generate" disabled>Generate scene</button>
   <div id="uni-error"></div>
 </fieldset>
 
@@ -464,13 +464,20 @@ function populateUniLabs() {
   onUniLabChange();
 }
 
+function currentUniLab() {
+  const scene = document.getElementById('uni-lab').value;
+  const subject = document.getElementById('uni-subject').value;
+  return selectedUniversityLabs().find(lab => lab.scene_id === scene && lab.subject_id === subject);
+}
+
 function currentUniTask() {
-  const name = document.getElementById('uni-lab').value;
-  return CATALOG.tasks.find(t => t.name === name);
+  const lab = currentUniLab();
+  return lab && (CATALOG?.tasks || []).find(task => task.name === lab.task_name);
 }
 
 function onUniLabChange() {
   const task = currentUniTask();
+  document.getElementById('uni-preview').replaceChildren();
   document.getElementById('uni-error').textContent = '';
   if (!task) {
     document.getElementById('uni-robot-info').textContent = '';
@@ -492,6 +499,10 @@ function onUniLabChange() {
     document.getElementById('uni-preview').innerHTML = '';
   }
 }
+
+document.getElementById('uni-university').addEventListener('change', populateUniSubjects);
+document.getElementById('uni-subject').addEventListener('change', populateUniLabs);
+document.getElementById('uni-lab').addEventListener('change', onUniLabChange);
 
 function populateTasks() {
   const category = document.getElementById('category').value;
@@ -642,16 +653,14 @@ document.getElementById('uni-generate').addEventListener('click', uniGenerateSce
 document.getElementById('generate-custom').addEventListener('click', generateCustom);
 
 async function uniGenerateScene() {
+  const lab = currentUniLab();
   const task = currentUniTask();
-  if (!task) return;
+  if (!lab || !task) return;
   document.getElementById('uni-error').textContent = '';
 
-  // Tasks with their own dedicated page (microscopy, space experiments,
-  // surface missions, dual-backend) go straight there, same as the
-  // existing panel does -- this quick picker's /api/scene preview is a
-  // generic fallback, not the primary way to view those.
-  if (task.navigation?.url) {
-    location.assign(new URL(task.navigation.url, location.origin).href);
+  const destination = lab.url || task.navigation?.url;
+  if (destination) {
+    location.assign(new URL(destination, location.origin).href);
     return;
   }
 
@@ -669,6 +678,7 @@ async function uniGenerateScene() {
     body: JSON.stringify(body),
   });
   const data = await res.json();
+  if (currentUniLab()?.scene_id !== lab.scene_id) return;
   if (!res.ok) {
     document.getElementById('uni-error').textContent = data.error || 'Unknown error';
     document.getElementById('uni-preview').innerHTML = '';

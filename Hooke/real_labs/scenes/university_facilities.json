@@ -1,0 +1,1065 @@
+{
+  "scenes": [
+    {
+      "id": "harvard_cns_cambridge",
+      "title": "CNS LISE Cleanroom Bays",
+      "institution": "Harvard University \u2014 Center for Nanoscale Systems",
+      "domain": "nanofabrication",
+      "institution_id": "harvard_university",
+      "university_expansion": true,
+      "source_urls": [
+        "https://cns1.rc.fas.harvard.edu/virtual-visit/"
+      ],
+      "reference_notes": "Official tour page identifies the Cambridge LISE facility. Inspected dollhouse preview shows multiple instrument bays, a long circulation corridor and a yellow-lit cleanroom section; this is a scan preview rather than a measured floorplan. This is a selected reference-informed room subset; exact dimensions, topology and OEM geometry are not verified.",
+      "observed_cues": [
+        "Official Cambridge LISE dollhouse preview shows long circulation corridors, numerous process bays and a yellow-lit cleanroom section.",
+        "The official virtual-visit page names a mask aligner; exact bay assignment and machine geometry are unverified."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          12.8,
+          7.8,
+          3.2
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.81,
+          0.79,
+          0.58,
+          1
+        ],
+        "style": "wetlab",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.6,
+              0.62,
+              0.61,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "corridor_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.15,
+              "width": 1.2,
+              "height": 2.15,
+              "sill": 0
+            },
+            {
+              "id": "service_exit",
+              "wall": "back",
+              "kind": "door",
+              "offset": 5.6,
+              "width": 1.0,
+              "height": 2.15,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "lithography_bench",
+          "pos": [
+            -3.9,
+            1.2,
+            0
+          ],
+          "size": [
+            2.65,
+            1.1,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.83,
+            0.83,
+            0.75,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "wafer_inspection_bench",
+          "pos": [
+            0.9,
+            0.35,
+            0
+          ],
+          "size": [
+            1.65,
+            1.1,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.8,
+            0.83,
+            0.83,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "lithography_aligner",
+          "kind": "mask_alignment_station",
+          "pos": [
+            -3.9,
+            1.2,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "XY wafer positioning and alignment-head access in the yellow bay",
+          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "source_urls": [
+            "https://cns1.rc.fas.harvard.edu/virtual-visit/"
+          ]
+        },
+        {
+          "id": "inspection_aligner",
+          "kind": "mask_alignment_station",
+          "pos": [
+            0.9,
+            0.35,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Representative secondary wafer inspection/alignment station",
+          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "source_urls": [
+            "https://cns1.rc.fas.harvard.edu/virtual-visit/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Position an inert wafer for alignment inspection",
+        "description": "Control a visible wafer carrier in XY and move the alignment head; no exposure or fabrication model.",
+        "primary_equipment": "lithography_aligner",
+        "observable": "Measured XY carrier positions and alignment-head height."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            13,
+            -13.5,
+            8.8
+          ],
+          "target": [
+            -0.2,
+            0.85,
+            1.12
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            -5.9,
+            -2.15,
+            1.64
+          ],
+          "target": [
+            -0.2,
+            0.85,
+            1.12
+          ],
+          "fovy": 68
+        },
+        "workstation": {
+          "position": [
+            -1.9,
+            -0.9,
+            2.65
+          ],
+          "target": [
+            -3.9,
+            1.2,
+            1.39
+          ],
+          "fovy": 45
+        }
+      },
+      "layout_rationale": [
+        "Selected three-bay subset with a continuous front corridor and distinct yellow lithography bay, following the facility preview rather than its full floorplan.",
+        "Open-frame alignment benches, vertically supported instrument heads, flanged chamber cabinets and estimated utilities supply recognizable cleanroom context.",
+        "Bay partitions, glazing, gowning storage, dimensions and device placements are authored estimates; no full facility scan was ingested.",
+        "The left-wall entry opens into a reserved corridor; process furniture stays within bays and clear of the 1 m doorway approach."
+      ],
+      "limitations": [
+        "Room dimensions and unseen placements are estimated from public images; no institution has validated this scene.",
+        "Original procedural geometry, no downloaded OEM CAD and no source photographs packaged as textures.",
+        "Institution names identify references; source media reuse and institutional endorsement have not been authorized.",
+        "Direct mechanical controls are simulated; scientific process accuracy and autonomous experimental workflow completion remain unvalidated.",
+        "Only a dollhouse preview was inspected; exact room connectivity and AB-M dimensions remain unknown."
+      ],
+      "reference_detail_evidence": {
+        "university_facilities": {
+          "sources": [
+            {
+              "local_reference": "temp/research/qs_lab_page_audit/stills/harvard_cns_preview.img",
+              "sha256": "75fea6e067ecd7e0e11d011a789373ee9f0c52efadf55c929f51de7457c7cd3d",
+              "page": "https://cns1.rc.fas.harvard.edu/virtual-visit/",
+              "use": "Viewed as modelling reference only; not redistributed or used as a texture"
+            }
+          ],
+          "observed": [
+            "Official Cambridge LISE dollhouse preview shows long circulation corridors, numerous process bays and a yellow-lit cleanroom section.",
+            "The official virtual-visit page names a mask aligner; exact bay assignment and machine geometry are unverified."
+          ],
+          "implemented": [
+            "Selected three-bay subset with a continuous front corridor and distinct yellow lithography bay, following the facility preview rather than its full floorplan.",
+            "Open-frame alignment benches, vertically supported instrument heads, flanged chamber cabinets and estimated utilities supply recognizable cleanroom context."
+          ],
+          "inferred": [
+            "Room envelope, doorway placement and equipment dimensions",
+            "Instrument stroke, servo parameters and concealed components"
+          ],
+          "unresolved": [
+            "Only a dollhouse preview was inspected; exact room connectivity and AB-M dimensions remain unknown.",
+            "No measured room survey or verified equipment CAD."
+          ],
+          "fidelity": "Source-informed selected facility subset with estimated equipment and authored mechanical control fixtures"
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "cleanroom_corridor",
+          "minimum_xy": [
+            -6.2,
+            -2.78
+          ],
+          "maximum_xy": [
+            6.2,
+            -1.15
+          ],
+          "basis": "Authored horizontal circulation route; not a code certification"
+        }
+      ]
+    },
+    {
+      "id": "caltech_stoltz_schlinger",
+      "title": "Stoltz Chemistry Laboratory Bay",
+      "institution": "California Institute of Technology \u2014 Stoltz Group",
+      "domain": "chemistry",
+      "institution_id": "caltech",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.stoltz2.caltech.edu/labtour2.html"
+      ],
+      "reference_notes": "Inspected lab-bay, fume-hood and glovebox photos show glazed hood fronts, benches, glassware supports, stools, window side and a two-section glovebox. The page also captions individual analytical instruments. This is a selected reference-informed room subset; exact dimensions, topology and OEM geometry are not verified.",
+      "observed_cues": [
+        "Official lab-bay photograph shows repeated glazed fume-hood fronts, tall stools and a bright window side.",
+        "Official close-up shows several hotplates, glassware vessels, vertical clamps and utility hoses inside a hood.",
+        "Official glovebox photo and caption show a two-section glovebox; its exact location relative to this bay is unknown."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          11.2,
+          6.8,
+          3.1
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.83,
+          0.84,
+          0.78,
+          1
+        ],
+        "style": "wetlab",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.69,
+              0.69,
+              0.61,
+              1
+            ],
+            "pattern": "plain",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "bay_entry",
+              "wall": "back",
+              "kind": "door",
+              "offset": 4.7,
+              "width": 1.1,
+              "height": 2.15,
+              "sill": 0
+            },
+            {
+              "id": "daylight_glazing",
+              "wall": "left",
+              "kind": "window",
+              "offset": 0.0,
+              "width": 5.7,
+              "height": 1.55,
+              "sill": 0.98
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "central_chemistry_island",
+          "pos": [
+            0,
+            -0.2,
+            0
+          ],
+          "size": [
+            3.65,
+            1.25,
+            0.92
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.85,
+            0.86,
+            0.83,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "analytical_side_bench",
+          "pos": [
+            4.6,
+            -0.3,
+            0
+          ],
+          "size": [
+            0.85,
+            2.6,
+            0.92
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.85,
+            0.86,
+            0.83,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "hood_primary",
+          "kind": "chemistry_fume_hood",
+          "pos": [
+            -3.5,
+            2.7,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Glazed fume hood with supported glassware, sash and supply drawer",
+          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "source_urls": [
+            "https://www.stoltz2.caltech.edu/labtour2.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Integral authored feet/frame contacts floor; spatial dimensions estimated from references"
+          }
+        },
+        {
+          "id": "hood_middle",
+          "kind": "chemistry_fume_hood",
+          "pos": [
+            -1.25,
+            2.7,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Second independent hood in the laboratory bay",
+          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "source_urls": [
+            "https://www.stoltz2.caltech.edu/labtour2.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Integral authored feet/frame contacts floor; spatial dimensions estimated from references"
+          }
+        },
+        {
+          "id": "hood_right",
+          "kind": "chemistry_fume_hood",
+          "pos": [
+            1.0,
+            2.7,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Third independent hood with sash access",
+          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "source_urls": [
+            "https://www.stoltz2.caltech.edu/labtour2.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Integral authored feet/frame contacts floor; spatial dimensions estimated from references"
+          }
+        }
+      ],
+      "task": {
+        "name": "Open hood access and expose an inert cassette",
+        "description": "Adjust hood sash and under-deck supply drawer while inspecting fixture-mounted glassware; no reaction chemistry.",
+        "primary_equipment": "hood_primary",
+        "observable": "Hood sash opening and cassette-drawer position."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            10.8,
+            -11.8,
+            7.9
+          ],
+          "target": [
+            0,
+            1.1,
+            1.24
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            3.6,
+            -2.9,
+            1.65
+          ],
+          "target": [
+            0,
+            1.1,
+            1.24
+          ],
+          "fovy": 68
+        },
+        "workstation": {
+          "position": [
+            -1.05,
+            0.25,
+            2.05
+          ],
+          "target": [
+            -3.5,
+            2.68,
+            1.24
+          ],
+          "fovy": 45
+        }
+      },
+      "layout_rationale": [
+        "A chemistry bay uses a repeated rear hood row, a central reagent-shelf island and a large glazed side wall instead of a generic perimeter bench room.",
+        "Full supported hood cabinets, glass-front sashes, clamped glassware, under-deck drawers, high stools and glovebox context reproduce visible apparatus relationships.",
+        "The three-hood count, combined glovebox placement and central-island coordinates are estimates; published photographs are historical, dated from the 2010 move.",
+        "Back entry remains at the right end of the hood bank with a clear approach; the central island stops before the hood operating aisle."
+      ],
+      "limitations": [
+        "Room dimensions and unseen placements are estimated from public images; no institution has validated this scene.",
+        "Original procedural geometry, no downloaded OEM CAD and no source photographs packaged as textures.",
+        "Institution names identify references; source media reuse and institutional endorsement have not been authorized.",
+        "Direct mechanical controls are simulated; scientific process accuracy and autonomous experimental workflow completion remain unvalidated.",
+        "Ventilation, chemistry, glovebox atmosphere and actual school equipment controls are not modeled."
+      ],
+      "reference_detail_evidence": {
+        "university_facilities": {
+          "sources": [
+            {
+              "local_reference": "temp/research/qs_lab_page_audit/stills/caltech_stoltz_3.img",
+              "sha256": "59c5f620c8737f359ec2ffd6c9a8eb6cc094b81b6e8f2df3ab279e0eb3661f63",
+              "page": "https://www.stoltz2.caltech.edu/labtour2.html",
+              "use": "Viewed as modelling reference only; not redistributed or used as a texture"
+            },
+            {
+              "local_reference": "temp/research/qs_lab_page_audit/stills/caltech_stoltz_4.img",
+              "sha256": "4963c76215cd39c469405a98361a95e36697314bed57e935e6f57dbf51deca5f",
+              "page": "https://www.stoltz2.caltech.edu/labtour2.html",
+              "use": "Viewed as modelling reference only; not redistributed or used as a texture"
+            },
+            {
+              "local_reference": "temp/research/qs_lab_page_audit/stills/caltech_stoltz_11.img",
+              "sha256": "625d0ec3ee012e2bcc211c8eb90de7c30bad3f0456c648c7f726cdff5609bc2f",
+              "page": "https://www.stoltz2.caltech.edu/labtour2.html",
+              "use": "Viewed as modelling reference only; not redistributed or used as a texture"
+            }
+          ],
+          "observed": [
+            "Official lab-bay photograph shows repeated glazed fume-hood fronts, tall stools and a bright window side.",
+            "Official close-up shows several hotplates, glassware vessels, vertical clamps and utility hoses inside a hood.",
+            "Official glovebox photo and caption show a two-section glovebox; its exact location relative to this bay is unknown."
+          ],
+          "implemented": [
+            "A chemistry bay uses a repeated rear hood row, a central reagent-shelf island and a large glazed side wall instead of a generic perimeter bench room.",
+            "Full supported hood cabinets, glass-front sashes, clamped glassware, under-deck drawers, high stools and glovebox context reproduce visible apparatus relationships."
+          ],
+          "inferred": [
+            "Room envelope, doorway placement and equipment dimensions",
+            "Instrument stroke, servo parameters and concealed components"
+          ],
+          "unresolved": [
+            "Ventilation, chemistry, glovebox atmosphere and actual school equipment controls are not modeled.",
+            "No measured room survey or verified equipment CAD."
+          ],
+          "fidelity": "Source-informed selected facility subset with estimated equipment and authored mechanical control fixtures"
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "hood_working_aisle",
+          "minimum_xy": [
+            -5.1,
+            0.7
+          ],
+          "maximum_xy": [
+            5.0,
+            2.1
+          ],
+          "basis": "Authored nominal approach aisle; stools are non-colliding static visual context, not simulated movable furniture"
+        }
+      ]
+    },
+    {
+      "id": "ntu_smtc_membranes",
+      "title": "SMTC Campus Membrane Test Aisle",
+      "institution": "Nanyang Technological University \u2014 Singapore Membrane Technology Centre",
+      "domain": "water_and_environmental_engineering",
+      "institution_id": "ntu_singapore",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.ntu.edu.sg/docs/librariesprovider88/newri-domains/smtc/smtc-brochure_compressede6c80970-b0ba-4414-90e7-bcb662e94af7.pdf?sfvrsn=87821fc1_3"
+      ],
+      "reference_notes": "Inspected brochure page 3 shows six captioned views: analytical benches, industrial research aisle, membrane fabrication machines, pressure-retarded-osmosis apparatus and separate outdoor pilot facilities. These are multiple sites/zones, not one room. This is a selected reference-informed room subset; exact dimensions, topology and OEM geometry are not verified.",
+      "observed_cues": [
+        "The official brochure separates an analytical room, campus industrial project area, membrane fabrication equipment and the outdoor Tuas pilot site.",
+        "The campus industrial area photograph shows open metal frames on both sides of a working aisle, pipes, computer terminals and suspended services.",
+        "Brochure device photograph shows membrane modules, white-ended components, fittings and black tubing."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          9.4,
+          7.2,
+          3.2
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.11,
+          0.36,
+          0.55,
+          1
+        ],
+        "style": "wetlab",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.57,
+              0.54,
+              0.46,
+              1
+            ],
+            "pattern": "plain",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "industrial_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.7,
+              "width": 1.25,
+              "height": 2.15,
+              "sill": 0
+            },
+            {
+              "id": "service_entry",
+              "wall": "back",
+              "kind": "door",
+              "offset": -0.2,
+              "width": 1.15,
+              "height": 2.15,
+              "sill": 0
+            },
+            {
+              "id": "observation_window",
+              "wall": "back",
+              "kind": "window",
+              "offset": -2.7,
+              "width": 2.1,
+              "height": 1.15,
+              "sill": 1.2
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "analysis_counter",
+          "pos": [
+            3.7,
+            -2.35,
+            0
+          ],
+          "size": [
+            1.55,
+            0.9,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.08,
+            0.35,
+            0.54,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "membrane_skid_primary",
+          "kind": "membrane_test_skid",
+          "pos": [
+            2.7,
+            0.55,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Campus research membrane frame with isolation valve and water-vial carriage",
+          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "source_urls": [
+            "https://www.ntu.edu.sg/docs/librariesprovider88/newri-domains/smtc/smtc-brochure_compressede6c80970-b0ba-4414-90e7-bcb662e94af7.pdf?sfvrsn=87821fc1_3"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Integral authored feet/frame contacts floor; spatial dimensions estimated from references"
+          }
+        },
+        {
+          "id": "membrane_skid_secondary",
+          "kind": "membrane_test_skid",
+          "pos": [
+            2.7,
+            2.6,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Independent compact membrane test frame",
+          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "source_urls": [
+            "https://www.ntu.edu.sg/docs/librariesprovider88/newri-domains/smtc/smtc-brochure_compressede6c80970-b0ba-4414-90e7-bcb662e94af7.pdf?sfvrsn=87821fc1_3"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Integral authored feet/frame contacts floor; spatial dimensions estimated from references"
+          }
+        }
+      ],
+      "task": {
+        "name": "Position a water-vial carrier and inspect valve travel",
+        "description": "Actuate the visible sampling carriage and isolation-valve handle on a representative membrane research skid.",
+        "primary_equipment": "membrane_skid_primary",
+        "observable": "Valve angle and sample-carriage displacement; no filtration measurement."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            10,
+            -11,
+            7.3
+          ],
+          "target": [
+            0.5,
+            1.2,
+            1.22
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            -0.1,
+            -3.15,
+            1.66
+          ],
+          "target": [
+            0.5,
+            1.2,
+            1.22
+          ],
+          "fovy": 68
+        },
+        "workstation": {
+          "position": [
+            0.4,
+            -1.65,
+            2.05
+          ],
+          "target": [
+            2.7,
+            0.55,
+            1.0
+          ],
+          "fovy": 45
+        }
+      },
+      "layout_rationale": [
+        "Reconstruct the campus industrial-project aisle only, with paired framed test rigs, a separate preparation enclosure and overhead service carriers.",
+        "Open steel chassis, grounded feet, membrane module housings, fittings, gauges and a three-vial carriage distinguish this room from a generic chemistry laboratory.",
+        "Source does not prove the exact neighbouring machines or measured room dimensions; casting enclosure and rig routing are representative. Tuas outdoor container and pilot bank are excluded.",
+        "A central 3 m aisle links entry and rig work zones; the sample carriage moves towards open operator space."
+      ],
+      "limitations": [
+        "Room dimensions and unseen placements are estimated from public images; no institution has validated this scene.",
+        "Original procedural geometry, no downloaded OEM CAD and no source photographs packaged as textures.",
+        "Institution names identify references; source media reuse and institutional endorsement have not been authorized.",
+        "Direct mechanical controls are simulated; scientific process accuracy and autonomous experimental workflow completion remain unvalidated.",
+        "Valve movement is a mechanical surrogate; pressure, membrane transport and water-quality measurements require future process models."
+      ],
+      "reference_detail_evidence": {
+        "university_facilities": {
+          "sources": [
+            {
+              "local_reference": "temp/research/qs_lab_page_audit/stills/ntu_smtc_facilities.png",
+              "sha256": "17fe11db8dc684f0c8769a082aaaa09581de9d345a51a664d5d71af7d4df6912",
+              "page": "https://www.ntu.edu.sg/docs/librariesprovider88/newri-domains/smtc/smtc-brochure_compressede6c80970-b0ba-4414-90e7-bcb662e94af7.pdf?sfvrsn=87821fc1_3",
+              "use": "Viewed as modelling reference only; not redistributed or used as a texture"
+            }
+          ],
+          "observed": [
+            "The official brochure separates an analytical room, campus industrial project area, membrane fabrication equipment and the outdoor Tuas pilot site.",
+            "The campus industrial area photograph shows open metal frames on both sides of a working aisle, pipes, computer terminals and suspended services.",
+            "Brochure device photograph shows membrane modules, white-ended components, fittings and black tubing."
+          ],
+          "implemented": [
+            "Reconstruct the campus industrial-project aisle only, with paired framed test rigs, a separate preparation enclosure and overhead service carriers.",
+            "Open steel chassis, grounded feet, membrane module housings, fittings, gauges and a three-vial carriage distinguish this room from a generic chemistry laboratory."
+          ],
+          "inferred": [
+            "Room envelope, doorway placement and equipment dimensions",
+            "Instrument stroke, servo parameters and concealed components"
+          ],
+          "unresolved": [
+            "Valve movement is a mechanical surrogate; pressure, membrane transport and water-quality measurements require future process models.",
+            "No measured room survey or verified equipment CAD."
+          ],
+          "fidelity": "Source-informed selected facility subset with estimated equipment and authored mechanical control fixtures"
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "industrial_aisle",
+          "minimum_xy": [
+            -1.45,
+            -3.2
+          ],
+          "maximum_xy": [
+            1.45,
+            3.4
+          ],
+          "basis": "Authored open operator and service aisle"
+        }
+      ]
+    },
+    {
+      "id": "uq_moreton_aquarium",
+      "title": "Moreton Bay Research Aquarium",
+      "institution": "The University of Queensland \u2014 Moreton Bay Research Station",
+      "domain": "marine_environmental_science",
+      "institution_id": "university_of_queensland",
+      "university_expansion": true,
+      "source_urls": [
+        "https://moreton-bay.research.uq.edu.au/facilities/research-laboratories-aquariums"
+      ],
+      "reference_notes": "Opened the facility page and visually inspected its aquarium photograph: a wet room with large circular tanks, yellow aquarium racks, plumbing and ceiling services. The text distinguishes the aquarium from four other laboratories. This is a selected reference-informed room subset; exact dimensions, topology and OEM geometry are not verified.",
+      "observed_cues": [
+        "The official wet-lab photograph shows large circular tanks, yellow rack structures, overhead services and wet-room plumbing.",
+        "The official facility description lists two 4000 L tanks, one 10000 L tank and three racks each fitting twelve standard tanks.",
+        "The aquarium is a dedicated wet laboratory separate from the station's four other laboratory rooms."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          14,
+          10,
+          3.35
+        ],
+        "wall_color": [
+          0.85,
+          0.87,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.91,
+          0.66,
+          0.055,
+          1
+        ],
+        "style": "wetlab",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.4,
+              0.46,
+              0.44,
+              1
+            ],
+            "pattern": "plain",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "wetlab_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": 0.35,
+              "width": 1.35,
+              "height": 2.15,
+              "sill": 0
+            },
+            {
+              "id": "wetlab_daylight",
+              "wall": "left",
+              "kind": "window",
+              "offset": 3.6,
+              "width": 1.8,
+              "height": 1.2,
+              "sill": 1.4
+            },
+            {
+              "id": "service_exit",
+              "wall": "back",
+              "kind": "door",
+              "offset": -6.1,
+              "width": 1.1,
+              "height": 2.15,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "water_monitoring_counter",
+          "pos": [
+            5.8,
+            -3.3,
+            0
+          ],
+          "size": [
+            1.25,
+            1.4,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.71,
+            0.77,
+            0.74,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "water_sampling_bridge",
+          "kind": "aquarium_sampling_bridge",
+          "pos": [
+            0,
+            -1.6,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Authored instrumented probe bridge over a reference-informed round tank",
+          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "source_urls": [
+            "https://moreton-bay.research.uq.edu.au/facilities/research-laboratories-aquariums"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Integral authored feet/frame contacts floor; spatial dimensions estimated from references"
+          }
+        }
+      ],
+      "task": {
+        "name": "Position an inert monitoring probe over a tank",
+        "description": "Traverse and lower a visible probe on a grounded bridge. The bridge is an authored task fixture, not verified UQ equipment.",
+        "primary_equipment": "water_sampling_bridge",
+        "observable": "Probe traverse and immersion position; static water and no calibrated measurement."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            15,
+            -16.7,
+            10.2
+          ],
+          "target": [
+            0,
+            0.5,
+            1.08
+          ],
+          "fovy": 47
+        },
+        "interior": {
+          "position": [
+            -6.3,
+            0.38,
+            1.7
+          ],
+          "target": [
+            0,
+            0.5,
+            1.08
+          ],
+          "fovy": 68
+        },
+        "workstation": {
+          "position": [
+            2.25,
+            -4.75,
+            3.3
+          ],
+          "target": [
+            0,
+            -1.6,
+            1.03
+          ],
+          "fovy": 45
+        }
+      },
+      "layout_rationale": [
+        "Three large circular tanks and three yellow racks with twelve tank positions each establish the documented aquarium scale and characteristic arrangement.",
+        "Overhead feeds, return/sump context, water surfaces and a grated floor drain produce a distinct wet-room environment; the large-tank arrangement is estimated.",
+        "A motorized sampling bridge is added as an original mechanical-control fixture; it was not visible in the reference photograph and is not claimed as UQ hardware.",
+        "Only broad spatial cues can be recovered from the small published photograph; modeled tank geometry estimates nominal capacity classes without certifying fluid volume.",
+        "The left entry opens into the clear zone between the round tanks and rear rack wall; no desks or small tabletop-only aquarium substitute is used."
+      ],
+      "limitations": [
+        "Room dimensions and unseen placements are estimated from public images; no institution has validated this scene.",
+        "Original procedural geometry, no downloaded OEM CAD and no source photographs packaged as textures.",
+        "Institution names identify references; source media reuse and institutional endorsement have not been authorized.",
+        "Direct mechanical controls are simulated; scientific process accuracy and autonomous experimental workflow completion remain unvalidated.",
+        "No organisms, water flow, buoyancy, salinity or monitoring transfer function are simulated; the robotic probe bridge is an authored addition."
+      ],
+      "reference_detail_evidence": {
+        "university_facilities": {
+          "sources": [
+            {
+              "local_reference": "temp/research/qs_asia_visual_checks/uq_aquarium.jpg",
+              "sha256": "2132b2dca3115bb01bd691b824cd0d4c9f0f2b28207d7f3fad9ea26cd51936d7",
+              "page": "https://moreton-bay.research.uq.edu.au/facilities/research-laboratories-aquariums",
+              "use": "Viewed as modelling reference only; not redistributed or used as a texture"
+            }
+          ],
+          "observed": [
+            "The official wet-lab photograph shows large circular tanks, yellow rack structures, overhead services and wet-room plumbing.",
+            "The official facility description lists two 4000 L tanks, one 10000 L tank and three racks each fitting twelve standard tanks.",
+            "The aquarium is a dedicated wet laboratory separate from the station's four other laboratory rooms."
+          ],
+          "implemented": [
+            "Three large circular tanks and three yellow racks with twelve tank positions each establish the documented aquarium scale and characteristic arrangement.",
+            "Overhead feeds, return/sump context, water surfaces and a grated floor drain produce a distinct wet-room environment; the large-tank arrangement is estimated."
+          ],
+          "inferred": [
+            "Room envelope, doorway placement and equipment dimensions",
+            "Instrument stroke, servo parameters and concealed components"
+          ],
+          "unresolved": [
+            "No organisms, water flow, buoyancy, salinity or monitoring transfer function are simulated; the robotic probe bridge is an authored addition.",
+            "No measured room survey or verified equipment CAD."
+          ],
+          "fidelity": "Source-informed selected facility subset with estimated equipment and authored mechanical control fixtures"
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "tank_to_rack_aisle",
+          "minimum_xy": [
+            -6.8,
+            0.05
+          ],
+          "maximum_xy": [
+            6.8,
+            2.6
+          ],
+          "basis": "Authored wet-room circulation strip; drain cover crosses the aisle flush to the floor"
+        }
+      ]
+    }
+  ]
+}

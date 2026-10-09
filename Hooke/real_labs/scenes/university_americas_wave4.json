@@ -1,0 +1,811 @@
+{
+  "scenes": [
+    {
+      "id": "nyu_epp_detector_assembly",
+      "title": "EPP Detector Assembly and Prototyping Bay",
+      "institution": "NYU Experimental Particle Physics on-campus detector laboratory",
+      "domain": "detector_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://physics.nyu.edu/experimentalparticle/",
+        "https://physics.nyu.edu/experimentalparticle/images/epplab.jpeg"
+      ],
+      "reference_notes": "Official room photograph actually inspected; caption identifies on-campus ATLAS and milliQan component testing, distinct from CERN installations. Electronics benches, enclosed desktop printer, circuit workpieces and overhead retractable power distribution establish an active fabrication/testing setting. All apparatus and room dimensions unverified.",
+      "observed_cues": [
+        "Dense grid of yellow retractable ceiling power reels with hanging outlet boxes.",
+        "Freestanding dark-top electronics islands around a blue/red enclosed desktop printer.",
+        "Wall-mounted shelving, exposed ceiling services and a separate instrument/DAQ bench."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "room",
+      "room": {
+        "size": [
+          6.2,
+          6.2,
+          3.1
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "nyu_epp_detector_assembly",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.9,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "central_island",
+          "pos": [
+            -0.55,
+            -0.65,
+            0
+          ],
+          "size": [
+            2.0,
+            1.6,
+            0.9
+          ],
+          "style": "open_frame",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "right_daq",
+          "pos": [
+            2.05,
+            0.65,
+            0
+          ],
+          "size": [
+            1.05,
+            4.2,
+            0.9
+          ],
+          "style": "open_frame",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "rear_storage",
+          "pos": [
+            0,
+            2.42,
+            0
+          ],
+          "size": [
+            2.9,
+            0.85,
+            0.9
+          ],
+          "style": "open_frame",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "desktop_prototyping",
+          "kind": "nyu_detector_prototyping_printer",
+          "pos": [
+            -0.55,
+            -0.65,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "EPP Detector Assembly and Prototyping Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://physics.nyu.edu/experimentalparticle/",
+            "https://physics.nyu.edu/experimentalparticle/images/epplab.jpeg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://physics.nyu.edu/experimentalparticle/images/epplab.jpeg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/nyu_epp.img"
+          ],
+          "supports": "Official room photograph actually inspected; caption identifies on-campus ATLAS and milliQan component testing, distinct from CERN installations. Electronics benches, enclosed desktop printer, circuit workpieces and overhead retractable power distribution establish an active fabrication/testing setting."
+        }
+      ],
+      "layout_rationale": [
+        "Dense grid of yellow retractable ceiling power reels with hanging outlet boxes.",
+        "Freestanding dark-top electronics islands around a blue/red enclosed desktop printer.",
+        "Wall-mounted shelving, exposed ceiling services and a separate instrument/DAQ bench.",
+        "Central blue/red prototyping printer sits on an open-frame island opposite a right-hand electronics bench.",
+        "Yellow power reels are attached to overhead rails; each outlet hangs from its cable."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            8.0,
+            -9.0,
+            7.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.5,
+            -2.7,
+            1.9
+          ],
+          "target": [
+            -0.25,
+            0.6,
+            1.35
+          ],
+          "fovy": 64
+        },
+        "workstation": {
+          "position": [
+            -0.55,
+            -1.75,
+            1.2
+          ],
+          "target": [
+            -0.55,
+            -0.65,
+            1.15
+          ],
+          "fovy": 38
+        },
+        "source": {
+          "position": [
+            2.5,
+            -2.7,
+            1.9
+          ],
+          "target": [
+            -0.25,
+            0.6,
+            1.35
+          ],
+          "fovy": 64
+        }
+      },
+      "task": {
+        "name": "EPP Detector Assembly and Prototyping Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "desktop_prototyping",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "Only the NYU on-campus component laboratory is represented, not CERN.",
+        "No fabrication extrusion, detector response, electronics or radiation model."
+      ]
+    },
+    {
+      "id": "duke_joint_mechanical_testing",
+      "title": "Joint Mechanical Testing 830LE-AT Bay",
+      "institution": "Duke Joint Mechanical Testing Laboratory \u2014 830LE-AT workstation",
+      "domain": "materials_mechanical_testing",
+      "university_expansion": true,
+      "source_urls": [
+        "https://mems.duke.edu/impact/facilities/",
+        "https://mems.duke.edu/wp-content/uploads/sites/10/2024/08/Test-Resources-830LE-AT_300x400p-225x300.png"
+      ],
+      "reference_notes": "Official installed-instrument photograph inspected: tall twin-column test frame with upper actuator and open loading window, lower plinth and independent wheeled electronics cabinet. Official caption places this system in Medical Sciences Research Building, not the Research Park Instron location. 225 x 300 image supports only a local workstation. Published force/torque ratings are not geometric dimensions and are not a validated simulation. Do not merge the separate Research Park Instron bay.",
+      "observed_cues": [
+        "Tall twin polished-column frame with a dark upper actuator enclosure.",
+        "Open central specimen window and a heavy floor-standing lower machine plinth.",
+        "Separate wheeled controller cabinet connected by dark service bundles; storage cabinets behind."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "apparatus_and_partial_room",
+      "room": {
+        "size": [
+          4.8,
+          4.6,
+          3.0
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "duke_joint_mechanical_testing",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.5999999999999999,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "rear_counter",
+          "pos": [
+            -0.4,
+            1.97,
+            0
+          ],
+          "size": [
+            2.7,
+            0.55,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.64,
+            0.58,
+            0.41,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "biaxial_frame",
+          "kind": "duke_830leat_alignment_frame",
+          "pos": [
+            -0.65,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Joint Mechanical Testing 830LE-AT Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://mems.duke.edu/impact/facilities/",
+            "https://mems.duke.edu/wp-content/uploads/sites/10/2024/08/Test-Resources-830LE-AT_300x400p-225x300.png"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://mems.duke.edu/wp-content/uploads/sites/10/2024/08/Test-Resources-830LE-AT_300x400p-225x300.png",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/duke_mechanical.img"
+          ],
+          "supports": "Official installed-instrument photograph inspected: tall twin-column test frame with upper actuator and open loading window, lower plinth and independent wheeled electronics cabinet. Official caption places this system in Medical Sciences Research Building, not the Research Park Instron location."
+        }
+      ],
+      "layout_rationale": [
+        "Tall twin polished-column frame with a dark upper actuator enclosure.",
+        "Open central specimen window and a heavy floor-standing lower machine plinth.",
+        "Separate wheeled controller cabinet connected by dark service bundles; storage cabinets behind.",
+        "Tall polished columns, upper drive enclosure and separate wheeled controller reproduce the installed instrument exterior.",
+        "Back storage and counter represent only the photo-supported MSRB workstation context."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            6.0,
+            -7.0,
+            5.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.0,
+            -2.0,
+            1.7
+          ],
+          "target": [
+            -0.15,
+            0.0,
+            1.25
+          ],
+          "fovy": 59
+        },
+        "workstation": {
+          "position": [
+            1.05,
+            -1.7,
+            1.55
+          ],
+          "target": [
+            -0.5,
+            0.0,
+            1.25
+          ],
+          "fovy": 51
+        },
+        "source": {
+          "position": [
+            0.7,
+            -2.0,
+            1.65
+          ],
+          "target": [
+            -0.25,
+            0.0,
+            1.25
+          ],
+          "fovy": 55
+        }
+      },
+      "task": {
+        "name": "Joint Mechanical Testing 830LE-AT Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "biaxial_frame",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "Low-resolution evidence limits exterior detail; no measured room or CAD geometry.",
+        "Rigid coupon and unloaded upper grip only; no force, torque, deformation, fatigue or fracture predictions."
+      ]
+    },
+    {
+      "id": "pennstate_aeroacoustics_rotor_chamber",
+      "title": "Aeroacoustics Tandem Rotor Inspection Bay",
+      "institution": "Penn State Aeroacoustics Lab \u2014 open-jet anechoic rotor test station",
+      "domain": "experimental_aeroacoustics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://aeroacoustics.psu.edu/excap/",
+        "https://aeroacoustics.psu.edu/files/2023/12/tandem_forward_flight_2b.jpg"
+      ],
+      "reference_notes": "Official experiment photograph inspected: two propeller heads in tandem, one on an upward pedestal and another on a suspended motor stack, with hanging microphones against deep brown acoustic wedges. Page describes this as a multirotor configuration in the open-jet flow-through anechoic facility. Local apparatus view; full chamber boundaries and support attachment above frame are not completely visible. Rotors should be represented by bounded mechanical indexing; no acoustic, aerodynamic or propulsive predictions.",
+      "observed_cues": [
+        "Deep brown orthogonal acoustic wedges cover the chamber walls.",
+        "Asymmetric upward and suspended propeller assemblies define a tandem test geometry.",
+        "Thin hanging microphone array and instrument leads frame the rotor region."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "apparatus_and_partial_room",
+      "room": {
+        "size": [
+          5.6,
+          5.0,
+          3.1
+        ],
+        "wall_color": [
+          0.33,
+          0.27,
+          0.2,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "pennstate_aeroacoustics_rotor_chamber",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.27,
+              0.28,
+              0.28,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.6,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "tandem_rotors",
+          "kind": "pennstate_anechoic_tandem_rotors",
+          "pos": [
+            0,
+            0.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Aeroacoustics Tandem Rotor Inspection Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://aeroacoustics.psu.edu/excap/",
+            "https://aeroacoustics.psu.edu/files/2023/12/tandem_forward_flight_2b.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://aeroacoustics.psu.edu/files/2023/12/tandem_forward_flight_2b.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/psu_rotor.img"
+          ],
+          "supports": "Official experiment photograph inspected: two propeller heads in tandem, one on an upward pedestal and another on a suspended motor stack, with hanging microphones against deep brown acoustic wedges. Page describes this as a multirotor configuration in the open-jet flow-through anechoic facility."
+        }
+      ],
+      "layout_rationale": [
+        "Deep brown orthogonal acoustic wedges cover the chamber walls.",
+        "Asymmetric upward and suspended propeller assemblies define a tandem test geometry.",
+        "Thin hanging microphone array and instrument leads frame the rotor region.",
+        "Brown triangular acoustic wedges surround asymmetric upward and suspended rotor mounts.",
+        "Unseen upper attachment is an explicitly inferred floor-supported gantry; inert rotor markers remain visible."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            7.0,
+            -8.0,
+            6.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.2,
+            -2.1,
+            1.8
+          ],
+          "target": [
+            0.0,
+            0.35,
+            1.7
+          ],
+          "fovy": 60
+        },
+        "workstation": {
+          "position": [
+            1.6,
+            -1.8,
+            1.75
+          ],
+          "target": [
+            0.0,
+            0.15,
+            1.5
+          ],
+          "fovy": 55
+        },
+        "source": {
+          "position": [
+            1.3,
+            -2.0,
+            1.72
+          ],
+          "target": [
+            0.0,
+            0.15,
+            1.6
+          ],
+          "fovy": 60
+        }
+      },
+      "task": {
+        "name": "Aeroacoustics Tandem Rotor Inspection Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "tandem_rotors",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No open-jet airflow, propeller thrust, motor behavior or acoustic response solver.",
+        "Propellers perform only bounded low-speed indexing; source image does not establish full chamber boundaries."
+      ]
+    },
+    {
+      "id": "northwestern_clammp_charpy",
+      "title": "CLaMMP Charpy Inspection Workstation",
+      "institution": "Northwestern CLaMMP \u2014 Charpy impact workstation",
+      "domain": "materials_fracture_testing",
+      "university_expansion": true,
+      "source_urls": [
+        "https://sites.northwestern.edu/clammp/instruments/",
+        "https://sites.northwestern.edu/clammp/files/2023/02/Charpy-Metals-210x300.png"
+      ],
+      "reference_notes": "Official installed Tinius Olson metals impact tester photograph inspected; the machine is mounted against a plain laboratory wall with its pendulum, dial, supporting columns and base visible. Earlier small grip closeups were rejected as inadequate scene evidence. Single low-resolution 210 x 300 instrument view supports an apparatus-only bay. No full room footprint, calibrated machine dimensions, release mechanism or fracture mechanics verified.",
+      "observed_cues": [
+        "Large semicircular analog energy scale around the upper spindle.",
+        "Long pendulum arm and rounded handle extend diagonally from the top housing.",
+        "Twin tall vertical columns support the head over a compact lower specimen anvil and heavy plinth."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "apparatus_and_partial_room",
+      "room": {
+        "size": [
+          3.2,
+          3.0,
+          2.8
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "northwestern_clammp_charpy",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "charpy_frame",
+          "kind": "northwestern_clammp_charpy_inspection",
+          "pos": [
+            0,
+            0.3,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "CLaMMP Charpy Inspection Workstation",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://sites.northwestern.edu/clammp/instruments/",
+            "https://sites.northwestern.edu/clammp/files/2023/02/Charpy-Metals-210x300.png"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://sites.northwestern.edu/clammp/files/2023/02/Charpy-Metals-210x300.png",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/northwestern_charpy.img"
+          ],
+          "supports": "Official installed Tinius Olson metals impact tester photograph inspected; the machine is mounted against a plain laboratory wall with its pendulum, dial, supporting columns and base visible. Earlier small grip closeups were rejected as inadequate scene evidence."
+        }
+      ],
+      "layout_rationale": [
+        "Large semicircular analog energy scale around the upper spindle.",
+        "Long pendulum arm and rounded handle extend diagonally from the top housing.",
+        "Twin tall vertical columns support the head over a compact lower specimen anvil and heavy plinth.",
+        "Twin columns and semicircular analog dial are retained from the small installed-instrument photograph.",
+        "Only the apparatus and a neutral local wall envelope are reconstructed; full room layout is unverified."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            4.0,
+            -5.0,
+            3.7
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.25,
+            -1.32,
+            1.6
+          ],
+          "target": [
+            0.0,
+            0.3,
+            1.35
+          ],
+          "fovy": 69
+        },
+        "workstation": {
+          "position": [
+            0.8,
+            -0.9,
+            0.7
+          ],
+          "target": [
+            0.0,
+            0.3,
+            0.43
+          ],
+          "fovy": 48
+        },
+        "source": {
+          "position": [
+            0.5,
+            -1.65,
+            1.6
+          ],
+          "target": [
+            0.05,
+            0.3,
+            1.35
+          ],
+          "fovy": 56
+        }
+      },
+      "task": {
+        "name": "CLaMMP Charpy Inspection Workstation",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "charpy_frame",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "P2 apparatus-only reconstruction from a 210 by 300 pixel image.",
+        "Pendulum indexes only in a raised unloaded sector; no impact, release mechanism, absorbed-energy or fracture solver.",
+        "Lower specimen carriage is authored for reversible dry alignment, not claimed OEM actuation."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,683 @@
+{
+  "scenes": [
+    {
+      "id": "eth_gcc_big_blue",
+      "title": "ETH Big Blue Centrifuge Inspection Bay",
+      "institution": "Geotechnical Centrifuge Center \u2014 Big Blue beam centrifuge",
+      "domain": "geotechnical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://baug.ethz.ch/en/news-and-events/news/2023/11/big-blue.html",
+        "https://baug.ethz.ch/en/news-and-events/news/2023/11/big-blue/_jcr_content/wide_content/slideshow_1966283879/images/image0.imageformat.imagegallery5.2101961675.jpg"
+      ],
+      "reference_notes": "An installed blue beam spans a bright white enclosure. Two deep blue suspended end cradles, a central hub/service bay, yellow overhead panels and large floor grilles remain visible around a team standing in front. The photographed people provide an approximate scale but obscure some central mechanics.",
+      "observed_cues": [
+        "Blue spanning beam with deep pivoted cradles at both ends",
+        "Yellow overhead shielding/service panels above a white enclosure",
+        "Segmented floor with large inset metal grilles"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          11.8,
+          8.0,
+          3.8
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "geotechnical_engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "gcc_beam",
+          "kind": "gcc_beam_inspection_workspace",
+          "pos": [
+            0,
+            0.3,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position the beam through a small azimuth arc and tilt a retained inert model cradle without simulating centrifuge acceleration.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://baug.ethz.ch/en/news-and-events/news/2023/11/big-blue.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "The central drive column and grounded service cabinet support the beam and pinned hanging cradles."
+          }
+        }
+      ],
+      "task": {
+        "name": "ETH Big Blue Centrifuge Inspection Bay mechanical positioning",
+        "description": "Position the beam through a small azimuth arc and tilt a retained inert model cradle without simulating centrifuge acceleration.",
+        "primary_equipment": "gcc_beam",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            13,
+            -13,
+            9
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 42
+        },
+        "interior": {
+          "position": [
+            0,
+            -3.2,
+            1.65
+          ],
+          "target": [
+            0,
+            0.3,
+            1.3
+          ],
+          "fovy": 96
+        },
+        "workstation": {
+          "position": [
+            4.9,
+            -1.0,
+            2.8
+          ],
+          "target": [
+            3.91,
+            0.3,
+            0.97
+          ],
+          "fovy": 52
+        }
+      },
+      "layout_rationale": [
+        "Blue spanning beam with deep pivoted cradles at both ends",
+        "Yellow overhead shielding/service panels above a white enclosure",
+        "Segmented floor with large inset metal grilles",
+        "Official 9 m diameter is used as a scale anchor; room, cradle details and central services are approximate.",
+        "The older drum centrifuge is a separate facility and is excluded. Yellow overhead panels and floor grilles are reference-informed; the photo does not provide a surveyed floor plan.",
+        "Only low-angle inspection motion is implemented, with no continuous rotation or high-g scientific behavior."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Do not merge the separate older drum centrifuge into this facility. The photo shows a 2023 installed configuration; the page documents operation from June 2023, but no current survey exists. Source credit Markus Bertschi/13Photo. No elevated-gravity soil constitutive law, hydraulic drive or earthquake model.",
+        "Official 9 m diameter is used as a scale anchor; room, cradle details and central services are approximate.",
+        "The older drum centrifuge is a separate facility and is excluded. Yellow overhead panels and floor grilles are reference-informed; the photo does not provide a surveyed floor plan.",
+        "Only low-angle inspection motion is implemented, with no continuous rotation or high-g scientific behavior."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/europe_03_media/eth_blue_room.jpg"
+        ],
+        "reviewed_sha256": [
+          "29b328f449f503b19aaa45f3e578b82aef82ad04bf807b4001c9643bad6a4688"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "epfl_tcv_diagnostic_sector",
+      "title": "EPFL TCV Diagnostic Access Sector",
+      "institution": "Swiss Plasma Center \u2014 TCV diagnostic access sector",
+      "domain": "apparatus_inspection",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.epfl.ch/research/domains/swiss-plasma-center/introduction-to-tcv/",
+        "https://www.epfl.ch/research/domains/swiss-plasma-center/wp-content/uploads/2025/07/TCV_231127_c-Valentin-Bansac_03-1536x864.jpg"
+      ],
+      "reference_notes": "An installed close-up shows a tall structural bay with stacked bolted rectangular access panels on the right and multiple large wrapped cylindrical beam/diagnostic ports on the left. A small purple viewport, flexible metal hoses and supported cable routes establish the access-sector arrangement. The image does not establish the complete tokamak hall.",
+      "observed_cues": [
+        "Stacked rectangular bolt-ring panels beside a white structural upright",
+        "Several large horizontal wrapped cylinders and flange collars",
+        "Dense fixed hoses/cables around a small circular viewport"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.4,
+          3.8,
+          3.1
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "apparatus_inspection",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "tcv_sector",
+          "kind": "tcv_sector_inspection_workspace",
+          "pos": [
+            0,
+            0.15,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Open an original dry inspection panel through a bounded arc and translate a visible inert exterior datum.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://www.epfl.ch/research/domains/swiss-plasma-center/introduction-to-tcv/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Grounded vertical frames and exterior brackets carry the cylindrical ports and panel hinges."
+          }
+        }
+      ],
+      "task": {
+        "name": "EPFL TCV Diagnostic Access Sector mechanical positioning",
+        "description": "Open an original dry inspection panel through a bounded arc and translate a visible inert exterior datum.",
+        "primary_equipment": "tcv_sector",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.3,
+            -7.0,
+            4.8
+          ],
+          "target": [
+            0,
+            0.15,
+            1.0
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            1.85,
+            -1.7,
+            1.6
+          ],
+          "target": [
+            0,
+            0.15,
+            1.42
+          ],
+          "fovy": 67
+        },
+        "workstation": {
+          "position": [
+            1.5,
+            -1.35,
+            1.7
+          ],
+          "target": [
+            0.55,
+            -0.1,
+            1.4
+          ],
+          "fovy": 52
+        }
+      },
+      "layout_rationale": [
+        "Stacked rectangular bolt-ring panels beside a white structural upright",
+        "Several large horizontal wrapped cylinders and flange collars",
+        "Dense fixed hoses/cables around a small circular viewport",
+        "Only the photographed diagnostic-access sector is reconstructed. No full torus, hall or unrelated computer visualization is used.",
+        "The visible exterior is estimated; panel hinge and inert datum slider are original mechanical task aids, not an operating or servicing procedure for TCV.",
+        "No plasma, magnetic field, heating, RF signal or nuclear-process model is implemented."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Model only the photographed diagnostic-access sector; no full torus/hall inferred from an unrelated 3D visualization. Header image credit Valentin Bansac; published EM+ CC-BY-SA visualization licence must not be applied to this photograph. No plasma, magnetic field, heating, nuclear process, RF beam or diagnostic signal.",
+        "Only the photographed diagnostic-access sector is reconstructed. No full torus, hall or unrelated computer visualization is used.",
+        "The visible exterior is estimated; panel hinge and inert datum slider are original mechanical task aids, not an operating or servicing procedure for TCV.",
+        "No plasma, magnetic field, heating, RF signal or nuclear-process model is implemented."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/europe_03_media/epfl_tcv.jpg"
+        ],
+        "reviewed_sha256": [
+          "2956a91f654437e20895584766b8960530503eefb9b3d5e49c28ec1b493face9"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "delft_ducat_antenna",
+      "title": "TU Delft DUCAT Near-Field Chamber",
+      "institution": "Microwave Sensing Signals and Systems \u2014 DUCAT antenna test chamber",
+      "domain": "electromagnetic_metrology",
+      "university_expansion": true,
+      "source_urls": [
+        "https://radar.tudelft.nl/Facilities/ducat.php",
+        "https://radar.tudelft.nl/Facilities/imgs/ducat01.jpg"
+      ],
+      "reference_notes": "Installed near-field and far-field photographs show blue pyramidal absorbers on walls/roof/floor, a tall cream scanner mast with cable chain and instrument shelf, wooden/foam antenna mounts and a clear narrow floor strip. The near-field photo includes a wood platform with a round patterned target and a vector-network instrument on the mast shelf.",
+      "observed_cues": [
+        "Long narrow chamber lined by blue pyramids including the floor",
+        "Cream vertical scanner with black cable chain and projecting instrument shelf",
+        "Separated antenna stands with a narrow clear access strip"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          6.0,
+          3.0,
+          3.0
+        ],
+        "wall_color": [
+          0.02,
+          0.08,
+          0.16,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "electromagnetic_metrology",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.4,
+              "width": 0.8,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "ducat_scanner",
+          "kind": "ducat_near_field_workspace",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate the near-field inspection head in height and laterally across a fixed inert circular reference target.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://radar.tudelft.nl/Facilities/ducat.php"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Scanner mast stands on its foot; network-instrument shelf is braced to the mast, and the target sits on the wooden platform."
+          }
+        }
+      ],
+      "task": {
+        "name": "TU Delft DUCAT Near-Field Chamber mechanical positioning",
+        "description": "Translate the near-field inspection head in height and laterally across a fixed inert circular reference target.",
+        "primary_equipment": "ducat_scanner",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.1,
+            -7.0,
+            5.1
+          ],
+          "target": [
+            0,
+            0,
+            1.0
+          ],
+          "fovy": 42
+        },
+        "interior": {
+          "position": [
+            2.3,
+            -0.88,
+            1.6
+          ],
+          "target": [
+            -0.5,
+            0.0,
+            1.4
+          ],
+          "fovy": 69
+        },
+        "workstation": {
+          "position": [
+            0.8,
+            -1.03,
+            1.62
+          ],
+          "target": [
+            -0.25,
+            0,
+            1.36
+          ],
+          "fovy": 64
+        }
+      },
+      "layout_rationale": [
+        "Long narrow chamber lined by blue pyramids including the floor",
+        "Cream vertical scanner with black cable chain and projecting instrument shelf",
+        "Separated antenna stands with a narrow clear access strip",
+        "The published 6 x 3 x 3 m chamber dimensions anchor the room; fixture placements and absorber dimensions remain estimates.",
+        "Only the near-field setup is reconstructed. The far-field photograph is supplementary evidence and is not counted as another laboratory or combined setup.",
+        "The visible network instrument has no simulated readings; no electromagnetic or absorber performance is implemented."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Near-field and far-field pictures are alternative configurations of one laboratory; count only once and reconstruct the near-field setup. Exact scanner travel and antenna internals are estimates; no RF propagation, calibration or measured antenna response. Public page needed a local public-read TLS-chain fallback; no credentials were used.",
+        "The published 6 x 3 x 3 m chamber dimensions anchor the room; fixture placements and absorber dimensions remain estimates.",
+        "Only the near-field setup is reconstructed. The far-field photograph is supplementary evidence and is not counted as another laboratory or combined setup.",
+        "The visible network instrument has no simulated readings; no electromagnetic or absorber performance is implemented."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/europe_03_media/delft_ducat.jpg",
+          "temp/university/expansion_100_20261003/research/europe_03_media/delft_ducat_far.jpg"
+        ],
+        "reviewed_sha256": [
+          "6a240b611dc9a44d5afd7cd37e1d0a21779c88c2c4c9ac336739a79f3f7f5500",
+          "a8094c38ba6b1dc2134f8fefbdfcd01a273b381abd2013a802d1add6fa752b98"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "tum_nma_electric_powertrain",
+      "title": "TUM NMA Unpowered Motor Inspection Cell",
+      "institution": "Institute of Sustainable Mobile Powertrains \u2014 Electric Motor and Inverter Test Bench",
+      "domain": "electrical_mechanical_testing",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.mos.ed.tum.de/en/nma/research/infrastructure-methods/",
+        "https://www.mos.ed.tum.de/fileadmin/w00ccp/nma/pdf/Pst3_Kratzer_Spec.pdf"
+      ],
+      "reference_notes": "The installed apparatus photograph in the official December 2024 specification sheet shows a silver dyno/load machine on the left, a circular coupling/test face with thick orange cables, rear tall pale electrical cabinets and a white/dark-blue electronics enclosure on an aluminium rack at right. A glazed wall corner and floor cables establish an actual test-cell setting.",
+      "observed_cues": [
+        "Silver horizontal load machine and exposed circular coupling plane",
+        "Thick orange cables running from the test face down to floor services",
+        "Tall pale rear cabinets beside a white/dark-blue instrument enclosure on a rack"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.0,
+          4.0,
+          2.9
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "electrical_mechanical_testing",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.0,
+              "width": 1,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "glazed_corner",
+              "wall": "back",
+              "kind": "window",
+              "offset": -1.6,
+              "width": 1.1,
+              "height": 1.3,
+              "sill": 1.05
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "powertrain_cell",
+          "kind": "nma_powertrain_inspection_workspace",
+          "pos": [
+            0,
+            0.05,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate a retained inspection carriage and index a visible inert coupon on an unpowered motor-test-face proxy.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://www.mos.ed.tum.de/en/nma/research/infrastructure-methods/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Load-machine plinth, carriage legs and aluminium electronics rack meet the floor; the inert coupon is mechanically retained."
+          }
+        }
+      ],
+      "task": {
+        "name": "TUM NMA Unpowered Motor Inspection Cell mechanical positioning",
+        "description": "Translate a retained inspection carriage and index a visible inert coupon on an unpowered motor-test-face proxy.",
+        "primary_equipment": "powertrain_cell",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.5,
+            -7.0,
+            4.9
+          ],
+          "target": [
+            0,
+            0.15,
+            0.9
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            1.65,
+            -1.75,
+            1.6
+          ],
+          "target": [
+            -0.15,
+            0.05,
+            1.1
+          ],
+          "fovy": 63
+        },
+        "workstation": {
+          "position": [
+            0.15,
+            -1.5,
+            1.45
+          ],
+          "target": [
+            -0.6,
+            -0.59,
+            0.99
+          ],
+          "fovy": 51
+        }
+      },
+      "layout_rationale": [
+        "Silver horizontal load machine and exposed circular coupling plane",
+        "Thick orange cables running from the test face down to floor services",
+        "Tall pale rear cabinets beside a white/dark-blue instrument enclosure on a rack",
+        "The source is the installed apparatus photograph in the official December 2024 specification sheet; plotted ratings are not simulated behavior.",
+        "Only the photographed test-cell subset is represented. Cabinet dimensions, mounting carriage and inspection travel are estimated.",
+        "No energized operation, torque calibration, electrical signals, coolant, heating or energy conversion is implemented."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "The official sheet labels the test facility 250 kW; ratings are reference identity only, not implemented performance. Dimensions, internal machine geometry and safe unpowered task travel are estimates. Model the visible test-cell subset; no electrical power, torque calibration, energy conversion, overheating, coolant or real dynamometer test process.",
+        "The source is the installed apparatus photograph in the official December 2024 specification sheet; plotted ratings are not simulated behavior.",
+        "Only the photographed test-cell subset is represented. Cabinet dimensions, mounting carriage and inspection travel are estimated.",
+        "No energized operation, torque calibration, electrical signals, coolant, heating or energy conversion is implemented."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/research/europe_03_media/tum_250kw_page0.png"
+        ],
+        "reviewed_sha256": [
+          "5d9a89b57a9461b4a1ea1df49b7239e053f1bfe68136dd8aa4e092e43a8355a8"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    }
+  ]
+}

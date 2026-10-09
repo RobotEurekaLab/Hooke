@@ -1,0 +1,205 @@
+{
+  "scenes": [
+    {
+      "id": "oxford_bonilla_semiconductor",
+      "title": "Bonilla Semiconductor Probe Workstation",
+      "institution": "University of Oxford \u2014 Bonilla Laboratory",
+      "domain": "semiconductor_materials",
+      "university_expansion": true,
+      "source_urls": [
+        "https://interface.web.ox.ac.uk/infrastructure",
+        "https://interface.web.ox.ac.uk/sites/default/files/styles/mt_image_medium/public/interface/images/media/img_0396.jpg?itok=1K2heKwB"
+      ],
+      "reference_notes": "Inspected the official probe-contact close-up and narrow equipment collage. The close-up supports a compact metal platen, brass rod holders and fine angled probe tips; it does not establish full laboratory dimensions. This scene reconstructs that local apparatus on an authored compact bench, with generic readout electronics. In-house, shared cleanroom and shared electron-microscopy inventories are separate; no shared cleanroom tools are placed in this scene.",
+      "observed_cues": [
+        "Metal platen with visible corner bolts and small specimen contact region.",
+        "Opposed brass/metal shafts and dark angled fine contact probes.",
+        "Official inventory distinguishes in-house electrical characterization from shared cleanroom and electron microscopy."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          4.8,
+          4.2,
+          2.95
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.78,
+          1
+        ],
+        "accent": [
+          0.53,
+          0.57,
+          0.55,
+          1
+        ],
+        "style": "electrical_characterization",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.47,
+              0.51,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.0
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.25,
+              "width": 0.95,
+              "height": 2.12,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "probe_measurement_bench",
+          "pos": [
+            -0.35,
+            0.6,
+            0
+          ],
+          "size": [
+            2.9,
+            1.15,
+            0.9
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.61,
+            0.59,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "records_counter",
+          "pos": [
+            1.92,
+            0.8,
+            0
+          ],
+          "size": [
+            0.72,
+            1.7,
+            0.76
+          ],
+          "yaw": 0,
+          "style": "cabinet",
+          "color": [
+            0.73,
+            0.73,
+            0.68,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "probe_contact_fixture",
+          "kind": "semiconductor_probe_station",
+          "pos": [
+            -0.45,
+            0.5,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Coarse sample translation and two independently actuated probe approach surrogates over an inert 12 mm coupon",
+          "evidence": "Original geometry based on official local-apparatus photograph; hidden mechanics and scale estimated",
+          "source_urls": [
+            "https://interface.web.ox.ac.uk/infrastructure"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Position an inert semiconductor coupon and inspect probes",
+        "description": "Translate the visible coupon carrier and adjust two probe clearance positions. The tips remain above the sample and no electrical measurement or contact-force outcome is generated.",
+        "primary_equipment": "probe_contact_fixture",
+        "observable": "Three mechanical axes track bounded targets; the inert sample stays clamped on the supported platen."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.4,
+            -6.6,
+            5.0
+          ],
+          "target": [
+            0,
+            0.35,
+            0.75
+          ],
+          "fovy": 44
+        },
+        "interior": {
+          "position": [
+            1.6,
+            -1.65,
+            1.64
+          ],
+          "target": [
+            -0.45,
+            0.58,
+            1.02
+          ],
+          "fovy": 60
+        },
+        "workstation": {
+          "position": [
+            0.12,
+            -0.07,
+            1.27
+          ],
+          "target": [
+            -0.45,
+            0.5,
+            1.005
+          ],
+          "fovy": 45
+        }
+      },
+      "layout_rationale": [
+        "Only workstation evidence is available; the surrounding room, shelf, readout enclosure and storage counter are authored context.",
+        "The compact probe fixture has four supporting feet seated on a separate steel bench; sample carrier and probe holders connect to the platen.",
+        "Fine tip geometry and small inert coupon retain a plausible device scale; no photographs are mapped onto the specimen or surfaces.",
+        "The clear front approach and lateral instrument space are layout choices, not a recovered Oxford room plan."
+      ],
+      "limitations": [
+        "Reference-informed prototype, not surveyed or institution-validated. No endorsement, institutional review or original-media redistribution permission has been established.",
+        "The source image has no dimensional scale, manufacturer identification or documented motorized control contract; all axes are mechanical surrogates.",
+        "Probe tips remain in a clearance pose. Contact-force physics, current-voltage response, impedance, semiconductor transport and calibrated measurement are absent.",
+        "Only the local probe setup is modeled; the full in-house, cleanroom and shared microscopy inventories are not reproduced.",
+        "MuJoCo CPU mechanical controls can be checked; USD/GLB/Blender are visual snapshots without validated Isaac dynamics."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/research/qs_lab_page_audit/stills/oxford_bonilla_2.img",
+          "temp/research/qs_lab_page_audit/stills/oxford_bonilla_3.img"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Undimensioned close-up; all room and apparatus dimensions estimated",
+        "rights": "Original authored geometry, no source photographs redistributed"
+      }
+    }
+  ]
+}

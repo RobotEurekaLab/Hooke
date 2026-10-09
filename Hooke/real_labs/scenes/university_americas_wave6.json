@@ -1,0 +1,830 @@
+{
+  "scenes": [
+    {
+      "id": "ucla_bapsf_lapd",
+      "title": "BaPSF LAPD Diagnostic Access Segment",
+      "institution": "UCLA Basic Plasma Science Facility \u2014 Large Plasma Device",
+      "domain": "experimental_plasma_physics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://plasma.physics.ucla.edu/large-plasma-device.html",
+        "https://s3.amazonaws.com/cms.ipressroom.com/173/files/20214/60b00eac2cfac27231330da4_Large+Plasma+Device+photo+credit+Basic+Plasma+Science+Facility%2C+UCLA/Large+Plasma+Device+photo+credit+Basic+Plasma+Science+Facility%2C+UCLA_13b91d5d-8298-4fbe-a0be-f1daa66247c5-prv.jpg",
+        "https://newsroom.ucla.edu/releases/physicists-solve-mystery-surrounding-aurora-borealis"
+      ],
+      "reference_notes": "Official UCLA news photograph of the apparatus inspected, replacing an initially rejected homepage field-line illustration and an occluding portrait. Long pink magnetic-coil train, dense side diagnostic ports, probe drives and service cabinets are clear. Facility page describes computer-controlled probe positioning. Photograph is credited to UCLA BaPSF by official newsroom. Overview and upgraded-device pages contain different historical plasma lengths/coil counts; do not mix them into an asserted exact as-built model. No plasma generation, field solution or fusion simulation.",
+      "observed_cues": [
+        "Many closely spaced magenta coil rings around a long horizontal vessel.",
+        "Repeated side ports with long horizontal probe drive rods mounted on independent supports.",
+        "Dense overhead hose distribution, local pump carts and control cabinets along the service aisle."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Local diagnostic access segment; neither full historical nor full upgraded LAPD.",
+      "room": {
+        "size": [
+          7.8,
+          12.0,
+          4.2
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "ucla_bapsf_lapd",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -4.5,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "lapd_segment",
+          "kind": "ucla_lapd_diagnostic_segment",
+          "pos": [
+            -1.25,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "BaPSF LAPD Diagnostic Access Segment",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://plasma.physics.ucla.edu/large-plasma-device.html",
+            "https://s3.amazonaws.com/cms.ipressroom.com/173/files/20214/60b00eac2cfac27231330da4_Large+Plasma+Device+photo+credit+Basic+Plasma+Science+Facility%2C+UCLA/Large+Plasma+Device+photo+credit+Basic+Plasma+Science+Facility%2C+UCLA_13b91d5d-8298-4fbe-a0be-f1daa66247c5-prv.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://s3.amazonaws.com/cms.ipressroom.com/173/files/20214/60b00eac2cfac27231330da4_Large+Plasma+Device+photo+credit+Basic+Plasma+Science+Facility%2C+UCLA/Large+Plasma+Device+photo+credit+Basic+Plasma+Science+Facility%2C+UCLA_13b91d5d-8298-4fbe-a0be-f1daa66247c5-prv.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/ucla_lapd_wide.img"
+          ],
+          "supports": "Official UCLA news photograph of the apparatus inspected, replacing an initially rejected homepage field-line illustration and an occluding portrait. Long pink magnetic-coil train, dense side diagnostic ports, probe drives and service cabinets are clear. Facility page describes computer-controlled probe positioning."
+        }
+      ],
+      "layout_rationale": [
+        "Many closely spaced magenta coil rings around a long horizontal vessel.",
+        "Repeated side ports with long horizontal probe drive rods mounted on independent supports.",
+        "Dense overhead hose distribution, local pump carts and control cabinets along the service aisle.",
+        "A dense magenta coil train, repeated diagnostic ports and long external probe rods preserve the apparatus identity.",
+        "Only a photographed local access segment is reconstructed; historical and upgraded full-device specifications are not merged."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "upgraded plasma-column maximum length and diameter (not machine envelope)",
+          "dimensions_m": [
+            18.0,
+            0.75
+          ],
+          "source": "https://plasma.physics.ucla.edu/large-plasma-device.html",
+          "basis": "Official upgraded-device description; distinguish plasma volume from external chamber and historical overview specifications."
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            10.0,
+            -14.0,
+            9.0
+          ],
+          "target": [
+            -0.5,
+            0.0,
+            1.15
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            3.0,
+            -5.2,
+            2.0
+          ],
+          "target": [
+            -0.6,
+            0.1,
+            1.3
+          ],
+          "fovy": 60
+        },
+        "workstation": {
+          "position": [
+            2.2,
+            -3.8,
+            1.9
+          ],
+          "target": [
+            0.3,
+            -2.4,
+            1.3
+          ],
+          "fovy": 51
+        },
+        "source": {
+          "position": [
+            2.7,
+            -4.8,
+            2.3
+          ],
+          "target": [
+            -0.6,
+            0.1,
+            1.3
+          ],
+          "fovy": 63
+        }
+      },
+      "task": {
+        "name": "BaPSF LAPD Diagnostic Access Segment",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "lapd_segment",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "Published 18 m length and 0.75 m diameter describe plasma volume, not a surveyed machine envelope.",
+        "Local vessel length, coil number, external geometry and two-axis dry alignment fixture are estimated.",
+        "No plasma, vacuum, field, radiation, fusion or diagnostic-response model."
+      ]
+    },
+    {
+      "id": "penn_qnf_denton_sputter",
+      "title": "QNF Denton PVD-05 Inspection Bay",
+      "institution": "Penn Quattrone Nanofabrication Facility \u2014 Denton Explorer 14 PVD-05",
+      "domain": "thin_film_fabrication",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.nano.upenn.edu/resources/equipmentinstrumentation/",
+        "https://www.nano.upenn.edu/wp-content/uploads/2022/03/PVD-05-scaled.jpeg"
+      ],
+      "reference_notes": "Official installed PVD-05 photograph inspected at full available resolution: cream lower cabinet, square chamber front with circular viewport, exposed upper cylindrical assemblies and services, plus adjacent tall black control rack. Device list identifies Denton Vacuum Explorer 14 and an open-load rotating wafer platen. One process bay only; room plan, lid mechanism and machine exterior dimensions estimated. Published supported wafer size is not chamber diameter. No deposition, sputtering plasma, vacuum or gas process model.",
+      "observed_cues": [
+        "Square chamber front with central round viewport below two exposed cylindrical upper units.",
+        "Dense black and peach-colored utility lines arch above the chamber.",
+        "Independent tall black rack with monitor, emergency stop and keyboard drawer, flanked by stainless worktables."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "apparatus_and_partial_room",
+      "room": {
+        "size": [
+          5.8,
+          4.4,
+          2.9
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "penn_qnf_denton_sputter",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.4,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "left_stainless",
+          "pos": [
+            -1.8,
+            0.35,
+            0
+          ],
+          "size": [
+            0.9,
+            1.1,
+            0.8
+          ],
+          "style": "open_frame",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "right_stainless",
+          "pos": [
+            1.75,
+            0.35,
+            0
+          ],
+          "size": [
+            0.9,
+            1.1,
+            0.8
+          ],
+          "style": "open_frame",
+          "color": [
+            0.26,
+            0.28,
+            0.28,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "pvd_inspection",
+          "kind": "penn_denton_pvd_inspection",
+          "pos": [
+            0,
+            0.7,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "QNF Denton PVD-05 Inspection Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.nano.upenn.edu/resources/equipmentinstrumentation/",
+            "https://www.nano.upenn.edu/wp-content/uploads/2022/03/PVD-05-scaled.jpeg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.nano.upenn.edu/wp-content/uploads/2022/03/PVD-05-scaled.jpeg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/penn_sputter.img"
+          ],
+          "supports": "Official installed PVD-05 photograph inspected at full available resolution: cream lower cabinet, square chamber front with circular viewport, exposed upper cylindrical assemblies and services, plus adjacent tall black control rack. Device list identifies Denton Vacuum Explorer 14 and an open-load rotating wafer platen."
+        }
+      ],
+      "layout_rationale": [
+        "Square chamber front with central round viewport below two exposed cylindrical upper units.",
+        "Dense black and peach-colored utility lines arch above the chamber.",
+        "Independent tall black rack with monitor, emergency stop and keyboard drawer, flanked by stainless worktables.",
+        "Square viewport chamber, two cylindrical upper assemblies, looping utility lines and neighboring black controller follow the installed PVD-05 photograph.",
+        "Door is pre-opened for dry inspection; hinge and inner stage details remain explicitly inferred."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "maximum supported wafer diameter",
+          "dimensions_m": [
+            0.15
+          ],
+          "source": "https://www.nano.upenn.edu/resources/equipmentinstrumentation/",
+          "basis": "Official PVD-05 description: pieces through 150 mm wafers; no external equipment dimension provided."
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            7.0,
+            -7.0,
+            5.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.35,
+            -1.85,
+            1.75
+          ],
+          "target": [
+            0.0,
+            0.65,
+            1.2
+          ],
+          "fovy": 61
+        },
+        "workstation": {
+          "position": [
+            0.8,
+            -0.9,
+            1.65
+          ],
+          "target": [
+            -0.27,
+            0.55,
+            1.06
+          ],
+          "fovy": 48
+        },
+        "source": {
+          "position": [
+            1.3,
+            -1.85,
+            1.75
+          ],
+          "target": [
+            0.0,
+            0.65,
+            1.2
+          ],
+          "fovy": 57
+        }
+      },
+      "task": {
+        "name": "QNF Denton PVD-05 Inspection Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "pvd_inspection",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "Only maximum supported wafer diameter 150 mm is documented; it is not the chamber diameter.",
+        "No process gas, vacuum, plasma sputtering, deposition, chemistry or thickness prediction."
+      ]
+    },
+    {
+      "id": "jhu_paradim_bulk_crystal_growth",
+      "title": "PARADIM Bulk-Crystal Feed Inspection Bay",
+      "institution": "Johns Hopkins PARADIM Bulk Crystal Growth Facility",
+      "domain": "crystal_growth_materials",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.paradim.org/bulkcrystal",
+        "https://www.paradim.org/sites/default/files/inline-images/PossibleBannerImage.jpg"
+      ],
+      "reference_notes": "Official PARADIM room panorama and four-mirror xenon furnace detail inspected. Page explicitly locates bulk crystal growth at Johns Hopkins, distinct from Cornell thin-film facilities. Room has a central long preparation island, multiple large furnace cabinets, overhead utility drops and a high service ceiling. Panorama is distorted and lacks calibrated dimensions. Xenon detail is a separate instrument view; exact room registration remains unverified. No crystal-growth kinetics, furnace heat transfer, high-pressure operation or OEM CAD. Source announces 2026 program changes; current access arrangements are not established by these images.",
+      "observed_cues": [
+        "Long central wood-top preparation island surrounded by large furnace cabinets and clear side aisles.",
+        "Blue tall furnace cabinet at the rear, white equipment on the side walls and densely exposed ducts above.",
+        "Four-mirror xenon instrument detail shows symmetric metal mirror housings, tall support rods and paired cooling fans."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "room",
+      "room": {
+        "size": [
+          8.0,
+          8.0,
+          3.8
+        ],
+        "wall_color": [
+          0.58,
+          0.59,
+          0.57,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "jhu_paradim_bulk_crystal_growth",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.61,
+              0.6,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.9,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "central_prep_island",
+          "pos": [
+            -0.2,
+            -0.6,
+            0
+          ],
+          "size": [
+            1.3,
+            3.4,
+            0.9
+          ],
+          "style": "open_frame",
+          "color": [
+            0.65,
+            0.61,
+            0.45,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "mirror_furnace",
+          "kind": "jhu_four_mirror_feed_inspection",
+          "pos": [
+            2.35,
+            1.25,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "PARADIM Bulk-Crystal Feed Inspection Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.paradim.org/bulkcrystal",
+            "https://www.paradim.org/sites/default/files/inline-images/PossibleBannerImage.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.paradim.org/sites/default/files/inline-images/PossibleBannerImage.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/jhu_room.img"
+          ],
+          "supports": "Official PARADIM room panorama and four-mirror xenon furnace detail inspected. Page explicitly locates bulk crystal growth at Johns Hopkins, distinct from Cornell thin-film facilities. Room has a central long preparation island, multiple large furnace cabinets, overhead utility drops and a high service ceiling."
+        },
+        {
+          "url": "https://www.paradim.org/sites/default/files/inline-images/Xe_Four_Mirror.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/jhu_furnace.img"
+          ],
+          "supports": "Official PARADIM room panorama and four-mirror xenon furnace detail inspected. Page explicitly locates bulk crystal growth at Johns Hopkins, distinct from Cornell thin-film facilities. Room has a central long preparation island, multiple large furnace cabinets, overhead utility drops and a high service ceiling."
+        }
+      ],
+      "layout_rationale": [
+        "Long central wood-top preparation island surrounded by large furnace cabinets and clear side aisles.",
+        "Blue tall furnace cabinet at the rear, white equipment on the side walls and densely exposed ducts above.",
+        "Four-mirror xenon instrument detail shows symmetric metal mirror housings, tall support rods and paired cooling fans.",
+        "Central preparation island, rear blue furnace, side cabinets and exposed utility pipes preserve the official room panorama organization.",
+        "The separate four-mirror photo supplies instrument details; its placement in this bay is explicitly authored, not a recovered registration."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            10.0,
+            -11.0,
+            8.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            3.3,
+            -3.4,
+            1.85
+          ],
+          "target": [
+            0.4,
+            0.6,
+            1.25
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            2.35,
+            -0.3,
+            1.47
+          ],
+          "target": [
+            2.35,
+            1.225,
+            1.47
+          ],
+          "fovy": 48
+        },
+        "source": {
+          "position": [
+            3.2,
+            -3.3,
+            2.1
+          ],
+          "target": [
+            0.0,
+            0.4,
+            1.4
+          ],
+          "fovy": 68
+        }
+      },
+      "task": {
+        "name": "PARADIM Bulk-Crystal Feed Inspection Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "mirror_furnace",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "All room and furnace dimensions, hidden connections and feed strokes are estimates.",
+        "No heat transfer, light focusing, high pressure, melt, growth kinetics or crystal quality model.",
+        "Historical images do not establish current facility access arrangements."
+      ]
+    },
+    {
+      "id": "alberta_nanofab_exactacoat",
+      "title": "Alberta nanoFAB ExactaCoat dry alignment workstation",
+      "institution": "University of Alberta nanoFAB \u2014 ExactaCoat lithography workstation",
+      "domain": "materials_science",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.nanofab.ualberta.ca/new-spray-coating-tool-available/",
+        "https://www.nanofab.ualberta.ca/wp-content/uploads/2024/02/ExactaCoat-768x1024.jpg"
+      ],
+      "reference_notes": "Official installation photograph inspected: enclosed Sono-Tek ExactaCoat gantry system on a sturdy open-frame table in amber lithography lighting. Transparent front door exposes the traversing head and cable chain; upper extraction duct and external handheld controls are visible. Official text places this tool at ECERF W1-031. Only the installed workstation is photographed. Manufacturer envelope, nozzle dimensions and axis travel are not documented here. No spray/aerosol transport, coating chemistry or deposition thickness physics; geometric dry positioning only.",
+      "observed_cues": [
+        "Amber-lit enclosed gantry with a wide transparent front access door.",
+        "Visible horizontal carriage, cable chain and lowered dispensing-head assembly.",
+        "Top exhaust duct, right-side emergency stop/handheld controllers, and grounded open-frame support table."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "apparatus_and_partial_room",
+      "room": {
+        "size": [
+          4.4,
+          3.6,
+          3.1
+        ],
+        "wall_color": [
+          0.68,
+          0.61,
+          0.36,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "alberta_nanofab_exactacoat",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.41,
+              0.42,
+              0.36,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.1,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "coater_alignment",
+          "kind": "alberta_exactacoat_dry_alignment",
+          "pos": [
+            0,
+            0.55,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Alberta nanoFAB ExactaCoat dry alignment workstation",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.nanofab.ualberta.ca/new-spray-coating-tool-available/",
+            "https://www.nanofab.ualberta.ca/wp-content/uploads/2024/02/ExactaCoat-768x1024.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.nanofab.ualberta.ca/wp-content/uploads/2024/02/ExactaCoat-768x1024.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/americas_02_sources/stills/alberta_coater.img"
+          ],
+          "supports": "Official installation photograph inspected: enclosed Sono-Tek ExactaCoat gantry system on a sturdy open-frame table in amber lithography lighting. Transparent front door exposes the traversing head and cable chain; upper extraction duct and external handheld controls are visible. Official text places this tool at ECERF W1-031."
+        }
+      ],
+      "layout_rationale": [
+        "Amber-lit enclosed gantry with a wide transparent front access door.",
+        "Visible horizontal carriage, cable chain and lowered dispensing-head assembly.",
+        "Top exhaust duct, right-side emergency stop/handheld controllers, and grounded open-frame support table.",
+        "Only the photographed local workstation is represented; surrounding ECERF room boundaries are estimated.",
+        "The source amber illumination is approximated through warm wall and floor colors.",
+        "The glass front remains fixed and the dry alignment head stays above a rigid inert wafer."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "maximum specimen diameter",
+          "value_m": 0.3,
+          "source_url": "https://www.nanofab.ualberta.ca/new-spray-coating-tool-available/",
+          "scope": "specimen capacity only, not enclosure scale"
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            5.0,
+            -6.0,
+            4.3
+          ],
+          "target": [
+            0.0,
+            0.3,
+            1.2
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.4,
+            -1.35,
+            1.75
+          ],
+          "target": [
+            0.0,
+            0.55,
+            1.38
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            0.05,
+            -1.0,
+            1.47
+          ],
+          "target": [
+            0.0,
+            0.58,
+            1.4
+          ],
+          "fovy": 46
+        },
+        "source": {
+          "position": [
+            1.3,
+            -1.2,
+            1.8
+          ],
+          "target": [
+            0.0,
+            0.55,
+            1.4
+          ],
+          "fovy": 56
+        }
+      },
+      "task": {
+        "name": "Alberta nanoFAB ExactaCoat dry alignment workstation",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "coater_alignment",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No spray, aerosol, liquid, coating process or film-thickness simulation.",
+        "No OEM CAD; 300 mm maximum specimen diameter is the only equipment scale directly stated."
+      ]
+    }
+  ]
+}
