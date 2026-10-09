@@ -53,8 +53,20 @@
         instead of a plausible-looking guess. Every scene's sourcing is written down, including an honest tier for
         what's confirmed from a real photo versus representative where no photo exists.</p>
     </div>
+    <div class="reallab-controls">
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm9 2-4.35-4.35"/></svg>
+        <input type="search" id="reallab-search" placeholder="Search 100 universities by name…" aria-label="Search universities">
+      </div>
+      <label class="room-toggle">
+        <input type="checkbox" id="reallab-room-only">
+        <span>Full room reconstructions only (27)</span>
+      </label>
+      <span class="reallab-count" id="reallab-count"></span>
+    </div>
     <div class="video-grid" id="reallab-grid"></div>
-    <p class="sim-more">+ 88 more universities, QS rank 101–250 →
+    <p class="sim-more" id="reallab-empty" hidden>No university matches that search.</p>
+    <p class="sim-more">Every school's sourcing is written up individually →
       <a href="https://github.com/RobotEurekaLab/Hooke/blob/main/real_lab/schools.csv" target="_blank" rel="noopener">see the full list and sourcing on GitHub</a>
     </p>
   </section>
