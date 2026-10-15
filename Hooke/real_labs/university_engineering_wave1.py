@@ -59,43 +59,9 @@ def _tunnel(b, base, params):
             )
         for z in (0.38, 2.94):
             b.box(base, (0, y * 1.025, z), (3.04, 0.04, 0.035), "dark")
-    b.box(base, (0, 0, 0.445), (0.85, 0.47, 0.035), "dark", collision=True)
-    for y in (-0.39, 0.39):
-        b.rod(base, (-0.75, y, 0.50), (0.75, y, 0.50), 0.016, "bright")
-    carriage = b.moving(
-        base,
-        "specimen_x",
-        (0, 0, 0.53),
-        (1, 0, 0),
-        (-0.22, 0.22),
-        mass=4,
-        kp=1200,
-        force=1600,
-    )
-    b.box(carriage, (0, 0, 0), (0.46, 0.43, 0.035), "metal", collision=True)
-    turn = b.moving(
-        carriage,
-        "specimen_yaw",
-        (0, 0, 0.075),
-        (0, 0, 1),
-        (-0.30, 0.30),
-        kind="hinge",
-        mass=2,
-        kp=400,
-        force=500,
-    )
-    b.cylinder(turn, (0, 0, 0), 0.42, 0.035, "bright", collision=True)
-    b.cylinder(turn, (0, 0, 0.12), 0.085, 0.085, "dark", collision=True)
-    # Clear foil and circular end plate are the distinctive photographed article.
-    _named(
-        b.box(turn, (0, 0, 0.92), (0.045, 0.28, 0.74), "glass", collision=True),
-        b,
-        "clear_foil",
-    )
-    b.box(turn, (0.047, 0, 0.92), (0.005, 0.02, 0.74), "bright")
-    b.cylinder(turn, (0, 0, 1.68), 0.48, 0.012, "glass", collision=True)
-    b.ring(turn, (0, 0, 1.68), 0.48, 0.005, "bright")
-    b.site(turn, "clear_specimen", (0, 0, 0.92))
+    from real_labs.auckland_tunnel_geometry import add_fixture
+
+    add_fixture(b, base)
     b.metadata["capabilities"] = [
         "specimen_translation",
         "specimen_yaw",
@@ -215,15 +181,21 @@ def _annular_band(b, parent, y, length, radius, material):
 
 def _turbine(b, base, params):
     _palette(b, "teal", (0.035, 0.40, 0.40, 1))
-    for y, length, radius, material in [
+    bands = [
         (-1.40, 1.40, 1.5, "teal"),
         (-0.43, 0.5, 1.25, "teal"),
         (0, 0.32, 1.1, "dark"),
         (0.28, 0.22, 1.08, "guard_red"),
         (0.59, 0.40, 1.06, "bright"),
         (1.24, 0.90, 0.86, "teal"),
-    ]:
+    ]
+    casing_contacts = []
+    for y, length, radius, material in bands:
+        first = len(base)
         _annular_band(b, base, y, length, radius, material)
+        casing_contacts.extend(
+            g for g in list(base)[first:] if g.tag == "geom" and g.get("type") == "box"
+        )
     # A mesh-like inlet screen and three support spokes, rather than an invented rotor.
     for i in range(-20, 21):
         t = i * 0.07
@@ -267,39 +239,13 @@ def _turbine(b, base, params):
             )
             b.rod(base, (x, y, 0.15), (-x, y, height), 0.025, "metal")
         b.box(base, (0, y, height), (width + 0.07, 0.10, 0.07), "metal", collision=True)
-    # External, floor-supported dry traverse and clamped reference target.
-    for y in (0.12, 1.08):
-        for x in (1.90, 2.38):
-            b.box(base, (x, y, 0.66), (0.035, 0.035, 0.66), "metal", collision=True)
-    b.box(base, (2.14, 0.60, 1.35), (0.29, 0.56, 0.03), "metal", collision=True)
-    for x in (1.97, 2.31):
-        b.rod(base, (x, 0.12, 1.42), (x, 1.08, 1.42), 0.013, "bright")
-    slide = b.moving(
-        base,
-        "probe_y",
-        (2.14, 0.60, 1.46),
-        (0, 1, 0),
-        (-0.23, 0.23),
-        mass=1,
-        kp=400,
-        force=800,
-    )
-    b.box(slide, (0, 0, 0), (0.20, 0.15, 0.025), "dark", collision=True)
-    b.box(slide, (0.17, 0, 0.26), (0.025, 0.08, 0.24), "metal", collision=True)
-    probe = b.moving(
-        slide,
-        "probe_z",
-        (0, 0, 0.27),
-        (0, 0, 1),
-        (-0.05, 0.06),
-        mass=0.25,
-        kp=200,
-        force=300,
-    )
-    b.box(probe, (0.09, 0, 0), (0.065, 0.045, 0.035), "metal")
-    b.rod(probe, (0, 0, 0), (0, 0, -0.10), 0.004, "bright", collision=True)
-    b.box(slide, (0, 0, 0.07), (0.045, 0.035, 0.04), "cream", collision=True)
-    b.site(slide, "dry_reference", (0, 0, 0.07))
+    from real_labs.whittle_probe_geometry import add_fixture, finish_casing
+
+    add_fixture(b, base)
+    finish_casing(b, base, bands, casing_contacts)
+    from real_labs.whittle_context import add_apparatus_context
+
+    add_apparatus_context(b, base, bands)
     b.metadata["capabilities"] = [
         "external_probe_traverse",
         "external_probe_height",
@@ -318,55 +264,9 @@ def _wire_machine(b, base, params):
     for x in (-0.635, 0.635):
         b.box(base, (x, 0, 1.32), (0.045, 0.50, 0.54), "cream", collision=True)
         b.box(base, (x * 0.90, -0.51, 1.31), (0.014, 0.014, 0.51), "dark")
-    for x in (-0.47, 0.47):
-        b.box(base, (x, 0.23, 1.39), (0.09, 0.03, 0.32), "metal")
-        for z in (1.28, 1.68):
-            b.cylinder(
-                base, (x, 0.15, z), 0.085, 0.035, "dark", euler=(math.pi / 2, 0, 0)
-            )
-            b.cylinder(
-                base, (x, 0.11, z), 0.055, 0.008, "bright", euler=(math.pi / 2, 0, 0)
-            )
-    for x in (-0.58, 0.58):
-        for z in (1.15, 1.44, 1.72):
-            b.cylinder(
-                base, (x, -0.526, z), 0.017, 0.009, "dark", euler=(math.pi / 2, 0, 0)
-            )
-    for x in (-0.22, 0.22):
-        b.box(base, (x, 0.28, 1.42), (0.08, 0.018, 0.30), "bright")
-        for z in (1.22, 1.30, 1.38, 1.46, 1.54, 1.62):
-            b.box(base, (x, 0.258, z), (0.07, 0.002, 0.004), "dark")
-    # Passive wire facade; no electrical discharge or cutting behavior.
-    b.rod(base, (0, 0.08, 1.63), (0, 0.08, 1.13), 0.001, "bright")
-    b.box(base, (0, 0, 0.82), (0.50, 0.39, 0.035), "metal", collision=True)
-    for y in (-0.27, 0.27):
-        b.rod(base, (-0.42, y, 0.885), (0.42, y, 0.885), 0.012, "bright")
-    xstage = b.moving(
-        base,
-        "fixture_x",
-        (0, 0, 0.92),
-        (1, 0, 0),
-        (-0.12, 0.12),
-        mass=1,
-        kp=600,
-        force=800,
-    )
-    b.box(xstage, (0, 0, 0), (0.24, 0.30, 0.025), "metal", collision=True)
-    ystage = b.moving(
-        xstage,
-        "fixture_y",
-        (0, 0, 0.065),
-        (0, 1, 0),
-        (-0.10, 0.10),
-        mass=0.8,
-        kp=400,
-        force=600,
-    )
-    b.box(ystage, (0, 0, 0), (0.19, 0.15, 0.025), "dark", collision=True)
-    for x in (-0.10, 0.10):
-        b.box(ystage, (x, 0, 0.055), (0.025, 0.075, 0.030), "metal")
-    b.box(ystage, (0, 0, 0.055), (0.075, 0.06, 0.025), "bright", collision=True)
-    b.site(ystage, "inert_coupon", (0, 0, 0.055))
+    from real_labs.birmingham_fixture import add_facade_details, add_fixture
+
+    add_fixture(b, base)
     # Inclined right-hand controller has a real supporting pedestal.
     b.box(base, (0.92, -0.24, 0.47), (0.10, 0.13, 0.47), "cream", collision=True)
     b.box(base, (0.92, -0.24, 0.95), (0.32, 0.27, 0.045), "cream", collision=True)
@@ -377,13 +277,22 @@ def _wire_machine(b, base, params):
     for i in range(6):
         b.box(base, (0.70 + i * 0.08, -0.35, 1.006), (0.022, 0.034, 0.008), "dark")
     b.cylinder(base, (1.12, -0.25, 1.02), 0.020, 0.018, "guard_red")
+    add_facade_details(b, base)
+    from real_labs.birmingham_edm_context import add_apparatus_context
+
+    add_apparatus_context(b, base)
     b.metadata["capabilities"] = [
         "fixture_x_translation",
         "fixture_y_translation",
-        "visible_retained_metal_coupon",
+        "retained_open_slot_coupon",
+        "measured_wire_slot_entry_alignment_retraction",
     ]
     b.metadata["limitations"].append(
-        "Original dry XY fixture surrogate; OEM model, controller semantics, discharge, dielectric flow and material removal are unverified. The wire is a passive visual feature above the target."
+        "Photo-informed exterior with explicitly authored crossed slides, generic "
+        "0.20 mm inspection wire and 8 mm rear-open calibration slot. Arbitrary XY "
+        "commands can collide while the wire occupies the slot; use a checked "
+        "entry/retraction route. OEM model, dimensions and drives are unverified. "
+        "No electrical discharge, wire tension, dielectric flow or material removal."
     )
 
 
@@ -453,6 +362,10 @@ def _whittle_steps(world, definition):
         (0.65, 0.67, 0.68, 1),
     )
 
+    from real_labs.whittle_context import add_hall_context
+
+    add_hall_context(world, definition)
+
 
 def _edm_room(world, definition):
     _display(world, "edm_computer", -1.42, 0.20, 0.76)
@@ -496,6 +409,9 @@ def _edm_room(world, definition):
             (0.30, 0.33, 0.32, 1),
             collision=False,
         )
+    from real_labs.birmingham_edm_context import add_room_context
+
+    add_room_context(world, definition)
 
 
 def _display(world, name, x, y, z):
@@ -554,7 +470,7 @@ SOURCES = {
         reference="Birmingham photographed AGIE wire machine exterior",
         url=BIRMINGHAM,
         dimensions_m=[2.3, 1.15, 1.92],
-        dimension_basis="Machine envelope, local room and dry fixture travel estimated; no exact OEM model claim.",
+        dimension_basis="Machine envelope, local room, drive properties and dry fixture travel estimated; generic wire/open-slot interface is authored, with no exact OEM model claim.",
     ),
 }
 SAMPLE_INTERFACES = {
@@ -580,7 +496,7 @@ SAMPLE_INTERFACES = {
         "inert_coupon",
         (0.15, 0.12, 0.05),
         "clamped",
-        "Metal coupon held between opposing pads on the dry XY fixture",
+        "Pre-slotted retained coupon; legacy site is its envelope centre in the open slot, not a material surface. See coupon_surface and calibration_slot sites. Outer dimensions are preserved",
     ),
 }
 FEATURES = {

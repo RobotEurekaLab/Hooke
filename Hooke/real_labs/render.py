@@ -9,11 +9,14 @@ from pathlib import Path
 import sys
 
 import bpy
+from mathutils import Vector
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from microscopy.blender_render import _area, build_scene
-from real_labs.finishes import equipment_finishes, manufactured_edges
-from real_labs.render_version import render_source_digest
+from real_labs.finishes import equipment_finishes, manufactured_edges, primitive_normals
+from real_labs.presentation import fixture_emitter_bounds, inspection_softbox_visibility
+from real_labs.render_version import FINISH_REVISION, render_source_digest
+from real_labs.volume_presentation import apply_presentation_volumes
 
 
 def architectural_finishes():
@@ -28,18 +31,23 @@ def architectural_finishes():
             shader = nodes.get("Principled BSDF")
             noise = nodes.new("ShaderNodeTexNoise")
             noise.inputs["Scale"].default_value = (
-                140 if obj.name == "arch_floor" else 220
+                320 if obj.name == "arch_floor" else 650
             )
             noise.inputs["Detail"].default_value = 2
-            coordinates = nodes.new("ShaderNodeTexCoord")
-            links.new(coordinates.outputs["Generated"], noise.inputs["Vector"])
+            coordinates = nodes.new("ShaderNodeNewGeometry")
+            links.new(coordinates.outputs["Position"], noise.inputs["Vector"])
             bump = nodes.new("ShaderNodeBump")
             bump.inputs["Strength"].default_value = 0.12
-            bump.inputs["Distance"].default_value = 0.00035
+            bump.inputs["Distance"].default_value = 0.00008
             links.new(noise.outputs["Fac"], bump.inputs["Height"])
             links.new(bump.outputs["Normal"], shader.inputs["Normal"])
             shader.inputs["Roughness"].default_value = (
-                0.38 if obj.name == "arch_floor" else 0.72
+                0.48 if obj.name == "arch_floor" else 0.76
+            )
+            obj["presentation_finish"] = (
+                "estimated sealed floor"
+                if obj.name == "arch_floor"
+                else "estimated matte wall"
             )
         elif "_glass" in obj.name:
             material = obj.active_material.copy()
@@ -81,7 +89,8 @@ def architectural_finishes():
 
 def render_package(path, args):
     manifest = json.loads((path / "manifest.json").read_text())
-    build_scene(path / "snapshot")
+    softboxes_visible = inspection_softbox_visibility(manifest)
+    snapshot = build_scene(path / "snapshot")
     for material in bpy.data.materials:
         if not material.use_nodes:
             continue
@@ -91,9 +100,11 @@ def render_package(path, args):
             shader.inputs["Transmission Weight"].default_value = 1
             shader.inputs["Roughness"].default_value = 0.018
     manufactured_edges()
+    curved_surface_count = primitive_normals(snapshot)
     scene = bpy.context.scene
     architectural_finishes()
-    equipment_finishes(manifest)
+    finish_counts = equipment_finishes(manifest)
+    volume_records = apply_presentation_volumes(manifest)
     scene.unit_settings.system = "METRIC"
     scene.render.engine = "CYCLES"
     scene.cycles.device = "CPU"
@@ -137,7 +148,11 @@ def render_package(path, args):
         "Right fill", (w * 0.55, 0.3, h * 0.8), (0, 0, 1), area * 7, d * 0.65, (1, 1, 1)
     )
     for name in ("Ceiling softbox", "Front softbox", "Right fill"):
-        bpy.data.objects[name].data.specular_factor = 0.05
+        light = bpy.data.objects[name]
+        light.data.specular_factor = 0.55
+        light.visible_glossy = softboxes_visible
+        light.visible_transmission = softboxes_visible
+    bpy.context.view_layer.update()
     fixtures = [
         obj
         for obj in scene.objects
@@ -150,17 +165,19 @@ def render_package(path, args):
         shader = diffuser.node_tree.nodes.get("Principled BSDF")
         shader.inputs["Emission Color"].default_value = (1, 0.985, 0.965, 1)
         shader.inputs["Emission Strength"].default_value = 2
-        x, y, z = obj.location
+        (x, y, z), (size_x, size_y) = fixture_emitter_bounds(
+            [obj.matrix_world @ Vector(corner) for corner in obj.bound_box]
+        )
         _area(
             f"Ceiling fixture {index}",
-            (x, y, z - 0.04),
+            (x, y, z),
             (x, y, 0),
             7 if "clean_work" in obj.name else area * 19 / max(1, ceiling_count),
-            max(0.1, obj.dimensions.x),
+            size_x,
             (1, 0.985, 0.965),
         )
         lamp = bpy.data.objects[f"Ceiling fixture {index}"].data
-        lamp.shape, lamp.size_y = "RECTANGLE", max(0.05, obj.dimensions.y)
+        lamp.shape, lamp.size_y = "RECTANGLE", size_y
     for index, obj in enumerate(list(scene.objects)):
         if not obj.name.startswith("facility_growth_lamp_face_"):
             continue
@@ -169,15 +186,19 @@ def render_package(path, args):
         shader = diffuser.node_tree.nodes.get("Principled BSDF")
         shader.inputs["Emission Color"].default_value = (1, 0.87, 0.68, 1)
         shader.inputs["Emission Strength"].default_value = 3
-        x, y, z = obj.location
+        (x, y, z), (size_x, size_y) = fixture_emitter_bounds(
+            [obj.matrix_world @ Vector(corner) for corner in obj.bound_box]
+        )
         _area(
             f"Growth fixture {index}",
-            (x, y, z - 0.025),
+            (x, y, z),
             (x, y, 0),
             18,
-            0.25,
+            size_x,
             (1, 0.87, 0.68),
         )
+        lamp = bpy.data.objects[f"Growth fixture {index}"].data
+        lamp.shape, lamp.size_y = "RECTANGLE", size_y
     # Institutional names belong in the gallery; reference photos do not
     # establish the giant wall signs used in earlier presentation renders.
     scene.camera = bpy.data.objects["overview"]
@@ -216,11 +237,29 @@ def render_package(path, args):
                 renderer_source_sha256=render_source_digest(),
                 cutaway="Roof, roof-mounted fixtures and front/right envelope hidden for overview/detail; full enclosure shown for interior/reference",
                 blender=bpy.app.version_string,
-                visual_export_formats=["blend", "glb", "usdc"],
+                visual_export_formats=(
+                    [] if args.preview_only else ["blend", "glb", "usdc"]
+                ),
                 physics_format="MJCF",
                 fidelity="Snapshot of actual generated scene geometry; estimated lighting, edge radii and procedural finishes added",
-                finish_revision=4,
+                finish_revision=FINISH_REVISION,
+                presentation_material_counts=finish_counts,
+                presentation_volumes=volume_records,
+                volume_interchange_scope=(
+                    (
+                        "Blender shader is authoritative. Tested Blender 4.5 exports "
+                        "omit this absorption in GLB and USD; USD Preview Surface "
+                        "also does not preserve the clear-water transmission."
+                    )
+                    if volume_records
+                    else None
+                ),
+                analytic_curved_surfaces_smoothed=curved_surface_count,
+                texture_coordinates="World metres; procedural estimated finishes",
+                fixture_light_placement="Below the actual world-space fixture bounds",
+                fixture_light_clearance_m=0.015,
                 calibrated_lighting=False,
+                inspection_softbox_visible_in_glass=softboxes_visible,
             ),
             indent=2,
         )

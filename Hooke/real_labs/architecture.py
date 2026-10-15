@@ -314,100 +314,15 @@ def build_room(world, room):
         )
 
 
-def build_bench(world, item, accent):
-    width, depth, height = item["size"]
+def build_bench(world, item, accent, *, asset=None):
+    """Keep the scene placement contract separate from reusable furniture detail."""
+    from real_labs.bench_details import build_furniture
+
     parent = ET.SubElement(
         world,
         "body",
         name=item["id"],
         pos=numbers(item["pos"]),
-        euler=f"0 0 {item.get('yaw',0)}",
+        euler=f"0 0 {item.get('yaw', 0)}",
     )
-    style = item.get("style", "cabinet")
-    color = item.get("color", accent)
-    top_color = item.get("top_color", (0.13, 0.15, 0.16, 1))
-    thickness = 0.075 if style == "optical" else 0.035
-    box(
-        parent,
-        item["id"] + "_top",
-        (width / 2, depth / 2, thickness / 2),
-        (0, 0, height - thickness / 2),
-        top_color,
-    )
-    if style in ("open_frame", "optical"):
-        leg = 0.095 if style == "optical" else 0.035
-        for i, x in enumerate((-width / 2 + 0.15, width / 2 - 0.15)):
-            for j, y in enumerate((-depth / 2 + 0.15, depth / 2 - 0.15)):
-                box(
-                    parent,
-                    f"{item['id']}_leg_{i}_{j}",
-                    (leg, leg, (height - thickness - 0.04) / 2),
-                    (x, y, (height - thickness + 0.04) / 2),
-                    (0.25, 0.28, 0.30, 1),
-                )
-                box(
-                    parent,
-                    f"{item['id']}_foot_{i}_{j}",
-                    (leg + 0.025, leg + 0.025, 0.02),
-                    (x, y, 0.02),
-                    (0.07, 0.08, 0.08, 1),
-                )
-        if style == "open_frame":
-            box(
-                parent,
-                item["id"] + "_brace",
-                (width / 2 - 0.13, 0.025, 0.025),
-                (0, depth / 2 - 0.15, 0.25),
-                (0.32, 0.36, 0.38, 1),
-            )
-        else:
-            # Sparse representation of the optical table's mounting-hole grid.
-            for i, x in enumerate(np.arange(-width / 2 + 0.10, width / 2 - 0.08, 0.10)):
-                for j, y in enumerate(
-                    np.arange(-depth / 2 + 0.10, depth / 2 - 0.08, 0.10)
-                ):
-                    ET.SubElement(
-                        parent,
-                        "geom",
-                        name=f"{item['id']}_hole_{i}_{j}",
-                        type="cylinder",
-                        size=".0028 .0003",
-                        pos=numbers((x, y, height + 0.0003)),
-                        rgba=".025 .03 .035 1",
-                        contype="0",
-                        conaffinity="0",
-                    )
-    elif style == "cabinet":
-        box(
-            parent,
-            item["id"] + "_toe",
-            (width / 2 - 0.055, depth / 2 - 0.06, 0.055),
-            (0, 0, 0.055),
-            (0.13, 0.15, 0.15, 1),
-        )
-        box(
-            parent,
-            item["id"] + "_cabinet",
-            (width / 2 - 0.025, depth / 2 - 0.025, (height - thickness - 0.11) / 2),
-            (0, 0, (height - thickness + 0.11) / 2),
-            color,
-        )
-        count = max(2, round(width / 0.55))
-        for index in range(count):
-            x = -width / 2 + (index + 0.5) * width / count
-            box(
-                parent,
-                f"{item['id']}_door_{index}",
-                (width / count / 2 - 0.011, 0.009, (height - thickness - 0.15) / 2),
-                (x, -depth / 2 + 0.012, (height - thickness + 0.15) / 2),
-                color,
-            )
-            box(
-                parent,
-                f"{item['id']}_pull_{index}",
-                (0.065, 0.018, 0.006),
-                (x, -depth / 2 - 0.002, height - 0.13),
-                (0.51, 0.55, 0.57, 1),
-            )
-    else:
-        raise ValueError(f"Unknown bench style: {style}")
+    return build_furniture(parent, item, accent, asset)

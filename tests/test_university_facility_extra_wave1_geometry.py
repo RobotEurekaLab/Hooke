@@ -42,6 +42,37 @@ def make_session(identifier):
 
 
 class UniversityFacilityExtraWave1GeometryTests(unittest.TestCase):
+    def test_eth_downlights_clear_the_opaque_ceiling_assembly(self):
+        session = make_session("eth_gcc_big_blue")
+        model, data = session.model, session.data
+        lights = [
+            i
+            for i in range(model.ngeom)
+            if model.geom(i).name.startswith("arch_luminaire_")
+        ]
+        ceiling = [
+            i for i in range(model.ngeom) if model.geom(i).name.startswith("arch_roof_")
+        ]
+        self.assertTrue(lights)
+        for light in lights:
+            self.assertEqual(model.geom_type[light], mujoco.mjtGeom.mjGEOM_CYLINDER)
+            radius, half_height = model.geom_size[light, :2]
+            extent = np.array([radius, radius, half_height])
+            light_low = data.geom_xpos[light] - extent
+            light_high = data.geom_xpos[light] + extent
+            for panel in ceiling:
+                size = model.geom_size[panel].copy()
+                if model.geom_type[panel] == mujoco.mjtGeom.mjGEOM_CYLINDER:
+                    size = size[[0, 0, 1]]
+                overlap = np.minimum(
+                    light_high, data.geom_xpos[panel] + size
+                ) - np.maximum(light_low, data.geom_xpos[panel] - size)
+                self.assertLessEqual(
+                    overlap.min(),
+                    1e-8,
+                    (model.geom(light).name, model.geom(panel).name, overlap),
+                )
+
     def test_extension_kinds_register_alongside_existing_instruments(self):
         modules = tuple(
             dict.fromkeys(

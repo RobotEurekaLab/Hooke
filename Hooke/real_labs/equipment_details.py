@@ -1,6 +1,7 @@
 """Original exterior detail for instruments with separately defined mechanisms.
 
-All details here are visual, noncolliding geometry. Dimensions without an
+Details are visual unless an explicit exterior contact proxy is declared.
+Dimensions without an
 explicit source are estimates. Keep mechanical joints, masses, target sites,
 and simplified contact geometry in :mod:`real_labs.equipment`.
 """
@@ -23,8 +24,12 @@ def _screw(b: Any, parent: ET.Element, position, radius=0.0022) -> None:
     b.cylinder(parent, (x, y - 0.0009, z), radius * 0.43, 0.0002, "dark", quat=_Y_AXIS)
 
 
-def _tip(b: Any, parent: ET.Element, x: float) -> None:
-    """Estimated 44 mm taper, retaining the mechanism's existing endpoint."""
+def _tip(b: Any, parent: ET.Element, x: float, index: int) -> None:
+    """Estimated taper with an enabled convex exterior collision envelope.
+
+    The lower visual opening stays hollow; collision uses its outer envelope,
+    not an internal bore or a fluid-transport model.
+    """
     vertices = []
     faces = []
     sides = 12
@@ -47,7 +52,17 @@ def _tip(b: Any, parent: ET.Element, x: float) -> None:
         vertex=" ".join(f"{v:.8g}" for v in vertices),
         face=" ".join(str(v) for v in faces),
     )
-    b.geom(parent, "mesh", (), material="cream", mesh=mesh)
+    b.geom(
+        parent,
+        "mesh",
+        (),
+        material="cream",
+        mesh=mesh,
+        collision=True,
+        name=f"{b.name}__tip_contact_{index}",
+        solref=".02 1",
+        solimp=".95 .99 .001",
+    )
 
 
 def _tray_corner(b: Any, parent: ET.Element, side: int) -> None:
@@ -161,26 +176,74 @@ def liquid_handler_details(b: Any, base, gantry, carriage, pipette, door) -> Non
         for y in (-0.024, -0.012, 0, 0.012, 0.024):
             b.box(base, (side * 0.436, y, 0.085), (0.001, 0.002, 0.018), "dark")
         # The linear bearing rides on a substantial rail section.
-        b.box(base, (side * 0.365, 0, 0.647), (0.014, 0.263, 0.018), "metal")
+        b.box(
+            base,
+            (side * 0.365, 0, 0.647),
+            (0.014, 0.263, 0.018),
+            "metal",
+            collision=True,
+            name=f"{b.name}__y_rail_{side}",
+        )
     for x in (-0.365, 0.365):
-        b.box(gantry, (x, 0, -0.012), (0.019, 0.05, 0.047), "dark")
-        b.box(gantry, (x, -0.053, -0.01), (0.015, 0.004, 0.035), "metal")
-        for z in (-0.032, 0.012):
-            _screw(b, gantry, (x, -0.058, z))
-    b.box(gantry, (0, -0.038, 0.01), (0.3, 0.003, 0.021), "shell")
-    b.box(gantry, (0, -0.039, -0.022), (0.31, 0.002, 0.003), "dark")
-    for x in (-0.029, 0.029):
-        b.box(carriage, (x, -0.049, -0.034), (0.004, 0.003, 0.071), "metal")
-        _screw(b, carriage, (x, -0.053, 0.034))
-    b.box(pipette, (0, -0.035, -0.037), (0.03, 0.002, 0.052), "dark")
+        # Open rectangular bearing sleeves surround the real Y guide with a
+        # 0.5 mm authored clearance. They do not bury the rail inside a box.
+        side = -1 if x < 0 else 1
+        for edge in (-1, 1):
+            b.box(
+                gantry,
+                (x, 0, -0.006 + edge * 0.0215),
+                (0.0205, 0.05, 0.003),
+                "dark",
+                collision=True,
+                name=f"{b.name}__y_bearing_{side}_cap_{edge}",
+            )
+            b.box(
+                gantry,
+                (x + edge * 0.0175, 0, -0.006),
+                (0.003, 0.05, 0.0185),
+                "metal",
+                collision=True,
+                name=f"{b.name}__y_bearing_{side}_side_{edge}",
+            )
+    b.box(gantry, (0, -0.038, 0.064), (0.3, 0.003, 0.021), "shell")
+    b.box(gantry, (0, -0.039, 0.032), (0.31, 0.002, 0.003), "dark")
+    for side in (-1, 1):
+        x = side * 0.025
+        # Long stationary Z guides meet the carriage underside. Moving pads
+        # bridge from the head back to the guide front over the full Z travel.
+        b.box(
+            carriage,
+            (x, 0.029, -0.1975),
+            (0.004, 0.006, 0.1475),
+            "metal",
+            collision=True,
+            name=f"{b.name}__z_rail_{side}",
+        )
+        b.box(
+            pipette,
+            (x, 0.041, -0.033),
+            (0.004, 0.007, 0.025),
+            "dark",
+            collision=True,
+            name=f"{b.name}__z_bearing_{side}",
+        )
+    b.box(pipette, (0, -0.035, -0.042), (0.03, 0.002, 0.047), "dark")
     b.box(pipette, (0, -0.038, -0.019), (0.022, 0.0007, 0.01), "metal")
     b.box(pipette, (0, -0.039, -0.018), (0.013, 0.0004, 0.0013), "cyan")
     for x in (-0.024, 0.024):
-        _screw(b, pipette, (x, -0.039, 0.007), radius=0.0016)
+        _screw(b, pipette, (x, -0.039, -0.003), radius=0.0016)
     for i in range(8):
         x = (i - 3.5) * 0.009
-        b.cylinder(pipette, (x, -0.006, -0.103), 0.0034, 0.004, "metal")
-        _tip(b, pipette, x)
+        b.cylinder(
+            pipette,
+            (x, -0.006, -0.103),
+            0.0034,
+            0.004,
+            "metal",
+            collision=True,
+            name=f"{b.name}__tip_mount_contact_{i + 1}",
+        )
+        _tip(b, pipette, x, i + 1)
     for i in range(12):
         # Local cable harness moves with the mount; it is not a simulated
         # flexible chain spanning two independently moving bodies.

@@ -1,6 +1,7 @@
 """Native source archives preserve authored inline mesh geometry."""
 
 from pathlib import Path
+import json
 import sys
 import tempfile
 from types import SimpleNamespace
@@ -70,6 +71,7 @@ class BaselineMeshPrecisionTests(unittest.TestCase):
                 path,
             )
             restored = mujoco.MjModel.from_xml_path(str(path / "scene.xml"))
+            self.assertNotIn("visual_profile", json.loads((path / "scene.json").read_text()))
             for field in ("mesh_pos", "mesh_quat", "geom_size", "geom_pos", "geom_quat"):
                 np.testing.assert_allclose(
                     getattr(restored, field),

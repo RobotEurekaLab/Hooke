@@ -14,6 +14,7 @@ from typing import Any
 from xml.etree import ElementTree as ET
 
 from real_labs.equipment_details import liquid_handler_details, microtome_details
+from real_labs.penn_processor_geometry import SOURCE as PENN_PROCESSOR_SOURCE
 
 
 _PALETTE = {
@@ -39,6 +40,13 @@ _PALETTE = {
 
 
 SOURCES = {
+    "rochester_liquid_handler": {
+        "reference": "Flex exterior and hinged access; authored bench-mounted contact-loading fixture",
+        "url": "https://docs.opentrons.com/flex/system-description/robot/",
+        "dimensions_m": [0.87, 0.69, 0.84],
+        "dimension_basis": "Published enclosure W/D/H only; external loader, hinge and moved display are estimated original geometry; installed model unverified",
+    },
+    "penn_specimen_processor": PENN_PROCESSOR_SOURCE,
     "liquid_handler": {
         "reference": "Opentrons Flex external envelope; original gantry model",
         "url": "https://docs.opentrons.com/flex/installation/requirements/",
@@ -58,22 +66,22 @@ SOURCES = {
         "dimension_basis": "Assembly estimate; XY stroke ±57/±36.5 mm and focus stroke 7 mm from Ti2-I specification",
     },
     "isotope_analyzer": {
-        "reference": "Picarro L21x0-i water-isotope analysis workflow",
-        "url": "https://www.picarro.com/sites/default/files/manuals/L21x0-i-Installation-Operation-Manual-40035-Rev_G.pdf",
-        "dimensions_m": [0.92, 0.57, 0.57],
-        "dimension_basis": "Estimated analyzer/autosampler assembly; carousel is a generic mechanism",
+        "reference": "UW-hosted Picarro assembly manual and L2120i cabinet envelope; authored version 3 XYZ guides",
+        "url": "https://isolab.ess.washington.edu/resources/videos.php",
+        "dimensions_m": [0.60, 0.81, 0.82],
+        "dimension_basis": "Estimated centered assembly envelope; analyzer cabinet only is published 432 x 432 x 191 mm, including authored feet and excluding protruding fittings; installed generation unverified",
     },
     "deposition_chamber": {
-        "reference": "Representative research vacuum deposition system",
-        "url": "https://engineering.virginia.edu/department/materials-science-and-engineering/academics/graduate-programs/mse-lab-tours",
-        "dimensions_m": [0.78, 0.73, 0.85],
-        "dimension_basis": "Estimated; no claim of exact UVA equipment or geometry",
+        "reference": "UVA Ihlefeld Sputter1 exterior cues; authored dry-access surrogate",
+        "url": "https://wordpress.its.virginia.edu/Ihlefeld_Research_Group/facilities/",
+        "dimensions_m": [1.16, 0.80, 1.18],
+        "dimension_basis": "Estimated conservative centered full-stroke envelope including authored capped lateral branch; not measured UVA or OEM dimensions",
     },
     "phenotyping_booth": {
-        "reference": "Purdue AAPF conveyor-based plant imaging workflow",
+        "reference": "Purdue AAPF official booth exterior; authored inert imaging fixture",
         "url": "https://ag.purdue.edu/aapf/virtual-tour.html",
-        "dimensions_m": [1.44, 1.8, 2.35],
-        "dimension_basis": "Estimated portal, conveyor and camera arrangement",
+        "dimensions_m": [1.52, 1.9, 2.35],
+        "dimension_basis": "Estimated supported frame envelope including side display and guide ends; no surveyed dimensions or OEM CAD",
     },
     "magnetic_microrobot": {
         "reference": "Representative optical magnetic microrobot workstation",
@@ -332,6 +340,7 @@ class _Builder:
         mode: str = "position",
         kp: float = 180,
         force: float = 120,
+        velocity_gain: float = 10,
     ) -> ET.Element:
         body = ET.SubElement(
             parent,
@@ -368,7 +377,7 @@ class _Builder:
             "forcerange": _numbers((-force, force)),
         }
         if mode == "velocity":
-            aa.update(kv="10", ctrllimited="true", ctrlrange="-8 8")
+            aa.update(kv=str(velocity_gain), ctrllimited="true", ctrlrange="-8 8")
         else:
             aa.update(kp=str(kp), kv=str(2 * math.sqrt(kp * mass)))
             if limits is not None:
@@ -460,7 +469,7 @@ def _liquid_handler(b: _Builder, base: ET.Element, params: dict[str, Any]) -> No
     for ix in range(3):
         for iy in range(4):
             x, y = (ix - 1) * 0.146, (iy - 1.5) * 0.109
-            b.box(base, (x, y, 0.164), (0.067, 0.044, 0.003), "dark")
+            b.box(base, (x, y, 0.164), (0.067, 0.044, 0.003), "dark", collision=True)
             b.site(base, f"deck_{iy * 3 + ix + 1}", (x, y, 0.174))
     for ix in range(2):
         px, py = (ix - 1) * 0.146, -0.1635
@@ -477,19 +486,47 @@ def _liquid_handler(b: _Builder, base: ET.Element, params: dict[str, Any]) -> No
     gantry_y = b.moving(
         base, "gantry_y", (0, 0, 0.653), (0, 1, 0), (-0.22, 0.22), mass=3
     )
-    b.box(gantry_y, (0, 0, 0), (0.36, 0.035, 0.039), "bright")
-    b.rod(gantry_y, (-0.34, -0.024, -0.013), (0.34, -0.024, -0.013), 0.007, "dark")
+    b.box(
+        gantry_y,
+        (0, 0, 0.054),
+        (0.36, 0.035, 0.039),
+        "bright",
+        collision=True,
+        name=f"{b.name}__gantry_contact",
+    )
+    b.rod(gantry_y, (-0.34, -0.024, 0.041), (0.34, -0.024, 0.041), 0.007, "dark")
     carriage = b.moving(
         gantry_y, "gantry_x", (0, 0, -0.035), (1, 0, 0), (-0.28, 0.28), mass=1.2
     )
-    b.box(carriage, (0, 0, 0), (0.048, 0.046, 0.05), "dark")
-    pipette = b.moving(
-        carriage, "pipette_z", (0, -0.025, -0.055), (0, 0, -1), (0, 0.24), mass=0.35
+    b.box(
+        carriage,
+        (0, 0, 0),
+        (0.048, 0.046, 0.05),
+        "dark",
+        collision=True,
+        name=f"{b.name}__carriage_contact",
     )
-    b.box(pipette, (0, 0, -0.044), (0.034, 0.034, 0.059), "shell")
+    pipette = b.moving(
+        carriage,
+        "pipette_z",
+        (0, -0.025, -0.055),
+        (0, 0, -1),
+        (0, 0.24),
+        mass=0.35,
+        force=5,
+    )
+    b.box(
+        pipette,
+        (0, 0, -0.049),
+        (0.034, 0.034, 0.054),
+        "shell",
+        collision=True,
+        name=f"{b.name}__head_contact",
+    )
     for i in range(8):
         x = (i - 3.5) * 0.009
         b.site(pipette, f"tip_{i + 1}", (x, -0.006, -0.149), 0.001)
+    b.site(pipette, "dry_tool_center", (0, -0.006, -0.149), 0.001)
     door = b.moving(base, "door", (0, -0.341, 0.2), (0, 0, 1), (0, 0.52), mass=1)
     b.box(door, (0, 0, 0.24), (0.38, 0.003, 0.236), "glass")
     for x in (-0.384, 0.384):
@@ -501,6 +538,13 @@ def _liquid_handler(b: _Builder, base: ET.Element, params: dict[str, Any]) -> No
     b.screen(base, (0.305, -0.386, 0.493), 0.148, 0.091)
     b.vents(base, (0, -0.346, 0.055), 0.21, 4)
     liquid_handler_details(b, base, gantry_y, carriage, pipette, door)
+    b.metadata["dry_contact_interface"] = dict(
+        tool_site=f"{b.name}__site_dry_tool_center",
+        tip_geoms=[f"{b.name}__tip_contact_{i+1}" for i in range(8)],
+        axis_force_limit_n=5,
+        contact_parameter_basis="Authored 5 N axis force cap and rigid convex tip envelopes; not calibrated pipette force or real labware compliance",
+        scope="Original rigid exterior contact envelopes for a measured dry touch against an inert carrier. No tip attachment, liquid transport, aspiration, dispensing or biological process.",
+    )
     b.metadata["capabilities"] = [
         "XYZ liquid-tool positioning",
         "eight tip target sites",
@@ -512,6 +556,13 @@ def _liquid_handler(b: _Builder, base: ET.Element, params: dict[str, Any]) -> No
     )
 
 
+def _rochester_liquid_handler(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
+    from real_labs.rochester_loading_geometry import add_loading_fixture
+
+    _liquid_handler(b, base, params)
+    add_loading_fixture(b.root, base, b.metadata)
+
+
 def _sequencer(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
     b.feet(base, 0.864, 0.933)
     # Separate shell panels preserve clearance for real sample loading.
@@ -519,8 +570,11 @@ def _sequencer(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
     b.box(base, (0, 0.447, 0.68), (0.432, 0.02, 0.65), "shell", collision=True)
     for x in (-0.417, 0.417):
         b.box(base, (x, 0.018, 0.68), (0.015, 0.429, 0.65), "shell", collision=True)
-    b.box(base, (0, -0.438, 0.34), (0.413, 0.007, 0.3), "dark")
-    b.box(base, (0, -0.448, 0.95), (0.411, 0.01, 0.345), "dark")
+    # The front is a structural frame around three real moving covers. A solid
+    # visual slab here would let the sample pass through an opaque fake wall.
+    from real_labs.rochester_details import sequencer_frame, flowcell_retainer
+
+    sequencer_frame(b, base)
     b.box(base, (0, 0.01, 1.325), (0.429, 0.443, 0.012), "blue")
     for x in (-0.407, 0.407):
         b.box(base, (x, -0.457, 0.72), (0.015, 0.008, 0.602), "shell")
@@ -533,16 +587,52 @@ def _sequencer(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
             (0, 0.38),
             mass=4,
         )
-        b.box(drawer, (0, -0.02, 0), (0.183, 0.015, 0.255), "shell")
+        b.box(
+            drawer,
+            (0, -0.02, 0),
+            (0.183, 0.015, 0.255),
+            "shell",
+            collision=True,
+            name=f"{b.name}__reagent_front_{ix + 1}",
+        )
         b.box(drawer, (0, 0.155, -0.235), (0.177, 0.18, 0.009), "metal", collision=True)
         b.box(drawer, (0, 0.11, -0.05), (0.145, 0.13, 0.18), "cream", collision=True)
         b.box(drawer, (0, -0.038, 0.17), (0.067, 0.005, 0.012), "dark")
         b.site(drawer, f"reagent_cartridge_{ix + 1}", (0, 0.11, 0.14))
     tray = b.moving(
-        base, "flowcell_tray", (0, -0.43, 0.93), (0, -1, 0), (0, 0.25), mass=2
+        base,
+        "flowcell_tray",
+        (0, -0.43, 0.93),
+        (0, -1, 0),
+        (0, 0.25),
+        mass=2,
+        force=20,
     )
-    b.box(tray, (0, -0.025, 0), (0.385, 0.015, 0.155), "shell")
-    b.box(tray, (0, 0.095, -0.045), (0.355, 0.135, 0.008), "metal", collision=True)
+    b.box(
+        tray,
+        (0, -0.025, 0),
+        (0.385, 0.015, 0.155),
+        "shell",
+        collision=True,
+        name=f"{b.name}__flowcell_front",
+    )
+    b.box(
+        tray,
+        (0, 0.095, -0.045),
+        (0.355, 0.135, 0.008),
+        "metal",
+        collision=True,
+        name=f"{b.name}__flowcell_tray_support",
+    )
+    for side in (-1, 1):
+        b.box(
+            tray,
+            (side * 0.337, 0.30, -0.045),
+            (0.012, 0.185, 0.008),
+            "metal",
+            collision=True,
+            name=f"{b.name}__flowcell_runner_{side}",
+        )
     for i, x in enumerate((-0.17, 0.17)):
         b.box(tray, (x, 0.07, -0.03), (0.067, 0.102, 0.005), "lens", collision=True)
         for col in range(4):
@@ -553,6 +643,7 @@ def _sequencer(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
                 "cyan",
             )
         b.site(tray, f"flowcell_{i + 1}", (x, 0.07, -0.018))
+        flowcell_retainer(b, tray, x, i + 1)
     b.box(base, (0.27, -0.02, 1.42), (0.021, 0.022, 0.081), "dark")
     b.screen(base, (0.2, -0.07, 1.487), 0.324, 0.188)
     b.vents(base, (0, -0.449, 0.08), 0.46, 6)
@@ -681,353 +772,40 @@ def _microscope(b: _Builder, base: ET.Element) -> ET.Element:
 def _microfluidic_station(
     b: _Builder, base: ET.Element, params: dict[str, Any]
 ) -> None:
+    from real_labs.indiana_details import complete_station
+
     stage = _microscope(b, base)
-    b.box(stage, (0, 0, 0.012), (0.0375, 0.0125, 0.0007), "glass", collision=True)
-    for y in (-0.003, 0.003):
-        b.rod(stage, (-0.031, y, 0.013), (0.028, y, 0.013), 0.00035, "cyan")
-    for x, key in ((-0.031, "chip_inlet"), (0.028, "chip_outlet")):
-        b.cylinder(stage, (x, 0, 0.016), 0.0025, 0.003, "cream")
-        b.site(stage, key, (x, 0, 0.019), 0.001)
-    b.box(base, (0.35, 0.068, 0.09), (0.13, 0.122, 0.075), "shell", collision=True)
-    b.screen(base, (0.35, -0.058, 0.111), 0.155, 0.075)
-    for i in range(4):
-        x = 0.275 + i * 0.05
-        b.cylinder(base, (x, 0.075, 0.185), 0.011, 0.021, "metal")
-        b.cylinder(base, (x, 0.075, 0.21), 0.012, 0.003, "blue")
-        b.site(base, f"pressure_port_{i + 1}", (x, 0.075, 0.216))
-    b.rod(base, (0.275, 0.075, 0.218), (0.24, 0.05, 0.36), 0.002, "cyan")
-    b.rod(base, (0.24, 0.05, 0.36), (0.05, 0.01, 0.375), 0.002, "cyan")
-    valve = b.moving(
-        base,
-        "flow_valve",
-        (0.435, -0.063, 0.037),
-        (0, 1, 0),
-        (0, math.pi / 2),
-        kind="hinge",
-        mass=0.02,
-    )
-    b.cylinder(
-        valve, (0, 0, 0), 0.016, 0.01, "dark", quat=(0.70710678, 0.70710678, 0, 0)
-    )
-    b.box(valve, (0, -0.012, 0), (0.012, 0.002, 0.002), "bright")
-    b.metadata["capabilities"] = [
-        "XY specimen positioning",
-        "7 mm objective focus",
-        "microfluidic chip inlet/outlet targets",
-        "flow-valve command",
-        "top-view camera",
-    ]
+    complete_station(b, base, stage, params)
 
 
 def _isotope_analyzer(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
-    for xs, ys in (((-0.415, -0.025), (-0.24, 0.24)), ((0.14, 0.42), (-0.19, 0.2))):
-        for x in xs:
-            for y in ys:
-                b.cylinder(
-                    base, (x, y, 0.0125), 0.018, 0.0125, "rubber", collision=True
-                )
-    b.box(base, (-0.22, 0, 0.17), (0.24, 0.285, 0.145), "shell", collision=True)
-    b.box(base, (-0.22, -0.288, 0.177), (0.233, 0.005, 0.136), "dark")
-    b.screen(base, (-0.27, -0.298, 0.225), 0.22, 0.105)
-    b.vents(base, (-0.22, -0.297, 0.06), 0.36, 6)
-    b.box(base, (0.015, 0.12, 0.35), (0.007, 0.09, 0.037), "shell")
-    b.cylinder(base, (-0.03, 0.14, 0.338), 0.025, 0.026, "dark")
-    b.site(base, "vaporizer_inlet", (-0.03, 0.14, 0.37))
-    b.box(base, (0.28, 0.005, 0.07), (0.18, 0.24, 0.045), "shell", collision=True)
-    carousel = b.moving(
-        base,
-        "carousel",
-        (0.27, -0.04, 0.138),
-        (0, 0, 1),
-        (-math.pi, math.pi),
-        kind="hinge",
-        mass=0.7,
-    )
-    b.cylinder(carousel, (0, 0, 0), 0.154, 0.018, "dark")
-    b.cylinder(carousel, (0, 0, 0.025), 0.037, 0.014, "bright")
-    for i in range(20):
-        a = i * math.tau / 20
-        x, y = 0.125 * math.cos(a), 0.125 * math.sin(a)
-        if i != 0:
-            b.cylinder(carousel, (x, y, 0.044), 0.006, 0.024, "glass")
-            b.cylinder(carousel, (x, y, 0.07), 0.0064, 0.003, "blue")
-        else:
-            b.cylinder(carousel, (x, y, 0.02), 0.008, 0.002, "metal", collision=True)
-            b.site(carousel, "sample_seat", (x, y, 0.047), 0.002)
-        b.site(carousel, f"vial_{i + 1}", (x, y, 0.074), 0.002)
-    b.box(base, (0.28, 0.174, 0.303), (0.031, 0.035, 0.231), "metal")
-    b.box(base, (0.28, 0.006, 0.516), (0.036, 0.196, 0.025), "shell")
-    needle = b.moving(
-        base, "injection_z", (0.27, -0.165, 0.434), (0, 0, -1), (0, 0.23), mass=0.1
-    )
-    b.box(needle, (0, 0, 0), (0.02, 0.021, 0.044), "blue")
-    b.rod(needle, (0, 0, -0.045), (0, 0, -0.117), 0.0015, "bright")
-    b.site(needle, "needle_tip", (0, 0, -0.118), 0.001)
-    b.rod(base, (0.26, 0.17, 0.54), (0.04, 0.18, 0.57), 0.003, "copper")
-    b.rod(base, (0.04, 0.18, 0.57), (-0.03, 0.14, 0.37), 0.003, "copper")
-    b.metadata["capabilities"] = [
-        "20 indexed vial target sites",
-        "autosampler carousel",
-        "injection needle translation",
-        "vaporizer inlet target",
-    ]
+    from real_labs.uw_isolab_geometry import add_autosampler
+
+    add_autosampler(b, base, params)
 
 
 def _deposition_chamber(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
-    b.feet(base, 0.78, 0.73, height=0.025)
-    b.box(base, (0, 0, 0.065), (0.39, 0.365, 0.04), "dark", collision=True)
-    for x in (-0.19, 0.19):
-        b.box(base, (x, 0, 0.185), (0.022, 0.18, 0.085), "metal")
-    # Open cylindrical chamber built from tangent panels, leaving a real loading cavity.
-    for i in range(32):
-        a = i * math.tau / 32
-        b.box(
-            base,
-            (0.24 * math.cos(a), 0.24 * math.sin(a), 0.43),
-            (0.014, 0.025, 0.155),
-            "bright",
-            quat=(math.cos(a / 2), 0, 0, math.sin(a / 2)),
-            collision=True,
-        )
-    b.cylinder(base, (0, 0, 0.278), 0.25, 0.012, "metal", collision=True)
-    for z in (0.285, 0.583):
-        b.ring(base, (0, 0, z), 0.256, 0.014, "metal")
-        for i in range(12):
-            a = i * math.tau / 12
-            b.cylinder(
-                base,
-                (0.256 * math.cos(a), 0.256 * math.sin(a), z + 0.014),
-                0.006,
-                0.006,
-                "dark",
-            )
-    b.cylinder(
-        base,
-        (0, -0.255, 0.445),
-        0.064,
-        0.036,
-        "metal",
-        quat=(0.70710678, 0.70710678, 0, 0),
-    )
-    b.cylinder(
-        base,
-        (0, -0.294, 0.445),
-        0.048,
-        0.002,
-        "lens",
-        quat=(0.70710678, 0.70710678, 0, 0),
-    )
-    lid = b.moving(
-        base,
-        "chamber_lid",
-        (0, 0.285, 0.617),
-        (1, 0, 0),
-        (-1.7, 0),
-        kind="hinge",
-        mass=3,
-    )
-    b.cylinder(lid, (0, -0.285, 0), 0.26, 0.014, "bright", collision=True)
-    b.rod(lid, (-0.07, -0.46, 0.045), (0.07, -0.46, 0.045), 0.012, "dark")
-    b.site(lid, "lid_handle", (0, -0.46, 0.045))
-    platen = b.moving(
-        base,
-        "platen",
-        (0, 0, 0.341),
-        (0, 0, 1),
-        (-math.pi, math.pi),
-        kind="hinge",
-        mass=0.4,
-    )
-    b.cylinder(platen, (0, 0, 0), 0.11, 0.009, "dark")
-    b.cylinder(platen, (0, 0, 0.013), 0.05, 0.002, "lens")
-    # A supported platen core gives thin coupons robust box contact at SI scale.
-    b.box(platen, (0, 0, -0.0025), (0.042, 0.042, 0.0175), "dark", collision=True)
-    b.site(platen, "substrate", (0, 0, 0.019))
-    b.cylinder(base, (0.34, 0.14, 0.286), 0.059, 0.16, "metal")
-    b.rod(base, (0.2, 0.14, 0.4), (0.34, 0.14, 0.4), 0.03, "metal")
-    for z in (0.18, 0.205, 0.23, 0.255):
-        b.ring(base, (0.34, 0.14, z), 0.058, 0.005, "dark", segments=16)
-    b.box(base, (-0.298, 0.18, 0.48), (0.075, 0.105, 0.12), "shell")
-    b.screen(base, (-0.298, 0.07, 0.5), 0.115, 0.09)
-    valve = b.moving(
-        base,
-        "vacuum_valve",
-        (0.29, -0.08, 0.485),
-        (0, 0, 1),
-        (0, math.pi / 2),
-        kind="hinge",
-        mass=0.1,
-    )
-    b.box(valve, (0, 0, 0), (0.042, 0.009, 0.007), "blue")
-    b.site(base, "gas_inlet", (-0.24, 0.05, 0.5))
-    b.metadata["capabilities"] = [
-        "hinged vacuum-chamber lid",
-        "rotating substrate platen",
-        "vacuum valve angle",
-        "substrate loading target",
-    ]
+    from real_labs.uva_geometry import add_chamber
+
+    add_chamber(b, base, params)
 
 
 def _phenotyping_booth(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
-    for x in (-0.66, 0.66):
-        for y in (-0.6, 0.6):
-            b.box(base, (x, y, 0.005), (0.049, 0.049, 0.005), "rubber", collision=True)
-            b.box(base, (x, y, 1.18), (0.045, 0.045, 1.17), "shell", collision=True)
-        b.box(base, (x, 0, 2.29), (0.05, 0.65, 0.06), "shell")
-        b.box(base, (x, 0, 1.29), (0.012, 0.55, 0.84), "dark")
-        for y in (-0.45, 0.45):
-            b.box(base, (x * 0.95, y, 1.42), (0.012, 0.025, 0.68), "cream")
-    b.box(base, (0, 0.62, 1.48), (0.61, 0.025, 0.76), "dark")
-    b.box(base, (0, 0, 2.305), (0.64, 0.64, 0.045), "shell")
-    for x in (-0.28, 0.28):
-        b.box(base, (x, 0, 2.246), (0.055, 0.45, 0.012), "cream")
-    for x in (-0.4, 0.4):
-        b.box(base, (x, 0, 0.58), (0.024, 0.9, 0.07), "metal", collision=True)
-        for y in (-0.72, 0.72):
-            b.cylinder(base, (x, y, 0.005), 0.033, 0.005, "rubber", collision=True)
-            b.box(base, (x, y, 0.27), (0.025, 0.025, 0.26), "metal")
-    for i in range(19):
-        y = -0.84 + i * 0.09
-        b.cylinder(
-            base,
-            (0, y, 0.614),
-            0.027,
-            0.365,
-            "bright",
-            quat=(0.70710678, 0, 0.70710678, 0),
-        )
-    # Keep the specimen inside the rear backdrop at full travel. The original
-    # 1.08 m surrogate stroke let the pot/canopy pass through the enclosure.
-    carrier = b.moving(
-        base, "conveyor", (0, -0.54, 0.66), (0, 1, 0), (0, 0.80), mass=3, kp=300
-    )
-    b.box(carrier, (0, 0, 0), (0.255, 0.255, 0.025), "dark", collision=True)
-    turn = b.moving(
-        carrier,
-        "plant_turntable",
-        (0, 0, 0.047),
-        (0, 0, 1),
-        (-math.pi, math.pi),
-        kind="hinge",
-        mass=1,
-    )
-    b.cylinder(turn, (0, 0, 0), 0.2, 0.018, "metal", collision=True)
-    b.site(turn, "plant_pot", (0, 0, 0.025))
-    # Pot and leaves stay visible as a replaceable default specimen.
-    if params.get("include_sample", True):
-        b.cylinder(turn, (0, 0, 0.115), 0.116, 0.085, "dark")
-        b.cylinder(turn, (0, 0, 0.202), 0.11, 0.003, "copper")
-        b.rod(turn, (0, 0, 0.2), (0.015, 0, 0.76), 0.005, "plant")
-        for i in range(7):
-            a = i * 2.4
-            z = 0.27 + i * 0.062
-            end = (0.2 * math.cos(a), 0.2 * math.sin(a), z + 0.09)
-            b.rod(turn, (0, 0, z), end, 0.004, "plant")
-            b.geom(
-                turn,
-                "ellipsoid",
-                (0.085, 0.025, 0.005),
-                end,
-                "plant",
-                quat=(math.cos(a / 2), 0, 0, math.sin(a / 2)),
-            )
-    camera = b.moving(
-        base, "camera_height", (0.46, 0.05, 1.13), (0, 0, 1), (-0.18, 0.52), mass=0.6
-    )
-    b.box(camera, (0, 0, 0), (0.063, 0.066, 0.064), "dark")
-    b.cylinder(
-        camera,
-        (-0.08, 0, 0),
-        0.033,
-        0.028,
-        "metal",
-        quat=(0.70710678, 0, 0.70710678, 0),
-    )
-    b.cylinder(
-        camera,
-        (-0.112, 0, 0),
-        0.029,
-        0.003,
-        "lens",
-        quat=(0.70710678, 0, 0.70710678, 0),
-    )
-    b.site(camera, "camera_optical_center", (-0.116, 0, 0))
-    ET.SubElement(
-        camera,
-        "camera",
-        name=f"{b.name}__plant_camera",
-        pos="-0.118 0 0",
-        quat="0.70710678 0 0.70710678 0",
-        fovy="65",
-    )
-    b.screen(base, (0.665, -0.63, 1.55), 0.19, 0.14)
-    b.metadata["cameras"] = {"plant_side": f"{b.name}__plant_camera"}
-    b.metadata["capabilities"] = [
-        "plant-carrier conveyor translation",
-        "plant rotation",
-        "camera-height positioning",
-        "side-view camera",
-    ]
+    from real_labs.purdue_geometry import build_booth
+
+    build_booth(b, base, params)
 
 
 def _magnetic_microrobot(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
-    stage = _microscope(b, base)
-    b.cylinder(stage, (0, 0, 0.014), 0.02, 0.001, "glass", collision=True)
-    b.ring(stage, (0, 0, 0.02), 0.02, 0.001, "cream", segments=24)
-    for x in (-0.069, 0.069):
-        for dx in (-0.006, 0, 0.006):
-            b.ring(
-                base,
-                (x + dx, 0, 0.379),
-                0.043,
-                0.0025,
-                "copper",
-                plane="yz",
-                segments=20,
-            )
-        b.box(base, (x, 0.063, 0.364), (0.02, 0.016, 0.018), "dark")
-    for y in (-0.07, 0.07):
-        for dy in (-0.006, 0, 0.006):
-            b.ring(
-                base,
-                (0, y + dy, 0.379),
-                0.043,
-                0.0025,
-                "copper",
-                plane="xz",
-                segments=20,
-            )
-    for z in (0.354, 0.415):
-        b.ring(base, (0, 0, z), 0.055, 0.0035, "copper", segments=24)
-    b.box(base, (0.34, 0.095, 0.083), (0.14, 0.13, 0.06), "shell")
-    b.screen(base, (0.34, -0.037, 0.095), 0.16, 0.065)
-    for i in range(3):
-        b.cylinder(
-            base,
-            (0.255 + i * 0.08, -0.042, 0.038),
-            0.008,
-            0.005,
-            "copper",
-            quat=(0.70710678, 0.70710678, 0, 0),
-        )
-    # Microscale marker is real-size; detailed optical view requires a magnified camera.
-    b.geom(
-        stage,
-        "capsule",
-        (0.00006,),
-        material="dark",
-        fromto=(-0.0002, 0, 0.017, 0.0002, 0, 0.017),
-    )
-    b.site(stage, "micro_agent", (0, 0, 0.017), 0.0001)
-    b.metadata["capabilities"] = [
-        "XY specimen positioning",
-        "objective focus",
-        "optical sample camera",
-        "three-axis coil geometry and specimen targets",
-    ]
-    b.metadata["limitations"].append(
-        "Coils are geometric references only; no electromagnetic force or microrobot locomotion model"
-    )
+    from real_labs.epfl_microscope_geometry import build_station
+
+    build_station(b, base, params)
+
+
+def _penn_processor(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
+    from real_labs.penn_processor_geometry import build_processor
+
+    build_processor(b, base, params)
 
 
 def _sample_processor(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
@@ -1100,215 +878,22 @@ def _sample_processor(b: _Builder, base: ET.Element, params: dict[str, Any]) -> 
 
 
 def _aerosol_sampler(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
-    for x in (-0.21, -0.08):
-        for y in (-0.06, 0.09):
-            b.cylinder(base, (x, y, 0.0085), 0.011, 0.0085, "rubber", collision=True)
-    for x in (0.10, 0.25):
-        for y in (0.02, 0.15):
-            b.cylinder(base, (x, y, 0.0025), 0.012, 0.0025, "rubber", collision=True)
-    b.box(base, (-0.14, 0.016, 0.0845), (0.108, 0.112, 0.0675), "blue")
-    b.box(base, (-0.14, 0.016, 0.08), (0.107, 0.111, 0.062), "blue", collision=True)
-    b.screen(base, (-0.14, -0.1, 0.094), 0.132, 0.077)
-    b.box(base, (-0.14, 0.018, 0.157), (0.077, 0.023, 0.009), "dark")
-    b.cylinder(base, (-0.2, 0.08, 0.182), 0.008, 0.025, "metal")
-    b.rod(base, (-0.2, 0.08, 0.203), (-0.22, 0.08, 0.3), 0.004, "dark")
-    b.rod(base, (-0.22, 0.08, 0.3), (0.17, 0.08, 0.34), 0.004, "dark")
-    b.box(base, (0.176, 0.083, 0.025), (0.115, 0.13, 0.02), "metal")
-    b.rod(base, (0.245, 0.125, 0.04), (0.245, 0.125, 0.6), 0.008, "metal")
-    b.rod(base, (0.245, 0.125, 0.55), (0.17, 0.08, 0.55), 0.008, "metal")
-    b.cylinder(base, (0.17, 0.08, 0.34), 0.024, 0.09, "metal")
-    b.cylinder(base, (0.17, 0.08, 0.468), 0.038, 0.038, "bright")
-    b.cylinder(base, (0.17, 0.08, 0.519), 0.018, 0.017, "metal")
-    b.cylinder(base, (0.17, 0.08, 0.56), 0.051, 0.015, "metal")
-    b.cylinder(base, (0.17, 0.08, 0.582), 0.056, 0.005, "dark")
-    b.site(base, "sampling_inlet", (0.17, 0.08, 0.54))
-    drawer = b.moving(
-        base, "filter_drawer", (-0.14, -0.025, 0.156), (0, -1, 0), (0, 0.14), mass=0.15
-    )
-    b.box(drawer, (0, 0, 0), (0.054, 0.059, 0.009), "dark", collision=True)
-    b.cylinder(drawer, (0, 0, 0.011), 0.0185, 0.002, "cream")
-    b.ring(drawer, (0, 0, 0.014), 0.021, 0.002, "metal", segments=16)
-    b.site(drawer, "filter", (0, 0, 0.017))
-    b.box(base, (0.005, -0.083, 0.035), (0.035, 0.035, 0.025), "shell")
-    valve = b.moving(
-        base,
-        "flow_valve",
-        (0.005, -0.083, 0.075),
-        (0, 0, 1),
-        (0, math.pi),
-        kind="hinge",
-        mass=0.02,
-    )
-    b.cylinder(valve, (0, 0, 0), 0.018, 0.013, "dark")
-    b.box(valve, (0, 0, 0.014), (0.014, 0.002, 0.001), "bright")
-    b.metadata["capabilities"] = [
-        "37 mm gravimetric filter drawer",
-        "flow-valve angle",
-        "sampling-inlet and filter target sites",
-    ]
+    from real_labs.eth_air_geometry import build_sampler
+
+    build_sampler(b, base, params)
 
 
 def _arm(b: _Builder, base: ET.Element, prefix: str = "", scale: float = 1.0) -> None:
-    def point(x: float, y: float, z: float) -> tuple[float, float, float]:
-        return x * scale, y * scale, z * scale
+    from real_labs.robot_arm_geometry import build_arm
 
-    b.cylinder(
-        base, point(0, 0, 0.052), 0.095 * scale, 0.05 * scale, "dark", collision=True
-    )
-    yaw = b.moving(
-        base,
-        prefix + "base_yaw",
-        point(0, 0, 0.115),
-        (0, 0, 1),
-        (-math.pi, math.pi),
-        kind="hinge",
-        mass=3 * scale,
-        kp=250,
-    )
-    b.cylinder(yaw, point(0, 0, 0), 0.073 * scale, 0.028 * scale, "blue")
-    shoulder = b.moving(
-        yaw,
-        prefix + "shoulder",
-        point(0, 0, 0.075),
-        (0, 1, 0),
-        (-1.65, 1.65),
-        kind="hinge",
-        mass=2 * scale,
-        kp=250,
-    )
-    b.cylinder(
-        shoulder,
-        point(0, 0, 0),
-        0.065 * scale,
-        0.068 * scale,
-        "blue",
-        quat=(0.70710678, 0.70710678, 0, 0),
-    )
-    b.rod(
-        shoulder,
-        point(0, 0, 0),
-        point(0.21, 0, 0.25),
-        0.046 * scale,
-        "shell",
-        collision=True,
-    )
-    b.rod(
-        shoulder,
-        point(0.014, -0.045, 0.018),
-        point(0.2, -0.045, 0.24),
-        0.008 * scale,
-        "dark",
-    )
-    elbow = b.moving(
-        shoulder,
-        prefix + "elbow",
-        point(0.21, 0, 0.25),
-        (0, 1, 0),
-        (-2.15, 2.15),
-        kind="hinge",
-        mass=1.4 * scale,
-        kp=220,
-    )
-    b.cylinder(
-        elbow,
-        point(0, 0, 0),
-        0.051 * scale,
-        0.056 * scale,
-        "blue",
-        quat=(0.70710678, 0.70710678, 0, 0),
-    )
-    b.rod(
-        elbow,
-        point(0, 0, 0),
-        point(0.24, 0, 0.075),
-        0.037 * scale,
-        "shell",
-        collision=True,
-    )
-    roll = b.moving(
-        elbow,
-        prefix + "wrist_roll",
-        point(0.24, 0, 0.075),
-        (1, 0, 0),
-        (-math.pi, math.pi),
-        kind="hinge",
-        mass=0.45 * scale,
-    )
-    b.cylinder(
-        roll,
-        point(0.019, 0, 0),
-        0.038 * scale,
-        0.041 * scale,
-        "blue",
-        quat=(0.70710678, 0, 0.70710678, 0),
-    )
-    pitch = b.moving(
-        roll,
-        prefix + "wrist_pitch",
-        point(0.065, 0, 0),
-        (0, 1, 0),
-        (-1.9, 1.9),
-        kind="hinge",
-        mass=0.25 * scale,
-    )
-    b.cylinder(
-        pitch,
-        point(0, 0, 0),
-        0.032 * scale,
-        0.035 * scale,
-        "shell",
-        quat=(0.70710678, 0.70710678, 0, 0),
-    )
-    wrist = b.moving(
-        pitch,
-        prefix + "tool_yaw",
-        point(0.045, 0, 0),
-        (1, 0, 0),
-        (-math.pi, math.pi),
-        kind="hinge",
-        mass=0.15 * scale,
-    )
-    b.cylinder(
-        wrist,
-        point(0.019, 0, 0),
-        0.028 * scale,
-        0.018 * scale,
-        "metal",
-        quat=(0.70710678, 0, 0.70710678, 0),
-    )
-    b.box(wrist, point(0.044, 0, 0), point(0.023, 0.047, 0.022), "dark")
-    for suffix, sign in (("left", -1), ("right", 1)):
-        finger = b.moving(
-            wrist,
-            prefix + f"gripper_{suffix}",
-            point(0.063, sign * 0.027, 0),
-            (0, sign, 0),
-            (0, 0.025 * scale),
-            mass=0.035 * scale,
-            force=20,
-        )
-        b.box(
-            finger,
-            point(0.025, 0, 0),
-            point(0.03, 0.005, 0.019),
-            "metal",
-            collision=True,
-        )
-        b.box(
-            finger,
-            point(0.047, -sign * 0.006, 0),
-            point(0.008, 0.003, 0.018),
-            "rubber",
-            collision=True,
-        )
-        b.site(
-            finger, prefix + f"finger_{suffix}", point(0.05, -sign * 0.009, 0), 0.002
-        )
-    b.site(wrist, prefix + "tcp", point(0.112, 0, 0))
+    build_arm(b, base, prefix=prefix, scale=scale)
 
 
 def _robot_arm(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
     _arm(b, base, scale=float(params.get("scale", 1.0)))
+    # Raise the arm away from the handoff bench for an independent inspection.
+    # Joint limits remain unchanged; arbitrary poses still require planning.
+    b.metadata["inspection_targets"] = {"shoulder": -0.55}
     b.metadata["capabilities"] = [
         "six-axis manipulator",
         "independent parallel gripper fingers",
@@ -1334,7 +919,29 @@ def _wheel(
         mass=0.8,
         mode="velocity",
         force=12,
+        velocity_gain=40,
     )
+    # Proportional speed feedback retains the existing 0.8 Nm s/rad viscous
+    # drag and 12 Nm limit. At 8 rad/s plus a 3 Nm resisting load, gain 40
+    # bounds the steady speed error below 0.25 rad/s while unsaturated:
+    # error = (0.8 * target + load) / (40 + 0.8).
+    # This is an authored inspection drive, not a calibrated robot motor.
+    b.metadata.setdefault("control_contracts", {})[key] = {
+        "mode": "velocity",
+        "units": "rad/s",
+        "range": [-8, 8],
+        "torque_limit_nm": 12,
+        "velocity_gain_nm_s_per_rad": 40,
+        "viscous_damping_nm_s_per_rad": 0.8,
+        "design_resisting_load_nm": 3,
+        "design_steady_error_rad_s": 0.25,
+        "scope": "authored low-speed wheel inspection",
+        "limitations": (
+            "Proportional feedback retains load-dependent speed droop. "
+            "Contact or brake loads beyond available torque can stall the "
+            "wheel; no OEM motor, traction, terrain or navigation calibration."
+        ),
+    }
     b.cylinder(
         wheel,
         (0, 0, 0),
@@ -1388,8 +995,10 @@ def _planar_chassis(b: _Builder, base: ET.Element, params: dict[str, Any]) -> No
 
 def _rover(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
     _planar_chassis(b, base, params)
+    ground_test_mast = bool(params.get("ground_test_mast", False))
     b.box(base, (0, 0, 0.3), (0.34, 0.25, 0.095), "cream", collision=True)
-    b.box(base, (0, 0, 0.403), (0.38, 0.3, 0.015), "metal")
+    if not ground_test_mast:
+        b.box(base, (0, 0, 0.403), (0.38, 0.3, 0.015), "metal")
     for y in (-0.19, 0.19):
         b.box(base, (-0.13, y, 0.425), (0.15, 0.078, 0.006), "blue")
         for i in range(6):
@@ -1400,43 +1009,62 @@ def _rover(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
         for index, x in enumerate((-0.4, 0, 0.4)):
             b.rod(base, (x * 0.65, y * 0.66, 0.325), (x, y, 0.148), 0.025, "metal")
             _wheel(b, base, f"wheel_{side}_{index + 1}", (x, y, 0.148), 0.14, 0.108)
-    b.rod(base, (-0.22, 0, 0.41), (-0.22, 0, 1.0), 0.022, "metal")
-    pan = b.moving(
-        base,
-        "mast_pan",
-        (-0.22, 0, 1.026),
-        (0, 0, 1),
-        (-math.pi, math.pi),
-        kind="hinge",
-        mass=0.5,
-    )
-    b.box(pan, (0, 0, 0), (0.044, 0.105, 0.041), "cream")
-    for y in (-0.065, 0.065):
-        b.cylinder(
-            pan,
-            (0.052, y, 0),
-            0.023,
-            0.017,
-            "dark",
-            quat=(0.70710678, 0, 0.70710678, 0),
+    if ground_test_mast:
+        from real_labs.nasa_mast_geometry import build_caches, build_mast
+
+        target_base_z_m = None
+        if params.get("ground_task"):
+            from real_labs.nasa_rover_geometry import GROUND_DATUM_OFFSET_M, VERSION
+
+            if params["ground_task"] == VERSION:
+                # Grounded v2 locates the rover at its wheel-contact plane.
+                # The separate target must use the mast's earlier construction
+                # frame, before configure_task shifts the rover's children.
+                target_base_z_m = (
+                    float(base.get("pos").split()[2]) - GROUND_DATUM_OFFSET_M
+                )
+        build_mast(b, base, target_base_z_m=target_base_z_m)
+    else:
+        b.rod(base, (-0.22, 0, 0.41), (-0.22, 0, 1.0), 0.022, "metal")
+        pan = b.moving(
+            base,
+            "mast_pan",
+            (-0.22, 0, 1.026),
+            (0, 0, 1),
+            (-math.pi, math.pi),
+            kind="hinge",
+            mass=0.5,
         )
-        b.cylinder(
-            pan,
-            (0.071, y, 0),
-            0.018,
-            0.002,
-            "lens",
-            quat=(0.70710678, 0, 0.70710678, 0),
-        )
-    b.site(pan, "stereo_camera", (0.075, 0, 0))
+        b.box(pan, (0, 0, 0), (0.044, 0.105, 0.041), "cream")
+        for y in (-0.065, 0.065):
+            b.cylinder(
+                pan,
+                (0.052, y, 0),
+                0.023,
+                0.017,
+                "dark",
+                quat=(0.70710678, 0, 0.70710678, 0),
+            )
+            b.cylinder(
+                pan,
+                (0.071, y, 0),
+                0.018,
+                0.002,
+                "lens",
+                quat=(0.70710678, 0, 0.70710678, 0),
+            )
+        b.site(pan, "stereo_camera", (0.075, 0, 0))
     arm_base = ET.SubElement(
         base, "body", name=f"{b.name}__sampling_arm_base", pos="0.24 0 0.415"
     )
     _arm(b, arm_base, prefix="arm_", scale=0.62)
-    b.box(base, (-0.2, 0, 0.449), (0.1, 0.07, 0.025), "dark")
-    for i in range(3):
-        b.cylinder(base, (-0.26 + i * 0.06, 0, 0.478), 0.022, 0.015, "bright")
-        b.site(base, f"sample_cache_{i + 1}", (-0.26 + i * 0.06, 0, 0.497))
+    if ground_test_mast:
+        build_caches(b, base)
+    else:
+        b.box(base, (-0.2, 0, 0.449), (0.1, 0.07, 0.025), "dark")
+        for i in range(3):
+            b.cylinder(base, (-0.26 + i * 0.06, 0, 0.478), 0.022, 0.015, "bright")
+            b.site(base, f"sample_cache_{i + 1}", (-0.26 + i * 0.06, 0, 0.497))
     b.metadata["capabilities"] = [
         "six individually driven wheels",
         "camera mast pan",
@@ -1449,7 +1077,7 @@ def _rover(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
 def _mobile_robot(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None:
     _planar_chassis(b, base, params)
     b.box(base, (0, 0, 0.198), (0.31, 0.207, 0.097), "shell", collision=True)
-    b.box(base, (0, 0, 0.315), (0.318, 0.214, 0.018), "dark")
+    b.box(base, (0, 0, 0.315), (0.318, 0.214, 0.018), "dark", collision=True)
     for side, y in (("left", -0.228), ("right", 0.228)):
         _wheel(b, base, f"wheel_{side}", (0, y, 0.118), 0.114, 0.04)
     for x in (-0.245, 0.245):
@@ -1477,7 +1105,9 @@ def _mobile_robot(b: _Builder, base: ET.Element, params: dict[str, Any]) -> None
 
 
 _BUILDERS: dict[str, Callable[[_Builder, ET.Element, dict[str, Any]], None]] = {
+    "penn_specimen_processor": _penn_processor,
     "liquid_handler": _liquid_handler,
+    "rochester_liquid_handler": _rochester_liquid_handler,
     "sequencer": _sequencer,
     "microfluidic_station": _microfluidic_station,
     "isotope_analyzer": _isotope_analyzer,
@@ -1494,6 +1124,13 @@ _BUILDERS: dict[str, Callable[[_Builder, ET.Element, dict[str, Any]], None]] = {
 EQUIPMENT_KINDS = tuple(_BUILDERS)
 
 _SAMPLE_INTERFACES = {
+    "rochester_liquid_handler": (
+        "deck_3", (0.1, 0.07, 0.02), "supported", "original dry-contact carrier; separate free loading plate starts on external stage",
+    ),
+    "penn_specimen_processor": (
+        "specimen_seat", (.09, .07, .025), "supported",
+        "free inert cassette in an open carriage pocket",
+    ),
     "liquid_handler": (
         "deck_3",
         (0.1, 0.07, 0.02),
@@ -1509,9 +1146,9 @@ _SAMPLE_INTERFACES = {
     ),
     "isotope_analyzer": (
         "sample_seat",
-        (0.012, 0.012, 0.05),
+        (0.012, 0.012, 0.032),
         "supported",
-        "autosampler vial in empty first carousel position",
+        "preinstalled free inert vial in an open physical rack; published outer vial envelope",
     ),
     "deposition_chamber": (
         "substrate",
@@ -1527,7 +1164,7 @@ _SAMPLE_INTERFACES = {
     ),
     "magnetic_microrobot": (
         "micro_agent",
-        (0.0004, 0.00012, 0.00012),
+        (0.00052, 0.00012, 0.00012),
         "preinstalled",
         "geometric microscopic agent; no magnetic actuation",
     ),

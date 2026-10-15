@@ -137,19 +137,22 @@ class CrossregionWaveOneGeometryTests(unittest.TestCase):
                     _bounds(session, support)[1][2], _bounds(session, table)[0][2]
                 )
 
-    def test_lmu_dry_probe_stays_above_calibration_coupon(self):
+    def test_lmu_revised_microapproach_envelope_stays_above_coupon(self):
         session = self.sessions["lmu_hybrid_snom"]
         session.reset()
         control = next(
             v for k, v in session.controls.items() if k[1] == "inspection_head_height"
         )
         session.data.qpos[session.model.jnt_qposadr[control.joint]] = control.lower
+        fine = session.controls["snom_table", "fine_approach_z"]
+        session.data.qpos[session.model.jnt_qposadr[fine.joint]] = fine.lower
         mujoco.mj_forward(session.model, session.data)
         tip = _tagged(session, "snom_probe_tip")[0]
         coupon = _tagged(session, "snom_inert_coupon")[0]
-        self.assertGreater(
-            _bounds(session, tip)[0][2] - _bounds(session, coupon)[1][2], 0.06
-        )
+        # The old >60 mm dry guarantee was explicitly superseded by a
+        # model-registered micrometre approach with a 5 um endpoint gap.
+        gap = _bounds(session, tip)[0][2] - _bounds(session, coupon)[1][2]
+        self.assertAlmostEqual(gap, 5e-6, delta=1e-9)
 
     def test_profiler_coupon_is_below_all_objectives(self):
         session = self.sessions["copenhagen_nbi_surface_metrology"]

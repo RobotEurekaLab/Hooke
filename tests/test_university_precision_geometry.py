@@ -95,6 +95,36 @@ class UniversityPrecisionGeometryTests(unittest.TestCase):
             {"coarse_x", "coarse_y", "coarse_head"},
         )
 
+    def test_afm_rails_have_continuous_support_above_the_base(self):
+        session = self.make_session("ntu_sgsr_characterization")
+        model, data = session.model, session.data
+        base_z = data.xpos[model.body("dimension_icon").id, 2]
+        for rail_index in range(2):
+            rail = model.geom(f"dimension_icon__ntu_x_rail_{rail_index}").id
+            for side in range(2):
+                index = model.geom(
+                    f"dimension_icon__ntu_x_rail_pedestal_{rail_index}_{side}"
+                ).id
+                center, half = data.geom_xpos[index], model.geom_size[index]
+                self.assertAlmostEqual(center[2] - half[2], base_z + 0.079, places=7)
+                self.assertAlmostEqual(center[2] + half[2], base_z + 0.093, places=7)
+                self.assertLessEqual(
+                    mujoco.mj_geomDistance(model, data, index, rail, 0.01, None), 1e-7
+                )
+                self.assertEqual(model.geom_contype[rail], 1)
+
+    def test_characterization_controls_track_without_binding(self):
+        session = self.make_session("ntu_sgsr_characterization")
+        for key, control in session.controls.items():
+            session.reset()
+            span = control.upper - control.lower
+            for fraction in (0.15, 0.85, 0.25):
+                result = session.command(
+                    *key, control.lower + fraction * span, duration=2
+                )
+                self.assertLessEqual(abs(result["error"]), max(1e-6, span * 0.025), key)
+        session.reset()
+
     def test_rush_right_camera_has_continuous_solid_support_to_table(self):
         session = self.make_session("tsinghua_rush3d")
         base = session.model.body("rush3d_microscope").id

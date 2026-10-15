@@ -93,6 +93,10 @@ def scene_inventory(model, data, manifest, xml):
                 role=item["role"],
                 controls=item["joints"],
                 actuators=item["actuators"],
+                actuator_modes=item.get("actuator_modes", {}),
+                mechanisms=item.get("mechanisms", {}),
+                control_contracts=item.get("control_contracts", {}),
+                inspection_targets=item.get("inspection_targets", {}),
                 target=target,
                 target_interface_status="declared" if target else "not_defined",
                 sources=item.get("source_urls", item.get("reference_urls", [])),
@@ -190,25 +194,38 @@ def inspect_package(directory, *, native_archive=False):
     )
     if native_archive:
         from backends.baseline import write_snapshot
+        from backends.visual_profiles import REAL_LABS_CUTAWAY
+        from real_labs.native_profiles import native_physics_options_for_manifest
+        from real_labs.runtime import InstrumentSession
+
+        # Reuse the normal episode reset, including mechanism holding torques.
+        # A bare MjData silently loses nonzero servo and coupled-drive controls.
+        session = InstrumentSession(model, manifest)
 
         destination = directory / "native_source"
         destination.mkdir(exist_ok=True)
         source = SimpleNamespace(
             model=model,
-            data=data,
+            data=session.data,
             spec=spec,
             default_scene=path,
             task=manifest["task"],
-            task_info={},
+            task_info={"camera_mapping": {name: name for name in ("overview", "workstation")}},
+            visual_profile=REAL_LABS_CUTAWAY,
+            native_physics_options=native_physics_options_for_manifest(manifest, model),
         )
         archive = write_snapshot(source, destination)
         report["exports"]["native_archive"] = dict(
             path="native_source",
             format="Hooke SceneBridge compiled source",
+            reset_state="Canonical InstrumentSession reset; zero physics steps",
             source_scene_sha256=manifest["scene_sha256"],
             archive_sha256=archive["archive_sha256"],
             isaac_qualification=archive["isaac_qualification"],
+            visual_profile=archive["visual_profile"],
         )
+        if "native_physics_options" in archive:
+            report["exports"]["native_archive"]["native_physics_options"] = archive["native_physics_options"]
     (directory / "simulation_preflight.json").write_text(
         json.dumps(report, indent=2) + "\n"
     )

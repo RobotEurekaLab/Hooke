@@ -281,76 +281,9 @@ def _cityu_features(world, definition):
 
 
 def _polyu_tribometer(b, base, params):
-    b.feet(base, 0.51, 0.57)
-    b.housing(
-        base,
-        [(0.023, 0.25, 0.28, 0), (0.14, 0.27, 0.30, 0), (0.18, 0.25, 0.28, 0)],
-        material="blue",
-        radius=0.075,
-    )
-    b.box(base, (0, 0, 0.09), (0.23, 0.25, 0.06), "blue", collision=True)
-    b.box(base, (0, 0.225, 0.515), (0.24, 0.055, 0.335), "shell", collision=True)
-    for x in (-0.21, 0.21):
-        b.box(base, (x, 0.02, 0.51), (0.022, 0.22, 0.33), "metal", collision=True)
-    b.housing(
-        base,
-        [(0.83, 0.25, 0.28, 0), (0.94, 0.25, 0.28, 0), (0.96, 0.23, 0.26, 0)],
-        material="dark",
-        radius=0.05,
-    )
-    b.box(base, (0, 0, 0.88), (0.23, 0.25, 0.04), "dark", collision=True)
-    # Segmented clear guard follows the visible rounded front, leaving instruments readable.
-    for index in range(11):
-        a = math.pi + (index + 0.5) * math.pi / 11
-        b.box(
-            base,
-            (0.251 * math.cos(a), 0.02 + 0.27 * math.sin(a), 0.50),
-            (0.004, 0.037, 0.32),
-            "glass",
-            euler=(0, 0, a),
-        )
-    for x in (-0.09, 0.09):
-        b.box(base, (x, -0.035, 0.193), (0.014, 0.13, 0.018), "bright")
-    slider = b.moving(
-        base,
-        "coupon_x",
-        (0, -0.025, 0.229),
-        (1, 0, 0),
-        (-0.065, 0.065),
-        mass=0.11,
-        kp=240,
-    )
-    b.box(slider, (0, 0, 0), (0.09, 0.11, 0.018), "metal", collision=True)
-    b.cylinder(slider, (0, 0, 0.022), 0.039, 0.004, "dark")
-    b.box(slider, (0, 0, 0.028), (0.020, 0.020, 0.002), "sample")
-    b.site(slider, "tribology_coupon", (0, 0, 0.030), 0.0005)
-    b.box(base, (0, 0.11, 0.53), (0.055, 0.05, 0.27), "dark")
-    head = b.moving(
-        base,
-        "probe_height",
-        (0, -0.025, 0.62),
-        (0, 0, 1),
-        (-0.10, 0.08),
-        mass=0.16,
-        kp=280,
-    )
-    b.box(head, (0, 0.07, 0.03), (0.075, 0.05, 0.08), "metal", collision=True)
-    b.box(head, (0, 0.018, -0.02), (0.055, 0.07, 0.03), "dark")
-    b.cylinder(head, (0, 0, -0.09), 0.022, 0.055, "metal")
-    b.rod(head, (0, 0, -0.145), (0, 0, -0.18), 0.004, "bright")
-    b.screen(base, (-0.08, -0.279, 0.892), 0.12, 0.042)
-    for x, mat in ((-0.12, "led"), (-0.03, "warning"), (0.08, "guard_red")):
-        b.cylinder(
-            base, (x, -0.286, 0.125), 0.009, 0.003, mat, euler=(math.pi / 2, 0, 0)
-        )
-    b.metadata["capabilities"] = [
-        "inert_coupon_translation",
-        "probe_clearance",
-        "visible_inert_coupon",
-    ]
-    b.metadata["limitations"].append(
-        "Probe stops above the coupon. No contact-force calibration, friction, wear, material deformation or branded instrument accuracy."
-    )
+    from real_labs.polyu_access_geometry import build
+
+    build(b, base, params)
 
 
 def _polyu_features(world, definition):
@@ -396,10 +329,10 @@ SAMPLE_INTERFACES.update(
             "Visible inert optical coupon in authored open service bay",
         ),
         "umt_mechanical_workspace": (
-            "tribology_coupon",
+            "loading_center",
             (0.040, 0.040, 0.004),
-            "clamped",
-            "Visible inert mechanical coupon on carriage",
+            "supported",
+            "Preinstalled free inert coupon on a translated support with physical jaws and low retaining lips",
         ),
     }
 )

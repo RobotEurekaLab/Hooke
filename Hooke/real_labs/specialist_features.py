@@ -469,3 +469,7 @@ def add_features(root, world, definition):
     build = _FEATURES.get(definition["id"])
     if build is not None:
         build(world)
+    if definition["id"] == "eth_air_quality":
+        from real_labs.eth_air_context import add_eth_air_context
+
+        add_eth_air_context(root, world)

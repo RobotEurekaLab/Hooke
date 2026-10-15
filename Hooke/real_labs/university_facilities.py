@@ -46,210 +46,21 @@ def _gauge(b, parent, pos):
 
 
 def _mask_aligner(b, base, params):
-    """Accessible XY specimen carriage and vertical alignment head."""
-    b.feet(base, 0.96, 0.78)
-    b.housing(
-        base,
-        [
-            (0.025, 0.46, 0.37, 0),
-            (0.055, 0.48, 0.39, 0),
-            (0.19, 0.48, 0.39, 0),
-            (0.22, 0.44, 0.35, 0),
-        ],
-        0.026,
-    )
-    b.box(base, (0, 0, 0.17), (0.45, 0.35, 0.055), "shell", collision=True)
-    b.box(base, (0, 0.035, 0.233), (0.37, 0.29, 0.012), "metal")
-    for x in (-0.29, 0.29):
-        _rail(b, base, x, -0.26, 0.19, 0.263)
-    carrier = b.moving(
-        base, "wafer_y", (0, -0.01, 0.30), (0, 1, 0), (-0.09, 0.09), mass=0.55
-    )
-    b.box(carrier, (0, 0, 0), (0.33, 0.23, 0.018), "dark", collision=True)
-    for y in (-0.145, 0.145):
-        b.rod(carrier, (-0.25, y, 0.035), (0.25, y, 0.035), 0.01, "bright")
-    stage = b.moving(
-        carrier, "wafer_x", (0, 0, 0.067), (1, 0, 0), (-0.065, 0.065), mass=0.35
-    )
-    b.box(stage, (0, 0, 0), (0.16, 0.14, 0.017), "metal", collision=True)
-    b.cylinder(stage, (0, 0, 0.031), 0.098, 0.014, "dark")
-    b.cylinder(stage, (0, 0, 0.047), 0.074, 0.0015, "lens")
-    b.ring(stage, (0, 0, 0.049), 0.076, 0.0018, "bright")
-    b.site(stage, "wafer", (0, 0, 0.047))
-    for x in (-0.24, 0.24):
-        b.cylinder(base, (x, 0.35, 0.59), 0.025, 0.32, "bright", collision=True)
-        b.box(base, (x, 0.35, 0.24), (0.046, 0.047, 0.025), "metal")
-    b.box(base, (0, 0.35, 0.925), (0.295, 0.07, 0.035), "shell", collision=True)
-    head = b.moving(
-        base, "alignment_head", (0, 0.115, 0.735), (0, 0, 1), (0, 0.11), mass=0.8
-    )
-    b.housing(
-        head,
-        [
-            (-0.06, 0.20, 0.20, 0.015),
-            (0.07, 0.20, 0.20, 0.015),
-            (0.105, 0.16, 0.15, 0.04),
-        ],
-        0.025,
-    )
-    for x in (-0.085, 0.085):
-        b.cylinder(head, (x, -0.14, -0.12), 0.03, 0.06, "dark")
-        b.cylinder(head, (x, -0.14, -0.183), 0.024, 0.003, "lens")
-        b.rod(head, (x, -0.01, 0.075), (x, -0.16, 0.17), 0.027, "shell")
-        b.rod(head, (x, -0.16, 0.17), (x, -0.19, 0.19), 0.03, "rubber")
-    b.box(base, (0.32, -0.24, 0.36), (0.055, 0.025, 0.08), "shell")
-    b.screen(base, (0.315, -0.273, 0.367), 0.083, 0.11)
-    for x in (-0.31, -0.23, -0.15):
-        b.cylinder(
-            base, (x, -0.38, 0.12), 0.018, 0.018, "dark", euler=(math.pi / 2, 0, 0)
-        )
-    b.metadata["capabilities"] = [
-        "XY wafer carrier positioning",
-        "Alignment-head access adjustment",
-    ]
-    b.metadata["limitations"].append(
-        "Generic mask-aligner architecture; neither AB-M CAD nor lithographic exposure simulation. The 150 mm inert wafer is an authored carrier."
-    )
+    from real_labs.harvard_geometry import add_aligner
+
+    add_aligner(b, base, params)
 
 
 def _hood(b, base, params):
-    """Floor-supported hood with independent sash and under-deck supply drawer."""
-    w, d = 1.7, 0.94
-    b.feet(base, w, d, 0.085)
-    b.box(base, (0, 0.025, 0.37), (0.81, 0.415, 0.285), "cream", collision=True)
-    # Toe, cabinet doors and a functional upper drawer; no implied ventilation.
-    b.box(base, (0, -0.414, 0.115), (0.75, 0.012, 0.045), "dark")
-    for x in (-0.41, 0.41):
-        b.box(base, (x, -0.417, 0.39), (0.388, 0.014, 0.225), "shell")
-        b.rod(base, (x - 0.12, -0.445, 0.54), (x + 0.12, -0.445, 0.54), 0.008, "bright")
-    # The drawer slides within the open .65–.865 m under-deck cavity.
-    drawer = b.moving(
-        base,
-        "supply_drawer",
-        (0, -0.045, 0.754),
-        (0, -1, 0),
-        (0, 0.23),
-        mass=1.1,
-        kp=240,
-    )
-    b.box(drawer, (0, 0, 0), (0.72, 0.35, 0.012), "metal", collision=True)
-    b.box(drawer, (0, -0.375, 0.017), (0.76, 0.018, 0.073), "cream", collision=True)
-    b.rod(drawer, (-0.13, -0.408, 0.025), (0.13, -0.408, 0.025), 0.011, "bright")
-    b.box(drawer, (0.22, 0.04, 0.055), (0.09, 0.065, 0.03), "blue")
-    b.site(drawer, "sample_carrier", (0.22, 0.04, 0.055))
-    b.box(base, (0, 0, 0.9), (0.85, 0.47, 0.035), "dark", collision=True)
-    for x in (-0.805, 0.805):
-        b.box(base, (x, 0.03, 1.545), (0.045, 0.44, 0.61), "shell", collision=True)
-        b.box(base, (x, -0.418, 1.36), (0.032, 0.018, 0.36), "metal")
-    b.box(base, (0, 0.44, 1.54), (0.79, 0.027, 0.605), "cream", collision=True)
-    b.box(base, (0, 0.04, 2.13), (0.85, 0.43, 0.10), "shell", collision=True)
-    b.box(base, (0, -0.395, 2.115), (0.64, 0.008, 0.042), "dark")
-    for z in (1.04, 1.36, 1.81):
-        b.box(base, (0, 0.409, z), (0.66, 0.006, 0.016), "dark")
-    sash = b.moving(
-        base,
-        "sash",
-        (0, -0.418, 1.35),
-        (0, 0, 1),
-        (0, 0.40),
-        mass=2.0,
-        kp=300,
-        force=150,
-    )
-    b.box(sash, (0, 0, 0), (0.746, 0.009, 0.365), "glass")
-    for x in (-0.76, 0.76):
-        b.box(sash, (x, 0, 0), (0.009, 0.016, 0.38), "metal")
-    for z in (-0.38, 0.38):
-        b.box(sash, (0, 0, z), (0.767, 0.018, 0.012), "metal")
-    b.rod(sash, (-0.17, -0.046, -0.35), (0.17, -0.046, -0.35), 0.008, "bright")
-    # Glassware rests on hotplate surrogates; clamp poles terminate on the deck.
-    for x in (-0.47, 0, 0.44):
-        b.box(base, (x, 0.05, 0.986), (0.115, 0.12, 0.047), "blue")
-        b.cylinder(base, (x, 0.05, 1.04), 0.104, 0.01, "bright")
-        b.geom(base, "ellipsoid", (0.058, 0.058, 0.071), (x, 0.05, 1.12), "glass")
-        b.cylinder(base, (x, 0.05, 1.23), 0.017, 0.055, "glass")
-        b.rod(base, (x + 0.14, 0.23, 0.942), (x + 0.14, 0.23, 1.77), 0.009, "bright")
-        b.rod(base, (x + 0.14, 0.23, 1.38), (x, 0.05, 1.38), 0.006, "metal")
-        b.cylinder(base, (x, 0.05, 1.41), 0.023, 0.13, "glass")
-        b.rod(base, (x, 0.05, 1.52), (x, 0.28, 1.7), 0.005, "cyan")
-    b.screen(base, (0.799, -0.443, 1.15), 0.047, 0.095)
-    for x in (-0.70, -0.61):
-        b.cylinder(
-            base, (x, -0.485, 0.91), 0.016, 0.012, "blue", euler=(math.pi / 2, 0, 0)
-        )
-    b.cylinder(base, (0, 0.18, 2.29), 0.13, 0.07, "metal")
-    b.metadata["capabilities"] = [
-        "Hood sash access",
-        "Under-deck supply-cassette drawer positioning",
-    ]
-    b.metadata["limitations"].append(
-        "Hood exterior and supported glassware are source-informed; ventilation, chemical synthesis and containment are not simulated. Drawer is an authored mechanism."
-    )
+    from real_labs.caltech_details import add_hood
+
+    add_hood(b, base, params)
 
 
 def _membrane_skid(b, base, params):
-    # Open steel frame follows the photographed campus industrial project area.
-    for x in (-0.77, 0.77):
-        for y in (-0.43, 0.43):
-            b.cylinder(base, (x, y, 0.024), 0.048, 0.024, "rubber", collision=True)
-            b.box(base, (x, y, 0.84), (0.022, 0.022, 0.79), "bright", collision=True)
-    for z in (0.16, 0.69, 1.6):
-        for y in (-0.43, 0.43):
-            b.box(base, (0, y, z), (0.79, 0.023, 0.023), "bright", collision=True)
-        for x in (-0.77, 0.77):
-            b.box(base, (x, 0, z), (0.023, 0.44, 0.023), "bright", collision=True)
-    b.box(base, (0, 0, 0.185), (0.73, 0.40, 0.012), "metal", collision=True)
-    for x in (-0.44, 0.30):
-        b.cylinder(base, (x, 0.14, 0.46), 0.16, 0.26, "shell")
-        b.cylinder(base, (x, 0.14, 0.73), 0.17, 0.012, "metal")
-        b.rod(base, (x, 0.14, 0.75), (x, 0.14, 1.34), 0.016, "bright")
-    for z in (1.06, 1.36):
-        b.cylinder(base, (0, 0.12, z), 0.071, 0.60, "shell", euler=(0, math.pi / 2, 0))
-        for x in (-0.63, 0.63):
-            b.cylinder(
-                base, (x, 0.12, z), 0.081, 0.024, "bright", euler=(0, math.pi / 2, 0)
-            )
-            b.box(base, (x * 0.82, 0.14, z - 0.09), (0.048, 0.055, 0.035), "metal")
-            b.rod(base, (x, 0.12, z), (x, -0.26, z), 0.014, "dark")
-            b.rod(base, (x, -0.26, z), (x, -0.26, 0.84), 0.014, "dark")
-    b.rod(base, (-0.62, -0.26, 0.84), (0.61, -0.26, 0.84), 0.02, "bright")
-    for x in (-0.28, 0.26):
-        _gauge(b, base, (x, -0.31, 1.11))
-        b.rod(base, (x, -0.26, 0.85), (x, -0.26, 1.06), 0.012, "bright")
-    b.box(base, (0.30, -0.33, 0.86), (0.04, 0.042, 0.04), "metal")
-    valve = b.moving(
-        base,
-        "isolation_valve",
-        (0.30, -0.405, 0.86),
-        (0, 1, 0),
-        (0, math.pi / 2),
-        kind="hinge",
-        mass=0.08,
-        kp=50,
-    )
-    b.cylinder(valve, (0, 0, 0), 0.025, 0.012, "metal", euler=(math.pi / 2, 0, 0))
-    b.rod(valve, (0, -0.015, 0), (0, -0.015, 0.15), 0.019, "blue")
-    # Sampling vial carriage is an explicit bench-scale task fixture.
-    for x in (-0.17, 0.17):
-        _rail(b, base, x, -0.39, 0.05, 0.36)
-    carriage = b.moving(
-        base, "sample_carriage", (0, -0.16, 0.40), (0, -1, 0), (0, 0.15), mass=0.28
-    )
-    b.box(carriage, (0, 0, 0), (0.20, 0.115, 0.025), "blue", collision=True)
-    for x in (-0.12, 0, 0.12):
-        b.cylinder(carriage, (x, 0, 0.065), 0.032, 0.045, "glass")
-        b.cylinder(carriage, (x, 0, 0.114), 0.03, 0.006, "dark")
-    b.site(carriage, "water_vial", (0, 0, 0.065))
-    b.box(base, (0.51, 0.27, 1.81), (0.22, 0.10, 0.15), "shell")
-    b.rod(base, (0.51, 0.27, 1.6), (0.51, 0.27, 1.68), 0.024, "metal")
-    b.screen(base, (0.51, 0.16, 1.81), 0.32, 0.20)
-    b.metadata["capabilities"] = [
-        "Isolation-valve handle positioning",
-        "Rigid water-vial carriage access",
-    ]
-    b.metadata["limitations"].append(
-        "Membrane module and piping exterior are a representative campus test skid; pressure, filtration, flow and contaminant removal are not simulated."
-    )
+    from real_labs.ntu_smtc_geometry import add_skid
+
+    add_skid(b, base, params)
 
 
 def _tank(b, base, radius, wall_height, material="cyan"):
@@ -279,45 +90,9 @@ def _tank(b, base, radius, wall_height, material="cyan"):
 
 
 def _aquarium_bridge(b, base, params):
-    _tank(b, base, 1.14, 1.0)
-    # A bolted metal bridge carries the probe with all posts outside the water.
-    for x in (-1.27, 1.27):
-        for y in (-0.27, 0.27):
-            b.box(base, (x, y, 0.015), (0.12, 0.075, 0.015), "metal", collision=True)
-            b.box(base, (x, y, 0.835), (0.023, 0.023, 0.805), "bright", collision=True)
-            _bolts(b, base, (x - 0.075, x + 0.075), y, 0.034)
-        b.box(base, (x, 0, 1.65), (0.038, 0.32, 0.025), "metal", collision=True)
-    for y in (-0.20, 0.20):
-        b.box(base, (0, y, 1.665), (1.29, 0.025, 0.025), "metal", collision=True)
-        b.rod(base, (-1.16, y, 1.707), (1.16, y, 1.707), 0.012, "bright")
-    carriage = b.moving(
-        base,
-        "probe_position",
-        (0, 0, 1.744),
-        (1, 0, 0),
-        (-0.55, 0.55),
-        mass=1.0,
-        kp=250,
-    )
-    b.box(carriage, (0, 0, 0), (0.15, 0.26, 0.026), "blue", collision=True)
-    for y in (-0.2, 0.2):
-        b.box(carriage, (0, y, -0.025), (0.075, 0.035, 0.012), "dark")
-    b.box(carriage, (0, 0, 0.12), (0.08, 0.09, 0.095), "shell")
-    b.cylinder(carriage, (0, 0, 0.237), 0.047, 0.035, "dark")
-    probe = b.moving(
-        carriage, "probe_depth", (0, 0, -0.03), (0, 0, -1), (0, 0.28), mass=0.30
-    )
-    b.cylinder(probe, (0, 0, -0.235), 0.012, 0.235, "bright")
-    b.cylinder(probe, (0, 0, -0.50), 0.022, 0.028, "dark")
-    b.cylinder(probe, (0, 0, -0.532), 0.02, 0.004, "cream")
-    b.site(probe, "probe_tip", (0, 0, -0.532))
-    b.metadata["capabilities"] = [
-        "Sampling-probe traverse",
-        "Sampling-probe immersion position",
-    ]
-    b.metadata["limitations"].append(
-        "Round tank and yellow rack context derive from UQ references; this motorized sampling bridge is an authored task fixture, not equipment verified at UQ. Static water has no fluid, animal or sensor model."
-    )
+    from real_labs.uq_aquarium_geometry import add_bridge
+
+    add_bridge(b, base, params)
 
 
 BUILDERS = {
@@ -328,10 +103,10 @@ BUILDERS = {
 }
 SOURCES = {
     "mask_alignment_station": {
-        "reference": "Harvard CNS page-named mask aligner; generic original XY alignment mechanism",
-        "url": HARVARD,
-        "dimensions_m": [0.96, 0.84, 1.04],
-        "dimension_basis": "Estimated envelope and travel, no OEM CAD or dimensional drawing",
+        "reference": "Historical Harvard CNS 2009 photolithography slide 33: AB-M and MJB4 exterior photographs",
+        "url": "https://cns1.rc.fas.harvard.edu/facilities/docs/TM019_r1_0_photolithography-jd.pdf",
+        "dimensions_m": [1.38, 0.94, 1.30],
+        "dimension_basis": "Authored envelope and original six-axis travel; historical photographs guide separate silhouettes, not verified current inventory or OEM dimensions",
     },
     "chemistry_fume_hood": {
         "reference": "Caltech Stoltz photographed glazed fume hoods and supported glassware",
@@ -357,7 +132,7 @@ SAMPLE_INTERFACES = {
         "wafer",
         (0.15, 0.15, 0.003),
         "clamped",
-        "Inert wafer display geometry attached to XY carrier",
+        "Inert wafer rigidly attached to XY carrier with three visible modeled clamps; no free loading or unclamping",
     ),
     "chemistry_fume_hood": (
         "sample_carrier",
@@ -530,6 +305,40 @@ def _harvard(world, definition):
         p.box("controller", (x + 0.48, 2.27, 1.40), (0.10, 0.03, 0.15), DARK)
         p.box("controller_display", (x + 0.48, 2.237, 1.40), (0.085, 0.004, 0.13), BLUE)
         p.pipe("exhaust_duct", (x, 3.15, 1.65), (x, 3.15, 2.9), 0.11)
+    # The historical AB-M / MJB4 photographs show glazed service walls,
+    # repeated aluminum mullions and wall-mounted utilities. Their placement
+    # here is inferred and does not turn the selected bays into a floor survey.
+    for center, width in ((-3.7, 4.6), (0.80, 2.6)):
+        p.box(
+            "rear_glazing",
+            (center, 3.788, 1.95),
+            (width / 2, 0.010, 0.63),
+            (0.72, 0.68, 0.37, 0.28),
+        )
+        for z in (1.30, 2.60):
+            p.box(
+                "rear_window_frame", (center, 3.768, z), (width / 2, 0.03, 0.018), METAL
+            )
+        for i in range(5):
+            x = center - width / 2 + i * width / 4
+            p.box("rear_window_mullion", (x, 3.768, 1.95), (0.015, 0.03, 0.65), METAL)
+        p.box("wall_raceway", (center, 3.756, 1.05), (width / 2, 0.035, 0.035), WHITE)
+        for dx in (-0.6, 0.6):
+            p.box(
+                "outlet_case", (center + dx, 3.709, 1.05), (0.045, 0.012, 0.050), WHITE
+            )
+            for dz in (-0.02, 0.02):
+                p.box(
+                    "outlet_recess",
+                    (center + dx, 3.695, 1.05 + dz),
+                    (0.014, 0.002, 0.008),
+                    DARK,
+                )
+    for x in (-5.25, -3.1, -1.7):
+        for dx in (-0.30, 0.30):
+            p.pipe(
+                "task_light_hanger", (x + dx, 1.4, 2.925), (x + dx, 1.4, 3.19), 0.009
+            )
     # Observed corridor character; gowning storage is explicitly an estimate.
     for x in (-5.55, -4.82):
         p.box(
@@ -566,46 +375,9 @@ def _caltech(world, definition):
             p.box("reagent_label", (x, 0.023, z + 0.07), (0.027, 0.002, 0.035), WHITE)
     for x, y in ((-3.6, 1.02), (-1.2, 1.02), (1.2, 1.02), (1.2, -1.35), (-1.2, -1.35)):
         _stool(p, x, y)
-    # Two-port glovebox context at left, on a supported dedicated cabinet.
-    for x in (-4.72, -3.64):
-        for y in (-0.51, 0.31):
-            p.cylinder(
-                "glovebox_foot", (x, y, 0.017), 0.045, 0.017, DARK, collision=True
-            )
-    p.box(
-        "glovebox_support",
-        (-4.18, -0.10, 0.48),
-        (0.67, 0.53, 0.45),
-        WHITE,
-        collision=True,
-    )
-    p.box(
-        "glovebox_back", (-4.18, 0.28, 1.43), (0.67, 0.08, 0.45), METAL, collision=True
-    )
-    p.box("glovebox_roof", (-4.18, -0.10, 1.89), (0.69, 0.52, 0.03), METAL)
-    p.box("glovebox_floor", (-4.18, -0.10, 0.98), (0.69, 0.52, 0.025), METAL)
-    for x in (-4.83, -3.53):
-        p.box("glovebox_side", (x, -0.10, 1.44), (0.025, 0.52, 0.45), METAL)
-    p.box("glovebox_window", (-4.18, -0.58, 1.44), (0.64, 0.018, 0.43), GLASS)
-    for x in (-4.48, -3.91):
-        p.cylinder(
-            "glove_port",
-            (x, -0.618, 1.29),
-            0.114,
-            0.036,
-            DARK,
-            euler=(math.pi / 2, 0, 0),
-        )
-        p.pipe("glove_sleeve", (x, -0.65, 1.29), (x, -0.91, 1.19), 0.079, DARK)
-        p.geom("glove_tip", "ellipsoid", (x, -0.95, 1.16), (0.064, 0.08, 0.041), DARK)
-    p.cylinder(
-        "glovebox_antechamber",
-        (-5.02, -0.10, 1.32),
-        0.21,
-        0.17,
-        METAL,
-        euler=(0, math.pi / 2, 0),
-    )
+    from real_labs.caltech_details import add_glovebox
+
+    add_glovebox(p)
     for x in (-3.5, -1.25, 1.0):
         p.pipe("hood_exhaust", (x, 2.8, 2.30), (x, 2.8, 3.05), 0.13)
     for x in (-0.85, 0.85):
@@ -783,6 +555,9 @@ def _uq(world, definition):
     )
     p.cylinder("filter_column", (5.77, -0.30, 1.23), 0.17, 0.30, GLASS)
     p.pipe("filter_return", (5.77, -0.30, 1.55), (5.77, -0.30, 2.91), 0.025)
+    from real_labs.uq_aquarium_geometry import add_context
+
+    add_context(world, definition)
 
 
 FEATURES = {

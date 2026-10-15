@@ -262,11 +262,56 @@
               "sill": 0
             },
             {
-              "id": "clerestory",
+              "id": "rear_loading_bay",
               "wall": "back",
-              "kind": "window",
+              "kind": "shutter",
               "offset": 0,
-              "width": 15,
+              "width": 5.2,
+              "height": 6.3,
+              "sill": 0
+            },
+            {
+              "id": "side_clerestory_0",
+              "wall": "left",
+              "kind": "window",
+              "offset": -10.5,
+              "width": 2,
+              "height": 1.4,
+              "sill": 6.7
+            },
+            {
+              "id": "side_clerestory_1",
+              "wall": "left",
+              "kind": "window",
+              "offset": -4,
+              "width": 3,
+              "height": 1.4,
+              "sill": 6.7
+            },
+            {
+              "id": "side_clerestory_2",
+              "wall": "left",
+              "kind": "window",
+              "offset": 1,
+              "width": 3,
+              "height": 1.4,
+              "sill": 6.7
+            },
+            {
+              "id": "side_clerestory_3",
+              "wall": "left",
+              "kind": "window",
+              "offset": 6,
+              "width": 3,
+              "height": 1.4,
+              "sill": 6.7
+            },
+            {
+              "id": "side_clerestory_4",
+              "wall": "left",
+              "kind": "window",
+              "offset": 10.5,
+              "width": 2,
               "height": 1.4,
               "sill": 6.7
             }
@@ -375,6 +420,19 @@
             3.0
           ],
           "fovy": 58
+        },
+        "sensor_mount": {
+          "position": [
+            -1.95,
+            -2.6,
+            2.1
+          ],
+          "target": [
+            -1.35,
+            -2.0,
+            1.86
+          ],
+          "fovy": 48
         }
       },
       "task": {
@@ -387,6 +445,14 @@
         "Hall, beam, frame and mechanical travel dimensions are estimates from a single official photograph.",
         "The beam remains rigid; no hydraulic loading physics, strain, fracture, concrete damage or calibrated load-cell output.",
         "Source images remain external references; no institutional endorsement or media release permission established."
+      ],
+      "reference_detail_evidence": [
+        {
+          "source_url": "https://fsel.engr.utexas.edu/images/featured/facilities3.jpg",
+          "observed": "Open timber falsework, repeated red reaction frames, side clerestory windows, flanged steel columns, wall bracing and service conduits.",
+          "estimated": "Timber joinery and dimensions, sensor-riser connection, frame spacing, window divisions and service routing are authored estimates. Extra frames are static set dressing; existing primary instrument controls remain unchanged.",
+          "not_reproduced": "Surveyed hall coordinates, a structural constitutive law, hydraulic power and controller logic, calibrated sensor output."
+        }
       ]
     },
     {
@@ -401,7 +467,7 @@
         "https://flow.berkeley.edu/facilities-equipment/",
         "https://flow.berkeley.edu/wp-content/uploads/2018/06/20180612_141024.jpg"
       ],
-      "reference_notes": "Official laboratory facility page identifies the 64 m towing/wave tank at Richmond Field Station; its interior photo shows the tank, carriage rails and service aisle. Tank clear length, width and depth are published. Shed, carriage, attachment and service-floor elevation are estimated; the 8 m positioning window is a mechanical demonstrator.",
+      "reference_notes": "Official laboratory facility page identifies the 64 m towing/wave tank at Richmond Field Station; its interior photo shows the tank, carriage rails and service aisle. Tank clear length, width and depth are published. Shed, carriage, attachment and service-floor elevation are estimated; the 8 m positioning window is a mechanical demonstrator. Fixed shed context adds photograph-supported corrugated roof, hanging fluorescent exteriors, mounted service boxes/conduits, a cabinet and operator stool; their exact counts, dimensions and positions are estimated. The reference view preserves the source camera pose with the existing full-enclosure render policy. Context revision 2 adds inward corrugation visible from inside, red-brown portal facings and source-supported heterogeneous foreground storage. New casing, support and color details are estimates; no reference image is embedded as a texture.",
       "observed_cues": [
         "A very long open tank occupies most of a narrow corrugated-metal shed.",
         "Parallel tank-side rails and hanging looped supply cables follow the entire experiment axis.",
@@ -565,6 +631,19 @@
             2.0
           ],
           "fovy": 60
+        },
+        "reference": {
+          "position": [
+            2.05,
+            -32.0,
+            2.52
+          ],
+          "target": [
+            -0.8,
+            16,
+            2.0
+          ],
+          "fovy": 60
         }
       },
       "task": {
@@ -577,8 +656,21 @@
         "The water surface is visual only; no buoyancy, drag, waves or fluid measurements are calculated.",
         "Tank dimensions are documented, while the shed, walkway datum, carriage form, end absorber and stroke are estimated.",
         "The scene does not reproduce published maximum carriage speed or scientific accuracy.",
-        "Source media remain external references and no institutional approval or reuse license is established."
-      ]
+        "Source media remain external references and no institutional approval or reuse license is established.",
+        "New fixed roof, lamp, electrical-box, cabinet and stool exteriors reproduce visible relationships only; no surveyed hall dimensions, electrical functionality or calibrated light output.",
+        "The source water color is not corrected by this context pass: the preserved display surface still uses the existing neutralized glass path. Cladding aging and stored-object placement are approximate; the entire real hall is not surveyed."
+      ],
+      "detail_revision": 4,
+      "source_context": {
+        "revision": 2,
+        "scope": "Fixed source-informed corrugated shed, red-brown portal facings, continuous side girts and asymmetric foreground services/storage; separate from the unchanged mechanical carriage.",
+        "reference_image": "temp/university/expansion_100_20261003/research/stills/berkeley_towing.img",
+        "dimensions": "Cladding pitch/depth, portal faces, estimated right aisle infill, service placements and stored-object dimensions are authored estimates from one photograph; published tank dimensions remain unchanged.",
+        "electrical_behavior": "Static exteriors use the existing offline luminaire role for estimated presentation light; no electrical circuit, ballast or calibrated lamp-output model.",
+        "preservation": "All five camera definitions and all original tank/water/contact dimensions, masses, frames, joint ranges and drives remain unchanged. Selected fixed tank exterior, walkway and original portal colors/material assignments are image-informed appearance changes; no water material change.",
+        "water": "The existing transparent surface, material role and green RGBA remain byte-for-byte unchanged. Neutral glass rendering still limits the source-like green/brown water appearance; no turbidity, calibrated optics or hydrodynamics is claimed.",
+        "storage": "Single photograph-supported foreground group: leaning rectangular green stock, stacked brown support blocks, upright rolls, a wall rack with open spool rims and one unidentified red canister. Fixed exteriors, no powered behavior or identified contents."
+      }
     },
     {
       "id": "cmu_edl_electrochemical_testing",

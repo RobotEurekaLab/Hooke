@@ -160,7 +160,7 @@ class AmericasWaveTwoGeometryTests(unittest.TestCase):
         arm = _bounds(session, _tagged(session, "__rotary_arm_")[0])
         self.assertAlmostEqual(arm[0][2], bearing[1][2])
 
-    def test_rotating_table_platter_seated_on_bearing(self):
+    def test_rotating_table_spindle_runs_in_enabled_open_bearing(self):
         session = self.sessions["mit_paoc_rotating_fluids"]
         control = session.controls["rotating_table", "table_rotation"]
         for fraction in np.linspace(0, 1, 25):
@@ -169,9 +169,16 @@ class AmericasWaveTwoGeometryTests(unittest.TestCase):
                 control.lower + fraction * (control.upper - control.lower)
             )
             mujoco.mj_forward(session.model, session.data)
-            bearing = _bounds(session, _tagged(session, "__turntable_bearing_")[0])
-            platter = _bounds(session, _tagged(session, "__rotating_platter_")[0])
-            self.assertAlmostEqual(platter[0][2], bearing[1][2])
+            spindle = session.model.geom("rotating_table__mit_spindle").id
+            for bearing in _tagged(session, "__mit_spindle_bearing_proxy_"):
+                self.assertTrue(session.model.geom_contype[bearing])
+                self.assertAlmostEqual(
+                    mujoco.mj_geomDistance(
+                        session.model, session.data, spindle, bearing, 0.01, None
+                    ),
+                    0.0006,
+                    places=7,
+                )
 
     def test_tundish_floor_meets_continuous_crossbars(self):
         session = self.sessions["mcgill_mmpc_water_modelling"]

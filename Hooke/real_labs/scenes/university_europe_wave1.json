@@ -496,7 +496,7 @@
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "layout_revision": 1,
-      "detail_revision": 1,
+      "detail_revision": "mougel-supported-carriage-shaped-brow-static-gloves-20261004",
       "room": {
         "size": [
           5.6,
@@ -684,6 +684,20 @@
             1.43
           ],
           "fovy": 56
+        },
+        "rear_gloveboxes": {
+          "position": [
+            0,
+            -0.25,
+            1.7
+          ],
+          "target": [
+            0,
+            2.4,
+            1.25
+          ],
+          "fovy": 63,
+          "purpose": "Aisle view of both rear glovebox sample carriages; glazing remains intact."
         }
       },
       "reserved_walkways": [
@@ -713,8 +727,8 @@
         }
       ],
       "layout_rationale": [
-        "Two opposed rows of four glovebox modules reproduce the narrow perspective, projecting black sleeves, light cabinet frames and end glazing in the source photograph.",
-        "Each main chamber is supported on continuous floor-level legs and deck rails. The pass-through has a hollow collision shell and the vial tray remains on supported internal rails.",
+        "Four glovebox modules in total, two per side, reproduce the opposed aisle, projecting black sleeves, pale frames and end glazing. Module count and spacing remain authored estimates.",
+        "Floor-level legs support each deck; inferred deck-mounted pedestals support the guide rails, and open upper bearing shoes connect the vial carriage with 0.5 mm radial running clearance. A smooth annular presentation shell preserves the open pass-through collision rods; an inferred hinge mount connects its lid.",
         "Overhead service frames, linear lights, tiled-floor cues and a small end desk provide observed room character; room envelope, entrance and exact machine spacing remain estimated."
       ],
       "limitations": [
@@ -723,7 +737,8 @@
         "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
         "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
         "No original CAD, measured room plan, glove mechanics, gas purification, vacuum or atmosphere simulation.",
-        "Internal motorized vial tray is an authored mechanical task fixture; no claim that this exact mechanism exists in the photographed machine."
+        "Internal motorized vial tray is an authored mechanical task fixture; no claim that this exact mechanism exists in the photographed machine.",
+        "The front pane remains collision-solid and gloves remain fixed presentation geometry. Internal carriage travel does not reach the external pass-through; no glove manipulation or transfer cycle is implemented."
       ],
       "reference_detail_evidence": {
         "university_europe_wave1": {
@@ -740,8 +755,8 @@
             "Viewed a working aisle lined by large glazed glovebox fronts on the right, projecting black glove sleeves, opposing enclosures, tiled floor, tall support frames and overhead linear lights. Windows terminate the long aisle; stools and antechamber hardware are visible. This is actual installed apparatus, not a product render."
           ],
           "implemented": [
-            "Two opposed rows of four glovebox modules reproduce the narrow perspective, projecting black sleeves, light cabinet frames and end glazing in the source photograph.",
-            "Each main chamber is supported on continuous floor-level legs and deck rails. The pass-through has a hollow collision shell and the vial tray remains on supported internal rails.",
+            "Four glovebox modules in total, two per side, reproduce the opposed aisle, projecting black sleeves, pale frames and end glazing. Module count and spacing remain authored estimates.",
+            "Floor-level legs support each deck; inferred deck-mounted pedestals support the guide rails, and open upper bearing shoes connect the vial carriage with 0.5 mm radial running clearance. A smooth annular presentation shell preserves the open pass-through collision rods; an inferred hinge mount connects its lid.",
             "Overhead service frames, linear lights, tiled-floor cues and a small end desk provide observed room character; room envelope, entrance and exact machine spacing remain estimated."
           ],
           "inferred": [
@@ -765,15 +780,19 @@
       "domain": "ocean_engineering",
       "university_expansion": true,
       "source_urls": [
-        "https://flowave.eng.ed.ac.uk/"
+        "https://flowave.eng.ed.ac.uk/",
+        "https://flowave.eng.ed.ac.uk/how-it-works",
+        "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/attachments/Tank_Diagram.pdf",
+        "https://doi.org/10.1007/s40722-026-00495-0",
+        "https://www.research.ed.ac.uk/en/projects/uk-centre-for-marine-energy-research-the-all-uk-waters-combined-c/"
       ],
-      "reference_notes": "Viewed an operating circular basin with a ring of vertical wavemaker panels, a grated perimeter deck, yellow edge services/rails and dark truss structures. A large yellow bridge crane spans the high steel-truss hall. The central wave confirms experimental operation; it is not evidence of a fluid solver in our future model. Published basin diameter/depth are available, but hall plan, paddle count and measurement-system arrangement require further evidence. No wave/fluid dynamics implementation is implied.",
+      "reference_notes": "Official photographs show narrow framed flaps, genuinely open annular metal grating, yellow rim services, navy peripheral lattice, white control cabinets and a yellow overhead crane. Official dimensions distinguish the 30 m diameter / 5 m deep outer shell from the 25 m diameter / 2 m deep upper test region. The 2026 primary paper identifies 168 flap-type wavemakers with hinges 1.7 m below water. Room, freeboard, section sizes and services remain estimates; no water dynamics or OEM transmission is reconstructed.",
       "observed_cues": [
-        "Viewed an operating circular basin with a ring of vertical wavemaker panels, a grated perimeter deck, yellow edge services/rails and dark truss structures. A large yellow bridge crane spans the high steel-truss hall. The central wave confirms experimental operation; it is not evidence of a fluid solver in our future model."
+        "Official photographs show narrow framed flaps, genuinely open annular metal grating, yellow rim services, navy peripheral lattice, white control cabinets and a yellow overhead crane. Official dimensions distinguish the 30 m diameter / 5 m deep outer shell from the 25 m diameter / 2 m deep upper test region. The 2026 primary paper identifies 168 flap-type wavemakers with hinges 1.7 m below water. Room, freeboard, section sizes and services remain estimates; no water dynamics or OEM transmission is reconstructed."
       ],
       "layout_fidelity": "estimated_from_public_reference",
-      "layout_revision": 1,
-      "detail_revision": 1,
+      "layout_revision": 2,
+      "detail_revision": 2,
       "room": {
         "size": [
           32,
@@ -854,22 +873,26 @@
           ],
           "yaw": 0,
           "params": {},
-          "role": "Two independently actuated local wave paddles around a 25 m circular basin",
-          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "role": "168 independently hinged mechanical flaps around a 25 m circular test region",
+          "evidence": "Published count, upper test dimensions and hinge depth; photo-informed frame and open grating, with explicitly estimated angular range, sections and drives.",
           "support": {
             "type": "floor",
-            "evidence": "Floor-level equipment datum; recessed basin bottom rests on the authored basement foundation at z=-2.2 m; the hall floor is physically cut around the recessed basin."
+            "evidence": "Floor datum z=0; outer shell floor top z=-5.0 m, underside rests on foundation top z=-5.2 m. Authored support columns and fixed inspection locks carry hinge ring and raised test floor. Floor-lifting system is absent."
           },
           "source_urls": [
-            "https://flowave.eng.ed.ac.uk/"
+            "https://flowave.eng.ed.ac.uk/",
+            "https://flowave.eng.ed.ac.uk/how-it-works",
+            "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/attachments/Tank_Diagram.pdf",
+            "https://doi.org/10.1007/s40722-026-00495-0",
+            "https://www.research.ed.ac.uk/en/projects/uk-centre-for-marine-energy-research-the-all-uk-waters-combined-c/"
           ]
         }
       ],
       "task": {
-        "name": "Position two perimeter wave-generation paddles",
-        "description": "Independently move representative perimeter paddles. Water is a static display surface; no wave generation or hydrodynamic response is claimed.",
+        "name": "Inspect the complete 168-flap positioning array",
+        "description": "Command bounded coordinated hinge positions and physically return the whole array. Every flap has contact geometry. Static optical water remains present, but no waves, currents, active absorption or hydrodynamic loads are generated.",
         "primary_equipment": "wave_basin",
-        "observable": "Two paddle displacement measurements in metres"
+        "observable": "168 measured hinge angles in radians, actual top-edge positions and mechanical clearances"
       },
       "camera": {
         "overview": {
@@ -939,18 +962,22 @@
         }
       ],
       "layout_rationale": [
-        "The circular basin uses the published 25 m diameter and 2 m nominal depth, surrounded by segmented paddles and a grated annular walkway.",
-        "The default rectangular floor is removed around the recessed basin, with a lower foundation providing continuous physical support.",
-        "Dark peripheral truss, yellow bridge crane, high hall glazing and roof steelwork follow the official photograph; hidden room dimensions and exits are estimated.",
-        "Two local paddle mechanisms are actuated. The supported calibration buoy is an explicitly added inert task fixture."
+        "Published 30 m / 5 m shell is distinct from the 25 m / 2 m upper test region. Deck datum, 350 mm freeboard and fixed raised-floor support state are authored.",
+        "Open grating has finite bars and real holes, supported by annular/radial beams and columns reaching the basin floor. Pitch and sections are estimates.",
+        "Yellow rim services, navy lattice, white cabinets, pressure-vessel exteriors and yellow bridge crane follow actual official photos; hidden service workings are not claimed.",
+        "Version 2 replaces two translating representative boards with all 168 hinged flaps. Old paddle_west/paddle_east actions are rejected, not silently converted."
       ],
       "limitations": [
         "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
         "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
         "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
         "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
-        "Water is a static translucent visual surface: no waves, currents, turbulence, buoyancy, splashes or hydrodynamic forces.",
-        "Only the published basin diameter/depth are dimension anchors; exact paddle configuration, stroke, hall dimensions and controller performance are unverified."
+        "Water is a fixed optical volume with no fluid mass, waves, currents, turbulence, buoyancy, splashes or hydrodynamic forces.",
+        "Published count/dimensions/hinge depth are source anchors. The 405 mm panels, angular range \u00b10.12 rad, sections, mass, ideal gravity compensation and servo properties are authored estimates.",
+        "Inter-panel gaps are real and unsealed; this dry geometric array is not a watertight wavemaker boundary or calibrated experimental controller.",
+        "The raised test floor is locked on disclosed authored supports. Its real floor lifting/buoyancy system, bellows transmission and 28 operational circulation impellers are not modeled.",
+        "Optical volume covers the upper test region; hidden return-plenum liquid/flow and suspended gantry operation remain absent.",
+        "Full-array physics is slower than real time on the measured single-CPU setup; checked-operation performance is reported separately."
       ],
       "reference_detail_evidence": {
         "university_europe_wave1": {
@@ -961,29 +988,107 @@
               "page": "https://flowave.eng.ed.ac.uk/",
               "image_url": "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/images/concentric-spike-wave-flowave-ocean-research-facility.jpg",
               "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/optimization_120_20261004/flowave_fidelity/research/paddles.jpg",
+              "sha256": "9dfc3e4ace2e1031dff99cf39084725682a8d24e82d4f5728bccbb6510b38974",
+              "page": "https://flowave.eng.ed.ac.uk/how-it-works",
+              "image_url": "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/images/_MG_4341-min.jpg",
+              "use": "Inspected source only; not redistributed"
+            },
+            {
+              "local_reference": "temp/university/optimization_120_20261004/flowave_fidelity/research/behind_paddles.jpg",
+              "sha256": "48132b2f75ca4d33fe1315b5ea5b8fbe27e36ac2d8b996db5d231d60623d87a1",
+              "page": "https://flowave.eng.ed.ac.uk/how-it-works",
+              "image_url": "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/images/_MG_9522.CR2__0.jpg",
+              "use": "Inspected source only; not redistributed"
+            },
+            {
+              "local_reference": "temp/university/optimization_120_20261004/flowave_fidelity/research/Tank_Diagram.pdf",
+              "sha256": "dab4bf4be371e1834016641aac823372da6ce1f6f38b321a5ba415f03377a245",
+              "page": "https://flowave.eng.ed.ac.uk/how-it-works",
+              "image_url": "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/attachments/Tank_Diagram.pdf",
+              "use": "Inspected source only; not redistributed"
             }
           ],
           "observed": [
-            "Viewed an operating circular basin with a ring of vertical wavemaker panels, a grated perimeter deck, yellow edge services/rails and dark truss structures. A large yellow bridge crane spans the high steel-truss hall. The central wave confirms experimental operation; it is not evidence of a fluid solver in our future model."
+            "Official photographs show narrow framed flaps, genuinely open annular metal grating, yellow rim services, navy peripheral lattice, white control cabinets and a yellow overhead crane. Official dimensions distinguish the 30 m diameter / 5 m deep outer shell from the 25 m diameter / 2 m deep upper test region. The 2026 primary paper identifies 168 flap-type wavemakers with hinges 1.7 m below water. Room, freeboard, section sizes and services remain estimates; no water dynamics or OEM transmission is reconstructed."
           ],
           "implemented": [
-            "The circular basin uses the published 25 m diameter and 2 m nominal depth, surrounded by segmented paddles and a grated annular walkway.",
-            "The default rectangular floor is removed around the recessed basin, with a lower foundation providing continuous physical support.",
-            "Dark peripheral truss, yellow bridge crane, high hall glazing and roof steelwork follow the official photograph; hidden room dimensions and exits are estimated.",
-            "Two local paddle mechanisms are actuated. The supported calibration buoy is an explicitly added inert task fixture."
+            "Published 30 m / 5 m shell is distinct from the 25 m / 2 m upper test region. Deck datum, 350 mm freeboard and fixed raised-floor support state are authored.",
+            "Open grating has finite bars and real holes, supported by annular/radial beams and columns reaching the basin floor. Pitch and sections are estimates.",
+            "Yellow rim services, navy lattice, white cabinets, pressure-vessel exteriors and yellow bridge crane follow actual official photos; hidden service workings are not claimed.",
+            "Version 2 replaces two translating representative boards with all 168 hinged flaps. Old paddle_west/paddle_east actions are rejected, not silently converted."
           ],
           "inferred": [
             "Unobserved room boundary and doorway positions",
             "Machine internal geometry, travel and servo dynamics"
           ],
           "unresolved": [
-            "Water is a static translucent visual surface: no waves, currents, turbulence, buoyancy, splashes or hydrodynamic forces.",
-            "Only the published basin diameter/depth are dimension anchors; exact paddle configuration, stroke, hall dimensions and controller performance are unverified."
+            "Water is a fixed optical volume with no fluid mass, waves, currents, turbulence, buoyancy, splashes or hydrodynamic forces.",
+            "Published count/dimensions/hinge depth are source anchors. The 405 mm panels, angular range \u00b10.12 rad, sections, mass, ideal gravity compensation and servo properties are authored estimates.",
+            "Inter-panel gaps are real and unsealed; this dry geometric array is not a watertight wavemaker boundary or calibrated experimental controller.",
+            "The raised test floor is locked on disclosed authored supports. Its real floor lifting/buoyancy system, bellows transmission and 28 operational circulation impellers are not modeled.",
+            "Optical volume covers the upper test region; hidden return-plenum liquid/flow and suspended gantry operation remain absent.",
+            "Full-array physics is slower than real time on the measured single-CPU setup; checked-operation performance is reported separately."
           ],
           "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
         }
       },
-      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/."
+      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/.",
+      "control_migration": {
+        "version": 2,
+        "old_keys": [
+          "paddle_west",
+          "paddle_east"
+        ],
+        "new_keys": "flap_000_angle_v2 through flap_167_angle_v2",
+        "old_units": "metres",
+        "new_units": "radians",
+        "automatic_mapping": false,
+        "reason": "Primary reference establishes hinged flaps, not independent translating boards",
+        "authored_range_rad": [
+          -0.12,
+          0.12
+        ]
+      },
+      "dimension_basis": {
+        "verified": {
+          "test_diameter_m": 25,
+          "test_depth_m": 2,
+          "shell_diameter_m": 30,
+          "shell_depth_m": 5,
+          "paddle_count": 168,
+          "hinge_depth_below_water_m": 1.7
+        },
+        "estimated": {
+          "deck_z_m": 0,
+          "water_z_m": -0.35,
+          "test_floor_z_m": -2.35,
+          "shell_floor_z_m": -5,
+          "panel_width_m": 0.405,
+          "room_size_m": [
+            32,
+            32,
+            9.1
+          ]
+        },
+        "convention": "The 5 m shell depth is represented from the authored deck datum; the source does not survey the absolute deck/water datum."
+      },
+      "presentation_volumes": [
+        {
+          "object": "flowave_v2_water_display_volume",
+          "kind": "estimated_rgb_absorption",
+          "units": "m^-1",
+          "absorption_rgb": [
+            0.34,
+            0.065,
+            0.01
+          ],
+          "dimension_basis": "Authored three-band visual proxy; wavelength trend and order of magnitude informed by pure-water literature. Not measured FloWave water or a spectral RGB conversion.",
+          "scientific_optics_calibrated": false
+        }
+      ]
     }
   ]
 }

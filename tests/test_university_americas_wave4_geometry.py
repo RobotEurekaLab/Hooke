@@ -192,10 +192,10 @@ class AmericasWaveFourGeometryTests(unittest.TestCase):
                 _bounds(session, i)[1][2] for i in lower_geoms
             )
             self.assertGreaterEqual(clearance, 0.05)
-        bearing = _tagged(session, "__torsion_bearing_")[0]
-        chuck = _tagged(session, "__lower_chuck_")[0]
+        bearing = session.model.geom("biaxial_frame__duke_torsion_bearing_shell").id
+        chuck = session.model.geom("biaxial_frame__duke_lower_chuck").id
         self.assertAlmostEqual(
-            _bounds(session, bearing)[1][2], _bounds(session, chuck)[0][2]
+            _bounds(session, chuck)[0][2] - _bounds(session, bearing)[1][2], 0.0006
         )
 
     def test_rotor_load_paths_are_continuous(self):

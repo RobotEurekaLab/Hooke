@@ -12,6 +12,27 @@ from microscopy.geometry import cylinder, geom, numbers
 from microscopy.needle_holder import HOLDER_LENGTH_M
 
 
+def _port_pose(world, name):
+    """Resolve an explicit hose port in the assembly's zero-joint pose."""
+    from scipy.spatial.transform import Rotation
+
+    def visit(parent, position, rotation):
+        site = parent.find(f"site[@name='{name}']")
+        if site is not None:
+            point = np.fromstring(site.get("pos", "0 0 0"), sep=" ")
+            return parent, point, position+rotation@point, rotation
+        for child in parent.findall("body"):
+            offset = np.fromstring(child.get("pos", "0 0 0"), sep=" ")
+            quat = np.fromstring(child.get("quat", "1 0 0 0"), sep=" ")
+            local = Rotation.from_quat(quat[[1, 2, 3, 0]]).as_matrix()
+            result = visit(child, position+rotation@offset, rotation@local)
+            if result is not None:
+                return result
+        return None
+
+    return visit(world, np.zeros(3), np.eye(3))
+
+
 def hose_points(controls):
     controls = np.asarray(controls, dtype=float)
     t = np.linspace(0., 1., 49)[:, None]
@@ -55,7 +76,10 @@ def compact_console(world, origin, homes, tools, bench_top):
         cylinder(world, f"pressure_dial_{tool}", (x, .093, bench_top+.029),
                  (x, .085, bench_top+.029), .006, "graphite")
         holder = world.find(f".//body[@name='{tool}_needle_holder']")
-        if holder is not None:
+        explicit_port = _port_pose(world, f"{tool}_pneumatic_port")
+        if explicit_port is not None:
+            holder, endpoint, end, rotation = explicit_port
+        elif holder is not None:
             endpoint = np.array([0., 0., HOLDER_LENGTH_M])
             from scipy.spatial.transform import Rotation
             quaternion = np.fromstring(holder.get("quat"), sep=" ")

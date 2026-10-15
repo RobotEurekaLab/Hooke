@@ -1,0 +1,32 @@
+{
+  "indiana_microfluidics": {
+    "observed": [
+      "The official Jacobson tour text establishes fluorescence microscopy and vacuum-controlled microfluidic valves. The locally available tour JPEG is only a title card, not an apparatus photograph.",
+      "No usable apparatus still or measured room plan was recovered for this repair pass. The original microscope family and room remain representative, not a visual reconstruction of an identified Indiana instrument."
+    ],
+    "source_urls": [
+      "https://stephenjacobson.lab.iu.edu/lab-tour.html",
+      "https://www.youtube.com/watch?v=wDvl3DRSJbA"
+    ],
+    "implemented": [
+      "Connected focus arm and column guide; supported X crossrail, connected open X carriage and Y bearing strips; a continuous open stage plate with four matching contact proxies.",
+      "Supported transparent slide ends with actual retaining pads and brackets, plus four controller feet that meet the counter.",
+      "Contact-capable objective barrels, with a longer active objective and shorter parked barrels clearing the retained focus and XY travel.",
+      "Channel centreline traces have the declared 100 micrometre width. The glass, traces, capped ports and their placement are original illustrative geometry.",
+      "Pressure-controller leads terminate on supported fixed docks; chip ports move with their caps. There is no false rigid connection between controller and moving chip.",
+      "A measured dry operation offsets the loaded stage, registers the actual free carrier to the optical axis, positions the objective at a declared geometric distance, inspects and returns without resetting or assigning live qpos."
+    ],
+    "authored_assumptions": [
+      "Bearing geometry uses ideal slide joints and 0.2 mm fixed-to-moving guide clearances. This avoids redundant friction constraints; it is not an OEM bearing preload, friction or stiffness model.",
+      "Objective lengths are shortened to preserve the original full travel below the slide and retaining structure. The active geometric objective-to-slide gap spans 5.3 to 12.3 mm; this is not calibrated optical working distance or autofocus.",
+      "The original 6 x 6 x 2 mm rigid inert carrier and its free joint remain. Registration is a geometric mechanical operation, not cell manipulation or robot loading.",
+      "The 100 micrometre coloured traces are not resolved channel walls; no fluid network, pressure propagation or biological process is simulated."
+    ],
+    "remaining_capabilities": [
+      "Pressure-connected flexible tubing with credible slack and endpoint mechanics through XY travel.",
+      "Validated optics, calibrated focus, fluorescence and fluid transport.",
+      "A usable apparatus photograph or multiple views establishing the real Indiana microscope and room layout."
+    ],
+    "media_policy": "No source photographs, video frames, logos or manufacturer CAD are embedded or redistributed. All added geometry is authored."
+  }
+}

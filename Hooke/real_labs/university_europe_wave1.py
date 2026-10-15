@@ -400,192 +400,23 @@ def _fabrication_hall(world, definition):
 
 
 def _circular_wave_basin(b, base, params):
-    """25 m diameter, 2 m nominal water depth, with two local paddle drives."""
-    # Equipment datum remains at the hall floor; its supported basin body is recessed.
-    base = ET.SubElement(base, "body", name=f"{b.name}__recessed_basin", pos="0 0 -2.2")
-    b.cylinder(base, (0, 0, 0.10), 12.85, 0.10, "metal", collision=True)
-    active = {68: "paddle_west", 76: "paddle_east"}
-    for i in range(96):
-        angle = i * math.tau / 96
-        c, sn = math.cos(angle), math.sin(angle)
-        b.box(
-            base,
-            (12.88 * c, 12.88 * sn, 1.15),
-            (0.23, 0.435, 1.15),
-            "shell",
-            euler=(0, 0, angle),
-            collision=True,
-        )
-        if i in active:
-            paddle = b.moving(
-                base,
-                active[i],
-                (12.57 * c, 12.57 * sn, 1.32),
-                (-c, -sn, 0),
-                (0, 0.12),
-                mass=1.8,
-                kp=360,
-                force=200,
-            )
-            b.box(
-                paddle,
-                (0, 0, 0),
-                (0.045, 0.365, 1.02),
-                "metal",
-                euler=(0, 0, angle),
-                collision=True,
-            )
-            # Carrier rails and motor housings are visibly fixed to the perimeter.
-            b.rod(
-                base,
-                (12.48 * c, 12.48 * sn, 2.39),
-                (13.48 * c, 13.48 * sn, 2.39),
-                0.028,
-                "bright",
-            )
-            b.box(
-                base,
-                (13.24 * c, 13.24 * sn, 2.48),
-                (0.25, 0.18, 0.08),
-                "dark",
-                euler=(0, 0, angle),
-            )
-            b.rod(paddle, (0, 0, 0.97), (0.58 * c, 0.58 * sn, 1.06), 0.025, "bright")
-        else:
-            b.box(
-                base,
-                (12.57 * c, 12.57 * sn, 1.32),
-                (0.045, 0.365, 1.02),
-                "metal",
-                euler=(0, 0, angle),
-                collision=True,
-            )
-        # Annular grate strips bridge shell to outer floor. Their top is hall z=0.
-        b.box(
-            base,
-            (13.65 * c, 13.65 * sn, 2.125),
-            (0.93, 0.455, 0.075),
-            "bright",
-            euler=(0, 0, angle),
-            collision=True,
-        )
-        for dr in (-0.66, -0.30, 0.06, 0.42, 0.78):
-            b.box(
-                base,
-                ((13.65 + dr) * c, (13.65 + dr) * sn, 2.207),
-                (0.011, 0.44, 0.007),
-                "dark",
-                euler=(0, 0, angle),
-            )
-    b.ring(base, (0, 0, 2.27), 14.60, 0.045, "warning", segments=96)
-    b.ring(base, (0, 0, 2.215), 12.64, 0.025, "bright", segments=96)
-    # Display water is a thin, non-colliding surface; no hidden solid fills the pool.
-    b.cylinder(
-        base, (0, 0, 2.196), 12.49, 0.004, "glass", rgba=(0.22, 0.48, 0.57, 0.66)
-    )
-    # Added inert calibration buoy has a real support rod down to the basin floor.
-    b.rod(base, (0, 0, 0.20), (0, 0, 2.24), 0.033, "metal", collision=True)
-    b.cylinder(base, (0, 0, 2.30), 0.46, 0.075, "orange", collision=True)
-    b.ring(base, (0, 0, 2.39), 0.34, 0.06, "shell")
-    b.cylinder(base, (0, 0, 2.60), 0.055, 0.20, "bright", collision=True)
-    b.box(base, (0, 0, 2.84), (0.12, 0.08, 0.04), "dark")
-    b.site(base, "calibration_buoy", (0, 0, 2.30), size=0.02)
-    b.metadata["capabilities"] = [
-        "Two independently positioned perimeter wave paddles",
-        "Visible supported inert calibration model",
-    ]
-    b.metadata["limitations"].append(
-        "Published 25 m diameter and 2 m depth anchor the basin. Only two representative "
-        "paddles have mechanical controls; no wave propagation, current, buoyancy, splash "
-        "or hydrodynamic load is simulated. Central buoy and its support are authored fixtures."
-    )
+    """Version 2: 168 hinged flaps with explicit dry-mechanics limits."""
+    from real_labs.flowave_geometry import add_basin
+
+    add_basin(b, base, params)
 
 
 def _flowave_hall(world, definition):
-    p = _Details(world, "flowave")
-    # Cut the floor around the actual recessed basin instead of filling its water
-    # volume with the default rectangular collision slab.
-    for geom in list(world.findall("geom")):
-        if geom.get("name", "").startswith("arch_floor"):
-            world.remove(geom)
-    p.box("basement_foundation", (0, 0, -2.29), (16, 16, 0.09), STEEL, collision=True)
-    for j in range(16):
-        lo, hi = -16 + 2 * j, -14 + 2 * j
-        near = 0 if lo <= 0 <= hi else min(abs(lo), abs(hi))
-        edge = math.sqrt(max(0, 12.72**2 - near**2))
-        for sign in (-1, 1):
-            p.box(
-                "floor_apron",
-                (sign * (16 + edge) / 2, (lo + hi) / 2, -0.075),
-                ((16 - edge) / 2, 1, 0.075),
-                (0.49, 0.53, 0.54, 1),
-                collision=True,
-            )
-    # Dark peripheral truss and yellow bridge crane are visible source features.
-    for y in (13.85,):
-        for z in (0.36, 1.66):
-            p.rod("perimeter_truss_chord", (-10.8, y, z), (10.8, y, z), 0.065, DARK)
-        for i in range(12):
-            x = -10.8 + i * 1.8
-            p.rod(
-                "perimeter_truss_diagonal",
-                (x, y, 0.36),
-                (x + 0.9, y, 1.66),
-                0.055,
-                DARK,
-            )
-            p.rod(
-                "perimeter_truss_diagonal",
-                (x + 0.9, y, 1.66),
-                (x + 1.8, y, 0.36),
-                0.055,
-                DARK,
-            )
-    for x in (-15.25, 15.25):
-        p.box("crane_runway", (x, 0, 7.9), (0.15, 15.5, 0.22), WHITE)
-        for y in (-11, -3, 5, 12):
-            p.box(
-                "runway_column", (x, y, 3.84), (0.14, 0.18, 3.84), WHITE, collision=True
-            )
-            p.box(
-                "runway_foot", (x, y, 0.06), (0.24, 0.28, 0.06), STEEL, collision=True
-            )
-    p.box("yellow_bridge_crane", (0, 8.8, 7.5), (15.25, 0.33, 0.36), YELLOW)
-    p.box("crane_trolley", (2.7, 8.8, 7.04), (0.65, 0.42, 0.12), STEEL)
-    p.rod("crane_cable", (2.7, 8.8, 6.92), (2.7, 8.8, 4.6), 0.022, DARK)
-    p.cylinder(
-        "crane_hook_block",
-        (2.7, 8.8, 4.47),
-        0.16,
-        0.08,
-        YELLOW,
-        euler=(math.pi / 2, 0, 0),
-    )
-    for y in (-11, -5.5, 0, 5.5, 11):
-        for z in (8.2, 8.75):
-            g = p.rod("roof_chord", (-15.5, y, z), (15.5, y, z), 0.07, WHITE)
-            g.set("name", "arch_roof_" + g.get("name"))
-        for x in (-15, -10, -5, 0, 5, 10):
-            g = p.rod("roof_diagonal", (x, y, 8.2), (x + 2.5, y, 8.75), 0.055, WHITE)
-            g.set("name", "arch_roof_" + g.get("name"))
-            g = p.rod(
-                "roof_diagonal", (x + 2.5, y, 8.75), (x + 5, y, 8.2), 0.055, WHITE
-            )
-            g.set("name", "arch_roof_" + g.get("name"))
-    for x in (-13.7, -10.2, -6.7, -3.2, 0.3, 3.8, 7.3, 10.8):
-        p.box(
-            "control_cabinet",
-            (x, 15.15, 1.04),
-            (0.56, 0.32, 1.04),
-            WHITE,
-            collision=True,
-        )
-        p.box("cabinet_split", (x, 14.817, 1.12), (0.004, 0.008, 0.9), STEEL)
-        p.box("cabinet_panel", (x + 0.22, 14.795, 1.62), (0.12, 0.025, 0.14), DARK)
+    """Photo-informed open grating and continuously supported hall context."""
+    from real_labs.flowave_context import add_hall
+
+    add_hall(world, definition)
 
 
 def _glovebox_module(b, base, params):
-    """Two-port glovebox, external pass-through lid and internal vial carriage."""
+    """Two-port glovebox with explicitly inferred bearing and mounting hardware."""
+    from real_labs import glovebox_details as details
+
     for x in (-1.16, 1.16):
         for y in (-0.43, 0.43):
             b.cylinder(base, (x, y, 0.035), 0.055, 0.035, "rubber", collision=True)
@@ -616,28 +447,21 @@ def _glovebox_module(b, base, params):
             base, (x, -0.50, 1.50), (0.035, 0.035, 0.51), "cream", euler=(-0.15, 0, 0)
         )
     b.box(base, (0, -0.57, 1.0), (1.3, 0.035, 0.035), "cream")
-    for x in (-0.60, 0.60):
-        b.cylinder(
-            base, (x, -0.57, 1.44), 0.145, 0.069, "metal", euler=(math.pi / 2, 0, 0)
-        )
-        b.ring(base, (x, -0.645, 1.44), 0.14, 0.012, "bright", plane="xz")
-        b.rod(base, (x, -0.66, 1.44), (x, -1.035, 1.35), 0.092, "rubber")
-        b.geom(base, "ellipsoid", (0.084, 0.13, 0.042), (x, -1.09, 1.33), "rubber")
-        for dx in (-0.053, -0.018, 0.018, 0.053):
-            b.rod(
-                base,
-                (x + dx, -1.14, 1.33),
-                (x + dx * 0.96, -1.235, 1.325),
-                0.013,
-                "rubber",
-            )
+    details.add_gloves(b, base)
     # Hollow cylindrical pass-through, including collision shell and flange.
     for i in range(32):
         angle = math.tau * i / 32
         y, z = 0.238 * math.cos(angle), 1.36 + 0.238 * math.sin(angle)
-        b.rod(base, (1.30, y, z), (2.055, y, z), 0.022, "metal", collision=True)
-    for x in (1.34, 2.055):
-        b.ring(base, (x, 0, 1.36), 0.249, 0.027, "bright", plane="yz", segments=32)
+        b.rod(
+            base,
+            (1.30, y, z),
+            (2.055, y, z),
+            0.022,
+            "metal",
+            collision=True,
+            rgba=(0.5, 0.5, 0.5, 0),
+            name=details.name(b, f"barrel_collision_{i}"),
+        )
     lid = b.moving(
         base,
         "pass_through_lid",
@@ -657,11 +481,20 @@ def _glovebox_module(b, base, params):
         "metal",
         euler=(0, math.pi / 2, 0),
         collision=True,
+        name=details.name(b, "lid_disc"),
     )
     b.cylinder(lid, (0.025, 0.23, 0), 0.19, 0.004, "bright", euler=(0, math.pi / 2, 0))
     b.rod(lid, (0.073, 0.15, -0.05), (0.073, 0.32, -0.05), 0.015, "dark")
-    for y in (-0.15, 0.15):
-        b.rod(base, (-0.55, y, 0.997), (0.55, y, 0.997), 0.011, "bright")
+    for index, y in enumerate((-0.15, 0.15)):
+        b.rod(
+            base,
+            (-0.55, y, 0.997),
+            (0.55, y, 0.997),
+            0.011,
+            "bright",
+            collision=True,
+            name=details.name(b, f"guide_{index}"),
+        )
     tray = b.moving(
         base,
         "vial_carriage",
@@ -671,7 +504,14 @@ def _glovebox_module(b, base, params):
         mass=0.35,
         kp=180,
     )
-    b.box(tray, (0, 0, 0), (0.24, 0.20, 0.024), "blue", collision=True)
+    b.box(
+        tray,
+        (0, 0, 0),
+        (0.24, 0.20, 0.024),
+        "blue",
+        collision=True,
+        name=details.name(b, "carriage_plate"),
+    )
     for x in (-0.14, 0, 0.14):
         b.cylinder(tray, (x, 0, 0.032), 0.042, 0.008, "metal")
         b.cylinder(tray, (x, 0, 0.095), 0.036, 0.055, "glass")
@@ -684,6 +524,22 @@ def _glovebox_module(b, base, params):
     b.cylinder(base, (0.50, 0.27, 2.275), 0.12, 0.16, "metal")
     b.rod(base, (0.50, 0.27, 2.44), (0.50, 0.27, 2.59), 0.025, "bright")
     b.screen(base, (-0.90, -0.594, 1.87), 0.27, 0.14)
+    details.add_carriage_support(b, base, tray)
+    details.add_passage_details(b, base, lid)
+    details.add_front_details(b, base)
+    b.metadata["assembly_adaptations"] = {
+        "observed": "Shaped pale brow, inset glazing, visible frame fasteners and tapered black sleeves",
+        "authored": (
+            "Deck-mounted guide pedestals and open upper bearing shoes with 0.5 mm "
+            "radial running clearance; accessory pad and connected pass-through hinge. "
+            "Smooth annular presentation shell preserves the original open collision rods."
+        ),
+        "limits": (
+            "Original estimated mounting hardware, not OEM CAD. The unchanged front "
+            "pane remains solid; gloves are fixed noncolliding appearance meshes. "
+            "Carriage motion does not reach the pass-through or implement specimen transfer."
+        ),
+    }
     b.metadata["capabilities"] = [
         "External pass-through lid access",
         "Internal inert-vial carriage positioning",
@@ -759,8 +615,8 @@ SOURCES = {
     "flowave_circular_basin": {
         "reference": "University of Edinburgh FloWave circular wave/current basin",
         "url": FLOWAVE,
-        "dimensions_m": [29.3, 29.3, 3.08],
-        "dimension_basis": "Official basin diameter 25 m and water depth 2 m; rim, paddle drives, support and hall estimated",
+        "dimensions_m": [30.2, 30.2, 5.75],
+        "dimension_basis": "Official test region 25 m / 2 m; shell 30 m / 5 m; 168 hinged flaps at 1.7 m submergence. Exterior envelope, freeboard, sections, angular limits and drives are estimates",
     },
     "suspended_fabrication_gantry": {
         "reference": "ETH Robotic Fabrication Laboratory gantry/robot photograph; authored locked-pose arm surrogate",

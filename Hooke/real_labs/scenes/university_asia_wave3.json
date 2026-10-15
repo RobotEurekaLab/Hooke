@@ -194,7 +194,7 @@
     {
       "id": "cityu_rogach_photoluminescence",
       "title": "CityU Rogach Photoluminescence Service Bay",
-      "institution": "Rogach Group Optics Laboratory \u2014 Photoluminescence Station",
+      "institution": "Rogach Group Optics Laboratory — Photoluminescence Station",
       "domain": "materials_optics",
       "university_expansion": true,
       "source_urls": [
@@ -378,12 +378,13 @@
     {
       "id": "polyu_materials_tribology",
       "title": "PolyU Materials Tribology Workstation",
-      "institution": "Materials and Mechanics Technology Laboratory \u2014 UMT Station",
+      "institution": "Materials and Mechanics Technology Laboratory — UMT Station",
       "domain": "materials_mechanics",
       "university_expansion": true,
       "source_urls": [
         "https://www.polyu.edu.hk/me/research/laboratories/materials-and-mechanics-technology-laboratory/",
-        "https://www.polyu.edu.hk/me/-/media/department/me/content/research/laboratories/materials-and-mechanics-technology/materials-and-mechanics-technology-2/mmtlab-03.jpg"
+        "https://www.polyu.edu.hk/me/-/media/department/me/content/research/laboratories/materials-and-mechanics-technology/materials-and-mechanics-technology-2/mmtlab-03.jpg",
+        "https://patents.google.com/patent/US20150293001A1/en"
       ],
       "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Curved transparent front enclosure wraps around the testing cavity beneath a wide dark top housing. A horizontal specimen stage sits low in the cavity with a vertical loading mechanism above. The rounded dark lower base has front controls and rests on a light benchtop beside a wall.",
       "observed_cues": [
@@ -498,8 +499,10 @@
             0.85
           ],
           "yaw": 0,
-          "params": {},
-          "role": "Translate a supported inert coupon and adjust non-contact probe clearance inside the rounded transparent enclosure.",
+          "params": {
+            "interface_revision": 3
+          },
+          "role": "Raise the counterface, open guards and release the supported free coupon; close and clamp it for observed low-load reciprocation and retraction.",
           "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
           "source_urls": [
             "https://www.polyu.edu.hk/me/research/laboratories/materials-and-mechanics-technology-laboratory/"
@@ -507,10 +510,10 @@
         }
       ],
       "task": {
-        "name": "PolyU Materials Tribology Workstation mechanical positioning",
-        "description": "Translate a supported inert coupon and adjust non-contact probe clearance inside the rounded transparent enclosure.",
+        "name": "PolyU free-coupon access and loaded reciprocation",
+        "description": "Raise the counterface, open guards and release the supported free coupon; close and clamp it for observed low-load reciprocation and retraction.",
         "primary_equipment": "umt_station",
-        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+        "observable": "Actual free-coupon support, jaw/end-stop retention, open access and measured ball contact/sliding under explicit interlocks; no autonomous pickup or calibrated material science."
       },
       "camera": {
         "overview": {
@@ -551,6 +554,19 @@
             1.3
           ],
           "fovy": 38
+        },
+        "contact_detail": {
+          "position": [
+            -0.34,
+            0.385,
+            1.155
+          ],
+          "target": [
+            -0.45,
+            0.575,
+            1.113
+          ],
+          "fovy": 32
         }
       },
       "layout_rationale": [
@@ -558,7 +574,7 @@
         "A horizontal specimen stage sits low in the cavity with a vertical loading mechanism above.",
         "The rounded dark lower base has front controls and rests on a light benchtop beside a wall.",
         "Rounded transparent guard and tall rear loading spine follow the small reference; all hidden mechanics are estimates.",
-        "Probe retains clearance at full travel; no actual friction or wear result."
+        "Revision3 preserves original X/Z frames, ranges, gains and coupon scale. Bruker-family cover drawings inform the split hinged front; hidden guides, powered clamp/door actions and positive-retention lips are authored estimates."
       ],
       "limitations": [
         "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
@@ -567,7 +583,8 @@
         "MuJoCo CPU articulation does not establish Isaac runtime verification.",
         "Only a 400 by 300 image is available in the inspected reference; it supports instrument silhouette and local bench placement, not room layout or concealed mechanisms. Do not claim calibrated force, friction, wear or instrument travel.",
         "Rounded transparent guard and tall rear loading spine follow the small reference; all hidden mechanics are estimates.",
-        "Probe retains clearance at full travel; no actual friction or wear result."
+        "Revision3 exposes a physically supported free coupon with actual guard/clamp access and loaded reciprocation. No autonomous pickup, replacement, calibrated force, friction, wear or deformation is modeled. Full joint ranges include obstructed combinations; use the checked task interlocks.",
+        "The patent is a manufacturer-family design reference, not proof of the exact installed PolyU model or hidden mechanisms. Estimated room layout remains unchanged."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -584,7 +601,7 @@
     {
       "id": "cuhk_mpil_ultrafast_optics",
       "title": "CUHK MPIL Room 303 Optical Bay",
-      "institution": "Multiscale Precision Instrumentation Laboratory \u2014 Room 303 Ultrafast Laser Lab",
+      "institution": "Multiscale Precision Instrumentation Laboratory — Room 303 Ultrafast Laser Lab",
       "domain": "ultrafast_optics",
       "university_expansion": true,
       "source_urls": [

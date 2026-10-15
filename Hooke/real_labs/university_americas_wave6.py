@@ -21,143 +21,9 @@ def _tag(b, geom, name):
 
 
 def _lapd(b, base, params):
-    # Local 7.8 m exterior segment, not the whole upgraded 18 m plasma volume.
-    b.cylinder(
-        base,
-        (0, 0, 1.25),
-        0.46,
-        3.90,
-        "metal",
-        euler=(math.pi / 2, 0, 0),
-        collision=True,
-    )
-    for y in (-3.5, -1.75, 0, 1.75, 3.5):
-        for x in (-0.60, 0.60):
-            b.box(base, (x, y, 0.37), (0.05, 0.10, 0.37), "metal", collision=True)
-        _tag(
-            b,
-            b.box(base, (0, y, 0.75), (0.65, 0.11, 0.04), "bright", collision=True),
-            "vessel_support",
-        )
-    for i in range(25):
-        y = -3.60 + i * 0.30
-        b.box(base, (0, y, 0.3175), (0.20, 0.07, 0.3175), "dark", collision=True)
-        for j in range(20):
-            a = math.tau * j / 20
-            c = math.tau * (j + 1) / 20
-            b.geom(
-                base,
-                "capsule",
-                (0.065,),
-                material="sample",
-                fromto=(
-                    0.55 * math.cos(a),
-                    y,
-                    1.25 + 0.55 * math.sin(a),
-                    0.55 * math.cos(c),
-                    y,
-                    1.25 + 0.55 * math.sin(c),
-                ),
-                rgba=(0.64, 0.045, 0.34, 1),
-            )
-        # Repeated cream service loops distinguish a dense operating apparatus.
-        b.rod(base, (-0.42, y, 1.61), (-1.0, y, 2.3), 0.009, "cream")
-        b.rod(base, (-1.0, y, 2.3), (-1.45, y, 2.35), 0.009, "cream")
-    for i in range(10):
-        y = -3.40 + i * 0.70
-        b.cylinder(
-            base, (0.67, y, 1.25), 0.045, 0.22, "bright", euler=(0, math.pi / 2, 0)
-        )
-        b.cylinder(
-            base, (0.90, y, 1.25), 0.082, 0.015, "metal", euler=(0, math.pi / 2, 0)
-        )
-        for a in (0, math.pi / 2, math.pi, math.pi * 1.5):
-            b.cylinder(
-                base,
-                (0.92, y + 0.060 * math.cos(a), 1.25 + 0.060 * math.sin(a)),
-                0.006,
-                0.004,
-                "dark",
-                euler=(0, math.pi / 2, 0),
-            )
-        if i not in (1, 2):
-            b.cylinder(
-                base, (1.50, y, 1.25), 0.009, 0.58, "bright", euler=(0, math.pi / 2, 0)
-            )
-            b.box(base, (2.03, y, 0.035), (0.13, 0.13, 0.035), "metal", collision=True)
-            b.cylinder(base, (2.03, y, 0.66), 0.020, 0.59, "dark", collision=True)
-            b.box(base, (2.03, y, 1.285), (0.09, 0.11, 0.035), "metal", collision=True)
-    # A clearly visible two-axis diagnostic alignment mechanism in the aisle.
-    for y in (-2.58, -2.22):
-        b.box(base, (2.20, y, 0.03), (0.15, 0.08, 0.03), "metal", collision=True)
-        b.box(base, (2.20, y, 0.84), (0.035, 0.035, 0.78), "bright", collision=True)
-    b.box(base, (2.20, -2.40, 1.59), (0.08, 0.23, 0.04), "metal", collision=True)
-    carriage = b.moving(
-        base,
-        "probe_vertical_alignment",
-        (2.20, -2.40, 1.25),
-        (0, 0, 1),
-        (-0.04, 0.04),
-        mass=0.3,
-        kp=380,
-    )
-    b.box(carriage, (0, 0, 0), (0.08, 0.215, 0.06), "metal")
-    for y in (-0.09, 0.09):
-        _tag(
-            b,
-            b.box(carriage, (-0.30, y, -0.045), (0.35, 0.010, 0.010), "bright"),
-            "diagnostic_x_guide",
-        )
-    stage = b.moving(
-        carriage,
-        "probe_approach",
-        (-0.30, 0, -0.017),
-        (1, 0, 0),
-        (-0.20, 0),
-        mass=0.15,
-        kp=340,
-    )
-    b.box(stage, (0, 0, 0), (0.095, 0.12, 0.018), "dark", collision=True)
-    b.box(stage, (-0.065, 0, 0.065), (0.030, 0.040, 0.050), "metal", collision=True)
-    b.cylinder(
-        stage,
-        (-0.40, 0, 0.065),
-        0.010,
-        0.305,
-        "bright",
-        euler=(0, math.pi / 2, 0),
-        collision=True,
-    )
-    b.box(stage, (-0.705, 0, 0.065), (0.010, 0.025, 0.025), "orange", collision=True)
-    b.site(stage, "probe_target", (-0.716, 0, 0.065))
-    # Grounded utility supports carry the back-side hose manifold.
-    for y in (-3.7, 0, 3.7):
-        b.box(base, (-1.48, y, 1.18), (0.045, 0.045, 1.18), "metal", collision=True)
-    b.cylinder(
-        base,
-        (-1.48, 0, 2.35),
-        0.045,
-        3.8,
-        "copper",
-        euler=(math.pi / 2, 0, 0),
-        collision=True,
-    )
-    for y in (-2.8, 0.6, 2.8):
-        b.box(base, (-1.48, y, 1.90), (0.16, 0.20, 0.29), "shell", collision=True)
-    for x in (2.4, 2.85):
-        for y in (0.20, 0.70):
-            b.box(base, (x, y, 0.03), (0.06, 0.06, 0.03), "rubber", collision=True)
-    b.box(base, (2.625, 0.45, 0.87), (0.285, 0.32, 0.81), "shell", collision=True)
-    for z in (0.50, 0.86, 1.22):
-        b.box(base, (2.625, 0.123, z), (0.23, 0.007, 0.11), "dark")
-        b.box(base, (2.56, 0.114, z), (0.11, 0.002, 0.05), "screen")
-    b.metadata["capabilities"] = [
-        "dry diagnostic target vertical alignment",
-        "bounded external probe approach",
-    ]
-    b.metadata["limitations"].append(
-        "Estimated 7.8 m local exterior segment, not a complete as-built LAPD. Upgraded 18 m by 0.75 m plasma-volume specification is reference information only. No plasma, field, vacuum, probe response, radiation or fusion solver; external dry target remains outside the vessel."
-    )
+    from real_labs.ucla_probe_geometry import build_segment
+
+    build_segment(b, base, params)
 
 
 BUILDERS = {"ucla_lapd_diagnostic_segment": _lapd}
@@ -174,7 +40,7 @@ SAMPLE_INTERFACES = {
         "probe_target",
         (0.020, 0.050, 0.050),
         "clamped",
-        "inert alignment target attached to the external diagnostic probe carriage",
+        "retained inert probe head; probe_target is a physical off-axis rear-face inspection land",
     )
 }
 FEATURES = {}
@@ -310,103 +176,9 @@ SAMPLE_INTERFACES["penn_denton_pvd_inspection"] = (
 
 
 def _four_mirror(b, base, params):
-    for x in (-0.62, 0.62):
-        for y in (-0.36, 0.36):
-            b.box(base, (x, y, 0.025), (0.075, 0.075, 0.025), "rubber", collision=True)
-    b.box(base, (0, 0, 0.39), (0.73, 0.46, 0.34), "cream", collision=True)
-    b.box(base, (0, 0, 0.77), (0.75, 0.48, 0.04), "dark", collision=True)
-    _tag(
-        b,
-        b.box(base, (0, 0, 0.83), (0.70, 0.43, 0.02), "metal", collision=True),
-        "furnace_optical_deck",
-    )
-    b.box(base, (0, 0.455, 1.54), (0.73, 0.025, 0.69), "dark", collision=True)
-    for x in (-0.72, 0.72):
-        b.box(base, (x, 0, 1.54), (0.025, 0.45, 0.69), "dark", collision=True)
-    for x in (-0.64, 0.64):
-        for y in (-0.37, 0.37):
-            b.cylinder(base, (x, y, 1.525), 0.014, 0.675, "bright", collision=True)
-    b.box(base, (0, 0, 2.24), (0.75, 0.48, 0.04), "dark", collision=True)
-    # Four closed reflector housings are exterior surrogates, not optical surfaces.
-    for x in (-0.26, 0.26):
-        for y in (-0.08, 0.24):
-            b.geom(
-                base,
-                "ellipsoid",
-                (0.215, 0.18, 0.245),
-                (x, y, 1.5),
-                "metal",
-                collision=True,
-            )
-        for z in (1.31, 1.70):
-            b.box(base, (x, -0.17, z), (0.24, 0.020, 0.015), "bright", collision=True)
-    for x in (-0.18, 0.18):
-        b.cylinder(base, (x, -0.12, 1.45), 0.015, 0.60, "bright", collision=True)
-    for z in (1.08, 1.88):
-        for x in (-0.33, 0.33):
-            b.box(base, (x, -0.08, z), (0.21, 0.11, 0.025), "metal", collision=True)
-    # Photo-visible paired cooling fans and lower blowers are static exteriors.
-    for x in (-0.56, 0.56):
-        b.box(
-            base, (x * 0.85, -0.16, 1.50), (0.12, 0.13, 0.025), "metal", collision=True
-        )
-        b.box(base, (x, -0.29, 1.50), (0.11, 0.06, 0.14), "dark", collision=True)
-        for r in (0.035, 0.06, 0.085, 0.10):
-            b.ring(base, (x, -0.354, 1.50), r, 0.002, "bright", plane="xz", segments=20)
-        for z in (1.39, 1.61):
-            b.box(base, (x, -0.358, z), (0.11, 0.002, 0.003), "metal")
-        b.box(
-            base, (x * 0.82, -0.23, 0.91), (0.13, 0.15, 0.06), "metal", collision=True
-        )
-        b.cylinder(
-            base,
-            (x * 0.82, -0.24, 1.06),
-            0.12,
-            0.12,
-            "dark",
-            euler=(math.pi / 2, 0, 0),
-            collision=True,
-        )
-    # Reversible feed alignment, kept above a separate fixed lower spindle.
-    b.cylinder(base, (0, -0.025, 0.975), 0.045, 0.125, "metal", collision=True)
-    b.cylinder(base, (0, -0.025, 1.22), 0.004, 0.12, "bright", collision=True)
-    for x in (-0.085, 0.085):
-        b.cylinder(base, (x, 0.08, 1.975), 0.010, 0.225, "bright", collision=True)
-    carriage = b.moving(
-        base,
-        "feed_rod_height",
-        (0, -0.025, 1.92),
-        (0, 0, 1),
-        (-0.06, 0.06),
-        mass=0.22,
-        kp=360,
-    )
-    b.box(carriage, (0, 0.06, 0), (0.115, 0.075, 0.025), "metal")
-    rotation = b.moving(
-        carriage,
-        "feed_rod_rotation",
-        (0, 0, -0.005),
-        (0, 0, 1),
-        (-1.0, 1.0),
-        kind="hinge",
-        mass=0.06,
-        kp=90,
-    )
-    b.cylinder(rotation, (0, 0, 0), 0.035, 0.035, "dark", collision=True)
-    b.cylinder(rotation, (0, 0, -0.225), 0.004, 0.225, "bright", collision=True)
-    _tag(
-        b,
-        b.cylinder(rotation, (0, 0, -0.470), 0.006, 0.020, "orange", collision=True),
-        "inert_feed_coupon",
-    )
-    b.site(rotation, "crystal_coupon", (0, -0.008, -0.470))
-    b.metadata["capabilities"] = [
-        "dry crystal-feed rod vertical alignment",
-        "inert feed-rod azimuth indexing",
-    ]
-    b.metadata["limitations"].append(
-        "Four-mirror housing exterior references a separate official instrument photo, not a registered location in the panorama. All dimensions and feed mechanics estimated. Reflectors are closed exterior proxies; no light focusing, heating, pressure, melt, growth kinetics or crystal quality prediction."
-    )
+    from real_labs.jhu_furnace_geometry import build_furnace
+
+    build_furnace(b, base, params)
 
 
 def _jhu_features(world, definition):
@@ -451,7 +223,7 @@ def _jhu_features(world, definition):
         ET.SubElement(
             world,
             "geom",
-            name=f"jhu_overhead_pipe_{y}",
+            name=f"arch_roof_jhu_overhead_pipe_{y}",
             type="cylinder",
             size=".06 3.55",
             pos=f"0 {y} 3.48",
@@ -461,7 +233,7 @@ def _jhu_features(world, definition):
         for x in (-3.0, 3.0):
             box(
                 world,
-                f"jhu_service_hanger_{y}_{x}",
+                f"arch_roof_jhu_service_hanger_{y}_{x}",
                 (0.02, 0.02, 0.13),
                 (x, y, 3.67),
                 (0.35, 0.37, 0.36, 1),
@@ -482,6 +254,28 @@ def _jhu_features(world, definition):
             (0.26, 0.28, 0.27, 1),
         )
 
+    # Source-visible utility drops are fixed room context with supported ends;
+    # their routing and dimensions are estimated, not an electrical model.
+    for y in (-0.9, 1.3):
+        ET.SubElement(
+            world, "geom", name=f"arch_roof_jhu_suspended_utility_lead_{y}",
+            type="capsule", size=".004", fromto=f"-.35 {y} 3.80 -.35 {y} 2.70",
+            rgba=".65 .54 .12 1",
+        )
+        box(world, f"arch_roof_jhu_suspended_utility_box_{y}", (.045,.025,.065),
+            (-.35,y,2.635), (.32,.34,.32,1))
+        for z in (2.61,2.66):
+            box(world, f"arch_roof_jhu_utility_socket_{y}_{z}", (.012,.002,.013),
+                (-.35,y-.026,z), (.10,.11,.11,1))
+    for x in (-1.00,-.80,-.60,-.40):
+        ET.SubElement(
+            world,"geom",name=f"jhu_blue_control_knob_{x}",type="cylinder",
+            size=".023 .009",pos=f"{x} 2.824 1.45",euler=f"{math.pi/2} 0 0",
+            rgba=".12 .13 .14 1",
+        )
+    box(world,"jhu_blue_status_panel",(.18,.008,.070),(-.75,2.844,1.92),
+        (.10,.13,.15,1))
+
 
 BUILDERS["jhu_four_mirror_feed_inspection"] = _four_mirror
 SOURCES["jhu_four_mirror_feed_inspection"] = {
@@ -500,118 +294,9 @@ FEATURES["jhu_paradim_bulk_crystal_growth"] = _jhu_features
 
 
 def _exactacoat(b, base, params):
-    # Estimated enclosure on a continuous open-frame floor table.
-    for x in (-0.57, 0.57):
-        for y in (-0.40, 0.40):
-            b.box(base, (x, y, 0.025), (0.065, 0.065, 0.025), "rubber", collision=True)
-            b.box(base, (x, y, 0.435), (0.035, 0.035, 0.385), "cream", collision=True)
-        b.box(base, (x, 0, 0.30), (0.035, 0.40, 0.025), "cream", collision=True)
-    b.box(base, (0, 0.40, 0.30), (0.57, 0.025, 0.025), "cream", collision=True)
-    _tag(
-        b,
-        b.box(base, (0, 0, 0.85), (0.67, 0.51, 0.03), "dark", collision=True),
-        "coater_tabletop",
-    )
-    b.box(base, (0, 0, 0.925), (0.55, 0.43, 0.045), "cream", collision=True)
-    b.box(base, (0, 0.40, 1.50), (0.55, 0.03, 0.53), "cream", collision=True)
-    for x in (-0.525, 0.525):
-        b.box(base, (x, 0, 1.50), (0.025, 0.40, 0.53), "cream", collision=True)
-    b.housing(base, [(2.03, 0.55, 0.43, 0), (2.16, 0.47, 0.37, 0.035)], 0.025, "cream")
-    b.box(base, (0, 0, 2.045), (0.53, 0.40, 0.015), "cream", collision=True)
-    # The front glass is a fixed inspection window; it is not an actuated door.
-    b.box(base, (-0.06, -0.432, 1.50), (0.415, 0.006, 0.475), "glass")
-    for x in (-0.49, 0.38):
-        b.box(base, (x, -0.45, 1.50), (0.018, 0.018, 0.49), "cream", collision=True)
-    for z in (1.00, 2.0):
-        b.box(base, (-0.055, -0.45, z), (0.435, 0.018, 0.015), "cream", collision=True)
-    for z in (1.08, 1.91):
-        b.box(base, (-0.51, -0.48, z), (0.045, 0.02, 0.034), "dark")
-    b.rod(base, (0.345, -0.485, 1.40), (0.345, -0.485, 1.63), 0.013, "dark")
-    b.box(base, (0.465, -0.445, 1.50), (0.060, 0.025, 0.50), "cream", collision=True)
-    for z, mat in ((1.86, "guard_red"), (1.69, "orange"), (1.52, "dark")):
-        b.cylinder(
-            base, (0.465, -0.482, z), 0.025, 0.014, mat, euler=(math.pi / 2, 0, 0)
-        )
-    for x in (0.415, 0.53):
-        b.box(base, (x, -0.49, 1.20), (0.045, 0.025, 0.072), "dark")
-        b.box(base, (x, -0.517, 1.22), (0.022, 0.004, 0.024), "screen")
-        # Static coiled hand-controller leads terminate at enclosure connectors.
-        for i in range(34):
-            z = 1.12 - i * 0.018
-            b.rod(
-                base,
-                (x + 0.015 * math.cos(i * 1.9), -0.51 + 0.015 * math.sin(i * 1.9), z),
-                (
-                    x + 0.015 * math.cos((i + 1) * 1.9),
-                    -0.51 + 0.015 * math.sin((i + 1) * 1.9),
-                    z - 0.018,
-                ),
-                0.005,
-                "dark",
-            )
-    b.box(base, (-0.37, 0.12, 0.235), (0.115, 0.235, 0.235), "dark", collision=True)
-    for z in (0.26, 0.30, 0.34):
-        b.box(base, (-0.37, -0.118, z), (0.085, 0.003, 0.01), "metal")
-    # Rear posts and full-width crossmembers carry the two estimated dry axes.
-    for x in (-0.425, 0.425):
-        b.box(base, (x, 0.26, 1.335), (0.025, 0.025, 0.365), "metal", collision=True)
-    for z in (1.51, 1.63):
-        _tag(
-            b,
-            b.box(base, (0, 0.245, z), (0.44, 0.012, 0.018), "bright", collision=True),
-            "coater_x_rail",
-        )
-    slide = b.moving(
-        base,
-        "dry_head_x",
-        (0, 0.215, 1.57),
-        (1, 0, 0),
-        (-0.21, 0.21),
-        mass=0.35,
-        kp=450,
-    )
-    b.box(slide, (0, 0, 0), (0.068, 0.045, 0.09), "dark")
-    for x in (-0.06, 0.06):
-        b.box(slide, (x, -0.17, -0.025), (0.012, 0.21, 0.015), "metal")
-    carriage = b.moving(
-        slide,
-        "dry_head_y",
-        (0, -0.19, -0.04),
-        (0, 1, 0),
-        (-0.13, 0.13),
-        mass=0.22,
-        kp=420,
-    )
-    b.box(carriage, (0, 0, 0), (0.074, 0.070, 0.028), "metal", collision=True)
-    b.cylinder(carriage, (0, 0, -0.105), 0.034, 0.080, "metal", collision=True)
-    _tag(
-        b,
-        b.cylinder(carriage, (0, 0, -0.211), 0.006, 0.026, "bright", collision=True),
-        "coater_dry_nozzle",
-    )
-    b.cylinder(base, (0, 0, 0.997), 0.19, 0.027, "metal", collision=True)
-    _tag(
-        b,
-        b.cylinder(base, (0, 0, 1.0245), 0.15, 0.0005, "lens", collision=True),
-        "supported_300mm_wafer",
-    )
-    b.box(base, (0.07, -0.06, 1.026), (0.012, 0.009, 0.001), "orange")
-    b.site(base, "coater_wafer", (0.07, -0.06, 1.028))
-    # Simplified cable chain sits on the rear beam; no unsupported moving hose.
-    for i in range(16):
-        b.box(base, (-0.38 + i * 0.045, 0.29, 1.78), (0.020, 0.025, 0.026), "dark")
-    for x in (-0.38, 0.32):
-        b.box(base, (x, 0.29, 1.68), (0.020, 0.025, 0.075), "dark")
-    b.cylinder(base, (0.28, 0.16, 2.475), 0.085, 0.325, "metal", collision=True)
-    for z in (2.2, 2.32, 2.44, 2.56, 2.68, 2.79):
-        b.ring(base, (0.28, 0.16, z), 0.087, 0.003, "dark")
-    b.metadata["capabilities"] = [
-        "dry transverse nozzle alignment",
-        "dry fore-aft nozzle alignment",
-    ]
-    b.metadata["limitations"].append(
-        "Sono-Tek ExactaCoat exterior follows the official installed photograph. Only maximum 300 mm specimen diameter is documented; all room, enclosure and drive dimensions are estimates. No liquid, aerosol, spray, deposition, process chemistry or film-uniformity model."
-    )
+    from real_labs.alberta_coater_geometry import build_coater
+
+    build_coater(b, base, params)
 
 
 BUILDERS["alberta_exactacoat_dry_alignment"] = _exactacoat

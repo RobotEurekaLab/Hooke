@@ -13,6 +13,18 @@ def _merge(target, patch):
             target[key] = copy.deepcopy(value)
 
 
+def _add_detail_evidence(definition, name, evidence):
+    """Keep legacy inline records when appending a named evidence package."""
+    records = definition.get("reference_detail_evidence", {})
+    if isinstance(records, list):
+        records = {"legacy": records}
+    if not isinstance(records, dict):
+        raise ValueError("Reference detail evidence must be a mapping or legacy list")
+    records = copy.deepcopy(records)
+    records[name] = copy.deepcopy(evidence)
+    definition["reference_detail_evidence"] = records
+
+
 def scenes():
     path = Path(__file__).with_name("catalog.json")
     rows = json.loads(path.read_text())["scenes"]
@@ -45,7 +57,7 @@ def scenes():
                     f"Invalid reference-detail evidence in {path.name}: {identifier}"
                 )
             definition = result[identifier]
-            definition.setdefault("reference_detail_evidence", {})[path.stem] = evidence
+            _add_detail_evidence(definition, path.stem, evidence)
             definition["detail_revision"] = 3
     return result
 

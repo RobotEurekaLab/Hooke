@@ -13,6 +13,7 @@ import trimesh
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/"Hooke"))
 from microscopy.cad_assets import asset_evidence
 from microscopy.reference_objective import BODY_LENGTH_M
+from microscopy.scene import ORIGIN
 from microscopy.tasks import CalibrationPush, make_task
 
 
@@ -49,25 +50,54 @@ class ReferenceObjectiveTests(unittest.TestCase):
             self.assertTrue(shape.is_winding_consistent)
             self.assertGreater(shape.volume, 0.)
 
-    def test_six_through_bores_remove_their_full_volume(self):
+    def test_six_oblique_through_bores_match_the_seated_objectives(self):
         task = self.task("cell_injection")
         shape = self.shape(task, "nosepiece")
         self.assertTrue(shape.is_watertight)
         self.assertTrue(shape.is_winding_consistent)
-        expected = (.055**2*192*np.sin(2*np.pi/192)/2
-                    -6*.0125**2*96*np.sin(2*np.pi/96)/2)*.005
-        self.assertAlmostEqual(shape.volume/expected, 1., delta=3e-7)
-        slots = np.array(asset_evidence(task.model)["objective"]["mount_slots_m"])
+        self.assertGreater(shape.volume, 0.)
+        self.assertLess(shape.volume, np.pi*.055**2*.005)
+        evidence = asset_evidence(task.model)["objective"]
+        slots = np.asarray(evidence["mount_socket_centres_m"])
+        axes = np.asarray(evidence["mount_socket_axes"])
+        datum = ORIGIN+[0., 0., evidence["legacy_shoulder_offset_m"]]
+        datum += task.data.xpos[task.model.body("focus").id]
         self.assertEqual(len(slots), 6)
-        np.testing.assert_allclose(np.linalg.norm(np.diff(np.vstack((slots, slots[:1])), axis=0), axis=1),
-                                   .035, atol=1e-12)
+        np.testing.assert_allclose(slots[0], 0., atol=1e-15)
+        np.testing.assert_allclose(axes[0], [0, 0, 1], atol=1e-15)
+
+        def intersections(start, direction):
+            # Direct ray/triangle intersections avoid an optional spatial-index
+            # package. Probe actual compiled triangles, not the mesh authoring
+            # function or only its reported socket metadata.
+            triangles = shape.triangles
+            first, second = triangles[:, 1]-triangles[:, 0], triangles[:, 2]-triangles[:, 0]
+            h = np.cross(direction, second)
+            determinant = np.einsum("ij,ij->i", first, h)
+            valid = np.abs(determinant) > 1e-14
+            inverse = np.divide(1., determinant, out=np.zeros_like(determinant), where=valid)
+            offset = start-triangles[:, 0]
+            u = inverse*np.einsum("ij,ij->i", offset, h)
+            q = np.cross(offset, first)
+            v = inverse*(q@direction)
+            distance = inverse*np.einsum("ij,ij->i", second, q)
+            return distance[valid & (u >= -1e-8) & (v >= -1e-8) & (u+v <= 1+1e-8)
+                            & (distance >= 0.) & (distance <= .080)]
+
+        for point, axis in zip(datum+slots, axes):
+            tangent = np.cross(axis, [0, 0, 1] if abs(axis[2]) < .95 else [1, 0, 0])
+            tangent /= np.linalg.norm(tangent)
+            for offset in (0., .010, -.010):
+                self.assertEqual(len(intersections(point+tangent*offset-axis*.040, axis)), 0)
+            # Material remains just outside each bore; an empty or omitted
+            # carousel would incorrectly pass only the open-axis assertions.
+            self.assertGreaterEqual(len(intersections(point+tangent*.014-axis*.040, axis)), 2)
         self.assertEqual(sum(task.model.geom(i).name.startswith("objective_")
                              for i in range(task.model.ngeom)), 15)
-        plate_top = float(shape.vertices[:, 2].max())
-        for index in range(3):
+        for index, slot in enumerate(evidence["legacy_occupied_slots"]):
             barrel = task.model.geom(f"objective_{index}_barrel")
-            shoulder = task.data.geom_xpos[barrel.id, 2]-barrel.size[1]
-            self.assertAlmostEqual(float(shoulder), plate_top, delta=2e-9)
+            shoulder = task.data.geom_xpos[barrel.id]-axes[slot]*barrel.size[1]
+            np.testing.assert_allclose(shoulder, datum+slots[slot], atol=2e-9)
 
     def test_focus_changes_geometric_working_distance_without_changing_sample_height(self):
         for operation, reference in (("cell_injection", 4e-6), ("suction_injection", 26e-6)):

@@ -1,6 +1,6 @@
 {
   "rochester_genomics": {
-    "revision": 3,
+    "revision": 5,
     "observed": [
       "Existing Rochester public still shows an Opentrons-labelled enclosed liquid-handling gantry with a dark front frame; the exact model cannot be read confidently.",
       "Manufacturer Flex component figure shows a dark front fascia and status strip, light side panels, transparent windows, a substantial covered gantry, instrument mounts and a front-right touchscreen.",
@@ -10,20 +10,30 @@
       "Dark fascia/status strip, camera aperture, window edge sections, side carrying recesses and fastener caps.",
       "Covered gantry beam and end bearings, vertical mount rails and local cable-harness detail.",
       "Eight tapered disposable tips at the pre-existing 9 mm spacing and tip target coordinates; deck clips and a 96-position rack.",
-      "Existing mechanical positioning and access-control interfaces retained.",
-      "Front-right display mounted to the frame by a visible bracket; display and arm moved ahead of the retained sliding-door sweep."
+      "Eight enabled exterior tip envelopes and mount contacts plus a contact-capable gantry, carriage and head, with a 5 N authored vertical-axis force cap.",
+      "Sequencer fixed opaque fascia replaced by real open framing, moving contact-capable front panels, continuous supported runners and open-top stops around the freely supported inert carrier.",
+      "A bounded measured dry-touch/retract and loaded-tray open/access/close operation preserves all original joint ranges and free-carrier degrees of freedom.",
+      "Separated beam/carriage/head shells with open rectangular Y bearing sleeves, continuous Z guides and moving rear pads; original joint frames and travel retained. Enabled parent-child geometry is checked directly during every measured task step because normal contact filtering omits those pairs.",
+      "Source-informed supported left-hinged transparent door with enabled collision surfaces; former meter-valued slider retired and replaced by front_door_hinge in radians.",
+      "Authored bench-mounted XYZ fork physically transfers a free inert 96-well-sized plate from external four-pad stage to deck slot 2, releases it, closes/reopens, then retrieves and returns it. No weld switching or pose assignment during the task.",
+      "Original gantry XYZ, dry-touch carrier and sequencer task are retained; one static front-center plate prop is replaced by the free loading plate."
     ],
     "inferred": [
       "The instrument is a Flex-dimensioned mechanical surrogate, not an identification of the Rochester instrument; the source still may show an older model.",
       "Fastener placement, panel thickness, tip taper and cable-harness geometry are original visual estimates.",
       "The rack is a static workflow prop; liquid transport and tip attachment are not added by these visual changes.",
       "The display support is an original estimated mounting arm, not measured Flex hardware.",
-      "Published 870 x 690 x 840 mm Flex dimensions guide the enclosure body, not a verified final assembly envelope. The estimated display/bracket projects about 53 mm forward to clear the retained sliding-door mechanism."
+      "Sequencer internal frame dimensions, runners and retaining-pocket geometry are original mechanical estimates, not manufacturer CAD.",
+      "The convex exterior tip contacts close the tiny visual tip opening for collision; there is no internal fluid, attachment or calibrated contact-compliance model.",
+      "Guide sleeves have an authored 0.5 mm clearance; the Z bearing pads retain at least 42 mm guide overlap throughout the 240 mm stroke. These ideal-joint-supported guides are original engineering approximations, not OEM bearing or transmission dynamics.",
+      "The tray has an authored 20 N force cap and 12 ms retaining-wall numerical contact response; neither is a measured manufacturer calibration.",
+      "The external fork, open guides, receiving pads and left hinge dimensions are authored engineering surrogates, not source-observed Flex gripper hardware. The right display is shifted to clear the hinge sweep."
     ],
     "unresolved": [
       "No OEM CAD or verified Rochester device model number is available.",
-      "The retained vertical sliding access-door mechanism differs from the hinged Flex front door.",
-      "No validated fluid metering, optical sensing or manufacturer calibration model."
+      "No validated fluid metering, optical sensing or manufacturer calibration model.",
+      "Unplanned combinations of the original full joint ranges may collide with the newly physical head; the measured bounded route is not a certification of arbitrary motions.",
+      "The older dry-touch/sequencer route starts with its two original carriers loaded; the separate new contact-loading route transfers only the added inert plate. Static tip rack is staged context, with no tip pickup, aspiration, dispensing or biological experiment."
     ],
     "source_urls": [
       "https://www.library.rochester.edu/studio-x/projects/genomics-shared-resource-virtual-tour",

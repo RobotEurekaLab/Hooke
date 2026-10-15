@@ -15,8 +15,8 @@ SOURCES = {
     "nearfield_optical_station": {
         "reference": "NTU COEB actual installed SNOM workstation photograph",
         "url": COEB,
-        "dimensions_m": [1.18, 0.74, 1.12],
-        "dimension_basis": "Estimated microscope, external probe head and display geometry. Axes are coarse positioning surrogates, not nanometre scanning or documented OEM controls.",
+        "dimensions_m": [1.18, 0.74, 0.84],
+        "dimension_basis": "Estimated source-informed microscope body, supported dark probe stack and inactive adjacent display. Open guides and all three original coarse positioning drives are authored; no OEM control, optical result or nanometre performance claim.",
     },
     "multiport_vacuum_inspection_station": {
         "reference": "NTU Intelligent Materials actual AJA sputtering chamber photograph",
@@ -46,99 +46,19 @@ def _supported_display(b, parent, x, y, z, width=0.45):
 
 
 def _nearfield(b, base, params):
-    b.box(base, (0, 0, 0.025), (0.58, 0.36, 0.025), "dark", collision=True)
-    for x in range(-5, 6):
-        for y in range(-3, 4):
-            b.cylinder(base, (x * 0.10, y * 0.10, 0.051), 0.0025, 0.0005, "bright")
-    scope = ET.SubElement(
-        base, "body", name=b.name + "__scope_frame", pos="-0.20 0 0.05"
-    )
-    b.box(scope, (0, 0.03, 0.035), (0.18, 0.24, 0.035), "cream", collision=True)
-    b.housing(
-        scope,
-        [(0.06, 0.14, 0.075, 0.18), (0.47, 0.11, 0.07, 0.17), (0.65, 0.08, 0.06, 0.13)],
-        material="cream",
-    )
-    b.box(scope, (0, 0.16, 0.29), (0.08, 0.06, 0.23), "cream", collision=True)
-    b.box(scope, (0, -0.03, 0.21), (0.145, 0.13, 0.018), "dark")
-    for x in (-0.10, 0.10):
-        b.box(scope, (x, -0.02, 0.133), (0.025, 0.10, 0.077), "cream")
-    xstage = b.moving(
-        scope,
-        "sample_x",
-        (0, -0.04, 0.24),
-        (1, 0, 0),
-        (-0.018, 0.018),
-        mass=0.08,
-        kp=220,
-    )
-    b.box(xstage, (0, 0, 0), (0.09, 0.075, 0.012), "metal", collision=True)
-    ystage = b.moving(
-        xstage,
-        "sample_y",
-        (0, 0, 0.021),
-        (0, 1, 0),
-        (-0.015, 0.015),
-        mass=0.045,
-        kp=180,
-    )
-    b.box(ystage, (0, 0, 0), (0.048, 0.044, 0.008), "dark", collision=True)
-    b.box(ystage, (0, 0, 0.0085), (0.006, 0.006, 0.0005), "sample")
-    b.site(ystage, "optical_coupon", (0, 0, 0.009), 0.0003)
-    # Rigid rear posts carry the compact external probe head above the microscope.
-    for x in (-0.10, 0.10):
-        b.rod(scope, (x, 0.17, 0.60), (x, 0.17, 0.94), 0.013, "bright")
-    b.box(scope, (0, 0.15, 0.90), (0.135, 0.07, 0.018), "dark")
-    b.box(scope, (0, 0.065, 0.76), (0.035, 0.135, 0.04), "metal")
-    head = b.moving(
-        scope,
-        "probe_clearance",
-        (0, -0.04, 0.61),
-        (0, 0, 1),
-        (-0.010, 0.014),
-        mass=0.10,
-        kp=220,
-    )
-    b.box(head, (0, 0.075, 0.08), (0.050, 0.065, 0.090), "dark")
-    b.cylinder(head, (0, 0, -0.08), 0.026, 0.08, "metal")
-    b.rod(head, (0, 0, -0.16), (0, 0, -0.32), 0.001, "bright")
-    for side in (-1, 1):
-        b.cylinder(
-            scope,
-            (side * 0.17, 0.03, 0.14),
-            0.047,
-            0.018,
-            "dark",
-            euler=(0, math.pi / 2, 0),
-        )
-    b.rod(scope, (0, 0.14, 0.48), (0, -0.13, 0.60), 0.037, "cream")
-    for side in (-1, 1):
-        b.rod(
-            scope, (side * 0.03, -0.08, 0.58), (side * 0.04, -0.16, 0.62), 0.023, "dark"
-        )
-    _supported_display(b, base, 0.33, 0.07, 0.05, 0.40)
-    b.box(base, (0.33, -0.22, 0.061), (0.19, 0.065, 0.011), "dark")
-    for index in range(3):
-        b.rod(
-            base,
-            (-0.09, 0.29, 0.71 + index * 0.04),
-            (0.11, 0.31, 0.25),
-            0.003,
-            "rubber",
-        )
-    b.metadata["capabilities"] = [
-        "coarse_sample_xy",
-        "probe_clearance",
-        "visible_inert_coupon",
-    ]
-    b.metadata["limitations"].append(
-        "The tip is held above the inert coupon. No nanometre scanning, near-field light coupling, force feedback, microscope image or spectroscopy is simulated."
-    )
+    from real_labs.ntu_coeb_geometry import build_station
+
+    build_station(b, base, params)
 
 
 def _coeb_features(world, definition):
     # Local light-screening context is visible; its complete room extent is unknown.
     dark = (0.05, 0.055, 0.065, 1)
+    # Optical-table furniture has a generic silver top. This photographed bay
+    # explicitly uses a dark breadboard, as recorded in its bench definition.
+    bench = next(item for item in definition["benches"] if item["id"] == "snom_isolation_bench")
+    top = world.find(".//geom[@name='snom_isolation_bench_top']")
+    top.set("rgba", numbers(bench["color"]))
     for x in (-1.75, 1.10):
         box(
             world,
@@ -412,7 +332,167 @@ def _nanofab_features(world, definition):
         )
 
 
+def _gcf_web_cells():
+    """Estimated hole layout: large upper bores and smaller staggered bores."""
+    for low, high, center, radii in (
+        (0.010, 0.160, 0.086, (0.030, 0.042, 0.026, 0.035, 0.042, 0.028)),
+        (0.160, 0.365, 0.258, (0.071, 0.082, 0.068, 0.084, 0.074, 0.082, 0.071)),
+    ):
+        width = 2.42 / len(radii)
+        for index, radius in enumerate(radii):
+            left = -1.21 + width * index
+            yield (left, left + width, low, high), (left + width / 2, center, radius)
+
+
+def _gcf_web_sectors(bounds, hole):
+    """Convex quadrilaterals fill a rectangle around a circular polygon bore.
+
+    Include corner rays so the outer boundary remains exactly rectangular.
+    Each quadrilateral becomes a convex contact prism; a single convex hull
+    of the complete plate would incorrectly close the lightening apertures.
+    """
+    left, right, low, high = bounds
+    cx, cz, radius = hole
+    if radius >= min(cx - left, right - cx, cz - low, high - cz):
+        raise ValueError("GCF aperture must leave material around its full perimeter")
+    angles = {math.tau * i / 32 for i in range(32)}
+    angles.update(
+        math.atan2(z - cz, x - cx) % math.tau
+        for x in (left, right)
+        for z in (low, high)
+    )
+    perimeter = []
+    for angle in sorted(angles):
+        dx, dz = math.cos(angle), math.sin(angle)
+        tx = ((right if dx > 0 else left) - cx) / dx if abs(dx) > 1e-12 else math.inf
+        tz = ((high if dz > 0 else low) - cz) / dz if abs(dz) > 1e-12 else math.inf
+        distance = min(tx, tz)
+        perimeter.append(
+            (
+                (cx + radius * dx, cz + radius * dz),
+                (cx + distance * dx, cz + distance * dz),
+            )
+        )
+    for index, (inner, outer) in enumerate(perimeter):
+        next_inner, next_outer = perimeter[(index + 1) % len(perimeter)]
+        yield (inner, outer, next_outer, next_inner)
+
+
+def _gcf_bridge_webs(b, bridge):
+    """Finite-thickness webs with the same open geometry for view and contact."""
+    from real_labs.perforated_web import web_surface
+
+    sectors, contact_meshes = [], []
+    faces = ((0, 1, 2), (0, 2, 3), (4, 6, 5), (4, 7, 6)) + tuple(
+        face
+        for i in range(4)
+        for face in ((i, i + 4, (i + 1) % 4 + 4), (i, (i + 1) % 4 + 4, (i + 1) % 4))
+    )
+    asset = b.root.find("asset")
+    for bounds, hole in _gcf_web_cells():
+        for quad in _gcf_web_sectors(bounds, hole):
+            sectors.append(quad)
+            vertices = [(x, y, z) for y in (-0.010, 0.010) for x, z in quad]
+            mesh = b.unique("gcf_web_contact_mesh")
+            ET.SubElement(
+                asset,
+                "mesh",
+                name=mesh,
+                vertex=numbers([v for point in vertices for v in point]),
+                face=" ".join(str(v) for face in faces for v in face),
+            )
+            contact_meshes.append(mesh)
+    visual_vertices, visual_faces = web_surface(sectors, half_thickness=0.010)
+    visual = b.unique("gcf_perforated_web_mesh")
+    ET.SubElement(
+        asset,
+        "mesh",
+        name=visual,
+        vertex=numbers([v for point in visual_vertices for v in point]),
+        face=" ".join(str(v) for face in visual_faces for v in face),
+    )
+    for side in (-1, 1):
+        b.geom(
+            bridge,
+            "mesh",
+            (),
+            (0, side * 0.15, 0),
+            material="cream",
+            mesh=visual,
+            name=b.unique("gcf_perforated_web"),
+            density=0,
+        )
+        for mesh in contact_meshes:
+            b.geom(
+                bridge,
+                "mesh",
+                (),
+                (0, side * 0.15, 0),
+                mesh=mesh,
+                collision=True,
+                group=3,
+                rgba=(0, 0, 0, 0),
+                density=0,
+                name=b.unique("gcf_web_contact"),
+            )
+
+
+def _gcf_diamond_wall(b, parent, half_length, fixed, plane):
+    """Flat welded stiffeners clipped to the backed container wall perimeter."""
+    low, high, pitch = 0.305, 0.935, 0.16
+    for slope in (-1, 1):
+        first = math.floor((low - half_length) / pitch)
+        last = math.ceil((high + half_length) / pitch)
+        for index in range(first, last + 1):
+            offset = index * pitch
+            candidates = []
+            for u in (-half_length, half_length):
+                z = slope * u + offset
+                if low <= z <= high:
+                    candidates.append((u, z))
+            for z in (low, high):
+                u = (z - offset) / slope
+                if -half_length <= u <= half_length:
+                    candidates.append((u, z))
+            points = sorted(set(candidates))
+            if len(points) < 2:
+                continue
+            (a, za), (c, zc) = points[0], points[-1]
+            length = math.hypot(c - a, zc - za)
+            if length < 0.025:
+                continue
+            angle = math.atan2(zc - za, c - a)
+            if plane == "xz":
+                pos, size, euler = (
+                    ((a + c) / 2, fixed, (za + zc) / 2),
+                    (length / 2, 0.016, 0.010),
+                    (0, -angle, 0),
+                )
+            else:
+                pos, size, euler = (
+                    (fixed, (a + c) / 2, (za + zc) / 2),
+                    (0.016, length / 2, 0.010),
+                    (angle, 0, 0),
+                )
+            b.box(parent, pos, size, "metal", euler=euler, collision=True).set(
+                "name", b.unique("gcf_diamond_stiffener")
+            )
+
+
 def _geotechnical_testbed(b, base, params):
+    # The reference shows a neutral interior, not a polished copper fill.
+    # Composition is unknown; this remains a rigid, authored inert model bed.
+    ET.SubElement(
+        b.root.find("asset"),
+        "material",
+        name=f"{b.name}__mat_gcf_inert_bed",
+        rgba=".42 .43 .42 1",
+        specular=".12",
+        shininess=".04",
+        reflectance="0",
+        metallic="0",
+        roughness=".8",
+    )
     for x in (-1.17, 1.17):
         for y in (-0.72, 0.72):
             b.box(base, (x, y, 0.12), (0.10, 0.10, 0.12), "metal", collision=True)
@@ -425,31 +505,15 @@ def _geotechnical_testbed(b, base, params):
         b.box(
             base, (0, side * 0.76, 0.62), (1.155, 0.055, 0.33), "bright", collision=True
         )
-        for index in range(8):
-            x = -1.12 + index * 0.28
-            for row in range(2):
-                z = 0.34 + row * 0.27
-                b.rod(
-                    base,
-                    (x, side * 0.825, z),
-                    (x + 0.14, side * 0.825, z + 0.25),
-                    0.018,
-                    "metal",
-                )
-                b.rod(
-                    base,
-                    (x + 0.14, side * 0.825, z + 0.25),
-                    (x + 0.28, side * 0.825, z),
-                    0.018,
-                    "metal",
-                )
+        _gcf_diamond_wall(b, base, 1.15, side * 0.825, "xz")
+        _gcf_diamond_wall(b, base, 0.76, side * 1.294, "yz")
         b.box(
             base, (side * 1.30, 0, 1.025), (0.10, 0.89, 0.045), "metal", collision=True
         )
         b.box(base, (side * 1.30, 0, 1.088), (0.035, 0.84, 0.018), "bright")
         for y in (-0.69, 0.69):
             b.box(base, (side * 1.30, y, 0.94), (0.075, 0.065, 0.044), "metal")
-    b.box(base, (0, 0, 0.585), (1.15, 0.69, 0.295), "copper", collision=True)
+    b.box(base, (0, 0, 0.585), (1.15, 0.69, 0.295), "gcf_inert_bed", collision=True)
     b.box(base, (0.04, 0.18, 0.96), (0.06, 0.06, 0.08), "sample", collision=True)
     b.site(base, "inert_pier", (0.04, 0.18, 1.04), 0.005)
     bridge = b.moving(
@@ -464,7 +528,18 @@ def _geotechnical_testbed(b, base, params):
     )
     for side in (-1, 1):
         b.box(
-            bridge, (side * 1.30, 0, 0.12), (0.09, 0.18, 0.21), "sample", collision=True
+            bridge,
+            (side * 1.30, 0, 0.12),
+            (0.09, 0.18, 0.21),
+            "guard_red",
+            collision=True,
+        )
+        b.box(
+            bridge,
+            (side * 1.30, 0, 0.355),
+            (0.09, 0.18, 0.025),
+            "guard_red",
+            collision=True,
         )
         b.cylinder(
             bridge,
@@ -474,45 +549,24 @@ def _geotechnical_testbed(b, base, params):
             "dark",
             euler=(0, math.pi / 2, 0),
         )
-    for y in (-0.12, 0.12):
+    for y in (-0.15, 0.15):
         for z in (0.035, 0.34):
             b.box(bridge, (0, y, z), (1.23, 0.018, 0.025), "bright", collision=True)
-        # Open lightening apertures: ring frames rather than painted fake holes.
-        for index in range(9):
-            x = -1.07 + index * 0.2675
-            b.ring(
-                bridge, (x, y, 0.19), 0.118, 0.018, "bright", plane="xz", segments=18
-            )
+    _gcf_bridge_webs(b, bridge)
     b.box(bridge, (0, 0, 0.38), (1.28, 0.17, 0.025), "metal", collision=True)
     trolley = b.moving(
         bridge, "carriage_x", (0, 0, 0.245), (1, 0, 0), (-0.76, 0.76), mass=1.4, kp=420
     )
-    b.box(trolley, (0, 0, 0), (0.13, 0.16, 0.075), "dark", collision=True)
-    b.box(trolley, (0, -0.22, -0.01), (0.10, 0.16, 0.06), "metal")
-    b.rod(trolley, (0, -0.25, 0.14), (0, -0.25, -0.22), 0.035, "metal")
-    zstage = b.moving(
-        trolley,
-        "probe_height",
-        (0, -0.25, -0.18),
-        (0, 0, 1),
-        (-0.04, 0.09),
-        mass=0.20,
-        kp=230,
+    # The carriage rides above the solid web rather than intersecting it.
+    # Its lower face meets the deck at bridge-local z=.405; the overhanging
+    # bracket supports the unchanged external probe column and axis origins.
+    b.box(trolley, (0, 0, 0.215), (0.13, 0.16, 0.055), "dark", collision=True).set(
+        "name", b.unique("gcf_top_carriage")
     )
-    b.box(zstage, (0, 0, 0), (0.055, 0.048, 0.055), "dark")
-    rotator = b.moving(
-        zstage,
-        "probe_rotation",
-        (0, 0, -0.055),
-        (0, 0, 1),
-        (-0.7, 0.7),
-        kind="hinge",
-        mass=0.05,
-        kp=130,
-    )
-    b.cylinder(rotator, (0, 0, 0), 0.035, 0.015, "metal")
-    b.rod(rotator, (0, 0, -0.015), (0, 0, -0.045), 0.013, "bright", collision=True)
-    b.box(rotator, (0.023, 0, -0.045), (0.025, 0.005, 0.005), "bright", collision=True)
+    b.box(trolley, (0, -0.22, 0.17), (0.10, 0.16, 0.01), "metal", collision=True)
+    from real_labs.hkust_probe_geometry import add_probe_head
+
+    add_probe_head(b, trolley)
     b.metadata["capabilities"] = [
         "bridge_translation",
         "transverse_carriage",
@@ -522,6 +576,9 @@ def _geotechnical_testbed(b, base, params):
     ]
     b.metadata["limitations"].append(
         "Standalone mechanical positioning rig only, with a rigid inert bed and pier. It does not spin, generate centrifuge acceleration, deform soil, apply calibrated loads, model earthquakes or reproduce the GCF control system."
+    )
+    b.metadata["limitations"].append(
+        "Flat perforated bridge webs, staggered hole sizes and diamond wall stiffeners follow the official robot photograph. Hole dimensions, weld sections and the top-carriage bracket are estimated exterior reconstruction, not measured CAD or structural validation. Web contact is decomposed around each true bore; slide joints idealize captive guide reactions."
     )
 
 

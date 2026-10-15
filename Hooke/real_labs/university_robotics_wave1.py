@@ -6,6 +6,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 
 from real_labs.architecture import box
+from real_labs.manchester_details import parked_service_cable, retaining_pads
 
 
 SOURCE = "https://sites.manchester.ac.uk/robotics/research/"
@@ -30,7 +31,7 @@ def _rotate_local_z(quaternion, angle):
 
 
 def _import_gen3(b, mount):
-    """Keep OEM-derived meshes, link transforms and inertias; expose bounded home offsets."""
+    """Keep source link frames/inertias and express native limits as home offsets."""
     source = ET.parse(GEN3 / "gen3.xml").getroot()
     for source_mesh in source.findall("asset/mesh"):
         mesh = deepcopy(source_mesh)
@@ -60,6 +61,14 @@ def _import_gen3(b, mount):
         body.set("gravcomp", "1")
         joint = body.find("joint")
         if joint is not None:
+            native_range = joint.get("range")
+            limits = (
+                tuple(
+                    float(value) - HOME[joint_index] for value in native_range.split()
+                )
+                if native_range
+                else (-math.pi, math.pi)
+            )
             # Fold the supplied home pose into the body frame. Controls report
             # offsets from that pose, never incorrectly report OEM joint angles.
             q = tuple(float(v) for v in body.get("quat", "1 0 0 0").split())
@@ -72,7 +81,7 @@ def _import_gen3(b, mount):
                 type="hinge",
                 axis="0 0 1",
                 limited="true",
-                range="-0.14 0.14",
+                range=_numbers(limits),
                 damping="1",
                 armature="0.01",
             )
@@ -86,13 +95,13 @@ def _import_gen3(b, mount):
                 kp=str(kp),
                 kv=str(kv),
                 ctrllimited="true",
-                ctrlrange="-0.14 0.14",
+                ctrlrange=_numbers(limits),
                 forcelimited="true",
                 forcerange=f"-{force} {force}",
             )
             b.metadata["joints"][key] = name
             b.metadata["actuators"][key] = actuator
-            b.metadata["joint_ranges"][key] = [-0.14, 0.14]
+            b.metadata["joint_ranges"][key] = list(limits)
             b.metadata["actuator_modes"][key] = "position"
             joint_index += 1
         for geom in body.findall("geom"):
@@ -170,6 +179,9 @@ def _manchester(b, base, params):
             "dark",
         )
     b.site(hand, "tool_center", (0, 0, 0.125), 0.002)
+    for geom in hand.findall("geom"):
+        geom.set("contype", "1")
+        geom.set("conaffinity", "1")
     # The inert target is fixed in a genuine table-supported inspection jig;
     # no rigidly attached target is presented as a completed robotic grasp.
     b.box(base, (-0.55, 0.24, 0.012), (0.11, 0.09, 0.012), "metal", collision=True)
@@ -177,13 +189,14 @@ def _manchester(b, base, params):
     for x in (-0.590, -0.510):
         b.box(base, (x, 0.24, 0.035), (0.013, 0.045, 0.011), "blue", collision=True)
     b.site(base, "inspection_block", (-0.55, 0.24, 0.047), 0.001)
-    b.rod(base, (-0.045, -0.01, 0.12), (-0.16, -0.15, 0.05), 0.006, "warning")
-    b.rod(base, (-0.16, -0.15, 0.05), (-0.22, -0.21, -0.28), 0.006, "warning")
-    b.rod(base, (-0.22, -0.21, -0.28), (-0.12, -0.17, -0.39), 0.006, "warning")
+    b.site(base, "inspection_standoff", (-0.55, 0.24, 0.170), 0.001)
+    retaining_pads(b, base)
+    parked_service_cable(b, base)
     b.metadata["capabilities"] = [
         "seven_independent_gen3_joint_offset_servos",
         "visible_clamped_inspection_block",
-        "fixed_three_finger_visual_tool",
+        "fixed_open_three_finger_contact_tool",
+        "collision_checked_empty_tool_inspection_and_return",
     ]
     b.metadata["asset_provenance"] = {
         "robot": "Local MuJoCo Menagerie Kinova Gen3, OEM-derived meshes/inertias; substitute for the photographed robot",
@@ -192,8 +205,25 @@ def _manchester(b, base, params):
         "license_file": "Hooke/model/robot_menagerie/kinova_gen3/LICENSE",
         "license_text": (GEN3 / "LICENSE").read_text(encoding="utf-8"),
         "original_home_rad": list(HOME),
-        "control_semantics": "Offsets in radians around imported home pose, restricted to +/- 0.14 rad",
+        "control_semantics": "Offsets around imported home. Source joint 2/4/6 hard limits are translated to offsets; source-unlimited axes use an authored finite +/-pi offset window. Collision-aware planning is required; not every combination is admissible.",
     }
+    b.metadata["inspection_operation"] = {
+        "entry_point": "real_labs.manchester_motion.inspect_manchester",
+        "object_site": b.metadata["sites"]["inspection_block"],
+        "tool_site": b.metadata["sites"]["tool_center"],
+        "standoff_site": b.metadata["sites"]["inspection_standoff"],
+        "height_above_block_top_m": 0.100,
+        "tool_axis_in_equipment_frame": [0, 0, -1],
+        "semantics": "Position the empty fixed hand above the retained block, point the tool axis down and return to measured start. No grasp, imaging quality or object motion is claimed.",
+    }
+    b.metadata["inspection_targets"] = {
+        f"joint_{index}_offset": 0.08 for index in range(1, 8)
+    }
+    b.metadata["inspection_target_basis"] = (
+        "Independent 0.08 rad actuator-response smoke checks around home, not a workspace "
+        "or task test. Native-range shoulder-only commands can strike the retained table; "
+        "the separate inspection_operation uses coordinated full-hand collision planning."
+    )
     b.metadata["limitations"].append(
         "Gen3 is a locally available licensed substitute, not the exact photographed Kinova/Quanser model. Original three-finger tool is fixed open; no grasp success, OEM calibration, torque fidelity, full workspace or human interaction is claimed."
     )

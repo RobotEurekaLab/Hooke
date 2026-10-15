@@ -176,6 +176,19 @@
             1.005
           ],
           "fovy": 45
+        },
+        "tip_inspection": {
+          "position": [
+            -0.385,
+            0.36,
+            1.055
+          ],
+          "target": [
+            -0.45,
+            0.505,
+            0.999
+          ],
+          "fovy": 34
         }
       },
       "layout_rationale": [
@@ -189,7 +202,8 @@
         "The source image has no dimensional scale, manufacturer identification or documented motorized control contract; all axes are mechanical surrogates.",
         "Probe tips remain in a clearance pose. Contact-force physics, current-voltage response, impedance, semiconductor transport and calibrated measurement are absent.",
         "Only the local probe setup is modeled; the full in-house, cleanroom and shared microscopy inventories are not reproduced.",
-        "MuJoCo CPU mechanical controls can be checked; USD/GLB/Blender are visual snapshots without validated Isaac dynamics."
+        "MuJoCo CPU mechanical controls can be checked; USD/GLB/Blender are visual snapshots without validated Isaac dynamics.",
+        "Probe-holder contact surfaces are enabled for mechanical clearance checks. The centered lower-stop tip-to-pad gap remains 3.78 mm; this is not an electrical touchdown task. The added tip inspection view uses unchanged metric geometry."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -198,8 +212,10 @@
         ],
         "reviewed_at": "2026-10-03",
         "dimension_confidence": "Undimensioned close-up; all room and apparatus dimensions estimated",
-        "rights": "Original authored geometry, no source photographs redistributed"
-      }
+        "rights": "Original authored geometry, no source photographs redistributed",
+        "detail_scope": "Asymmetric broad foreground shaft, slim bent rear holder and collar details follow the official low-resolution close-up. Guide-bearing interiors and fasteners are estimates. Original tip endpoints/radii, three controls and intentional noncontact gap are preserved; raised stage/puck and surrounding room are authored."
+      },
+      "detail_revision": "20261004 asymmetric probe holders with open contact-enabled guides"
     }
   ]
 }

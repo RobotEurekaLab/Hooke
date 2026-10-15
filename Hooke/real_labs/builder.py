@@ -1,4 +1,4 @@
-"""Compose ten evidence-labelled laboratory layouts and mechanical instruments."""
+"""Compose reference laboratory layouts and mechanically operable instruments."""
 
 import math
 import xml.etree.ElementTree as ET
@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 import numpy as np
 
 from real_labs.catalog import scene
+from real_labs.cameras import mounted_camera_records
 from real_labs.equipment import add_equipment
 from real_labs.furnishings import add_reference_features
 from real_labs.reuse import attach_asset
@@ -362,6 +363,7 @@ def build_scene(identifier):
     world = ET.SubElement(root, "worldbody")
     ET.SubElement(root, "actuator")
     revised = "architecture" in definition["room"]
+    furnishing_assumptions = []
     if revised:
         from real_labs.industrial_features import add_features as industrial_features
         from real_labs.wetlab_features import add_features as wetlab_features
@@ -369,7 +371,11 @@ def build_scene(identifier):
 
         build_room(world, definition["room"])
         for item in definition["benches"]:
-            build_bench(world, item, definition["room"]["accent"])
+            furnishing_assumptions.append(
+                build_bench(
+                    world, item, definition["room"]["accent"], asset=root.find("asset")
+                )
+            )
         for furnish in (industrial_features, wetlab_features, specialist_features):
             furnish(root, world, definition)
         if definition.get("university_expansion"):
@@ -377,7 +383,7 @@ def build_scene(identifier):
                 add_features as university_features,
             )
 
-            university_features(world, definition)
+            root.find("asset").extend(university_features(world, definition))
     else:
         room(world, definition["room"])
         for item in definition["benches"]:
@@ -433,6 +439,13 @@ def build_scene(identifier):
         if "support" in item:
             record["support"] = item["support"]
         rows.append(record)
+    from real_labs.source_context_details import add_details
+
+    add_details(root, definition)
+    if identifier == "nasa_planetary":
+        from real_labs.nasa_rover_geometry import configure_task
+
+        configure_task(root, rows)
     w, d, h = definition["room"]["size"]
     primary = next(
         item
@@ -469,6 +482,7 @@ def build_scene(identifier):
         ),
     )
     views.update(definition.get("camera", {}))
+    mounted_cameras = mounted_camera_records(world, rows, views)
     for name, view in views.items():
         camera(world, name, view["position"], view["target"], view.get("fovy", 48))
     ET.SubElement(root, "keyframe")
@@ -490,7 +504,10 @@ def build_scene(identifier):
         )
         + ", not a surveyed or institution-validated twin",
         specimens=specimens,
-        camera_names=list(views),
+        furnishing_assumptions=furnishing_assumptions,
+        camera_names=[*views, *(item["name"] for item in mounted_cameras)],
     )
+    if mounted_cameras:
+        manifest["mounted_cameras"] = mounted_cameras
     ET.indent(root, space="  ")
     return root, manifest

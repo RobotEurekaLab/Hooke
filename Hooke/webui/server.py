@@ -150,7 +150,7 @@ def api_scene():
                            interaction_url=navigation["url"]), 413
         return jsonify(
             image_png_base64=base64.b64encode(image).decode("ascii"),
-            task_info={"prefix": navigation["task_label"] + " — recorded CPU preview",
+            task_info={"prefix": navigation["task_label"] + " — recorded preview",
                        "interaction_url": navigation["url"], "seed_applied": False},
             render_mode="recorded_preview", robot=_robot_entry_json(ROBOTS[robot]),
         )

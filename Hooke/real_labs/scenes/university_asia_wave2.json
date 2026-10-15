@@ -12,9 +12,9 @@
       ],
       "reference_notes": "Opened official equipment page and visually checked its SNOM photograph: microscope on an optical table with adjacent imaging display. Page associates the Nanophotonics facility with S1-B2A-02. Photograph supports a local workstation only. Do not combine equipment from COEB's other separately named rooms.",
       "observed_cues": [
-        "Perforated black optical table supporting an upright microscope and raised optical components.",
-        "Tall silver microscope frame with coarse focus knobs and a compact sample region.",
-        "Large monitor immediately right of apparatus; dark optical-bay background."
+        "Sculpted light microscope body and coarse/fine side focus drums under stacked dark optical components.",
+        "Metallic specimen platform beneath a compact objective/fibre holder, with a dark optical bay.",
+        "Large adjacent monitor and foreground controls; displayed source images are not reproduced as simulated measurements."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "gravity": [
@@ -83,9 +83,9 @@
           "yaw": 0,
           "style": "optical",
           "color": [
-            0.56,
-            0.6,
-            0.59,
+            0.10,
+            0.11,
+            0.12,
             1
           ],
           "accessories": false
@@ -132,10 +132,11 @@
         }
       ],
       "task": {
-        "name": "NTU COEB Near-Field Optical Workstation mechanical positioning",
-        "description": "Move a visible inert coupon in coarse XY and adjust probe clearance above it; near-field optical physics is absent.",
+        "name": "NTU COEB dry probe and coupon registration",
+        "description": "Physically raise the probe, register a retained inert coupon in XY, inspect the measured millimetre standoff and return using original axes.",
         "primary_equipment": "snom_station",
-        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+        "observable": "Actual state and geometric marker alignment with every completed physics-step clearance checks; no optical acquisition.",
+        "entrypoint": "real_labs.ntu_coeb_motion.inspect_coeb_registration"
       },
       "camera": {
         "overview": {
@@ -176,12 +177,25 @@
             1.2
           ],
           "fovy": 44
+        },
+        "probe_registration": {
+          "position": [
+            -0.495,
+            0.125,
+            1.245
+          ],
+          "target": [
+            -0.543,
+            0.206,
+            1.192
+          ],
+          "fovy": 20
         }
       },
       "layout_rationale": [
         "Perforated optical table, white microscope, tall external probe head and adjacent large display follow the inspected local photo.",
         "A dark rear light screen is reference-informed context; room perimeter and side counter are estimated.",
-        "The microscope frame supports the probe head and specimen stages; the display has an explicit foot and post seated on the same board."
+        "A connected cast-style body carries open crossed sample slides and a guided probe stack. The adjacent inactive display has a rear-mounted post on a common board."
       ],
       "limitations": [
         "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
@@ -190,7 +204,10 @@
         "The target is an inert coupon, not a validated photonic specimen.",
         "No nanoscale motion accuracy, near-field imaging or spectroscopy is claimed.",
         "Only COEB Nanophotonics S1-B2A-02 is targeted; other COEB rooms are excluded.",
-        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation.",
+        "External microscope silhouette follows the reviewed low-resolution official photo; hidden guides, fine fibre shape and all unspecified dimensions are authored estimates.",
+        "The 125 micrometre fibre and 50 micrometre blunt terminal are visible geometric proxies, not a verified SNOM aperture or nanometre-performance model.",
+        "Source display data are not replicated; the display is inactive. The added close view is a virtual inspection camera, not calibrated microscopy."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -735,6 +752,19 @@
             1.02
           ],
           "fovy": 48
+        },
+        "probe_assembly": {
+          "position": [
+            0.44,
+            -0.79,
+            1.54
+          ],
+          "target": [
+            0,
+            -0.025,
+            1.285
+          ],
+          "fovy": 38
         }
       },
       "layout_rationale": [

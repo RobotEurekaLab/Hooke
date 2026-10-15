@@ -149,7 +149,8 @@
         "Unknown dimensions, loads and motion limits are authored estimates.",
         "Scientific process and manufacturer performance are not established by the mechanical checks.",
         "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
-        "Source reference media are private review inputs and are not distributed with authored assets."
+        "Source reference media are private review inputs and are not distributed with authored assets.",
+        "Open bearing repair preserves original control travel; loaded tests apply small authored axial force/torque. Ideal joints, rather than a calibrated bearing model, retain the moving fixture across running clearances."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -160,8 +161,17 @@
         ],
         "reviewed_at": "2026-10-03",
         "dimension_confidence": "Only separately attributed published dimensions are verified; remaining geometry estimated",
-        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
-      }
+        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified.",
+        "fixture_support_repair": {
+          "revision": 1,
+          "source_visible": "Clear tall article with broad circular upper end plate; original dimensions retained as estimates. Published tunnel cross section and local segment unchanged.",
+          "authored_changes": "Grounded base feet, 10 mm lowered fixed base top, connected rail mounts, contact-capable open linear sleeves, rotary shaft/open plate and upper foil clamp.",
+          "preserved": "Original two joint frames, ranges, moving masses/inertias, servo gains/limits, clear foil/end-plate dimensions, site and all three cameras.",
+          "clearance_basis": "Authored 0.6 mm radial gaps and 1 mm thrust gap; ideal MuJoCo joints carry load, not a calibrated physical bearing.",
+          "limits": "A bounded retained inert fixture, not OEM CAD or aerodynamics. Glazing reflection, unmeasured room layout and real test-section service access remain unresolved."
+        }
+      },
+      "detail_revision": "open supported dry fixture guides and rotary bearing, 2026-10-05"
     },
     {
       "id": "kfupm_building_materials",
@@ -482,19 +492,47 @@
             1.6
           ],
           "fovy": 51
+        },
+        "reference": {
+          "position": [
+            -3.7,
+            -3.8,
+            2.5
+          ],
+          "target": [
+            0,
+            0.1,
+            1.7
+          ],
+          "fovy": 70
+        },
+        "probe_detail": {
+          "position": [
+            1.92,
+            0.19,
+            1.74
+          ],
+          "target": [
+            2.14,
+            0.6,
+            1.61
+          ],
+          "fovy": 47
         }
       },
       "layout_rationale": [
         "The historical official photo anchors the large teal inlet screen, central hub, annular contrasting sections, floor stands and access steps.",
         "All detailed dimensions, local hall bounds and present-day equipment arrangement remain unverified.",
-        "No hidden rotor is fabricated. The external dry reference traverse is an authored mechanism; turbine flow and efficiency remain outside scope."
+        "No hidden rotor is fabricated. The external dry reference traverse is an authored mechanism; turbine flow and efficiency remain outside scope.",
+        "The external traverse has supported open Y/Z bearings, a connected probe head and clamped reference pad. Its geometry and 0.6 mm bearing gaps are authored estimates; continuous duct skins retain all original enabled casing cells."
       ],
       "limitations": [
         "Reference-informed prototype, not surveyed, institution-approved or endorsed.",
         "Unknown dimensions, loads and motion limits are authored estimates.",
         "Scientific process and manufacturer performance are not established by the mechanical checks.",
         "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
-        "Source reference media are private review inputs and are not distributed with authored assets."
+        "Source reference media are private review inputs and are not distributed with authored assets.",
+        "The historical photograph does not establish the present room layout or rig dimensions. The external dry probe fixture remains authored and does not measure turbine flow; stair and service geometry is estimated, not safety-certified."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -505,8 +543,28 @@
         ],
         "reviewed_at": "2026-10-03",
         "dimension_confidence": "Only separately attributed published dimensions are verified; remaining geometry estimated",
-        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
-      }
+        "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified.",
+        "historical_context_reconstruction": {
+          "revision": 2,
+          "source_visible": [
+            "Large screened teal inlet and flanged casing sections",
+            "Rear rectangular casing and rising metal transition",
+            "Narrow inclined access stair and nearby controls/services",
+            "Pale aisle marking beside the access stair"
+          ],
+          "authored_estimates": "Screen 15 mm pitch / 2.4 mm wire diameter; flange sections, rear transition, stair framing, cable routes and hall structural placement estimated from a single 627 x 420 historical official photograph. A 45 mm painted aisle line follows the visible workshop cue; its placement is estimated. Existing generic floor seam geometry is retained and remains less faithful than the photographed workshop floor.",
+          "preservation": "Original enabled apparatus geometry, two-axis dry fixture, body inertias, controls and all five cameras retained; only old disabled coarse screen/rim presentation is superseded.",
+          "support": "Enabled finite woven rods, open flange proxies and floor/roof-connected fixed context. An authored open annular shoulder connects the previously detached intermediate casing. Original treads and legs remain inside the additional supported stair assembly. Cable route stays outside the casing and terminates at an exterior socket.",
+          "scope": "Local visual correspondence, not surveyed room reconstruction, hidden rotor design, calibrated flow or a qualified access/safety system."
+        }
+      },
+      "mechanical_operation": {
+        "entrypoint": "real_labs.whittle_probe_motion.inspect_whittle_reference",
+        "scope": "Measured noncontact approach to a retained reference carried by the external traverse; no turbine flow or measurement calibration",
+        "original_axis_frames_ranges_and_drives_preserved": true,
+        "nominal_closest_tip_gap_m": 0.006
+      },
+      "detail_revision": "Historical inlet, flange, rear casing and access context, 2026-10-05"
     },
     {
       "id": "birmingham_advanced_micro_edm",
@@ -518,7 +576,7 @@
         "https://www.birmingham.ac.uk/research/centres-institutes/research-in-mechanical-engineering/advanced-manufacturing-research-group/facilities",
         "https://www.birmingham.ac.uk/Images/College-EPS-only/mechanical/research/advanced-manufacturing/micro-edm1.jpg"
       ],
-      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Tall rectangular glazed machine front with visible paired wire wheels and central work tray. Angled controller to the right and adjacent second tool projecting into foreground. Narrow rust-red floor aisle, wall conduits and separate computer cart. Machine model details and dimensions are not verified; room boundaries inferred from one view. Mechanical fixture positioning only, without energized discharge or manufacturing process.",
+      "reference_notes": "Official installed wire-machine photograph reviewed. Cream rectangular front, two prominent lower guide wheels, smaller upper rollers, sloped work tray, inclined right controller and rust-red narrow aisle are photo-informed. Machine model, dimensions and room boundaries are unverified. The supported crossed slides, generic 0.20 mm inspection wire and rear-open 8 mm calibration slot are explicitly authored dry task geometry, not recovered OEM internals.",
       "observed_cues": [
         "Tall rectangular glazed machine front with visible paired wire wheels and central work tray.",
         "Angled controller to the right and adjacent second tool projecting into foreground.",
@@ -610,7 +668,7 @@
           ],
           "yaw": 0,
           "params": {},
-          "role": "Move a retained inert metal coupon on the dry XY fixture inside a reconstructed wire-machine facade.",
+          "role": "Align a retained pre-slotted calibration coupon, enter around a supported fixed wire, then retract using collision-checked measured XY motion.",
           "evidence": "Independently authored exterior based on actual reviewed university photograph; detailed dimensions estimated",
           "source_urls": [
             "https://www.birmingham.ac.uk/research/centres-institutes/research-in-mechanical-engineering/advanced-manufacturing-research-group/facilities"
@@ -622,10 +680,10 @@
         }
       ],
       "task": {
-        "name": "Birmingham Micro-EDM Workroom mechanical inspection",
-        "description": "Move a retained inert metal coupon on the dry XY fixture inside a reconstructed wire-machine facade.",
+        "name": "Dry wire and open-slot alignment",
+        "description": "Align a retained pre-slotted calibration coupon, enter around a supported fixed wire, then retract using collision-checked measured XY motion.",
         "primary_equipment": "primary_apparatus",
-        "observable": "Visible bounded dry mechanical motion; no scientific measurement is synthesized."
+        "observable": "Measured alignment, physical slot clearance and return position. Arbitrary XY commands may be collision-blocked. No cutting or electrical discharge is synthesized."
       },
       "camera": {
         "overview": {
@@ -666,10 +724,23 @@
             1.09
           ],
           "fovy": 48
+        },
+        "wire_interface": {
+          "position": [
+            -0.4,
+            0.51,
+            1.19
+          ],
+          "target": [
+            -0.3,
+            0.78,
+            1.04
+          ],
+          "fovy": 38
         }
       },
       "layout_rationale": [
-        "Cream glazed machine frame, exposed guide wheels, work tray and inclined right controller reproduce the installed-machine photograph.",
+        "Cream frame, paired prominent lower wheels, sloped tray, connected inner panels and inclined controller follow visible exterior cues; guide and carriage internals are authored.",
         "Rust-red aisle, side computer cart, wall conduits and the cropped casing of a second machine follow visible room cues.",
         "Room dimensions, wire-machine model and interior mechanisms are unverified. No energized discharge, liquid dielectric or machining process is simulated."
       ],
@@ -678,8 +749,24 @@
         "Unknown dimensions, loads and motion limits are authored estimates.",
         "Scientific process and manufacturer performance are not established by the mechanical checks.",
         "MuJoCo mechanics are CPU-testable; visual USD export does not establish Isaac runtime validation.",
-        "Source reference media are private review inputs and are not distributed with authored assets."
+        "Source reference media are private review inputs and are not distributed with authored assets.",
+        "Dry calibration aid has a generic 0.20 mm wire and 8 mm open calibration slot (not a kerf); the intact joint ranges contain collision-blocked configurations. Retained coupon is not a free graspable workpiece. No EDM removal, wire tension, material response or accuracy validation."
       ],
+      "source_context_revision": {
+        "date": "2026-10-07",
+        "reference_image_sha256": "452e40213ac855eec6b716ccb94700049c5361e5afb8d61ac439500ef4b3ffe0",
+        "observed_cues": [
+          "Foreground inclined cream console, passive key cluster and emergency pendant beside a genuinely open metal guard and cropped red tray",
+          "Parked red-edged black chair, secondary casing beacon and rear-side grey cupboard",
+          "Connected wall outlets and service leads, deep beige side-cart casing and rear-left table",
+          "Dense gridded upper machine cover and populated right control desk"
+        ],
+        "dimension_basis": "Dimensions, placement, perforation pitch, furniture supports and cable routing are authored estimates from one 565 x 477 official photograph. The partially occluded foreground tool, service functions and exact machine generation are unidentified.",
+        "physical_scope": "All added solids are fixed, contact-capable and supported. The guard has actual 7 mm apertures. The raised roof grille lies over the retained solid cover and does not imply ventilation through the machine. Chair, secondary console and beacon are passive room context, not operational devices.",
+        "preservation": "Original geometry, bodies, moving fixture, joint frames/ranges/drives, contact masks, cameras and dry-task contract are retained exactly. Additions use zero density on existing fixed bodies.",
+        "evidence_directory": "temp/university/optimization_120_20261004/acceptance_20261007/batch01/source_closure/edm",
+        "source_scope": "Visible apparatus and photographed local work bay with declared estimates; no surveyed unseen room, exact OEM CAD, electrical/EDM behavior or native Isaac claim."
+      },
       "reference_detail_evidence": {
         "reviewed_local_files": [
           "temp/university/expansion_100_20261003/references/asia03/birmingham_edm.jpg"

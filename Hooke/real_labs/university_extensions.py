@@ -65,7 +65,10 @@ def instrument_specs():
 
 
 def add_features(world, definition):
+    """Build room details and collect optional inline mesh/material assets."""
+    assets = []
     for name in MODULES:
         features = import_module("real_labs." + name).FEATURES
         if definition["id"] in features:
-            features[definition["id"]](world, definition)
+            assets.extend(features[definition["id"]](world, definition) or ())
+    return assets

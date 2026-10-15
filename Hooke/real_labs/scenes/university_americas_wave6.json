@@ -176,22 +176,56 @@
             1.3
           ],
           "fovy": 63
+        },
+        "port_inspection": {
+          "position": [
+            0.1,
+            -2.28,
+            1.388
+          ],
+          "target": [
+            -0.64,
+            -2.382,
+            1.314
+          ],
+          "fovy": 24
         }
       },
       "task": {
-        "name": "BaPSF LAPD Diagnostic Access Segment",
-        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "name": "Dry probe alignment, insertion and retraction",
+        "description": "Align the retained inert probe to a genuine side port, measure its entry into the empty local chamber, inspect the physical head and retract to the external neck without reset.",
         "primary_equipment": "lapd_segment",
-        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+        "observable": "Actual port-relative tip/head positions, visible physical inspection land, contact clearances and joint state. No plasma or vacuum response."
       },
       "limitations": [
         "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
         "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
         "Reference imagery is private research evidence; release rights remain unresolved.",
         "Published 18 m length and 0.75 m diameter describe plasma volume, not a surveyed machine envelope.",
-        "Local vessel length, coil number, external geometry and two-axis dry alignment fixture are estimated.",
-        "No plasma, vacuum, field, radiation, fusion or diagnostic-response model."
-      ]
+        "No plasma, vacuum, field, radiation, fusion or diagnostic-response model.",
+        "Local hollow vessel, 26 coil bands, enlarged open side port and extended dry diagnostic probe are authored estimates.",
+        "The retained probe retracts into the external neck; no full probe extraction, seal or vacuum state is modeled.",
+        "Only the active local port is a functional dry access interface; other photographed port/drive cues remain static."
+      ],
+      "detail_revision": 2,
+      "reference_detail_evidence": {
+        "probe_access": {
+          "source_url": "https://newsroom.ucla.edu/releases/physicists-solve-mystery-surrounding-aurora-borealis",
+          "reference_image": "temp/university/expansion_100_20261003/research/americas_02_sources/stills/ucla_lapd_wide.img",
+          "reference_sha256": "a60de438e19c81454f0e45391e08e54ea59ef740f0402327e2bc6e870e112dae",
+          "source_supported": [
+            "Flat dense magenta coil bands",
+            "Repeated side ports, external probe drive rods and floor stands",
+            "Cream service lines, overhead manifold and supported cabinets"
+          ],
+          "authored": [
+            "7.8 m open-ended local chamber excerpt with 26 coil bands",
+            "150 mm open access bore, extended inert probe and 0.6 mm guide clearances",
+            "Original two joint frames/ranges with reconstructed open guides",
+            "Dry retained probe inspection; no complete extraction, vacuum seal, pressure, field or diagnostic transfer model"
+          ]
+        }
+      }
     },
     {
       "id": "penn_qnf_denton_sputter",
@@ -620,13 +654,39 @@
             1.4
           ],
           "fovy": 68
+        },
+        "feed_detail": {
+          "position": [
+            2.49,
+            0.72,
+            1.53
+          ],
+          "target": [
+            2.35,
+            1.225,
+            1.475
+          ],
+          "fovy": 22
+        },
+        "feed_stage": {
+          "position": [
+            2.67,
+            0.85,
+            2.1
+          ],
+          "target": [
+            2.35,
+            1.29,
+            1.96
+          ],
+          "fovy": 42
         }
       },
       "task": {
         "name": "PARADIM Bulk-Crystal Feed Inspection Bay",
-        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "description": "Raise the retained cold inert coupon to a physical height datum, index its azimuth for direct surface inspection, return the azimuth and feed height without reset.",
         "primary_equipment": "mirror_furnace",
-        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+        "observable": "Actual feed/azimuth positions, coupon surface and fixed lower-spindle separation, physical witness visibility and complete per-step direct clearance checks."
       },
       "limitations": [
         "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
@@ -634,8 +694,11 @@
         "Reference imagery is private research evidence; release rights remain unresolved.",
         "All room and furnace dimensions, hidden connections and feed strokes are estimates.",
         "No heat transfer, light focusing, high pressure, melt, growth kinetics or crystal quality model.",
-        "Historical images do not establish current facility access arrangements."
-      ]
+        "Historical images do not establish current facility access arrangements.",
+        "The supported open feed guides, retained coupon witness, 40 mm inspection height and camera are authored dry mechanical interfaces, not a real crystal-growth procedure.",
+        "Two rounded source-visible closed housings represent the four-mirror exterior; individual internal reflectors and optical paths are not simulated."
+      ],
+      "detail_revision": 2
     },
     {
       "id": "alberta_nanofab_exactacoat",
@@ -744,7 +807,7 @@
         "Top exhaust duct, right-side emergency stop/handheld controllers, and grounded open-frame support table.",
         "Only the photographed local workstation is represented; surrounding ECERF room boundaries are estimated.",
         "The source amber illumination is approximated through warm wall and floor colors.",
-        "The glass front remains fixed and the dry alignment head stays above a rigid inert wafer."
+        "The supported hinged glass front provides physical access; the XY head stays at an authored 50 mm dry wafer standoff."
       ],
       "circulation": {
         "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
@@ -810,13 +873,26 @@
             1.4
           ],
           "fovy": 56
+        },
+        "coater_inspection": {
+          "position": [
+            0.52,
+            -0.45,
+            1.64
+          ],
+          "target": [
+            0.05,
+            0.49,
+            1.2
+          ],
+          "fovy": 43
         }
       },
       "task": {
-        "name": "Alberta nanoFAB ExactaCoat dry alignment workstation",
-        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "name": "Dry nozzle registration and hinged specimen access",
+        "description": "Physically align the dry nozzle axis above a fixed marker, park the head, open the supported door, inspect access, then close and return. The 50 mm wafer standoff is authored geometry, not a calibrated coating height.",
         "primary_equipment": "coater_alignment",
-        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+        "observable": "Measured surface-relative XY error, fixed geometric standoff, physical door opening, access observation and return error"
       },
       "limitations": [
         "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
@@ -824,7 +900,26 @@
         "Reference imagery is private research evidence; release rights remain unresolved.",
         "No spray, aerosol, liquid, coating process or film-thickness simulation.",
         "No OEM CAD; 300 mm maximum specimen diameter is the only equipment scale directly stated."
-      ]
+      ],
+      "detail_revision": 2,
+      "reference_detail_evidence": {
+        "coater_access": {
+          "photo": "temp/university/expansion_100_20261003/research/americas_02_sources/stills/alberta_coater.img",
+          "sha256": "b5c2fa9b671a3910799a6fb466274fba68a75361882f0cfb56c3132791949e5d",
+          "observed": [
+            "Open table, cream enclosure and broad hinged glass door",
+            "Layered head, looped services, prominent controller and additional coiled lead"
+          ],
+          "inferred": [
+            "All exterior dimensions except documented specimen capacity",
+            "Open rectangular guide shoes with nominal 0.6 mm gaps",
+            "Door hinge/pin dimensions and 1.25 rad access range",
+            "Layered nozzle with authored 50 mm wafer clearance, 48 mm marker clearance",
+            "Supported parked service loop and capped moving-head connections, with no fluid feed"
+          ],
+          "process_boundary": "Dry geometric registration/access only; no spray, aerosol transport, deposition, coating chemistry, hardware interlock or safety validation"
+        }
+      }
     }
   ]
 }

@@ -127,6 +127,61 @@ def _big_blue(b, base, params):
     )
 
 
+def _eth_ceiling(world, definition):
+    """Side-soffit downlights follow the photograph; dimensions are estimated.
+
+    The default suspended fixtures intersected the lower yellow panels. The
+    reference shows lights along the white sides instead of below that strip.
+    """
+    for geom in list(world.findall("geom")):
+        if geom.get("name", "").startswith(
+            ("arch_luminaire_", "arch_roof_fixture_support_")
+        ):
+            world.remove(geom)
+    width, depth, height = definition["room"]["size"]
+    panel_edge, underside = 4.59, 3.635
+    half_width = (width / 2 - panel_edge) / 2
+    half_height = (height - underside) / 2
+    for side in (-1, 1):
+        x = side * (panel_edge + half_width)
+        box(
+            world,
+            f"arch_roof_gcc_white_soffit_{side}",
+            (half_width, depth / 2, half_height),
+            (x, 0, underside + half_height),
+            (0.88, 0.88, 0.85, 1),
+            collision=False,
+        )
+        for index, y in enumerate((-depth * 0.33, 0, depth * 0.33)):
+            for name, radius, half_thickness, z, color in (
+                (
+                    "arch_roof_gcc_downlight_rim",
+                    0.15,
+                    0.003,
+                    underside - 0.003,
+                    ".75 .77 .77 1",
+                ),
+                (
+                    "arch_luminaire_gcc_downlight",
+                    0.12,
+                    0.0015,
+                    underside - 0.0075,
+                    ".94 .95 .93 1",
+                ),
+            ):
+                ET.SubElement(
+                    world,
+                    "geom",
+                    name=f"{name}_{side}_{index}",
+                    type="cylinder",
+                    size=f"{radius} {half_thickness}",
+                    pos=f"{x} {y} {z}",
+                    rgba=color,
+                    contype="0",
+                    conaffinity="0",
+                )
+
+
 def _eth_features(world, definition):
     for x in (-2.3, 2.3):
         for y in (-2.6, 2.5):
@@ -138,6 +193,7 @@ def _eth_features(world, definition):
                 (0.17, 0.20, 0.21, 1),
                 collision=False,
             )
+
             for index in range(18):
                 box(
                     world,
@@ -166,6 +222,7 @@ def _eth_features(world, definition):
                 (0.80, 0.69, 0.045, 1),
                 collision=False,
             )
+    _eth_ceiling(world, definition)
 
 
 BUILDERS = {"gcc_beam_inspection_workspace": _big_blue}

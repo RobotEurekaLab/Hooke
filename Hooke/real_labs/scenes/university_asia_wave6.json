@@ -8,13 +8,15 @@
       "university_expansion": true,
       "source_urls": [
         "https://mics.yonsei.ac.kr/equipment/",
-        "https://mics.yonsei.ac.kr/wp-content/uploads/2024/11/mics-main-img-v10-1-840x562.jpeg"
+        "https://mics.yonsei.ac.kr/wp-content/uploads/2024/11/mics-main-img-v10-1-840x562.jpeg",
+        "https://ggb.com/wp-content/uploads/2025/04/mod40a.pdf"
       ],
       "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. A round silver sample chuck carries a small rectangular substrate and a tiny central device. Two black RF probe heads approach from opposing sides, with thick coaxial lines receding upward. A third rear multi-contact head connects to a flat ribbon cable; clamping screws and dark adjustment hardware surround the chuck.",
       "observed_cues": [
         "A round silver sample chuck carries a small rectangular substrate and a tiny central device.",
         "Two black RF probe heads approach from opposing sides, with thick coaxial lines receding upward.",
-        "A third rear multi-contact head connects to a flat ribbon cable; clamping screws and dark adjustment hardware surround the chuck."
+        "A third rear multi-contact head connects to a flat ribbon cable; clamping screws and dark adjustment hardware surround the chuck.",
+        "The installed head photograph visibly labels 40A-GSG-100-DP-N; manufacturer nomenclature gives 100 micrometre GSG tip spacing and a DP-style diagonal connector."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "gravity": [
@@ -110,10 +112,11 @@
         }
       ],
       "task": {
-        "name": "Yonsei MICS RF Probe Workstation mechanical positioning",
-        "description": "Translate an inert electronic coupon and retract one supported RF probe head while showing the three-sided probe arrangement.",
+        "name": "Inspect true-pitch RF probe alignment",
+        "description": "Raise the guided right probe, position the retained inert coupon under the three source-informed 100 micrometre-pitch tips, observe a dry clearance and physically return both axes.",
         "primary_equipment": "rf_probe",
-        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+        "observable": "Source-bound actuator motion with every-step direct interface checks, actual tip-to-pad projections, failure hold and no automatic reset.",
+        "entrypoint": "real_labs.yonsei_probe_motion.ProbeInspection(session).inspect_and_return()"
       },
       "camera": {
         "overview": {
@@ -154,6 +157,19 @@
             0.935
           ],
           "fovy": 42
+        },
+        "probe_alignment": {
+          "position": [
+            0.023,
+            0.213,
+            0.945
+          ],
+          "target": [
+            0.0015,
+            0.25,
+            0.922
+          ],
+          "fovy": 18
         }
       },
       "layout_rationale": [
@@ -172,7 +188,10 @@
         "The official laboratory page presents this close-up as its probe station, but it gives no wider bench view or dimensions. Reconstruct only the apparatus work area, with any microscope stand, room and hidden mechanics explicitly estimated. No RF signal model or contact metrology is verified.",
         "The official reference is only a close-up; the surrounding room and bench are explicitly generic estimates.",
         "The 4.8 x 4.0 mm inert coupon and all apparatus dimensions are authored estimates. No RF response, contact calibration or hardware precision is implied.",
-        "No microscope stand was invented because the close-up does not show one."
+        "No microscope stand was invented because the close-up does not show one.",
+        "Source-informed 100 micrometre GSG pitch; 50 micrometre needle diameter and 50 by 70 micrometre inert pads are estimates, not measured OEM parts.",
+        "Rigid visible substrate clips and inert die do not simulate attachment mechanics. Probe service stubs intentionally terminate at the authored close-up boundary; no electrical feed or deformable cable is implemented.",
+        "The original two axis frames, limits and control parameters remain; the measured dry route stays above the pads and establishes no RF/contact measurement."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -181,9 +200,11 @@
         "reviewed_sha256": [
           "4b8af9c08a3534c80ad2242f5dd3493af314c7eb74bb598ab388924c9df65e4e"
         ],
-        "reviewed_at": "2026-10-03",
+        "reviewed_at": "2026-10-04",
         "dimension_confidence": "Estimated from public undimensioned photographs",
-        "rights": "No source-image redistribution authorization verified"
+        "rights": "No source-image redistribution authorization verified",
+        "tip_pitch_basis": "Official photo label plus manufacturer Model 40A ordering convention (ground-to-signal pitch in micrometres). Other tip dimensions remain authored.",
+        "manufacturer_reference": "https://ggb.com/wp-content/uploads/2025/04/mod40a.pdf"
       }
     }
   ]

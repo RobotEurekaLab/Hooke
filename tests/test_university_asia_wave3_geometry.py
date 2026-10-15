@@ -67,10 +67,16 @@ class UniversityAsiaWave3GeometryTests(unittest.TestCase):
             np.testing.assert_allclose(session.model.opt.gravity, [0, 0, -9.81])
             for key, control in session.controls.items():
                 span = control.upper - control.lower
-                for fraction in (0.15, 0.85, 0.25):
-                    result = session.command(
-                        *key, control.lower + fraction * span, duration=2
-                    )
+                targets = [control.lower + f * span for f in (0.15, 0.85, 0.25)]
+                if (
+                    identifier == "polyu_materials_tribology"
+                    and key[1] == "probe_height"
+                ):
+                    # Revision3 has real contact within the unchanged physical
+                    # travel. This is a free-motion servo smoke, not load testing.
+                    targets = [0.02, 0.065, -0.02]
+                for target in targets:
+                    result = session.command(*key, target, duration=2)
                     self.assertLessEqual(
                         abs(result["error"]),
                         max(1e-6, span * 0.025),
@@ -89,10 +95,27 @@ class UniversityAsiaWave3GeometryTests(unittest.TestCase):
                     pose = [0.0] * len(controls)
                     pose[axis] = value
                     poses.append(pose)
+            if identifier == "polyu_materials_tribology":
+                # The lower joint region now physically reaches the specimen.
+                # Its deliberate obstruction is tested below and in the actual
+                # loaded task; the free-motion grid keeps5 mm tip clearance.
+                poses = list(
+                    (x, z, 0, 0, 0, 0)
+                    for x, z in product(
+                        np.linspace(-0.065, 0.065, 5), np.linspace(-0.035, 0.08, 5)
+                    )
+                )
             for pose in poses:
                 session.reset()
                 for control, value in zip(controls, pose):
                     session.data.qpos[session.model.jnt_qposadr[control.joint]] = value
+                if identifier == "polyu_materials_tribology":
+                    # Private clearance grid: place the free coupon on the
+                    # translated support. Actual retention is tested by stepping.
+                    address = session.model.joint(
+                        "umt_access__free_coupon_joint"
+                    ).qposadr[0]
+                    session.data.qpos[address] += pose[0]
                 mujoco.mj_forward(session.model, session.data)
                 penetration = [
                     (
@@ -105,14 +128,25 @@ class UniversityAsiaWave3GeometryTests(unittest.TestCase):
                 ]
                 self.assertEqual(penetration, [], (identifier, pose, penetration))
 
-    def test_clamped_sites_have_visible_same_body_specimens(self):
+    def test_sample_sites_have_visible_specimens_with_declared_attachment(self):
         for identifier in SCENES:
             session = make_session(identifier)
             self.assertTrue(audit_layout(scene(identifier))["passed"])
             for item in session.equipment.values():
-                self.assertEqual(item["sample_attachment"], "clamped")
                 site = session.model.site(item["sample_site"]).id
-                body = session.model.site_bodyid[site]
+                if identifier == "polyu_materials_tribology":
+                    self.assertEqual(item["sample_attachment"], "supported")
+                    spec = item["existing_free_specimen"]
+                    body = session.model.body(spec["body"]).id
+                    self.assertEqual(
+                        session.model.jnt_type[
+                            session.model.joint(spec["freejoint"]).id
+                        ],
+                        mujoco.mjtJoint.mjJNT_FREE,
+                    )
+                else:
+                    self.assertEqual(item["sample_attachment"], "clamped")
+                    body = session.model.site_bodyid[site]
                 nearby = [
                     index
                     for index in range(session.model.ngeom)
@@ -125,18 +159,27 @@ class UniversityAsiaWave3GeometryTests(unittest.TestCase):
                 ]
                 self.assertTrue(nearby, (identifier, item["id"]))
 
-    def test_tribometer_probe_keeps_clearance_over_coupon(self):
+    def test_tribometer_revision3_reaches_contact_before_lower_joint_limit(self):
         session = make_session("polyu_materials_tribology")
+        model, data = session.model, session.data
         height = session.controls["umt_station", "probe_height"]
-        site = session.model.site(session.equipment["umt_station"]["sample_site"]).id
-        body = session.model.body("umt_station__body_probe_height").id
-        for value in (height.lower, height.upper):
-            session.data.qpos[session.model.jnt_qposadr[height.joint]] = value
-            mujoco.mj_forward(session.model, session.data)
-            self.assertGreater(
-                session.data.xpos[body, 2] - 0.184 - session.data.site_xpos[site, 2],
-                0.05,
+        np.testing.assert_array_equal(model.jnt_range[height.joint], [-0.10, 0.08])
+        tip = model.geom("umt_station__polyu_counterface").id
+        coupon = model.geom("umt_station__polyu_coupon").id
+        for value, expected in ((0, 0.04), (-0.04, 0), (-0.043, -0.003)):
+            data.qpos[model.jnt_qposadr[height.joint]] = value
+            mujoco.mj_forward(model, data)
+            self.assertAlmostEqual(
+                mujoco.mj_geomDistance(model, data, tip, coupon, 0.05, None),
+                expected,
+                delta=1e-8,
             )
+        self.assertTrue(
+            any(
+                {c.geom1, c.geom2} == {tip, coupon} and c.dist < -0.0029
+                for c in data.contact
+            )
+        )
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ import math
 import xml.etree.ElementTree as ET
 
 from real_labs.architecture import box
+from real_labs.edl_reference_details import edl_cabinets, edl_service_hardware
 
 
 YALE = "https://research.yale.edu/cores/cleanroom"
@@ -29,9 +30,14 @@ def _tube(b, parent, points, radius=0.004, material="cream"):
 
 def _inspection_station(b, base, params):
     """Upright stereo head, broad stand and an authored motorized XY fixture."""
-    b.box(base, (0, 0, 0.018), (0.25, 0.21, 0.018), "cream", collision=True)
-    b.box(base, (0, 0.155, 0.23), (0.052, 0.045, 0.212), "cream", collision=True)
-    b.box(base, (0, 0.151, 0.29), (0.021, 0.050, 0.19), "metal")
+    from real_labs.yale_optical_details import (
+        guide_details,
+        inspection_head,
+        retaining_pads,
+        stand,
+    )
+
+    stand(b, base)
     for x in (-0.17, 0.17):
         _named(
             b.box(base, (x, -0.035, 0.047), (0.022, 0.14, 0.011), "metal"),
@@ -55,44 +61,50 @@ def _inspection_station(b, base, params):
     ystage = b.moving(
         xstage, "stage_y", (0, 0, 0.028), (0, 1, 0), (-0.025, 0.025), mass=0.2, kp=400
     )
-    b.box(ystage, (0, 0, 0), (0.16, 0.12, 0.008), "cyan", collision=True)
-    b.cylinder(ystage, (0, 0, 0.010), 0.045, 0.002, "lens", collision=True)
-    # The wafer coupon is visible geometry rigidly held on the XY stage.
-    for x in (-0.060, 0.060):
-        b.box(ystage, (x, 0, 0.016), (0.014, 0.012, 0.008), "orange")
-        b.rod(ystage, (x, 0, 0.027), (x * 0.68, 0, 0.027), 0.004, "bright")
+    b.box(
+        ystage,
+        (0, 0, 0),
+        (0.16, 0.12, 0.008),
+        "shell",
+        collision=True,
+        rgba=(0.30, 0.40, 0.32, 1),
+    )
+    b.cylinder(
+        ystage,
+        (0, 0, 0.010),
+        0.045,
+        0.002,
+        "lens",
+        collision=True,
+        name=b.name + "__yale_wafer_coupon",
+    )
+    # Retaining pads meet the unchanged kinematically clamped coupon.
+    retaining_pads(b, ystage)
     b.site(ystage, "wafer_coupon", (0, 0, 0.012))
     focus = b.moving(
         base, "focus_height", (0, 0.151, 0.24), (0, 0, 1), (0, 0.025), mass=0.65, kp=650
     )
-    b.box(focus, (0, -0.095, 0.032), (0.07, 0.050, 0.035), "cream", collision=True)
+    b.box(
+        focus,
+        (0, -0.095, 0.032),
+        (0.07, 0.050, 0.035),
+        "cream",
+        collision=True,
+        name=b.name + "__yale_head_support",
+    )
     # The guide sleeve slides around the column; its internal bearing surfaces
     # are represented by the prismatic joint rather than overlapping colliders.
     b.box(focus, (0, -0.002, 0.032), (0.063, 0.058, 0.035), "metal")
-    head = ET.SubElement(focus, "body", pos="0 -0.172 0", gravcomp="1")
-    b.housing(
-        head,
-        [
-            (0.007, 0.060, 0.055, 0),
-            (0.08, 0.088, 0.07, 0),
-            (0.175, 0.064, 0.046, 0.018),
-        ],
-        radius=0.024,
-        material="cream",
+    head = ET.SubElement(
+        focus, "body", name=b.name + "__yale_head", pos="0 -0.172 0", gravcomp="1"
     )
-    b.cylinder(head, (0, 0, -0.010), 0.052, 0.018, "dark", collision=True)
-    b.cylinder(head, (0, 0, -0.032), 0.043, 0.005, "lens")
-    for x in (-0.042, 0.042):
-        b.rod(head, (x, -0.01, 0.13), (x, -0.105, 0.205), 0.025, "cream")
-        b.rod(head, (x, -0.10, 0.20), (x, -0.135, 0.228), 0.023, "dark")
-        b.cylinder(head, (x, -0.137, 0.231), 0.019, 0.005, "lens", euler=(0.90, 0, 0))
-    for x in (-0.096, 0.096):
-        b.cylinder(head, (x, 0, 0.085), 0.030, 0.014, "dark", euler=(0, math.pi / 2, 0))
+    inspection_head(b, head)
     # Orange handling fixture echoes the photographed worktop rather than a
     # conventional inverted microscope or a fictitious commercial model.
     for x in (-0.21, 0.21):
         b.box(base, (x, -0.165, 0.080), (0.017, 0.022, 0.044), "orange")
     b.rod(base, (-0.21, -0.165, 0.108), (0.21, -0.165, 0.108), 0.009, "dark")
+    guide_details(b, base)
     b.metadata["capabilities"] = [
         "XY wafer positioning",
         "inspection head focus-height adjustment",
@@ -155,6 +167,8 @@ FEATURES = {"yale_becton_cleanroom_metrology": _yale_features}
 
 def _structural_frame(b, base, params):
     """Grounded reaction portal, inert beam and an independent sensor traverse."""
+    from real_labs.structural_hall import sensor_riser, timber_cribs
+
     for x in (-1.45, 1.45):
         b.box(base, (x, 0, 0.075), (0.35, 0.43, 0.075), "guard_red", collision=True)
         b.box(base, (x, 0, 2.15), (0.12, 0.16, 2.0), "guard_red", collision=True)
@@ -188,21 +202,7 @@ def _structural_frame(b, base, params):
     b.box(base, (0, 0, 4.05), (1.69, 0.20, 0.18), "guard_red", collision=True)
     for z in (3.85, 4.25):
         b.box(base, (0, 0, z), (1.74, 0.28, 0.025), "guard_red", collision=True)
-    # The slab sits on a pair of full-depth cribbed pedestals, never on air.
-    for y in (-3.05, 3.05):
-        for level in range(5):
-            z = 0.095 + level * 0.19
-            for x in (-0.59, 0.59):
-                _named(
-                    b.box(
-                        base, (x, y, z), (0.11, 0.42, 0.095), "copper", collision=True
-                    ),
-                    b.unique("beam_crib"),
-                )
-        _named(
-            b.box(base, (0, y, 0.975), (0.84, 0.48, 0.025), "metal", collision=True),
-            b.unique("beam_crib_cap"),
-        )
+    timber_cribs(b, base)
     _named(
         b.box(base, (0, 0, 1.20), (0.80, 4.0, 0.20), "cream", collision=True),
         b.unique("inert_concrete_beam"),
@@ -256,8 +256,15 @@ def _structural_frame(b, base, params):
         kp=600,
         force=500,
     )
-    b.box(probe, (0, 0, 0), (0.095, 0.16, 0.020), "blue", collision=True)
-    b.box(probe, (-0.24, 0, 0.065), (0.23, 0.035, 0.025), "bright", collision=True)
+    _named(
+        b.box(probe, (0, 0, 0), (0.095, 0.16, 0.020), "blue", collision=True),
+        b.unique("sensor_sled"),
+    )
+    _named(
+        b.box(probe, (-0.24, 0, 0.065), (0.23, 0.035, 0.025), "bright", collision=True),
+        b.unique("sensor_crossbar"),
+    )
+    sensor_riser(b, probe)
     b.box(probe, (-0.43, 0, 0.015), (0.055, 0.055, 0.035), "dark", collision=True)
     b.cylinder(probe, (-0.43, 0, -0.027), 0.025, 0.008, "lens")
     b.site(probe, "measurement_head", (-0.43, 0, -0.035), size=0.015)
@@ -271,6 +278,8 @@ def _structural_frame(b, base, params):
 
 
 def _texas_features(world, definition):
+    from real_labs.structural_hall import hall_details
+
     steel = (0.24, 0.28, 0.30, 1)
     red = (0.57, 0.16, 0.11, 1)
     for side in (-1, 1):
@@ -330,6 +339,8 @@ def _texas_features(world, definition):
                 collision=False,
             )
 
+    hall_details(world, definition)
+
 
 BUILDERS["ferguson_reaction_frame"] = _structural_frame
 SOURCES["ferguson_reaction_frame"] = {
@@ -359,23 +370,32 @@ def _towing_tank(b, base, params):
             b.unique("tank_sidewall"),
         )
         _named(
-            b.box(base, (x, 0, 1.945), (0.08, 32.2, 0.025), "bright"),
+            b.box(base, (x, 0, 1.945), (0.08, 32.2, 0.025), "bright", collision=True),
             b.unique("carriage_rail"),
         )
         for y in range(-31, 32, 2):
-            b.cylinder(base, (x, y, 1.976), 0.018, 0.007, "dark")
+            b.cylinder(
+                base,
+                (x + math.copysign(0.073, x), y, 1.974),
+                0.006,
+                0.004,
+                "dark",
+                collision=True,
+            )
     for y in (-32.1, 32.1):
         _named(
             b.box(base, (0, y, 1.02), (1.2, 0.10, 0.90), "metal", collision=True),
             b.unique("tank_endwall"),
         )
-    # A transparent surface marks the observed water, without fluid forces.
+    # Static green-brown water appearance from the cached hall photograph;
+    # the shallow visual surface does not imply fluid forces or volume optics.
+    ET.SubElement(b.root.find("asset"), "material", name=b.name + "__mat_turbid_water",
+                  rgba=".17 .22 .11 .92", specular=".5", shininess=".65")
     b.box(
         base,
         (0, 0, 1.67),
         (1.198, 31.995, 0.003),
-        "glass",
-        rgba=(0.10, 0.28, 0.19, 0.34),
+        "turbid_water",
     )
     # The floor datum is authored. A solid service platform brings the rail to
     # operator waist height while retaining the source-published tank depth.
@@ -392,49 +412,9 @@ def _towing_tank(b, base, params):
             "cream",
             collision=True,
         )
-    carriage = b.moving(
-        base,
-        "carriage_travel",
-        (0, -22, 2.22),
-        (0, 1, 0),
-        (0, 8.0),
-        mass=5,
-        kp=1100,
-        force=1200,
-    )
-    b.box(carriage, (0, 0, 0), (1.49, 0.43, 0.05), "metal", collision=True)
-    for x in (-1.3, 1.3):
-        for y in (-0.28, 0.28):
-            _named(
-                b.cylinder(
-                    carriage,
-                    (x, y, -0.15),
-                    0.10,
-                    0.062,
-                    "dark",
-                    euler=(0, math.pi / 2, 0),
-                ),
-                b.unique("carriage_wheel"),
-            )
-        b.box(carriage, (x, 0, 0.28), (0.025, 0.025, 0.23), "warning")
-    b.rod(carriage, (-1.3, 0, 0.51), (1.3, 0, 0.51), 0.025, "warning")
-    for x in (-0.16, 0.16):
-        b.rod(carriage, (x, 0, -0.24), (x, 0, 0.36), 0.014, "bright")
-    b.box(carriage, (0, 0, 0.36), (0.20, 0.12, 0.025), "blue")
-    specimen = b.moving(
-        carriage,
-        "model_immersion",
-        (0, 0, -0.32),
-        (0, 0, -1),
-        (0, 0.35),
-        mass=0.4,
-        kp=600,
-    )
-    b.geom(specimen, "ellipsoid", (0.14, 0.55, 0.12), material="orange", collision=True)
-    b.rod(specimen, (0, 0, 0.11), (0, 0, 0.94), 0.018, "bright")
-    b.box(specimen, (0, 0, 0.70), (0.055, 0.055, 0.035), "dark")
-    b.site(specimen, "tow_model", (0, 0, 0.12), size=0.03)
-    b.site(carriage, "carriage_handle", (0, 0, 0.51), size=0.035)
+    from real_labs.berkeley_tank_geometry import build_carriage
+
+    build_carriage(b, base)
     # Shallow absorber ramp is an inferred end detail, not a wave generator.
     b.box(base, (0, 30.1, 0.42), (1.15, 1.70, 0.06), "dark", euler=(0.17, 0, 0))
     b.metadata["capabilities"] = [
@@ -444,6 +424,10 @@ def _towing_tank(b, base, params):
     b.metadata["limitations"].append(
         "Tank clear dimensions are published; carriage shape, 8 m demonstration stroke, mounting hardware and raised service datum are estimates. Water is visual only, with no buoyancy, drag or wave propagation."
     )
+
+    from real_labs.berkeley_hall_context import apply_tank_appearance
+
+    apply_tank_appearance(base)
 
 
 def _berkeley_features(world, definition):
@@ -496,6 +480,10 @@ def _berkeley_features(world, definition):
                 conaffinity="0",
             )
 
+    from real_labs.berkeley_hall_context import add_context
+
+    add_context(world, definition)
+
 
 BUILDERS["richmond_towing_carriage"] = _towing_tank
 SOURCES["richmond_towing_carriage"] = {
@@ -515,76 +503,7 @@ FEATURES["berkeley_richmond_towing_tank"] = _berkeley_features
 
 def _electrochemical_station(b, base, params):
     """Recognizable 850e/850BP exteriors around an inert coupon fixture."""
-    for x, y, width, depth, height in (
-        (0.43, 0.10, 0.43, 0.48, 0.79),
-        (-0.47, 0.10, 0.40, 0.38, 0.40),
-    ):
-        for dx in (-width * 0.38, width * 0.38):
-            for dy in (-depth * 0.37, depth * 0.37):
-                b.cylinder(
-                    base,
-                    (x + dx, y + dy, 0.018),
-                    0.018,
-                    0.018,
-                    "rubber",
-                    collision=True,
-                )
-        b.box(
-            base,
-            (x, y, 0.036 + height / 2),
-            (width / 2, depth / 2, height / 2),
-            "cream",
-            collision=True,
-        )
-        b.box(
-            base,
-            (x, y - depth / 2 - 0.007, 0.036 + height / 2),
-            (width / 2 - 0.01, 0.007, height / 2 - 0.009),
-            "shell",
-        )
-    # Tall tester front: screen, stacked controller faces, emergency stop and
-    # large electrical terminals reproduce visible exterior cues, not firmware.
-    b.screen(base, (0.48, -0.156, 0.68), 0.14, 0.055)
-    for z in (0.53, 0.41):
-        b.screen(base, (0.50, -0.157, z), 0.11, 0.069)
-    b.cylinder(
-        base, (0.49, -0.165, 0.29), 0.029, 0.012, "guard_red", euler=(math.pi / 2, 0, 0)
-    )
-    b.ring(base, (0.49, -0.179, 0.29), 0.037, 0.008, "warning", "xz")
-    for x, mat in ((0.33, "warning"), (0.43, "blue"), (0.57, "guard_red")):
-        b.cylinder(
-            base, (x, -0.166, 0.14), 0.015, 0.012, mat, euler=(math.pi / 2, 0, 0)
-        )
-    b.box(base, (0.43, 0.08, 0.91), (0.23, 0.20, 0.084), "shell", collision=True)
-    b.vents(base, (0.43, -0.123, 0.865), 0.38, rows=6)
-    b.box(base, (0.44, -0.129, 0.962), (0.09, 0.002, 0.003), "dark")
-    # Left pressure module, with two large dials and two smaller regulators.
-    for x in (-0.57, -0.36):
-        for z, radius in ((0.31, 0.046), (0.17, 0.030)):
-            b.cylinder(
-                base, (x, -0.106, z), radius, 0.009, "bright", euler=(math.pi / 2, 0, 0)
-            )
-            b.cylinder(
-                base,
-                (x, -0.117, z),
-                radius * 0.85,
-                0.002,
-                "cream",
-                euler=(math.pi / 2, 0, 0),
-            )
-            b.rod(
-                base,
-                (x, -0.121, z),
-                (x + radius * 0.42, -0.121, z + radius * 0.37),
-                0.002,
-                "dark",
-            )
-        b.cylinder(
-            base, (x, -0.113, 0.09), 0.022, 0.019, "dark", euler=(math.pi / 2, 0, 0)
-        )
-    b.box(base, (-0.73, 0.23, 0.10), (0.13, 0.15, 0.07), "blue", collision=True)
-    b.box(base, (-0.73, 0.23, 0.015), (0.10, 0.12, 0.015), "dark", collision=True)
-    b.screen(base, (-0.73, 0.071, 0.11), 0.16, 0.047)
+    edl_cabinets(b, base)
     # Compact drawer and lifting compression plate: representative dry fixture,
     # not a claim that the photographed setup contains these exact mechanisms.
     b.box(base, (-0.05, -0.46, 0.012), (0.25, 0.24, 0.012), "metal", collision=True)
@@ -620,24 +539,7 @@ def _electrochemical_station(b, base, params):
         b.box(clamp, (0, y, 0), (0.060, 0.025, 0.014), "bright", collision=True)
     b.site(clamp, "clamp_handle", (0, -0.10, 0))
     b.rod(drawer, (-0.09, -0.17, 0), (0.09, -0.17, 0), 0.009, "metal")
-    for i in range(3):
-        _tube(
-            b,
-            base,
-            [
-                (-0.56 + i * 0.045, -0.11, 0.40),
-                (-0.75 + i * 0.03, -0.35, 0.26),
-                (-0.56 + i * 0.03, -0.54, 0.045),
-            ],
-            0.0035,
-        )
-    _tube(
-        b,
-        base,
-        [(0.57, -0.17, 0.14), (0.78, -0.44, 0.08), (0.37, -0.64, 0.05)],
-        0.006,
-        "guard_red",
-    )
+    edl_service_hardware(b, base)
     b.metadata["capabilities"] = [
         "dry coupon drawer positioning",
         "compression-fixture opening",

@@ -136,6 +136,10 @@ class ExperimentSession:
         if self.adapter is not None:
             from microscopy.native_trace import archive_native_trace
             result["native_trace"] = archive_native_trace(self.adapter, self.runtime, self.episode)
+        from microscopy.interaction_trace import archive_interaction_trace
+        interaction = archive_interaction_trace(self.task.mechanics, self.episode)
+        if interaction is not None:
+            result["interaction_trace"] = interaction
         write_json(self.output / "result.json", result)
         write_json(self.episode / "result.json", result)
         return dict(ok=True, state=self.public_state(), checks=result["checks"])

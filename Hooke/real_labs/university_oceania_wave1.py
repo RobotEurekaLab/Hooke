@@ -23,8 +23,8 @@ SOURCES = {
     "convection_imaging_tank": {
         "reference": "University of Sydney photographed side-heated convection tank",
         "url": SYDNEY,
-        "dimensions_m": [2.03, 0.78, 2.07],
-        "dimension_basis": "Local heated-tank apparatus dimensions estimated from the official photograph. The separately listed 30 m wave flume dimensions do not apply. The two-axis probe gantry is an authored positioning aid.",
+        "dimensions_m": [2.03, 2.64, 2.30],
+        "dimension_basis": "Local heated-tank apparatus dimensions estimated from the official photograph. The separately listed 30 m wave flume dimensions do not apply. The two-axis gantry and separate observation stand are authored inspection aids, with a conservative combined envelope.",
     },
     "rotating_annulus_station": {
         "reference": "ANU Climate and Fluid Physics Laboratory installed Large Rotating Annulus",
@@ -77,8 +77,8 @@ def _annular_liquid(b, parent, inner, outer, bottom, top):
         following = (index + 1) % count
         for a, c in (
             (0, count),
-            (2 * count, 3 * count),
-            (0, 2 * count),
+            (3 * count, 2 * count),
+            (2 * count, 0),
             (count, 3 * count),
         ):
             faces.extend(
@@ -101,14 +101,16 @@ def _annular_liquid(b, parent, inner, outer, bottom, top):
         name=name,
         type="mesh",
         mesh=name,
-        material=b.name + "__mat_water",
+        material=b.name + "__mat_annulus_water",
         contype="0",
         conaffinity="0",
     )
 
 
 def _annulus(b, base, params):
-    _material(b, "water", (0.035, 0.25, 0.10, 0.48), specular=0.75, shininess=0.65)
+    _material(b, "annulus_water", (0.08, 0.40, 0.17, 0.48), specular=0.25, shininess=0.45)
+    _material(b, "clear_acrylic", (0.92, 0.96, 0.98, 0.08), specular=0.5, shininess=0.7)
+    b.metadata["inspection_softbox_visible_in_glass"] = False
     b.cylinder(base, (0, 0, 0.045), 0.60, 0.045, "dark", collision=True)
     b.cylinder(base, (0, 0, 0.36), 0.33, 0.315, "metal", collision=True)
     b.cylinder(base, (0, 0, 0.715), 0.49, 0.04, "dark", collision=True)
@@ -125,7 +127,7 @@ def _annulus(b, base, params):
         force=3000,
     )
     b.cylinder(tank, (0, 0, 0.025), 0.81, 0.025, "metal", collision=True)
-    _faceted_wall(b, tank, 0.79, 0.02, 0.05, 0.40, "glass")
+    _faceted_wall(b, tank, 0.79, 0.02, 0.05, 0.40, "clear_acrylic")
     _faceted_wall(b, tank, 0.18, 0.034, 0.05, 0.42, "copper", 32)
     for z in (0.059, 0.437):
         b.ring(tank, (0, 0, z), 0.790, 0.012, "bright", segments=40)
@@ -140,33 +142,19 @@ def _annulus(b, base, params):
             "dark",
         )
     _annular_liquid(b, tank, 0.201, 0.777, 0.054, 0.365)
-    # Profiling rail is supported by a rim bracket carried by the rotating table.
-    b.box(tank, (0.65, 0.32, 0.45), (0.12, 0.045, 0.025), "metal")
-    for x in (0.59, 0.66):
-        b.rod(tank, (x, 0.32, 0.45), (x, 0.32, 1.0), 0.009, "bright")
-    b.box(tank, (0.625, 0.32, 1.0), (0.065, 0.045, 0.018), "dark")
-    b.cylinder(tank, (0.625, 0.32, 1.04), 0.026, 0.04, "dark")
-    probe = b.moving(
-        tank,
-        "probe_height",
-        (0.625, 0.32, 0.77),
-        (0, 0, 1),
-        (-0.07, 0.07),
-        mass=0.08,
-        kp=220,
-    )
-    b.box(probe, (0, 0, 0), (0.06, 0.035, 0.03), "dark")
-    b.box(probe, (-0.11, 0, 0), (0.11, 0.018, 0.012), "metal")
-    b.rod(probe, (-0.20, 0, 0), (-0.20, 0, -0.49), 0.002, "bright", collision=True)
-    # Raised inert calibration target is visible above the static liquid surface.
-    b.rod(tank, (0.39, -0.12, 0.05), (0.39, -0.12, 0.390), 0.009, "metal")
-    b.box(tank, (0.39, -0.12, 0.393), (0.035, 0.025, 0.003), "cream")
-    b.box(tank, (0.39, -0.12, 0.3962), (0.015, 0.002, 0.0002), "dark")
-    b.site(tank, "calibration_target", (0.39, -0.12, 0.3964), 0.001)
+    # Source-informed open guidance; original profiler axis and tip are retained.
+    from real_labs.annulus_guide_geometry import add_profiling_guide
+
+    add_profiling_guide(b, tank)
+    from real_labs.annulus_reference_geometry import add_registration_ring
+
+    add_registration_ring(b, tank)
     b.metadata["capabilities"] = [
         "bounded_tank_rotation",
         "profiling_probe_height",
         "visible_inert_calibration_target",
+        "coaxial_reference_registration",
+        "open_reference_bore_passage",
     ]
     b.metadata["limitations"].append(
         "The annular liquid is a static visual mesh. There is no fluid motion, heat transport, thermistor response, rotation-rate performance or measured flow field. The raised inert calibration target is an authored mechanical aid."
@@ -190,45 +178,9 @@ def _annulus_features(world, definition):
             dark,
             collision=False,
         )
-    # The control desk and electronics rack are visible in the source photo.
-    box(world, "anu_monitor_foot", (0.18, 0.11, 0.016), (1.29, 0.80, 0.776), dark)
-    box(world, "anu_monitor_post", (0.025, 0.022, 0.17), (1.29, 0.84, 0.954), metal)
-    box(world, "anu_monitor_bezel", (0.30, 0.032, 0.19), (1.29, 0.84, 1.20), dark)
-    box(
-        world,
-        "anu_monitor_display",
-        (0.278, 0.002, 0.165),
-        (1.29, 0.805, 1.20),
-        (0.08, 0.18, 0.22, 1),
-        collision=False,
-    )
-    box(world, "anu_keyboard", (0.23, 0.085, 0.012), (1.29, 0.56, 0.772), dark)
-    for x in (1.93, 2.46):
-        for y in (0.40, 0.99):
-            box(
-                world,
-                f"anu_rack_post_{x}_{y}",
-                (0.021, 0.021, 0.80),
-                (x, y, 0.80),
-                metal,
-            )
-    for index in range(5):
-        z = 0.20 + index * 0.28
-        box(
-            world,
-            f"anu_rack_unit_{index}",
-            (0.265, 0.29, 0.10),
-            (2.195, 0.695, z),
-            (0.67, 0.68, 0.67, 1),
-        )
-        box(
-            world,
-            f"anu_rack_screen_{index}",
-            (0.070, 0.004, 0.03),
-            (2.10, 0.397, z + 0.02),
-            (0.02, 0.12, 0.10, 1),
-            collision=False,
-        )
+    from real_labs.annulus_context import add_control_station
+
+    add_control_station(world, definition)
     for index in range(18):
         box(
             world,
@@ -241,83 +193,9 @@ def _annulus_features(world, definition):
 
 
 def _convection_tank(b, base, params):
-    _material(b, "blue_liquid", (0.05, 0.30, 0.62, 0.16), specular=0.65, shininess=0.5)
-    _material(b, "blue_backlight", (0.025, 0.17, 0.42, 1), emission=0.15)
-    for x in (-0.94, 0.94):
-        for y in (-0.30, 0.30):
-            b.box(base, (x, y, 0.40), (0.035, 0.035, 0.40), "dark", collision=True)
-            b.box(base, (x, y, 0.018), (0.075, 0.065, 0.018), "metal")
-        b.box(base, (x, 0, 0.79), (0.045, 0.37, 0.04), "dark", collision=True)
-    for y in (-0.30, 0.30):
-        b.box(base, (0, y, 0.78), (0.98, 0.03, 0.04), "dark", collision=True)
-        b.box(base, (0, y, 0.30), (0.98, 0.025, 0.025), "metal")
-    # Insulating supports connect both tank ends to the rigid stand.
-    for x in (-0.67, 0.67):
-        b.box(base, (x, 0, 0.845), (0.15, 0.23, 0.025), "cream", collision=True)
-    b.box(base, (0, 0, 0.885), (0.81, 0.20, 0.015), "metal", collision=True)
-    b.box(base, (0, 0, 1.26), (0.786, 0.168, 0.358), "blue_liquid")
-    for y in (-0.19, 0.19):
-        b.box(base, (0, y, 1.28), (0.80, 0.012, 0.38), "glass", collision=True)
-        for z in (0.90, 1.66):
-            b.box(base, (0, y, z), (0.84, 0.018, 0.025), "bright")
-            for index in range(19):
-                b.cylinder(
-                    base,
-                    (-0.77 + index * 0.085, y - 0.021, z),
-                    0.007,
-                    0.006,
-                    "dark",
-                    euler=(math.pi / 2, 0, 0),
-                )
-    b.box(base, (-0.80, 0, 1.28), (0.012, 0.19, 0.38), "glass", collision=True)
-    b.box(base, (0.825, 0, 1.28), (0.027, 0.23, 0.43), "metal", collision=True)
-    b.box(base, (0.786, 0, 1.28), (0.012, 0.17, 0.35), "copper")
-    for z in (0.92, 1.06, 1.20, 1.34, 1.48, 1.62):
-        for y in (-0.205, 0.205):
-            b.cylinder(
-                base, (0.858, y, z), 0.010, 0.008, "bright", euler=(0, math.pi / 2, 0)
-            )
-    for y in (-0.10, 0.10):
-        b.rod(base, (0.89, y, 0.88), (0.89, y, 1.67), 0.012, "bright")
-        b.rod(base, (0.83, y, 0.92), (0.94, y, 0.92), 0.012, "metal")
-        b.rod(base, (0.89, y, 1.64), (0.82, y, 1.64), 0.012, "metal")
-        for z in (1.02, 1.53):
-            b.box(base, (0.89, y, z), (0.018, 0.035, 0.022), "dark")
-    for x in (-0.59, 0.58):
-        for z in (0.94, 1.61):
-            b.box(base, (x, -0.215, z), (0.24, 0.018, 0.039), "dark")
-    # Backlight and probe gantry are carried by the same stand, not floating decor.
-    for x in (-0.94, 0.94):
-        b.box(base, (x, 0.28, 1.35), (0.028, 0.028, 0.53), "dark", collision=True)
-    b.box(base, (0, 0.28, 1.88), (0.97, 0.035, 0.03), "metal")
-    b.box(base, (0, 0.315, 1.32), (0.90, 0.012, 0.45), "blue_backlight")
-    carrier = b.moving(
-        base, "probe_x", (0, 0.28, 1.88), (1, 0, 0), (-0.55, 0.55), mass=0.30, kp=450
-    )
-    b.box(carrier, (0, 0, 0.018), (0.075, 0.065, 0.025), "dark")
-    b.box(carrier, (0, -0.14, 0.025), (0.020, 0.14, 0.018), "metal")
-    b.box(carrier, (0, -0.28, 0.045), (0.04, 0.028, 0.12), "dark")
-    target = b.moving(
-        carrier,
-        "probe_height",
-        (0, -0.28, 0),
-        (0, 0, 1),
-        (-0.09, 0.09),
-        mass=0.04,
-        kp=180,
-    )
-    b.rod(target, (0, 0, 0.10), (0, 0, -0.64), 0.003, "bright", collision=True)
-    b.box(target, (0, 0, -0.65), (0.015, 0.001, 0.01), "cream")
-    b.box(target, (0, -0.0012, -0.65), (0.010, 0.0002, 0.001), "dark")
-    b.site(target, "calibration_plate", (0, -0.0014, -0.65), 0.001)
-    b.metadata["capabilities"] = [
-        "probe_horizontal_traverse",
-        "probe_height",
-        "visible_inert_calibration_plate",
-    ]
-    b.metadata["limitations"].append(
-        "The vertical-plane traverse is an original two-axis inspection proxy. No thermal boundary conditions, convection, water motion, PIV/LIF data, illumination calibration or actual laboratory controller is implemented."
-    )
+    from real_labs.sydney_tank_geometry import build_tank
+
+    return build_tank(b, base, params)
 
 
 def _convection_features(world, definition):
@@ -352,36 +230,6 @@ def _convection_features(world, definition):
         (1.66, 1.153, 0.61),
         (0.03, 0.15, 0.18, 1),
         collision=False,
-    )
-    # A separate supported camera looks into the tank; it does not synthesize PIV.
-    for x in (-1.72, -1.48):
-        box(
-            world,
-            f"sydney_camera_foot_{x}",
-            (0.022, 0.24, 0.023),
-            (x, -0.28, 0.023),
-            (0.20, 0.22, 0.24, 1),
-        )
-    box(
-        world,
-        "sydney_camera_crossfoot",
-        (0.15, 0.026, 0.022),
-        (-1.60, -0.28, 0.052),
-        (0.30, 0.33, 0.35, 1),
-    )
-    box(
-        world,
-        "sydney_camera_post",
-        (0.021, 0.021, 0.67),
-        (-1.60, -0.28, 0.742),
-        (0.43, 0.47, 0.51, 1),
-    )
-    box(
-        world,
-        "sydney_camera_head",
-        (0.095, 0.07, 0.06),
-        (-1.54, -0.28, 1.41),
-        (0.10, 0.12, 0.14, 1),
     )
 
 
@@ -542,9 +390,9 @@ SAMPLE_INTERFACES = {
     ),
     "rotating_annulus_station": (
         "calibration_target",
-        (0.070, 0.050, 0.006),
+        (0.052, 0.052, 0.006),
         "clamped",
-        "Raised inert calibration plate rigidly supported by the rotating tank",
+        "Authored open coaxial registration ring supported by the rotating tank",
     ),
 }
 FEATURES = {

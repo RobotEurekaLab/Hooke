@@ -776,6 +776,9 @@ def _isotope(world):
     _box(
         world, "isotope_gas_rack", (0.41, 0.025, 0.54), (-0.69, 2.87, 0.66), METAL, True
     )
+    from real_labs.uw_source_services import add_preparation_context
+
+    add_preparation_context(world)
 
 
 def _pathology(world):
@@ -883,3 +886,7 @@ def add_features(root, world, definition):
     function = functions.get(definition["id"])
     if function is not None:
         function(world)
+    if definition["id"] == "rochester_genomics":
+        from real_labs.rochester_context import add_rochester_context
+
+        add_rochester_context(root, world)

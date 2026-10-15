@@ -86,7 +86,7 @@ def _optic(b, base, x, y, z=0.82, angle=0):
 def _snom(b, base, params):
     _optical_table(b, base, 2.9, 1.85)
     # Parallel source enclosures and a cable-dense rear rack establish this room.
-    for x, w, h in ((-0.75, 0.28, 0.19), (-0.14, 0.19, 0.15)):
+    for x, w, h in ((-0.75, 0.28, 0.12), (-0.14, 0.19, 0.09)):
         b.box(base, (x, 0.08, 0.82 + h), (w, 0.68, h), "shell", collision=True)
         for y in (-0.35, 0.45):
             for dx in (-0.075, 0.075):
@@ -104,7 +104,7 @@ def _snom(b, base, params):
                 0.005,
                 "metal",
             )
-    b.box(base, (0.29, -0.25, 0.935), (0.22, 0.20, 0.115), "blue", collision=True)
+    b.box(base, (0.24, -0.28, 0.935), (0.175, 0.18, 0.115), "blue", collision=True)
     b.box(base, (0.13, -0.63, 0.91), (0.28, 0.10, 0.09), "shell", collision=True)
     for x in (-0.05, 0.12, 0.29):
         b.box(base, (x, -0.738, 0.918), (0.060, 0.008, 0.041), "screen")
@@ -123,7 +123,7 @@ def _snom(b, base, params):
         (-0.38, -0.72),
         (0.64, -0.70),
         (1.22, -0.55),
-        (1.20, 0.55),
+        (1.37, 0.65),
     ):
         _optic(b, base, x, y, angle=0.3)
     for x in (-0.25, 0.35):
@@ -144,78 +144,31 @@ def _snom(b, base, params):
             0.005,
             "copper" if i % 3 == 0 else "dark",
         )
-    # Open right-side near-field inspection stage, internally authored.
-    b.box(base, (0.89, 0.19, 0.85), (0.34, 0.37, 0.03), "dark", collision=True)
-    for x in (0.61, 1.17):
-        b.box(base, (x, 0.39, 1.02), (0.023, 0.045, 0.14), "metal", collision=True)
-    b.box(base, (0.89, 0.39, 1.18), (0.31, 0.055, 0.025), "dark", collision=True)
-    for y in (-0.05, 0.12):
-        _tag(
-            b,
-            b.box(base, (0.89, y, 0.8995), (0.23, 0.014, 0.0195), "bright"),
-            "snom_x_guide",
-        )
-    stage = b.moving(
-        base,
-        "specimen_translation",
-        (0.89, 0.035, 0.935),
-        (1, 0, 0),
-        (-0.055, 0.055),
-        mass=0.13,
-        kp=350,
-    )
-    b.box(stage, (0, 0, 0), (0.12, 0.12, 0.016), "dark", collision=True)
-    b.cylinder(stage, (0, 0, 0.023), 0.04, 0.007, "metal", collision=True)
-    _tag(
-        b,
-        b.box(stage, (0, 0, 0.032), (0.009, 0.008, 0.002), "orange", collision=True),
-        "snom_inert_coupon",
-    )
-    b.site(stage, "snom_coupon", (0, -0.010, 0.034))
-    probe = b.moving(
-        base,
-        "inspection_head_height",
-        (0.89, 0.04, 1.14),
-        (0, 0, 1),
-        (-0.02, 0.02),
-        mass=0.15,
-        kp=360,
-    )
-    b.box(probe, (0, 0.135, 0), (0.080, 0.20, 0.045), "dark")
-    b.cylinder(probe, (0, 0, -0.055), 0.019, 0.020, "bright", collision=True)
-    _tag(
-        b,
-        b.cylinder(probe, (0, 0, -0.080), 0.003, 0.005, "bright", collision=True),
-        "snom_probe_tip",
-    )
-    # Rear sleeves visually connect the head crossmember to its support beam.
-    for x in (0.84, 0.94):
-        b.cylinder(base, (x, 0.34, 1.145), 0.008, 0.07, "bright")
-    b.metadata["capabilities"] = [
-        "inert specimen lateral alignment",
-        "bounded dry inspection-head height adjustment",
-    ]
-    b.metadata["limitations"].append(
-        "Original inspection-stage internals inferred within the photographed near-field station exterior. All dimensions and travel estimates; probe remains above target. No SNOM image, light propagation or nanometre performance."
-    )
+    from real_labs.lmu_snom_geometry import add_inspection_station
+
+    add_inspection_station(b, base)
 
 
 def _snom_features(world, definition):
-    for i in range(15):
-        z = 1.12 + i * 0.085
+    # Broad dark fabric screens and window mullions follow the photographed
+    # corner. Their dimensions remain estimates, not a reconstructed floorplan.
+    for i in range(4):
+        x = -1.83 + i * 1.22
         box(
             world,
-            f"lmu_back_blind_{i}",
-            (2.45, 0.012, 0.039),
-            (0, 2.57, z),
-            (0.12, 0.13, 0.14, 1),
+            f"lmu_back_screen_{i}",
+            (0.597, 0.012, 0.63),
+            (x, 2.57, 1.75),
+            (0.13, 0.14, 0.15, 1),
         )
+    for i in range(3):
+        y = -0.34 + i * 1.07
         box(
             world,
-            f"lmu_left_blind_{i}",
-            (0.012, 1.60, 0.039),
-            (-2.67, 0.73, z),
-            (0.12, 0.13, 0.14, 1),
+            f"lmu_left_screen_{i}",
+            (0.012, 0.521, 0.63),
+            (-2.67, y, 1.75),
+            (0.13, 0.14, 0.15, 1),
         )
     box(
         world,
@@ -410,103 +363,10 @@ def _flanged_port(b, parent, euler, extension=0.34, cage=False):
 
 
 def _hqa(b, base, params):
+    from real_labs.heidelberg_alignment_geometry import build_alignment
+
     _optical_table(b, base, 2.25, 1.60, 0.76)
-    for x in (-1.04, 1.04):
-        for y in (-0.66, 0.66):
-            b.box(base, (x, y, 1.50), (0.025, 0.025, 0.74), "metal", collision=True)
-    for y in (-0.66, 0.66):
-        b.box(base, (0, y, 2.245), (1.065, 0.025, 0.025), "metal", collision=True)
-    for x in (-1.04, 1.04):
-        b.box(base, (x, 0, 2.245), (0.025, 0.66, 0.025), "metal", collision=True)
-    for i in range(23):
-        b.box(base, (-1.01 + i * 0.091, 0, 2.272), (0.013, 0.66, 0.005), "metal")
-    for j in range(14):
-        b.box(base, (0, -0.63 + j * 0.097, 2.284), (1.04, 0.013, 0.005), "metal")
-    b.cylinder(base, (-0.40, 0.14, 0.795), 0.20, 0.035, "dark", collision=True)
-    b.cylinder(base, (-0.40, 0.14, 1.145), 0.16, 0.315, "metal", collision=True)
-    chamber = ET.SubElement(base, "body", pos="-.40 .14 1.15")
-    _flanged_port(b, chamber, (math.pi / 2, 0, 0), 0.30, True)
-    _flanged_port(b, chamber, (math.pi / 2 - 0.62, 0, 0.28), 0.28, True)
-    _flanged_port(b, chamber, (math.pi / 2 + 0.62, 0, -0.22), 0.28, True)
-    _flanged_port(b, chamber, (0, math.pi / 2, 0), 0.34, False)
-    _flanged_port(b, chamber, (0, -math.pi / 2, 0), 0.32, True)
-    for x in (-0.67, -0.04):
-        b.box(base, (x, 0.33, 0.97), (0.13, 0.16, 0.21), "dark", collision=True)
-        b.cylinder(base, (x, 0.33, 1.33), 0.080, 0.15, "metal", collision=True)
-        b.box(base, (x, 0.33, 1.61), (0.14, 0.14, 0.13), "guard_red", collision=True)
-    # Source-visible black horizontal optics levels have continuous metal posts.
-    for x in (0.30, 0.89):
-        for y in (-0.16, 0.47):
-            b.cylinder(base, (x, y, 1.365), 0.018, 0.605, "bright", collision=True)
-    for z in (1.04, 1.45, 1.965):
-        b.box(base, (0.595, 0.155, z), (0.335, 0.355, 0.018), "dark", collision=True)
-    for z in (1.12, 1.53):
-        for x in (0.43, 0.76):
-            b.cylinder(base, (x, 0.18, z), 0.055, 0.062, "dark", collision=True)
-            b.cylinder(base, (x, 0.18, z + 0.067), 0.042, 0.005, "lens")
-    # Foreground gimbal is an original dry alignment proxy, not a light solver.
-    b.box(base, (0.37, -0.57, 0.78), (0.14, 0.13, 0.020), "dark", collision=True)
-    b.cylinder(base, (0.37, -0.57, 0.94), 0.020, 0.14, "bright", collision=True)
-    for x in (0.275, 0.465):
-        b.box(base, (x, -0.57, 1.13), (0.016, 0.026, 0.067), "dark", collision=True)
-    tilt = b.moving(
-        base,
-        "alignment_tip",
-        (0.37, -0.57, 1.13),
-        (1, 0, 0),
-        (-0.16, 0.16),
-        kind="hinge",
-        mass=0.06,
-        kp=100,
-    )
-    b.ring(tilt, (0, 0, 0), 0.074, 0.008, "metal", plane="xz")
-    rotation = b.moving(
-        tilt,
-        "alignment_tilt",
-        (0, 0, 0),
-        (0, 0, 1),
-        (-0.20, 0.20),
-        kind="hinge",
-        mass=0.035,
-        kp=85,
-    )
-    _tag(
-        b,
-        b.cylinder(
-            rotation,
-            (0, 0, 0),
-            0.046,
-            0.008,
-            "orange",
-            euler=(math.pi / 2, 0, 0),
-            collision=True,
-        ),
-        "hqa_inert_alignment_disc",
-    )
-    for x in (-0.057, 0.057):
-        b.cylinder(
-            rotation, (x, 0, 0), 0.005, 0.009, "metal", euler=(0, math.pi / 2, 0)
-        )
-    b.site(rotation, "hqa_target", (0, -0.011, 0))
-    for i in range(5):
-        x = -0.90 + i * 0.09
-        b.rod(
-            base, (x, 0.59, 2.245), (x, 0.57, 1.8), 0.007, "blue" if i % 2 else "dark"
-        )
-        b.rod(
-            base,
-            (x, 0.57, 1.8),
-            (x + 0.13, 0.40, 1.45),
-            0.007,
-            "blue" if i % 2 else "dark",
-        )
-    b.metadata["capabilities"] = [
-        "inert optical-target tip adjustment",
-        "inert optical-target tilt adjustment",
-    ]
-    b.metadata["limitations"].append(
-        "Estimated local optical-vacuum apparatus exterior with authored foreground gimbal. Port inventory and supports approximate a single photograph; no vacuum, optical propagation, atomic trapping, quantum evolution or calibrated alignment response."
-    )
+    build_alignment(b, base, params)
 
 
 BUILDERS["heidelberg_hqa_alignment_assembly"] = _hqa

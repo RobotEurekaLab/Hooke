@@ -145,9 +145,72 @@ class ForceContracts(unittest.TestCase):
 
     def test_original_api_restored_after_controller_exception(self):
         adapter,_,_=self.adapter();step=mujoco.mj_step;force=mujoco.mj_contactForce
+        forward=mujoco.mj_forward
         with self.assertRaisesRegex(RuntimeError,'controller'):
             with adapter:raise RuntimeError('controller failed')
         self.assertIs(mujoco.mj_step,step);self.assertIs(mujoco.mj_contactForce,force)
+        self.assertIs(mujoco.mj_forward,forward)
+
+    def test_forward_preserves_native_contacts_and_observed_acceleration(self):
+        adapter,model,data=self.adapter()
+        # This point exists only in the supplied native observation.
+        adapter._native_contacts[0]['pos']=[0,.025,0]
+        data.qacc[0]=123.
+        with adapter:
+            mujoco.mj_forward(model,data)
+            np.testing.assert_allclose(data.contact[0].pos,[0,.025,0])
+            self.assertEqual(data.qacc[0],123.)
+            self.assertEqual(data.nefc,0)
+            scratch=mujoco.MjData(model)
+            scratch.qpos[2]=.09
+            mujoco.mj_forward(model,scratch)
+            self.assertGreater(scratch.nefc,0)
+            self.assertLess(scratch.contact[0].dist,0.)
+        for field in ('qpos','qvel','time'):
+            with self.subTest(field=field):
+                adapter,model,data=self.adapter()
+                if field=='time':data.time+=.01
+                else:getattr(data,field)[0]+=.01
+                with adapter,self.assertRaisesRegex(RuntimeError,'without a native state update'):
+                    mujoco.mj_forward(model,data)
+
+    def test_friction_anchor_preserves_body_wrench_without_inventing_contacts(self):
+        adapter,model,data=self.adapter()
+        state={'qpos':data.qpos.tolist(),'qvel':data.qvel.tolist(),'time':.004,
+               'contacts':[{'geom1':0,'geom2':1,'pos':[0,0,0],
+                            'normal':[0,0,1],'distance':0.,'force':[0,0,9.81]}],
+               'friction_contacts':[{'geom1':0,'geom2':1,'pos':[0,.02,0],
+                                     'force':[-2,0,0]}]}
+        adapter.apply_state(state)
+        self.assertEqual(data.ncon,1)
+        result=np.zeros(6);adapter.contact_force(model,data,0,result)
+        np.testing.assert_allclose(result,[9.81,0,0,0,0,0])
+        adapter.post_constraint(model,data)
+        np.testing.assert_allclose(data.cfrc_ext[1],[0,.2,.04,-2,0,9.81],atol=1e-12)
+        # Equal/opposite force and torque about a common world origin.
+        np.testing.assert_allclose(data.cfrc_ext[:,3:].sum(axis=0),0.,atol=1e-12)
+        world_torques=data.cfrc_ext[:,:3]+np.cross(
+            data.subtree_com[model.body_rootid],data.cfrc_ext[:,3:])
+        np.testing.assert_allclose(world_torques.sum(axis=0),0.,atol=1e-12)
+        # Friction can be reported without a coincident normal point.
+        state['contacts']=[]
+        adapter.apply_state(state);adapter.post_constraint(model,data)
+        self.assertEqual(data.ncon,0)
+        np.testing.assert_allclose(data.cfrc_ext[1],[0,.2,.04,-2,0,0],atol=1e-12)
+        state['friction_contacts']=[]
+        adapter.apply_state(state);adapter.post_constraint(model,data)
+        np.testing.assert_array_equal(data.cfrc_ext,0.)
+
+    def test_advertised_friction_channel_cannot_silently_disappear(self):
+        adapter,model,data=self.adapter()
+        state={'qpos':data.qpos.tolist(),'qvel':data.qvel.tolist(),'time':.004,'contacts':[]}
+        adapter._friction_required=True
+        with self.assertRaisesRegex(RuntimeError,'friction-anchor channel'):
+            adapter.apply_state(state)
+        self.assertEqual(data.time,.002)
+        state['friction_contacts']=[]
+        adapter.apply_state(state)
+        self.assertEqual(data.time,.004)
 
     def test_physics_step_does_not_invoke_stateful_task_check(self):
         adapter,model,data=self.adapter()
@@ -196,6 +259,8 @@ class ForceContracts(unittest.TestCase):
         state={'qpos':data.qpos.tolist(),'qvel':data.qvel.tolist(),'time':.002,'contacts':[]}
         adapter.apply_state(state);self.assertEqual(data.sensordata[0],0.)
         state['contacts']=[{'geom1':0,'geom2':1,'pos':[0,0,0],'normal':[0,0,1],'distance':0.,'force':[0,0,17.5]}]
+        adapter.apply_state(state);self.assertAlmostEqual(data.sensordata[0],17.5)
+        state['friction_contacts']=[{'geom1':0,'geom2':1,'pos':[0,0,0],'force':[3,0,0]}]
         adapter.apply_state(state);self.assertAlmostEqual(data.sensordata[0],17.5)
 
 

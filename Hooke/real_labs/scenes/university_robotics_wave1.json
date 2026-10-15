@@ -182,7 +182,7 @@
           ],
           "yaw": 0,
           "params": {},
-          "role": "Exercise seven actual Gen3 articulated joint chains in a bounded inspection envelope around a fixed inert table target.",
+          "role": "Use collision-aware joint motion to place the empty fixed hand 100 mm above the retained block, point the tool axis downward and return to measured start.",
           "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
           "source_urls": [
             "https://sites.manchester.ac.uk/robotics/research/"
@@ -190,10 +190,10 @@
         }
       ],
       "task": {
-        "name": "Manchester Collaborative Robot Inspection Bay mechanical positioning",
-        "description": "Exercise seven actual Gen3 articulated joint chains in a bounded inspection envelope around a fixed inert table target.",
+        "name": "Manchester empty-tool inspection and return",
+        "description": "Use collision-aware joint motion to place the empty fixed hand 100 mm above the retained block, point the tool axis downward and return to measured start.",
         "primary_equipment": "collaborative_arm",
-        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+        "observable": "Measured tool position, direction, clearance at every physics step and return error; the retained block stays fixed and no grasp or scientific measurement is claimed."
       },
       "camera": {
         "overview": {
@@ -242,8 +242,9 @@
         "Window-side perimeter counters, turquoise under-bench storage and rear equipment case.",
         "A local BSD-3-Clause Kinova Gen3 model substitutes for the photographed Kinova/Quanser arm; this is not the same-model CAD reconstruction.",
         "The original three-finger appearance tool is fixed open and does not implement grasping. The inert target remains clamped to its independent table fixture.",
-        "All seven controls report offsets from the imported Gen3 home pose and are restricted to +/-0.14 rad; this is not a full-workspace or OEM-performance evaluation.",
-        "The local robot license remains at Hooke/model/robot_menagerie/kinova_gen3/LICENSE; no reference photograph is redistributed."
+        "All seven controls report offsets from the imported Gen3 home. Source joint 2/4/6 hard ranges are retained; source-unlimited axes use a finite +/-pi offset window. Collisions restrict feasible configurations and require motion planning; this is not an OEM performance evaluation.",
+        "The local robot license remains at Hooke/model/robot_menagerie/kinova_gen3/LICENSE; no reference photograph is redistributed.",
+        "The photographed cable destination is outside the frame; the attached parking bracket and rigid curved service route are authored. Retaining pads close the visible jaw gaps, without a clamp-force or cable-flexibility model."
       ],
       "limitations": [
         "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
@@ -253,8 +254,9 @@
         "Official promotional lab photograph; people obscure left-hand bench and room boundaries are unknown. No exact robot OEM CAD, calibration or control-performance match is claimed.",
         "A local BSD-3-Clause Kinova Gen3 model substitutes for the photographed Kinova/Quanser arm; this is not the same-model CAD reconstruction.",
         "The original three-finger appearance tool is fixed open and does not implement grasping. The inert target remains clamped to its independent table fixture.",
-        "All seven controls report offsets from the imported Gen3 home pose and are restricted to +/-0.14 rad; this is not a full-workspace or OEM-performance evaluation.",
-        "The local robot license remains at Hooke/model/robot_menagerie/kinova_gen3/LICENSE; no reference photograph is redistributed."
+        "All seven controls report offsets from the imported Gen3 home. Source joint 2/4/6 hard ranges are retained; source-unlimited axes use a finite +/-pi offset window. Collisions restrict feasible configurations and require motion planning; this is not an OEM performance evaluation.",
+        "The local robot license remains at Hooke/model/robot_menagerie/kinova_gen3/LICENSE; no reference photograph is redistributed.",
+        "The photographed cable destination is outside the frame; the attached parking bracket and rigid curved service route are authored. Retaining pads close the visible jaw gaps, without a clamp-force or cable-flexibility model."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [

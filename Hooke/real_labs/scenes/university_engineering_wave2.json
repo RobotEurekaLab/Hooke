@@ -214,7 +214,7 @@
           "fde72ac35b892ccde442b8dae3453f92aa072dedcd7842b16f8709e7e3eb7ab8"
         ],
         "reviewed_at": "2026-10-04",
-        "dimension_confidence": "Only EPFL absorber depth of 1 m is sourced; all other dimensions and mechanisms estimated",
+        "dimension_confidence": "Room dimensions, equipment geometry and mechanisms are estimated from an undimensioned Sorbonne reference image",
         "rights": "University or laboratory copyright; no open source-media reuse or derived-asset redistribution permission verified."
       }
     },

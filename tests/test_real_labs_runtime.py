@@ -88,6 +88,38 @@ class InstrumentRuntimeTests(unittest.TestCase):
         self.assertFalse(report["passed"])
         self.assertEqual(report["controls"][0]["measured"], 0)
 
+    def test_small_stroke_cannot_pass_using_a_larger_absolute_tolerance(self):
+        xml = MODEL.replace('range="0 0.2"', 'range="0 0.000002"').replace(
+            'kp="50"', 'kp="0.05"'
+        )
+        session = InstrumentSession(
+            mujoco.MjModel.from_xml_string(xml), deepcopy(MANIFEST)
+        )
+        report = session.smoke_test()
+        control = report["controls"][0]
+        # This weak servo really moves, but cannot settle within the 2 s check.
+        self.assertTrue(control["moved"])
+        self.assertGreater(abs(control["error"]), control["tracking_tolerance"])
+        self.assertFalse(report["passed"])
+
+    def test_authored_inspection_target_does_not_change_joint_limits(self):
+        manifest = deepcopy(MANIFEST)
+        manifest["equipment"][0]["inspection_targets"] = {"door": 0.04}
+        session = InstrumentSession(self.model, manifest)
+        result = session.smoke_test()["controls"][0]
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["target"], 0.04)
+        self.assertEqual(result["target_source"], "authored_inspection_target")
+        self.assertEqual(session.controls["reader", "door"].upper, 0.2)
+        self.assertEqual(self.model.jnt_range[0, 1], 0.2)
+
+    def test_invalid_inspection_targets_fail_at_session_construction(self):
+        for targets in ({"absent": 0}, {"door": 0.3}, {"door": float("nan")}):
+            manifest = deepcopy(MANIFEST)
+            manifest["equipment"][0]["inspection_targets"] = targets
+            with self.subTest(targets=targets), self.assertRaises(ValueError):
+                InstrumentSession(self.model, manifest)
+
     def test_velocity_servo_reports_velocity_and_distinct_joint_position(self):
         xml = MODEL.replace(
             'range="0 0.2" damping="2"', 'limited="false" damping="0.1"'

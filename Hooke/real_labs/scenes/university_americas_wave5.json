@@ -80,7 +80,7 @@
           ],
           "yaw": 0,
           "params": {},
-          "role": "AFAM Pitch-Yaw Test Section",
+          "role": "Supported two-axis inert engineering-coupon positioner in the AFAM test section",
           "evidence": "reference-informed original mechanical prototype",
           "source_urls": [
             "https://sites.brown.edu/breuerlab/animal-flight-and-aeromechanics-wind-tunnel/",
@@ -176,20 +176,36 @@
             1.45
           ],
           "fovy": 63
+        },
+        "positioner_detail": {
+          "position": [
+            -0.05,
+            -0.3,
+            1.64
+          ],
+          "target": [
+            -0.5,
+            0.2,
+            1.44
+          ],
+          "fovy": 44
         }
       },
       "task": {
         "name": "AFAM Pitch-Yaw Test Section",
-        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "description": "Index the retained inert coupon through the complete authored coupled yaw/pitch range, verify its actual orientation relative to the tunnel axes, and return to the initial orientation.",
         "primary_equipment": "afam_test_section",
-        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+        "observable": "Actual coupon long-axis and normal directions, measured joint angles, enabled mechanical clearances, held-axis response and return state."
       },
       "limitations": [
         "Only the explicitly listed test-section clear dimensions are verified; all room dimensions and other geometry remain estimates.",
         "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
         "Reference imagery is private research evidence; release rights remain unresolved.",
         "Inert engineering coupon only; no animals or biological experiments.",
-        "Pitch/yaw mechanisms represent documented functions with estimated internal geometry; no CFD or aerodynamic forces."
+        "Pitch/yaw mechanisms represent documented functions with estimated internal geometry; no CFD or aerodynamic forces.",
+        "Open yaw and pitch bearings are authored mechanical details; the original joint coordinates, limits, masses and drives are unchanged. No OEM bearing load or tolerance calibration.",
+        "The added positioner_detail view is an authored inspection viewpoint inside the chamber, not a physical camera or source-recorded laboratory viewpoint.",
+        "Side-panel glazing, latches and fixed access still simplify the photographed enclosure; no actual panel opening or free specimen loading is implemented."
       ]
     },
     {
@@ -389,13 +405,18 @@
       "university_expansion": true,
       "source_urls": [
         "https://www.bu.edu/photonics/sharedfacilities/pml/",
-        "https://www.bu.edu/photonics/files/2016/08/IMG_0650-.jpg"
+        "https://www.bu.edu/photonics/files/2016/08/IMG_0650-.jpg",
+        "https://cores.research.utdallas.edu/manuals/scanning-electron-microscope-operation-zeiss-supra-40/",
+        "https://www.ntnu.edu/documents/140082/1269041159/EM-lab-ProdInfoFE-SEM.pdf/6fb1a853-fa92-4c7b-a653-62fff3fdadf3",
+        "https://wiki.smfi.unipr.it/dokuwiki/lib/exe/fetch.php?media=lmn:brochure.pdf"
       ],
-      "reference_notes": "Official PML operator photograph inspected at full available resolution: installed field-emission microscope with large vented upper casing, multiport lower specimen chamber and a three-monitor console. Page lists Zeiss Supra systems, but the photographed model suffix is not legible. Photo supports only one SEM bay; exact Supra model and hidden chamber internals unverified. Operators partially occlude the lower access region. No electron optics or imaging solver; neighboring PML rooms must not be merged.",
+      "reference_notes": "Official PML operator photograph inspected at full available resolution: installed field-emission microscope with large vented upper casing, multiport lower specimen chamber and a three-monitor console. Page lists Zeiss Supra systems, but the photographed model suffix is not legible. Photo supports only one SEM bay; exact Supra model and hidden chamber internals unverified. Operators partially occlude the lower access region. No electron optics or imaging solver; neighboring PML rooms must not be merged. A public UT Dallas Supra40 operating description supports the generic door-carried specimen-stage concept, not the exact BU model or dimensions. Current BU SOP links require community access; those restricted documents were not read. Manufacturer-authored Supra-family references hosted by NTNU and Parma supply the nominal 330 mm by 270 mm chamber and stage travel; this does not identify the installed BU model. Revision 3 uses authored compact telescopes and supported crossed slides rather than the former projecting external rail deck. The optional fixed exterior detail revision adds source-visible inclined detector/manifold and cabinet/column features with estimated supports; it does not establish exact OEM correspondence. Source context revision 1 adds the photographed parked blue seats, populated console, small controllers, mice, connected fixed leads and upper chamber ports. The blue wall chart and monitor panes are original schematics, not copied poster artwork or simulated SEM measurements. Unseen chair frames, service routes, component dimensions and room depth are estimated.",
       "observed_cues": [
         "Tall cream column with dark vented front cover and looped upper service cable.",
         "Angled side detector and horizontally accessed specimen chamber over a floor cabinet.",
-        "Curved multi-knob console and three-monitor station immediately adjacent to the microscope."
+        "Curved multi-knob console and three-monitor station immediately adjacent to the microscope.",
+        "Blue operator seating, small joystick controllers, keyboard and connected console peripherals.",
+        "Blue wall-mounted periodic table and source-visible upper chamber ports."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "reconstruction_scope": "apparatus_and_partial_room",
@@ -460,8 +481,13 @@
             0
           ],
           "yaw": 0,
-          "params": {},
-          "role": "PML Electron-Microscope Inspection Bay",
+          "params": {
+            "mechanical_revision": 3,
+            "exterior_revision": 1,
+            "chamber_observation_revision": 1,
+            "source_context_revision": 1
+          },
+          "role": "Open the two supported telescopes, register the retained inert stub with the five-axis stage, and return through checked trajectories.",
           "evidence": "reference-informed original mechanical prototype",
           "source_urls": [
             "https://www.bu.edu/photonics/sharedfacilities/pml/",
@@ -546,21 +572,50 @@
             1.25
           ],
           "fovy": 60
+        },
+        "stage_detail": {
+          "position": [
+            -0.22,
+            -0.2,
+            1.49
+          ],
+          "target": [
+            -0.8,
+            0.43,
+            1.09
+          ],
+          "fovy": 35
+        },
+        "chamber_scope": {
+          "position": [
+            -0.8,
+            0.618,
+            1.218
+          ],
+          "target": [
+            -0.8,
+            0.475,
+            1.144
+          ],
+          "fovy": 48
         }
       },
       "task": {
         "name": "PML Electron-Microscope Inspection Bay",
-        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "description": "Open and return supported telescopes, position a retained 30 mm stub with five real axes, and inspect its physical surface at an authored 8 mm reference gap.",
         "primary_equipment": "sem_station",
-        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+        "observable": "Actual seven-axis state, collision clearance, specimen surface registration and measured return. Closed-view visibility and SEM imaging remain unqualified."
       },
       "limitations": [
         "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
         "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
         "Reference imagery is private research evidence; release rights remain unresolved.",
-        "Model suffix and chamber internals are unverified; sample cassette is an authored open mechanical surrogate.",
         "No electron beam, vacuum, image formation, X-ray spectrum or material response model.",
-        "Only one SEM operator bay is represented; other PML rooms are excluded."
+        "Only one SEM operator bay is represented; other PML rooms are excluded.",
+        "Mechanism revision 3 explicitly retires specimen_exchange, chamber_access and specimen_azimuth. Two 210 mm telescopes replace the former 600 mm access axis; old action values and stage frames are not compatible.",
+        "Family stage envelopes inform five physical axes; the whole coupled joint box is obstructed. Low-speed checked dry inspection is supported, not arbitrary commands, vacuum sealing, electron focus or calibrated imaging.",
+        "The retained stub is rigidly attached. Its actual surface datum replaces the previous above-surface site; no free sample loading is implemented.",
+        "Only Boston uses the candidate 1 ms timestep and 100 solver iterations. Instrument contact response and ideal gravity compensation are authored simulation parameters."
       ]
     },
     {
@@ -577,7 +632,8 @@
       "observed_cues": [
         "Large stainless removable optical-table enclosure with individual top-panel handles.",
         "Heavy cylindrical isolation legs and floor-standing instrument racks flank the optical table.",
-        "Black movable laser curtains subdivide a mapped research room rather than permanent identical small rooms."
+        "Black movable laser curtains subdivide a mapped research room rather than permanent identical small rooms.",
+        "Wood-frame padded operator chair, two round fixed stools, stacked white desk controllers, floor-standing desktop tower and loosely folded dark curtain visible in photo 69."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "reconstruction_scope": "Local optical bay visible in registered room 520 photograph 69; not the full 93.46045824 m\u00b2 room.",
@@ -603,12 +659,12 @@
         "architecture": {
           "floor": {
             "color": [
-              0.46,
               0.48,
-              0.46,
+              0.455,
+              0.39,
               1
             ],
-            "pattern": "seams",
+            "pattern": "plain",
             "spacing": 0.6
           },
           "openings": [
@@ -664,8 +720,10 @@
             0
           ],
           "yaw": 0,
-          "params": {},
-          "role": "Room 520 Covered Mineral-Optics Workstation",
+          "params": {
+            "enclosure_revision": 2
+          },
+          "role": "Version 2 closable roof and supported retained-coupon inspection stage",
           "evidence": "reference-informed original mechanical prototype",
           "source_urls": [
             "https://mineralphysics.uchicago.edu/labtour.html",
@@ -706,10 +764,11 @@
         "Black movable laser curtains subdivide a mapped research room rather than permanent identical small rooms.",
         "Covered steel optical table on cylindrical isolators, left equipment racks and black movable curtain preserve photo 69 spatial cues.",
         "This is a local authored bay inside room 520; the published total room area is retained only as source evidence.",
-        "One front cover panel is omitted and one top panel pre-opened to expose a clearly labeled authored dry inspection fixture."
+        "Revision 2 retains all front panels and resets with the roof physically closed, matching the photographed exterior. Open the supported roof to inspect the authored internal stage; its hidden design is not inferred as OEM hardware.",
+        "Original estimated furniture and service dressing restore the photographed foreground and desk density; the cloth mesh replaces rigid-looking vertical slats. Furniture is static contact geometry; controls, cable dressing and curtain folds have no electrical or cloth dynamics."
       ],
       "circulation": {
-        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "operator_approach": "Estimated clear foreground access to enclosure handles; the retained specimen is concealed until the roof opens.",
         "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
       },
       "verified_spatial_dimensions": [
@@ -772,13 +831,26 @@
             1.2
           ],
           "fovy": 62
+        },
+        "enclosure_inspection": {
+          "position": [
+            0.72,
+            -1.2,
+            2.1
+          ],
+          "target": [
+            0.3,
+            -0.2,
+            1.066
+          ],
+          "fovy": 42
         }
       },
       "task": {
         "name": "Room 520 Covered Mineral-Optics Workstation",
-        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "description": "Open the supported roof, traverse the retained inert coupon across its original X range, register its center against an authored physical index plane, and close the enclosure.",
         "primary_equipment": "covered_optical_table",
-        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+        "observable": "Measured roof orientation, coupon position relative to a physical datum, enabled geometry clearances, geometric inspection-camera visibility and actual return state."
       },
       "limitations": [
         "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
@@ -786,8 +858,23 @@
         "Reference imagery is private research evidence; release rights remain unresolved.",
         "The 93.46045824 m\u00b2 published room area is not the area of the modeled local bay; no measured room edges or full tour reconstruction.",
         "Header optics photograph is not spatially registered; modeled internals are minimal authored surrogates.",
-        "No laser heating, pressure generation, spectroscopy or mineral response model."
-      ]
+        "No laser heating, pressure generation, spectroscopy or mineral response model.",
+        "Revision 2 changes the lid physical zero explicitly while retaining its identifier and numeric range. Closed covers occlude the internal coupon; the added external inspection camera observes it only after actual opening. Ideal joints and motorization remain authored."
+      ],
+      "mechanical_interface_migration": {
+        "version": 2,
+        "parameter": "enclosure_revision",
+        "legacy": 1,
+        "control": "access_lid_angle",
+        "same_range_rad": [
+          -0.6,
+          0
+        ],
+        "old_physical_angle": "q - 0.6",
+        "new_physical_angle": "q",
+        "zero_meaning": "Physically closed in revision 2; no automatic coordinate remapping",
+        "reset": "Closed cover matching the observed exterior; open before inspecting the authored interior"
+      }
     }
   ]
 }

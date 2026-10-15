@@ -128,15 +128,15 @@
         "workstation": {
           "position": [
             -2.4,
-            -1.3,
-            2.3
+            -0.1,
+            1.65
           ],
           "target": [
-            -4.3,
+            -4.2,
             0,
-            1.4
+            1.45
           ],
-          "fovy": 55
+          "fovy": 45
         }
       },
       "layout_rationale": [

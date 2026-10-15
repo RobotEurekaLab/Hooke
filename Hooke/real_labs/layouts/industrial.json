@@ -125,7 +125,7 @@
         "yaw": 0
       }
     },
-    "reference_notes": "Inspected official AAPF 360-degree stills show an enclosed growth chamber with dense reflector lamps, broad-bladed maize/cereal canopies, tapered grey pots on round black carriers, parallel metal transport profiles and red stops. Separate hallway and hyperspectral stills show drainage, tanks, conduits, wash facilities, a dark imaging backdrop and bracketed lighting. Revision 3 refines those observed components within the previously estimated 13x9x5 m combined envelope. The 28 maize specimens, 56 lamps, their dimensions and coordinates are authored estimates; the stills do not establish exact counts or dimensions. Specimen leaf morphology is illustrative, not a calibrated plant phenotype.",
+    "reference_notes": "Inspected official AAPF 360-degree stills show an enclosed growth chamber with dense reflector lamps, broad-bladed maize/cereal canopies, tapered grey pots on round black carriers, parallel metal transport profiles and red stops. Separate hallway and hyperspectral stills show drainage, tanks, conduits, wash facilities, a dark imaging backdrop and bracketed lighting. Revision 3 refines those observed components within the previously estimated 13x9x5 m combined envelope. The 28 maize specimens, 56 lamps, their dimensions and coordinates are authored estimates; the stills do not establish exact counts or dimensions. Specimen leaf morphology is illustrative, not a calibrated plant phenotype. The supported imaging mechanism now follows source-visible stacked orange housings, a continuous camera guide, connected local service mounts and reflector brackets. Internal bearings and inert inspection holder are authored. The physical moving camera is registered separately from the unchanged room views.",
     "layout_rationale": [
       "Separate crop growth, plant loading, light-shielded imaging and nutrient preparation zones, following the distinct spaces in the official tour.",
       "Twenty-eight tapered pots and rounded carriers occupy four dense crop lanes. Continuous curved leaf blades, paired transport profiles, red carrier stops, motor housings and 56 reflector luminaires replace the sparse plant and conveyor placeholders.",
@@ -202,6 +202,19 @@
           1.65
         ],
         "fovy": 68
+      },
+      "imaging_guides": {
+        "position": [
+          2.16,
+          -0.65,
+          1.48
+        ],
+        "target": [
+          2.52,
+          -0.05,
+          1.32
+        ],
+        "fovy": 49
       }
     },
     "limitations": [
@@ -212,7 +225,13 @@
       "No spectral imaging, X-ray CT, irrigation hydraulics, plant growth or air-conditioning physics is simulated.",
       "The carrier rows and solution tanks are static environmental structures; only the primary booth exposes actuated carrier and camera axes.",
       "Leaf blades, reflector lamp geometry and transport mechanisms are original photo-informed visual models; plant morphology, lighting spectra, actual crop counts and track tolerances are not measured. The showcased crop is representative maize; cereal diversity visible in the source is not fully replicated."
-    ]
+    ],
+    "task": {
+      "name": "Inspect two retained inert witnesses with the moving camera",
+      "description": "Physically translate the supported carrier, align the mounted camera to each inert witness, observe actual visibility, and return without reset.",
+      "primary_equipment": "phenotyping_booth",
+      "observable": "Measured carrier/camera states, physical witness rays and return error; no calibrated spectral or biological acquisition."
+    }
   },
   "waterloo_robohub": {
     "room": {
@@ -415,6 +434,19 @@
           1.4
         ],
         "fovy": 72
+      },
+      "arm_detail": {
+        "position": [
+          3.55,
+          -0.55,
+          1.65
+        ],
+        "target": [
+          2.68,
+          0.6,
+          1.105
+        ],
+        "fovy": 36
       }
     },
     "limitations": [
@@ -425,10 +457,16 @@
       "The floor plan and complete RoboHub fleet are not reconstructed. The robots are representative mechanical models, not the institution's manufacturer CAD assets.",
       "Tracking housings, gantry and maglev patch are visual infrastructure; tracking calibration, gantry drive and magnetic levitation are not simulated.",
       "The default mobile robot remains anchored for repeatable independent wheel-control checks; a free-base option exists separately."
-    ]
+    ],
+    "task": {
+      "name": "Inspect the handoff bench with the complete arm",
+      "description": "Execute a collision-aware empty-tool hover 150 mm above the actual handoff bench, then return to the measured initial pose. The mobile platform remains held.",
+      "primary_equipment": "robot_arm",
+      "observable": "All six arm axes retain their original ranges. Source-bound motion directly checks enabled outer housings, links, wrist and fingers after every simulated step, including native parent-filtered pairs. No grasp or object handoff is implemented."
+    }
   },
   "nasa_planetary": {
-    "institution": "NASA Glenn SLOPE Laboratory \u2014 reference-informed ground-test reconstruction",
+    "institution": "NASA Glenn SLOPE Laboratory — reference-informed ground-test reconstruction",
     "room": {
       "size": [
         20,
@@ -532,13 +570,16 @@
     "equipment_positions": {
       "rover": {
         "pos": [
-          -4.7,
-          -0.3,
-          0.43
+          -5.0,
+          2.5,
+          0.0
         ],
         "yaw": 0,
         "params": {
-          "authored_pose": "Supported service inspection on a stand above a rigid soil-bin surface; not a driving trial."
+          "authored_pose": "Grounded Earth-gravity rover on the rigid high-bay aisle; finite wheel traction/steering and physical inert-sample staging",
+          "ground_test_mast": true,
+          "free_base": true,
+          "ground_task": "grounded_staging_v2"
         }
       },
       "xrf_analyzer": {
@@ -583,7 +624,8 @@
       "Separate soil storage and sample worktops from the tank footprints; additional XRF and balance accessories remain explicitly representative.",
       "Use a 6 m high industrial envelope with columns, roof members, ventilation trunk and tracking-camera housings, informed by the tour preview.",
       "Retain Earth gravity and ambient laboratory conditions. This facility is a ground analogue, not a vacuum or reduced-gravity lunar room.",
-      "Show the rover on a stand with wheels clear of the soil for independent mechanism inspection; driving, granular sinkage and calibrated traction are separate unimplemented experiments."
+      "Show the rover on a stand with wheels clear of the soil for independent mechanism inspection; driving, granular sinkage and calibrated traction are separate unimplemented experiments.",
+      "Versioned generic grounded rover traverses the rigid flat aisle beside the soil bins, grips an inert 25 g box from an authored pedestal, and physically releases it onto a grounded lower shelf attached to the inspection bench. Route, steering geometry, tool and shelf dimensions are estimates; the bins/tiltbed are not traversed or granular-soil models."
     ],
     "layout_evidence": [
       {
@@ -636,14 +678,14 @@
       },
       "workstation": {
         "position": [
-          -2.5,
-          -3.1,
-          2.55
+          -3.35,
+          0.3,
+          1.65
         ],
         "target": [
-          -4.7,
-          -0.3,
-          1.0
+          -4.8,
+          2.5,
+          0.6
         ],
         "fovy": 54
       },
@@ -659,6 +701,45 @@
           1.2
         ],
         "fovy": 68
+      },
+      "mast_detail": {
+        "position": [
+          -4.25,
+          1.72,
+          1.42
+        ],
+        "target": [
+          -5.21,
+          2.54,
+          0.77
+        ],
+        "fovy": 43
+      },
+      "sample_tool_detail": {
+        "position": [
+          -3.82,
+          1.88,
+          1.03
+        ],
+        "target": [
+          -4.37,
+          2.5,
+          0.73
+        ],
+        "fovy": 43
+      },
+      "staging_detail": {
+        "position": [
+          -3.65,
+          4.7,
+          1.26
+        ],
+        "target": [
+          -4.6,
+          5.95,
+          0.72
+        ],
+        "fovy": 43
       }
     },
     "limitations": [
@@ -668,7 +749,7 @@
       "Front/right building boundaries and selected internal walls are shown as cutaways for inspection; these views do not represent an unenclosed real facility.",
       "Soil bins have rigid contact surfaces with shallow visual soil relief; granular sinkage, dust, excavation forces, wheel slip and drawbar-pull calibration are not simulated.",
       "The tiltbed has a fixed authored pose rather than an actuated hydraulic mechanism.",
-      "This is an Earth ground-test laboratory with 9.81 m/s\u00b2 gravity and ambient air.",
+      "This is an Earth ground-test laboratory with 9.81 m/s² gravity and ambient air.",
       "The public sources give nominal tank dimensions with differences between reports; this model uses the NASA ARES nominal sizes and does not claim surveyed millimetre accuracy."
     ]
   }

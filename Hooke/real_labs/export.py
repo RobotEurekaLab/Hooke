@@ -48,6 +48,37 @@ def current_scene_digest(identifier):
     return hashlib.sha256(ET.tostring(root, encoding="unicode").encode()).hexdigest()
 
 
+def export_scene_snapshot(model, data, destination):
+    """Export the observed state with the scene package's flat-colour UV policy.
+
+    No simulation is advanced. Incomplete UVs are omitted only when no visible
+    instance of their mesh uses a textured material; textured meshes are rejected.
+    """
+    destination = Path(destination).resolve()
+    snapshot = export_snapshot(model, data, destination)
+    # Some legacy OBJ files have partial UVs despite using only flat colour.
+    # Omit unusable, unreferenced UV channels; textured assets must stay intact.
+    textured_materials = {
+        m["id"] for m in snapshot["materials"] if any(i >= 0 for i in m["texture_ids"])
+    }
+    textured_meshes = {
+        g["mesh"] for g in snapshot["geoms"] if g["material"] in textured_materials
+    }
+    omitted = []
+    with np.load(destination / "geometry.npz", allow_pickle=False) as arrays:
+        for mesh in snapshot["meshes"]:
+            if mesh["face_texcoords"] and (arrays[mesh["face_texcoords"]] < 0).any():
+                if mesh["id"] in textured_meshes:
+                    raise ValueError(
+                        f"Textured mesh has incomplete UVs: {mesh['name']}"
+                    )
+                mesh["texcoords"] = mesh["face_texcoords"] = None
+                omitted.append(mesh["name"])
+    snapshot["unused_incomplete_uv_channels_omitted"] = omitted
+    write_json(destination / "scene.json", snapshot)
+    return snapshot
+
+
 def export_scene(identifier, destination, validate=True):
     destination = Path(destination).resolve()
     destination.mkdir(parents=True, exist_ok=True)
@@ -69,7 +100,7 @@ def export_scene(identifier, destination, validate=True):
     session = InstrumentSession(model, manifest)
     # Let free specimen carriers rest on their real collision surfaces before
     # exporting a still. This leaves the authored reset state in MJCF intact.
-    mujoco.mj_step(model, session.data, nstep=round(1.0 / model.opt.timestep))
+    session.advance(round(1.0 / model.opt.timestep))
     mujoco.mj_forward(model, session.data)
     specimen_checks = [
         dict(equipment=item["id"], **session.process_readiness(item["id"]))
@@ -100,28 +131,7 @@ def export_scene(identifier, destination, validate=True):
         scene_sha256=hashlib.sha256(xml.read_bytes()).hexdigest(),
     )
     write_json(destination / "manifest.json", manifest)
-    snapshot_dir = destination / "snapshot"
-    snapshot = export_snapshot(model, session.data, snapshot_dir)
-    # Some legacy OBJ files have partial UVs despite using only flat colour.
-    # Omit unusable, unreferenced UV channels; textured assets must stay intact.
-    textured_materials = {
-        m["id"] for m in snapshot["materials"] if any(i >= 0 for i in m["texture_ids"])
-    }
-    textured_meshes = {
-        g["mesh"] for g in snapshot["geoms"] if g["material"] in textured_materials
-    }
-    omitted = []
-    with np.load(snapshot_dir / "geometry.npz", allow_pickle=False) as arrays:
-        for mesh in snapshot["meshes"]:
-            if mesh["face_texcoords"] and (arrays[mesh["face_texcoords"]] < 0).any():
-                if mesh["id"] in textured_meshes:
-                    raise ValueError(
-                        f"Textured mesh has incomplete UVs: {mesh['name']}"
-                    )
-                mesh["texcoords"] = mesh["face_texcoords"] = None
-                omitted.append(mesh["name"])
-    snapshot["unused_incomplete_uv_channels_omitted"] = omitted
-    write_json(snapshot_dir / "scene.json", snapshot)
+    export_scene_snapshot(model, session.data, destination / "snapshot")
     result = dict(id=identifier, compiled=True, **manifest["model"])
     if validate:
         validation = session.smoke_test()
@@ -142,7 +152,8 @@ def gallery(destination, records):
         manifest = json.loads((destination / identifier / "manifest.json").read_text())
         equipment = "".join(
             f"<tr><td>{html.escape(e['id'])}</td><td>{html.escape(e['kind'])}</td>"
-            f"<td>{len(e['actuators'])}</td><td>{html.escape(e['evidence'])}</td></tr>"
+            f"<td>{len(e['actuators']) + len(e.get('mechanisms', {}))}</td>"
+            f"<td>{html.escape(e['evidence'])}</td></tr>"
             for e in manifest["equipment"]
         )
         sources = " ".join(

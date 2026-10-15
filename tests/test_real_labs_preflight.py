@@ -13,11 +13,29 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Hooke"))
 
 from real_labs.export import export_scene
 from real_labs.preflight import inspect_package, scene_inventory
+from backends.visual_profiles import REAL_LABS_CUTAWAY, source_visibility_profile
 
 
 class ScenePreflightTests(unittest.TestCase):
+    def test_rotor_inspection_speed_contract_survives_inventory(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder)
+            export_scene("indiana_microfluidics", path)
+            report = inspect_package(path)
+            rotor = next(
+                row for row in report["equipment"] if row["id"] == "centrifuge"
+            )
+            self.assertEqual(rotor["actuator_modes"]["rotor"], "velocity")
+            contract = rotor["control_contracts"]["rotor"]
+            self.assertTrue(contract["continuous_angle"])
+            self.assertEqual(contract["units"], "rad/s")
+            self.assertTrue(contract["limitations"])
+            self.assertFalse(report["acceptance"]["scientific_process_validated"])
+
     def test_accessory_without_sample_interface_remains_in_inventory(self):
-        xml = '<mujoco><worldbody><geom type="box" size=".1 .1 .1"/></worldbody></mujoco>'
+        xml = (
+            '<mujoco><worldbody><geom type="box" size=".1 .1 .1"/></worldbody></mujoco>'
+        )
         model = mujoco.MjModel.from_xml_string(xml)
         data = mujoco.MjData(model)
         mujoco.mj_forward(model, data)
@@ -81,6 +99,13 @@ class ScenePreflightTests(unittest.TestCase):
                 self.assertIn("reset_qpos", archive.files)
             metadata = json.loads((path / "native_source/scene.json").read_text())
             self.assertEqual(metadata["isaac_qualification"], "unqualified")
+            self.assertEqual(metadata["visual_profile"], REAL_LABS_CUTAWAY)
+            self.assertEqual(
+                metadata["task_info"]["camera_mapping"],
+                {"overview": "overview", "workstation": "workstation"},
+            )
+            self.assertTrue(source_visibility_profile(metadata)["hidden_geom_ids"])
+            self.assertEqual(report["exports"]["native_archive"]["visual_profile"], REAL_LABS_CUTAWAY)
 
     def test_modified_xml_is_rejected_before_export(self):
         with tempfile.TemporaryDirectory() as folder:

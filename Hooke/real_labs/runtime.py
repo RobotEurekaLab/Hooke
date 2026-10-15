@@ -46,8 +46,15 @@ class InstrumentSession:
         self.model = model
         self.manifest = manifest
         self.data = mujoco.MjData(model)
+        self.physics_observations = {
+            'backend': 'mujoco',
+            'physics_engine': 'MuJoCo',
+            'actuator_force': True,
+            'actuator_force_provenance': 'MuJoCo actuator force',
+        }
         self.equipment: dict[str, dict[str, Any]] = {}
         self.controls: dict[tuple[str, str], _Control] = {}
+        self.mechanisms: dict[tuple[str, str], Any] = {}
         for item in manifest.get("equipment", []):
             equipment_id = item["id"]
             if equipment_id in self.equipment:
@@ -116,7 +123,194 @@ class InstrumentSession:
                     units + ("/s" if mode == "velocity" else ""),
                     mode,
                 )
+            for semantic, value in item.get("inspection_targets", {}).items():
+                key = equipment_id, semantic
+                if key not in self.controls:
+                    raise ValueError(
+                        f"Unknown inspection control: {equipment_id}.{semantic}"
+                    )
+                target = _finite(value, "Inspection target")
+                control = self.controls[key]
+                if not control.lower <= target <= control.upper:
+                    raise ValueError(
+                        f"Inspection target outside control range: {equipment_id}.{semantic}"
+                    )
+        self._register_mechanisms()
+        for equipment_id in self.equipment:
+            self._coordinated_targets(equipment_id)
         self.reset()
+
+    def _register_mechanisms(self) -> None:
+        """Bind coupled drives separately from scalar position/velocity servos."""
+        occupied_joints = {control.joint for control in self.controls.values()}
+        occupied_actuators = {control.actuator for control in self.controls.values()}
+        for owner, item in self.equipment.items():
+            for semantic, metadata in item.get("mechanisms", {}).items():
+                if metadata.get("kind") != "scissor_jack_v1":
+                    raise ValueError(f"Unknown mechanism kind: {metadata.get('kind')}")
+                from real_labs.scissor_jack_drive import ScissorJackDrive
+
+                drive = ScissorJackDrive(self.model, metadata)
+                joints = set(drive.joints.values())
+                key = owner, semantic
+                if (
+                    key in self.controls
+                    or joints & occupied_joints
+                    or drive.actuator in occupied_actuators
+                ):
+                    raise ValueError(
+                        f"Mechanism control is already owned: {owner}.{semantic}"
+                    )
+                self.mechanisms[key] = drive
+                occupied_joints.update(joints)
+                occupied_actuators.add(drive.actuator)
+
+    def advance(self, steps: int) -> None:
+        """Advance physics while maintaining every registered coupled drive.
+
+        Scenes containing only native servos retain the bulk stepping path.
+        Coupled drives need fresh dynamics and torque feedback at every step,
+        including when another instrument is commanded or an export settles.
+        """
+        if isinstance(steps, bool) or not isinstance(steps, int) or steps < 0:
+            raise ValueError("Step count must be a nonnegative integer")
+        if not self.mechanisms:
+            if steps:
+                mujoco.mj_step(self.model, self.data, nstep=steps)
+            return
+        warning_counts = tuple(int(value) for value in self.data.warning.number)
+        if any(warning_counts):
+            raise RuntimeError("Reset required after a native physics warning")
+        for _ in range(steps):
+            start = float(self.data.time)
+            mujoco.mj_forward(self.model, self.data)
+            for drive in self.mechanisms.values():
+                drive.update(self.data)
+            mujoco.mj_step(self.model, self.data)
+            if not math.isclose(
+                float(self.data.time) - start,
+                self.model.opt.timestep,
+                rel_tol=1e-8,
+                abs_tol=1e-10,
+            ):
+                raise RuntimeError("Physics time discontinuity during mechanism motion")
+            if (
+                tuple(int(value) for value in self.data.warning.number)
+                != warning_counts
+            ):
+                raise RuntimeError("Native physics warning during mechanism motion")
+            if not all(
+                math.isfinite(float(value))
+                for values in (self.data.qpos, self.data.qvel, self.data.ctrl)
+                for value in values
+            ):
+                raise RuntimeError("Physics produced nonfinite mechanism state")
+        mujoco.mj_forward(self.model, self.data)
+        for drive in self.mechanisms.values():
+            drive.update(self.data)
+        mujoco.mj_forward(self.model, self.data)
+        if tuple(int(value) for value in self.data.warning.number) != warning_counts:
+            raise RuntimeError("Native physics warning during forward evaluation")
+
+    def _coordinated_targets(self, equipment_id: str) -> dict[str, float] | None:
+        """Validate an optional complete, authored smoke vector for one device.
+
+        This does not make arbitrary raw actuator vectors safe or provide a
+        coupled-task planner. It only replaces an invalid independence
+        assumption in the basic smoke check for declared coupled mechanisms.
+        """
+        metadata = self.equipment[equipment_id]
+        if "coordinated_inspection_targets" not in metadata:
+            return None
+        targets = metadata["coordinated_inspection_targets"]
+        expected = {
+            key: spec
+            for (owner, key), spec in self.controls.items()
+            if owner == equipment_id
+        }
+        if (
+            not isinstance(targets, dict)
+            or not expected
+            or set(targets) != set(expected)
+        ):
+            raise ValueError(
+                "Coordinated inspection requires every control of exactly one equipment item"
+            )
+        validated = {}
+        for key, spec in expected.items():
+            value = _finite(targets[key], "Coordinated inspection target")
+            if spec.mode != "position" or not spec.lower <= value <= spec.upper:
+                raise ValueError(
+                    "Coordinated inspection requires bounded position targets"
+                )
+            validated[key] = value
+        return validated
+
+    def _coordinated_smoke(
+        self, equipment_id: str, targets: dict[str, float], duration: float
+    ) -> list[dict[str, Any]]:
+        duration = _finite(duration, "Duration")
+        if duration <= 0 or duration > 30:
+            raise ValueError("Duration must be in (0, 30] seconds")
+        self.reset()
+        warning_counts = tuple(int(value) for value in self.data.warning.number)
+        if any(warning_counts):
+            raise RuntimeError("Native physics warning during coordinated reset")
+        specs = {key: self.controls[equipment_id, key] for key in targets}
+        before = {key: self._measured(spec) for key, spec in specs.items()}
+        start_time = float(self.data.time)
+        for key, spec in specs.items():
+            self.data.ctrl[spec.actuator] = targets[key]
+        steps = max(1, math.ceil(duration / self.model.opt.timestep))
+        self.advance(steps)
+        mujoco.mj_forward(self.model, self.data)
+        if any(
+            int(value) != before_count
+            for value, before_count in zip(self.data.warning.number, warning_counts)
+        ):
+            raise RuntimeError(
+                "Native physics warning during coordinated motion or forward evaluation"
+            )
+        if not all(
+            math.isfinite(float(value))
+            for values in (self.data.qpos, self.data.qvel)
+            for value in values
+        ):
+            raise RuntimeError("Physics produced nonfinite joint state")
+        elapsed = float(self.data.time) - start_time
+        if not math.isclose(
+            elapsed, steps * self.model.opt.timestep, rel_tol=1e-8, abs_tol=1e-8
+        ):
+            raise RuntimeError(
+                "Physics time discontinuity; the simulation may have reset"
+            )
+        results = []
+        for key, spec in specs.items():
+            measured = self._measured(spec)
+            span = spec.upper - spec.lower
+            tolerance = max(1e-9, span * 0.025)
+            moved = abs(measured - before[key]) > span * 0.01
+            results.append(
+                dict(
+                    equipment=equipment_id,
+                    control=key,
+                    target=targets[key],
+                    before=before[key],
+                    measured=measured,
+                    error=measured - targets[key],
+                    units=spec.units,
+                    mode=spec.mode,
+                    joint_position=self._position(spec),
+                    simulated_seconds=elapsed,
+                    tracking_tolerance=tolerance,
+                    target_source="authored_coordinated_inspection_vector",
+                    command_mode="simultaneous_position_vector",
+                    coordinated_targets=dict(targets),
+                    moved=moved,
+                    passed=moved and abs(measured - targets[key]) <= tolerance,
+                )
+            )
+        return results
 
     @classmethod
     def from_files(cls, scene: str | Path, manifest: str | Path) -> InstrumentSession:
@@ -141,6 +335,14 @@ class InstrumentSession:
 
     def reset(self) -> None:
         """Restore authored initial state; this is an episode reset, not a task."""
+        if getattr(self, "_physics_context_owner", None) is not None:
+            raise RuntimeError("Reset the owning physics backend before updating its observed state")
+        self.physics_observations = {
+            **{key: self.physics_observations.get(key, 'unknown')
+               for key in ('backend', 'physics_engine')},
+            "actuator_force": False,
+            "actuator_force_provenance": "Source reset has not completed",
+        }
         mujoco.mj_resetData(self.model, self.data)
         for control in self.controls.values():
             self.data.ctrl[control.actuator] = min(
@@ -148,11 +350,55 @@ class InstrumentSession:
             )
         mujoco.mj_forward(self.model, self.data)
 
+        for drive in self.mechanisms.values():
+            drive.reset(self.data)
+        for drive in self.mechanisms.values():
+            drive.update(self.data)
+        if self.mechanisms:
+            mujoco.mj_forward(self.model, self.data)
+
+        # Only a successful source reset establishes fresh source observations.
+        # Native interval peaks must not survive an explicit backend switch.
+        self.physics_observations = {
+            'backend': 'mujoco',
+            'physics_engine': 'MuJoCo',
+            "actuator_force": True,
+            "actuator_force_provenance": "MuJoCo actuator force",
+        }
+        self.operation_failure = None
+
     def command(
         self, equipment_id: str, control: str, value: float, *, duration: float = 2.0
     ) -> dict[str, Any]:
-        """Apply a bounded servo target and report observed position or velocity."""
-        spec = self.controls[equipment_id, control]
+        """Validate the declared operation envelope before applying a target.
+
+        Coupled equipment may require an ordered operation instead of an
+        independent axis move. Rejection leaves controls, physics and time intact.
+        Scenes without a declared policy retain their bounded servo interface.
+        """
+        from real_labs.operations import validate_command
+
+        validate_command(self, equipment_id, control, value)
+        return self._command_unchecked(
+            equipment_id, control, value, duration=duration
+        )
+
+    def _command_unchecked(
+        self, equipment_id: str, control: str, value: float, *, duration: float = 2.0
+    ) -> dict[str, Any]:
+        """Raw servo diagnostic; deliberately bypasses coordinated access rules.
+
+        Used by the independent-axis smoke audit so blocked raw trajectories
+        remain visible. Application callers must use ``command`` or a registered
+        complete operation.
+        """
+        key = equipment_id, control
+        if key in self.mechanisms:
+            return self._command_mechanism(key, value, duration)
+        retired = self.equipment.get(equipment_id, {}).get("retired_controls", {})
+        if control in retired:
+            raise ValueError(retired[control])
+        spec = self.controls[key]
         target = _finite(value, "Target")
         duration = _finite(duration, "Duration")
         if duration <= 0 or duration > 30:
@@ -165,7 +411,7 @@ class InstrumentSession:
         start_time = float(self.data.time)
         self.data.ctrl[spec.actuator] = target
         steps = max(1, math.ceil(duration / self.model.opt.timestep))
-        mujoco.mj_step(self.model, self.data, nstep=steps)
+        self.advance(steps)
         mujoco.mj_forward(self.model, self.data)
         measured = self._measured(spec)
         if not all(
@@ -192,6 +438,40 @@ class InstrumentSession:
             "mode": spec.mode,
             "joint_position": self._position(spec),
             "simulated_seconds": elapsed,
+        }
+
+    def _command_mechanism(self, key, value, duration) -> dict[str, Any]:
+        drive = self.mechanisms[key]
+        target = _finite(value, "Target")
+        duration = _finite(duration, "Duration")
+        if not 0 < duration <= 30:
+            raise ValueError("Duration must be in (0, 30] seconds")
+        if not drive.lower <= target <= drive.upper:
+            raise ValueError(
+                f"Target outside [{drive.lower}, {drive.upper}] {drive.units}"
+            )
+        before = drive.measured(self.data)
+        start_time = float(self.data.time)
+        motion_duration = drive.start(self.data, target, duration)
+        # A full-stroke command requires the validated slow trajectory. Report
+        # the extension explicitly instead of silently demanding a faster move.
+        steps = math.ceil((motion_duration + 1.0) / self.model.opt.timestep)
+        self.advance(steps)
+        measured = drive.measured(self.data)
+        return {
+            "equipment": key[0],
+            "control": key[1],
+            "target": target,
+            "before": before,
+            "measured": measured,
+            "error": measured - target,
+            "units": drive.units,
+            "mode": drive.mode,
+            "requested_duration_s": duration,
+            "trajectory_duration_s": motion_duration,
+            "simulated_seconds": float(self.data.time) - start_time,
+            "target_reached": abs(measured - target) <= 0.0005,
+            "drive": drive.inspect(self.data),
         }
 
     def process_readiness(self, equipment_id: str) -> dict[str, Any]:
@@ -281,6 +561,9 @@ class InstrumentSession:
                         "range": [spec.lower, spec.upper],
                         "units": spec.units,
                     }
+            for (owner, semantic), drive in self.mechanisms.items():
+                if owner == equipment_id:
+                    controls[semantic] = drive.inspect(self.data)
             equipment.append(
                 {
                     "id": equipment_id,
@@ -301,24 +584,73 @@ class InstrumentSession:
 
         A commanded target alone never counts as success: both observed motion
         and final tracking error must pass. Blocked controls therefore fail.
+        Optional authored inspection targets select a known basic motion; they
+        never narrow joint limits or replace the separate full-range audit.
+        A complete coordinated vector is applied simultaneously for declared
+        coupled devices. Every target must move and meet the same tolerance.
+        This is deliberately a raw-axis diagnostic, not the public guarded
+        command path: unsafe independent motion must remain a reported failure
+        rather than be counted as a successful rejected command.
         """
+        # Reject malformed/changed vector metadata before reset or actuation.
+        coordinated = {
+            owner: self._coordinated_targets(owner) for owner in self.equipment
+        }
         results = []
+        completed_groups = set()
         try:
             for (equipment_id, semantic), spec in self.controls.items():
+                if coordinated[equipment_id] is not None:
+                    if equipment_id not in completed_groups:
+                        results.extend(
+                            self._coordinated_smoke(
+                                equipment_id, coordinated[equipment_id], duration
+                            )
+                        )
+                        completed_groups.add(equipment_id)
+                    continue
                 self.reset()
                 span = spec.upper - spec.lower
-                target = (spec.lower + spec.upper) / 2
-                if abs(target - self._measured(spec)) < span * 0.1:
-                    target = spec.lower + span * 0.75
-                result = self.command(equipment_id, semantic, target, duration=duration)
-                tolerance = max(1e-4, span * 0.05)
+                authored = self.equipment[equipment_id].get("inspection_targets", {})
+                if semantic in authored:
+                    target = float(authored[semantic])
+                    target_source = "authored_inspection_target"
+                else:
+                    target = (spec.lower + spec.upper) / 2
+                    if abs(target - self._measured(spec)) < span * 0.1:
+                        target = spec.lower + span * 0.75
+                    target_source = "range_midpoint_or_75_percent"
+                result = self._command_unchecked(
+                    equipment_id, semantic, target, duration=duration
+                )
+                # A fixed 0.1 mm allowance can exceed a fine stage's entire
+                # stroke and falsely accept a barely moving actuator. This is
+                # a relative servo check, not a metrological accuracy claim.
+                tolerance = max(1e-9, span * 0.025)
                 moved = abs(result["measured"] - result["before"]) > span * 0.01
                 result.update(
                     {
                         "tracking_tolerance": tolerance,
+                        "target_source": target_source,
                         "moved": moved,
                         "passed": moved and abs(result["error"]) <= tolerance,
                     }
+                )
+                results.append(result)
+            for key, drive in self.mechanisms.items():
+                self.reset()
+                result = self._command_unchecked(
+                    *key, (drive.lower + drive.upper) / 2, duration=duration
+                )
+                moved = (
+                    abs(result["measured"] - result["before"])
+                    > (drive.upper - drive.lower) * 0.01
+                )
+                result.update(
+                    tracking_tolerance=0.0005,
+                    target_source="mechanism_range_midpoint",
+                    moved=moved,
+                    passed=moved and result["target_reached"],
                 )
                 results.append(result)
         finally:
@@ -327,6 +659,6 @@ class InstrumentSession:
             "id": self.manifest.get("id"),
             "control_count": len(results),
             "passed": bool(results) and all(result["passed"] for result in results),
-            "scope": "mechanical joint motion only; no robot or scientific task completion",
+            "scope": "raw mechanical joint diagnostic; bypasses public operation guards; no robot or scientific task completion",
             "controls": results,
         }

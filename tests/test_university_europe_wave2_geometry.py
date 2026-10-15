@@ -62,6 +62,27 @@ class EuropeWaveTwoGeometryTests(unittest.TestCase):
         for identifier in SCENES:
             model, data, manifest = self.load(identifier)
             initial_sites = data.site_xpos.copy()
+            if identifier == "bristol_equals_shaking_table":
+                # Version 2 is a redundantly actuated parallel mechanism.
+                # Independent leg targets are not compatible platform poses.
+                from real_labs.bristol_table_geometry import CONTROLS, ID, leg_lengths
+
+                controls = list(self.controls(model, manifest))
+                for axis in range(3):
+                    for target in (-0.105, 0.105, -0.075):
+                        pose = np.zeros(3)
+                        pose[axis] = target
+                        values = leg_lengths(pose)
+                        for value, (_, _, actuator, _) in zip(values, controls):
+                            data.ctrl[actuator] = value
+                        mujoco.mj_step(model, data, nstep=round(2 / model.opt.timestep))
+                        for value, (_, address, _, (low, high)) in zip(values, controls):
+                            self.assertLessEqual(abs(data.qpos[address]-value), .025*(high-low))
+                mujoco.mj_resetData(model, data)
+                mujoco.mj_forward(model, data)
+                np.testing.assert_allclose(data.qpos, model.qpos0, atol=1e-12)
+                np.testing.assert_allclose(data.site_xpos, initial_sites, atol=1e-12)
+                continue
             for name, address, actuator, (low, high) in self.controls(model, manifest):
                 for fraction in (0.15, 0.85, 0.25):
                     with self.subTest(scene=identifier, axis=name, fraction=fraction):
@@ -81,6 +102,21 @@ class EuropeWaveTwoGeometryTests(unittest.TestCase):
     def test_sampled_full_strokes_and_combined_extrema_have_no_penetration(self):
         for identifier in SCENES:
             model, data, manifest = self.load(identifier)
+            if identifier == "bristol_equals_shaking_table":
+                from real_labs.bristol_table_motion import TableInspection, diagnostic_pose
+                from real_labs.runtime import InstrumentSession
+
+                session = InstrumentSession(model, manifest)
+                checker = TableInspection(session)
+                for axis in range(3):
+                    for value in np.linspace(-.15, .15, 25):
+                        pose = np.zeros(6)
+                        pose[axis] = value
+                        diagnostic_pose(model, data, pose)
+                        self.assertGreater(checker.direct_clearance(data)[0], .00025)
+                with self.assertRaises(ValueError):
+                    diagnostic_pose(model, data, [.15, .15, 0, 0, 0, 0])
+                continue
             controls = list(self.controls(model, manifest))
             states = [
                 {address: value}
@@ -133,28 +169,34 @@ class EuropeWaveTwoGeometryTests(unittest.TestCase):
             -1,
             hit,
         )
-        # The instrument base is at -0.64 m inside the pit. A false full-room
+        # The version-2 strong block is at -1.72 m inside the estimated pit.
+        # A false full-room
         # collision floor at zero would instead return a distance of 0.30 m.
-        self.assertAlmostEqual(distance, 0.94, places=6)
+        self.assertAlmostEqual(distance, 2.02, places=6)
         self.assertGreaterEqual(int(hit[0]), 0)
 
     def test_clamped_samples_follow_supported_carriages(self):
         for identifier, key, displacement in (
             ("cambridge_schofield_turner", "specimen_carriage", 0.10),
-            ("bristol_equals_shaking_table", "table_x", 0.04),
+            ("bristol_equals_shaking_table", None, 0.04),
             ("leeds_litac_yarn_spinning", "bobbin_carriage", 0.10),
         ):
             with self.subTest(scene=identifier):
                 model, data, manifest = self.load(identifier)
                 item = manifest["equipment"][0]
-                joint = model.joint(item["joints"][key]).id
                 site = model.site(item["sample_site"]).id
                 body = int(model.site_bodyid[site])
                 self.assertGreater(model.body_geomnum[body], 0)
                 self.assertEqual(item["sample_attachment"], "clamped")
                 before = data.site_xpos[site].copy()
-                data.qpos[model.jnt_qposadr[joint]] = displacement
-                mujoco.mj_forward(model, data)
+                if identifier == "bristol_equals_shaking_table":
+                    from real_labs.bristol_table_motion import diagnostic_pose
+
+                    diagnostic_pose(model, data, [displacement, 0, 0, 0, 0, 0])
+                else:
+                    joint = model.joint(item["joints"][key]).id
+                    data.qpos[model.jnt_qposadr[joint]] = displacement
+                    mujoco.mj_forward(model, data)
                 np.testing.assert_allclose(
                     data.site_xpos[site] - before, [displacement, 0, 0], atol=1e-9
                 )

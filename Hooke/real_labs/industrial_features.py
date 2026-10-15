@@ -431,14 +431,10 @@ def _growth_lamp(parent, row, column, x, y):
 
 
 def decorate_purdue_equipment(root):
-    """Replace visual default specimen after equipment assembly, retaining axes."""
+    """Keep the existing illustrative specimen; task markers are inert hardware."""
     turn = root.find(".//body[@name='phenotyping_booth__body_plant_turntable']")
     if turn is None:
         return
-    for geom in list(turn.findall("geom")):
-        # Keep the first collision-enabled turntable; specimen shapes are visual.
-        if geom.get("contype", "0") == "0":
-            turn.remove(geom)
     _maize(
         turn,
         "imaging_specimen",
@@ -448,44 +444,19 @@ def decorate_purdue_equipment(root):
         collision=False,
         young=True,
     )
-    base = root.find(".//body[@name='phenotyping_booth']")
-    if base is None:
-        return
-    for side in (-1, 1):
-        for z in (0.83, 1.27, 1.71, 2.06):
-            _box(
-                base,
-                f"imaging_light_bracket_{side}_{z}",
-                (0.06, 0.036, 0.012),
-                (side * 0.54, 0.34, z),
-                METAL,
+    # Enable the unchanged rigid pot exterior, rims and tag. MuJoCo uses a
+    # convex exterior for the pot mesh; its cavity is not an interaction target.
+    for geom in turn.findall(".//geom"):
+        name = geom.get("name", "")
+        if name.startswith(
+            (
+                "facility_imaging_specimen_pot",
+                "facility_imaging_specimen_rim_",
+                "facility_imaging_specimen_identity_tag",
             )
-            _box(
-                base,
-                f"imaging_light_housing_{side}_{z}",
-                (0.027, 0.070, 0.055),
-                (side * 0.51, 0.27, z),
-                (0.56, 0.58, 0.55, 1),
-            )
-            _box(
-                base,
-                f"imaging_light_face_{side}_{z}",
-                (0.005, 0.059, 0.045),
-                (side * 0.48, 0.27, z),
-                (0.94, 0.88, 0.72, 1),
-            )
-        _rod(
-            base,
-            f"imaging_light_cable_{side}",
-            (side * 0.55, 0.39, 0.71),
-            (side * 0.55, 0.39, 2.14),
-            0.006,
-            DARK,
-        )
-    for z in (0.82, 1.12, 1.42, 1.72, 2.02):
-        _box(
-            base, f"camera_chain_link_{z}", (0.025, 0.036, 0.065), (0.58, 0.13, z), DARK
-        )
+        ):
+            geom.set("contype", "1")
+            geom.set("conaffinity", "1")
 
 
 def _purdue(world, definition):

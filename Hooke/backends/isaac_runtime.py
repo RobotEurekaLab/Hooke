@@ -19,6 +19,8 @@ from isaacsim.sensors.camera import Camera
 from backends.usd_scene import SceneBridge, rotation
 from backends.contact_parameters import constraint_parameters
 from backends.render_settings import RenderSettings
+from backends.gravity import gravity_wrench, needs_gravity_wrench
+from backends.headlights import CameraHeadlights, resolve_source_headlight, headlight_enabled_from_environment
 
 
 class NativeScene:
@@ -29,13 +31,28 @@ class NativeScene:
         self.render_enabled = render
         self.managed_render=managed_render
         self.visual_geometry={}
-        self.dt = json.loads((self.source/'scene.json').read_text())['timestep_s']
-        self.world = World(stage_units_in_meters=1., physics_dt=self.dt, rendering_dt=self.dt, device='cpu')
+        metadata = json.loads((self.source/'scene.json').read_text())
+        self.dt = metadata['timestep_s']
+        from backends.physics_options import merge_native_physics_options
+        physics_options = merge_native_physics_options(metadata, physics_options)
+        self.explicit_affine_actuators = physics_options.pop('explicit_affine_actuators', False)
+        self.native_substeps=physics_options.pop('native_substeps',1)
+        if (isinstance(self.native_substeps,(bool,np.bool_)) or not isinstance(self.native_substeps,(int,np.integer))
+                or not 1<=self.native_substeps<=32):
+            raise ValueError('Native substeps must be an integer from 1 to 32')
+        self.physics_dt=self.dt/self.native_substeps
+        self.native_steps=0
+        self._substep_index=0
+        self.world = World(stage_units_in_meters=1., physics_dt=self.physics_dt, rendering_dt=self.dt, device='cpu')
         self.bridge = SceneBridge(self.world.stage, self.source, self.output,physics_options)
         self.world.get_physics_context().set_solver_type(self.bridge.physics_options['solver_type'])
         physics_scene=self.world.get_physics_context().get_current_physics_scene_prim()
         PhysxSchema.PhysxSceneAPI.Apply(physics_scene).CreateEnableExternalForcesEveryIterationAttr(
             self.bridge.physics_options['external_forces_every_iteration'])
+        # Isaac's stabilization default can scale gravity on resting bodies.
+        # Scientific force observations require the declared gravity unchanged.
+        PhysxSchema.PhysxSceneAPI.Apply(physics_scene).CreateEnableStabilizationAttr(
+            self.bridge.physics_options['enable_stabilization'])
         carb.settings.get_settings().set_int(SETTING_NUM_THREADS,self.bridge.physics_options['simulation_threads'])
         approximate_cylinders=self.bridge.physics_options['approximate_cylinders']
         carb.settings.get_settings().set_bool(SETTING_COLLISION_APPROXIMATE_CYLINDERS,approximate_cylinders)
@@ -51,25 +68,55 @@ class NativeScene:
         scene.CreateGravityMagnitudeAttr(magnitude)
         scene.CreateGravityDirectionAttr(Gf.Vec3f(*map(float,gravity/magnitude if magnitude else [0,0,-1])))
         self.conversion = self.bridge.build()
+        self.conversion['contact_reporting'] = {
+            'normal_channel': 'contacts',
+            'normal_channel_components': 'normal impulses only',
+            'friction_anchor_channel': True,
+            'friction_channel': 'friction_contacts',
+            'scope': 'Native solver impulses at contact points and separate friction anchors; compliant-contact force balance remains unqualified.',
+        }
+        self.conversion['integration']={'native_substeps':int(self.native_substeps),
+            'public_timestep_s':self.dt,'physics_timestep_s':self.physics_dt,
+            'command_semantics':'Control and caller generalized force are held over one public interval; state-dependent native forces and gravity are recomputed each physics substep.',
+            'contact_semantics':'Each timestamped contact contributes impulse/public timestep to public force, so summing samples preserves mean wrench. substep_force is impulse/physics timestep; raw substep forces must not be summed as simultaneous steady forces.',
+            'scope':'Native integration settings; smaller steps do not establish source physics or scientific-process parity.'}
+
+        from backends.visual_profiles import source_visibility_profile, apply_visibility_profile
+        profile = source_visibility_profile(self.bridge.meta)
+        self.conversion['visual_profile'] = (
+            apply_visibility_profile(self.world.stage, self.bridge.geom_paths, profile)
+            if render else {**profile, 'applied': False, 'hidden_geom_paths': []}
+        )
         # Display updates arrive in the source world, including cell surfaces
         # and hoses. Translate their common parent into the solver frame.
         from pxr import UsdGeom, Gf
         visuals=UsdGeom.Xform.Define(self.world.stage,'/World/RuntimeVisuals')
         visuals.AddTranslateOp().Set(Gf.Vec3d(*map(float,-self.bridge.frame.origin)))
         self.m = self.bridge.m
+        from backends.effort_runtime import AppliedEffortRecorder
+        self.effort_recorder = AppliedEffortRecorder(self.m, self.explicit_affine_actuators)
+        self.conversion['actuator_effort'] = {
+            'explicit_affine_actuators': self.explicit_affine_actuators,
+            'available': self.explicit_affine_actuators,
+            'channel': 'actuator_effort',
+            'scope': 'Verified explicit simulated actuator inputs; passive forces remain outside actuator caps. Implicit drive effort and physical motor reactions are unavailable.'}
+        self.gravity_compensation = {
+            body: properties for body, properties in self.bridge.mass_properties.items()
+            if needs_gravity_wrench(properties)
+        }
         self.eq_active=self.m.get('reset_eq_active',self.m['eq_active0']).copy()
         self.eq_events=[]
         self.time = 0.; self.steps = 0; self.physics_wall = 0.; self.frame_count = 0
         self.contacts = []
-        self.geom_ids = {path:i for i,path in self.bridge.geom_paths.items()}
+        self.friction_contacts = []
+        self.geom_ids = {path: geom for geom, paths in self.bridge.collider_paths.items() for path in paths}
         self._configure_drives()
         self.conversion['implicit_tendon_drives']={a:dict(joint=v['joint'],weight=v['weight']) for a,v in self.tendon_drives.items()}
         self.conversion['implicit_friction_joints']=list(self.friction_drives)
-        (self.output/'conversion.json').write_text(json.dumps(self.conversion,indent=2))
         for b in self.bridge.rigid:
             api = PhysxSchema.PhysxContactReportAPI.Apply(self.world.stage.GetPrimAtPath(self.bridge.body_paths[b]))
             api.CreateThresholdAttr(0.)
-        self.subscription = get_physx_simulation_interface().subscribe_contact_report_events(self._contact_report)
+        self.subscription = get_physx_simulation_interface().subscribe_full_contact_report_events(self._contact_report)
         self.arts = []
         for root in self.bridge.articulation_roots:
             b = root['body']
@@ -92,6 +139,12 @@ class NativeScene:
                 i = self.bridge.names['camera'].index(name)
                 self.cameras[i] = Camera(prim_path=self.bridge.camera_paths[i],
                                          resolution=(self.render_settings.width,self.render_settings.height))
+        source_headlight, provenance = resolve_source_headlight(self.bridge.meta, self.source)
+        self.headlights = CameraHeadlights(
+            self.world.stage, {i: self.bridge.camera_paths[i] for i in self.cameras},
+            source_headlight, enabled=headlight_enabled_from_environment(), provenance=provenance)
+        self.conversion['camera_headlight'] = self.headlights.report()
+        (self.output/'conversion.json').write_text(json.dumps(self.conversion,indent=2))
         self.world.reset()
         self.world.get_physics_context().set_physx_update_transformations_settings(
             update_to_usd=False, update_velocities_to_usd=False)
@@ -117,7 +170,6 @@ class NativeScene:
             for _ in range(40): self.world.render()
             if not managed_render:
                 self._refresh_visual_meshes()
-                for _ in range(8):self.world.render()
                 self.capture()
         self.world.stage.GetRootLayer().Export(str(self.output/'scene.usda'))
 
@@ -143,10 +195,11 @@ class NativeScene:
                 raise NotImplementedError(f'Actuator {a}: transmission/gearing needs force adapter')
             j = int(m['actuator_trnid'][a,0])
             factor = np.pi/180 if m['jnt_type'][j] == 3 else 1.
-            kp,kv = -m['actuator_biasprm'][a,1],-m['actuator_biasprm'][a,2]
+            bias = m['actuator_biasprm'][a] if m['actuator_biastype'][a] == 1 else np.zeros(3)
+            kp,kv = -bias[1],-bias[2]
             if m['actuator_dyntype'][a]!=0 or m['actuator_gaintype'][a]!=0 or m['actuator_biastype'][a] not in (0,1):
                 raise NotImplementedError(f'Actuator {a}: dynamic/nonlinear force model requires an adapter')
-            if (kp==0 and kv==0) or m['jnt_actfrclimited'][j]:
+            if self.explicit_affine_actuators or (kp==0 and kv==0) or m['jnt_actfrclimited'][j]:
                 # Source joint force limits apply to actuator forces only,
                 # excluding passive damping. Keep the passive native drive
                 # and evaluate these affine actuators separately.
@@ -158,7 +211,7 @@ class NativeScene:
             drive.GetDampingAttr().Set(float((kv+m['dof_damping'][m['jnt_dofadr'][j]])*factor))
             drive.CreateMaxForceAttr(float(max(abs(m['actuator_forcerange'][a]))) if m['actuator_forcelimited'][a] else 1e20)
             if kp:
-                target=(m['actuator_gainprm'][a,0]*m['reset_ctrl'][a]+m['actuator_biasprm'][a,0])/kp
+                target=(m['actuator_gainprm'][a,0]*m['reset_ctrl'][a]+bias[0])/kp
                 drive.GetTargetPositionAttr().Set(float((target-m['qpos0'][m['jnt_qposadr'][j]])/factor))
             else:
                 drive.CreateTargetVelocityAttr(float(m['actuator_gainprm'][a,0]*m['reset_ctrl'][a]/kv/factor))
@@ -227,37 +280,70 @@ class NativeScene:
         drive.CreateMaxForceAttr(maximum)
         self.tendon_drives[a]={'joint':leader,'weight':weight,'constant':constant,'equalities':sorted(set(equations))}
 
-    def reset(self, qpos=None, qvel=None):
-        qpos = self.m['reset_qpos'] if qpos is None else np.asarray(qpos)
-        qvel = self.m['reset_qvel'] if qvel is None else np.asarray(qvel)
-        for item in self.views:
-            item['view'].set_dof_positions((qpos[item['qa']]-self.m['qpos0'][item['qa']]).astype(np.float32)[None,:],np.array([0],np.uint32))
-            item['view'].set_dof_velocities(qvel[item['va']].astype(np.float32)[None,:],np.array([0],np.uint32))
-        for j,body in self.free.items():
-            qa=int(self.m['jnt_qposadr'][j]);va=int(self.m['jnt_dofadr'][j])
-            # MuJoCo accepts non-unit reset quaternions and normalizes them
-            # during kinematics/integration. PhysX rejects the same pose.
-            orientation=np.asarray(qpos[qa+3:qa+7],dtype=float)
-            norm=float(np.linalg.norm(orientation))
-            if not np.isfinite(norm) or norm<1e-12:
-                raise ValueError(f'Invalid free-joint quaternion for joint {j}')
-            orientation=orientation/norm
-            body.set_world_pose(self.bridge.frame.to_native(qpos[qa:qa+3]),orientation)
-            r=rotation(orientation);angular=r@qvel[va+3:va+6]
-            offset=r@self.bridge.mass_properties[self.bridge.free_bodies[j]]['center']
-            body.set_linear_velocity(qvel[va:va+3]+np.cross(angular,offset))
-            body.set_angular_velocity(angular)
-        self.world.physics_sim_view.update_articulations_kinematic()
-        get_physx_interface().update_transformations(True,True,True,False)
-        self.time=0.; self.steps=0; self.contacts=[]
-        return self.observe()
+    def _require_valid_state(self):
+        if getattr(self, '_state_error', None) is not None:
+            raise RuntimeError('Native scene state is invalid; reset required: ' + self._state_error)
 
-    def _contact_report(self, headers, points):
+    def reset(self, qpos=None, qvel=None):
+        self._state_error = 'Native reset has not completed'
+        self.effort_recorder.invalidate(self._state_error)
+        try:
+            qpos = self.m['reset_qpos'] if qpos is None else np.asarray(qpos)
+            qvel = self.m['reset_qvel'] if qvel is None else np.asarray(qvel)
+            for item in self.views:
+                item['view'].set_dof_positions((qpos[item['qa']]-self.m['qpos0'][item['qa']]).astype(np.float32)[None,:],np.array([0],np.uint32))
+                item['view'].set_dof_actuation_forces(np.zeros((1, len(item['va'])), np.float32), np.array([0], np.uint32))
+                item['view'].set_dof_velocities(qvel[item['va']].astype(np.float32)[None,:],np.array([0],np.uint32))
+            for j,body in self.free.items():
+                qa=int(self.m['jnt_qposadr'][j]);va=int(self.m['jnt_dofadr'][j])
+                # MuJoCo accepts non-unit reset quaternions and normalizes them
+                # during kinematics/integration. PhysX rejects the same pose.
+                orientation=np.asarray(qpos[qa+3:qa+7],dtype=float)
+                norm=float(np.linalg.norm(orientation))
+                if not np.isfinite(norm) or norm<1e-12:
+                    raise ValueError(f'Invalid free-joint quaternion for joint {j}')
+                orientation=orientation/norm
+                body.set_world_pose(self.bridge.frame.to_native(qpos[qa:qa+3]),orientation)
+                r=rotation(orientation);angular=r@qvel[va+3:va+6]
+                offset=r@self.bridge.mass_properties[self.bridge.free_bodies[j]]['center']
+                body.set_linear_velocity(qvel[va:va+3]+np.cross(angular,offset))
+                body.set_angular_velocity(angular)
+            self.world.physics_sim_view.update_articulations_kinematic()
+            get_physx_interface().update_transformations(True,True,True,False)
+            self.time=0.; self.steps=0; self.native_steps=0; self._substep_index=0; self.contacts=[]
+            self.friction_contacts=[]
+            self.effort_recorder.reset(self.views, len(self.m['reset_qvel']))
+            self._state_error = None
+            return self.observe()
+        except Exception as error:
+            self._state_error = f'Native reset failed: {error}'
+            self.effort_recorder.invalidate(self._state_error)
+            raise
+
+    def _contact_sample(self, position, impulse, first, second):
+        """One measured impulse, with public averaging and native sample timing."""
+        return {'geom1': self.geom_ids[first], 'geom2': self.geom_ids[second],
+                'collider1': first, 'collider2': second,
+                'pos': self.bridge.frame.to_source([position.x, position.y, position.z]).tolist(),
+                'force': [impulse.x/self.dt, impulse.y/self.dt, impulse.z/self.dt],
+                'substep_force': [impulse.x/self.physics_dt, impulse.y/self.physics_dt, impulse.z/self.physics_dt],
+                'impulse_Ns': [impulse.x, impulse.y, impulse.z],
+                'force_interval_s': self.dt, 'physics_timestep_s': self.physics_dt,
+                'public_step': self.steps+1, 'substep_index': self._substep_index,
+                'time_s': self.steps*self.dt+(self._substep_index+1)*self.physics_dt}
+
+    def _contact_report(self, headers, points, friction_anchors):
         for header in headers:
             p0 = str(PhysicsSchemaTools.intToSdfPath(header.collider0))
             p1 = str(PhysicsSchemaTools.intToSdfPath(header.collider1))
             if p0 not in self.geom_ids or p1 not in self.geom_ids: continue
-            a,b = self.geom_ids[p0], self.geom_ids[p1]
+            # The SDK reports normal point impulses and friction anchors in
+            # separate buffers. Preserve the anchors' actual application points;
+            # assigning their forces to normal points would invent a wrench.
+            for index in range(header.friction_anchors_offset,
+                               header.friction_anchors_offset+header.num_friction_anchors_data):
+                anchor = friction_anchors[index]
+                self.friction_contacts.append(self._contact_sample(anchor.position, anchor.impulse, p1, p0))
             for index in range(header.contact_data_offset,header.contact_data_offset+header.num_contact_data):
                 p=points[index]
                 position,normal,impulse=p.position,p.normal,p.impulse
@@ -266,11 +352,12 @@ class NativeScene:
                 # Float3's Python sequence conversion repeatedly crosses the
                 # binding and probes out-of-range indices. Read its three
                 # fields directly, preserving every point and impulse.
-                self.contacts.append({'geom1':b,'geom2':a,'pos':self.bridge.frame.to_source([position.x,position.y,position.z]).tolist(),
-                                      'normal':[normal.x,normal.y,normal.z],'distance':float(p.separation),
-                                      'force':[impulse.x/self.dt,impulse.y/self.dt,impulse.z/self.dt]})
+                sample = self._contact_sample(position, impulse, p1, p0)
+                sample.update(normal=[normal.x,normal.y,normal.z], distance=float(p.separation))
+                self.contacts.append(sample)
 
     def observe(self):
+        self._require_valid_state()
         qpos=self.m['reset_qpos'].copy(); qvel=np.zeros_like(self.m['reset_qvel'])
         body_poses={}
         for item in self.views:
@@ -292,6 +379,11 @@ class NativeScene:
             body_poses[self.bridge.free_bodies[j]]=qpos[qa:qa+7].tolist()
         if not np.isfinite(qpos).all() or not np.isfinite(qvel).all():
             raise RuntimeError('Non-finite PhysX state')
+        # Native orientations may have float32 norm error; reject only invalid values
+        # and the zero quaternion, without renormalizing the observed state.
+        for body, pose in body_poses.items():
+            if not np.isfinite(pose).all() or not np.any(np.asarray(pose[3:]) != 0):
+                raise RuntimeError(f'Invalid native body pose for body {body}: non-finite values or zero quaternion')
         coupling_errors={}
         for i in np.flatnonzero((self.m['eq_type']==2)&self.eq_active):
             a,b=self.m['eq_obj1id'][i],self.m['eq_obj2id'][i]
@@ -301,10 +393,14 @@ class NativeScene:
             expected=np.polynomial.polynomial.polyval(x,self.m['eq_data'][i,:5])
             coupling_errors[int(i)]=float(qpos[qa]-self.m['qpos0'][qa]-expected)
         self._observed={'qpos':qpos.tolist(),'qvel':qvel.tolist(),'time':self.time,'contacts':self.contacts,
-                        'body_poses':body_poses,'joint_coupling_errors':coupling_errors}
+                        'friction_contacts':self.friction_contacts,
+                        'actuator_effort':self.effort_recorder.state,
+                        'body_poses':body_poses,'joint_coupling_errors':coupling_errors,
+                        'eq_active':self.eq_active.tolist()}
         return self._observed
 
     def step(self, control, extra_forces=None, eq_active=None, eq_data=None):
+        self._require_valid_state()
         m=self.m
         if eq_data is not None:
             parameters = np.asarray(eq_data,dtype=float)
@@ -327,6 +423,29 @@ class NativeScene:
         ctrl=np.asarray(control,dtype=np.float64)
         if ctrl.shape != m['reset_ctrl'].shape or not np.isfinite(ctrl).all():
             raise ValueError('Control size or values are invalid')
+        # Public commands are held for one source interval. Recompute affine
+        # actuator forces, friction and gravity from each native intermediate state.
+        self.contacts=[]
+        self.friction_contacts=[]
+        self.effort_recorder.begin_interval()
+        try:
+            for index in range(self.native_substeps):
+                self._substep_index=index
+                self._step_physics(ctrl,extra_forces)
+            self.effort_recorder.finish_interval()
+        except Exception as error:
+            self._state_error = f'Native interval failed: {error}'
+            self.effort_recorder.invalidate(self._state_error)
+            raise
+        self.steps+=1
+        self.time=self.steps*self.dt
+        if self.render_enabled and not self.managed_render and self.steps % self.render_settings.step_interval(self.dt) == 0:
+            get_physx_interface().update_transformations(True,True,False,False)
+            self.world.render(); self.capture()
+        return self.observe()
+
+    def _step_physics(self, ctrl, extra_forces):
+        m=self.m
         state=self._observed; q=np.asarray(state['qpos']); v=np.asarray(state['qvel'])
         forces=np.zeros_like(v) if extra_forces is None else np.asarray(extra_forces,dtype=float).copy()
         actuator_forces=np.zeros_like(v)
@@ -345,7 +464,8 @@ class NativeScene:
                 velocity_targets[art][local]=numerator/(kv+m['dof_damping'][m['jnt_dofadr'][j]])
         for a,j in self.force_actuators.items():
             value=np.clip(ctrl[a],*m['actuator_ctrlrange'][a]) if m['actuator_ctrllimited'][a] else ctrl[a]
-            bias=m['actuator_biasprm'][a];qa=m['jnt_qposadr'][j];va=m['jnt_dofadr'][j]
+            bias=m['actuator_biasprm'][a] if m['actuator_biastype'][a] == 1 else np.zeros(3)
+            qa=m['jnt_qposadr'][j];va=m['jnt_dofadr'][j]
             force=m['actuator_gainprm'][a,0]*value+bias[0]+bias[1]*q[qa]+bias[2]*v[va]
             if m['actuator_forcelimited'][a]:force=np.clip(force,*m['actuator_forcerange'][a])
             actuator_forces[va]+=force
@@ -363,7 +483,7 @@ class NativeScene:
             js=m['wrap_objid'][spans]; weights=m['wrap_prm'][spans]
             qa=m['jnt_qposadr'][js]; va=m['jnt_dofadr'][js]
             u=np.clip(ctrl[a],*m['actuator_ctrlrange'][a]) if m['actuator_ctrllimited'][a] else ctrl[a]
-            bias=m['actuator_biasprm'][a]
+            bias=m['actuator_biasprm'][a] if m['actuator_biastype'][a] == 1 else np.zeros(3)
             force=m['actuator_gainprm'][a,0]*u+bias[0]+bias[1]*np.dot(weights,q[qa])+bias[2]*np.dot(weights,v[va])
             if m['actuator_forcelimited'][a]:force=np.clip(force,*m['actuator_forcerange'][a])
             np.add.at(actuator_forces,va,weights*force)
@@ -379,26 +499,59 @@ class NativeScene:
             # viscous damping separately, without clipping it to frictionloss.
             forces[va]-=m['dof_damping'][va]*v[va]
         forces-=friction
+        if (not np.isfinite(forces).all()
+                or np.any(np.abs(forces) > np.finfo(np.float32).max)):
+            raise ValueError('Native generalized force inputs must be finite and within the float32 range')
+        if any(not np.isfinite(values).all() for values in targets + velocity_targets):
+            raise ValueError('Native position and velocity targets must be finite')
         for item,target,velocity in zip(self.views,targets,velocity_targets):
             item['view'].set_dof_position_targets(target[None,:],np.array([0],np.uint32))
             item['view'].set_dof_velocity_targets(velocity[None,:],np.array([0],np.uint32))
             item['view'].set_dof_actuation_forces(forces[item['va']].astype(np.float32)[None,:],np.array([0],np.uint32))
         for j,body in self.free.items():
             va=m['jnt_dofadr'][j];qa=m['jnt_qposadr'][j]
-            force=forces[va:va+3];torque=rotation(q[qa+3:qa+7])@forces[va+3:va+6]
+            force=forces[va:va+3].copy();torque=rotation(q[qa+3:qa+7])@forces[va+3:va+6]
+            properties = self.gravity_compensation.get(self.bridge.free_bodies[j])
+            if properties is not None:
+                correction, moment = gravity_wrench(properties, q[qa+3:qa+7], self.bridge.meta['gravity'])
+                force += correction
+                torque += moment
             if np.any(force) or np.any(torque):
                 body._rigid_prim_view.apply_forces_and_torques_at_pos(
                     forces=force[None,:],torques=torque[None,:],
                     positions=self.bridge.frame.to_native(q[None,qa:qa+3]),is_global=True)
-        self.contacts=[]
+        self._apply_articulation_gravity()
         started=time.perf_counter()
         self.world.step(render=False)
         self.physics_wall+=time.perf_counter()-started
-        self.steps+=1; self.time=self.steps*self.dt
-        if self.render_enabled and not self.managed_render and self.steps % self.render_settings.step_interval(self.dt) == 0:
-            get_physx_interface().update_transformations(True,True,False,False)
-            self.world.render(); self.capture()
+        self.native_steps+=1
+        self.time=self.steps*self.dt+(self._substep_index+1)*self.physics_dt
+        self.effort_recorder.record(actuator_forces, forces, self.views, self.physics_dt)
         return self.observe()
+
+    def _apply_articulation_gravity(self):
+        """Apply mixed compensation once, using current native link transforms."""
+        if not self.gravity_compensation:
+            return
+        free_bodies = set(self.bridge.free_bodies.values())
+        for item in self.views:
+            selected = [(index, self.gravity_compensation[body])
+                        for index, body in enumerate(item['body_ids'])
+                        if body in self.gravity_compensation and body not in free_bodies]
+            if not selected:
+                continue
+            transforms = item['view'].get_link_transforms()
+            forces = np.zeros((*transforms.shape[:2], 3), dtype=np.float32)
+            torques = np.zeros_like(forces)
+            for index, properties in selected:
+                pose = transforms[0, index]
+                orientation = pose[[6, 3, 4, 5]]
+                forces[0, index], torques[0, index] = gravity_wrench(
+                    properties, orientation, self.bridge.meta['gravity'])
+            item['view'].apply_forces_and_torques_at_position(
+                force_data=forces, torque_data=torques,
+                position_data=np.ascontiguousarray(transforms[:, :, :3]),
+                indices=np.array([0], dtype=np.uint32), is_global=True)
 
     def _refresh_visual_meshes(self):
         """Refresh ray-traced display meshes after physics initialization."""
@@ -429,25 +582,31 @@ class NativeScene:
 
     def render_frame(self, visuals):
         """Render source display/liquid updates after the task's manager step."""
+        self._require_valid_state()
         if not self.render_enabled:raise RuntimeError('Rendering is disabled for this scene')
         before=self.observe()
+        counters = (self.steps, self.native_steps, self.time)
         from backends.usd_visuals import apply_visuals
         stats=apply_visuals(self.world.stage,self.m,visuals,self.visual_geometry)
         get_physx_interface().update_transformations(True,True,False,False)
         # RGB annotators buffer render frames for moving actors as well as
         # texture changes. Drain that latency before pairing RGB with state.
         if self.frame_count == 0:self._refresh_visual_meshes()
-        for _ in range(8):self.world.render()
         self.capture()
         after=self.observe()
-        if any(not np.allclose(before[key],after[key],rtol=0,atol=1e-6) for key in ('qpos','qvel')):
+        if (counters != (self.steps, self.native_steps, self.time)
+                or any(not np.array_equal(before[key], after[key]) for key in ('qpos', 'qvel'))):
             raise RuntimeError('Rendering changed the native physics state')
         return {'frames':self.frame_count,**stats}
 
     def capture(self):
         from PIL import Image
         for i,camera in self.cameras.items():
-            rgba=camera.get_rgba()
+            # Drain RGB latency under this camera's light only. Rendering never
+            # advances physics; the transaction also restores lamps on failure.
+            with self.headlights.capture(i):
+                for _ in range(8):self.world.render()
+                rgba=camera.get_rgba()
             if rgba is None or rgba.shape != (self.render_settings.height,self.render_settings.width,4):raise RuntimeError('Camera did not produce RGB')
             folder=self.output/f'camera_{i}';folder.mkdir(exist_ok=True)
             path=folder/f'{self.frame_count:05d}.png'

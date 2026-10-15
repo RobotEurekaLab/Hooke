@@ -68,7 +68,14 @@
       "Institutional review and calibrated camera comparison absent",
       "Exact photographed device models not reproduced"
     ],
-    "fidelity": "Reference-informed visible-feature reconstruction; not a surveyed digital twin"
+    "fidelity": "Reference-informed visible-feature reconstruction; not a surveyed digital twin",
+    "processor_workflow": {
+      "revision": "penn-dry-processor-v1",
+      "source_scope": "Cached Penn official still supports parallel clinical benches and enclosed equipment but does not identify an OEM processor. Original promised dry access/loading workflow is represented by an authored, estimated enclosure and carriage.",
+      "retired_interface": "Mismatched Leica microtome primary removed from Penn; handwheel/specimen_feed/section_stroke/blade_guard controls explicitly retired. Legacy microtome builder remains available elsewhere.",
+      "physical_route": "Six-DOF free inert cassette on external tray; powered carriage physically conveys it into dry chamber, door closes, then reopens for physical return to external staging. No specimen teleport, weld or process simulation.",
+      "dimension_basis": "Estimated mechanism and cassette dimensions; not source-exact apparatus identity or clinical operation."
+    }
   },
   "uw_isolab": {
     "sources": [
@@ -87,22 +94,43 @@
     ],
     "observed": [
       "Rack-supported preparation manifold with controllers, wiring, valves and Dewar shields",
-      "Water-isotope station adjacent to restrained green and burgundy gas cylinders"
+      "Water-isotope station adjacent to restrained green and burgundy gas cylinders",
+      "Wide cream horizontal autosampler bridge, tall vertical head and rectangular rack arrangement in the official water-analysis still",
+      "Substantially taller gray analyzer/control enclosure, backlit window and dense auxiliary wiring in that still"
     ],
     "implemented": [
       "Rack controller housings, display windows and feed wiring",
-      "Distinct cylinder colors, regulator bodies and pressure-gauge geometry"
+      "Distinct cylinder colors, regulator bodies and pressure-gauge geometry",
+      "Connected Cartesian X/Y/Z guides with enabled primary contacts and open bearing bores",
+      "Two fixed supported rectangular racks, free retained inert carrier and true-scale authored dry stylus",
+      "Original Z mechanics and three original world cameras preserved; explicit carousel retirement",
+      "Supported cream/teal commercial tower and arm covers with open tool outlet; enabled fixed connector/cable loops",
+      "Rack-mounted controller cases and loops, estimated foil exterior, physically supported metallic vessel bands and handles"
     ],
     "inferred": [
       "All gauge needle angles are fixed visual context, not measured pressure",
       "Exact pipe connectivity, panel readings and regulator dimensions",
-      "Compact scene zoning and adjacency remain inferred"
+      "Compact scene zoning and adjacency remain inferred",
+      "1.08 x 0.64 x 0.82 m surrogate envelope, hidden Cartesian guides and 0.8 mm dry stylus diameter",
+      "Running-clearance bearings and fixed open carrier pocket are authored inspection hardware"
     ],
     "unresolved": [
       "Pressure, gas chemistry and temperature are not simulated",
       "No calibrated drawing for the photographed preparation assembly",
-      "Exact room adjacency and surveyed footprint unavailable"
+      "Exact room adjacency and surveyed footprint unavailable",
+      "No exact autosampler model, OEM dimensions, liquid operation or isotope measurement model",
+      "The water still shows a different or unverified installed cabinet generation; retained cabinet dimensions follow the attributed UW-hosted manual, not a surveyed photograph.",
+      "The bright window and unseen room surroundings are not reconstructed as surveyed architecture; local apparatus/service detail is the source-comparison scope."
     ],
-    "fidelity": "Reference-informed apparatus context within estimated two-zone subset"
+    "fidelity": "Reference-informed apparatus context within estimated two-zone subset",
+    "source_context_revision": {
+      "date": "2026-10-07",
+      "geometry_helper": "real_labs.uw_source_services",
+      "observed": "Commercial cream/teal covers and installed cables in water still; dense upper controllers, descending loops, foil section and metallic vessels in preparation still.",
+      "authored_estimates": "Cover thickness and attachment, actual 6 mm tool-outlet clearance, connector identity, wiring topology, controller arrangement, fold shape and dimensions are authored from visible cues; no live electrical, vacuum, cryogenic or analytical function.",
+      "preservation": "All original geoms and moving bodies/inertias/frames/drives/sites retained. New carrier-attached covers are massless presentation/contact geometry; their mass remains included in the unchanged authored assembly inertia.",
+      "scope": "Photographed apparatus within the declared estimated two-zone subset. UW-hosted manual cabinet dimensions remain the basis; exact installed generation and unseen room adjacency are unresolved. No native Isaac or final acceptance.",
+      "evidence_directory": "temp/university/optimization_120_20261004/acceptance_20261007/batch01/source_closure/uw"
+    }
   }
 }

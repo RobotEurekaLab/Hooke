@@ -61,93 +61,10 @@ class _Room:
 
 
 def _synthesis_hood(b, base, params):
-    """Service-rich hood with sash access and a supported inert flask lift."""
-    b.box(base, (0, 0, 0.07), (0.85, 0.43, 0.07), "dark", collision=True)
-    b.box(base, (0, 0.02, 0.46), (0.84, 0.40, 0.32), "shell", collision=True)
-    for x in (-0.42, 0.42):
-        b.box(base, (x, -0.392, 0.45), (0.40, 0.017, 0.29), "cream")
-        b.rod(base, (x - 0.10, -0.425, 0.63), (x + 0.10, -0.425, 0.63), 0.009, "bright")
-    b.box(base, (0, -0.01, 0.83), (0.87, 0.46, 0.06), "shell", collision=True)
-    b.box(base, (0, 0.0, 0.91), (0.86, 0.44, 0.024), "dark", collision=True)
-    # Back and jambs leave a real open work volume; no solid collision box.
-    b.box(base, (0, 0.435, 1.70), (0.87, 0.035, 0.79), "cream", collision=True)
-    for x in (-0.84, 0.84):
-        b.box(base, (x, 0.01, 1.72), (0.027, 0.42, 0.80), "shell", collision=True)
-        b.box(base, (x, -0.46, 1.78), (0.025, 0.025, 0.81), "metal", collision=True)
-    b.box(base, (0, 0.015, 2.53), (0.87, 0.43, 0.065), "shell", collision=True)
-    b.vents(base, (0, -0.43, 2.48), 1.30, 5)
-    # The glass slides outside the enclosure; its full stroke clears the roof.
-    sash = b.moving(
-        base, "sash_height", (0, -0.50, 1.64), (0, 0, 1), (0, 0.48), mass=1.4
-    )
-    b.box(sash, (0, 0, 0), (0.793, 0.006, 0.35), "glass", collision=True)
-    for z in (-0.36, 0.36):
-        b.box(sash, (0, 0, z), (0.81, 0.023, 0.015), "bright", collision=True)
-    for x in (-0.80, 0.80):
-        b.box(sash, (x, 0, 0), (0.012, 0.018, 0.35), "bright", collision=True)
-    b.rod(sash, (-0.23, -0.045, -0.34), (0.23, -0.045, -0.34), 0.014, "metal")
-    # Service valves, sockets and restrained hoses follow the photographed fascia.
-    for i in range(7):
-        x = -0.66 + i * 0.22
-        b.cylinder(
-            base, (x, -0.481, 0.84), 0.024, 0.013, "bright", euler=(math.pi / 2, 0, 0)
-        )
-        b.box(
-            base, (x, -0.507, 0.84), (0.009, 0.013, 0.025), "cyan" if i % 2 else "blue"
-        )
-        if i in (1, 4):
-            b.box(base, (x, -0.482, 0.73), (0.026, 0.006, 0.025), "dark")
-    for x in (-0.60, -0.28, 0.16, 0.59):
-        b.rod(base, (x, 0.30, 0.97), (x, 0.30, 2.30), 0.008, "bright")
-    for z in (1.24, 1.72, 2.13):
-        b.rod(base, (-0.65, 0.30, z), (0.65, 0.30, z), 0.008, "bright")
-    for x in (-0.48, 0.10):
-        b.rod(base, (x, 0.30, 1.74), (x, -0.07, 1.74), 0.006, "metal")
-        b.ring(base, (x, -0.07, 1.74), 0.042, 0.004, "metal")
-    # Authored linear laboratory lift: sleeves and rods remain connected at all heights.
-    b.box(base, (-0.28, -0.02, 0.97), (0.18, 0.16, 0.03), "metal", collision=True)
-    for x in (-0.40, -0.16):
-        b.cylinder(base, (x, -0.02, 1.03), 0.029, 0.05, "dark", collision=True)
-    lift = b.moving(
-        base, "flask_lift", (-0.28, -0.02, 1.11), (0, 0, 1), (0, 0.13), mass=0.7
-    )
-    for x in (-0.12, 0.12):
-        b.cylinder(lift, (x, 0, -0.095), 0.012, 0.105, "bright")
-    b.box(lift, (0, 0, 0), (0.18, 0.16, 0.019), "metal", collision=True)
-    b.housing(
-        lift, ((0.022, 0.15, 0.135, 0), (0.087, 0.14, 0.115, 0.01)), material="blue"
-    )
-    b.box(lift, (0, 0, 0.056), (0.14, 0.105, 0.030), "blue", collision=True)
-    for x in (-0.066, 0.065):
-        b.cylinder(
-            lift, (x, -0.129, 0.059), 0.018, 0.008, "cream", euler=(math.pi / 2, 0, 0)
-        )
-    b.cylinder(lift, (0, 0.015, 0.104), 0.095, 0.016, "bright", collision=True)
-    b.geom(lift, "sphere", (0.077,), (0, 0.015, 0.189), "glass", collision=True)
-    b.cylinder(lift, (0, 0.015, 0.277), 0.022, 0.045, "glass", collision=True)
-    b.cylinder(lift, (0, 0.015, 0.323), 0.027, 0.011, "copper")
-    b.geom(lift, "sphere", (0.052,), (0, 0.015, 0.166), "copper")
-    b.site(lift, "inert_flask", (0, 0.015, 0.189), size=0.008)
-    # Distinct visible supplies remain inert props, without chemical recipes.
-    for i in range(4):
-        x = 0.30 + i * 0.095
-        b.cylinder(base, (x, -0.17, 0.977), 0.023, 0.039, "glass")
-        b.cylinder(base, (x, -0.17, 1.022), 0.025, 0.008, "blue")
-    for x in (0.30, 0.58):
-        b.cylinder(base, (x, 0.16, 1.018), 0.04, 0.075, "cream")
-        b.rod(base, (x, 0.16, 1.095), (x - 0.05, 0.16, 1.145), 0.009, "cream")
-    for x in (-0.68, 0.68):
-        b.rod(base, (x, 0.37, 1.51), (x + 0.035, 0.25, 1.32), 0.011, "rubber")
-        b.rod(base, (x + 0.035, 0.25, 1.32), (x, 0.18, 1.08), 0.011, "rubber")
-    b.metadata["capabilities"] = [
-        "Vertical sash access",
-        "Retained inert flask elevation",
-    ]
-    b.metadata["limitations"].append(
-        "The photographed EPFL bay is historical 2019. Hood size, sash stroke and "
-        "guided lifting mechanism are estimates; the latter substitutes for the "
-        "observed laboratory jack. No extraction airflow, vacuum, heating or chemistry."
-    )
+    """Supported twin-hood apparatus with independently driven bath elevation."""
+    from real_labs.epfl_hood_geometry import add_synthesis_hood
+
+    add_synthesis_hood(b, base, params)
 
 
 def _epfl_bay(world, definition):
@@ -157,7 +74,7 @@ def _epfl_bay(world, definition):
         p.box("rear_utility_trunk", (x, 1.54, 1.1), (0.89, 0.06, 0.05), STEEL)
     for x in (-0.75, 1.15):
         p.cylinder("yellow_stool_seat", (x, -0.42, 0.57), 0.19, 0.035, YELLOW)
-        p.cylinder("stool_column", (x, -0.42, 0.31), 0.025, 0.22, STEEL)
+        p.cylinder("stool_column", (x, -0.42, 0.3125), 0.025, 0.2225, STEEL)
         for angle in (0, 2 * math.pi / 3, 4 * math.pi / 3):
             p.rod(
                 "stool_foot",
@@ -511,80 +428,21 @@ def _mri_phantom_station(b, base, params):
             rgba=(0.86, 0.88, 0.88, 0),
         )
     for x in (-0.74, 0.74):
-        b.box(base, (x, 0.051, 1.20), (0.075, 0.011, 0.026), "metal")
+        b.box(base, (x, 0.056, 1.20), (0.075, 0.011, 0.026), "metal")
         for dx in (-0.035, 0, 0.035):
             b.cylinder(
                 base,
-                (x + dx, 0.032, 1.20),
+                (x + dx, 0.041, 1.20),
                 0.008,
                 0.004,
                 "cream",
                 euler=(math.pi / 2, 0, 0),
             )
-    b.screen(base, (0, 0.043, 1.80), width=0.18, height=0.12)
-    # Original table foundation: visible wheels, foot casting and telescopic lift.
-    b.housing(base, ((0.09, 0.37, 0.54, -1.48), (0.22, 0.32, 0.48, -1.46)), radius=0.06)
-    b.box(base, (0, -1.46, 0.15), (0.31, 0.45, 0.06), "shell", collision=True)
-    for x in (-0.31, 0.31):
-        for y in (-1.85, -1.10):
-            b.cylinder(
-                base,
-                (x, y, 0.071),
-                0.07,
-                0.029,
-                "rubber",
-                euler=(0, math.pi / 2, 0),
-                collision=True,
-            )
-            b.cylinder(
-                base,
-                (x * 1.06, y, 0.071),
-                0.037,
-                0.011,
-                "bright",
-                euler=(0, math.pi / 2, 0),
-            )
-    b.housing(
-        base, ((0.20, 0.22, 0.28, -1.48), (0.64, 0.19, 0.24, -1.44)), radius=0.035
-    )
-    b.box(base, (0, -1.46, 0.43), (0.18, 0.22, 0.21), "shell", collision=True)
-    lift = b.moving(
-        base, "table_height", (0, 0, 0.72), (0, 0, 1), (0, 0.06), mass=1.5, kp=300
-    )
-    b.box(lift, (0, -1.46, -0.065), (0.151, 0.19, 0.095), "metal")
-    b.box(lift, (0, -1.27, 0.0), (0.28, 0.66, 0.026), "shell", collision=True)
-    for x in (-0.21, 0.21):
-        b.rod(lift, (x, -1.86, 0.065), (x, -0.18, 0.065), 0.014, "bright")
-        b.box(lift, (x, -1.03, 0.030), (0.018, 0.84, 0.018), "metal", collision=True)
-    carriage = b.moving(
-        lift, "table_insert", (0, -0.92, 0.15), (0, 1, 0), (0, 0.85), mass=1.2, kp=300
-    )
-    b.box(carriage, (0, -0.37, -0.055), (0.20, 0.24, 0.024), "metal", collision=True)
-    b.box(carriage, (0, 0, 0), (0.20, 1.11, 0.025), "shell", collision=True)
-    for x in (-0.196, 0.196):
-        b.rod(carriage, (x, -1.06, 0.027), (x, 0.99, 0.027), 0.012, "bright")
-    b.box(carriage, (0, -0.21, 0.049), (0.18, 0.76, 0.022), "rubber", collision=True)
-    # Visible inert water-equivalent-looking phantom in a restrained cradle.
-    b.box(carriage, (0, 0.38, 0.050), (0.15, 0.19, 0.024), "cream", collision=True)
-    for x in (-0.127, 0.127):
-        b.box(carriage, (x, 0.38, 0.106), (0.021, 0.19, 0.055), "shell", collision=True)
-    b.cylinder(
-        carriage,
-        (0, 0.38, 0.150),
-        0.093,
-        0.147,
-        "cyan",
-        euler=(math.pi / 2, 0, 0),
-        collision=True,
-    )
-    for y in (0.224, 0.536):
-        b.cylinder(
-            carriage, (0, y, 0.150), 0.096, 0.006, "cream", euler=(math.pi / 2, 0, 0)
-        )
-    for y in (0.27, 0.49):
-        # Straight retaining straps make attachment visible; not a human head coil.
-        b.box(carriage, (0, y, 0.249), (0.14, 0.012, 0.005), "cream")
-    b.site(carriage, "inert_mri_phantom", (0, 0.38, 0.150), size=0.009)
+    b.screen(base, (0, 0.058, 1.80), width=0.18, height=0.12)
+    from real_labs.birmingham_mri_geometry import add_table, add_scanner_context
+
+    add_table(b, base)
+    add_scanner_context(b, base)
     b.metadata["capabilities"] = [
         "Supported table elevation",
         "Retained inert phantom insertion",
@@ -601,6 +459,8 @@ def _mri_phantom_station(b, base, params):
 def _mri_room(world, definition):
     p = _Room(world, "mri")
     # The reference supports one recessed storage wall, not a complete control suite.
+    p.box("storage_plinth", (-1.57, 0.72, 0.04), (0.31, 0.60, 0.04), WHITE,
+          collision=True)
     p.box(
         "storage_back", (-1.86, 0.72, 1.20), (0.038, 0.57, 1.12), WHITE, collision=True
     )
@@ -616,7 +476,7 @@ def _mri_room(world, definition):
             WHITE,
             collision=True,
         )
-    for z in (0.74, 1.24, 1.74):
+    for z in (0.723, 1.233, 1.743):
         for y in (0.42, 0.83):
             p.box(
                 "stored_phantom_pad",
@@ -625,6 +485,9 @@ def _mri_room(world, definition):
                 (0.76, 0.83, 0.82, 1),
             )
     p.box("wall_service_cabinet", (0, 2.72, 2.40), (0.79, 0.18, 0.22), WHITE)
+    from real_labs.birmingham_mri_geometry import add_room_storage
+
+    add_room_storage(p)
 
 
 BUILDERS = {
@@ -680,9 +543,9 @@ SAMPLE_INTERFACES = {
     ),
     "epfl_synthesis_hood": (
         "inert_flask",
-        (0.154, 0.154, 0.25),
+        (0.104, 0.104, 0.161),
         "clamped",
-        "Visible sealed inert flask retained on the lift-mounted hotplate surrogate",
+        "Fixed round-bottom flask held independently above the moving bath; no chemistry model",
     ),
 }
 FEATURES = {

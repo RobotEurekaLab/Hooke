@@ -66,6 +66,7 @@ class EngineeringWaveOneTests(unittest.TestCase):
 
     def test_swept_and_combined_motion_clearances(self):
         for identifier, session in self.sessions.items():
+            expected_wire_obstacles = 0
             controls = list(session.controls.values())
             poses = list(product(*(np.linspace(c.lower, c.upper, 5) for c in controls)))
             for axis, control in enumerate(controls):
@@ -88,7 +89,22 @@ class EngineeringWaveOneTests(unittest.TestCase):
                     for c in session.data.contact
                     if c.dist < -0.0001
                 ]
-                self.assertEqual(bad, [], (identifier, list(pose), bad))
+                if identifier == "birmingham_advanced_micro_edm":
+                    # The authored slot now engages a colliding wire. Preserve
+                    # full XY limits and expose invalid threaded lateral poses.
+                    for first, second, gap in bad:
+                        self.assertIn(
+                            "primary_apparatus__wire_fixture_wire", (first, second)
+                        )
+                        other = second if first.endswith("_wire") else first
+                        self.assertTrue(
+                            other.startswith("primary_apparatus__wire_fixture_coupon_")
+                        )
+                        expected_wire_obstacles += 1
+                else:
+                    self.assertEqual(bad, [], (identifier, list(pose), bad))
+            if identifier == "birmingham_advanced_micro_edm":
+                self.assertGreater(expected_wire_obstacles, 0)
 
     def test_door_approaches_and_retained_targets(self):
         for identifier, session in self.sessions.items():

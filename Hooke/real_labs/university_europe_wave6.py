@@ -109,102 +109,11 @@ def _flange(b, parent, center, radius, plane="xy"):
 
 
 def _imperial_thinfilm_cluster(b, base, params):
-    # Two installed multiport apparatus silhouettes follow the historical photo.
-    for x, y in ((-0.95, -0.32), (0.94, 0.38)):
-        for dx in (-0.46, 0.46):
-            for dy in (-0.37, 0.37):
-                b.cylinder(
-                    base,
-                    (x + dx, y + dy, 0.025),
-                    0.045,
-                    0.025,
-                    "rubber",
-                    collision=True,
-                )
-                b.box(
-                    base,
-                    (x + dx, y + dy, 0.50),
-                    (0.021, 0.021, 0.45),
-                    "bright",
-                    collision=True,
-                )
-        b.box(base, (x, y, 0.54), (0.46, 0.37, 0.37), "cream", collision=True)
-        b.box(base, (x, y, 0.93), (0.49, 0.40, 0.020), "metal", collision=True)
-        for dx in (-0.29, 0.29):
-            b.box(
-                base, (x + dx, y, 1.055), (0.038, 0.27, 0.105), "metal", collision=True
-            )
-        b.cylinder(base, (x, y, 1.47), 0.29, 0.30, "metal", collision=True)
-        b.geom(base, "ellipsoid", (0.29, 0.29, 0.11), (x, y, 1.775), "metal")
-        for z in (1.18, 1.74):
-            _flange(b, base, (x, y, z), 0.294)
-        for angle in (-math.pi / 2, -math.pi / 6, math.pi / 3, math.pi):
-            dx, dy = math.cos(angle), math.sin(angle)
-            start = (x + 0.25 * dx, y + 0.25 * dy, 1.48)
-            end = (x + 0.47 * dx, y + 0.47 * dy, 1.48)
-            b.rod(base, start, end, 0.085, "bright", collision=True)
-            b.geom(
-                base,
-                "cylinder",
-                (0.112,),
-                material="bright",
-                fromto=(*end, end[0] + 0.035 * dx, end[1] + 0.035 * dy, end[2]),
-            )
-            b.geom(
-                base,
-                "cylinder",
-                (0.075,),
-                material="lens",
-                fromto=(
-                    end[0] + 0.037 * dx,
-                    end[1] + 0.037 * dy,
-                    end[2],
-                    end[0] + 0.040 * dx,
-                    end[1] + 0.040 * dy,
-                    end[2],
-                ),
-            )
-        for i, dx in enumerate((-0.15, 0.08)):
-            b.cylinder(
-                base, (x + dx, y, 1.985 + i * 0.10), 0.043, 0.17 + i * 0.10, "bright"
-            )
-            for z in (1.86, 2.06 + i * 0.18):
-                _flange(b, base, (x + dx, y, z), 0.061)
-            b.box(base, (x + dx, y, 2.19 + i * 0.12), (0.058, 0.044, 0.04), "dark")
-        for dx, dy in ((-0.24, -0.23), (0.23, -0.21), (0.20, 0.22)):
-            b.rod(
-                base,
-                (x + dx, y + dy, 1.20),
-                (x + dx * 2.2, y + dy * 2.2, 0.78),
-                0.066,
-                "bright",
-            )
-            p = (x + dx * 2.2, y + dy * 2.2, 0.76)
-            b.cylinder(base, p, 0.084, 0.027, "bright")
-            b.rod(base, (p[0], p[1], 0.73), (p[0], p[1] - 0.1, 0.40), 0.007, "blue")
-            b.rod(
-                base,
-                (p[0], p[1] - 0.1, 0.40),
-                (x + 0.41, y - 0.38, 0.16),
-                0.007,
-                "blue",
-            )
-        # Visible cable bundles remain passive, fixed routing geometry.
-        for i in range(4):
-            b.rod(
-                base,
-                (x + 0.31 + i * 0.013, y + 0.23, 1.78),
-                (x + 0.55 + i * 0.016, y + 0.26, 1.01),
-                0.004,
-                "warning" if i % 2 else "blue",
-            )
-            b.rod(
-                base,
-                (x + 0.55 + i * 0.016, y + 0.26, 1.01),
-                (x + 0.40, y + 0.30, 0.15 + i * 0.012),
-                0.004,
-                "warning" if i % 2 else "blue",
-            )
+    from real_labs.imperial_chambers import historical_chambers
+    from real_labs import imperial_fixture as details
+    from real_labs.imperial_services import add_historical_services
+
+    historical_chambers(b, base)
     # An explicitly authored dry access station extends the right machine.
     for x in (0.59, 1.30):
         for y in (-0.96, -0.51):
@@ -227,20 +136,69 @@ def _imperial_thinfilm_cluster(b, base, params):
     )
     door.set("euler", numbers((0, 0, -0.72)))
     door.find("joint").set("ref", ".72")
-    b.box(door, (0.362, 0, 0), (0.348, 0.015, 0.166), "bright", collision=True)
+    b.box(
+        door,
+        (0.362, 0, 0),
+        (0.348, 0.015, 0.166),
+        "bright",
+        collision=True,
+        name=details.name(b, "door_plate"),
+    )
     b.box(door, (0.362, -0.018, 0), (0.238, 0.006, 0.112), "lens")
-    b.rod(door, (0.60, -0.06, -0.065), (0.60, -0.06, 0.065), 0.011, "dark")
-    for y in (-0.80, -0.65):
-        b.rod(base, (0.68, y, 0.97), (1.19, y, 0.97), 0.007, "bright")
+    b.rod(
+        door,
+        (0.60, -0.06, -0.065),
+        (0.60, -0.06, 0.065),
+        0.011,
+        "dark",
+        collision=True,
+        name=details.name(b, "door_handle"),
+    )
+    for index, y in enumerate((-0.80, -0.65)):
+        b.rod(
+            base,
+            (0.68, y, 0.97),
+            (1.19, y, 0.97),
+            0.007,
+            "bright",
+            collision=True,
+            name=details.name(b, f"guide_{index}"),
+        )
     carrier = b.moving(
         base, "coupon_x", (0.94, -0.73, 1.015), (1, 0, 0), (-0.12, 0.12), mass=0.25
     )
-    b.box(carrier, (0, 0, 0), (0.09, 0.09, 0.024), "metal", collision=True)
-    b.box(carrier, (0, 0, 0.032), (0.049, 0.045, 0.007), "copper", collision=True)
+    b.box(
+        carrier,
+        (0, 0, 0),
+        (0.09, 0.09, 0.024),
+        "metal",
+        collision=True,
+        name=details.name(b, "carrier_plate"),
+    )
+    b.box(
+        carrier,
+        (0, 0, 0.032),
+        (0.049, 0.045, 0.007),
+        "copper",
+        collision=True,
+        name=details.name(b, "coupon"),
+    )
     b.box(carrier, (0, 0, 0.042), (0.036, 0.034, 0.003), "lens")
-    for x in (-0.063, 0.063):
-        b.box(carrier, (x, 0, 0.039), (0.010, 0.043, 0.012), "dark", collision=True)
+    for side in (-1, 1):
+        b.box(
+            carrier,
+            (side * 0.063, 0, 0.039),
+            (0.010, 0.043, 0.012),
+            "dark",
+            collision=True,
+            name=details.name(b, f"clamp_{side}"),
+        )
     b.site(carrier, "inert_thinfilm_coupon", (0, 0, 0.042), size=0.004)
+    details.add_carriage_mounts(b, base, carrier)
+    details.add_coupon_retention(b, carrier)
+    details.add_door_mounts(b, base, door)
+    details.describe(b)
+    add_historical_services(b, base)
     b.metadata["capabilities"] = [
         "Mechanical access-door positioning",
         "Dry retained-coupon translation",
@@ -308,9 +266,14 @@ def _pan_shell(b, parent):
     # not a surveyed exterior diameter. Conservative ring proxies remain hollow.
     profile = [
         (-0.22, 0.10, 0.075),
-        (-0.19, 0.18, 0.153),
-        (-0.13, 0.23, 0.203),
-        (-0.04, 0.27, 0.243),
+        (-0.20, 0.16, 0.128),
+        (-0.165, 0.215, 0.178),
+        (-0.115, 0.256, 0.216),
+        (-0.060, 0.286, 0.243),
+        (0.005, 0.298, 0.253),
+        (0.065, 0.294, 0.252),
+        (0.115, 0.280, 0.245),
+        (0.138, 0.269, 0.243),
         (0.19, 0.27, 0.243),
     ]
     n = 48
@@ -336,7 +299,8 @@ def _pan_shell(b, parent):
         o = 2 * n * k
         for i in range(n):
             j = (i + 1) % n
-            faces.extend(((o + i, o + n + i, o + n + j), (o + i, o + n + j, o + j)))
+            cap = ((o + i, o + n + i, o + n + j), (o + i, o + n + j, o + j))
+            faces.extend(tuple(reversed(face)) if k != 0 else face for face in cap)
     mesh = b.unique("smooth_jacketed_bowl")
     ET.SubElement(
         b.root.find("asset"),
@@ -360,12 +324,20 @@ def _pan_shell(b, parent):
                 euler=(0, 0, a),
                 rgba=(0.5, 0.5, 0.5, 0),
                 collision=True,
+                group=3,
             )
     b.cylinder(parent, (0, 0, -0.23), 0.098, 0.014, "metal", collision=True)
     b.ring(parent, (0, 0, 0.194), 0.271, 0.009, "bright")
 
 
 def _nottingham_pan(b, base, params):
+    from real_labs.nottingham_pan_geometry import (
+        add_cover_hinge,
+        add_external_trunnion_details,
+        add_open_tray,
+        add_side_plates,
+    )
+
     # White braced mobile trunnion frame from the equipment photograph.
     for x in (-0.355, 0.355):
         b.box(base, (x, 0, 0.118), (0.052, 0.42, 0.042), "cream", collision=True)
@@ -380,8 +352,6 @@ def _nottingham_pan(b, base, params):
                 collision=True,
             )
             b.box(base, (x, y, 0.09), (0.023, 0.025, 0.023), "metal")
-        b.box(base, (x, 0.07, 0.515), (0.046, 0.09, 0.355), "cream", collision=True)
-        b.rod(base, (x, -0.31, 0.15), (x, 0.04, 0.81), 0.036, "cream", collision=True)
         b.cylinder(
             base,
             (x, 0, 0.93),
@@ -392,15 +362,8 @@ def _nottingham_pan(b, base, params):
             collision=True,
         )
     b.box(base, (0, 0.24, 0.22), (0.35, 0.033, 0.026), "cream", collision=True)
-    b.box(base, (0, -0.30, 0.535), (0.30, 0.23, 0.017), "metal", collision=True)
-    for i in range(17):
-        b.rod(
-            base,
-            (-0.28 + i * 0.035, -0.51, 0.555),
-            (-0.28 + i * 0.035, -0.09, 0.555),
-            0.004,
-            "bright",
-        )
+    add_side_plates(b, base)
+    add_open_tray(b, base)
     pan = b.moving(
         base,
         "pan_tilt",
@@ -412,12 +375,17 @@ def _nottingham_pan(b, base, params):
         kp=420,
     )
     _pan_shell(b, pan)
-    b.rod(pan, (-0.35, 0, 0), (-0.27, 0, 0), 0.026, "metal")
-    b.rod(pan, (0.27, 0, 0), (0.35, 0, 0), 0.026, "metal")
+    # Capsule caps stay within the outer jacket; the former .27 endpoints
+    # protruded through the widened inner bowl by 8.2 mm.
+    b.rod(pan, (-0.35, 0, 0), (-0.294, 0, 0), 0.026, "metal",
+          name=b.unique("pan_trunnion_shaft"))
+    b.rod(pan, (0.294, 0, 0), (0.35, 0, 0), 0.026, "metal",
+          name=b.unique("pan_trunnion_shaft"))
     # Source-like long manual tilt handles mounted outside the bowl.
     for x in (-0.43, 0.43):
         b.rod(pan, (x, 0, -0.03), (x, 0.08, 0.41), 0.016, "dark")
         b.rod(pan, ((-0.35 if x < 0 else 0.35), 0, 0), (x, 0, 0), 0.025, "copper")
+    add_external_trunnion_details(b, base, pan)
     b.box(pan, (0, 0, -0.10), (0.063, 0.053, 0.022), "dark", collision=True)
     b.box(pan, (0, 0, -0.070), (0.047, 0.037, 0.008), "cream", collision=True)
     b.rod(pan, (0, 0, -0.215), (0, 0, -0.122), 0.025, "metal", collision=True)
@@ -437,6 +405,7 @@ def _nottingham_pan(b, base, params):
     for x in (-0.06, 0.06):
         b.rod(lid, (x, -0.294, 0.014), (x, -0.294, 0.065), 0.007, "dark")
     b.rod(lid, (-0.06, -0.294, 0.065), (0.06, -0.294, 0.065), 0.008, "dark")
+    add_cover_hinge(b, pan, lid)
     b.metadata["capabilities"] = [
         "Unloaded pan trunnion tilt",
         "Dry mechanical cover access",
@@ -444,9 +413,14 @@ def _nottingham_pan(b, base, params):
     b.metadata["limitations"].append(
         "Historical official facilities brochure circa 2013 supplies hall and jacketed-pan photographs and approximately 25 L working capacity. Pan exterior dimensions, internal retained calibration coupon, cover kinematics and placement in the selected hall are estimates. No steam, heating, food production, mixing, fermentation, contamination control, liquid spill or food-quality process."
     )
+    b.metadata["limitations"].append(
+        "Rounded jacket, tapered side webs, open mesh tray and side fitting cues follow the front/right mobile pan in the brochure. Exterior dimensions, wall thickness, trunnion fastening and cover hinge are inferred. The photograph shows no cover on this pan: the retained cover and calibration coupon are authored dry inspection interfaces, not copied OEM mechanisms."
+    )
 
 
 def _nottingham_hall(world, definition):
+    from real_labs.nottingham_pan_geometry import add_hall_guard, add_rear_hall_apparatus
+
     p = _Room(world, "nottingham")
     # Long parallel stainless work banks and wheeled foreground tables preserve
     # the hall photo, without merging the separate quality-control room below it.
@@ -467,43 +441,43 @@ def _nottingham_hall(world, definition):
             )
         for z in (1.005, 1.05, 1.095, 1.14):
             p.rod("guard_wire", (-2.43, y + 0.30, z), (2.43, y + 0.30, z), 0.003, STEEL)
-    for x in (-2.25, -0.92):
-        p.box("mobile_table", (x, -1.40, 0.84), (0.57, 0.34, 0.026), WHITE, True)
-        p.box("lower_shelf", (x, -1.40, 0.22), (0.54, 0.30, 0.018), WHITE, True)
+        add_hall_guard(p, y, STEEL)
+    def foreground_table(x):
+        # Five complete shelf/frame modules are visible in the page-4 photo.
+        # Dimensions and this composite row position are estimates; the pan is
+        # separately photographed on page 9 and keeps its existing placement.
+        y = -0.24
+        p.box("mobile_table", (x, y, 0.84), (0.57, 0.34, 0.026), WHITE, True)
+        p.box("lower_shelf", (x, y, 0.22), (0.54, 0.30, 0.018), WHITE, True)
         for dx in (-0.51, 0.51):
             for dy in (-0.28, 0.28):
                 p.box(
                     "trolley_leg",
-                    (x + dx, -1.40 + dy, 0.43),
-                    (0.022, 0.022, 0.36),
-                    STEEL,
+                    (x + dx, y + dy, 0.442),
+                    (0.022, 0.022, 0.372),
+                    WHITE,
                     True,
                 )
-                p.rod(
+                caster = p.rod(
                     "castor",
-                    (x + dx - 0.019, -1.40 + dy, 0.040),
-                    (x + dx + 0.019, -1.40 + dy, 0.040),
+                    (x + dx - 0.019, y + dy, 0.040),
+                    (x + dx + 0.019, y + dy, 0.040),
                     0.040,
                     DARK,
                 )
+                caster.set("contype", "1")
+                caster.set("conaffinity", "1")
+
+    # Keep all existing non-table geometry names/ordering stable. The last
+    # three modules are appended after the other historical hall fixtures.
+    for x in (-2.4, -1.2):
+        foreground_table(x)
     p.box("left_sink_unit", (-3.39, 0.93, 0.50), (0.33, 0.71, 0.50), WHITE, True)
     p.box("sink_rim", (-3.39, 0.93, 1.035), (0.35, 0.73, 0.020), STEEL)
     p.box("sink_bowl", (-3.39, 0.90, 1.057), (0.23, 0.35, 0.003), DARK)
     p.rod("tap_riser", (-3.60, 1.09, 1.06), (-3.60, 1.09, 1.39), 0.014, STEEL)
     p.rod("tap_spout", (-3.60, 1.09, 1.39), (-3.34, 1.09, 1.39), 0.014, STEEL)
-    for x in (-1.5, 0, 1.50):
-        p.box("rear_oven", (x, 3.04, 0.69), (0.52, 0.34, 0.59), WHITE, True)
-        for dx in (-0.42, 0.42):
-            p.box("oven_foot", (x + dx, 3.04, 0.05), (0.033, 0.26, 0.05), DARK, True)
-        p.box("oven_front", (x, 2.689, 0.80), (0.40, 0.008, 0.35), STEEL)
-        p.box("oven_window", (x, 2.678, 0.80), (0.27, 0.005, 0.25), DARK)
-        p.rod(
-            "oven_handle",
-            (x + 0.34, 2.638, 0.65),
-            (x + 0.34, 2.638, 0.93),
-            0.009,
-            STEEL,
-        )
+    add_rear_hall_apparatus(p, WHITE, STEEL, DARK)
     # Slanted glazing is an observed hall feature. The angle and span are estimated.
     for y in (-1.8, -0.6, 0.6, 1.8, 3.0):
         p.rod("sloped_glazing_mullion", (3.75, y, 1.25), (3.11, y, 3.82), 0.035, WHITE)
@@ -533,6 +507,9 @@ def _nottingham_hall(world, definition):
             for key in ("sloped_glazing", "glazing_transom", "sloped_glass")
         ):
             geom.set("name", "arch_cutaway_wall_" + name)
+
+    for x in (0.0, 1.2, 2.4):
+        foreground_table(x)
 
 
 def _warwick_nmr_magnet(b, base, params):
@@ -607,7 +584,9 @@ def _warwick_nmr_magnet(b, base, params):
         base, "inspection_lift", (0, -0.20, 0.60), (0, 0, 1), (0, 0.20), mass=0.45
     )
     b.box(lift, (0, 0, 0), (0.205, 0.13, 0.028), "metal", collision=True)
-    b.rod(lift, (0, 0, 0.029), (0, 0, 0.099), 0.024, "metal", collision=True)
+    # Flat shaft end meets the holder's underside. A capsule's rounded end
+    # previously extended 25 mm into the separately rotating holder.
+    b.cylinder(lift, (0, 0, 0.063), 0.024, 0.035, "metal", collision=True)
     holder = b.moving(
         lift,
         "holder_rotation",

@@ -8,16 +8,19 @@
       "institution_id": "harvard_university",
       "university_expansion": true,
       "source_urls": [
-        "https://cns1.rc.fas.harvard.edu/virtual-visit/"
+        "https://cns1.rc.fas.harvard.edu/virtual-visit/",
+        "https://cns1.rc.fas.harvard.edu/facilities/docs/TM019_r1_0_photolithography-jd.pdf"
       ],
-      "reference_notes": "Official tour page identifies the Cambridge LISE facility. Inspected dollhouse preview shows multiple instrument bays, a long circulation corridor and a yellow-lit cleanroom section; this is a scan preview rather than a measured floorplan. This is a selected reference-informed room subset; exact dimensions, topology and OEM geometry are not verified.",
+      "reference_notes": "Official Cambridge LISE tour preview informs a selected three-bay/corridor subset. Historical CNS 2009 photolithography slide 33 provides actual AB-M and MJB4 photographs for separate exterior silhouettes. Internal bearings, rigid wafer clamps, motion drives and all dimensions are authored; no current inventory, measured floorplan or exact OEM reconstruction claim.",
       "observed_cues": [
         "Official Cambridge LISE dollhouse preview shows long circulation corridors, numerous process bays and a yellow-lit cleanroom section.",
-        "The official virtual-visit page names a mask aligner; exact bay assignment and machine geometry are unverified."
+        "Historical AB-M photograph: tall left cream illumination tower, sloping front, black folded shroud, central binocular head, wide base with angled gauge/switch panels and right articulated grip.",
+        "Historical MJB4 photograph: central rear light enclosure, binocular head, black crossed stage and separate black switch/display panels.",
+        "Both photographs show yellow-lit glazed cleanroom walls, repeated mullions and wall utilities."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "layout_revision": 1,
-      "detail_revision": 1,
+      "detail_revision": 2,
       "room": {
         "size": [
           12.8,
@@ -135,9 +138,10 @@
           "yaw": 0,
           "params": {},
           "role": "XY wafer positioning and alignment-head access in the yellow bay",
-          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "evidence": "Historical 2009 CNS photograph informs AB-M exterior; internal mechanism and dimensions are authored, not exact OEM or current inventory",
           "source_urls": [
-            "https://cns1.rc.fas.harvard.edu/virtual-visit/"
+            "https://cns1.rc.fas.harvard.edu/virtual-visit/",
+            "https://cns1.rc.fas.harvard.edu/facilities/docs/TM019_r1_0_photolithography-jd.pdf"
           ]
         },
         {
@@ -151,17 +155,20 @@
           "yaw": 0,
           "params": {},
           "role": "Representative secondary wafer inspection/alignment station",
-          "evidence": "reference-informed exterior; authored mechanical surrogate",
+          "evidence": "Historical 2009 CNS photograph informs MJB4 exterior; internal mechanism and dimensions are authored, not exact OEM or current inventory",
           "source_urls": [
-            "https://cns1.rc.fas.harvard.edu/virtual-visit/"
+            "https://cns1.rc.fas.harvard.edu/virtual-visit/",
+            "https://cns1.rc.fas.harvard.edu/facilities/docs/TM019_r1_0_photolithography-jd.pdf"
           ]
         }
       ],
       "task": {
         "name": "Position an inert wafer for alignment inspection",
-        "description": "Control a visible wafer carrier in XY and move the alignment head; no exposure or fabrication model.",
+        "description": "Measured positioning of a rigidly retained inert wafer beneath the visible right objective axis, inspection and return. Source-bound control validates actual per-step clearances and measured pose; no lithography or focus model.",
         "primary_equipment": "lithography_aligner",
-        "observable": "Measured XY carrier positions and alignment-head height."
+        "observable": "Measured wafer center/objective projected-axis alignment, unobstructed ray to actual wafer, full operation states, collision coverage and physical return.",
+        "executor": "real_labs.harvard_motion.WaferInspection.inspect_and_return",
+        "sample_attachment": "Three visible clamp assumptions; wafer belongs to the X-stage rigid body, with no insertion or unclamping capability"
       },
       "camera": {
         "overview": {
@@ -202,20 +209,48 @@
             1.39
           ],
           "fovy": 45
+        },
+        "wafer_detail": {
+          "position": [
+            -3.27,
+            0.47,
+            1.8
+          ],
+          "target": [
+            -3.86,
+            1.175,
+            1.41
+          ],
+          "fovy": 42
+        },
+        "secondary_station": {
+          "position": [
+            2.45,
+            -1.2,
+            2.65
+          ],
+          "target": [
+            0.9,
+            0.35,
+            1.55
+          ],
+          "fovy": 48
         }
       },
       "layout_rationale": [
         "Selected three-bay subset with a continuous front corridor and distinct yellow lithography bay, following the facility preview rather than its full floorplan.",
         "Open-frame alignment benches, vertically supported instrument heads, flanged chamber cabinets and estimated utilities supply recognizable cleanroom context.",
         "Bay partitions, glazing, gowning storage, dimensions and device placements are authored estimates; no full facility scan was ingested.",
-        "The left-wall entry opens into a reserved corridor; process furniture stays within bays and clear of the 1 m doorway approach."
+        "The left-wall entry opens into a reserved corridor; process furniture stays within bays and clear of the 1 m doorway approach.",
+        "Primary AB-M-inspired and secondary MJB4-inspired exteriors remain separate historical instrument references; bay assignments and their coexistence in this layout are inferred."
       ],
       "limitations": [
         "Room dimensions and unseen placements are estimated from public images; no institution has validated this scene.",
         "Original procedural geometry, no downloaded OEM CAD and no source photographs packaged as textures.",
         "Institution names identify references; source media reuse and institutional endorsement have not been authorized.",
         "Direct mechanical controls are simulated; scientific process accuracy and autonomous experimental workflow completion remain unvalidated.",
-        "Only a dollhouse preview was inspected; exact room connectivity and AB-M dimensions remain unknown."
+        "Historical apparatus photos were inspected; exact current inventory, floorplan, AB-M/MJB4 dimensions, concealed components and optical performance remain unknown.",
+        "Wafer retention is rigid attachment with visible authored clamps. Ideal constrained bearings and finite-bandwidth servo parameters support only mechanical inspection; no unloading, exposure, lithography or calibrated alignment accuracy."
       ],
       "reference_detail_evidence": {
         "university_facilities": {
@@ -225,25 +260,49 @@
               "sha256": "75fea6e067ecd7e0e11d011a789373ee9f0c52efadf55c929f51de7457c7cd3d",
               "page": "https://cns1.rc.fas.harvard.edu/virtual-visit/",
               "use": "Viewed as modelling reference only; not redistributed or used as a texture"
+            },
+            {
+              "local_reference": "temp/research/lab_access_sources_20261004/harvard_instrument-007.jpg",
+              "sha256": "bce9f4eb2d28dca6b2798aea01a7cbc1b47fec5a80e2611d2721bf8f842308e1",
+              "page": "https://cns1.rc.fas.harvard.edu/facilities/docs/TM019_r1_0_photolithography-jd.pdf",
+              "pdf_page": 33,
+              "apparatus": "AB-M",
+              "date_basis": "Historical 2009 teaching slide; not verified current inventory",
+              "use": "Personally viewed modeling reference; image and logos are not redistributed or used as textures"
+            },
+            {
+              "local_reference": "temp/research/lab_access_sources_20261004/harvard_instrument-004.jpg",
+              "sha256": "ebee22237220657162fd0cd36e032095e23121b87a6c3bbc13895eb8a5228a8d",
+              "page": "https://cns1.rc.fas.harvard.edu/facilities/docs/TM019_r1_0_photolithography-jd.pdf",
+              "pdf_page": 33,
+              "apparatus": "MJB4",
+              "date_basis": "Historical 2009 teaching slide; not verified current inventory",
+              "use": "Personally viewed modeling reference; image and logos are not redistributed or used as textures"
             }
           ],
           "observed": [
             "Official Cambridge LISE dollhouse preview shows long circulation corridors, numerous process bays and a yellow-lit cleanroom section.",
-            "The official virtual-visit page names a mask aligner; exact bay assignment and machine geometry are unverified."
+            "Historical AB-M photograph: tall left cream illumination tower, sloping front, black folded shroud, central binocular head, wide base with angled gauge/switch panels and right articulated grip.",
+            "Historical MJB4 photograph: central rear light enclosure, binocular head, black crossed stage and separate black switch/display panels.",
+            "Both photographs show yellow-lit glazed cleanroom walls, repeated mullions and wall utilities."
           ],
           "implemented": [
             "Selected three-bay subset with a continuous front corridor and distinct yellow lithography bay, following the facility preview rather than its full floorplan.",
-            "Open-frame alignment benches, vertically supported instrument heads, flanged chamber cabinets and estimated utilities supply recognizable cleanroom context."
+            "Open-frame alignment benches, vertically supported instrument heads, flanged chamber cabinets and estimated utilities supply recognizable cleanroom context.",
+            "Separate AB-M/MJB4-informed exterior silhouettes with tall illumination housings, source-inspired controls and binocular heads.",
+            "Enabled head, rails, supported crossed slides with open bearing clearances, deck support, wafer shim and three visible retainers.",
+            "Actual bound-state geometric inspection-and-return operation with per-step direct clearance checks, measured ray/pose evidence and hold on failure.",
+            "Wall mullions, glazing and supported utility raceways follow appearance cues; coordinates remain estimates."
           ],
           "inferred": [
             "Room envelope, doorway placement and equipment dimensions",
             "Instrument stroke, servo parameters and concealed components"
           ],
           "unresolved": [
-            "Only a dollhouse preview was inspected; exact room connectivity and AB-M dimensions remain unknown.",
-            "No measured room survey or verified equipment CAD."
+            "Historical apparatus photos were inspected; exact current inventory, floorplan, AB-M/MJB4 dimensions, concealed components and optical performance remain unknown.",
+            "No measured room survey, verified equipment CAD, optical calibration or lithography process model."
           ],
-          "fidelity": "Source-informed selected facility subset with estimated equipment and authored mechanical control fixtures"
+          "fidelity": "Historical photo-informed apparatus exteriors with original supported mechanical internals in an estimated subset of the cleanroom."
         }
       },
       "reserved_walkways": [
@@ -279,7 +338,7 @@
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "layout_revision": 1,
-      "detail_revision": 1,
+      "detail_revision": 2,
       "room": {
         "size": [
           11.2,
@@ -395,7 +454,9 @@
             0
           ],
           "yaw": 0,
-          "params": {},
+          "params": {
+            "apparatus_variant": 0
+          },
           "role": "Glazed fume hood with supported glassware, sash and supply drawer",
           "evidence": "reference-informed exterior; authored mechanical surrogate",
           "source_urls": [
@@ -415,7 +476,9 @@
             0
           ],
           "yaw": 0,
-          "params": {},
+          "params": {
+            "apparatus_variant": 1
+          },
           "role": "Second independent hood in the laboratory bay",
           "evidence": "reference-informed exterior; authored mechanical surrogate",
           "source_urls": [
@@ -435,7 +498,9 @@
             0
           ],
           "yaw": 0,
-          "params": {},
+          "params": {
+            "apparatus_variant": 2
+          },
           "role": "Third independent hood with sash access",
           "evidence": "reference-informed exterior; authored mechanical surrogate",
           "source_urls": [
@@ -449,9 +514,9 @@
       ],
       "task": {
         "name": "Open hood access and expose an inert cassette",
-        "description": "Adjust hood sash and under-deck supply drawer while inspecting fixture-mounted glassware; no reaction chemistry.",
+        "description": "Measured opening of the collision-enabled hood sash and retained under-deck supply cassette, inspection of the actual aperture and cassette, then return to the measured start; no chemistry or object pickup.",
         "primary_equipment": "hood_primary",
-        "observable": "Hood sash opening and cassette-drawer position."
+        "observable": "Full measured joint state, cassette pose, sash aperture, direct guide clearances, per-step coverage and no-reset failure hold."
       },
       "camera": {
         "overview": {
@@ -492,6 +557,19 @@
             1.24
           ],
           "fovy": 45
+        },
+        "access": {
+          "position": [
+            -2.45,
+            0.96,
+            1.06
+          ],
+          "target": [
+            -3.28,
+            2.35,
+            0.84
+          ],
+          "fovy": 47
         }
       },
       "layout_rationale": [
@@ -505,7 +583,8 @@
         "Original procedural geometry, no downloaded OEM CAD and no source photographs packaged as textures.",
         "Institution names identify references; source media reuse and institutional endorsement have not been authorized.",
         "Direct mechanical controls are simulated; scientific process accuracy and autonomous experimental workflow completion remain unvalidated.",
-        "Ventilation, chemistry, glovebox atmosphere and actual school equipment controls are not modeled."
+        "Ventilation, chemistry, glovebox atmosphere and actual school equipment controls are not modeled.",
+        "Drawer bearings, sash channels, cassette riser/retainers and utility routing are authored mechanical interfaces; the fixed glovebox and retained glassware do not implement handling, flow or containment."
       ],
       "reference_detail_evidence": {
         "university_facilities": {
@@ -574,7 +653,7 @@
       "source_urls": [
         "https://www.ntu.edu.sg/docs/librariesprovider88/newri-domains/smtc/smtc-brochure_compressede6c80970-b0ba-4414-90e7-bcb662e94af7.pdf?sfvrsn=87821fc1_3"
       ],
-      "reference_notes": "Inspected brochure page 3 shows six captioned views: analytical benches, industrial research aisle, membrane fabrication machines, pressure-retarded-osmosis apparatus and separate outdoor pilot facilities. These are multiple sites/zones, not one room. This is a selected reference-informed room subset; exact dimensions, topology and OEM geometry are not verified.",
+      "reference_notes": "Inspected brochure page 3 shows six captioned views: analytical benches, industrial research aisle, membrane fabrication machines, pressure-retarded-osmosis apparatus and separate outdoor pilot facilities. These are multiple sites/zones, not one room. This is a selected reference-informed room subset; exact dimensions, topology and OEM geometry are not verified. The revised skid has connected frame feet, supported module saddles, curved service hoses, an open valve-stem bonnet and open carriage bearings. These hidden assemblies and all dimensions remain estimates; the separate PRO photograph supplies exterior cues only, not proof of this campus plumbing topology.",
       "observed_cues": [
         "The official brochure separates an analytical room, campus industrial project area, membrane fabrication equipment and the outdoor Tuas pilot site.",
         "The campus industrial area photograph shows open metal frames on both sides of a working aisle, pipes, computer terminals and suspended services.",
@@ -582,7 +661,7 @@
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "layout_revision": 1,
-      "detail_revision": 1,
+      "detail_revision": 2,
       "room": {
         "size": [
           9.4,
@@ -762,6 +841,19 @@
             1.0
           ],
           "fovy": 45
+        },
+        "skid_detail": {
+          "position": [
+            3.5,
+            -0.58,
+            1.02
+          ],
+          "target": [
+            2.85,
+            0.2,
+            0.67
+          ],
+          "fovy": 49
         }
       },
       "layout_rationale": [
@@ -794,7 +886,8 @@
           ],
           "implemented": [
             "Reconstruct the campus industrial-project aisle only, with paired framed test rigs, a separate preparation enclosure and overhead service carriers.",
-            "Open steel chassis, grounded feet, membrane module housings, fittings, gauges and a three-vial carriage distinguish this room from a generic chemistry laboratory."
+            "Open steel chassis, grounded feet, membrane module housings, fittings, gauges and a three-vial carriage distinguish this room from a generic chemistry laboratory.",
+            "Connected module/monitor/gauge supports, genuine valve-stem and carriage bores, enabled moving collision surfaces and retained vial collars; original control frames and specimen site are preserved."
           ],
           "inferred": [
             "Room envelope, doorway placement and equipment dimensions",
@@ -840,7 +933,7 @@
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "layout_revision": 1,
-      "detail_revision": 1,
+      "detail_revision": 2,
       "room": {
         "size": [
           14,
@@ -956,10 +1049,10 @@
         }
       ],
       "task": {
-        "name": "Position an inert monitoring probe over a tank",
-        "description": "Traverse and lower a visible probe on a grounded bridge. The bridge is an authored task fixture, not verified UQ equipment.",
+        "name": "Register and return an inert aquarium probe",
+        "description": "Traverse the supported probe to an authored offset physical datum, lower through the static visual water level, geometrically observe the actual cap surface and return using the original drives. This fixture is not verified UQ hardware.",
         "primary_equipment": "water_sampling_bridge",
-        "observable": "Probe traverse and immersion position; static water and no calibrated measurement."
+        "observable": "Actual cap position relative to a fixed visible datum, clearances and measured return; no water sample or environmental measurement."
       },
       "camera": {
         "overview": {
@@ -1000,6 +1093,19 @@
             1.03
           ],
           "fovy": 45
+        },
+        "probe_inspection": {
+          "position": [
+            0.55,
+            -3.1,
+            1.7
+          ],
+          "target": [
+            0.2,
+            -1.6,
+            1.1
+          ],
+          "fovy": 32
         }
       },
       "layout_rationale": [
@@ -1014,7 +1120,8 @@
         "Original procedural geometry, no downloaded OEM CAD and no source photographs packaged as textures.",
         "Institution names identify references; source media reuse and institutional endorsement have not been authorized.",
         "Direct mechanical controls are simulated; scientific process accuracy and autonomous experimental workflow completion remain unvalidated.",
-        "No organisms, water flow, buoyancy, salinity or monitoring transfer function are simulated; the robotic probe bridge is an authored addition."
+        "No organisms, water flow, buoyancy, salinity or monitoring transfer function are simulated; the robotic probe bridge is an authored addition.",
+        "The probe basin contains an estimated clear-water optical volume fitted to its authored floor and wall; other tanks retain approximate static display surfaces. No hydrodynamics, calibrated optics or image-based probe metrology. Open guides retain the original 280 mm depth and 1.10 m lateral travel, with an authored 0.6 mm running clearance."
       ],
       "reference_detail_evidence": {
         "university_facilities": {
@@ -1044,6 +1151,36 @@
             "No measured room survey or verified equipment CAD."
           ],
           "fidelity": "Source-informed selected facility subset with estimated equipment and authored mechanical control fixtures"
+        },
+        "uq_probe_access": {
+          "sources": [
+            {
+              "local_reference": "temp/research/qs_asia_visual_checks/uq_aquarium.jpg",
+              "sha256": "2132b2dca3115bb01bd691b824cd0d4c9f0f2b28207d7f3fad9ea26cd51936d7",
+              "page": "https://moreton-bay.research.uq.edu.au/facilities/research-laboratories-aquariums",
+              "use": "Personally inspected small official photograph; no texture or CAD redistribution"
+            }
+          ],
+          "observed": [
+            "Teal and pale circular tanks with heavy rims",
+            "Yellow racks holding rectangular glass tanks",
+            "Dense suspended pipes and wet-room services"
+          ],
+          "implemented": [
+            "Smooth open working tank with contact-capable wall sectors",
+            "Supported bolted gantry, real X and Z bores, complete moving probe contacts",
+            "Rack header/return supports, connected overhead service routes and sump feet",
+            "Actual geometric positioning against an offset datum and measured return, retaining water appearance; ray visibility and image contrast are separate qualifications"
+          ],
+          "inferred": [
+            "All dimensions and room topology remain authored estimates",
+            "The gantry, probe, datum, ideal drive transmission and concealed service routing are not verified UQ hardware"
+          ],
+          "unresolved": [
+            "Small 229 by 162 reference does not establish exact equipment, hidden services or complete room layout",
+            "No fluid force, sampling process, sensor response, organisms or environmental science"
+          ],
+          "fidelity": "Source-informed selected wet-room context with an explicitly authored dry mechanical fixture"
         }
       },
       "reserved_walkways": [

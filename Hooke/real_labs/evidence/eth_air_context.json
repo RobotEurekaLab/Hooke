@@ -1,0 +1,40 @@
+{
+  "eth_air_quality": {
+    "observed": [
+      "The official ETH laboratory page embeds video Epv37KSi0Io. Its 1280 x 720 thumbnail shows a cream benchtop instrument with a CFX96 Touch-like label, rounded closed hood, dark horizontal seam, sloped display and side vent panel.",
+      "The same image shows yellow-capped tubes in a rack, a cylinder, cabinets and stacked trays. A person obscures part of the scene; this view does not establish a floor plan."
+    ],
+    "source_urls": [
+      "https://ie.ifu.ethz.ch/forschung/studies-labs/labs.html",
+      "https://i.ytimg.com/vi/Epv37KSi0Io/maxresdefault.jpg",
+      "https://www.bio-rad.com/webroot/web/pdf/lsr/literature/Bulletin_6075.pdf"
+    ],
+    "local_reference_sha256": "16807ff43bddc472b77c0f856fb1eff62624e723ff4e94e4d3f5116ad4094cfb",
+    "published_dimensions_m": {
+      "instrument": "CFX96 Touch",
+      "width": 0.33,
+      "depth": 0.46,
+      "height": 0.36,
+      "basis": "Manufacturer Bulletin 6075, system dimensions table, page 1. Used only as an exterior size reference."
+    },
+    "implemented": [
+      "A separate closed cream instrument exterior on four contact-capable feet, with a rounded hood, dark seam, sloped display and side-panel trim.",
+      "The existing generic filter-access mechanism remains separate. The photographed cream device is not identified as an aerosol sampler."
+    ],
+    "inferred": [
+      "The device location, feet, display dimensions, cover profiles and panel details are authored estimates. This original exterior is not OEM CAD or an exact installed-device replica.",
+      "The whole-room arrangement remains a workflow-based design, without a measured ETH floor plan or complete inventory."
+    ],
+    "capabilities": {
+      "closed_exterior_collision": true,
+      "instrument_operation": false,
+      "scientific_or_electrical_simulation": false,
+      "cabinet_load_capacity_validated": false
+    },
+    "unresolved": [
+      "The fixed context asset has no opening, pickup or operating interface; only exterior contact is modeled.",
+      "Additional apparatus and room views are still needed to qualify reference fidelity and installation clearances."
+    ],
+    "media_policy": "The source image remains local inspection evidence. No photograph, logo, brand label or OEM mesh is embedded or redistributed."
+  }
+}

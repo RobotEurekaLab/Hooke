@@ -62,7 +62,24 @@ class EuropeWaveOneGeometryTests(unittest.TestCase):
         for identifier in SCENES:
             model, data, manifest = self.load(identifier)
             initial_sites = data.site_xpos.copy()
-            for name, address, actuator, (low, high) in self.controls(model, manifest):
+            if identifier == "edinburgh_flowave_basin":
+                # Version 2 has 168 independent hinges. Apply the same published
+                # regression fractions simultaneously and verify EVERY axis;
+                # do not turn this into 504 serial two-second array simulations.
+                controls = list(self.controls(model, manifest))
+                for fraction in (0.15, 0.85, 0.25):
+                    for _, _, actuator, (low, high) in controls:
+                        data.ctrl[actuator] = low + fraction * (high - low)
+                    mujoco.mj_step(model, data, nstep=round(2 / model.opt.timestep))
+                    for name, address, actuator, (low, high) in controls:
+                        self.assertLessEqual(
+                            abs(data.qpos[address] - data.ctrl[actuator]),
+                            max(1e-6, 0.025 * (high - low)), name,
+                        )
+                controls = []
+            else:
+                controls = list(self.controls(model, manifest))
+            for name, address, actuator, (low, high) in controls:
                 for fraction in (0.15, 0.85, 0.25):
                     with self.subTest(scene=identifier, axis=name, fraction=fraction):
                         target = low + fraction * (high - low)
@@ -82,15 +99,32 @@ class EuropeWaveOneGeometryTests(unittest.TestCase):
         for identifier in SCENES:
             model, data, manifest = self.load(identifier)
             controls = list(self.controls(model, manifest))
-            states = [
-                {address: value}
-                for _, address, _, (low, high) in controls
-                for value in np.linspace(low, high, 25)
-            ]
-            states.extend(
-                {control[1]: control[3][edge] for control, edge in zip(controls, edges)}
-                for edges in itertools.product((0, 1), repeat=len(controls))
-            )
+            if identifier == "edinburgh_flowave_basin":
+                # A 2**168 corner list is not finite test coverage. Dedicated
+                # FloWave tests prove full-angle corner enclosures and query
+                # all retained parent-filtered pairs at alternating, synchronous
+                # and off-grid poses. Here retain the native contact regression
+                # over all 25 synchronous and two alternating full-array states.
+                states = [
+                    {a: low + fraction * (high - low)
+                     for _, a, _, (low, high) in controls}
+                    for fraction in np.linspace(0, 1, 25)
+                ]
+                states.extend(
+                    {a: limits[(i + parity) % 2]
+                     for i, (_, a, _, limits) in enumerate(controls)}
+                    for parity in (0, 1)
+                )
+            else:
+                states = [
+                    {address: value}
+                    for _, address, _, (low, high) in controls
+                    for value in np.linspace(low, high, 25)
+                ]
+                states.extend(
+                    {control[1]: control[3][edge] for control, edge in zip(controls, edges)}
+                    for edges in itertools.product((0, 1), repeat=len(controls))
+                )
             for state in states:
                 mujoco.mj_resetData(model, data)
                 for address, value in state.items():
@@ -136,7 +170,7 @@ class EuropeWaveOneGeometryTests(unittest.TestCase):
             any(model.geom(i).name == "arch_floor" for i in range(model.ngeom))
         )
         # Raycast only against actual collision geometry. At this clear position
-        # inside the basin, the first downward hit must be its two-metre-deep floor.
+        # inside the basin, the first hit is 2 m below the v2 water level (-.35 m).
         collides = (model.geom_contype != 0) | (model.geom_conaffinity != 0)
         model.geom_group[:] = collides.astype(np.int32)
         group = np.array([0, 1, 0, 0, 0, 0], dtype=np.uint8)
@@ -151,7 +185,7 @@ class EuropeWaveOneGeometryTests(unittest.TestCase):
             -1,
             hit,
         )
-        self.assertAlmostEqual(distance, 2.30, places=6)
+        self.assertAlmostEqual(distance, 2.65, places=6)
         self.assertGreaterEqual(int(hit[0]), 0)
         self.assertEqual(manifest["equipment"][0]["pos"][2], 0)
 

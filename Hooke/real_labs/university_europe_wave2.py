@@ -70,213 +70,21 @@ def _omit_unverified_ceiling_fixtures(world):
 
 
 def _turner_centrifuge(b, base, params):
-    """Restricted maintenance indexing and a retained inert specimen carrier."""
-    b.cylinder(base, (0, 0, 0.11), 0.93, 0.11, "metal", collision=True)
-    b.cylinder(base, (0, 0, 0.48), 0.52, 0.37, "dark", collision=True)
-    b.cylinder(base, (0, 0, 0.825), 0.67, 0.055, "bright")
-    rotor = b.moving(
-        base,
-        "maintenance_index",
-        (0, 0, 1.02),
-        (0, 0, 1),
-        (-0.20, 0.20),
-        kind="hinge",
-        mass=8,
-        kp=500,
-        force=350,
-    )
-    for z in (-0.12, 0.15):
-        b.box(rotor, (0, 0, z), (4.72, 0.42, 0.045), "metal", collision=True)
-    b.box(rotor, (0, 0, 0.01), (4.68, 0.065, 0.095), "metal", collision=True)
-    for x in (-4.62, -3, -1.5, 1.5, 3, 4.62):
-        b.box(rotor, (x, 0, 0.01), (0.035, 0.40, 0.12), "metal")
-    b.box(rotor, (0, 0, 0.27), (1.39, 0.67, 0.06), "shell", collision=True)
-    for y in (-0.66, 0.66):
-        b.box(rotor, (0, y, 0.405), (1.42, 0.025, 0.075), "metal")
-    for x in (-1.37, 1.37):
-        b.box(rotor, (x, 0, 0.405), (0.025, 0.67, 0.075), "metal")
-    for x in (-0.86, -0.16, 0.69):
-        b.box(rotor, (x, 0, 0.42), (0.19, 0.21, 0.09), "shell")
-        b.box(rotor, (x, -0.22, 0.44), (0.13, 0.009, 0.055), "dark")
-    # End assemblies remain above the floor and below the low concrete roof.
-    for x in (-4.35, 4.35):
-        b.box(rotor, (x, 0, -0.34), (0.35, 0.38, 0.16), "metal", collision=True)
-        for y in (-0.26, 0.26):
-            b.rod(rotor, (x, y, -0.17), (x, y, 0.15), 0.033, "bright")
-    for y in (-0.27, 0.27):
-        b.rod(rotor, (3.48, y, 0.217), (4.60, y, 0.217), 0.015, "bright")
-    carriage = b.moving(
-        rotor,
-        "specimen_carriage",
-        (4.04, 0, 0.272),
-        (1, 0, 0),
-        (-0.15, 0.15),
-        mass=0.8,
-        kp=220,
-    )
-    b.box(carriage, (0, 0, 0), (0.32, 0.32, 0.025), "bright", collision=True)
-    for y in (-0.30, 0.30):
-        b.box(carriage, (0, y, 0.11), (0.32, 0.02, 0.085), "metal", collision=True)
-    for x in (-0.30, 0.30):
-        b.box(carriage, (x, 0, 0.11), (0.02, 0.28, 0.085), "metal", collision=True)
-    b.box(carriage, (0, 0, 0.105), (0.25, 0.25, 0.08), "copper", collision=True)
-    for x in (-0.16, 0, 0.16):
-        b.box(carriage, (x, 0, 0.189), (0.008, 0.20, 0.004), "cream")
-    b.site(carriage, "inert_soil_model", (0, 0, 0.105), size=0.015)
-    b.metadata["capabilities"] = [
-        "Restricted low-speed maintenance indexing",
-        "Retained inert specimen-carriage positioning",
-    ]
-    b.metadata["limitations"].append(
-        "Historical Cambridge reference and published 10 m machine diameter; authored "
-        "carrier and restricted 0.4 rad indexing envelope. This is not a high-speed "
-        "centrifuge simulation: no soil response, acceleration scaling or validated rotor dynamics."
-    )
+    from real_labs.cambridge_geometry import build_turner
+
+    build_turner(b, base, params)
 
 
 def _turner_chamber(world, definition):
-    _omit_unverified_ceiling_fixtures(world)
-    p = _Details(world, "turner")
-    # Low ceiling coffers and the foreground service grate are observed cues.
-    for y in (-4.6, -2.3, 0, 2.3, 4.6):
-        g = p.box(
-            "ceiling_crossbeam", (0, y, 2.20), (6.1, 0.16, 0.14), (0.61, 0.60, 0.56, 1)
-        )
-        g.set("name", "arch_roof_" + g.get("name"))
-    for x in (-4.6, -2.3, 0, 2.3, 4.6):
-        g = p.box("ceiling_rib", (x, 0, 2.22), (0.12, 6.1, 0.12), (0.61, 0.60, 0.56, 1))
-        g.set("name", "arch_roof_" + g.get("name"))
-    p.box("grate_recess", (0, -4.15, 0.003), (1.34, 1.1, 0.004), DARK)
-    for i in range(25):
-        x = -1.25 + 0.105 * i
-        p.box("service_grate", (x, -4.15, 0.014), (0.013, 1.05, 0.009), STEEL)
-    for y in (-5.2, -4.65, -4.1, -3.55, -3.1):
-        p.box("grate_crossbar", (0, y, 0.020), (1.28, 0.016, 0.012), STEEL)
-    for x in (-3.5, 0, 3.5):
-        p.box("wall_service_trunk", (x, 6.14, 0.66), (1.64, 0.055, 0.08), STEEL)
-    for y in (-3.8, 0, 3.8):
-        light = p.box(
-            "roof_linear_light", (0, y, 2.05), (0.10, 0.55, 0.025), (1, 0.96, 0.81, 1)
-        )
-        light.set("name", "arch_luminaire_turner_" + light.get("name"))
-        mount = p.box("light_mount", (0, y, 2.09), (0.025, 0.08, 0.04), STEEL)
-        mount.set("name", "arch_roof_" + mount.get("name"))
-    for x in (-5.50, 5.50):
-        p.box(
-            "end_service_cabinet",
-            (x, 3.4, 0.65),
-            (0.30, 0.45, 0.65),
-            WHITE,
-            collision=True,
-        )
+    from real_labs.cambridge_chamber import build_chamber
+
+    return build_chamber(world, definition)
 
 
 def _shake_table(b, base, params):
-    """Photographed three-metre platform with a supported XY preview carriage."""
-    base = ET.SubElement(base, "body", name=f"{b.name}__recessed_pit", pos="0 0 -.8")
-    b.box(base, (0, 0, 0.08), (2.35, 2.35, 0.08), "metal", collision=True)
-    for y in (-1.35, 1.35):
-        for x in (-1.42, 1.42):
-            b.box(base, (x, y, 0.31), (0.12, 0.13, 0.15), "dark", collision=True)
-        b.rod(base, (-1.83, y, 0.49), (1.83, y, 0.49), 0.045, "bright")
-    xstage = b.moving(
-        base,
-        "table_x",
-        (0, 0, 0.57),
-        (1, 0, 0),
-        (-0.08, 0.08),
-        mass=2,
-        kp=500,
-        force=300,
-    )
-    b.box(xstage, (0, 0, 0), (1.55, 1.52, 0.035), "dark", collision=True)
-    for x in (-1.26, 1.26):
-        b.rod(xstage, (x, -1.78, 0.068), (x, 1.78, 0.068), 0.025, "bright")
-    platform = b.moving(
-        xstage,
-        "table_y",
-        (0, 0, 0.165),
-        (0, 1, 0),
-        (-0.08, 0.08),
-        mass=3,
-        kp=650,
-        force=350,
-    )
-    b.box(platform, (0, 0, 0), (1.50, 1.50, 0.065), "bright", collision=True)
-    for x in (-1.3, -0.78, -0.26, 0.26, 0.78, 1.3):
-        for y in (-1.3, -0.78, -0.26, 0.26, 0.78, 1.3):
-            b.cylinder(platform, (x, y, 0.067), 0.014, 0.002, "dark")
-    # Sleeve walls leave physical clearances for their supported sliding rods.
-    for y in (-1.06, 1.06):
-        for k in range(12):
-            a = math.tau * k / 12
-            yy, zz = y + 0.088 * math.cos(a), 0.54 + 0.088 * math.sin(a)
-            b.rod(
-                base, (-2.21, yy, zz), (-1.77, yy, zz), 0.018, "metal", collision=True
-            )
-        b.rod(
-            xstage,
-            (-2.03, y, -0.03),
-            (-1.48, y, -0.03),
-            0.036,
-            "bright",
-            collision=True,
-        )
-    for x in (-1.06, 1.06):
-        for k in range(12):
-            a = math.tau * k / 12
-            xx, zz = x + 0.076 * math.cos(a), 0.138 + 0.076 * math.sin(a)
-            b.rod(
-                xstage, (xx, -2.18, zz), (xx, -1.77, zz), 0.014, "metal", collision=True
-            )
-        b.rod(
-            platform,
-            (x, -2.03, -0.027),
-            (x, -1.47, -0.027),
-            0.030,
-            "bright",
-            collision=True,
-        )
-    # The yellow bolted test frame is the inert specimen, not a building model.
-    for x in (-1.05, 1.05):
-        for y in (-1.05, 1.05):
-            b.box(
-                platform, (x, y, 0.092), (0.17, 0.17, 0.027), "warning", collision=True
-            )
-            b.box(
-                platform,
-                (x, y, 1.475),
-                (0.065, 0.065, 1.355),
-                "warning",
-                collision=True,
-            )
-            for dx in (-0.115, 0.115):
-                b.cylinder(platform, (x + dx, y, 0.126), 0.018, 0.008, "metal")
-    for z in (1.43, 2.78):
-        for y in (-1.05, 1.05):
-            b.box(platform, (0, y, z), (1.13, 0.07, 0.075), "warning", collision=True)
-        for x in (-1.05, 1.05):
-            b.box(platform, (x, 0, z), (0.07, 1.13, 0.075), "warning", collision=True)
-    for y in (-1.05, 1.05):
-        b.rod(
-            platform,
-            (-1.04, y, 0.17),
-            (1.04, y, 1.39),
-            0.027,
-            "warning",
-            collision=True,
-        )
-    b.box(platform, (0.94, -1.14, 1.48), (0.06, 0.025, 0.035), "dark")
-    b.rod(platform, (0.94, -1.16, 1.48), (0.93, -1.20, 0.15), 0.006, "dark")
-    b.site(platform, "structural_frame", (0, 0, 1.475), size=0.025)
-    b.metadata["capabilities"] = [
-        "Two-axis supported table displacement with retained test frame"
-    ]
-    b.metadata["limitations"].append(
-        "Official 3 x 3 m platform size; XY preview slides approximate a mechanically "
-        "supported table, not Bristol's complete eight-actuator hydraulic system. No "
-        "earthquake waveform, hydraulic response, material damage or structural validation."
-    )
+    from real_labs.bristol_table_geometry import build_table
+
+    build_table(b, base, params)
 
 
 def _equals_bay(world, definition):
@@ -302,7 +110,7 @@ def _equals_bay(world, definition):
             (0.55, 0.56, 0.53, 1),
             collision=True,
         )
-    p.box("pit_foundation", (0, 0, -0.90), (2.45, 2.45, 0.10), STEEL, collision=True)
+    p.box("pit_foundation", (0, 0, -1.98), (2.45, 2.45, 0.10), STEEL, collision=True)
     for y in (-2.38, 2.38):
         p.box("pit_edge", (0, y, 0.015), (2.4, 0.065, 0.03), STEEL)
     for x in (-2.38, 2.38):
@@ -321,14 +129,19 @@ def _equals_bay(world, definition):
             YELLOW,
             euler=(0, 0, 0.65),
         )
+    # The source shows stored actuator hardware on an open metal rack.
+    for x in (-4.55, -3.28):
+        for y in (-0.35, 3.35):
+            p.box("rack_post", (x, y, 0.62), (0.035, 0.035, 0.62), STEEL, collision=True)
+    for z in (0.295, 0.845):
+        for x in (-4.55, -3.28):
+            p.box("rack_shelf_rail", (x, 1.5, z), (0.055, 1.89, 0.025), STEEL, collision=True)
+        for y in (-0.35, 3.35):
+            p.box("rack_cross_member", (-3.915, y, z), (0.67, 0.04, 0.025), STEEL, collision=True)
     for y in (0.0, 0.75, 1.5, 2.25, 3):
         for z in (0.40, 0.95):
-            p.rod("stored_actuator", (-4.60, y, z), (-3.30, y, z), 0.08, STEEL)
-            p.rod("stored_piston", (-3.30, y, z), (-3.03, y, z), 0.035, WHITE)
-    for x in (-4.7, -3.0):
-        p.box(
-            "actuator_rack", (x, 1.5, 0.62), (0.045, 1.85, 0.62), DARK, collision=True
-        )
+            p.rod("stored_actuator", (-4.60, y, z), (-3.30, y, z), 0.08, STEEL, collision=True)
+            p.rod("stored_piston", (-3.30, y, z), (-3.03, y, z), 0.035, WHITE, collision=True)
 
 
 def _wind_tunnel_station(b, base, params):
@@ -482,6 +295,12 @@ def _wind_tunnel_bay(world, definition):
 
 def _yarn_spinning_station(b, base, params):
     """Sloped laboratory yarn machine with feed roller and retained bobbin slide."""
+    from real_labs.yarn_details import (
+        add_carriage_bearings,
+        add_feed_bearings,
+        add_pressure_modules,
+    )
+
     for x in (-0.69, 0.69):
         for y in (-0.34, 0.34):
             b.cylinder(base, (x, y, 0.045), 0.055, 0.045, "rubber", collision=True)
@@ -518,28 +337,7 @@ def _yarn_spinning_station(b, base, params):
                 "dark",
                 euler=(0, math.pi / 2, 0),
             )
-    for y, z in [(-0.40, 0.88), (-0.25, 1.13), (-0.10, 1.38), (0.055, 1.63)]:
-        b.rod(
-            base,
-            (-0.69, y + 0.07, z),
-            (0.69, y + 0.07, z),
-            0.035,
-            "metal",
-            collision=True,
-        )
-        for x in (-0.48, -0.16, 0.16, 0.48):
-            b.box(base, (x, y, z), (0.125, 0.05, 0.075), "cream", collision=True)
-            b.cylinder(
-                base,
-                (x, y - 0.060, z),
-                0.040,
-                0.046,
-                "bright",
-                euler=(math.pi / 2, 0, 0),
-            )
-            b.cylinder(
-                base, (x, y - 0.110, z), 0.027, 0.008, "blue", euler=(math.pi / 2, 0, 0)
-            )
+    add_pressure_modules(b, base)
     # A single supported feed shaft rotates visibly via indexed end markers.
     shaft = b.moving(
         base,
@@ -571,8 +369,7 @@ def _yarn_spinning_station(b, base, params):
             collision=True,
         )
         b.rod(shaft, (x - 0.112, 0, 0), (x - 0.112, 0.057, 0), 0.006, "blue")
-    for x in (-0.69, 0.69):
-        b.box(base, (x, -0.16, 1.53), (0.035, 0.087, 0.083), "shell", collision=True)
+    add_feed_bearings(b, base, shaft)
     # Exposed lower guides are fixed; bobbin motion does not claim to simulate
     # yarn feed, changing tension, contact or fibre formation.
     for x in (-0.48, -0.16, 0.16, 0.48):
@@ -590,7 +387,14 @@ def _yarn_spinning_station(b, base, params):
             )
         b.cylinder(base, (x, -0.48, 0.63), 0.025, 0.025, "blue")
     for y in (-0.38, -0.19):
-        b.rod(base, (-0.50, y, 0.595), (0.50, y, 0.595), 0.012, "bright")
+        b.rod(
+            base,
+            (-0.50, y, 0.595),
+            (0.50, y, 0.595),
+            0.012,
+            "bright",
+            collision=True,
+        )
     carriage = b.moving(
         base,
         "bobbin_carriage",
@@ -608,6 +412,13 @@ def _yarn_spinning_station(b, base, params):
     for z in (0.044, 0.06, 0.076, 0.092, 0.108, 0.124):
         b.ring(carriage, (0, 0, z), 0.047, 0.0015, "copper", segments=20)
     b.site(carriage, "inert_yarn_bobbin", (0, 0, 0.088), size=0.005)
+    add_carriage_bearings(b, base, carriage)
+    b.metadata["assembly_adaptations"] = {
+        "reference": LEEDS,
+        "observed": "Layered roller/pressure-arm face, rounded pale guards, small adjusters and sloped blue sides",
+        "authored": "Journal/bearing mounts and split linear-guide shoes, with 0.5 mm nominal running clearance",
+        "limits": "Fixed pressure-arm/roller exterior details; no bearing-load, changing thread path or yarn-process model",
+    }
     # Standing-height control screen has a continuous mount back to the frame.
     b.rod(base, (0.72, 0.20, 0.73), (1.08, 0.20, 0.73), 0.035, "metal", collision=True)
     b.rod(base, (1.08, 0.20, 0.73), (1.08, 0.20, 1.49), 0.032, "metal", collision=True)
@@ -663,10 +474,10 @@ SOURCES = {
     "equals_xy_shake_table": {
         "reference": "Bristol EQUALS installed shaking-table and " "frame photograph",
         "url": BRISTOL,
-        "dimensions_m": [4.7, 4.7, 3.65],
+        "dimensions_m": [4.86, 4.86, 4.68],
         "dimension_basis": "Official 3 x 3 m platform; selected "
-        "pit, frame and authored XY mechanisms "
-        "estimated",
+        "pit, frame and eight articulated actuator anchor positions estimated; "
+        "300 mm actuator stroke and 70 kN capacity published; no calibrated hydraulics",
     },
     "turner_geotechnical_centrifuge": {
         "reference": "Cambridge Turner centrifuge " "historical chamber photograph",

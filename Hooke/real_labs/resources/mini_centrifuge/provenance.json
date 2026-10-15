@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "revision": "mini-mechanical-access-v1",
+  "upstream_license": "MIT; Copyright (c) 2026 RobotEurekaLab; retain the repository LICENSE notice",
+  "source_files": {
+    "Hooke/real_labs/reuse.py": "a9b0315085f22275fa04771e67b5b3e777391cd3c74668f990ac3f1ba7ccd39d",
+    "Hooke/real_labs/reuse_drives.py": "2ec616290f98b89f7a202d230f5b80d346c900b193fe4a8769a883b19fa35e9a",
+    "Hooke/real_labs/catalog.json": "5bf415362f1c55b55885e4b5c400f813325d0007c909c296041488f3688c887e",
+    "Hooke/real_labs/layouts/wetlabs.json": "159f1b7bd9e038791fb3e95aa6e48697973a8496f46acde66f596b673ad6e8df",
+    "Hooke/real_labs/layouts/specialists.json": "71cc8c325c809911a0802a4906a57af20c76dee94b873ebd8f5bb8502be2169e",
+    "Hooke/model/instrument/centrifuge_tiangen_tgear_mini.xml": "2d5925c26dd83b1c945c77ba9aacd2666bc6b957f5d76856b601699d88e1ef5d",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/lid-inertia.obj": "be82f870ef2e459fb451476b7db39292dd4ca70abbb15178ca2e702964922baa",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-collision-1.obj": "0d602f535dc4f57773666e976387730a8ca46d95982a7834b2b3747c07d19e09",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-visual-3.obj": "3fa00d8cc050c4ec0f8a3f36936c625ae3e489ab398cc7646ffd0263f5f7b0ce",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-visual-0.obj": "d71678f51ccd706c89d7979710855455ade20dea2d80010ba2333f0d67e68c03",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-collision-0.obj": "4624d002573d005789a197b43e34879c6283cdf77d3477e22e98f7518260fad7",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-visual-1.obj": "ee6fadf4debc3fc3c0b8782c5634d1c68dc92aacee6e2e17af00edce76207c74",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-0.png": "8890cd861b8559961aa8f95863e59a8c4b5710c9aeb311366ce87a5d7629b3df",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-collision-2.obj": "cd262a967dd3eac048d2a24ec5f23a846c6ae51fd5054f6b880aff6d55b8e6e2",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/lid-visual-0.obj": "f51b99d35026d4c89e3195428887e588916055700388b3e00de7928f5261aa9d",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-inertia.obj": "ee19845d83d3deb86a5ccbfcba6b984b3c22c1f645052a81958ae2992f4a79d1",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/rotor-visual-0.obj": "9a0fbea9c7aaec66795bb1938d2ba6156c1586228bd73220f31755305e1e9d74",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/lid-collision-1.obj": "0b172b2f2421a67d459be1989355342a13889526f835ab93c4f613bc305c9d73",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/lid-collision-0.obj": "fabd4a18d2caf604d07f2d7a7df3523c0fd27987e36a80f338ab328bd5ee4a7a",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-visual-4.obj": "e0adab7d044448ed2210e4753c780b9d448f3ca839ee5384fca48eada9f68567",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-collision-3.obj": "f36a6ff8cac5db9a4ab3255ad25afd45ad9343e70a4cf9a2b24a97ea330f6179",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/body-visual-2.obj": "8a6cebc98f696325f9bd977db6ff6d8ad289f684201f4607f78ff1beb57b7837",
+    "Hooke/assets/instrument/centrifuge_tiangen_tgear_mini/rotor-inertia.obj": "a537dcfc03f60316fb70689ce2d57ecb77d9b6a7e4a063e07f490c569d5d02bc"
+  },
+  "resource_sha256": {
+    "contacts.npz": "f134bc0c69735076b085601af05c9eb362762e87ee9946304a852e8a3274b416",
+    "lid_visual.obj": "30b785326425e773aa27eaa317eabd2a2fd67d172085c031951316d7556f3cbd"
+  },
+  "contact_count": 1398,
+  "body_contact_counts": {
+    "body": 117,
+    "lid": 733,
+    "rotor": 548
+  },
+  "source_candidate_sha256": "96f08c519265ccf06ca0e6dbf5a98d49e0566e47c4b7bb603061243fd8d091a5",
+  "rotor_decomposition": {
+    "tool": "CoACD 1.0.14",
+    "config": {
+      "threshold": 0.0005,
+      "real_metric": true,
+      "preprocess_mode": "off",
+      "resolution": 2000,
+      "mcts_nodes": 12,
+      "mcts_iterations": 35,
+      "mcts_max_depth": 3,
+      "merge": true,
+      "decimate": false,
+      "extrude": false,
+      "seed": 0
+    }
+  },
+  "lid_decomposition": {
+    "tool": "CoACD 1.0.14",
+    "config": {
+      "threshold": 0.0005,
+      "real_metric": true,
+      "preprocess_mode": "off",
+      "resolution": 2000,
+      "mcts_nodes": 12,
+      "mcts_iterations": 35,
+      "mcts_max_depth": 3,
+      "merge": true,
+      "decimate": false,
+      "extrude": false,
+      "seed": 0
+    }
+  },
+  "ports": [
+    {
+      "center": [
+        0.035038737124183005,
+        0.008101649444444439,
+        0.011919888496732018
+      ],
+      "axis": [
+        -0.4850013946227583,
+        -0.11104618715786763,
+        0.8674343730402199
+      ]
+    },
+    {
+      "center": [
+        0.028714241307189525,
+        0.021652763496732026,
+        0.011919888496732018
+      ],
+      "axis": [
+        -0.3979042352976451,
+        -0.2987135440803826,
+        0.867434399891504
+      ]
+    },
+    {
+      "center": [
+        0.03503873712418301,
+        -0.008101649444444444,
+        0.011919888496732017
+      ],
+      "axis": [
+        -0.4850013946227581,
+        0.11104618715786777,
+        0.86743437304022
+      ]
+    },
+    {
+      "center": [
+        0.028714241307189532,
+        -0.02165276349673204,
+        0.011919888496732017
+      ],
+      "axis": [
+        -0.397904235297645,
+        0.29871354408038225,
+        0.8674343998915036
+      ]
+    },
+    {
+      "center": [
+        -0.028714241307189532,
+        0.02165276349673204,
+        0.011919888496732017
+      ],
+      "axis": [
+        0.397904235297645,
+        -0.29871354408038225,
+        0.8674343998915036
+      ]
+    },
+    {
+      "center": [
+        -0.03503873712418301,
+        0.008101649444444444,
+        0.011919888496732017
+      ],
+      "axis": [
+        0.4850013946227581,
+        -0.11104618715786777,
+        0.86743437304022
+      ]
+    },
+    {
+      "center": [
+        -0.035038737124183005,
+        -0.008101649444444439,
+        0.011919888496732018
+      ],
+      "axis": [
+        0.4850013946227583,
+        0.11104618715786763,
+        0.8674343730402199
+      ]
+    },
+    {
+      "center": [
+        -0.028714241307189525,
+        -0.021652763496732026,
+        0.011919888496732018
+      ],
+      "axis": [
+        0.3979042352976451,
+        0.2987135440803826,
+        0.867434399891504
+      ]
+    }
+  ],
+  "repair": {
+    "removed_lid_volume_m3": 1.7020404108850654e-06,
+    "removed_volume_percent": 1.8268701183872027,
+    "maximum_envelope_change_m": 0.00013950999999999547,
+    "original_mass_inertia_frames_ranges_drives_preserved": true,
+    "description": "Source-sectional open hinge contacts, local rear-rim/ear clearance and2.94mm bore; original split normals restored on retained lid surfaces."
+  },
+  "numerics": {
+    "timestep_s": 0.002,
+    "required_ccd_tolerance_max": 1e-10,
+    "basis": "Default precision produced independently disproved millimetre-scale contacts on the small convex meshes. Tighter precision does not conceal the real source overlaps corrected above."
+  },
+  "scope": "Authored inert mechanical access and slow inspection; not calibrated centrifugation, separation, biological handling, safety interlock or manufacturer performance.",
+  "visual_review": {
+    "status": "V9 actual four-view review passed",
+    "review_sha256": "688d79e625138e0794e1854eda995ca859d5698f2c6c282c72e19dd8e675fb26",
+    "scope": "Reset and actually measured loaded-open workstation/rotor views; restored lid shading and visible seated inert gauge. No whole-room or scientific performance claim."
+  }
+}

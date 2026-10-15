@@ -5,7 +5,7 @@ import numpy as np
 
 from microscopy.cell_mechanics import CellMechanics
 from microscopy.cell_optics import CellMicroscope
-from microscopy.cell_scene import (CELL_CENTER, CELL_RADII, NEEDLE_BACK,
+from microscopy.cell_scene import (CELL_CENTER, CELL_RADII,
                                    NEEDLE_LENGTH_M, TIP_INNER_M, build_xml)
 from microscopy.tasks import MicroscopyExpert, MicroscopyTask
 
@@ -41,6 +41,7 @@ class CellInjection(MicroscopyTask):
         self.mechanics.reset(self.data)
         self.completed = self.focused = False
         self.focus_scan, self.phase_history = [], []
+        self.observation_focus = []
         self.motion_feedback = []
         self.task_info = dict(prefix=self.task_prefix, seed=seed,
                               camera_mapping={"image": "instrument_closeup", "world": "workstation_overview",
@@ -60,7 +61,7 @@ class CellInjection(MicroscopyTask):
         evidence = asset_evidence(self.model)
         return dict(time_s=float(self.data.time), operation=self.operation, volume_unit="pL",
                     instrument_profile=evidence["profile"],
-                    manipulator_profile=self.instrument_drives.profile,
+                    manipulator_profile=self.manipulator_profile,
                     stand_profile=evidence.get("microscope", {}).get("stand_profile", "auto"),
                     stage_profile=evidence.get("stage", {}).get("profile", "reference"),
                     phase=self.phase_history[-1]["phase"] if self.phase_history else "ready",
@@ -95,10 +96,13 @@ class CellInjection(MicroscopyTask):
 
     def sample_scale(self):
         """Nominal SI dimensions; neither camera zoom nor a biological calibration."""
-        from microscopy.pipettes import INJECTION_PROFILE, pipette_back
-        angles = {tool: float(np.rad2deg(np.arcsin(pipette_back(tool)[2])))
-                  for tool in ("injector", "holder")
-                  if mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_SITE, tool+"_tcp") >= 0}
+        from microscopy.pipettes import INJECTION_PROFILE
+        from microscopy.pipette_geometry import installed_geometry
+        pipettes = {tool: installed_geometry(self.model, tool)
+                    for tool in ("injector", "holder")
+                    if mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_SITE, tool+"_tcp") >= 0}
+        angles = {tool: float(np.rad2deg(np.arcsin(geometry.shaft_back[2])))
+                  for tool, geometry in pipettes.items()}
         return dict(kind=self.specimen_kind, length_unit="m", geometry_display_gain=1.,
                     diameters_m=(2*self.mechanics.cell_radii).tolist(),
                     nuclear_diameters_m=(2*self.mechanics.nuclear_radii).tolist(),
@@ -106,6 +110,7 @@ class CellInjection(MicroscopyTask):
                     needle_tip_inner_diameter_m=2*TIP_INNER_M,
                     exposed_capillary_length_m=NEEDLE_LENGTH_M,
                     pipette_elevation_deg=angles,
+                    pipette_geometry={tool: geometry.evidence() for tool, geometry in pipettes.items()},
                     injection_profile_m=[list(section) for section in INJECTION_PROFILE.sections],
                     pipette_profile_calibrated=False,
                     biological_dimensions_calibrated=False)
@@ -125,6 +130,8 @@ class CellInjection(MicroscopyTask):
         from microscopy.cad_assets import asset_evidence
         return dict(self.mechanics.report(self.data), checks=self.microscopy_checks(), operation=self.operation,
                     focus_scan=self.focus_scan,
+                    observation_focus=self.observation_focus,
+                    phase_history=self.phase_history,
                     sample_scale=self.sample_scale(), calibration=self.optical_calibration(),
                     assets=asset_evidence(self.model),
                     controller="Separate synthetic nuclear-fluorescence image centroid, nominal ray geometry and simulated mechanism-position feedback; no measured hardware accuracy.",
@@ -133,7 +140,7 @@ class CellInjection(MicroscopyTask):
                     limitations=["Uncalibrated scalar membrane relaxation and threshold rupture, not a resolved soft-cell solver.",
                                  "No resealing, survival, biological response, liquid CFD or real dose/force calibration.",
                                  "Nominal 3D cell geometry; deformation and tracer are shown in synthetic microscopy.",
-                                 "Scalar thin-object phase contrast with empirical axial blur; no measured optics or fluorescence intensity calibration.",
+                                 "Estimated focal-slab phase contrast with defocused projected light and inclined capillary blur; no calibrated thick-specimen optics or fluorescence intensity.",
                                  "Statistical visual cell contours and organelles; the mechanical contact envelope remains an ellipsoid.",
                                  "No claim of nanometre positioning or measured biological accuracy."])
 
@@ -156,19 +163,35 @@ class CellInjectionExpert(MicroscopyExpert, CellInjection):
         self.command({"focus": best["focus_m"]}, .2)
         self.focused = bool(abs(self.data.qpos[self.model.joint("focus").qposadr[0]]) < .35e-6)
 
+    def focus_observation(self, height_m, phase):
+        """Move the objective to a planned object-space height with its motor."""
+        focus = float(height_m-self.mechanics.optical_reference_height_m)
+        self.phase(phase)
+        self.command({"focus": focus}, .2)
+        measured = float(self.data.qpos[self.model.joint("focus").qposadr[0]])
+        self.observation_focus.append(dict(phase=phase, time_s=float(self.data.time),
+            target_height_m=float(height_m), target_focus_m=focus, observed_focus_m=measured,
+            coordinates="sample-origin relative metres"))
+
+    def restore_cell_focus(self):
+        self.focus_observation(self.mechanics.optical_reference_height_m, "focus_tracer_review")
+
     def cell_injection(self):
         self.phase("locate_cell")
         xy = self.locate("cell")
         centre = np.array([*xy, CELL_CENTER[2]])
-        ray = 1/np.linalg.norm(NEEDLE_BACK/CELL_RADII)
-        self.move("injector", centre+NEEDLE_BACK*(ray+120e-6), .8)
+        back = self.mechanics.needle_back
+        ray = 1/np.linalg.norm(back/CELL_RADII)
+        self.move("injector", centre+back*(ray+120e-6), .8)
+        self.focus_observation(centre[2]+back[2]*(ray-self.injection_depth_m),
+                               "focus_injection_plane")
         self.mechanics.compensation_pa = 500.
         self.phase("approach_cell")
-        self.move("injector", centre+NEEDLE_BACK*(ray+10e-6), .7)
+        self.move("injector", centre+back*(ray+10e-6), .7)
         self.phase("membrane_contact")
-        self.move("injector", centre+NEEDLE_BACK*(ray-.6e-6), .5)
+        self.move("injector", centre+back*(ray-.6e-6), .5)
         self.phase("puncture_cell")
-        self.move("injector", centre+NEEDLE_BACK*(ray-self.injection_depth_m), .7)
+        self.move("injector", centre+back*(ray-self.injection_depth_m), .7)
         if not self.mechanics.punctured:
             raise RuntimeError("Membrane puncture was not established; injection aborted")
         self.phase("cytoplasm_injection")
@@ -180,8 +203,9 @@ class CellInjectionExpert(MicroscopyExpert, CellInjection):
         self.data.userdata[0] = 0.
         self.mechanics.compensation_pa = 0.
         self.phase("withdraw_cell_needle")
-        self.move("injector", centre+NEEDLE_BACK*(ray+20e-6), .6)
+        self.move("injector", centre+back*(ray+20e-6), .6)
         self.wait(.5)
+        self.restore_cell_focus()
         self.phase("tracer_review")
 
 

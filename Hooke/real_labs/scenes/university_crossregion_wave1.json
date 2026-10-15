@@ -8,9 +8,11 @@
       "university_expansion": true,
       "source_urls": [
         "https://www.physik.lmu.de/hybridnano/en/research/facilities/",
-        "https://cms-cdn.lmu.de/media/17-physik/17-hybridnano/photos/snom__nanoinstitute_3_2_format_s.jpg"
+        "https://cms-cdn.lmu.de/media/17-physik/17-hybridnano/photos/snom__nanoinstitute_3_2_format_s.jpg",
+        "https://cms-cdn.lmu.de/media/17-physik/17-hybridnano/photos/snom2_hynano_3_2_format_s.jpg",
+        "https://www.nanosensors.com/pointprobe-plus-non-contact-tapping-mode-high-resonance-frequency-ptir5-coating-afm-tip-PPP-NCHPt"
       ],
-      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. A broad perforated optical table carries long silver enclosures and multiple smaller sources. A cable-dense vertical rack rises behind the middle of the table. Dark blinds screen the two adjacent window walls; supported optical posts surround the near-field station. The photo documents one optical room corner only. Instrument internals, exact light paths and dimensions are unknown. No optical response, nanometre accuracy or source-media redistribution is authorized.",
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. A broad perforated optical table carries long silver enclosures and multiple smaller sources. A cable-dense vertical rack rises behind the middle of the table. Dark blinds screen the two adjacent window walls; supported optical posts surround the near-field station. The photo documents one optical room corner only. Instrument internals, exact light paths and dimensions are unknown. No optical response, nanometre accuracy or source-media redistribution is authorized. Official commercial S-SNOM close view clarifies low side housings, open centre and raised lid; experimental free-space SNOM is a separate instrument and is not merged into this assembly. Generic NANOSENSORS PPP-NCHPt nominal cantilever dimensions are scale evidence only, not proof of the installed probe identity.",
       "observed_cues": [
         "A broad perforated optical table carries long silver enclosures and multiple smaller sources.",
         "A cable-dense vertical rack rises behind the middle of the table.",
@@ -165,20 +167,49 @@
             1.15
           ],
           "fovy": 60
+        },
+        "probe_detail": {
+          "position": [
+            0.8903,
+            0.2844,
+            0.98935
+          ],
+          "target": [
+            0.88996,
+            0.285,
+            0.989112
+          ],
+          "fovy": 20
+        },
+        "assembly": {
+          "position": [
+            0.99,
+            -1.0,
+            1.5
+          ],
+          "target": [
+            0.89,
+            0.3,
+            1.11
+          ],
+          "fovy": 32
         }
       },
       "task": {
         "name": "LMU Hybrid Nanosystems near-field inspection laboratory",
-        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "description": "Register the clamped specimen, approach its actual surface with coarse and fine axes, measure a geometric micrometre-scale line scan, and physically retract. Optical and near-field response are not simulated.",
         "primary_equipment": "snom_table",
-        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+        "observable": "Actual joint state, rigid tip apex and coupon surface coordinates, clearance, scan offsets, collision guards and commanded return."
       },
       "limitations": [
         "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
         "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
         "Reference imagery is private research evidence; release rights remain unresolved.",
-        "No light-path, near-field imaging, probe interaction or nanoscale accuracy model."
-      ]
+        "No light-path, near-field imaging, probe interaction or nanoscale accuracy model.",
+        "Fine axes and hidden mechanisms are authored; ideal servos and geometric clearance do not establish AFM force feedback, flexure, hardware positioning accuracy or near-field response.",
+        "Generic probe dimensions do not identify the LMU-installed probe; nano-scale tip mesh curvature and collision response are not calibrated."
+      ],
+      "detail_revision": "commercial open bay; supported open guides; generic AFM-scale rigid probe; registered geometric line scan"
     },
     {
       "id": "copenhagen_nbi_surface_metrology",
@@ -403,7 +434,7 @@
     {
       "id": "heidelberg_jochim_quantum_architecture",
       "title": "Heidelberg Jochim HQA optical-alignment apparatus",
-      "institution": "Jochim Labs \u2014 Heidelberg Quantum Architecture Optical Station",
+      "institution": "Jochim Labs — Heidelberg Quantum Architecture Optical Station",
       "domain": "optics",
       "university_expansion": true,
       "source_urls": [
@@ -566,20 +597,35 @@
             1.3
           ],
           "fovy": 68
+        },
+        "alignment_detail": {
+          "position": [
+            0.68,
+            -0.76,
+            1.26
+          ],
+          "target": [
+            0.37,
+            -0.27,
+            1.13
+          ],
+          "fovy": 34
         }
       },
       "task": {
         "name": "Heidelberg Jochim HQA optical-alignment apparatus",
-        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "description": "Align the physical normal of the retained inert disc toward an authored open reference aperture, inspect its actual surface and return both original controls.",
         "primary_equipment": "hqa_alignment",
-        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+        "observable": "Measured surface point/normal, aperture-center miss, actual fixed-view visibility and sampled direct contact clearance; no optical or quantum result."
       },
       "limitations": [
         "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
         "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
         "Reference imagery is private research evidence; release rights remain unresolved.",
-        "No vacuum, atom handling, laser beam, trapping, or quantum-dynamics model."
-      ]
+        "No vacuum, atom handling, laser beam, trapping, or quantum-dynamics model.",
+        "The foreground open gimbal, witness button and fixed reference aperture are authored dry alignment fixtures. All original tip/tilt frames, ranges, drives and 92 by 16 mm disc dimensions are retained; camera, clearances, hidden supports and service routes are estimates."
+      ],
+      "detail_revision": 2
     },
     {
       "id": "fuberlin_franke_surface_physics",

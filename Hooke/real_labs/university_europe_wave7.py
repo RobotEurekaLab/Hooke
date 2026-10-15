@@ -1,6 +1,6 @@
 """Reference-informed dry tribology, ice, cryostat and X-ray workcells.
 
-Only access mechanisms and retained inert specimens are simulated. Geometry is
+Mechanical access, retained specimens and an authored Leeds contact operation are simulated. Geometry is
 original and estimated from official photographs; no scientific solver or OEM
 internal mechanism is implied by the apparatus exterior.
 """
@@ -108,81 +108,25 @@ def _tribology(b, base, params):
         b.box(base, (x, 0, 1.15), (0.026, 0.32, 0.27), "bright", collision=True)
     b.box(base, (0, 0.30, 1.15), (0.41, 0.026, 0.27), "metal", collision=True)
     b.box(base, (0, 0, 1.425), (0.44, 0.32, 0.025), "bright", collision=True)
-    for x in (-0.30, -0.10, 0.10, 0.30):
-        b.cylinder(base, (x, 0.15, 1.49), 0.042, 0.05, "bright")
-        _flange(b, base, (x, 0.15, 1.53), 0.05)
-    for i in range(3):
-        b.rod(
-            base,
-            (-0.30 + i * 0.12, 0.15, 1.55),
-            (-0.30 + i * 0.12, 0.40, 1.74 + i * 0.05),
-            0.012,
-            "bright",
-        )
-    door = b.moving(
-        base,
-        "access_door",
-        (-0.46, -0.359, 1.15),
-        (0, 0, -1),
-        (0, 1.2),
-        kind="hinge",
-        mass=0.7,
-    )
-    door.set("euler", numbers((0, 0, -0.78)))
-    door.find("joint").set("ref", ".78")
-    b.box(door, (0.45, 0, 0), (0.435, 0.018, 0.277), "metal", collision=True)
-    _flange(b, door, (0.49, -0.023, 0), 0.085, "xz")
-    b.geom(
-        door,
-        "cylinder",
-        (0.07, 0.006),
-        (0.49, -0.026, 0),
-        "lens",
-        euler=(math.pi / 2, 0, 0),
-    )
-    b.rod(door, (0.80, -0.055, -0.10), (0.80, -0.055, 0.10), 0.011, "dark")
-    b.box(door, (0.18, -0.023, 0.13), (0.065, 0.004, 0.039), "warning")
-    # Concentric copper stage and permanently retained dry specimen.
-    b.cylinder(base, (0.15, -0.06, 0.93), 0.135, 0.038, "copper", collision=True)
-    for z in (0.977, 1.001, 1.025):
-        b.cylinder(base, (0.15, -0.06, z), 0.116, 0.010, "copper", collision=True)
-        b.ring(base, (0.15, -0.06, z + 0.011), 0.112, 0.004, "bright")
-    b.cylinder(base, (0.15, -0.06, 1.058), 0.105, 0.022, "bright", collision=True)
-    b.cylinder(base, (0.15, -0.06, 1.084), 0.064, 0.004, "lens", collision=True)
-    for a in (0, 2.1, 4.2):
-        b.box(
-            base,
-            (0.15 + 0.08 * math.cos(a), -0.06 + 0.08 * math.sin(a), 1.089),
-            (0.020, 0.009, 0.005),
-            "bright",
-            euler=(0, 0, a),
-        )
-    b.site(base, "dry_tribology_coupon", (0.15, -0.06, 1.088), 0.025)
-    # Original non-contact approach: stroke stops above the inert coupon.
-    b.box(base, (-0.25, 0.12, 1.035), (0.05, 0.08, 0.15), "metal", collision=True)
-    for x in (-0.276, -0.224):
-        b.rod(base, (x, 0.07, 1.11), (x, 0.07, 1.39), 0.009, "bright")
-    arm = b.moving(
-        base, "contact_approach", (-0.25, 0.055, 1.235), (0, 0, 1), (0, 0.10), mass=0.18
-    )
-    b.rod(arm, (0, 0, 0), (0.40, -0.115, 0.025), 0.017, "bright", collision=True)
-    b.cylinder(arm, (0.40, -0.115, -0.021), 0.012, 0.038, "metal", collision=True)
-    b.cylinder(arm, (0.40, -0.115, -0.064), 0.004, 0.008, "bright", collision=True)
-    b.box(arm, (0, 0.02, 0), (0.044, 0.026, 0.035), "dark", collision=True)
+    from real_labs.leeds_details import contact_fixture, roof_services, viewport_door
+
+    roof_services(b, base)
+    viewport_door(b, base)
+    contact_fixture(b, base)
     # Source-specific adjacent controller and monitor, on supported tables.
     _stand(b, base, (-0.88, 0.06), (0.25, 0.30), 0.78, "dark")
-    b.box(base, (-0.88, 0.07, 1.075), (0.235, 0.26, 0.265), "cream", collision=True)
+    b.box(base, (-0.88, 0.07, 1.070), (0.235, 0.26, 0.265), "cream", collision=True)
     b.box(base, (-0.88, -0.198, 1.23), (0.18, 0.004, 0.055), "dark")
     for i in range(8):
         b.box(base, (-0.88, -0.198, 0.91 + i * 0.025), (0.18, 0.003, 0.003), "dark")
     _stand(b, base, (0.91, -0.04), (0.31, 0.32), 0.79)
-    _screen(b, base, 0.91, 0.08, 1.16)
-    b.box(base, (0.91, -0.21, 0.828), (0.225, 0.08, 0.012), "cream")
+    _screen(b, base, 0.91, 0.08, 1.154)
+    b.box(base, (0.91, -0.21, 0.827), (0.225, 0.08, 0.012), "cream")
     for i in range(12):
         for j in range(4):
             b.box(
                 base,
-                (0.70 + i * 0.034, -0.255 + j * 0.027, 0.845),
+                (0.70 + i * 0.034, -0.255 + j * 0.027, 0.844),
                 (0.012, 0.008, 0.003),
                 "dark",
             )
@@ -205,16 +149,47 @@ def _tribology_room(world, definition):
         "geom",
         name="leeds_passive_cylinder",
         type="cylinder",
-        pos="1.45 1.72 .7",
+        pos="1.45 1.72 .66",
         size=".13 .66",
         rgba=numbers(DARK),
         contype="1",
         conaffinity="1",
     )
+    # Half-round external straps and rear saddle support. The prior straight
+    # rods cut through the cylinder and did not provide a plausible restraint.
     for z in (0.5, 1.0):
-        p.rod("cylinder_restraint", (1.3, 1.72, z), (1.60, 1.72, z), 0.018, STEEL)
-        p.rod("wall_bracket", (1.45, 1.75, z), (1.45, 2.15, z), 0.018, STEEL)
-    p.rod("cylinder_neck", (1.45, 1.72, 1.3), (1.45, 1.72, 1.48), 0.033, STEEL)
+        points = [
+            (
+                1.45 + 0.1427 * math.cos(math.pi + i * math.pi / 16),
+                1.72 + 0.1427 * math.sin(math.pi + i * math.pi / 16),
+                z,
+            )
+            for i in range(17)
+        ]
+        for first, last in zip(points, points[1:]):
+            p.rod("cylinder_restraint", first, last, 0.012, STEEL)
+        for x in (1.3073, 1.5927):
+            p.rod("wall_bracket", (x, 1.72, z), (x, 2.15, z), 0.012, STEEL)
+            p.box("wall_anchor", (x, 2.15, z), (0.03, 0.012, 0.04), STEEL)
+        p.box("cylinder_saddle", (1.45, 1.863, z), (0.06, 0.013, 0.025), DARK)
+        p.rod("saddle_support", (1.45, 1.888, z), (1.45, 2.15, z), 0.012, STEEL)
+    p.rod("cylinder_neck", (1.45, 1.72, 1.32), (1.45, 1.72, 1.45), 0.033, STEEL)
+    p.box("cylinder_valve", (1.45, 1.72, 1.46), (0.03, 0.035, 0.022), STEEL)
+    # Two readable fixed gauge exteriors and their supported regulator reproduce
+    # the source room cue. They display no simulated or calibrated pressure.
+    p.rod("regulator_riser", (1.45, 1.72, 1.48), (1.45, 1.72, 1.78), .014, STEEL)
+    for i, (x, z) in enumerate(((1.38, 1.67), (1.56, 1.83))):
+        p.rod(f"gauge_branch_{i}", (1.45, 1.72, 1.72), (x, 1.72, z), .011, STEEL)
+        ET.SubElement(world, "geom", name=f"leeds_gauge_case_{i}",
+                      type="cylinder", size=".052 .020", pos=numbers((x, 1.72, z)),
+                      euler="1.57079632679 0 0", rgba=numbers(STEEL),
+                      contype="1", conaffinity="1")
+        ET.SubElement(world, "geom", name=f"leeds_gauge_face_{i}",
+                      type="cylinder", size=".043 .001", pos=numbers((x, 1.699, z)),
+                      euler="1.57079632679 0 0", rgba=".85 .84 .76 1",
+                      contype="0", conaffinity="0")
+        p.rod(f"gauge_parked_needle_{i}", (x, 1.697, z),
+              (x - .022, 1.697, z + .024), .002, DARK)
 
 
 BUILDERS = {"leeds_dry_tribology_station": _tribology}
@@ -223,7 +198,7 @@ SOURCES = {
         reference="Leeds official environmental tribology suite photographs",
         url=LEEDS,
         dimensions_m=[2.5, 1.5, 1.9],
-        dimension_basis="Photographic exterior estimates; original unpowered access and approach fixture, no manufacturer CAD or calibrated dimensions",
+        dimension_basis="Photographic exterior estimates; authored finite-stiffness normal approach and tangential specimen drive, no manufacturer CAD or calibrated dimensions",
     )
 }
 SAMPLE_INTERFACES = {
@@ -231,13 +206,16 @@ SAMPLE_INTERFACES = {
         "dry_tribology_coupon",
         (0.128, 0.128, 0.008),
         "clamped",
-        "Visible inert solid disk retained on the concentric copper specimen stage; approach stops clear of its surface",
+        "Retained rigid coupon on an authored tangential slide; explicit generic counterface contact, without calibrated scientific process",
     )
 }
 FEATURES = {"leeds_environmental_tribology": _tribology_room}
 
 
 def _ice_workcell(b, base, params):
+    revision = params.get("interface_revision", 1)
+    if revision not in (1, 2):
+        raise ValueError("Unknown Copenhagen mechanical interface revision")
     _stand(b, base, (0, 0), (0.37, 0.35), 0.48, "metal")
     for x in (-0.22, 0.22):
         b.cylinder(base, (x, 0, 0.540), 0.033, 0.035, "rubber", collision=True)
@@ -274,61 +252,68 @@ def _ice_workcell(b, base, params):
             0.008,
             "metal",
         )
-    cover = b.moving(
-        base,
-        "wheel_guard",
-        (-0.285, -0.023, 1.48),
-        (0, 0, -1),
-        (0, 1.1),
-        kind="hinge",
-        mass=0.28,
-    )
-    cover.set("euler", numbers((0, 0, -0.75)))
-    cover.find("joint").set("ref", ".75")
-    b.box(cover, (0.278, 0, 0), (0.268, 0.015, 0.295), "shell", collision=True)
-    for a, c in (
-        ((0.04, -0.021, -0.26), (0.51, -0.021, 0.26)),
-        ((0.04, -0.021, 0.26), (0.51, -0.021, -0.26)),
-    ):
-        b.rod(cover, a, c, 0.008, "metal")
-    b.cylinder(
-        cover, (0.48, -0.047, 0), 0.025, 0.018, "dark", euler=(math.pi / 2, 0, 0)
-    )
-    # Passive red blade guide; the dry carriage is separated from its envelope.
-    b.box(base, (0.17, 0.02, 1.06), (0.045, 0.07, 0.105), "guard_red", collision=True)
-    b.box(base, (0.205, -0.034, 0.99), (0.013, 0.016, 0.17), "bright", collision=True)
-    b.box(base, (0, -0.085, 0.86), (0.35, 0.29, 0.016), "metal", collision=True)
-    for x in (-0.22, -0.02):
-        b.rod(base, (x, -0.31, 0.891), (x, -0.09, 0.891), 0.007, "bright")
-    carrier = b.moving(
-        base,
-        "inert_core_carriage",
-        (-0.115, -0.22, 0.92),
-        (0, 1, 0),
-        (-0.075, 0.075),
-        mass=0.18,
-    )
-    b.box(carrier, (0, 0, 0), (0.102, 0.064, 0.015), "bright", collision=True)
-    b.geom(
-        carrier,
-        "cylinder",
-        (0.034, 0.066),
-        (0, 0, 0.048),
-        "glass",
-        euler=(0, math.pi / 2, 0),
-        collision=True,
-    )
-    b.geom(
-        carrier,
-        "cylinder",
-        (0.026, 0.052),
-        (0, 0, 0.048),
-        "shell",
-        euler=(0, math.pi / 2, 0),
-    )
-    for x in (-0.069, 0.069):
-        b.box(carrier, (x, 0, 0.038), (0.012, 0.049, 0.019), "blue", collision=True)
-    b.site(carrier, "inert_ice_look_core", (0, 0, 0.048), 0.02)
+    if revision == 2:
+        from real_labs.copenhagen_saw_geometry import supported_guard, feed_interface
+
+        supported_guard(b, base)
+        feed_interface(b, base)
+    else:
+        cover = b.moving(
+            base,
+            "wheel_guard",
+            (-0.285, -0.023, 1.48),
+            (0, 0, -1),
+            (0, 1.1),
+            kind="hinge",
+            mass=0.28,
+        )
+        cover.set("euler", numbers((0, 0, -0.75)))
+        cover.find("joint").set("ref", ".75")
+        b.box(cover, (0.278, 0, 0), (0.268, 0.015, 0.295), "shell", collision=True)
+        for a, c in (
+            ((0.04, -0.021, -0.26), (0.51, -0.021, 0.26)),
+            ((0.04, -0.021, 0.26), (0.51, -0.021, -0.26)),
+        ):
+            b.rod(cover, a, c, 0.008, "metal")
+        b.cylinder(
+            cover, (0.48, -0.047, 0), 0.025, 0.018, "dark", euler=(math.pi / 2, 0, 0)
+        )
+        # Passive red blade guide; the dry carriage is separated from its envelope.
+        b.box(base, (0.17, 0.02, 1.06), (0.045, 0.07, 0.105), "guard_red", collision=True)
+        b.box(base, (0.205, -0.034, 0.99), (0.013, 0.016, 0.17), "bright", collision=True)
+        b.box(base, (0, -0.085, 0.86), (0.35, 0.29, 0.016), "metal", collision=True)
+        carrier = b.moving(
+            base,
+            "inert_core_carriage",
+            (-0.115, -0.22, 0.92),
+            (0, 1, 0),
+            (-0.075, 0.075),
+            mass=0.18,
+        )
+        b.box(carrier, (0, 0, 0), (0.102, 0.064, 0.015), "bright", collision=True)
+        b.geom(
+            carrier,
+            "cylinder",
+            (0.034, 0.066),
+            (0, 0, 0.048),
+            "glass",
+            euler=(0, math.pi / 2, 0),
+            collision=True,
+        )
+        b.geom(
+            carrier,
+            "cylinder",
+            (0.026, 0.052),
+            (0, 0, 0.048),
+            "shell",
+            euler=(0, math.pi / 2, 0),
+        )
+        for x in (-0.069, 0.069):
+            b.box(carrier, (x, 0, 0.038), (0.012, 0.049, 0.019), "blue", collision=True)
+        b.site(carrier, "inert_ice_look_core", (0, 0, 0.048), 0.02)
+        from real_labs.copenhagen_ice_geometry import add_carriage_guides
+
+        add_carriage_guides(b, base, carrier)
     b.rod(base, (0.25, 0.10, 1.58), (0.30, 0.10, 1.58), 0.020, "metal")
     b.box(base, (0.34, 0.10, 1.58), (0.057, 0.06, 0.115), "cream", collision=True)
     b.box(base, (0.34, 0.033, 1.60), (0.033, 0.005, 0.039), "warning")
@@ -343,66 +328,32 @@ def _ice_workcell(b, base, params):
     b.rod(base, (0.27, 0.20, 0.60), (0.27, 0.28, 0.20), 0.007, "dark")
     b.rod(base, (0.27, 0.28, 0.20), (0.24, -0.43, 0.045), 0.007, "dark")
     b.box(base, (0.24, -0.43, 0.025), (0.065, 0.09, 0.025), "dark", collision=True)
+    from real_labs.copenhagen_source_geometry import add_machine_context
+
+    add_machine_context(b, base)
 
 
 def _coldroom(world, definition):
-    p = _Room(world, "copenhagen")
-    # Only photographed bench/bandsaw bay; storage room is not merged into it.
-    for x, width in ((-1.4, 0.82), (1.32, 0.82)):
-        p.box("wood_worktop", (x, 1.30, 0.88), (width, 0.43, 0.028), WOOD, True)
-        p.box("blue_front_rail", (x, 0.915, 0.80), (width, 0.04, 0.05), BLUE, True)
-        for xx in (x - width + 0.06, x + width - 0.06):
-            for y in (0.94, 1.64):
-                p.box("blue_leg", (xx, y, 0.41), (0.036, 0.036, 0.41), BLUE, True)
-                for z in (0.30, 0.43, 0.56, 0.69):
-                    p.box("leg_hole", (xx, y - 0.038, z), (0.009, 0.002, 0.013), DARK)
-        p.box(
-            "underbench_bin",
-            (x, 1.28, 0.20),
-            (0.29, 0.25, 0.19),
-            (0.41, 0.43, 0.44, 1),
-            True,
-        )
-        p.box("bin_dark_opening", (x, 1.28, 0.394), (0.25, 0.21, 0.006), DARK)
-        for xx in (x - 0.20, x - 0.07, x + 0.07, x + 0.20):
-            p.box(
-                "bin_rib",
-                (xx, 1.023, 0.22),
-                (0.010, 0.008, 0.16),
-                (0.52, 0.54, 0.54, 1),
-            )
-    for x in (-2.35, -1.55, -0.75, 0.05, 0.85, 1.65, 2.35):
-        p.box(
-            "insulated_panel_seam",
-            (x, 2.21, 1.40),
-            (0.006, 0.006, 1.40),
-            (0.63, 0.65, 0.64, 1),
-        )
-    # Freezer door is an interior photographed element, not the room entrance.
-    p.box("freezer_door", (1.68, 2.17, 1.08), (0.56, 0.035, 1.02), WHITE)
-    for x in (1.07, 2.29):
-        p.box("freezer_frame", (x, 2.13, 1.08), (0.035, 0.035, 1.07), STEEL)
-    p.box("freezer_head", (1.68, 2.13, 2.17), (0.64, 0.035, 0.035), STEEL)
-    p.rod("freezer_handle", (1.25, 2.07, 0.89), (1.25, 2.07, 1.20), 0.015, DARK)
-    # Small foreground table remains separate, preserving an aisle.
-    p.box("near_table", (-1.51, -0.40, 0.86), (0.72, 0.34, 0.028), WOOD, True)
-    for x in (-2.17, -0.85):
-        for y in (-0.67, -0.13):
-            p.box("near_table_leg", (x, y, 0.415), (0.03, 0.03, 0.415), BLUE, True)
+    from real_labs.copenhagen_ice_geometry import add_workroom
+
+    add_workroom(world, definition)
+    from real_labs.copenhagen_source_geometry import add_room_services
+
+    add_room_services(world)
 
 
 BUILDERS["copenhagen_dry_ice_workcell"] = _ice_workcell
 SOURCES["copenhagen_dry_ice_workcell"] = dict(
     reference="Copenhagen PICE official ice-core workroom photographs",
     url=COPENHAGEN,
-    dimensions_m=[0.94, 0.87, 1.80],
-    dimension_basis="Photographic estimates for a small unpowered saw; original dry retained-core carriage, no cutting or refrigeration mechanism",
+    dimensions_m=[0.94, 0.87, 1.87],
+    dimension_basis="Photographic estimates for a small unpowered saw including the top adjuster; versioned retained-core fixture, no cutting or refrigeration mechanism",
 )
 SAMPLE_INTERFACES["copenhagen_dry_ice_workcell"] = (
     "inert_ice_look_core",
     (0.132, 0.068, 0.068),
     "clamped",
-    "Visible rigid translucent ice-look cylinder retained on a dry carriage separated from the passive blade guide",
+    "Visible rigid translucent inert core retained on a versioned authored feed fixture; mechanical-interface metadata defines blade access",
 )
 FEATURES["copenhagen_pice_ice_workroom"] = _coldroom
 

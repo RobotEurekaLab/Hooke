@@ -19,6 +19,7 @@ from real_labs.catalog import scenes
 from real_labs.export import export_scene
 from real_labs.runtime import InstrumentSession
 from webui.task_navigation import task_navigation
+from raw_control_assertions import assert_raw_diagnostics
 
 
 EXPECTED = {
@@ -77,7 +78,7 @@ class RealLaboratorySceneTests(unittest.TestCase):
                     self.assertTrue(item["evidence"])
                     self.assertTrue(item["role"])
 
-    def test_all_scenes_compile_and_every_control_tracks_observed_motion(self):
+    def test_all_scenes_compile_and_raw_diagnostics_preserve_blocked_motion(self):
         for identifier in sorted(EXPECTED):
             with self.subTest(scene=identifier):
                 root, manifest = build_scene(identifier)
@@ -91,13 +92,14 @@ class RealLaboratorySceneTests(unittest.TestCase):
                 self.assertGreater(model.nu, 0)
                 self.assertIn("not a surveyed", manifest["reconstruction_status"])
                 session = InstrumentSession(model, manifest)
-                self.assertEqual(len(session.controls), model.nu)
+                self.assertEqual(
+                    len(session.controls) + len(session.mechanisms), model.nu
+                )
                 self.assertTrue(
                     all(c.lower < c.upper for c in session.controls.values())
                 )
                 report = session.smoke_test()
-                failures = [row for row in report["controls"] if not row["passed"]]
-                self.assertTrue(report["passed"], failures)
+                assert_raw_diagnostics(self, session, report)
                 self.assertEqual(session.data.time, 0)
 
     def test_every_lab_has_distinct_navigation_without_loading_simulators(self):
@@ -122,15 +124,28 @@ class RealLaboratorySceneTests(unittest.TestCase):
         self.assertEqual(destinations, EXPECTED)
 
     def test_free_specimen_carriers_settle_on_real_support_surfaces(self):
-        checked = 0
+        declared = set()
+        checked = set()
         for identifier in sorted(EXPECTED):
             root, manifest = build_scene(identifier)
+            declared.update(
+                (identifier, item["body"]) for item in manifest["specimens"]
+            )
             if not manifest["specimens"]:
                 continue
             model = mujoco.MjModel.from_xml_string(
                 ET.tostring(root, encoding="unicode")
             )
             session = InstrumentSession(model, manifest)
+            # Loaded resets now begin just above their real support. Introduce
+            # an explicit drop here to test gravity and free-body settling,
+            # rather than requiring every production reset to start in midair.
+            for item in manifest["specimens"]:
+                body = model.body(item["body"]).id
+                joint = model.body_jntadr[body]
+                self.assertEqual(model.jnt_type[joint], mujoco.mjtJoint.mjJNT_FREE)
+                session.data.qpos[model.jnt_qposadr[joint] + 2] += 0.005
+            mujoco.mj_forward(model, session.data)
             starting_heights = {
                 item["body"]: float(session.data.body(item["body"]).xpos[2])
                 for item in manifest["specimens"]
@@ -163,8 +178,9 @@ class RealLaboratorySceneTests(unittest.TestCase):
                         open_state = session.process_readiness(item["equipment"])
                         self.assertFalse(open_state["ready"])
                         self.assertIn("access_open", open_state["reasons"])
-                    checked += 1
-        self.assertEqual(checked, 7)
+                    checked.add((identifier, item["body"]))
+        self.assertTrue(declared, "The catalogue must retain free specimen carriers")
+        self.assertEqual(checked, declared)
 
     def test_export_reloads_after_relocation_with_relative_resource_paths(self):
         artifact_root = Path(__file__).resolve().parents[1] / "temp"

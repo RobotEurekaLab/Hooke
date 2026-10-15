@@ -303,9 +303,14 @@
       ],
       "task": {
         "name": "Inspect a material characterization suite",
-        "description": "Exercise the material-tester crosshead and upper grip, then position an inert disk with the AFM coarse stage; scientific testing and autonomous inter-room transfer remain unimplemented.",
+        "description": "Run measured dry AFM coarse-stage/probe-axis inspection and an empty upper-grip/lower-coupon inspection, then physically return all five original axes. No material testing, AFM scanning or inter-room transfer is implemented.",
         "primary_equipment": "mechanical_tester",
-        "observable": "Declared joints track bounded target positions; inert sample holders remain visible and supported."
+        "observable": "Every executed step is checked against enabled direct geometry pairs, including parent-filtered guide interfaces. Reports bind source/model/state and preserve failures with measured hold; inspection records include full state.",
+        "entrypoint": "real_labs.ntu_sgsr_motion.PrecisionInspection(session, equipment).inspect_and_return()",
+        "equipment_choices": [
+          "dimension_icon",
+          "mechanical_tester"
+        ]
       },
       "camera": {
         "overview": {
@@ -359,6 +364,19 @@
             1.08
           ],
           "fovy": 49
+        },
+        "afm_probe": {
+          "position": [
+            8.865,
+            0.18,
+            0.965
+          ],
+          "target": [
+            8.82,
+            0.262,
+            0.947
+          ],
+          "fovy": 34
         }
       },
       "layout_rationale": [
@@ -374,7 +392,9 @@
         "Articulated controls validate mechanical positioning only. No calibrated scientific measurements, material behavior, biological process or optics are implemented.",
         "MuJoCo CPU controls are testable; exported USD/GLB/Blender are visual snapshots without validated Isaac articulation.",
         "The Instron capacity, selected grips and dashboard arrangement at NTU are unconfirmed; no force or material deformation model. AFM coarse-stage travel does not represent nanometre tip scanning.",
-        "Partition adjacency is reference-derived; original plan and later equipment inventory may represent different dates."
+        "Partition adjacency is reference-derived; original plan and later equipment inventory may represent different dates.",
+        "The AFM retained disk is 26 mm diameter and 7 mm thick, matching the preserved surface site. The generic 180 micrometre cantilever and 5 micrometre tip never enter a scientific scan/contact state; coarse-Z travel retains about 1.5 mm minimum stand-off.",
+        "The Instron lower coupon remains at least 83 mm from the upper grip throughout original crosshead travel; the measured route inspects an empty grip and does not claim tensile capture."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -382,10 +402,11 @@
           "temp/research/university_precision/instron.png",
           "temp/research/university_precision/afm.png"
         ],
-        "reviewed_at": "2026-10-03",
+        "reviewed_at": "2026-10-04",
         "device_identity": "Instron 68TM family and Bruker Dimension Icon supported by official linked PDFs",
         "dimension_confidence": "OEM standard frame confirmed; all room and AFM envelope dimensions estimated",
-        "rights": "Original procedural geometry; university photos/PDFs remain local references only."
+        "rights": "Original procedural geometry; university photos/PDFs remain local references only.",
+        "mechanical_revision": "Original open XY/head guide bearings, connected load-cell mounts and guided open grip; hidden hardware, inertias and drive settings remain authored estimates."
       }
     },
     {
@@ -563,6 +584,19 @@
             1.75
           ],
           "fovy": 51
+        },
+        "sample": {
+          "position": [
+            -0.25,
+            0.32,
+            1.9651
+          ],
+          "target": [
+            -0.31,
+            0.58,
+            1.8051
+          ],
+          "fovy": 32
         }
       },
       "layout_rationale": [
@@ -576,7 +610,8 @@
         "Reference-informed prototype, not a surveyed or institution-validated digital twin. All room dimensions, materials, unseen surfaces and unconfirmed equipment positions are estimates.",
         "Articulated controls validate mechanical positioning only. No calibrated scientific measurements, material behavior, biological process or optics are implemented.",
         "MuJoCo CPU controls are testable; exported USD/GLB/Blender are visual snapshots without validated Isaac articulation.",
-        "No detailed OEM CAD or measured optical train is available from the single reference. Internal lenses, beam paths, optical response and scanner timing are not reproduced."
+        "No detailed OEM CAD or measured optical train is available from the single reference. Internal lenses, beam paths, optical response and scanner timing are not reproduced.",
+        "A fixed sample close-up keeps the authored 2 mm inert target at physical scale. This is an external geometric inspection view, not simulated microscope imaging or optical resolution."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -733,9 +768,9 @@
       ],
       "task": {
         "name": "Inspect a gait-system mechanical test fixture",
-        "description": "Command independent treadmill drive rollers and adjust unloaded support-fixture height. The fixed belt surfaces and mechanical legs are inspection geometry; no walking experiment is claimed.",
+        "description": "Inspect independently driven unloaded rollers, their stop/registration response, and a guided inert lift through an actual checked round trip. Belt surfaces remain stationary; this is not functional treadmill transport or a gait experiment.",
         "primary_equipment": "gait_test_rig",
-        "observable": "Left/right roller angular velocities and lift height respond independently; no human-subject measurement is generated."
+        "observable": "Measured roller angles/velocities, lift travel/return, held-axis state and direct enabled-contact clearances at every completed physics step."
       },
       "camera": {
         "overview": {
@@ -776,13 +811,40 @@
             1.0
           ],
           "fovy": 62
+        },
+        "drive_detail": {
+          "position": [
+            0.68,
+            -1.75,
+            0.55
+          ],
+          "target": [
+            -0.55,
+            -1.0,
+            0.188
+          ],
+          "fovy": 48
+        },
+        "lift_detail": {
+          "position": [
+            0.65,
+            -0.8,
+            2.62
+          ],
+          "target": [
+            -0.55,
+            0.18,
+            2.46
+          ],
+          "fovy": 49
         }
       },
       "layout_rationale": [
         "Station-level arrangement uses the official photographs: treadmill central, control rack behind/right, operator desk to its right.",
         "The structural gantry uses floor plates and crossmembers, independent of handrails; source dimensions and load ratings are not available.",
         "The fixture contains two clearly mechanical legs and no source human likenesses. It supports geometric inspection, not biomechanics.",
-        "Rollers physically rotate under commanded drives, while belt surfaces remain static; tests cannot claim gait contact dynamics."
+        "Rollers physically rotate under commanded drives, while belt surfaces remain static; tests cannot claim gait contact dynamics.",
+        "The original drive origins, velocities, gains and full lift range remain unchanged. Open bearing bores, supported rollers and lift guides replace intersecting or unsupported geometry; these internal details are authored estimates, not observed OEM construction."
       ],
       "limitations": [
         "Original authored geometry from publicly viewable references; no institutional endorsement or permission to redistribute source media is implied.",
@@ -796,9 +858,10 @@
           "temp/research/qs_lab_page_audit/stills/stanford_biomechatronics_1.img",
           "temp/research/qs_lab_page_audit/stills/stanford_biomechatronics_2.img"
         ],
-        "reviewed_at": "2026-10-03",
+        "reviewed_at": "2026-10-04",
         "dimension_confidence": "All apparatus dimensions and manufacturer details estimated",
-        "rights": "Human subjects in reference photographs are not reproduced; no original media are distributed."
+        "rights": "Human subjects in reference photographs are not reproduced; no original media are distributed.",
+        "mechanical_boundary": "Two photographs depict different systems; their visible exterior cues are combined. Running bearings, guided lift and rigid mechanical legs are authored. Fixed decks have no conveyor/contact transport implementation."
       }
     }
   ]

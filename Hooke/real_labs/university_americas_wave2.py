@@ -65,169 +65,15 @@ def _frustum(b, parent, z0, z1, r0, r1, material="dark"):
 
 
 def _rotating_fluids(b, base, params):
-    b.cylinder(base, (0, 0, 0.04), 0.53, 0.04, "rubber", collision=True)
-    _frustum(b, base, 0.08, 0.78, 0.49, 0.26)
-    _tag(b, b.cylinder(base, (0, 0, 0.805), 0.29, 0.025, "metal"), "turntable_bearing")
-    rotor = b.moving(
-        base,
-        "table_rotation",
-        (0, 0, 0.855),
-        (0, 0, 1),
-        (-math.pi, math.pi),
-        kind="hinge",
-        mass=3,
-        kp=350,
-        force=500,
-    )
-    _tag(
-        b,
-        b.cylinder(rotor, (0, 0, 0), 0.69, 0.025, "dark", collision=True),
-        "rotating_platter",
-    )
-    b.cylinder(rotor, (0, 0, 0.034), 0.585, 0.009, "bright", collision=True)
-    # Thin tangential panes retain an open tank rather than a solid glass plug.
-    for i in range(48):
-        a = i * math.tau / 48
-        b.box(
-            rotor,
-            (0.59 * math.cos(a), 0.59 * math.sin(a), 0.205),
-            (0.006, 0.039, 0.162),
-            "glass",
-            collision=True,
-            euler=(0, 0, a),
-        )
-    for z in (0.043, 0.367):
-        b.ring(rotor, (0, 0, z), 0.59, 0.006, "bright", segments=48)
-    # Rigid calibration target represents a specimen only; there is no water.
-    b.cylinder(rotor, (0.22, 0, 0.047), 0.045, 0.004, "orange", collision=True)
-    for i in range(8):
-        a = i * math.tau / 8
-        b.rod(
-            rotor,
-            (0.16 * math.cos(a), 0.16 * math.sin(a), 0.045),
-            (0.49 * math.cos(a), 0.49 * math.sin(a), 0.045),
-            0.002,
-            "dark",
-        )
-    b.site(rotor, "calibration_target", (0.22, 0, 0.051))
-    # Separate floor-mounted imaging portal preserves a continuous load path.
-    for x in (-0.88, 0.88):
-        b.box(base, (x, 0.64, 0.025), (0.17, 0.20, 0.025), "metal", collision=True)
-        b.box(base, (x, 0.64, 0.95), (0.032, 0.032, 0.925), "bright", collision=True)
-        b.rod(base, (x, 0.64, 1.85), (x, 0, 1.85), 0.032, "bright")
-    b.box(base, (0, 0, 1.85), (0.91, 0.035, 0.035), "bright", collision=True)
-    camera = b.moving(
-        base,
-        "camera_traverse",
-        (0, 0, 1.85),
-        (1, 0, 0),
-        (-0.34, 0.34),
-        mass=0.4,
-        kp=300,
-    )
-    # Bearing sleeve is visual because the prismatic joint represents contact.
-    b.box(camera, (0, 0, 0), (0.08, 0.055, 0.050), "metal")
-    b.box(camera, (0, 0, -0.10), (0.06, 0.045, 0.05), "dark", collision=True)
-    b.cylinder(camera, (0, 0, -0.167), 0.026, 0.017, "lens", collision=True)
-    b.site(camera, "camera_center", (0, 0, -0.184))
-    b.metadata["capabilities"] = [
-        "rotating-table inspection indexing",
-        "overhead camera lateral positioning",
-    ]
-    b.metadata["limitations"].append(
-        "Tank dimensions, indexing range and camera motorization are estimates; no fluid, Coriolis, optical-image or geophysical dynamics model."
-    )
+    from real_labs.mit_rotating_geometry import build_station
+
+    build_station(b, base, params, frustum=_frustum)
 
 
 def _mit_features(world, definition):
-    # Separate round rolling workstation visible in the foreground of the source.
-    center = (1.55, -1.5)
-    for i in range(4):
-        a = math.pi / 4 + i * math.pi / 2
-        x, y = center[0] + 0.51 * math.cos(a), center[1] + 0.51 * math.sin(a)
-        ET.SubElement(
-            world,
-            "geom",
-            name=f"mit_cart_wheel_{i}",
-            type="cylinder",
-            size=".08 .025",
-            pos=f"{x} {y} .08",
-            euler="1.5707963 0 0",
-            rgba=".045 .05 .05 1",
-        )
-        box(
-            world,
-            f"mit_cart_post_{i}",
-            (0.025, 0.025, 0.34),
-            (x, y, 0.5),
-            (0.70, 0.57, 0.37, 1),
-        )
-    for z in (0.18, 0.45, 0.86):
-        ET.SubElement(
-            world,
-            "geom",
-            name=f"mit_cart_round_shelf_{z}",
-            type="cylinder",
-            size=".69 .025",
-            pos=f"{center[0]} {center[1]} {z}",
-            rgba=".16 .15 .13 1" if z > 0.8 else ".73 .63 .46 1",
-        )
-    box(
-        world,
-        "mit_cart_camera_column",
-        (0.028, 0.028, 0.42),
-        (center[0], center[1] + 0.48, 1.305),
-        (0.20, 0.22, 0.23, 1),
-    )
-    box(
-        world,
-        "mit_cart_camera_boom",
-        (0.025, 0.27, 0.025),
-        (center[0], center[1] + 0.21, 1.70),
-        (0.20, 0.22, 0.23, 1),
-    )
-    box(
-        world,
-        "mit_cart_camera",
-        (0.07, 0.055, 0.045),
-        (center[0], center[1] - 0.03, 1.63),
-        (0.05, 0.07, 0.08, 1),
-    )
-    # Tall window/blind wall at the right, as in the room photograph.
-    for y in (-1.7, -0.1, 1.5):
-        box(
-            world,
-            f"mit_window_{y}",
-            (0.015, 0.65, 0.80),
-            (3.24, y, 1.8),
-            (0.55, 0.72, 0.82, 0.30),
-            collision=False,
-        )
-        for i in range(17):
-            box(
-                world,
-                f"mit_blind_{y}_{i}",
-                (0.06, 0.66, 0.010),
-                (3.20, y, 1.02 + i * 0.095),
-                (0.87, 0.85, 0.79, 1),
-                collision=False,
-            )
-    for x in (-2, -0.6, 0.8):
-        box(
-            world,
-            f"mit_wall_cabinet_{x}",
-            (0.61, 0.24, 0.38),
-            (x, 2.42, 1.88),
-            (0.83, 0.79, 0.66, 1),
-        )
-        box(
-            world,
-            f"mit_cabinet_seam_{x}",
-            (0.006, 0.008, 0.35),
-            (x, 2.171, 1.88),
-            (0.30, 0.29, 0.25, 1),
-            collision=False,
-        )
+    from real_labs.mit_rotating_geometry import room_features
+
+    room_features(world, definition)
 
 
 BUILDERS = {"paoc_rotating_table": _rotating_fluids}
@@ -252,7 +98,7 @@ FEATURES = {"mit_paoc_rotating_fluids": _mit_features}
 
 def _wind_tunnel(b, base, params):
     """Large return circuit with a genuinely hollow 4 ft square test section."""
-    teal = (0.13, 0.46, 0.49, 1)
+    from real_labs.princeton_tunnel_geometry import add_probe_roof, add_return_casings
     # Three interchangeable test-section frames; 4 ft is the clear internal bore.
     half = 0.6096
     y, z = -1.8, 2.15
@@ -296,17 +142,20 @@ def _wind_tunnel(b, base, params):
                 ),
                 "test_side_panel",
             )
-            _tag(
-                b,
-                b.box(
-                    base,
-                    (x, y, z + side * (half + 0.012)),
-                    (0.46, half, 0.012),
-                    "glass",
-                    collision=side < 0,
-                ),
-                "test_horizontal_panel",
-            )
+            if x == 1 and side == 1:
+                add_probe_roof(b, base)
+            else:
+                _tag(
+                    b,
+                    b.box(
+                        base,
+                        (x, y, z + side * (half + 0.012)),
+                        (0.46, half, 0.012),
+                        "glass",
+                        collision=True,
+                    ),
+                    "test_horizontal_panel",
+                )
     for x in (-1.45, 1.45):
         for dy in (-0.72, 0.72):
             b.box(base, (x, y + dy, 0.05), (0.20, 0.18, 0.05), "blue", collision=True)
@@ -315,44 +164,15 @@ def _wind_tunnel(b, base, params):
             )
         b.box(base, (x, y, 1.4664), (0.085, 0.78, 0.05), "blue", collision=True)
         b.rod(base, (x, y - 0.70, 0.12), (x, y + 0.70, 1.42), 0.029, "blue")
-    # Tapered casings are original external shells, not a flow mesh. Their axes
-    # follow the photographed full return circuit, not a short tabletop tunnel.
-    for sign in (-1, 1):
-        body = ET.SubElement(
-            base, "body", pos=f"{sign*1.55} {y} {z}", euler=f"0 {sign*math.pi/2} 0"
-        )
-        b.housing(
-            body,
-            [(0, 0.65, 0.65, 0), (2.30, 1.05, 1.05, 0)],
-            radius=0.06,
-            material="cyan",
-        )
-        for t in (0, 0.55, 1.10, 1.65, 2.3):
-            w = 0.65 + t * 0.4 / 2.3
-            for side in (-1, 1):
-                b.box(
-                    body, (side * (w + 0.015), 0, t), (0.025, w + 0.025, 0.025), "dark"
-                )
-                b.box(
-                    body, (0, side * (w + 0.015), t), (w + 0.025, 0.025, 0.025), "dark"
-                )
-    for x in (-4.25, 4.25):
-        b.box(base, (x, 0.40, z), (0.68, 2.8, 1.05), "cyan", collision=True, rgba=teal)
-        for y2 in (-1.8, 2.6):
-            b.box(base, (x, y2, 0.51), (0.46, 0.46, 0.51), "blue", collision=True)
-            for dx in (-0.5, 0.5):
-                b.rod(base, (x + dx, y2, 0.08), (x + dx, y2, 1.10), 0.032, "bright")
-        for y2 in (-2.32, -1.0, 0.6, 2.20, 3.1):
-            b.box(base, (x, y2, z), (0.70, 0.025, 1.08), "dark")
-    b.box(base, (0, 2.6, z), (3.57, 0.82, 0.85), "cyan", collision=True, rgba=teal)
-    for x in (-3.25, -1.8, 0, 1.8, 3.25):
-        for dy in (-0.85, 0.85):
-            b.box(base, (x, 2.6 + dy, z), (0.025, 0.026, 0.89), "dark")
+    # Photo-informed curved exteriors and connected open underframes; this
+    # is apparatus geometry, not a CFD domain or a validated turning-vane model.
+    add_return_casings(b, base)
     # Fan barrel and motor sit in the return leg; support piers reach its casing.
     b.cylinder(base, (1.8, 2.6, z), 1.02, 0.44, "cyan", euler=(0, math.pi / 2, 0))
     for x in (1.34, 2.26):
         b.cylinder(base, (x, 2.6, z), 1.06, 0.025, "metal", euler=(0, math.pi / 2, 0))
     b.box(base, (0, 2.6, 0.65), (0.48, 0.60, 0.65), "blue", collision=True)
+    b.box(base, (1.8, 2.6, 0.565), (0.42, 0.50, 0.565), "cyan", collision=True)
     b.box(base, (1.8, 3.58, z), (0.30, 0.36, 0.27), "dark", collision=True)
     # Rigid airfoil coupon with a visible trunnion and grounded support pedestal.
     b.box(base, (-0.35, y, 1.5704), (0.17, 0.17, 0.030), "metal", collision=True)
@@ -386,9 +206,9 @@ def _wind_tunnel(b, base, params):
         kp=300,
     )
     b.box(probe, (0, 0, 0), (0.05, 0.06, 0.045), "dark")
-    # Shaft passes a representative roof feedthrough; window/shaft bearing
-    # contact is omitted, while the exposed measuring tip remains collidable.
-    b.cylinder(probe, (0, 0, -0.33), 0.010, 0.30, "bright")
+    # The unchanged traverse passes through a real, inferred roof slot;
+    # shaft and adjacent roof both retain genuine collision surfaces.
+    b.cylinder(probe, (0, 0, -0.33), 0.010, 0.30, "bright", collision=True)
     b.cylinder(probe, (0, 0, -0.66), 0.018, 0.035, "orange", collision=True)
     b.site(probe, "probe_tip", (0, 0, -0.695))
     b.metadata["capabilities"] = [
@@ -397,6 +217,11 @@ def _wind_tunnel(b, base, params):
     ]
     b.metadata["limitations"].append(
         "Published 4 ft square test-section bore retained; loop geometry, model mount and inspection strokes are estimated. No airflow, fan, aerodynamic forces or PIV simulation."
+    )
+    b.metadata["limitations"].append(
+        "Rounded turning casings, seam thicknesses and support frames are exterior estimates. "
+        "The 44 by 770 mm probe roof slot is an authored mechanical interface, not a "
+        "verified OEM feedthrough; no internal turning vanes or CFD solution are represented."
     )
 
 
@@ -465,6 +290,10 @@ FEATURES["princeton_bam_closed_loop_wind_tunnel"] = _princeton_features
 
 def _centrifuge(b, base, params):
     """Inspection-speed surrogate of a swinging-basket centrifuge, not a high-g model."""
+    from real_labs.ucsd_centrifuge_geometry import (
+        add_basket_exterior, add_counterweight, add_pedestal_surface, add_basket_bearings,
+    )
+
     b.cylinder(base, (0, 0, 0.05), 0.79, 0.05, "blue", collision=True)
     # Tapered shell sectors leave a real front access arch; upper ring ties the
     # sectors together. Hidden wall thickness is inferred from the photograph.
@@ -508,6 +337,7 @@ def _centrifuge(b, base, params):
             contype="1",
             conaffinity="1",
         )
+    add_pedestal_surface(b, base)
     b.cylinder(base, (0, 0, 1.075), 0.42, 0.035, "blue", collision=True)
     _frustum(b, base, 1.11, 1.25, 0.42, 0.25, "blue")
     _tag(b, b.cylinder(base, (0, 0, 1.285), 0.27, 0.035, "metal"), "rotary_bearing")
@@ -538,16 +368,8 @@ def _centrifuge(b, base, params):
     )
     for z in (-0.085, 0.085):
         b.box(arm, (0.13, 0, z), (1.55, 0.235, 0.012), "blue", collision=True)
-    for i in range(5):
-        b.box(
-            arm,
-            (-1.08, 0, 0.14 + i * 0.068),
-            (0.34, 0.29, 0.030),
-            "metal",
-            collision=True,
-        )
-    for y in (-0.50, 0.50):
-        b.box(arm, (1.45, y, -0.015), (0.085, 0.055, 0.105), "blue", collision=True)
+    add_counterweight(b, arm)
+    add_basket_bearings(b, arm)
     b.box(arm, (1.45, 0, 0.065), (0.095, 0.50, 0.045), "blue", collision=True)
     basket = b.moving(
         arm,
@@ -560,27 +382,7 @@ def _centrifuge(b, base, params):
         kp=550,
         force=500,
     )
-    for y in (-0.46, 0.46):
-        b.rod(basket, (0, y, 0), (0, y, -0.58), 0.028, "bright")
-        b.cylinder(basket, (0, y, 0), 0.05, 0.026, "metal", euler=(math.pi / 2, 0, 0))
-    b.box(basket, (0, 0, -0.63), (0.42, 0.46, 0.035), "cream", collision=True)
-    for y in (-0.445, 0.445):
-        b.box(basket, (0, y, -0.48), (0.42, 0.015, 0.115), "cream", collision=True)
-        for i in range(17):
-            a = math.pi + i * math.pi / 16
-            b.rod(
-                basket,
-                (0.42 * math.cos(a), y, -0.39 + 0.24 * math.sin(a)),
-                (
-                    0.42 * math.cos(a + math.pi / 16),
-                    y,
-                    -0.39 + 0.24 * math.sin(a + math.pi / 16),
-                ),
-                0.024,
-                "cream",
-            )
-    for x in (-0.405, 0.405):
-        b.box(basket, (x, 0, -0.48), (0.015, 0.445, 0.115), "cream", collision=True)
+    add_basket_exterior(b, basket)
     # Footprint is exactly the published maximum supported container size;
     # thickness and interior arrangement are estimates. The coupon stays rigid.
     _tag(
@@ -596,6 +398,11 @@ def _centrifuge(b, base, params):
     ]
     b.metadata["limitations"].append(
         "Maximum container footprint 0.6 by 0.7 m is documented; all machine dimensions and inspection strokes estimated. Basket actuator is an authored inspection surrogate, not the real passive high-g dynamics; soil and centrifuge similitude absent."
+    )
+    b.metadata["limitations"].append(
+        "Blue counterweight and curved white basket follow the low-resolution exterior photograph. "
+        "Split mounting clamp, shell thickness, support saddles and open-top inspection state are "
+        "estimated assembly details, not OEM CAD or a verified high-g load path."
     )
 
 

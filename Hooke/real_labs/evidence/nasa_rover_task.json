@@ -1,0 +1,14 @@
+{
+  "nasa_planetary": {
+    "scope": "Grounded generic rover task revision; cached NASA SLOPE preview informs high-bay soil-test context only",
+    "reference_image": "temp/research/real_labs_references/nasa_preview.jpg",
+    "reference_sha256": "3fcbe92cdc47ded5bc081c3c5de13be73cfd602885569d03c9813cf736fbd517",
+    "geometry_basis": "Track, steering knuckles, sample cradle, pickup pedestal, lower staging shelf, sample mass, controller, friction and contact compliance are explicit authored estimates",
+    "task": "Actual wheel-contact flat-aisle traversal, mounted-camera target inspection and free-object staging; no live pose writes or attachments",
+    "limitations": [
+      "Soil bins and tiltbed remain rigid context; no granular-soil or flight-hardware validation",
+      "Historical stand-supported wheel/mast/arm evidence remains bound to its old revision",
+      "Native Isaac and GPU rendering remain untested/off"
+    ]
+  }
+}

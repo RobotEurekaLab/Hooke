@@ -10,7 +10,7 @@
         "https://paocweb.mit.edu/about/facilities/the-fluids-lab",
         "https://paocweb.mit.edu/images/uploads/fluidlab_0_0.jpg"
       ],
-      "reference_notes": "Actual room photograph inspected: freestanding round rotating table in the center, a wheeled round workstation near a tall window wall, black counters and pale cabinets along the room edge, overhead recording equipment. Official pages establish both research and teaching use, not just demonstration equipment. Single distorted room photograph; survey scale and exact current arrangement unverified. Mixed research/teaching facility; exclude course-only procedure claims.",
+      "reference_notes": "Personally inspected the cached official room photograph: a green flared central pedestal with a dense upright apparatus, suspended ceiling rails/projector, black perimeter counters, pale heterogeneous cabinets, tall window/blind wall and a wood computer workstation on wheels. The authored open tank and independent floor-supported imaging frame remain representative mechanical substitutions, not the photographed apparatus reconstructed dimensionally. This single distorted historical photograph provides no calibrated dimensions or current arrangement.",
       "observed_cues": [
         "Central round table on a flared pedestal",
         "Tall right-hand windows with horizontal blinds",
@@ -139,7 +139,7 @@
             "type": "floor",
             "evidence": "Photographed self-standing apparatus; continuous grounded support modeled with estimated dimensions."
           },
-          "role": "Index a rotating-tank calibration target",
+          "role": "Index a rigid calibration disc and inspect it with the physically mounted translating camera at reachable endpoints",
           "evidence": "reference-informed original mechanical prototype",
           "source_urls": [
             "https://paocweb.mit.edu/about/facilities/the-fluids-lab",
@@ -154,13 +154,23 @@
             "temp/university/expansion_100_20261003/research/stills/mit_rotating_fluids.img"
           ],
           "supports": "Actual room photograph inspected: freestanding round rotating table in the center, a wheeled round workstation near a tall window wall, black counters and pale cabinets along the room edge, overhead recording equipment. Official pages establish both research and teaching use, not just demonstration equipment."
+        },
+        {
+          "url": "https://paocweb.mit.edu/images/uploads/fluidlab_0_0.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/mit_rotating_fluids.img"
+          ],
+          "supports": "Green flared pedestal, tall apparatus framing, suspended rails/projector, cabinet-style wood computer cart and heterogeneous perimeter equipment. No dimensions or camera motorization inferred as measured facts.",
+          "local_sha256": "c46dfcb865ac17abdbb0711c0acf3e738f14c7842125b07253dc95a58098ff4a"
         }
       ],
       "layout_rationale": [
         "Central round table on a flared pedestal",
         "Tall right-hand windows with horizontal blinds",
         "Wall counters plus a separate wheeled round worktop with overhead imaging",
-        "Room envelope, access openings and hidden service routes are authored estimates."
+        "Room envelope, access openings and hidden service routes are authored estimates.",
+        "Green casting/upright framing, overhead rails and a cabinet-style computer workstation follow visible photo cues; exact hidden supports and equipment identities are authored.",
+        "Original rotor/camera axes are retained. The narrower, taller transparent cylinder follows the photo silhouette with estimated dimensions; open bearings and the mounted camera remain an authored dry inspection mechanism, not a fluid experiment."
       ],
       "circulation": {
         "operator_approach": "Clear foreground aisle to the test station.",
@@ -232,7 +242,23 @@
         "Mechanical indexing and camera positioning only; no water flow, Coriolis force experiment or optical imaging model.",
         "The central table and separate wheeled round workstation are distinct photographed fixtures; hidden supports are inferred.",
         "No institution-approved survey or OEM CAD. Photographs are private research references; source media redistribution and institutional endorsement are not established."
-      ]
+      ],
+      "reference_detail_evidence": {
+        "primary_reference": "https://paocweb.mit.edu/images/uploads/fluidlab_0_0.jpg",
+        "observed": [
+          "Green flared central support and tall apparatus framing",
+          "Suspended ceiling rails and projector",
+          "Wood computer workstation with cabinets and open equipment bays",
+          "Heterogeneous pale perimeter cabinets and instruments"
+        ],
+        "authored": [
+          "Retained broad open tank and independent imaging portal differ from the photographed central apparatus",
+          "All dimensions, bearing construction, clearances and motorization",
+          "Rigid calibration disc, two-axis inspection route and45 degree pinhole view"
+        ],
+        "functional_boundary": "Dry actuator-driven indexing and actual body-mounted camera geometry. The disc is rigidly fastened; no fluid, imaging calibration, loading or geophysical model.",
+        "rights": "Public photograph inspected privately; no photo texture or downloaded model redistributed."
+      }
     },
     {
       "id": "princeton_bam_closed_loop_wind_tunnel",

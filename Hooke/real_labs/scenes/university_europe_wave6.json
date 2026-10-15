@@ -10,13 +10,13 @@
       "source_urls": [
         "https://blogs.imperial.ac.uk/photography/2018/02/06/featured-lab-the-thin-film-technology-lab/"
       ],
-      "reference_notes": "A working-lab photo shows densely packed stainless multi-port vacuum chambers on metal frames, angled flanged source arms, foil-wrapped pipe sections, blue/yellow service lines and control racks. Exposed ceiling ducts and cable trays run above a narrow operator gap. Historical 2018 Bessemer photograph; source mentions a planned move to White City, so this must be labeled a dated reference and not a verified current location. No vacuum, deposition kinetics or recipe simulation. Exact equipment geometry and clearances require further views.",
+      "reference_notes": "A working-lab photo shows densely packed stainless multi-port vacuum chambers on metal frames, angled flanged source arms, foil-wrapped pipe sections, blue/yellow service lines and control racks. Exposed ceiling ducts and cable trays run above a narrow operator gap. Historical 2018 Bessemer photograph; source mentions a planned move to White City, so this must be labeled a dated reference and not a verified current location. No vacuum, deposition kinetics or recipe simulation. Exact equipment geometry and clearances require further views. Added fixed blue/yellow/dark service loops, metallic capillary-like lines, unequal small fittings and faceted lower-arm coverings from the visible historical source cues. Endpoints follow current chamber surfaces, while exact hidden routing, dimensions and identities remain authored estimates.",
       "observed_cues": [
         "A working-lab photo shows densely packed stainless multi-port vacuum chambers on metal frames, angled flanged source arms, foil-wrapped pipe sections, blue/yellow service lines and control racks. Exposed ceiling ducts and cable trays run above a narrow operator gap."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "layout_revision": 1,
-      "detail_revision": 1,
+      "detail_revision": 3,
       "room": {
         "size": [
           6.2,
@@ -132,6 +132,33 @@
             1.08
           ],
           "fovy": 57
+        },
+        "chambers": {
+          "position": [
+            -0.65,
+            -2.3,
+            1.95
+          ],
+          "target": [
+            0.2,
+            0.25,
+            1.6
+          ],
+          "fovy": 64
+        },
+        "fixture": {
+          "position": [
+            1.35,
+            -1.53,
+            1.25
+          ],
+          "target": [
+            0.94,
+            -0.73,
+            1.045
+          ],
+          "fovy": 42,
+          "purpose": "Close review of the authored dry carrier, retained coupon and mounting hardware; not photographed vacuum hardware."
         }
       },
       "reserved_walkways": [
@@ -163,7 +190,8 @@
       "layout_rationale": [
         "Two stainless multiport chamber assemblies on cabinet frames preserve the photograph\u2019s left-near/right-far arrangement and operator gap. Bolted flanges, upper feedthroughs, angled lower branches and restrained cables provide the apparatus silhouette.",
         "Green overhead pipes, rectangular services, monitor desk and separate electronics racks retain the visible facility character. Exact ceiling routing, boundaries and workstation spacing remain estimates.",
-        "A dry hollow access station and retained inert coupon carrier are explicitly authored mechanical task fixtures, distinct from the real apparatus internals."
+        "A dry hollow access station and retained inert coupon carrier are explicitly authored mechanical task fixtures, distinct from the real apparatus internals.",
+        "Dense parked exterior services stay attached to their own historical chamber/cabinet assemblies and clear the separate dry access station; they are rigid geometry, not simulated flexible hoses. Unequal small upper/end fittings and faceted near-arm outer coverings reproduce visible source layers without assigning scientific functions."
       ],
       "limitations": [
         "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
@@ -171,7 +199,8 @@
         "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
         "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
         "Historical 2018 Bessemer location. The source mentions a later move; this scene does not claim a verified current White City layout.",
-        "No manufacturer CAD, surveyed dimensions, vacuum, thin-film deposition, plasma, chemical delivery, temperature control or validated film performance."
+        "No manufacturer CAD, surveyed dimensions, vacuum, thin-film deposition, plasma, chemical delivery, temperature control or validated film performance.",
+        "Dry inspection fixture mounting hardware is authored: chamber runners, guide pedestals, open bearings, coupon shim/clamp pads and door hinge/standoffs. No photographic identity or scientific process accuracy is claimed for this fixture."
       ],
       "reference_detail_evidence": {
         "university_europe_wave6": {
@@ -190,17 +219,35 @@
           "implemented": [
             "Two stainless multiport chamber assemblies on cabinet frames preserve the photograph\u2019s left-near/right-far arrangement and operator gap. Bolted flanges, upper feedthroughs, angled lower branches and restrained cables provide the apparatus silhouette.",
             "Green overhead pipes, rectangular services, monitor desk and separate electronics racks retain the visible facility character. Exact ceiling routing, boundaries and workstation spacing remain estimates.",
-            "A dry hollow access station and retained inert coupon carrier are explicitly authored mechanical task fixtures, distinct from the real apparatus internals."
+            "A dry hollow access station and retained inert coupon carrier are explicitly authored mechanical task fixtures, distinct from the real apparatus internals.",
+            "Unequal cylindrical vessels, flat bolted lids, differently sized capped and windowed side ports, inclined stepped source assemblies with tie rods, continuous table/saddle supports, and curved service leads anchored to top terminals and cabinet sockets.",
+            "Six colored parked service routes and two metallic capillary-like routes per vessel, with source-bound endpoints on lid fittings, source-end collars and cabinet sockets; near/left lower-arm faceted outer wrapping with conservative contact envelopes."
           ],
           "inferred": [
             "Unobserved room boundary and doorway positions",
-            "Machine internal geometry, travel and servo dynamics"
+            "Machine internal geometry, travel and servo dynamics",
+            "Detailed flange dimensions, branch lengths, support construction and both service-line endpoints; source does not expose all connections.",
+            "The service roles, exact endpoints/routing, connector dimensions and foil-like wrinkle geometry are estimated from the single photograph; no OEM, vacuum, electrical or thermal behavior is asserted."
           ],
           "unresolved": [
             "Historical 2018 Bessemer location. The source mentions a later move; this scene does not claim a verified current White City layout.",
             "No manufacturer CAD, surveyed dimensions, vacuum, thin-film deposition, plasma, chemical delivery, temperature control or validated film performance."
           ],
           "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        },
+        "dry_fixture_mounting": {
+          "observed": [],
+          "implemented": [
+            "Continuous chamber-to-table runners and rail supports; open upper carriage bearings and coaxial door hinge have 0.5 mm radial running clearance.",
+            "The unchanged retained coupon sits on a 1 mm shim with mounted clamp feet, side pads and hold-down tabs. Door handle standoffs bridge its mounting gap."
+          ],
+          "inferred": [
+            "All dry inspection fixture geometry and mounting hardware; original travel and retained-coupon interface preserved."
+          ],
+          "unresolved": [
+            "No vacuum, atmospheric seal, free-coupon transfer, calibrated bearing stress or deposition process."
+          ],
+          "fidelity": "Original mechanical inspection surrogate; separate from the source-informed historical vessels."
         }
       }
     },
@@ -214,13 +261,14 @@
       "source_urls": [
         "https://www.nottingham.ac.uk/biosciences/documents/business/food-processing-equipment-and-facilities.pdf"
       ],
-      "reference_notes": "The top photograph on brochure page 4 shows a high food-processing hall with sloped glazing at the right, long stainless service benches behind wire guarding, multiple wheeled white worktables, rear processing equipment and a left-wall sink. Page 9 separately illustrates jacketed pans and a wheeled ice-cream machine. PDF metadata dates the brochure to 2013; present arrangement is not verified. The lower page-4 photograph is a separate quality-control laboratory and is not combined with the hall. Page-9 equipment placement in the hall is unknown. No food thermal/rheological process or biological model.",
+      "reference_notes": "The top photograph on brochure page 4 shows a high food-processing hall with sloped glazing at the right, long stainless service benches behind wire guarding, multiple wheeled white worktables, rear processing equipment and a left-wall sink. Page 9 separately illustrates jacketed pans and a wheeled ice-cream machine. PDF metadata dates the brochure to 2013; present arrangement is not verified. The lower page-4 photograph is a separate quality-control laboratory and is not combined with the hall. Page-9 equipment placement in the hall is unknown. No food thermal/rheological process or biological model. Five separate wheeled table modules are visible across the page-4 foreground row. Their 1.14 by 0.68 m tops and placement at y=-0.24 m are estimated to preserve this row while retaining the separately sourced pan and the front access route. The plain dark blue-grey floor is a source-informed, uncalibrated color estimate.",
       "observed_cues": [
-        "The top photograph on brochure page 4 shows a high food-processing hall with sloped glazing at the right, long stainless service benches behind wire guarding, multiple wheeled white worktables, rear processing equipment and a left-wall sink. Page 9 separately illustrates jacketed pans and a wheeled ice-cream machine."
+        "The top photograph on brochure page 4 shows a high food-processing hall with sloped glazing at the right, long stainless service benches behind wire guarding, multiple wheeled white worktables, rear processing equipment and a left-wall sink. Page 9 separately illustrates jacketed pans and a wheeled ice-cream machine.",
+        "Five adjacent foreground trolley tops with lower shelves and casters, ahead of the guarded bank; plain dark blue-grey floor under uncalibrated lighting."
       ],
       "layout_fidelity": "estimated_from_public_reference",
-      "layout_revision": 1,
-      "detail_revision": 1,
+      "layout_revision": 2,
+      "detail_revision": "20261007 five floor-supported foreground trolley modules and source-informed plain blue-grey floor",
       "room": {
         "size": [
           8,
@@ -243,12 +291,12 @@
         "architecture": {
           "floor": {
             "color": [
-              0.52,
-              0.55,
-              0.54,
+              0.105,
+              0.135,
+              0.18,
               1
             ],
-            "pattern": "seams",
+            "pattern": "plain",
             "spacing": 2
           },
           "openings": [
@@ -345,6 +393,19 @@
             0.97
           ],
           "fovy": 51
+        },
+        "inspection": {
+          "position": [
+            2.67,
+            -2.82,
+            1.77
+          ],
+          "target": [
+            1.12,
+            -1.34,
+            0.8
+          ],
+          "fovy": 47
         }
       },
       "reserved_walkways": [
@@ -376,7 +437,8 @@
       "layout_rationale": [
         "The 2013-era official brochure shows a high hall, right sloping daylight glazing, long parallel stainless work banks with low mesh guards, foreground mobile tables, left sink and rear enclosed equipment. These are modeled as one selected hall subset.",
         "The separately photographed approximately 25 L jacketed pan has a white braced wheeled base, side trunnions, handles and metallic bowl. Its placement at the foreground right is an explicit authoring estimate, not a photographed position.",
-        "The distinct quality-control room shown below the hall in the PDF is not merged into this scene. The retained inspection coupon and cover task are original dry mechanical fixtures."
+        "The distinct quality-control room shown below the hall in the PDF is not merged into this scene. The retained inspection coupon and cover task are original dry mechanical fixtures.",
+        "Five foreground trolley modules reproduce the visible row rhythm. Their dimensions, 60 mm joints and estimated row position are authored; the separately sourced pan stays in front-right. The 50 mm table/bank gap is geometric spacing, not a service aisle; front access and left entry are preserved. Tables are fixed furniture with contact-enabled floor supports, not controllable wheeled mechanisms."
       ],
       "limitations": [
         "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
@@ -405,16 +467,21 @@
             }
           ],
           "observed": [
-            "The top photograph on brochure page 4 shows a high food-processing hall with sloped glazing at the right, long stainless service benches behind wire guarding, multiple wheeled white worktables, rear processing equipment and a left-wall sink. Page 9 separately illustrates jacketed pans and a wheeled ice-cream machine."
+            "Brochure page 4 upper photograph shows the historical food production hall: parallel guarded stainless banks, wheeled white tables, sloped right glazing, left sink and distinct rear rack/grid-front/tall equipment silhouettes. The separate quality-control room beneath it is excluded.",
+            "Page 9 lower front/right mobile pan shows a bulbous metallic jacket, short straight neck, tapered white side webs, side fittings, black handles and an open wire tray. The covered rear/left vessel and upper ice-cream machine are distinct equipment."
           ],
           "implemented": [
             "The 2013-era official brochure shows a high hall, right sloping daylight glazing, long parallel stainless work banks with low mesh guards, foreground mobile tables, left sink and rear enclosed equipment. These are modeled as one selected hall subset.",
             "The separately photographed approximately 25 L jacketed pan has a white braced wheeled base, side trunnions, handles and metallic bowl. Its placement at the foreground right is an explicit authoring estimate, not a photographed position.",
-            "The distinct quality-control room shown below the hall in the PDF is not merged into this scene. The retained inspection coupon and cover task are original dry mechanical fixtures."
+            "The distinct quality-control room shown below the hall in the PDF is not merged into this scene. The retained inspection coupon and cover task are original dry mechanical fixtures.",
+            "Closed all eight 24 mm trolley-top gaps; modeled a shared-vertex bulbous jacket, tapered load-bearing side plates, an open collision-enabled tray, a coaxial split cover hinge and external side-fitting cues.",
+            "Replaced three repeated rear boxes with selected rack/grid-front/tall silhouettes and supported fixed service arms. Added open wire guards and a supplementary inspection camera; original overview/interior/workstation cameras are unchanged."
           ],
           "inferred": [
             "Unobserved room boundary and doorway positions",
-            "Machine internal geometry, travel and servo dynamics"
+            "Machine internal geometry, travel and servo dynamics",
+            "Cover hinge, bearing clearances, wall thickness and hidden attachments are inferred; cover and retained coupon remain original dry inspection interfaces because the photographed mobile pan has no cover.",
+            "Rear equipment identities and detailed dimensions cannot be resolved from the hall photo; only broad visible silhouettes are reconstructed."
           ],
           "unresolved": [
             "Historical brochure, not a verified current facility plan. Hall dimensions, slope of glazing, exact bench separations, pan exterior dimensions and cover travel are estimates; 25 L is documented working capacity only.",

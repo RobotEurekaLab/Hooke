@@ -4,12 +4,12 @@
     {
       "id": "rochester_genomics",
       "title": "Genomics Automation Laboratory",
-      "institution": "University of Rochester — Genomics Shared Resource",
+      "institution": "University of Rochester \u2014 Genomics Shared Resource",
       "domain": "genomics",
       "source_urls": [
         "https://www.library.rochester.edu/studio-x/projects/genomics-shared-resource-virtual-tour"
       ],
-      "reference_notes": "The official tour documents nine 360-degree scenes, robotic pipetting and a NovaSeq X Plus sequencer. Two inspected small stills show a long crowded bench, honey-colored underbench cabinets, and an enclosed Opentrons robot. The implementation uses a representative Opentrons-style gantry and manufacturer-sized sequencer; robot model, bench separation and room dimensions are inferred.",
+      "reference_notes": "The official tour documents nine 360-degree scenes, robotic pipetting and a NovaSeq X Plus sequencer. The full room photograph and a separate instrument still were inspected: a crowded linear bench, wood-front cabinets, glazed clean-work enclosures and an enclosed Opentrons robot are visible. Manufacturer-sized representative instruments and historical contextual exteriors are original models; installed robot identity, exact inventory, room dimensions and internal mechanisms remain inferred.",
       "observed_cues": [
         "Photograph: long linear bench with upper shelving and wood-colored lower cabinets.",
         "Tour still: black/white Opentrons enclosure and visible internal pipetting deck.",
@@ -88,7 +88,7 @@
       "equipment": [
         {
           "id": "liquid_handler",
-          "kind": "liquid_handler",
+          "kind": "rochester_liquid_handler",
           "pos": [
             -1.55,
             -0.1,
@@ -211,12 +211,12 @@
     {
       "id": "indiana_microfluidics",
       "title": "Microfluidics and Cell Imaging Laboratory",
-      "institution": "Indiana University — Jacobson Research Group",
+      "institution": "Indiana University \u2014 Jacobson Research Group",
       "domain": "microfluidics",
       "source_urls": [
         "https://stephenjacobson.lab.iu.edu/lab-tour.html"
       ],
-      "reference_notes": "The official tour transcript at 6:27–7:02 describes vacuum-actuated valves, bacterial trapping, medium delivery, and fluorescence microscopy. These are verified experimental functions. No calibrated multi-view room images were obtained; the microscopy island and wet-preparation bench are engineering estimates. Microscope geometry is a representative inverted research microscope, not a confirmed brand replica.",
+      "reference_notes": "The official tour transcript at 6:27\u20137:02 describes vacuum-actuated valves, bacterial trapping, medium delivery, and fluorescence microscopy. These are verified experimental functions. No calibrated multi-view room images were obtained; the microscopy island and wet-preparation bench are engineering estimates. Microscope geometry is a representative inverted research microscope, not a confirmed brand replica.",
       "observed_cues": [
         "Tour transcript: microscope and a vacuum-controlled microfluidic valve system used together.",
         "Tour transcript: bacteria are trapped, supplied with medium and imaged over time."
@@ -389,14 +389,14 @@
         "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
         "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
         "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
-        "No bacteria growth, nutrient transport, fluorescence photophysics, or Navier–Stokes microchannel flow is implemented.",
+        "No bacteria growth, nutrient transport, fluorescence photophysics, or Navier\u2013Stokes microchannel flow is implemented.",
         "The 100 micrometre channel dimension is a representative scenario parameter, not an inferred dimension from the Jacobson device."
       ]
     },
     {
       "id": "uw_isolab",
       "title": "Stable Isotope Preparation Laboratory",
-      "institution": "University of Washington — IsoLab",
+      "institution": "University of Washington \u2014 IsoLab",
       "domain": "geochemistry",
       "source_urls": [
         "https://isolab.ess.washington.edu/laboratory/facility.php",
@@ -588,16 +588,17 @@
     {
       "id": "uva_deposition",
       "title": "Thin Film Deposition Laboratory",
-      "institution": "University of Virginia — Ihlefeld Group",
+      "institution": "University of Virginia \u2014 Ihlefeld Group",
       "domain": "materials science",
       "source_urls": [
-        "https://engineering.virginia.edu/department/materials-science-and-engineering/academics/graduate-programs/mse-lab-tours",
+        "https://wordpress.its.virginia.edu/Ihlefeld_Research_Group/facilities/",
         "https://engineering.virginia.edu/faculty/jon-ihlefeld"
       ],
-      "reference_notes": "The official group tour explicitly demonstrates deposition equipment. The faculty page verifies sputtering, pulsed-laser deposition, ALD and chemical-solution deposition. This scene selects a generic sputter-deposition workflow with a vacuum chamber, substrate preparation and process control; source photos were blocked to direct retrieval, so chamber dimensions and room arrangement remain estimates.",
+      "reference_notes": "The official Ihlefeld facilities gallery was inspected directly: Sputter1 shows a rounded multiport vessel, lateral manifold, inclined bolted ports, upright actuator posts and connected services on a slotted rack frame. PLD1 and Oxford FlexAL are distinct instruments and are not merged into this mechanism. The retained top-opening chamber, free-coupon platen and valve are an authored dry-access surrogate; they do not reproduce Sputter1 loading mechanics. Room layout, all dimensions and internal supports remain inferred.",
       "observed_cues": [
-        "Official tour: dedicated deposition equipment and process demonstration.",
-        "Faculty research page: thin-film sputtering, ALD, laser ablation and solution deposition."
+        "Sputter1 photograph: polished rounded multiport vessel and lateral cylindrical manifold.",
+        "Sputter1 photograph: inclined bolted flanges, upright actuator posts and connected service hoses.",
+        "Sputter1 photograph: open extrusion frame with rack-mounted electronics; no measured room plan."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "room": {
@@ -758,23 +759,25 @@
         }
       ],
       "task": {
-        "name": "Load and seal a deposition substrate",
-        "description": "Access the vacuum chamber, position a substrate carrier, close the chamber and inspect the process-control interfaces.",
+        "name": "Inspect a supported substrate through an open chamber",
+        "description": "Open the authored lid, rotate the already-loaded free coupon through contact, observe its top access, and return the platen and lid using measured actuators.",
         "primary_equipment": "deposition_chamber",
-        "observable": "Chamber access joint and substrate-carrier joint reach requested states."
+        "observable": "Source-bound mechanical operation records actual positions, coupon contact/retention, direct clearances and visible geometric access; no deposition or sealing claim."
       },
       "limitations": [
         "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",
         "Institution names identify reference sources only. No affiliation, endorsement, or permission to redistribute original media is implied.",
         "Equipment geometry and articulated controls support simulation integration; manufacturer performance and scientific measurement accuracy are not certified.",
         "Vacuum pump curves, plasma, film growth, contamination and material properties are not simulated.",
-        "Cleanroom-style finishes are a workflow design choice; the source does not establish this room as a certified cleanroom."
+        "Cleanroom-style finishes are a workflow design choice; the source does not establish this room as a certified cleanroom.",
+        "The primary Sputter1 photo informs exterior port/frame cues; the retained hinged-top vessel, bearings, controls and coupon fixture are authored mechanisms, not recovered hardware.",
+        "The measured task moves an already-loaded free coupon and observes access. No insertion, extraction, pressure seal or deposition is performed."
       ]
     },
     {
       "id": "purdue_phenotyping",
       "title": "Plant Phenotyping and Imaging Facility",
-      "institution": "Purdue University — Ag Alumni Seed Phenotyping Facility",
+      "institution": "Purdue University \u2014 Ag Alumni Seed Phenotyping Facility",
       "domain": "plant science",
       "source_urls": [
         "https://ag.purdue.edu/aapf/virtual-tour.html",
@@ -938,7 +941,7 @@
     {
       "id": "epfl_microbiorobotics",
       "title": "Microbiorobotics Experimental Laboratory",
-      "institution": "EPFL — MicroBioRobotic Systems Laboratory",
+      "institution": "EPFL \u2014 MicroBioRobotic Systems Laboratory",
       "domain": "microrobotics",
       "source_urls": [
         "https://www.epfl.ch/labs/microbs/",
@@ -1123,7 +1126,7 @@
     {
       "id": "waterloo_robohub",
       "title": "Heterogeneous Robotics Research Hall",
-      "institution": "University of Waterloo — RoboHub",
+      "institution": "University of Waterloo \u2014 RoboHub",
       "domain": "robotics",
       "source_urls": [
         "https://uwaterloo.ca/robohub/about/space",
@@ -1278,7 +1281,7 @@
     {
       "id": "penn_pathology",
       "title": "Pathology Specimen Processing Laboratory",
-      "institution": "University of Pennsylvania — Pathology and Laboratory Medicine",
+      "institution": "University of Pennsylvania \u2014 Pathology and Laboratory Medicine",
       "domain": "pathology",
       "source_urls": [
         "https://pathology.med.upenn.edu/department/about-the-department/department-videos/follow-specimen"
@@ -1361,7 +1364,7 @@
       "equipment": [
         {
           "id": "sample_processor",
-          "kind": "sample_processor",
+          "kind": "penn_specimen_processor",
           "pos": [
             -1.35,
             -0.25,
@@ -1460,7 +1463,7 @@
     {
       "id": "eth_air_quality",
       "title": "Aerosol Sampling and Exposure Laboratory",
-      "institution": "ETH Zurich — Air Quality and Particle Technology",
+      "institution": "ETH Zurich \u2014 Air Quality and Particle Technology",
       "domain": "environmental science",
       "source_urls": [
         "https://ie.ifu.ethz.ch/forschung/studies-labs/labs.html"
@@ -1785,9 +1788,9 @@
       ],
       "task": {
         "name": "Traverse and inspect a planetary test bay",
-        "description": "Actuate rover joints within a terrestrial test hall and stage samples at the inspection bench.",
+        "description": "Traverse the terrestrial test bay through wheel-ground contact, inspect a supported target with the mounted mast cameras, and physically stage an inert sample at the inspection station.",
         "primary_equipment": "rover",
-        "observable": "Wheel and suspension joint states are readable; traversability requires a terrain/contact model and controller."
+        "observable": "Finite steering and wheel actuation drives the free rover through contact on the rigid bay aisle; an opening cradle grips, carries and releases a free inert box onto the inspection shelf. Each operation reports its actual backend, applied-effort provenance and passed source guards. Mounted mast-camera registration uses geometric projection and raycast checks, without optical image validation. No calibrated soil, flight-rover or OEM performance claim."
       },
       "limitations": [
         "Public references do not provide a measured floor plan; this is an estimated, compact workflow reconstruction rather than an institution-validated digital twin.",

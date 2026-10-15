@@ -10,11 +10,12 @@
         "https://cfplab.org/facilities/",
         "https://cfplab.org/wp-content/uploads/2023/10/03_lra_photo.jpeg?w=1024"
       ],
-      "reference_notes": "Official laboratory facility page and its installed Large Rotating Annulus photo were reviewed. ANU university tour page establishes the laboratory affiliation. The published annulus outer diameter is 1.6 m and its depth is 0.4 m; the full laboratory tour was not reviewed. Only the tank outer diameter and depth are published here. Ring thickness, pedestal, probe travel, room envelope and equipment offsets remain estimates. No thermal-fluid model or rotation-rate performance is inferred.",
+      "reference_notes": "Official laboratory facility page and its installed Large Rotating Annulus photo were reviewed. ANU university tour page establishes the laboratory affiliation. The published annulus outer diameter is 1.6 m and its depth is 0.4 m; the full laboratory tour was not reviewed. Only the tank outer diameter and depth are published here. Ring thickness, pedestal, probe travel, room envelope and equipment offsets remain estimates. No thermal-fluid model or rotation-rate performance is inferred. Profiler revision 2 uses the original rails, stylus and drives with an upper travel extension from 70 to 170 mm. An authored open coaxial ring replaces the unreachable off-axis solid target. This inspection aid is not identified in the source photograph.",
       "observed_cues": [
         "Faceted transparent circular tank surrounds a prominent hollow copper inner cylinder.",
         "Black curtains enclose the rear and side of the annulus; a tall profiling probe support rises over the rim.",
-        "Adjacent computer desk and floor-standing instrument rack remain separate from the rotating apparatus."
+        "Adjacent computer desk and floor-standing instrument rack remain separate from the rotating apparatus.",
+        "A black two-tier control desk carries the monitor above smaller electronics and a keyboard; a five-spoke stool and a populated open-front instrument rack sit to the right of the annulus."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "gravity": [
@@ -83,9 +84,9 @@
           "yaw": 0,
           "style": "open_frame",
           "color": [
-            0.56,
-            0.6,
-            0.59,
+            0.025,
+            0.029,
+            0.031,
             1
           ],
           "accessories": false
@@ -102,7 +103,7 @@
           ],
           "yaw": 0,
           "params": {},
-          "role": "Rotate the tank and translate the supported profiling probe around a visible inert calibration target.",
+          "role": "Rotate the tank and raise, register and lower the supported profiling probe through an authored open reference ring.",
           "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
           "source_urls": [
             "https://cfplab.org/facilities/"
@@ -114,10 +115,10 @@
         }
       ],
       "task": {
-        "name": "ANU Large Rotating Annulus mechanical positioning",
-        "description": "Rotate the tank and translate the supported profiling probe around a visible inert calibration target.",
+        "name": "ANU annulus probe registration and return",
+        "description": "Rotate the tank and raise, register and lower the supported profiling probe through an authored open reference ring.",
         "primary_equipment": "large_rotating_annulus",
-        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+        "observable": "Measured probe-tip height relative to the ring datum, coaxial bore clearance, physical passage and return; no thermistor or fluid measurement."
       },
       "camera": {
         "overview": {
@@ -158,12 +159,26 @@
             1.15
           ],
           "fovy": 47
+        },
+        "probe_registration": {
+          "position": [
+            0.1,
+            0.04,
+            1.54
+          ],
+          "target": [
+            -0.275,
+            0.42,
+            1.2364
+          ],
+          "fovy": 24
         }
       },
       "layout_rationale": [
         "The annulus occupies a screened optical/thermal observation corner; an adjacent control desk and separate electronics rack follow the source photograph.",
         "A clear front approach is kept outside the authored rotating envelope. Black curtains provide local apparatus context without claiming the unreviewed 400 square metre facility layout.",
-        "The published 1.6 m tank outer diameter and 0.4 m depth guide the hollow faceted tank. Pedestal, inner cylinder and probe-rail dimensions remain estimates."
+        "The published 1.6 m tank outer diameter and 0.4 m depth guide the hollow faceted tank. Pedestal, inner cylinder and probe-rail dimensions remain estimates.",
+        "The control desk keeps its estimated placement and envelope; its added upper shelf, parked stool, varied rack panels and fixed cable bundles follow visible categories in the official photo. Hidden construction, electronics identity and cable paths remain estimates."
       ],
       "limitations": [
         "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
@@ -171,8 +186,9 @@
         "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
         "Water is a static transparent annular mesh, not a fluid solver. Temperature gradients, thermistor output and optical images are not simulated.",
         "Tank rotation is a bounded position surrogate; actual steady rotation speed and instrument performance are not claimed.",
-        "The raised inert calibration target and its stem are original additions for mechanical inspection.",
-        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+        "The open registration ring and its support are authored mechanical inspection aids, not photographed ANU hardware or a calibrated sensor.",
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation.",
+        "The parked stool, monitor, DAQ boxes and instrument rack are fixed contact-capable exteriors. Caster dynamics, electronics, electrical connections and the source image\u2019s displayed scientific results are not simulated."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -181,7 +197,7 @@
         "reviewed_sha256": [
           "0b95ad2b2106a30adf8e489722e59f90eeb4a6106828ff36ad967a2a94f9836e"
         ],
-        "reviewed_at": "2026-10-03",
+        "reviewed_at": "2026-10-04",
         "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
         "rights": "Original authored geometry only; no source media release authorization"
       }
@@ -196,7 +212,7 @@
         "https://www.sydney.edu.au/engineering/our-research/laboratories-and-facilities/fluids-laboratory.html",
         "https://www.sydney.edu.au/content/dam/corporate/images/faculty-of-engineering-and-information-technologies/research/laboratories-and-facilities/laboratories-hero-fluids-laboratory-and-wave-flume-heated-tank.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
       ],
-      "reference_notes": "The official Fluids and Convection Laboratories page and its heated-tank photograph were inspected. The photographed local glass apparatus matches the page discussion of side-heated convection experiments; it is not the separately described 30 m wave flume. Tank dimensions are not published on this page; do not substitute dimensions from the separately listed 30 m wave flume. Hidden plumbing, full room layout, thermal properties and flow-imaging physics are not reconstructed.",
+      "reference_notes": "The official Fluids and Convection Laboratories page and its heated-tank photograph were inspected. The photographed local glass apparatus matches the page discussion of side-heated convection experiments; it is not the separately described 30 m wave flume. Tank dimensions are not published on this page; do not substitute dimensions from the separately listed 30 m wave flume. Hidden plumbing, full room layout, thermal properties and flow-imaging physics are not reconstructed. The dry traverse, open guides and supported inspection camera are authored additions. The upper-right transparent structure in the source photograph has not been reconstructed; its function and dimensions remain unidentified. The rendered camera is a geometric pinhole surrogate, not calibrated fluid imaging. The source shows a clear volume against blue illumination; the previous strongly blue tint is reduced accordingly. The authored camera is raised to 1.60 m and tilted down 20.09 degrees to separate the plate from the presentation-light reflection. This is a physical stand adjustment, not measured source optics or a calibrated image model.",
       "observed_cues": [
         "Broad vertical rectangular transparent tank has dense bolts along its metal upper and lower frame.",
         "A substantial right-end metal plate and external vertical pipes distinguish the side-heated geometry.",
@@ -319,6 +335,19 @@
             0.1,
             0.22,
             1.32
+          ],
+          "fovy": 49
+        },
+        "guide_detail": {
+          "position": [
+            0.43,
+            -0.29,
+            2.12
+          ],
+          "target": [
+            0,
+            0.36,
+            1.925
           ],
           "fovy": 49
         }

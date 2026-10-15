@@ -54,125 +54,9 @@ def _bolts(b, parent, xs, ys, z):
 
 
 def _optical_station(b, base, params):
-    b.box(base, (0, 0, 0.018), (1.08, 0.55, 0.018), "metal", collision=True)
-    _bolts(b, base, [i * 0.12 for i in range(-8, 9)], [-0.48, -0.36, 0.36, 0.48], 0.037)
-    scope = _body(base, b.name + "__microscope_frame", (0.51, 0.1, 0.036))
-    b.box(scope, (0, 0, 0.035), (0.20, 0.26, 0.035), "cream", collision=True)
-    b.housing(
-        scope,
-        [
-            (0.065, 0.16, 0.08, 0.16),
-            (0.46, 0.10, 0.09, 0.17),
-            (0.53, 0.075, 0.07, 0.16),
-        ],
-        material="cream",
-    )
-    b.box(scope, (0, 0.18, 0.26), (0.075, 0.07, 0.20), "cream", collision=True)
-    # The upper camera mast is carried by the rear microscope frame.
-    b.rod(scope, (0, 0.18, 0.44), (0, 0.18, 0.70), 0.026, "bright")
-    b.box(scope, (0, 0.18, 0.74), (0.075, 0.065, 0.055), "dark")
-    b.rod(scope, (0, 0.18, 0.52), (0, -0.09, 0.52), 0.026, "cream")
-    b.cylinder(scope, (0, -0.09, 0.47), 0.024, 0.047, "dark")
-    for side in (-1, 1):
-        b.rod(
-            scope,
-            (side * 0.028, 0.12, 0.40),
-            (side * 0.045, -0.08, 0.49),
-            0.023,
-            "cream",
-        )
-        b.rod(
-            scope,
-            (side * 0.045, -0.08, 0.49),
-            (side * 0.048, -0.125, 0.51),
-            0.025,
-            "rubber",
-        )
-    b.cylinder(
-        scope, (-0.177, 0.09, 0.18), 0.045, 0.025, "dark", euler=(0, math.pi / 2, 0)
-    )
-    # A bridge supports the two nested XY carriers, with clear optical access.
-    for x in (-0.095, 0.095):
-        b.box(scope, (x, -0.09, 0.115), (0.018, 0.105, 0.05), "dark")
-        b.box(scope, (x, -0.09, 0.18), (0.014, 0.13, 0.018), "metal")
-    xstage = b.moving(
-        scope,
-        "slide_x",
-        (0, -0.09, 0.205),
-        (1, 0, 0),
-        (-0.018, 0.018),
-        mass=0.10,
-        kp=200,
-    )
-    b.box(xstage, (0, 0, 0), (0.13, 0.10, 0.012), "dark", collision=True)
-    ystage = b.moving(
-        xstage, "slide_y", (0, 0, 0.019), (0, 1, 0), (-0.014, 0.014), mass=0.055, kp=180
-    )
-    b.box(ystage, (0, 0, 0), (0.065, 0.055, 0.007), "metal", collision=True)
-    b.box(ystage, (0, 0, 0.0075), (0.0375, 0.0125, 0.0005), "glass")
-    b.box(ystage, (0, 0, 0.00808), (0.001, 0.001, 0.00008), "sample")
-    for x in (-0.035, 0.035):
-        b.box(ystage, (x, 0.015, 0.010), (0.008, 0.006, 0.002), "dark")
-    b.site(ystage, "inert_target", (0, 0, 0.00816), 0.0003)
-    focus = b.moving(
-        scope,
-        "objective_focus",
-        (0, -0.09, 0.132),
-        (0, 0, 1),
-        (-0.003, 0.003),
-        mass=0.04,
-        kp=180,
-    )
-    b.cylinder(focus, (0, 0, 0), 0.018, 0.027, "metal")
-    b.cylinder(focus, (0, 0, 0.030), 0.008, 0.009, "lens")
-    b.rod(scope, (0, -0.09, 0.08), (0, -0.09, 0.12), 0.023, "dark")
-    # External camera and optics are mechanically carried by table-mounted posts.
-    for index, (x, y, height) in enumerate(
-        (
-            (-0.76, 0.18, 0.29),
-            (-0.44, 0.18, 0.29),
-            (-0.12, 0.18, 0.29),
-            (-0.72, -0.20, 0.22),
-            (-0.39, -0.20, 0.22),
-        )
-    ):
-        b.box(base, (x, y, 0.05), (0.06, 0.045, 0.014), "dark")
-        b.rod(base, (x, y, 0.062), (x, y, height), 0.012, "bright")
-        b.ring(base, (x, y, height), 0.037, 0.008, "dark", plane="yz")
-        b.cylinder(
-            base, (x, y, height), 0.026, 0.004, "lens", euler=(0, math.pi / 2, 0)
-        )
-        b.box(base, (x, y + 0.04, height), (0.022, 0.018, 0.022), "dark")
-    b.box(base, (-0.96, 0.18, 0.21), (0.075, 0.10, 0.173), "cream")
-    b.rod(base, (-0.90, 0.18, 0.29), (-0.79, 0.18, 0.29), 0.032, "dark")
-    b.rod(base, (-0.13, 0.18, 0.29), (0.34, 0.18, 0.29), 0.026, "dark")
-    b.box(base, (-0.79, -0.40, 0.105), (0.16, 0.075, 0.069), "metal")
-    b.screen(base, (-0.79, -0.477, 0.105), 0.13, 0.06)
-    for path in (
-        (
-            (0.51, 0.28, 0.79),
-            (0.77, 0.36, 0.72),
-            (0.88, 0.38, 0.045),
-            (0.20, 0.43, 0.045),
-            (-0.86, 0.42, 0.045),
-        ),
-        (
-            (-0.96, 0.27, 0.22),
-            (-1.01, 0.37, 0.13),
-            (-0.94, 0.47, 0.045),
-            (-0.68, 0.44, 0.045),
-        ),
-    ):
-        for start, end in zip(path, path[1:]):
-            b.rod(base, start, end, 0.004, "rubber")
-    b.metadata["capabilities"] = [
-        "xy_slide_position",
-        "objective_focus_surrogate",
-        "visible_2mm_inert_target",
-    ]
-    b.metadata["limitations"].append(
-        "The inert target is not a cell. No TIRF illumination, image formation, fluorescence, molecular dynamics or calibrated optical measurement."
-    )
+    from real_labs.kyoto_instrument_geometry import build_station
+
+    build_station(b, base, params)
 
 
 def _kyoto_features(world, definition):
@@ -251,6 +135,33 @@ def _kyoto_features(world, definition):
         (0.04, 0.13, 0.17, 1),
         collision=False,
     )
+    # The source room contains stocked shelves, a second front-facing monitor
+    # and a tall open side rack. Their footprints are estimates, outside the
+    # measured instrument envelope and the central passage to the rear bay.
+    for side, x in enumerate((-2.5, 1.8)):
+        for row, z in enumerate((.972, 1.472, 1.972)):
+            for column in range(2):
+                width = .12 if (row + column) % 2 else .14
+                height = .16 + .055 * ((row + column + side) % 3)
+                px = x - .17 + column * .34
+                color = light if (row + column) % 2 else (.43, .35, .25, 1)
+                box(world, f"kyoto_stored_case_{side}_{row}_{column}",
+                    (width, .23, height / 2), (px, 2.69, z + height / 2), color)
+                box(world, f"kyoto_case_label_{side}_{row}_{column}",
+                    (width * .55, .001, .024), (px, 2.459, z + height * .6),
+                    light, collision=False)
+    for x in (2.20, 2.82):
+        for y in (-.98, -.34):
+            box(world, f"kyoto_side_rack_post_{x}_{y}", (.012, .012, 1.25),
+                (x, y, 1.25), (.45, .47, .48, 1))
+    for level, z in enumerate((.15, .78, 1.45, 2.15)):
+        box(world, f"kyoto_side_rack_shelf_{level}", (.325, .335, .018),
+            (2.51, -.66, z), (.42, .45, .46, 1))
+        if level in (1, 2):
+            box(world, f"kyoto_side_rack_device_{level}", (.21, .22, .10),
+                (2.51, -.64, z + .118), light)
+            box(world, f"kyoto_side_rack_face_{level}", (.18, .003, .07),
+                (2.51, -.863, z + .118), dark, collision=False)
 
 
 def _towing_basin(b, base, params):
@@ -644,7 +555,12 @@ def _windtunnel(b, base, params):
         force=100,
     )
     b.cylinder(yaw, (0, 0, 0), 0.17, 0.015, "dark")
-    b.rod(yaw, (0, 0, -0.015), (0, 0, -1.30), 0.022, "bright", collision=True)
+    # A fork leaves a real gap around the rotating transverse sting instead
+    # of intersecting two solid capsules at the ideal pitch joint.
+    b.rod(yaw, (0, 0, -0.015), (0, 0, -1.24), 0.022, "bright", collision=True)
+    b.box(yaw, (0, 0, -1.23), (0.065, 0.024, 0.010), "metal", collision=True)
+    for side in (-1, 1):
+        b.box(yaw, (side * 0.055, 0, -1.28), (0.009, 0.024, 0.040), "metal", collision=True)
     pitch = b.moving(
         yaw,
         "model_pitch",
@@ -656,7 +572,7 @@ def _windtunnel(b, base, params):
         kp=180,
         force=35,
     )
-    b.cylinder(pitch, (0, 0, 0), 0.035, 0.037, "metal", euler=(0, math.pi / 2, 0))
+    b.cylinder(pitch, (0, 0, 0), 0.035, 0.037, "metal", euler=(0, math.pi / 2, 0), collision=True)
     b.rod(pitch, (0, -0.50, 0), (0, 0.50, 0), 0.019, "bright", collision=True)
     for y, width in ((-0.38, 0.58), (0.38, 0.44)):
         b.geom(

@@ -3,6 +3,7 @@
 import math
 
 from real_labs.architecture import box
+from real_labs.oxford_probe_geometry import add_probe_holder
 
 SOURCE = "https://interface.web.ox.ac.uk/infrastructure"
 SOURCES = {
@@ -30,16 +31,40 @@ def _probe_station(b, base, params):
     )
     b.box(sample_x, (0, 0, 0), (0.071, 0.064, 0.005), "metal", collision=True)
     b.cylinder(sample_x, (0, 0, 0.014), 0.036, 0.009, "dark", collision=True)
-    b.box(sample_x, (0, 0, 0.0235), (0.006, 0.006, 0.0005), "dark")
+    b.box(
+        sample_x,
+        (0, 0, 0.0235),
+        (0.006, 0.006, 0.0005),
+        "dark",
+        collision=True,
+        name=b.unique("probe_inert_die"),
+    )
     b.site(sample_x, "inert_die", (0, 0, 0.0241), 0.0002)
     for x in (-0.003, 0.003):
-        b.box(sample_x, (x, 0, 0.02405), (0.001, 0.0015, 0.00005), "copper")
-    # Two opposed probe holders follow the visible brass rods and metal blocks.
+        b.box(
+            sample_x,
+            (x, 0, 0.02405),
+            (0.001, 0.0015, 0.00005),
+            "copper",
+            collision=True,
+            name=b.unique("probe_contact_pad"),
+        )
+    # Original surrogate slide origins remain; open collars replace solid guide
+    # overlaps before enabling contact on the two asymmetric probe assemblies.
     for side in (-1, 1):
         x = side * 0.155
         b.box(base, (x, 0.082, 0.072), (0.043, 0.047, 0.024), "metal", collision=True)
-        b.rod(base, (x, 0.082, 0.094), (x, 0.082, 0.251), 0.008, "bright")
-        b.cylinder(base, (x, 0.082, 0.22), 0.015, 0.030, "dark")
+        b.rod(
+            base,
+            (x, 0.082, 0.094),
+            (x, 0.082, 0.251),
+            0.008,
+            "bright",
+            collision=True,
+            name=b.unique("probe_guide_post"),
+        )
+        b.cylinder(base, (x, 0.082, 0.217), 0.010, 0.022, "metal", collision=True)
+        b.cylinder(base, (x, 0.082, 0.232), 0.015, 0.007, "dark", collision=True)
         b.rod(
             base,
             (x - side * 0.02, 0.082, 0.188),
@@ -65,23 +90,7 @@ def _probe_station(b, base, params):
             kp=180,
             force=20,
         )
-        b.box(arm, (0, 0, 0), (0.019, 0.023, 0.026), "dark")
-        b.rod(arm, (0, -0.01, 0), (-side * 0.085, -0.042, -0.014), 0.0045, "copper")
-        b.rod(
-            arm,
-            (-side * 0.085, -0.042, -0.014),
-            (-side * 0.142, -0.079, -0.026),
-            0.0015,
-            "dark",
-        )
-        # Fine geometric tips hover over the inert die; no electrical-contact claim.
-        b.rod(
-            arm,
-            (-side * 0.142, -0.079, -0.026),
-            (-side * 0.151, -0.082, -0.030),
-            0.00012,
-            "bright",
-        )
+        add_probe_holder(b, arm, side)
         b.rod(base, (x, 0.094, 0.15), (x + side * 0.045, 0.17, 0.11), 0.0025, "rubber")
         b.rod(
             base,
@@ -102,6 +111,9 @@ def _probe_station(b, base, params):
     ]
     b.metadata["limitations"].append(
         "The probes remain in a clearance pose; contact force, electrical response, charge transport, spectroscopy and device testing are not modeled. Mechanical adjustments are surrogate motor controls for simulation, not documented Oxford automation."
+    )
+    b.metadata["limitations"].append(
+        "Broad foreground shaft, slimmer bent rear holder and collar cues follow a 360 x 162 pixel official close-up. Exact dimensions, open guide bearings and hidden fastening are estimates. The raised translation stage, puck and motorized axes are authored. Enabled collision surfaces do not imply electrical touchdown: fine-tip radius remains 120 micrometres and the centered lower-stop tip-to-pad gap remains 3.78 mm."
     )
 
 

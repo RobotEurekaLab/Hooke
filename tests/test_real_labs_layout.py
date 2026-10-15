@@ -47,18 +47,33 @@ class LayoutChecks(unittest.TestCase):
         with self.assertRaises(ValueError):
             model_obstacles(model, data)
 
-    def test_authored_layouts_pass_with_unverified_support_exposed(self):
+    def test_authored_layouts_pass_with_consistent_support_classification(self):
         for definition in scenes().values():
             with self.subTest(scene=definition["id"]):
                 report = audit_layout(definition)
                 self.assertTrue(report["passed"], report["checks"])
                 self.assertIn("not measured-source accuracy", report["scope"])
                 self.assertTrue(definition["layout_rationale"])
-        nasa = audit_layout(scene("nasa_planetary"))
-        self.assertFalse(nasa["all_equipment_origins_classified"])
+        definition = scene("nasa_planetary")
+        nasa = audit_layout(definition)
+        self.assertTrue(nasa["all_equipment_origins_classified"])
+        self.assertEqual(nasa["manual_inspection"], [])
+        authored = next(row for row in definition["equipment"] if row["id"] == "rover")
+        root, manifest = build_scene(definition["id"])
+        built = next(row for row in manifest["equipment"] if row["id"] == "rover")
+        self.assertEqual(authored["pos"], built["pos"])
         self.assertEqual(
-            [row["equipment"] for row in nasa["manual_inspection"]], ["rover"]
+            authored["params"]["ground_task"], built["nasa_rover_task"]["version"]
         )
+        # Changing a catalogue datum must preserve the target's physical alignment.
+        model = mujoco.MjModel.from_xml_string(ET.tostring(root, encoding="unicode"))
+        data = mujoco.MjData(model)
+        mujoco.mj_forward(model, data)
+        target = model.site(built["mast_inspection"]["target"]["site"]).id
+        for name in built["mast_inspection"]["camera_names"]:
+            self.assertAlmostEqual(
+                data.site_xpos[target, 2], data.cam_xpos[model.camera(name).id, 2]
+            )
 
     def test_rotated_bench_outside_room_is_rejected(self):
         definition = scene("penn_pathology")

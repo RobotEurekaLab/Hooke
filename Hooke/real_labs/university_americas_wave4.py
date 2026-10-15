@@ -233,157 +233,23 @@ FEATURES = {"nyu_epp_detector_assembly": _nyu_features}
 
 
 def _duke_frame(b, base, params):
-    for x in (-0.38, 0.38):
-        for y in (-0.28, 0.28):
-            b.box(base, (x, y, 0.035), (0.075, 0.075, 0.035), "rubber", collision=True)
-    b.box(base, (0, 0, 0.365), (0.46, 0.35, 0.295), "dark", collision=True)
-    b.box(
-        base,
-        (0, -0.357, 0.35),
-        (0.34, 0.008, 0.20),
-        "metal",
-        rgba=(0.13, 0.15, 0.16, 1),
-    )
-    for z in (0.24, 0.32, 0.40):
-        b.box(base, (0, -0.368, z), (0.22, 0.003, 0.008), "rubber")
-    b.box(base, (0, 0, 0.70), (0.49, 0.37, 0.04), "metal", collision=True)
-    for x in (-0.37, 0.37):
-        b.cylinder(base, (x, 0, 1.56), 0.035, 0.82, "bright", collision=True)
-        for z in (0.78, 1.66, 2.35):
-            b.cylinder(base, (x, 0, z), 0.065, 0.032, "metal", collision=True)
-    b.box(base, (0, 0, 1.66), (0.46, 0.28, 0.055), "dark", collision=True)
-    b.box(base, (0, 0, 2.35), (0.43, 0.28, 0.050), "metal", collision=True)
-    # Tall black axial drive above the open loading window.
-    b.box(base, (0, 0.02, 2.045), (0.205, 0.205, 0.255), "dark", collision=True)
-    b.cylinder(base, (0, 0, 1.735), 0.105, 0.055, "metal", collision=True)
-    for x in (-0.20, 0.20):
-        b.cylinder(base, (x, 0.14, 1.16), 0.012, 0.42, "metal", collision=True)
-        for z in (0.86, 1.04, 1.22, 1.40):
-            b.ring(base, (x, 0.14, z), 0.014, 0.003, "dark", segments=8)
-    # Upper drive translates a chuck for inspection; it never loads the specimen.
-    ram = b.moving(
-        base,
-        "axial_chuck_position",
-        (0, 0, 1.47),
-        (0, 0, -1),
-        (0, 0.20),
-        mass=0.6,
-        kp=500,
-    )
-    b.cylinder(ram, (0, 0, 0.30), 0.033, 0.30, "bright")
-    b.cylinder(ram, (0, 0, 0), 0.066, 0.06, "metal", collision=True)
-    for x in (-0.048, 0.048):
-        b.box(ram, (x, -0.018, -0.05), (0.015, 0.04, 0.03), "dark", collision=True)
-    b.cylinder(base, (0, 0, 0.80), 0.125, 0.060, "dark", collision=True)
-    _tag(b, b.cylinder(base, (0, 0, 0.88), 0.09, 0.020, "metal"), "torsion_bearing")
-    lower = b.moving(
-        base,
-        "lower_chuck_rotation",
-        (0, 0, 0.934),
-        (0, 0, 1),
-        (-0.60, 0.60),
-        kind="hinge",
-        mass=0.35,
-        kp=160,
-    )
-    _tag(
-        b,
-        b.cylinder(lower, (0, 0, 0), 0.085, 0.034, "metal", collision=True),
-        "lower_chuck",
-    )
-    for x in (-0.042, 0.042):
-        b.box(lower, (x, 0, 0.057), (0.014, 0.04, 0.040), "dark", collision=True)
-    b.box(lower, (0, 0, 0.131), (0.024, 0.012, 0.07), "orange", collision=True)
-    for z in (0.080, 0.182):
-        b.box(lower, (0, 0, z), (0.038, 0.014, 0.019), "orange", collision=True)
-    b.site(lower, "inert_coupon", (0, -0.015, 0.135))
-    # Independent wheeled controller in the source photograph.
-    for x in (1.0, 1.46):
-        for y in (-0.29, 0.22):
-            b.cylinder(
-                base,
-                (x, y, 0.06),
-                0.06,
-                0.035,
-                "rubber",
-                euler=(0, math.pi / 2, 0),
-                collision=True,
-            )
-    b.box(base, (1.23, -0.035, 0.14), (0.29, 0.33, 0.02), "metal", collision=True)
-    b.box(base, (1.23, -0.035, 0.68), (0.27, 0.31, 0.52), "dark", collision=True)
-    for x in (0.95, 1.51):
-        b.box(base, (x, -0.035, 0.68), (0.01, 0.33, 0.54), "metal", collision=True)
-    for z in (0.70, 0.98):
-        b.box(base, (1.23, -0.351, z), (0.20, 0.005, 0.055), "screen")
-        for x in (1.05, 1.41):
-            b.cylinder(
-                base,
-                (x, -0.36, z - 0.10),
-                0.015,
-                0.006,
-                "orange" if x > 1.2 else "led",
-                euler=(math.pi / 2, 0, 0),
-            )
-    b.box(base, (1.23, -0.035, 1.235), (0.29, 0.33, 0.015), "cream", collision=True)
-    b.box(base, (1.23, 0.02, 1.31), (0.025, 0.025, 0.06), "metal", collision=True)
-    b.box(base, (1.23, 0.02, 1.48), (0.22, 0.055, 0.11), "dark", collision=True)
-    b.box(base, (1.23, -0.039, 1.48), (0.195, 0.003, 0.09), "screen")
-    for i in range(3):
-        b.rod(
-            base,
-            (0.44, 0.20, 0.3 + i * 0.07),
-            (0.70, 0.28, 0.15 + i * 0.025),
-            0.012,
-            "dark",
-        )
-        b.rod(
-            base,
-            (0.70, 0.28, 0.15 + i * 0.025),
-            (0.95, 0.20, 0.3 + i * 0.07),
-            0.012,
-            "dark",
-        )
-    b.metadata["capabilities"] = [
-        "bounded upper-chuck axial alignment",
-        "lower-chuck angular specimen indexing",
-    ]
-    b.metadata["limitations"].append(
-        "830LE-AT exterior estimated from a 225x300 installed-instrument photograph. Rigid inert coupon remains clear of the upper chuck; no load calibration, torque, stress-strain, fatigue or material failure model."
-    )
+    from real_labs.duke_frame_geometry import build
+
+    build(b, base, params)
 
 
 def _duke_features(world, definition):
-    # Local MSRB bay only; separate Research Park Instron installation excluded.
-    for x in (-1.20, -0.40, 0.40):
-        box(
-            world,
-            f"duke_rear_storage_{x}",
-            (0.38, 0.24, 0.40),
-            (x, 1.97, 1.82),
-            (0.71, 0.65, 0.43, 1),
-        )
-        box(
-            world,
-            f"duke_storage_front_{x}",
-            (0.32, 0.006, 0.32),
-            (x, 1.725, 1.82),
-            (0.54, 0.51, 0.37, 1),
-        )
-        box(
-            world,
-            f"duke_wall_anchor_{x}",
-            (0.32, 0.10, 0.02),
-            (x, 2.26, 1.82),
-            (0.35, 0.36, 0.32, 1),
-        )
+    from real_labs.duke_room_context import add_context
+
+    add_context(world, definition)
 
 
 BUILDERS["duke_830leat_alignment_frame"] = _duke_frame
 SOURCES["duke_830leat_alignment_frame"] = {
     "reference": "Duke Joint Mechanical Testing Laboratory 830LE-AT installed system photo",
     "url": DUKE,
-    "dimensions_m": [2.05, 0.74, 2.40],
-    "dimension_basis": "All dimensions and bounded inspection strokes estimated; published load/torque ratings are not used as simulated mechanical performance.",
+    "dimensions_m": [1.80, 0.74, 2.40],
+    "dimension_basis": "Envelope estimated from the installed300x400 photograph. A550mm family between-column option is interpreted as clear working width, not an identified installed specification. Hidden sleeves, guard hinge and running gaps are authored. Force/torque ratings are not simulated performance.",
 }
 SAMPLE_INTERFACES["duke_830leat_alignment_frame"] = (
     "inert_coupon",

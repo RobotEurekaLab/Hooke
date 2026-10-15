@@ -194,9 +194,12 @@ def _l2000(b, base, params):
         kp=105,
     )
     b.cylinder(yaw, (0, 0, 0), 0.082, 0.018, "dark", collision=True)
+    from real_labs.mounting import annular_mount
+
     for x in (-0.07, 0.07):
         b.box(yaw, (x, 0, 0.047), (0.014, 0.03, 0.03), "metal", collision=True)
-        b.cylinder(yaw, (x, 0, 0.085), 0.018, 0.014, "metal", euler=(0, math.pi / 2, 0))
+        annular_mount(b, yaw, f"pitch_{x}", (x, 0, 0.085), 0.0068,
+                      0.018, 0.014, axis="x", proxies=True, material="metal")
     pitch = b.moving(
         yaw,
         "model_pitch",
@@ -207,10 +210,15 @@ def _l2000(b, base, params):
         mass=0.055,
         kp=95,
     )
+    # The wing rests above its pitch shaft on a short rigid cradle. The previous
+    # wing intersected the fixed yoke; the joint and drive contracts stay fixed.
+    b.cylinder(pitch, (0, 0, 0), 0.006, 0.090, "metal",
+               euler=(0, math.pi / 2, 0), collision=True)
+    b.cylinder(pitch, (0, 0, 0.025), 0.006, 0.025, "metal", collision=True)
     _tag(
         b,
         b.geom(
-            pitch, "ellipsoid", (0.63, 0.13, 0.011), (0, 0, 0), "metal", collision=True
+            pitch, "ellipsoid", (0.63, 0.13, 0.011), (0, 0, 0.050), "metal", collision=True
         ),
         "l2000_inert_wing",
     )
@@ -218,12 +226,12 @@ def _l2000(b, base, params):
         pitch,
         "ellipsoid",
         (0.065, 0.29, 0.040),
-        (0, 0.045, 0.027),
+        (0, 0.045, 0.077),
         "dark",
         collision=True,
     )
-    b.box(pitch, (0.40, -0.025, 0.014), (0.035, 0.012, 0.005), "orange")
-    b.site(pitch, "wind_model", (0.40, -0.025, 0.020))
+    b.box(pitch, (0.40, -0.025, 0.064), (0.035, 0.012, 0.005), "orange")
+    b.site(pitch, "wind_model", (0.40, -0.025, 0.070))
     # Adjacent cabinet is visible through the source's long observation window.
     b.box(base, (-1.65, -0.50, 0.04), (0.30, 0.38, 0.04), "metal", collision=True)
     b.box(base, (-1.65, -0.50, 0.91), (0.30, 0.38, 0.83), "cream", collision=True)

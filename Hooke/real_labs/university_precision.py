@@ -10,6 +10,7 @@ import math
 import xml.etree.ElementTree as ET
 
 from real_labs.architecture import box, numbers
+from real_labs.optical_stages import aperture_plate, slide_holder_details
 
 
 NTU = "https://www.ntu.edu.sg/mse/research/sgsr/facilities"
@@ -23,7 +24,7 @@ SOURCES = {
         "reference": "NTU-listed Instron 68TM; original model from linked 6800 brochure, pp. 5 and 21",
         "url": INSTRON,
         "dimensions_m": [0.76, 0.715, 1.64],
-        "dimension_basis": "Published standard frame W/D/H; side dashboard adds estimated 0.30 m. Capacity/configuration at NTU unconfirmed; restricted surrogate stroke.",
+        "dimension_basis": "Published standard frame W/D/H; published dashboard configuration can add up to 0.45 m. Capacity/configuration at NTU unconfirmed; restricted surrogate stroke.",
     },
     "afm_scanning_station": {
         "reference": "NTU Bruker Dimension Icon equipment sheet and apparatus photograph",
@@ -58,160 +59,15 @@ def _cable(b, parent, points, radius=0.007, material="rubber"):
 
 
 def _load_frame(b, base, params):
-    b.feet(base, 0.76, 0.715)
-    b.housing(
-        base,
-        [(0.024, 0.38, 0.3575, 0), (0.13, 0.375, 0.35, 0), (0.175, 0.355, 0.32, 0)],
-        material="dark",
-    )
-    b.box(base, (0, 0, 0.089), (0.35, 0.32, 0.065), "dark", collision=True)
-    b.box(base, (0, -0.351, 0.058), (0.36, 0.007, 0.026), "metal")
-    for x in (-0.295, 0.295):
-        b.box(base, (x, 0.14, 0.86), (0.045, 0.071, 0.69), "dark", collision=True)
-        for shift in (-0.03, 0.03):
-            b.box(base, (x + shift, 0.066, 0.86), (0.003, 0.004, 0.69), "metal")
-        b.rod(base, (x * 0.88, 0.034, 0.18), (x * 0.88, 0.034, 1.54), 0.014, "bright")
-    b.housing(
-        base,
-        [
-            (1.54, 0.34, 0.078, 0.14),
-            (1.60, 0.34, 0.078, 0.14),
-            (1.64, 0.25, 0.06, 0.14),
-        ],
-        material="dark",
-    )
-    b.cylinder(base, (0, 0.015, 0.205), 0.068, 0.025, "bright", collision=True)
-    b.cylinder(base, (0, 0.015, 0.26), 0.033, 0.033, "metal", collision=True)
-    b.box(base, (0, 0.015, 0.32), (0.064, 0.055, 0.035), "dark", collision=True)
-    # The coupon is seated in the lower clamp only: no false deforming sample.
-    b.box(base, (0, -0.013, 0.363), (0.012, 0.004, 0.032), "sample")
-    b.site(base, "coupon", (0, -0.013, 0.363), 0.003)
-    carriage = b.moving(
-        base,
-        "crosshead",
-        (0, 0.14, 0.96),
-        (0, 0, 1),
-        (-0.25, 0.30),
-        mass=8,
-        kp=900,
-        force=900,
-    )
-    b.box(carriage, (0, 0, 0), (0.24, 0.075, 0.044), "dark", collision=True)
-    b.box(carriage, (0, -0.077, 0), (0.035, 0.003, 0.017), "guard_red")
-    b.cylinder(carriage, (0, -0.125, -0.085), 0.042, 0.04, "metal")
-    b.cylinder(carriage, (0, -0.125, -0.105), 0.044, 0.01, "guard_red")
-    b.cylinder(carriage, (0, -0.125, -0.155), 0.023, 0.033, "bright")
-    b.box(carriage, (0, -0.125, -0.207), (0.061, 0.055, 0.025), "dark", collision=True)
-    jaw = b.moving(
-        carriage,
-        "upper_grip",
-        (0, -0.19, -0.207),
-        (0, 1, 0),
-        (-0.012, 0.0),
-        mass=0.15,
-        kp=250,
-    )
-    b.box(jaw, (0, 0, 0), (0.036, 0.01, 0.024), "bright", collision=True)
-    for x in (-0.035, 0.035):
-        b.rod(base, (x, -0.05, 0.32), (x, -0.09, 0.32), 0.011, "metal")
-    b.rod(base, (0.31, 0.1, 0.64), (0.51, 0.1, 0.64), 0.013)
-    b.screen(base, (0.48, 0.09, 0.78), 0.21, 0.31)
-    b.box(base, (0.30, -0.17, 0.19), (0.024, 0.027, 0.011), "warning")
-    b.cylinder(base, (0.30, -0.17, 0.209), 0.017, 0.014, "guard_red")
-    _cable(b, base, [(0.49, 0.13, 0.66), (0.44, 0.19, 0.4), (0.36, 0.18, 0.15)])
-    b.metadata["capabilities"] = [
-        "crosshead_position",
-        "upper_grip_opening",
-        "visible_inert_coupon",
-    ]
-    b.metadata["limitations"].append(
-        "Only lower-clamped inert coupon is present. No load cell, tensile force, strain, material deformation or OEM safety interlock model."
-    )
+    from real_labs.ntu_sgsr_geometry import build_load_frame
+
+    build_load_frame(b, base, params)
 
 
 def _afm(b, base, params):
-    b.feet(base, 0.65, 0.69)
-    b.box(base, (0, 0, 0.052), (0.315, 0.33, 0.027), "dark", collision=True)
-    b.housing(
-        base,
-        [
-            (0.05, 0.315, 0.12, 0.20),
-            (0.49, 0.305, 0.115, 0.20),
-            (0.64, 0.295, 0.1, 0.20),
-        ],
-        radius=0.035,
-        material="cream",
-    )
-    b.box(base, (0, 0.21, 0.34), (0.28, 0.09, 0.27), "cream", collision=True)
-    b.box(base, (0, 0.11, 0.55), (0.273, 0.003, 0.015), "blue")
-    b.screen(base, (-0.20, 0.08, 0.49), 0.12, 0.05)
-    for x in (-0.25, 0.25):
-        b.box(base, (x, 0.09, 0.31), (0.016, 0.012, 0.135), "dark")
-        for z in (0.2, 0.25, 0.3, 0.35, 0.4):
-            b.cylinder(
-                base, (x, 0.074, z), 0.003, 0.003, "bright", euler=(math.pi / 2, 0, 0)
-            )
-    for y in (-0.16, -0.06):
-        b.box(base, (0, y, 0.102), (0.25, 0.012, 0.009), "bright")
-    xstage = b.moving(
-        base,
-        "coarse_x",
-        (0, -0.115, 0.125),
-        (1, 0, 0),
-        (-0.08, 0.08),
-        mass=0.55,
-        kp=360,
-    )
-    b.box(xstage, (0, 0, 0), (0.117, 0.11, 0.013), "metal")
-    ystage = b.moving(
-        xstage, "coarse_y", (0, 0, 0.028), (0, 1, 0), (-0.06, 0.06), mass=0.3, kp=300
-    )
-    b.cylinder(ystage, (0, 0, 0), 0.105, 0.014, "bright", collision=True)
-    b.cylinder(ystage, (0, 0, 0.017), 0.013, 0.003, "sample")
-    b.site(ystage, "sample_coupon", (0, 0, 0.021), 0.001)
-    head = b.moving(
-        base,
-        "coarse_head",
-        (0, 0.014, 0.38),
-        (0, 0, 1),
-        (-0.025, 0.025),
-        mass=0.4,
-        kp=320,
-    )
-    b.housing(
-        head,
-        [
-            (-0.10, 0.057, 0.045, -0.09),
-            (0.035, 0.077, 0.05, -0.09),
-            (0.09, 0.047, 0.042, -0.06),
-        ],
-        radius=0.011,
-        material="bright",
-    )
-    b.box(head, (0, -0.075, -0.012), (0.05, 0.04, 0.072), "bright", collision=True)
-    b.cylinder(head, (0, -0.095, -0.13), 0.014, 0.03, "cream", collision=True)
-    b.box(head, (0, -0.117, -0.161), (0.0016, 0.003, 0.0003), "copper")
-    b.rod(base, (-0.18, 0.06, 0.30), (-0.18, -0.08, 0.30), 0.035, "dark")
-    b.rod(base, (-0.18, -0.08, 0.30), (-0.06, -0.08, 0.30), 0.027, "dark")
-    _cable(
-        b,
-        base,
-        [
-            (0.03, 0.07, 0.44),
-            (0.15, 0.03, 0.51),
-            (0.25, -0.05, 0.4),
-            (0.24, 0.08, 0.21),
-        ],
-        0.011,
-    )
-    b.metadata["capabilities"] = [
-        "coarse_xy_position",
-        "coarse_head_clearance",
-        "visible_210mm_chuck",
-    ]
-    b.metadata["limitations"].append(
-        "Coarse positioning is separate from nanometre AFM scan physics. No tip contact, piezo feedback, vibration isolation or surface measurement."
-    )
+    from real_labs.ntu_sgsr_geometry import build_afm
+
+    build_afm(b, base, params)
 
 
 def _rush3d(b, base, params):
@@ -239,6 +95,32 @@ def _rush3d(b, base, params):
     for z in (0.33, 0.57):
         b.rod(base, (-0.35, -0.02, z), (-0.35, -0.38, z), 0.046, "dark")
         b.ring(base, (-0.35, -0.365, z), 0.050, 0.005, "bright", plane="xz")
+    # The photographed lower microscope has a silver front frame, a dark
+    # circular selector and side focus/camera adjustments below the sample deck.
+    # These static exterior fittings leave the existing XYZ sample path intact.
+    for x in (-0.515, -0.205):
+        b.box(base, (x, -0.172, 0.46), (0.012, 0.012, 0.142), "bright", collision=True)
+    for z in (0.318, 0.602):
+        b.box(base, (-0.36, -0.172, z), (0.167, 0.012, 0.012), "bright", collision=True)
+    b.cylinder(base, (-0.36, -0.180, 0.445), 0.069, 0.013, "dark",
+               euler=(math.pi / 2, 0, 0), collision=True)
+    b.cylinder(base, (-0.36, -0.196, 0.445), 0.039, 0.003, "metal",
+               euler=(math.pi / 2, 0, 0), density=0)
+    for x, sign in ((-0.535, -1), (-0.185, 1)):
+        for radius, offset, length, material in ((0.042, 0.018, 0.018, "dark"), (0.028, 0.042, 0.007, "bright"), (0.019, 0.053, 0.004, "dark")):
+            b.cylinder(base, (x + sign * offset, -0.03, 0.48), radius, length,
+                       material, euler=(0, math.pi / 2, 0), collision=True)
+    for x in (-0.49, -0.23):
+        for z in (0.335, 0.585):
+            b.cylinder(base, (x, -0.187, z), 0.005, 0.002, "dark",
+                       euler=(math.pi / 2, 0, 0), density=0)
+    # Unequal dovetail-like plates and adjustment screws replace the plain
+    # camera-stack silhouette. Dimensions are photo-based engineering estimates.
+    for i, z in enumerate((0.965, 1.005, 1.045, 1.085)):
+        b.box(base, (0.51, 0.13, z), (0.165 - i * 0.007, 0.21 - i * 0.008, 0.008),
+              "metal", collision=True)
+        b.cylinder(base, (0.51 + (-1)**i * 0.105, -0.095 + i * 0.007, z),
+                   0.014, 0.011, "dark", euler=(math.pi / 2, 0, 0), collision=True)
     for x in (-0.59, -0.07):
         b.rod(base, (x, 0.26, 0.92), (x, 0.26, 1.58), 0.020, "bright", collision=True)
     b.box(base, (-0.33, 0.27, 1.59), (0.33, 0.07, 0.025), "dark")
@@ -286,14 +168,45 @@ def _rush3d(b, base, params):
         mass=0.8,
         kp=500,
     )
-    b.box(base, (-0.31, 0.13, 0.9255), (0.19, 0.16, 0.0095), "dark")
-    b.box(stage_x, (0, 0, 0), (0.21, 0.19, 0.025), "metal")
+    aperture_plate(
+        b,
+        base,
+        "sample_fixed_plate",
+        (-0.31, 0.13, 0.924),
+        (0.19, 0.16, 0.008),
+        (0.079, 0.059),
+        "dark",
+    )
+    aperture_plate(
+        b,
+        stage_x,
+        "sample_x_plate",
+        (0, 0, 0),
+        (0.178, 0.19, 0.025),
+        (0.044, 0.052),
+        "metal",
+    )
+    # The joint represents the internal rolling guide. Keep the two exterior
+    # plates apart; coplanar shell contact would spuriously brake the carriage.
+    for y in (-0.13, 0.13):
+        b.box(base, (-0.31, 0.13 + y, 0.933), (0.16, 0.006, 0.001), "bright")
+        for x in (-0.11, 0.11):
+            b.box(stage_x, (x, y, -0.026), (0.024, 0.012, 0.002), "dark")
     for x in (-0.10, 0.10):
         b.box(stage_x, (x, 0, 0.0275), (0.011, 0.13, 0.0025), "bright")
     stage_y = b.moving(
         stage_x, "sample_y", (0, 0, 0.046), (0, 1, 0), (-0.03, 0.03), mass=0.5, kp=400
     )
-    b.box(stage_y, (0, 0, 0), (0.17, 0.16, 0.016), "dark", collision=True)
+    aperture_plate(
+        b,
+        stage_y,
+        "sample_y_plate",
+        (0, 0, 0),
+        (0.17, 0.16, 0.016),
+        (0.042, 0.020),
+        "dark",
+    )
+    slide_holder_details(b, stage_y, "sample_holder", 0.016, (0.17, 0.16))
     b.box(stage_y, (0, 0, 0.018), (0.0375, 0.0125, 0.0005), "glass")
     b.box(stage_y, (0, 0, 0.019), (0.001, 0.001, 0.00008), "sample")
     b.site(stage_y, "calibration_target", (0, 0, 0.0191), 0.0001)
@@ -337,114 +250,9 @@ def _rush3d(b, base, params):
 
 
 def _gait_station(b, base, params):
-    b.feet(base, 1.48, 2.52, 0.06)
-    b.box(base, (0, 0, 0.13), (0.72, 1.24, 0.074), "shell", collision=True)
-    for x in (-0.325, 0.325):
-        b.box(base, (x, 0, 0.237), (0.29, 1.05, 0.025), "rubber", collision=True)
-        for y in (-1.0, 1.0):
-            roller = (
-                b.moving(
-                    base,
-                    f"drive_{'left' if x<0 else 'right'}",
-                    (x, y, 0.188),
-                    (1, 0, 0),
-                    None,
-                    kind="hinge",
-                    mass=1.2,
-                    mode="velocity",
-                )
-                if y < 0
-                else base
-            )
-            if y < 0:
-                roller.find("joint").set("damping", "0.1")
-            center = (0, 0, 0) if y < 0 else (x, y, 0.188)
-            b.cylinder(roller, center, 0.07, 0.29, "metal", euler=(0, math.pi / 2, 0))
-            for angle in range(6):
-                a = angle * math.pi / 3
-                end = (
-                    center[0] + 0.294,
-                    center[1] + math.cos(a) * 0.055,
-                    center[2] + math.sin(a) * 0.055,
-                )
-                b.rod(
-                    roller,
-                    (center[0] + 0.294, center[1], center[2]),
-                    end,
-                    0.004,
-                    "dark",
-                )
-        for y in (-0.70, -0.35, 0.0, 0.35, 0.70):
-            b.box(base, (x, y, 0.263), (0.287, 0.002, 0.0005), "dark")
-    for x in (-0.70, 0.70):
-        b.box(base, (x, 0, 0.257), (0.04, 1.19, 0.019), "metal")
-        for y in (-0.92, 0.88):
-            b.rod(
-                base, (x, y, 0.20), (x, y + 0.06, 1.20), 0.033, "shell", collision=True
-            )
-        b.rod(base, (x, -0.86, 1.20), (x, 0.94, 1.20), 0.031, "shell", collision=True)
-        b.box(base, (x, -0.81, 1.225), (0.065, 0.065, 0.018), "dark")
-        b.cylinder(base, (x, -0.81, 1.26), 0.025, 0.016, "warning")
-    # Bolted support frame, separate from the treadmill handrails.
-    for x in (-0.80, 0.80):
-        for y in (-1.15, 1.15):
-            b.box(base, (x, y, 0.014), (0.11, 0.13, 0.014), "metal", collision=True)
-            b.box(base, (x, y, 1.413), (0.032, 0.032, 1.385), "bright", collision=True)
-            b.box(base, (x + 0.034, y, 1.41), (0.002, 0.015, 1.36), "dark")
-            _bolt_grid(b, base, [x - 0.07, x + 0.07], [y - 0.09, y + 0.09], 0.03, 0.007)
-        b.box(base, (x, 0, 2.78), (0.037, 1.19, 0.038), "bright", collision=True)
-    for y in (-1.15, 1.15):
-        b.box(base, (0, y, 2.78), (0.83, 0.037, 0.038), "bright", collision=True)
-    b.box(base, (0, 0.18, 2.80), (0.80, 0.050, 0.05), "dark")
-    lift = b.moving(
-        base,
-        "fixture_lift",
-        (0, 0.18, 2.54),
-        (0, 0, 1),
-        (-0.14, 0.14),
-        mass=2.0,
-        kp=600,
-        force=400,
-    )
-    b.box(lift, (0, 0, 0), (0.21, 0.075, 0.045), "metal")
-    for x in (-0.15, 0.15):
-        b.rod(lift, (x, 0, 0), (x, 0, -0.60), 0.005, "dark")
-    b.box(lift, (0, 0, -0.63), (0.20, 0.06, 0.024), "dark")
-    # An unmistakably mechanical ankle/leg test fixture, suspended above belts.
-    b.rod(base, (-0.80, 0.67, 1.72), (0.80, 0.67, 1.72), 0.024, "metal")
-    for x in (-0.29, 0.29):
-        b.box(base, (x, 0.67, 1.72), (0.053, 0.064, 0.047), "dark")
-        b.rod(base, (x, 0.67, 1.68), (x, 0.29, 1.20), 0.026, "bright")
-        b.cylinder(
-            base, (x, 0.29, 1.20), 0.07, 0.039, "dark", euler=(0, math.pi / 2, 0)
-        )
-        for side in (-1, 1):
-            b.rod(
-                base,
-                (x + side * 0.035, 0.29, 1.15),
-                (x + side * 0.035, 0.05, 0.54),
-                0.012,
-                "bright",
-            )
-        b.cylinder(
-            base, (x, 0.05, 0.53), 0.046, 0.036, "blue", euler=(0, math.pi / 2, 0)
-        )
-        b.box(base, (x, -0.06, 0.43), (0.055, 0.18, 0.018), "dark")
-        _cable(
-            b,
-            base,
-            [(x, 0.30, 1.2), (x + 0.10, 0.55, 1.65), (x + 0.12, 1.15, 1.85)],
-            0.008,
-        )
-    b.site(base, "test_fixture", (-0.29, 0.05, 0.53), 0.01)
-    b.metadata["capabilities"] = [
-        "independent_drive_roller_velocity",
-        "fixture_support_height",
-        "visible_mechanical_ankle_fixture",
-    ]
-    b.metadata["limitations"].append(
-        "Only roller rotations and unloaded lift motion are actuated; belt surfaces are static collision geometry. No moving-belt contact, walking policy, biomechanics, human subject or force-plate measurement."
-    )
+    from real_labs.stanford_gait_geometry import build_gait_station
+
+    build_gait_station(b, base, params)
 
 
 BUILDERS = {
@@ -462,7 +270,7 @@ SAMPLE_INTERFACES = {
     ),
     "afm_scanning_station": (
         "sample_coupon",
-        (0.026, 0.026, 0.006),
+        (0.026, 0.026, 0.007),
         "clamped",
         "inert disk on the specimen chuck",
     ),

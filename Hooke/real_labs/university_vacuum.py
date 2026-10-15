@@ -9,6 +9,7 @@ import math
 import xml.etree.ElementTree as ET
 
 from real_labs.architecture import box
+from real_labs.shrimp_stage_geometry import puck_spindle, transfer_deck
 
 
 CORNELL = "https://schlom.mse.cornell.edu/labtour"
@@ -16,22 +17,151 @@ ANU = "https://science.anu.edu.au/study/360-virtual-tours/sensitive-high-resolut
 OXFORD = "https://interface.web.ox.ac.uk/infrastructure"
 
 
+def _annulus(
+    b, parent, center, outer, inner, half, material, plane="xy", tag="annulus"
+):
+    """Flat annular visual mesh, with an actual open bore and hard rim edges.
+
+    These small fittings are visual detail; existing conservative vessel and
+    access-door collision shapes remain the mechanical contact model.
+    """
+    segments = 48
+    vertices = []
+    for z, radius in ((-half, outer), (-half, inner), (half, outer), (half, inner)):
+        vertices.extend(
+            (
+                radius * math.cos(math.tau * i / segments),
+                radius * math.sin(math.tau * i / segments),
+                z,
+            )
+            for i in range(segments)
+        )
+    faces = []
+    for first, second in ((0, 2), (3, 1), (1, 0), (2, 3)):
+        for i in range(segments):
+            nxt = (i + 1) % segments
+            a, c = first * segments + i, second * segments + i
+            an, cn = first * segments + nxt, second * segments + nxt
+            faces.extend(((a, an, cn), (a, cn, c)))
+    mesh = b.unique(tag + "_mesh")
+    ET.SubElement(
+        b.root.find("asset"),
+        "mesh",
+        name=mesh,
+        vertex=" ".join(f"{v:.8g}" for point in vertices for v in point),
+        face=" ".join(str(v) for face in faces for v in face),
+    )
+    euler = {"xy": (0, 0, 0), "xz": (math.pi / 2, 0, 0), "yz": (0, math.pi / 2, 0)}[
+        plane
+    ]
+    return b.geom(
+        parent, "mesh", (), center, material, mesh=mesh, euler=euler, name=b.unique(tag)
+    )
+
+
+def _hex_head(b, parent, center, radius, half, plane):
+    """Reusable six-sided fastener mesh, rather than spherical bolt markers."""
+    mesh = f"{b.name}__hex_{radius:.6f}_{half:.6f}"
+    asset = b.root.find("asset")
+    if asset.find(f"mesh[@name='{mesh}']") is None:
+        vertices = [
+            (
+                radius * math.cos(math.tau * i / 6),
+                radius * math.sin(math.tau * i / 6),
+                z,
+            )
+            for z in (-half, half)
+            for i in range(6)
+        ]
+        faces = []
+        for i in range(6):
+            nxt = (i + 1) % 6
+            faces.extend(((i, nxt, nxt + 6), (i, nxt + 6, i + 6)))
+        for i in range(1, 5):
+            faces.extend(((0, i + 1, i), (6, 6 + i, 7 + i)))
+        ET.SubElement(
+            asset,
+            "mesh",
+            name=mesh,
+            vertex=" ".join(f"{v:.8g}" for point in vertices for v in point),
+            face=" ".join(str(v) for face in faces for v in face),
+        )
+    euler = {"xy": (0, 0, 0), "xz": (math.pi / 2, 0, 0), "yz": (0, math.pi / 2, 0)}[
+        plane
+    ]
+    b.geom(
+        parent,
+        "mesh",
+        (),
+        center,
+        "metal",
+        mesh=mesh,
+        euler=euler,
+        name=b.unique("flange_hex_head"),
+    )
+
+
 def _flange(b, parent, center, radius, plane="xy", bolts=12):
-    """Open bolted flange; the center remains a physical access opening."""
-    b.ring(parent, center, radius, radius * 0.10, "bright", plane, 32)
-    b.ring(parent, center, radius * 0.84, radius * 0.025, "dark", plane, 32)
+    """Paired flat flange plates and bolt circle; dimensions are photo estimates."""
     axes = {"xy": (0, 1), "xz": (0, 2), "yz": (1, 2)}[plane]
+    normal = ({0, 1, 2} - set(axes)).pop()
+    # Thin opposed plates and their recessed parting line replace the oversized
+    # capsule rings. Keep the previous outside envelope and open center.
+    for side in (-1, 1):
+        point = list(center)
+        point[normal] += side * radius * 0.030
+        _annulus(
+            b,
+            parent,
+            point,
+            radius * 1.10,
+            radius * 0.75,
+            radius * 0.026,
+            "bright",
+            plane,
+            "flange_plate",
+        )
+    _annulus(
+        b,
+        parent,
+        center,
+        radius * 1.065,
+        radius * 0.75,
+        radius * 0.004,
+        "dark",
+        plane,
+        "flange_parting_line",
+    )
+    bolt_radius = max(0.0025, min(0.013, radius * 0.045))
     for index in range(bolts):
         point = list(center)
         angle = math.tau * index / bolts
         point[axes[0]] += radius * math.cos(angle)
         point[axes[1]] += radius * math.sin(angle)
-        b.geom(parent, "sphere", (radius * 0.058,), point, "dark")
+        for side in (-1, 1):
+            head = point.copy()
+            head[normal] += side * (radius * 0.056 + bolt_radius * 0.45)
+            _hex_head(b, parent, head, bolt_radius, bolt_radius * 0.45, plane)
 
 
 def _cable(b, parent, points, radius=0.004, material="dark"):
     for start, end in zip(points, points[1:]):
         b.rod(parent, start, end, radius, material)
+
+
+def _hose(b, parent, points, radius, material="rubber"):
+    """Cubic route with attached endpoints and a relaxed service-loop shape."""
+    route = []
+    for index in range(25):
+        t = index / 24
+        weights = ((1 - t) ** 3, 3 * t * (1 - t) ** 2, 3 * t * t * (1 - t), t**3)
+        route.append(
+            tuple(
+                sum(weight * p[axis] for weight, p in zip(weights, points))
+                for axis in range(3)
+            )
+        )
+    _cable(b, parent, route, radius, material)
 
 
 def _frame(b, parent, x, y, width, depth, top):
@@ -89,9 +219,59 @@ def _mbe(b, base, params):
             ).set("name", b.unique("vessel_cradle"))
         b.cylinder(base, (cx, cy, 1.24), radius, 0.29, "metal", collision=True)
         for z in (0.94, 1.54):
-            _flange(b, base, (cx, cy, z), radius * 1.08)
+            _flange(b, base, (cx, cy, z), radius * 1.08, bolts=20)
+        # The chamber shoulder carries the narrower upper spool. In the
+        # photograph its bolted stack is continuous, not a cylinder suspended
+        # above the main vessel. Plate thickness and port dimensions estimated.
+        b.cylinder(base, (cx, cy, 1.542), radius, 0.012, "bright")
         b.cylinder(base, (cx, cy, 1.67), radius * 0.67, 0.12, "bright")
         _flange(b, base, (cx, cy, 1.80), radius * 0.77)
+        for z in (1.58, 1.735):
+            _flange(b, base, (cx, cy, z), radius * 0.75, bolts=16)
+        # Four short radial ports reproduce the dense exterior port pattern.
+        # Their exact assignments and hidden vacuum passages are not inferred.
+        for angle, z in ((-0.66, 1.43), (-2.48, 1.43), (0.75, 1.17), (2.39, 1.17)):
+            direction = (math.cos(angle), math.sin(angle))
+            port = ET.SubElement(
+                base,
+                "body",
+                name=b.unique("radial_port"),
+                pos=f"{cx} {cy} {z}",
+                euler=f"0 0 {angle}",
+            )
+            b.cylinder(
+                port,
+                (radius + 0.052, 0, 0),
+                0.038,
+                0.068,
+                "metal",
+                euler=(0, math.pi / 2, 0),
+            )
+            _flange(b, port, (radius + 0.105, 0, 0), 0.054, "yz", 8)
+            b.cylinder(
+                port,
+                (radius + 0.111, 0, 0),
+                0.039,
+                0.005,
+                "dark",
+                euler=(0, math.pi / 2, 0),
+            )
+            cable_start = (
+                cx + (radius + 0.118) * direction[0],
+                cy + (radius + 0.118) * direction[1],
+                z,
+            )
+            _cable(
+                b,
+                base,
+                [
+                    cable_start,
+                    (cable_start[0], cable_start[1] + 0.025, z - 0.09),
+                    (cx + direction[0] * radius, cy + 0.43, 0.20),
+                ],
+                0.003,
+                "dark",
+            )
         # Front view port has an annular opening and translucent optical face.
         b.rod(
             base,
@@ -133,6 +313,8 @@ def _mbe(b, base, params):
                 base, (cx + dx, cy + dy, 1.79 + length / 2), 0.031, length / 2, "bright"
             )
             _flange(b, base, (cx + dx, cy + dy, 1.89), 0.05, bolts=6)
+            for joint_z in (1.81, 1.79 + length - 0.035):
+                _flange(b, base, (cx + dx, cy + dy, joint_z), 0.046, bolts=6)
             b.cylinder(base, (cx + dx, cy + dy, 1.79 + length), 0.042, 0.025, "dark")
         # RHEED/viewing side arms use short branch pipes and bolted interfaces.
         for sy in (-1, 1):
@@ -143,9 +325,19 @@ def _mbe(b, base, params):
                 0.035,
                 "metal",
             )
-            b.box(
-                base, (cx + 0.44, cy + sy * 0.43, 1.35), (0.082, 0.062, 0.068), "dark"
-            )
+            housing = (0.14, 0.12, 0.085) if cx < 0 and sy < 0 else (0.10, 0.07, 0.068)
+            b.box(base, (cx + 0.44, cy + sy * 0.43, 1.35), housing, "dark")
+            # The short branch supports the enclosure; a bracket and relaxed
+            # harness add the visible mounting/service hierarchy from the photo.
+            b.box(base, (cx + 0.36, cy + sy * 0.36, 1.29),
+                  (0.10, 0.035, 0.012), "metal")
+            for cable in range(4):
+                _hose(b, base,
+                      [(cx + 0.43, cy + sy * 0.44, 1.28),
+                       (cx + 0.48 + cable * 0.012, cy + sy * 0.53, 1.05),
+                       (cx + 0.10, cy + sy * 0.50, 0.48),
+                       (cx - 0.24, cy - 0.37, 0.22)],
+                      0.003, ("blue", "dark", "warning", "dark")[cable])
     b.rod(base, (-0.38, 0.20, 1.22), (0.11, 0.20, 1.22), 0.081, "bright")
     for x in (-0.34, 0.07):
         _flange(b, base, (x, 0.20, 1.22), 0.105, "yz", 8)
@@ -153,56 +345,15 @@ def _mbe(b, base, params):
     _frame(b, base, 1.31, -0.07, 0.72, 0.95, 0.91)
     b.box(base, (1.31, -0.07, 0.94), (0.40, 0.52, 0.025), "bright", collision=True)
     b.rod(base, (0.69, 0.20, 1.22), (1.31, 0.20, 1.22), 0.062, "metal")
-    b.cylinder(
-        base, (1.31, -0.04, 1.22), 0.155, 0.26, "metal", euler=(math.pi / 2, 0, 0)
-    )
-    # Two saddles bridge the 100 mm gap between worktop and horizontal vessel.
+    from real_labs.cornell_loading_geometry import add_loading, add_manifold_details
+
+    # Saddles meet the existing worktop and the new hollow shell underside.
     for y in (-0.19, 0.11):
         b.box(
             base, (1.31, y, 1.015), (0.067, 0.045, 0.05), "metal", collision=True
         ).set("name", b.unique("loadlock_saddle"))
-    _flange(b, base, (1.31, -0.31, 1.22), 0.17, "xz")
-    door = b.moving(
-        base,
-        "load_lock_door",
-        (1.125, -0.335, 1.22),
-        (0, 0, -1),
-        (0, 1.25),
-        kind="hinge",
-        mass=0.7,
-        kp=450,
-    )
-    b.cylinder(
-        door,
-        (0.185, 0, 0),
-        0.158,
-        0.010,
-        "bright",
-        euler=(math.pi / 2, 0, 0),
-        collision=True,
-    )
-    b.cylinder(
-        door, (0.185, -0.012, 0), 0.11, 0.003, "glass", euler=(math.pi / 2, 0, 0)
-    )
-    b.rod(door, (0.29, -0.043, -0.052), (0.29, -0.043, 0.052), 0.011, "dark")
-    b.site(door, "door_handle", (0.29, -0.043, 0))
-    # Transfer rod has its own side sleeve; no moving part crosses the door.
-    b.rod(base, (1.47, 0.07, 1.22), (1.88, 0.07, 1.22), 0.033, "metal")
-    _flange(b, base, (1.50, 0.07, 1.22), 0.057, "yz", 8)
-    transfer = b.moving(
-        base,
-        "transfer_rod",
-        (1.82, 0.07, 1.22),
-        (-1, 0, 0),
-        (0, 0.20),
-        mass=0.25,
-        kp=600,
-    )
-    b.rod(transfer, (-0.57, 0, 0), (0.18, 0, 0), 0.012, "bright")
-    b.cylinder(transfer, (0.18, 0, 0), 0.04, 0.055, "dark", euler=(0, math.pi / 2, 0))
-    b.box(transfer, (-0.54, 0, 0.016), (0.034, 0.028, 0.006), "copper", collision=True)
-    b.box(transfer, (-0.54, 0, 0.024), (0.021, 0.019, 0.002), "lens")
-    b.site(transfer, "substrate", (-0.54, 0, 0.026))
+    add_loading(b, base)
+    add_manifold_details(b, base, _flange, _hose)
     # A separate shielded electronics rack and restrained cable routes.
     b.box(base, (-1.37, 0.63, 0.65), (0.23, 0.25, 0.61), "dark", collision=True)
     for x in (-1.55, -1.19):
@@ -234,9 +385,13 @@ def _mbe(b, base, params):
         "load-lock access articulation",
         "200 mm representative substrate-transfer stroke",
         "clamped substrate and door-handle target sites",
+        "hollow contact-enabled loading chamber, open rod guides and measured access operation",
     ]
     b.metadata["limitations"].append(
         "Transfer stroke and access mechanism are authored surrogates; no vacuum pump-down, interlocks, RHEED, film growth or source-temperature process is simulated."
+    )
+    b.metadata["limitations"].append(
+        "Flat flange stacks, fasteners, chamber shoulders and radial port density follow the reference exterior; individual bolt sizes, port assignments and hidden bores are estimated. Small fittings are visual, with conservative vessel/door collision proxies."
     )
 
 
@@ -383,6 +538,29 @@ def _shrimp(b, base, params):
     b.cylinder(base, (1.26, 0.10, 2.155), 0.09, 0.035, "dark")
     for z in (1.86, 1.94, 2.02, 2.10):
         _flange(b, base, (1.26, 0.10, z), 0.084, bolts=6)
+    # A side viewport, auxiliary blanked ports and source services add the
+    # photographed vessel's multiport silhouette. Their internal functions
+    # and dimensions cannot be established from the facility preview.
+    for z, radius in ((1.39, 0.079), (1.69, 0.046)):
+        vessel_radius = 0.255 if z < 1.5 else 0.11
+        end = 0.10 - vessel_radius - 0.08
+        b.cylinder(
+            base,
+            (1.26, end + 0.052, z),
+            radius * 0.82,
+            0.065,
+            "metal",
+            euler=(math.pi / 2, 0, 0),
+        )
+        _flange(b, base, (1.26, end, z), radius, "xz", 10 if z < 1.5 else 6)
+        b.cylinder(
+            base,
+            (1.26, end - 0.006, z),
+            radius * 0.72,
+            0.003,
+            "lens" if z < 1.5 else "dark",
+            euler=(math.pi / 2, 0, 0),
+        )
     b.rod(base, (1.03, 0.10, 1.34), (0.05, -0.10, 1.34), 0.069, "metal")
     for x in (0.28, 0.65, 0.96):
         _flange(b, base, (x, -0.08 + x * 0.18, 1.34), 0.095, "yz", 8)
@@ -441,7 +619,7 @@ def _shrimp(b, base, params):
         mass=0.15,
         kp=500,
     )
-    b.box(transfer, (0, 0, 0), (0.076, 0.06, 0.012), "dark", collision=True)
+    transfer_deck(b, transfer)
     b.rod(transfer, (0.06, 0, 0), (0.62, 0, 0), 0.010, "bright")
     b.cylinder(transfer, (0.62, 0, 0), 0.027, 0.037, "dark", euler=(0, math.pi / 2, 0))
     rotation = b.moving(
@@ -455,6 +633,7 @@ def _shrimp(b, base, params):
         kp=120,
     )
     b.cylinder(rotation, (0, 0, 0), 0.043, 0.009, "copper", collision=True)
+    puck_spindle(b, rotation)
     b.cylinder(rotation, (0, 0, 0.010), 0.030, 0.001, "cream")
     for index in range(9):
         angle = math.tau * index / 9
@@ -486,13 +665,32 @@ def _shrimp(b, base, params):
             "blue" if index % 4 == 0 else "dark",
         )
     for i in range(3):
-        points = [
-            (1.72 + i * 0.1, -0.05, 1.30),
-            (1.82 + i * 0.1, -0.25, 1.05),
-            (1.85 + i * 0.1, -0.50, 0.96),
-            (1.70 + i * 0.1, -0.73, 0.94),
-        ]
-        _cable(b, base, points, 0.018, "metal")
+        x = 1.88 + i * 0.095
+        # Bulkhead fittings connect the loops to the cabinet instead of
+        # terminating pipes in mid-air above its top.
+        b.cylinder(base, (x, -0.66, 0.925), 0.025, 0.025, "metal")
+        _flange(b, base, (x, -0.66, 0.95), 0.032, bolts=6)
+        start = (1.52, -0.035 + i * 0.08, 1.31)
+        b.cylinder(
+            base,
+            (1.50, start[1], 1.31),
+            0.022,
+            0.026,
+            "metal",
+            euler=(0, math.pi / 2, 0),
+        )
+        _hose(
+            b,
+            base,
+            [
+                start,
+                (x + 0.20, -0.05, 1.52),
+                (x + 0.16, -0.67, 1.05),
+                (x, -0.66, 0.954),
+            ],
+            0.013,
+            "metal" if i == 1 else "dark",
+        )
     b.metadata["capabilities"] = [
         "load-lock access articulation",
         "120 mm representative mineral-mount transfer",
@@ -500,6 +698,9 @@ def _shrimp(b, base, params):
     ]
     b.metadata["limitations"].append(
         "Source/extraction optics, ion transport, magnet fields, detector response and isotopic ages are not simulated. Access and stage strokes are authored mechanical surrogates, not the SHRIMP operating procedure."
+    )
+    b.metadata["limitations"].append(
+        "Bolted flange stacks, visible source ports and attached service loops follow exterior photographs; individual fittings, routing and hidden passages are estimated visual geometry, not vacuum-rated CAD or deformable hose dynamics."
     )
 
 

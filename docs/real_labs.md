@@ -15,10 +15,17 @@ The latest batch adds 100 distinct laboratories at 76 universities to the
 included in the source release. See the [100-laboratory review](university_expansion_100_20261003.md)
 for source evidence, mechanical checks and screenshot reproduction.
 
-**Specialist validation is pending.** Scientific processes, complete robot
-experiment workflows and Isaac runtime behavior have not been qualified for
-these prototypes. Generated previews and asset archives are local outputs;
-follow the export and rendering commands to recreate them after cloning.
+**Bounded catalogue acceptance is complete for these 120 scenes.** All pass
+native loading and the 11 non-control runtime gates, and all have complete
+bounded MuJoCo mechanical routes. Raw scalar diagnostics retain nine failures
+out of 555 controls; four guarded native operations have separate passing
+evidence. Complete scientific-process models and 120 complete native experiment
+workflows remain unqualified.
+
+The [fidelity and usability report](university_optimization.md) records the
+validated scope, source limitations and reproduction steps. These results apply
+to the `real_labs` catalogue; they do not qualify the separate `real_lab` scene
+collection. Generated previews and asset archives remain local outputs.
 
 ### Earlier ten-laboratory expansion
 
@@ -30,7 +37,9 @@ mechanical controls, evidence limits and reproducible screenshot commands.
 The [university catalogue](university_labs.md) groups all scenes by institution,
 subject and laboratory.
 
-The following revision history describes the original ten-scene batch.
+The following revision history describes earlier versions of the original
+ten-scene batch. Equipment configurations and counts below are historical;
+the linked acceptance report describes the current implementation.
 
 ## Spatial revision: what changed and what remains uncertain
 
@@ -273,6 +282,140 @@ redistributing an exported pack. Public access alone is not a redistribution
 licence for the reference media.
 
 ## What is functional
+
+### ANU probe registration
+
+The ANU annulus has a supported vertical profiler and an authored open reference
+ring. Revision 2 retains the original rails and stylus, extends the upper height
+limit from 70 to 170 mm, and replaces the unreachable off-axis target with a
+coaxial opening. The ring is an inspection aid, not photographed ANU hardware.
+
+After exporting `anu_climate_fluid_physics`, run its measured CPU operation:
+
+```python
+import json
+from pathlib import Path
+import mujoco
+from real_labs.runtime import InstrumentSession
+from real_labs.annulus_probe_motion import inspect_annulus_probe
+
+package = Path("temp/real_labs/latest/anu_climate_fluid_physics")
+session = InstrumentSession(
+    mujoco.MjModel.from_xml_path(str(package / "scene.xml")),
+    json.loads((package / "manifest.json").read_text()),
+)
+report = inspect_annulus_probe(session)
+assert report["status"] == "succeeded", report
+```
+
+Run Python with `PYTHONPATH=Hooke`. The operation starts at resting home, raises
+the probe, approaches 8 mm above the datum, passes 15 mm through the opening,
+repeats at another tank angle, and physically returns. It records actual joint
+motion, tip height, bore registration and per-step clearance, including pairs
+omitted by native parent-body collision filtering. No state reset occurs during
+the route; `session.reset()` remains a separate explicit action. The probe and
+ring rotate together. Water, heat transport and sensor response are not simulated.
+
+### Penn specimen loading
+
+For an exported `penn_pathology` session, `PennProcessor(session).run()` from
+`real_labs.penn_processor_motion` opens the powered door, conveys a free inert
+carrier into the enclosure, closes and reopens access, then returns the carrier
+to its external tray. Contact geometry carries the specimen throughout the
+operation; there is no attachment toggle or live pose placement. The 90 × 70 ×
+25 mm, 60 g carrier is a mechanical surrogate, not a clinical histology cassette.
+
+The representative dry processor replaces the previous mismatched microtome in
+this scene. Its four old microtome controls are explicitly retired. The guarded
+operation checks door sequencing, support, containment, contact and actual return.
+It does not implement tissue processing, off-tray pickup or clinical data routing.
+The source still establishes the room's parallel benches and glazed cupboards,
+but does not identify this authored processor as installed Penn equipment.
+Generic web sliders are still independent axis commands; integration of the
+guarded workflow into those controls remains pending.
+
+### Rochester plate loading
+
+For a current `rochester_genomics` session, use
+`real_labs.rochester_operations.run_plate_loading(session)` for the ordered
+contact-driven load, release, close/reopen, retrieval and return sequence.
+It validates the scene binding and rejects interrupted or disturbed starting
+states rather than resetting them. The external XYZ loader is authored task
+equipment, not identified Rochester or OEM hardware. The parked aisle is 0.805 m;
+loading temporarily occupies its reserved working space.
+
+`InstrumentSession.command()` and the web command endpoint now apply the same
+preflight to scalar inspection. Independent loader X/Y requests are rejected
+before state mutation; full physical strokes remain available to the ordered
+operation. The controls panel exposes **Load and retrieve plate** and replaces
+independent X/Y sliders with operation guidance. The deliberately raw axis
+diagnostic still fails for two of twelve controls; rejected public commands are
+not counted as successful physical motion.
+
+### Leeds contact recovery
+
+`real_labs.leeds_operations.validate_command(...)` checks the dry scalar envelope
+before a caller mutates control or state. Deep approach requires the existing
+loaded-slide operation. `run_retract(session)` unloads measured contact over
+2.5 simulated seconds while holding the current specimen position, without reset.
+Full 25 mm normal travel remains; dry scalar approach is bounded to 12 mm.
+
+The shared `real_labs.operations` registry binds the scene model before dispatch.
+Public session commands and the web endpoint apply the dry-command guard. The
+controls panel offers **Run loaded sliding** and **Retract contact fixture**;
+its scalar approach range describes dry inspection without changing physical
+joint travel. Neither authored contact parameters nor the recovery envelope are
+calibrated real-device limits.
+
+### NASA grounded sample staging
+
+The current default scene has a free grounded six-wheel rover, steering drives,
+and a free 25 g inert sample. Its measured CPU route performs parked observation,
+physical grasp, driven traversal, shelf placement and tool withdrawal. The current
+route completed 182,159 steps; fifteen focused mast/task tests passed. Direct
+clearance checks are sampled, while native contacts are inspected each step.
+This is an authored rigid aisle under Earth gravity, not validated soil mechanics.
+
+Revision `grounded_staging_v2` places the rover body-frame origin at floor level
+and offsets its child frames inversely. Geometry, mass centers and cameras retain
+their world placement; all six tyres remain supported. Canonical export and
+reload now pass. The full route was rerun on the new XML for 180,679 steps.
+Historical v1 state vectors retain their original XML and cannot be replayed
+directly into v2.
+
+The independent-axis diagnostic remains 16/24: six individual wheel commands
+against the other held wheels and two sample-contacting jaws do not meet its
+tracking conditions. This diagnostic is separate from the successful coordinated
+route. NASA operations are not yet exposed through the new web operation registry.
+Native Isaac execution and complete scene acceptance remain unverified.
+
+### Complete operations over HTTP
+
+Scene state includes `operations` and `control_policy` metadata. Supported scenes
+currently provide Rochester plate loading and Leeds loaded sliding/retraction.
+Start one finite CPU operation with:
+
+```http
+POST /api/real-labs/rochester_genomics/operation
+Content-Type: application/json
+
+{"operation":"plate_loading"}
+```
+
+The response is HTTP 202 with a job ID. Poll the same URL with GET until its
+`job.status` becomes `succeeded` or `failed`. Terminal responses distinguish
+current `state` from historical `completed_state`. Failure preserves measured
+physics; it never performs an automatic reset. The existing reset endpoint is
+an explicit episode reset.
+
+Commands, resets and competing operations on a busy scene return HTTP 409.
+Other scenes remain accessible. Storage is shared within one server process,
+with at most two loaded scenes; busy scenes are retained, while idle sessions
+and their last job records can be evicted. Restarting the process loses jobs.
+This local preview is intended for a single server process, not distributed
+workers. Images remain recorded renders rather than live operation video.
+
+### General capabilities
 
 Implemented and checked:
 

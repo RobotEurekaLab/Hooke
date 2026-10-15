@@ -59,12 +59,33 @@ class TaskNavigation(unittest.TestCase):
 
     def test_existing_lab_tasks_keep_their_categories_and_preview_workflow(self):
         for entry in CATALOG.values():
-            if entry.category in ("microscopy", "space", "real_labs"):
+            if entry.category in ("microscopy", "space", "real_labs", "real_lab"):
                 continue
             navigation = task_navigation(entry)
             self.assertEqual(navigation["category"], entry.category)
             self.assertEqual(navigation["task_label"], entry.name)
             self.assertIsNone(navigation["url"])
+
+    def test_contributor_display_labs_keep_task_identity_and_source_navigation(self):
+        from webui.real_lab_navigation_data import REAL_LAB_UNIVERSITIES
+
+        entries = {key: entry for key, entry in CATALOG.items() if entry.category == "real_lab"}
+        self.assertEqual(set(entries), set(REAL_LAB_UNIVERSITIES))
+        self.assertEqual(len(entries), 100)
+        with patch.object(CatalogEntry, "load_classes", side_effect=AssertionError("Loaded engine")):
+            for name, entry in entries.items():
+                with self.subTest(task=name):
+                    source = REAL_LAB_UNIVERSITIES[name]
+                    navigation = task_navigation(entry)
+                    self.assertEqual(entry.category, "real_lab")
+                    self.assertEqual(entry.name, name)
+                    self.assertEqual(navigation["category"], source["discipline"])
+                    self.assertEqual(navigation["university"], source["university"])
+                    self.assertEqual(navigation["facility"], source["facility"])
+                    self.assertEqual(navigation["task_label"], source["facility"])
+                    self.assertEqual(navigation["video"], f"/docs-assets/real-lab-{source['school_id']}-mujoco.mp4")
+                    self.assertIsNone(navigation["url"])
+                    self.assertIsNone(entry.completion_rule)
 
     def test_unregistered_world_or_operation_keeps_safe_generic_presentation(self):
         base = CATALOG["space_orbital_sample_transfer"]

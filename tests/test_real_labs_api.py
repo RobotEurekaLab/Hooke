@@ -134,6 +134,36 @@ class RealLabApiTests(unittest.TestCase):
                 )
             self.mock_build.assert_not_called()
 
+    def test_scene_specific_closeups_require_registration_without_starting_physics(
+        self,
+    ):
+        self.definitions["alpha"]["camera"] = {"sample": {}}
+        temporary_root = real_labs_api.ROOT / "temp"
+        temporary_root.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=temporary_root) as directory:
+            base = Path(directory)
+            for scene in ("alpha", "beta"):
+                (base / scene).mkdir()
+                (base / scene / "sample.png").write_bytes(b"sample close-up")
+                (base / scene / "unregistered.png").write_bytes(b"unlisted")
+            with patch.dict("os.environ", {"HOOKE_REAL_LABS_OUTPUT": str(base)}):
+                with self.client.get(
+                    "/api/real-labs/alpha/preview/sample.png"
+                ) as response:
+                    self.assertEqual(response.status_code, 200)
+                    self.assertEqual(response.get_data(), b"sample close-up")
+                for scene, name in (("beta", "sample"), ("alpha", "unregistered")):
+                    self.assertEqual(
+                        self.client.get(
+                            f"/api/real-labs/{scene}/preview/{name}.png"
+                        ).status_code,
+                        404,
+                    )
+                self.assertIsNone(
+                    real_labs_api.recorded_preview_path("alpha", "../sample.png")
+                )
+            self.mock_build.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

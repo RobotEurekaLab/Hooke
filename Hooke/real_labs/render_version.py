@@ -3,13 +3,18 @@
 import hashlib
 from pathlib import Path
 
+FINISH_REVISION = 9
+
 
 def render_source_digest():
     package = Path(__file__).resolve().parents[1]
     digest = hashlib.sha256()
     for relative in (
         "real_labs/render.py",
+        "real_labs/render_version.py",
         "real_labs/finishes.py",
+        "real_labs/presentation.py",
+        "real_labs/volume_presentation.py",
         "microscopy/blender_render.py",
     ):
         content = (package / relative).read_bytes()

@@ -117,9 +117,12 @@ def _c72(b, base, params):
     )
     for y in (-0.61, 0.61):
         b.cylinder(bucket, (0, y, 0), 0.13, 0.07, "bright", euler=(math.pi / 2, 0, 0))
+    # Keep the suspended shell inside the beam's open 0.92 m corridor. Its
+    # earlier side and back plates penetrated both beams at the pivot height.
+    for y in (-0.35, 0.35):
         b.box(bucket, (0, y, -0.63), (0.58, 0.055, 0.62), "shell", collision=True)
-    b.box(bucket, (0, 0, -1.20), (0.58, 0.66, 0.055), "dark", collision=True)
-    b.box(bucket, (-0.58, 0, -0.65), (0.055, 0.66, 0.55), "shell", collision=True)
+    b.box(bucket, (0, 0, -1.20), (0.58, 0.405, 0.055), "dark", collision=True)
+    b.box(bucket, (-0.58, 0, -0.65), (0.055, 0.405, 0.55), "shell", collision=True)
     # Visible dry calibration block retained by opposing clamp pads.
     b.box(bucket, (0.03, 0, -0.99), (0.27, 0.27, 0.155), "cream", collision=True)
     for y in (-0.31, 0.31):

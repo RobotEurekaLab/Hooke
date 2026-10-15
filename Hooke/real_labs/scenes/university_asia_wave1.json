@@ -147,7 +147,7 @@
           ],
           "yaw": 0,
           "params": {},
-          "role": "Translate a glass-slide inert target along two axes and adjust objective clearance without simulating fluorescence.",
+          "role": "Register two inert slide fiducials under a body-mounted objective camera, reach an authored physical working clearance, inspect geometrically and return.",
           "evidence": "Original geometry informed by reviewed official photographs; hidden mechanics and scale estimated",
           "source_urls": [
             "https://www.mbsys.me.kyoto-u.ac.jp/album/lab/"
@@ -155,10 +155,10 @@
         }
       ],
       "task": {
-        "name": "Yokokawa Curtain-Screened Optical Laboratory mechanical positioning",
-        "description": "Translate a glass-slide inert target along two axes and adjust objective clearance without simulating fluorescence.",
+        "name": "Kyoto inert-slide registration and geometric inspection",
+        "description": "Register two inert slide fiducials under a body-mounted objective camera, reach an authored physical working clearance, inspect geometrically and return.",
         "primary_equipment": "tirf_workspace",
-        "observable": "Bounded mechanical axes move a visible clamped inert target or model; no scientific process result is generated."
+        "observable": "Measured axis travel, full-state mounted-camera pose/projection and 2 mm lens-to-glass inspection clearance; no calibrated optical focus or biological process result."
       },
       "camera": {
         "overview": {
@@ -199,12 +199,26 @@
             1.07
           ],
           "fovy": 48
+        },
+        "sample": {
+          "position": [
+            0.97,
+            -0.85,
+            1.24816
+          ],
+          "target": [
+            0.91,
+            -0.59,
+            1.08816
+          ],
+          "fovy": 32
         }
       },
       "layout_rationale": [
         "Black curtains and a perforated optical table reproduce directly observed arrangement cues.",
         "An opening separates the dim optical area from the brighter preparation bay; its exact location and room boundaries are estimated.",
-        "A clear front aisle and left approach connect the entry to the table; specimen slide rests on nested supported carriers."
+        "A clear front aisle and left approach connect the entry to the table; specimen slide rests on nested supported carriers.",
+        "Connected open XY bearings, a hollow objective guide and attached slide keepers replace the former masked overlaps. Unequal translation mounts, camera tubes, controllers and parked service cables follow visible apparatus categories from the official photographs; hidden mechanics remain authored."
       ],
       "limitations": [
         "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
@@ -212,7 +226,9 @@
         "Actuation is an explicit mechanical surrogate; manufacturer precision, force calibration and safety controls are not claimed.",
         "No TIRF optical path solution, fluorescence model or biological process is implemented.",
         "The distinct biomechanics lab and communal cleanroom on the source album are excluded.",
-        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation."
+        "MuJoCo CPU mechanical controls are testable; rendered exports do not establish Isaac runtime validation.",
+        "A fixed sample close-up keeps the authored 2 mm inert target at physical scale. This is an external geometric inspection view, not simulated microscope imaging or optical resolution.",
+        "An actual objective-mounted camera supplies a geometric entrance-pupil view. Its field of view and 4 mm home / 2 mm inspection working clearances are authored surrogates, not manufacturer optical specifications. The inert slide is rigidly retained and cannot be freely loaded."
       ],
       "reference_detail_evidence": {
         "reviewed_local_files": [
@@ -223,7 +239,7 @@
           "edd66d07bca744b4f88fcd2e80d7c999dd7415b9b78db9eee9f1e5e23e8f2183",
           "061efd718d73b950466c0e51b004bc40344b18067a7247d29e314578be8569ca"
         ],
-        "reviewed_at": "2026-10-03",
+        "reviewed_at": "2026-10-04",
         "dimension_confidence": "Estimated from undimensioned photos; any published partial dimensions explicitly identified",
         "rights": "Original authored geometry only; no source media release authorization"
       }

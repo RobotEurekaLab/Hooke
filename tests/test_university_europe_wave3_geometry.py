@@ -10,6 +10,7 @@ import numpy as np
 
 from real_labs import university_extensions
 from real_labs.builder import build_scene
+from real_labs.runtime import InstrumentSession
 from real_labs.layout_audit import (
     audit_layout,
     doorway_obstacle_warnings,
@@ -61,13 +62,15 @@ class EuropeWaveThreeGeometryTests(unittest.TestCase):
     def test_bidirectional_targets_and_reset(self):
         for identifier in SCENES:
             model, data, manifest = self.load(identifier)
+            session = InstrumentSession(model, manifest)
+            data = session.data
             initial_sites = data.site_xpos.copy()
             for name, address, actuator, (low, high) in self.controls(model, manifest):
                 for fraction in (0.15, 0.85, 0.25):
                     with self.subTest(scene=identifier, axis=name, fraction=fraction):
                         target = low + fraction * (high - low)
                         data.ctrl[actuator] = target
-                        mujoco.mj_step(model, data, nstep=round(2 / model.opt.timestep))
+                        session.advance(round(2 / model.opt.timestep))
                         self.assertLessEqual(
                             abs(data.qpos[address] - target),
                             max(1e-6, 0.025 * (high - low)),
@@ -139,7 +142,6 @@ class EuropeWaveThreeGeometryTests(unittest.TestCase):
 
     def test_visible_inert_samples_follow_their_carriers(self):
         for identifier, key, value, expected in (
-            ("epfl_lspn_chemistry", "flask_lift", 0.09, [0, 0, 0.09]),
             ("kth_robot_design_prototyping", "build_plate_z", 0.13, [0, 0, 0.13]),
             ("manchester_hv_dielectric_fluids", "specimen_height", 0.04, [0, 0, 0.04]),
             ("birmingham_chbh_mri", "table_insert", 0.50, [0, 0.50, 0]),

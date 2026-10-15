@@ -10,13 +10,13 @@
       "source_urls": [
         "https://www.leeds.ac.uk/experimental-facilities/dir-record/profiles/23792/advanced-coatings-system-and-environmental-tribology-suite"
       ],
-      "reference_notes": "The installed workstation has a front-opening rectangular metal chamber with a thick left-hinged door and circular viewport. Inside, a circular copper-ringed sample stage sits below a long contact arm with a vertical pin. A monitor/keyboard is immediately right, a control box is left and supported hoses, regulator hardware and a secured gas cylinder sit behind. Reconstruct only the observed tribometer workstation; do not merge adjacent coating/deposition equipment into one imagined room. Copper rings and service hardware are appearance only. No friction coefficient, wear, heating, gas flow, vacuum or calibrated force testing.",
+      "reference_notes": "The installed workstation has a front-opening rectangular metal chamber with a thick left-hinged door and circular viewport. Inside, a circular copper-ringed sample stage sits below a long contact arm with a vertical pin. A monitor/keyboard is immediately right, a control box is left and supported hoses, regulator hardware and a secured gas cylinder sit behind. Reconstruct only the observed tribometer workstation; do not merge adjacent coating/deposition equipment into one imagined room. Copper rings and service hardware are appearance only. Finite-stiffness normal loading and tangential motion are authored generic mechanisms. No calibrated friction coefficient, wear, heating, gas flow, vacuum or force metrology.",
       "observed_cues": [
         "The installed workstation has a front-opening rectangular metal chamber with a thick left-hinged door and circular viewport. Inside, a circular copper-ringed sample stage sits below a long contact arm with a vertical pin. A monitor/keyboard is immediately right, a control box is left and supported hoses, regulator hardware and a secured gas cylinder sit behind."
       ],
       "layout_fidelity": "estimated_from_public_reference",
       "layout_revision": 1,
-      "detail_revision": 1,
+      "detail_revision": 2,
       "room": {
         "size": [
           5,
@@ -88,10 +88,10 @@
         }
       ],
       "task": {
-        "name": "Inspect an inert tribology coupon",
-        "description": "Open a representative chamber door and move a dry contact arm vertically above a retained solid disk. No surface contact experiment or environmental process is performed.",
+        "name": "Load and slide a retained tribology coupon",
+        "description": "Approach a rigid coupon with a force-limited compliant servo, observe normal contact, translate the retained specimen tangentially, and retract. Generic authored mechanics; no calibrated friction, wear or environmental science.",
         "primary_equipment": "tribology",
-        "observable": "Door angle and non-contact approach height"
+        "observable": "Measured contact normal response, loaded tangential displacement, held door and final counterface clearance"
       },
       "camera": {
         "overview": {
@@ -132,6 +132,19 @@
             1.12
           ],
           "fovy": 48
+        },
+        "contact": {
+          "position": [
+            0.35,
+            0.24,
+            1.32
+          ],
+          "target": [
+            0.12,
+            0.66,
+            1.095
+          ],
+          "fovy": 38
         }
       },
       "reserved_walkways": [
@@ -151,15 +164,14 @@
       "layout_rationale": [
         "A hollow steel chamber, outward-swinging viewport door and copper-ringed specimen stage preserve the source workstation arrangement.",
         "The left control chassis and right keyboard/monitor are supported on separate compact frames; a restrained passive cylinder and wall pipes preserve observed context.",
-        "Room boundary and access placement are estimated; the controllable dry approach fixture is an original simplification."
+        "Room boundary and access placement are estimated. The source-informed lever and collar exterior contains an explicitly authored finite-stiffness normal approach and tangential specimen slide."
       ],
       "limitations": [
         "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
         "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
         "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
-        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
-        "No heat, friction, wear, force, gas, vacuum or environmental tribology simulation.",
-        "Approach travel intentionally remains above the specimen; a completed command does not mean a scientific test succeeded."
+        "Contact stiffness, force limit, friction coefficients, travel and specimen drive are authored generic parameters, not manufacturer specifications or fitted experiments.",
+        "Measured MuJoCo contact and relative motion do not validate friction coefficients, wear, heating, gas flow, vacuum, environmental behavior or the photographed instrument calibration."
       ],
       "reference_detail_evidence": {
         "university_europe_wave7": {
@@ -185,15 +197,16 @@
           "implemented": [
             "A hollow steel chamber, outward-swinging viewport door and copper-ringed specimen stage preserve the source workstation arrangement.",
             "The left control chassis and right keyboard/monitor are supported on separate compact frames; a restrained passive cylinder and wall pipes preserve observed context.",
-            "Room boundary and access placement are estimated; the controllable dry approach fixture is an original simplification."
+            "Room boundary and access placement are estimated. The source-informed lever and collar exterior contains an explicitly authored finite-stiffness normal approach and tangential specimen slide.",
+            "Continuous stage supports, retained pads, through-door viewport, attached handle and connected passive roof loops."
           ],
           "inferred": [
             "Unobserved room boundary and doorway positions",
             "Machine internal geometry, travel and servo dynamics"
           ],
           "unresolved": [
-            "No heat, friction, wear, force, gas, vacuum or environmental tribology simulation.",
-            "Approach travel intentionally remains above the specimen; a completed command does not mean a scientific test succeeded."
+            "Contact stiffness, force limit, friction coefficients, travel and specimen drive are authored generic parameters, not manufacturer specifications or fitted experiments.",
+            "Measured MuJoCo contact and relative motion do not validate friction coefficients, wear, heating, gas flow, vacuum, environmental behavior or the photographed instrument calibration."
           ],
           "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
         }
@@ -209,13 +222,13 @@
       "source_urls": [
         "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/"
       ],
-      "reference_notes": "Two complementary official photos show a small cold working room with white insulated wall panels, a central rear freezer door, grey metal shelving, wood-topped blue-steel workbenches and a bandsaw between two benchtops. The saw sits on a lower metal stand with a guarded red guide and open upper wheel cover; storage bins and a small cart are below and beside work surfaces. Only Priorparken working room is selected. Do not mix in distinct ice storage aisles or other NBI extraction labs. Temperatures, ice phase change, cutting fracture, isotope chemistry and real handling/cutting protocols are not modeled. Room dimensions and original unpowered task fixtures remain estimates.",
+      "reference_notes": "Two complementary official photos show a small cold working room with white insulated wall panels, a central rear freezer door, grey metal shelving, wood-topped blue-steel workbenches and a bandsaw between two benchtops. The saw sits on a lower metal stand with a guarded red guide and open upper wheel cover; storage bins and a small cart are below and beside work surfaces. Only Priorparken working room is selected. Do not mix in distinct ice storage aisles or other NBI extraction labs. Temperatures, ice phase change, cutting fracture, isotope chemistry and real handling/cutting protocols are not modeled. Room dimensions and original unpowered task fixtures remain estimates. The two viewpoints are reconciled as adjacent walls: the bandsaw/long worktops remain on the north wall and the closed freezer door is on the east end wall, with a shelf and cart outside its approach. This orientation and the 5 x 4.5 x 2.9 m room are estimates, not recovered camera calibration or a survey.",
       "observed_cues": [
         "Two complementary official photos show a small cold working room with white insulated wall panels, a central rear freezer door, grey metal shelving, wood-topped blue-steel workbenches and a bandsaw between two benchtops. The saw sits on a lower metal stand with a guarded red guide and open upper wheel cover; storage bins and a small cart are below and beside work surfaces."
       ],
       "layout_fidelity": "estimated_from_public_reference",
-      "layout_revision": 1,
-      "detail_revision": 1,
+      "layout_revision": 2,
+      "detail_revision": 2,
       "room": {
         "size": [
           5,
@@ -277,8 +290,10 @@
             0
           ],
           "yaw": 0,
-          "params": {},
-          "role": "Photographed compact bandsaw bay with an original separated dry sample carriage",
+          "params": {
+            "interface_revision": 2
+          },
+          "role": "Unpowered saw with supported guard and a version 2 feed fixture aligning an unchanged-size rigid inert core to the stationary blade",
           "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
           "support": {
             "type": "floor",
@@ -287,10 +302,10 @@
         }
       ],
       "task": {
-        "name": "Inspect a retained inert ice-look core",
-        "description": "Open the unpowered wheel guard and translate a retained rigid dummy on a short dry carriage. The carrier stays away from the passive blade envelope.",
+        "name": "Register a retained inert core against an unpowered blade",
+        "description": "Close the supported guard, feed the retained rigid dummy to bounded measured contact at the stationary blade face, retract and return. No cutting, powered blade or ice science is modeled.",
         "primary_equipment": "ice_station",
-        "observable": "Guard angle and dry core-carriage position"
+        "observable": "Guard angle, core_feed_v2 position, measured contact force and actual retained-core/blade separation."
       },
       "camera": {
         "overview": {
@@ -331,6 +346,32 @@
             1.1
           ],
           "fovy": 48
+        },
+        "reference": {
+          "position": [
+            -1.7,
+            0.16,
+            1.6
+          ],
+          "target": [
+            2.37,
+            -0.2,
+            1.04
+          ],
+          "fovy": 57
+        },
+        "saw_interface": {
+          "position": [
+            0.59,
+            0.6,
+            1.19
+          ],
+          "target": [
+            0.205,
+            1.13,
+            0.96
+          ],
+          "fovy": 37
         }
       },
       "reserved_walkways": [
@@ -341,10 +382,10 @@
             -1.99
           ],
           "maximum_xy": [
-            2.13,
+            1.65,
             -0.55
           ],
-          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+          "basis": "Estimated source-room circulation, checked against authored furniture; not a surveyed egress route"
         },
         {
           "id": "central_access",
@@ -356,13 +397,28 @@
             0.69,
             0.59
           ],
-          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+          "basis": "Dry carriage operator approach, geometric screen only"
+        },
+        {
+          "id": "freezer_approach",
+          "minimum_xy": [
+            1.25,
+            -0.75
+          ],
+          "maximum_xy": [
+            2.36,
+            0.35
+          ],
+          "basis": "Clear estimated end-door approach, excluding the closed door itself; no door swing or code certification"
         }
       ],
       "layout_rationale": [
-        "White insulated panel seams, rear freezer door and blue steel/timber benches reproduce the source workroom character.",
-        "The compact saw stands on a low metal base between the two long benches; grey bins, a pedal and a separate near table reproduce observed furniture relationships.",
-        "The dry core carriage is an original interaction fixture outside the blade envelope; hidden room boundaries and door placement are estimated."
+        "The source bandsaw remains between timber worktops on blue frames; its original world frame and all three original cameras are retained.",
+        "The second view is interpreted as looking along this workbench wall toward a perpendicular end freezer wall. The door is no longer hidden behind the right bench.",
+        "A grey open shelf, separate wheeled storage cart and short end bench reproduce visible furniture relationships; dimensions and exact positions are estimated.",
+        "An authored 1.10 m-wide, 1.11 m-deep clear approach ends before the closed freezer panel. It is a geometric access witness, not an egress or door-swing certification.",
+        "The core scale and original guard control are retained. Version2 explicitly replaces the separated carriage with core_feed_v2, supported open bearings and an aligned stationary-blade contact interface; no powered cutting or refrigeration is modeled.",
+        "The version2 unpowered saw interface aligns a retained inert core with a thin blade and uses real table/carrier kerfs. The previous separated Y carriage is explicitly retired in the active scene; legacy interface_revision=1 remains available. This fixture is authored, not manufacturer CAD."
       ],
       "limitations": [
         "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
@@ -370,7 +426,10 @@
         "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
         "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
         "No powered cutting, blade dynamics, fracture, temperature, melting, refrigeration or geochemical analysis.",
-        "Rigid translucent sample is an inert visual proxy; guard motion is not a validated machine operating sequence."
+        "Rigid translucent sample is an inert visual proxy; guard motion is not a validated machine operating sequence.",
+        "The freezer is a closed static exterior panel; its access approach is checked but no door motion or cold-room operation is simulated.",
+        "Sleeve clearances and rail mounts are authored mechanical repairs, not observed OEM internals; ideal joints provide support without bearing preload/stiffness modeling.",
+        "The original close camera crops the upper housing. The guard now has a supported pin and open knuckles; all hinge dimensions and the unpowered lower drive remain authored estimates."
       ],
       "reference_detail_evidence": {
         "university_europe_wave7": {
@@ -396,7 +455,7 @@
           "implemented": [
             "White insulated panel seams, rear freezer door and blue steel/timber benches reproduce the source workroom character.",
             "The compact saw stands on a low metal base between the two long benches; grey bins, a pedal and a separate near table reproduce observed furniture relationships.",
-            "The dry core carriage is an original interaction fixture outside the blade envelope; hidden room boundaries and door placement are estimated."
+            "The version2 core fixture reaches the stationary blade through open table/carrier kerfs; hidden room boundaries, guide dimensions and servo/contact parameters remain authored estimates."
           ],
           "inferred": [
             "Unobserved room boundary and doorway positions",
@@ -407,7 +466,99 @@
             "Rigid translucent sample is an inert visual proxy; guard motion is not a validated machine operating sequence."
           ],
           "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        },
+        "copenhagen_guide_access": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/copenhagen_work.jpg",
+              "sha256": "a36cf78ff518920a32f001648143cf44db46bbed6864b36ec031ba098d9e47a8",
+              "page": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/",
+              "image_url": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/slideshow/slideshow4.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_03_media/copenhagen_work2.jpg",
+              "sha256": "c5177de3d3f96bf41319420a68059bf09b8df69425c3f75e1f07085fdfbe8601",
+              "page": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/",
+              "image_url": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/slideshow/slideshow5.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Adjacent views of bandsaw between blue timber benches and an end freezer door beside grey shelving, cart and a short bench"
+          ],
+          "implemented": [
+            "The source bandsaw remains between timber worktops on blue frames; its original world frame and all three original cameras are retained.",
+            "The second view is interpreted as looking along this workbench wall toward a perpendicular end freezer wall. The door is no longer hidden behind the right bench.",
+            "A grey open shelf, separate wheeled storage cart and short end bench reproduce visible furniture relationships; dimensions and exact positions are estimated.",
+            "An authored 1.10 m-wide, 1.11 m-deep clear approach ends before the closed freezer panel. It is a geometric access witness, not an egress or door-swing certification.",
+            "The core scale and original guard control are retained. Version2 explicitly replaces the separated carriage with core_feed_v2, supported open bearings and an aligned stationary-blade contact interface; no powered cutting or refrigeration is modeled.",
+            "An additional reference view looks along the saw/bench wall toward the end door, corresponding qualitatively to slideshow4.jpg. Its camera pose is estimated; all three original views are unchanged."
+          ],
+          "inferred": [
+            "5 x 4.5 x 2.9 m room, adjoining-wall interpretation and furniture placement",
+            "Open carriage sleeves with 0.6 mm radial running gap, fixed rail end supports and plate crown blocks"
+          ],
+          "unresolved": [
+            "No measured room plan, OEM bearing geometry, powered cutting, thermal behavior or validated operator procedure",
+            "Original close camera cropping and unpowered lower drive remain; the supported hinge is authored, not measured OEM hardware."
+          ],
+          "fidelity": "Source-constrained room relationships and authored dry mechanical guide repair; not a complete twin"
+        },
+        "copenhagen_saw_interface_v2": {
+          "observed": [
+            "A thin vertical blade below a red guide and an upper wheel cover opening to the left are visible in the official saw photograph."
+          ],
+          "implemented": [
+            "Supported pin, fixed L leaves and genuinely open guard knuckles; attached handle and braces.",
+            "Version2 feed aligns the unchanged132mm-long,68mm-diameter retained inert core with a stationary0.8mm-thick blade surrogate through open table/carrier kerfs."
+          ],
+          "authored": [
+            "All hidden hinge/rail dimensions, blade thickness, feed fixture, gains, contact response and force limits; no OEM measurements."
+          ],
+          "unresolved": [
+            "Blade drive and continuous band routing, cutting/fracture, ice properties, refrigeration and scientific measurement."
+          ]
+        },
+        "copenhagen_passive_source_context_v1": {
+          "observed": [
+            "Official workroom and saw photographs show a dark transverse motor exterior below the saw table, a pale lower cover parked open, controls on the upper front case and top housing, coiled leads below the stand and right bench, and wall-mounted electrical boxes with surface conduit."
+          ],
+          "implemented": [
+            "Fixed contact-enabled motor casing, ribs and supported mount; supported lower cover parked open with static hinge, braces and latch.",
+            "Supported selector, stop-plate backing, simple label marks and top adjuster; the original controls, blade and sample carriage are unchanged.",
+            "Coiled parked lead supported by the existing lower shelf, right-bench blue service box on a bracket, floor-supported slack lead, wall socket, upper switch box and supported conduit."
+          ],
+          "estimated": [
+            "All dimensions, concealed mounts, cable routing, lower-cover parked angle, control labels/identities and service functions.",
+            "Local exterior silhouettes reproduce the photographed apparatus without reproducing unseen OEM drive or electrical internals."
+          ],
+          "scope": [
+            "All new details are fixed exterior context; no new active controls, powered band, electrical process, cutting/fracture, refrigeration or scientific measurement.",
+            "Existing version-2 inert-core registration and guard/feed controls retain their geometry, ranges, mass properties and gains."
+          ],
+          "evidence_directory": "temp/university/optimization_120_20261004/acceptance_20261007/batch01/source_closure/copenhagen"
         }
+      },
+      "mechanical_interface_migration": {
+        "version": 2,
+        "legacy_parameter": {
+          "interface_revision": 1
+        },
+        "retired_active_control": "inert_core_carriage",
+        "replacement_control": "core_feed_v2",
+        "no_automatic_coordinate_mapping": true,
+        "reason": "Original core/blade X alignment made contact unreachable by Y-only travel. Version 2 changes the feed frame and range while preserving core scale and servo mass/gains/force limits."
+      },
+      "mechanical_operation": {
+        "api": "real_labs.copenhagen_saw_motion.register_copenhagen_core",
+        "interface_revision": 2,
+        "scope": "Retained inert dummy registration against a stationary blade; no cutting or scientific calibration",
+        "nominal_contact_feed_m": 0.151,
+        "maximum_servo_command_m": 0.152,
+        "force_limit_N": 1.0,
+        "unintended_clearance_m": 0.00025,
+        "allowed_contact_penetration_m": 0.0001
       }
     },
     {

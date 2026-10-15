@@ -1,6 +1,5 @@
 """CPU articulation and sampled collision checks for the licensed Gen3 substitute."""
 
-from itertools import product
 from pathlib import Path
 import sys
 import unittest
@@ -16,6 +15,8 @@ from real_labs import university_extensions
 from real_labs.builder import build_scene
 from real_labs.catalog import scene
 from real_labs.layout_audit import audit_layout
+from real_labs.motion import JointMotion
+from real_labs.manchester_operations import OperationRequired
 from real_labs.runtime import InstrumentSession
 
 
@@ -55,61 +56,59 @@ class UniversityRoboticsWave1GeometryTests(unittest.TestCase):
             finally:
                 university_extensions.instrument_specs.cache_clear()
 
-    def test_axes_reach_three_targets_in_both_directions(self):
+    def test_private_axis_response_and_public_operation_interlock(self):
+        # Private servo diagnostics retain both signs and original targets.
+        # Public requests need the separate collision-checked inspection route.
         for identifier in SCENES:
             session = make_session(identifier)
-            self.assertGreaterEqual(len(session.controls), 2)
+            self.assertEqual(len(session.controls), 7)
             np.testing.assert_allclose(session.model.opt.gravity, [0, 0, -9.81])
             for key, control in session.controls.items():
-                span = control.upper - control.lower
-                for fraction in (0.15, 0.85, 0.25):
-                    result = session.command(
-                        *key, control.lower + fraction * span, duration=2
-                    )
+                for target in (0.04, -0.04, 0.02):
+                    state = mujoco.mjtState.mjSTATE_INTEGRATION
+                    before = np.empty(mujoco.mj_stateSize(session.model, state))
+                    mujoco.mj_getState(session.model, session.data, before, state)
+                    with self.assertRaises(OperationRequired):
+                        session.command(*key, target, duration=2)
+                    after = np.empty_like(before)
+                    mujoco.mj_getState(session.model, session.data, after, state)
+                    np.testing.assert_array_equal(after, before)
+                    result = session._command_unchecked(*key, target, duration=2)
                     self.assertLessEqual(
-                        abs(result["error"]),
-                        max(1e-6, span * 0.025),
-                        (identifier, result),
+                        abs(result["error"]), 0.003, (identifier, result)
                     )
                 session.reset()
 
-    def test_full_stroke_grid_and_individual_sweeps_do_not_penetrate(self):
+    def test_source_range_sweeps_retain_obstacles_requiring_motion_planning(self):
         for identifier in SCENES:
             session = make_session(identifier)
-            controls = list(session.controls.values())
-            # Combined interior poses catch interactions that endpoint-only checks miss.
-            # Seven-joint corners plus pairwise grids and full individual strokes.
-            # This is a sampled collision check, not a continuous workspace proof.
-            poses = list(product(*[(c.lower, c.upper) for c in controls]))
-            for first in range(len(controls)):
-                for second in range(first + 1, len(controls)):
-                    for a, b in product(
-                        np.linspace(controls[first].lower, controls[first].upper, 5),
-                        np.linspace(controls[second].lower, controls[second].upper, 5),
-                    ):
-                        pose = [0.0] * len(controls)
-                        pose[first], pose[second] = a, b
-                        poses.append(pose)
-            for axis, control in enumerate(controls):
-                for value in np.linspace(control.lower, control.upper, 21):
-                    pose = [0.0] * len(controls)
+            motion = JointMotion(
+                session,
+                "collaborative_arm",
+                tuple(f"joint_{index}_offset" for index in range(1, 8)),
+            )
+            self.assertFalse(motion.configuration_contacts(motion.measured()))
+            blocked, clear = [], 0
+            for axis in range(7):
+                for value in np.linspace(motion.lower[axis], motion.upper[axis], 21):
+                    pose = motion.measured()
                     pose[axis] = value
-                    poses.append(pose)
-            for pose in poses:
-                session.reset()
-                for control, value in zip(controls, pose):
-                    session.data.qpos[session.model.jnt_qposadr[control.joint]] = value
-                mujoco.mj_forward(session.model, session.data)
-                penetration = [
-                    (
-                        session.model.geom(contact.geom1).name,
-                        session.model.geom(contact.geom2).name,
-                        float(contact.dist),
-                    )
-                    for contact in session.data.contact
-                    if contact.dist < -0.0001
-                ]
-                self.assertEqual(penetration, [], (identifier, pose, penetration))
+                    contacts = motion.configuration_contacts(pose)
+                    if contacts:
+                        blocked.extend(contacts)
+                    else:
+                        clear += 1
+            self.assertGreater(clear, 0)
+            self.assertTrue(any("robot_table_top" in row["geoms"] for row in blocked))
+            self.assertTrue(
+                any(
+                    any("gen3_collision" in name for name in row["geoms"])
+                    for row in blocked
+                )
+            )
+            # Private screening must not teleport or advance the live model.
+            np.testing.assert_array_equal(session.data.qpos, session.model.qpos0)
+            self.assertEqual(session.data.time, 0)
 
     def test_clamped_sites_have_visible_same_body_specimens(self):
         for identifier in SCENES:

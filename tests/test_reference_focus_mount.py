@@ -54,11 +54,17 @@ class ReferenceFocusMountTests(unittest.TestCase):
                 mujoco.mj_kinematics(model, data)
                 cap = model.geom("focus_mount_carrier_cap")
                 cap_top = data.geom_xpos[cap.id, 2]+cap.size[2]
-                self.assertAlmostEqual(float(self.shape(task, "nosepiece").vertices[:, 2].min()),
-                                       float(cap_top), delta=2e-9)
+                spindle = model.geom("focus_mount_spindle")
+                self.assertAlmostEqual(data.geom_xpos[spindle.id, 2]-spindle.size[1], cap_top, delta=2e-9)
+                hub = self.shape(task, "focus_mount_hub")
+                spindle_top = data.geom_xpos[spindle.id, 2]+spindle.size[1]
+                self.assertGreater(spindle_top, hub.bounds[0, 2])
+                self.assertLess(spindle_top, hub.bounds[1, 2])
+                np.testing.assert_allclose(data.geom_xpos[spindle.id, :2], hub.bounds[:, :2].mean(axis=0), atol=2e-9)
+                self.assertGreater(float(self.shape(task, "nosepiece").vertices[:, 2].min()), cap_top)
                 moving = model.geom("focus_mount_moving_outline")
-                self.assertAlmostEqual(float(data.geom_xpos[moving.id, 2]+moving.size[2]),
-                                       float(data.geom_xpos[cap.id, 2]-cap.size[2]), delta=2e-9)
+                self.assertAlmostEqual(float(data.geom_xpos[moving.id, 2]-moving.size[2]),
+                                       float(cap_top), delta=2e-9)
                 self.assertGreater(data.geom_xpos[moving.id, 2]-moving.size[2]
                                    -mount["stand_attachment_plane_world_z_m"], 0)
                 np.testing.assert_allclose(data.geom_xpos[model.geom("focus_mount_fixed_outline").id], fixed)
@@ -73,19 +79,19 @@ class ReferenceFocusMountTests(unittest.TestCase):
             self.assertTrue(shape.is_watertight, name)
             self.assertTrue(shape.is_winding_consistent, name)
             self.assertGreater(shape.volume, 0, name)
-        mount = asset_evidence(task.model)["objective"]["focus_mount"]
-        hole_area = 48*np.sin(2*np.pi/48)/2*.00145**2
-        height = mount["nosepiece_attachment_plane_world_z_m"]-.002-mount["stand_attachment_plane_world_z_m"]
-        expected = (.052*height-4*hole_area)*.0075
-        self.assertAlmostEqual(self.shape(task, "focus_mount_backplate").volume/expected, 1, delta=1e-6)
+        for name, width, height, thickness, radius in (
+                ("focus_mount_backplate", .050, .052, .008, .0017),
+                ("focus_mount_carrier_web", .032, .042, .002, .0011)):
+            hole_area = 48*np.sin(2*np.pi/48)/2*radius**2
+            expected = (width*height-4*hole_area)*thickness
+            self.assertAlmostEqual(self.shape(task, name).volume/expected, 1, delta=1e-6)
 
     @unittest.skipUnless((CAD_ROOT/"independent-q545-mounting/manifest.json").is_file(),
                          "Optional independent focus CAD fixture")
-    def test_cad_carriage_moves_with_encoder_and_keeps_the_fixed_reference_stationary(self):
+    def test_cad_asset_profile_keeps_the_original_focus_support_and_encoder_ownership(self):
         task = self.task(assets="cad")
         model, data = task.model, task.data
-        parts = {role: next(model.geom(i) for i in range(model.ngeom)
-                           if model.geom(i).name.startswith(f"focus_mount_{role}_cad_"))
+        parts = {role: model.geom(f"focus_mount_{role}_outline")
                  for role in ("fixed", "moving")}
         before = {role: data.geom_xpos[part.id].copy() for role, part in parts.items()}
         task.command({"focus": 20e-6}, .2)
@@ -94,7 +100,9 @@ class ReferenceFocusMountTests(unittest.TestCase):
         np.testing.assert_allclose(data.geom_xpos[parts["moving"].id]-before["moving"], [0, 0, actual], atol=1e-9)
         np.testing.assert_allclose(data.geom_xpos[parts["fixed"].id], before["fixed"], atol=1e-9)
         evidence = asset_evidence(model)["objective"]["focus_mount"]
-        self.assertTrue(evidence["source_sha256"])
+        self.assertEqual(evidence["profile"], "original-inclined-carousel-focus-support")
+        self.assertIsNone(evidence["source_sha256"])
+        self.assertFalse(evidence["official_cad"])
         self.assertFalse(evidence["one_to_one_verified"])
 
 

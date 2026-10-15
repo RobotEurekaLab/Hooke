@@ -28,7 +28,12 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
 
 真实并联 CAD 的下载、保存快照转换和许可见[准备说明](microscopy_parallel.md)。没有转换网格时，去掉上述资产、镜体、载物台、光学和并联机构选择变量，以默认参数化模型运行。Isaac 需要已有的本地安装；可用 `HOOKE_ISAAC_PATH` 指定目录。安装路径及权限以运行网页后端的 Linux 账号为准，其他账号部署见[运行说明](isaac_operations.md#其他账号与服务器部署)。
 
-本机当前服务使用 `reference` 载物台、`parallel-v4` 真实机构和 `parallel_v4_production_v1/` 媒体。
+The local service now selects `sutter-mp285-reference`, the TE2000-S reference
+stand and the `reference` stage. See the
+[Sutter workstation guide](microscopy_sutter_reference.md) for configuration,
+source drawings and estimated interfaces. Historical media remains in the
+existing `parallel_v4_production_v1/` directory; its folder name does not
+select the live asset profile.
 五类流程在 MuJoCo、Isaac 各通过 49 项判据；二十个 MP4／WebM 均来自
 当前流程，完整解码和分段读取核验通过，十个 WebM 实际播放通过。局域网入口为
 [显微实验平台](http://10.5.174.93:8084/microscopy?experiment=suction_injection)。
@@ -136,10 +141,13 @@ PhysX 运行器械关节与刚体接触；细胞膜、吸持、示踪和液体�
 
 ## 大离焦图像计算
 
-细胞图像仍采用未生物标定的独立平面高斯离焦模型。大核 float64、零填充
-卷积使用相同采样与截断范围的 FFT 算法，保留正常浮点舍入；小核、其他
-数据类型、非零边界和非有限输入继续使用 SciPy 直接实现。缓存仍按完整
-输入与参数取键，载荷上限保持 64 MiB，不量化焦点、坐标或剂量。
+The current image model combines an estimated cell focal slab with defocused
+projected light and depth-dependent pipette blur; see
+[cell-image formation](microscopy_imaging.md). The shared Gaussian helper uses
+FFT convolution for large float64 kernels with zero boundaries and preserves
+the sampled kernel and truncation. Other inputs use SciPy's direct filter.
+Cache keys retain complete inputs and parameters within a 64 MiB payload
+budget, without quantizing focus, positions or dose.
 
 `focus_mount_v1/blur-image-equivalence/summary.json` 的三个独立模型状态
 （0／4／100 µm 离焦）完整 RGB 逐像素一致；100 µm 状态的一次冷图像

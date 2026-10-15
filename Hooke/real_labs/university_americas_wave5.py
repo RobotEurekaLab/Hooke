@@ -56,21 +56,24 @@ def _brown(b, base, params):
                 ),
                 "test_side",
             )
-            for z in (0.835, 1.965):
+            # Source doors have narrow vertical lights beside a broad lower
+            # viewing pane and a separate small upper light, not one full-bay
+            # transparent aperture. These backed fields stay outside the clear
+            # test section; pane proportions remain photo-informed estimates.
+            fields = [(a, c, .8, 2.) for a, c in
+                      ((-.5, -.40), (-.25, -.15), (.28, .36), (.42, .5))]
+            fields += [(-.40, -.25, .8, 1.02), (-.40, -.25, 1.84, 2.),
+                       (-.15, .28, .8, 1.08), (-.15, .28, 1.65, 1.74),
+                       (-.15, .28, 1.86, 2.), (.36, .42, .8, 1.07),
+                       (.36, .42, 1.80, 2.)]
+            for left, right, low, high in fields:
                 b.box(
                     base,
-                    (x, y + sign * 0.017, z),
-                    (0.5, 0.025, 0.035),
+                    (x + (left + right) / 2, y + sign * .017, (low + high) / 2),
+                    ((right - left) / 2, .025, (high - low) / 2),
                     "dark",
                     collision=True,
-                )
-            for dx in (-0.46, 0.46):
-                b.box(
-                    base,
-                    (x + dx, y + sign * 0.017, 1.40),
-                    (0.040, 0.025, 0.53),
-                    "dark",
-                    collision=True,
+                    name=b.unique("brown_opaque_window_field"),
                 )
             for z in (1.02, 1.78):
                 b.box(
@@ -97,44 +100,10 @@ def _brown(b, base, params):
             b.box(base, (x, y, 1.4), (0.13, 0.07, 0.70), "dark", collision=True)
         for z in (0.71, 2.09):
             b.box(base, (x, 0, z), (0.13, 0.63, 0.07), "dark", collision=True)
-    # Documented pitch-yaw positioning, reconstructed with inferred internals.
-    b.box(base, (0, 0, 0.83), (0.15, 0.15, 0.03), "metal", collision=True)
-    b.cylinder(base, (0, 0, 1.065), 0.033, 0.205, "bright", collision=True)
-    b.cylinder(base, (0, 0, 1.295), 0.080, 0.025, "dark")
-    yaw = b.moving(
-        base,
-        "model_yaw",
-        (0, 0, 1.345),
-        (0, 0, 1),
-        (-0.45, 0.45),
-        kind="hinge",
-        mass=0.20,
-        kp=160,
-    )
-    b.cylinder(yaw, (0, 0, 0), 0.078, 0.025, "metal", collision=True)
-    for y in (-0.087, 0.087):
-        b.box(yaw, (0, y, 0.065), (0.06, 0.016, 0.04), "dark", collision=True)
-    pitch = b.moving(
-        yaw,
-        "model_pitch",
-        (0, 0, 0.100),
-        (0, 1, 0),
-        (-0.32, 0.32),
-        kind="hinge",
-        mass=0.08,
-        kp=100,
-    )
-    b.cylinder(pitch, (0, 0, 0), 0.012, 0.10, "bright", euler=(math.pi / 2, 0, 0))
-    b.geom(
-        pitch,
-        "ellipsoid",
-        (0.28, 0.055, 0.014),
-        (0, 0, 0.040),
-        "orange",
-        collision=True,
-    )
-    b.box(pitch, (0, 0, 0.020), (0.025, 0.025, 0.020), "metal", collision=True)
-    b.site(pitch, "aerodynamic_coupon", (0, 0, 0.055))
+    # Documented function; supported open interfaces remain authored internals.
+    from real_labs.brown_pitch_geometry import add_positioner
+
+    add_positioner(b, base)
     # Nearby instrument rack from the room photograph, with continuous feet.
     for x in (2.65, 3.10):
         for y in (0.75, 1.20):
@@ -364,109 +333,21 @@ FEATURES["ubc_hassan_legoflume"] = _ubc_features
 
 
 def _boston_sem(b, base, params):
-    for x in (-0.36, 0.36):
-        for y in (-0.31, 0.31):
-            b.box(base, (x, y, 0.025), (0.07, 0.07, 0.025), "rubber", collision=True)
-    b.box(base, (0, 0, 0.39), (0.43, 0.38, 0.34), "cream", collision=True)
-    b.box(base, (0, 0, 0.755), (0.48, 0.43, 0.025), "dark", collision=True)
-    b.housing(
-        base,
-        [
-            (0.78, 0.24, 0.27, 0),
-            (0.86, 0.31, 0.30, 0),
-            (1.17, 0.31, 0.30, 0),
-            (1.31, 0.19, 0.20, 0.02),
-        ],
-        radius=0.04,
-        material="cream",
-    )
-    # Collidable rear and sides keep a genuine open access region at the front.
-    b.box(base, (0, 0.22, 1.045), (0.25, 0.06, 0.25), "metal", collision=True)
-    for x in (-0.275, 0.275):
-        b.box(base, (x, 0, 1.045), (0.035, 0.23, 0.25), "cream", collision=True)
-    b.cylinder(base, (0, 0.025, 1.625), 0.235, 0.315, "cream", collision=True)
-    b.box(base, (0.10, -0.222, 1.64), (0.205, 0.025, 0.315), "dark", collision=True)
-    for i in range(18):
-        for j in range(2):
-            b.box(
-                base,
-                (-0.065 + j * 0.18, -0.251, 1.355 + i * 0.032),
-                (0.074, 0.003, 0.007),
-                "metal",
-                rgba=(0.21, 0.23, 0.23, 1),
-            )
-    for i in range(18):
-        a = math.pi * i / 18
-        c = math.pi * (i + 1) / 18
-        b.rod(
-            base,
-            (0.18 * math.cos(a), 0.02, 1.94 + 0.18 * math.sin(a)),
-            (0.18 * math.cos(c), 0.02, 1.94 + 0.18 * math.sin(c)),
-            0.018,
-            "dark",
+    if params.get("mechanical_revision", 3) != 3:
+        raise ValueError(
+            "Boston SEM revision 3 requires explicit seven-axis actions; prior revisions are retired"
         )
-    b.geom(
-        base,
-        "capsule",
-        (0.06,),
-        material="metal",
-        collision=True,
-        fromto=(-0.27, 0.07, 1.18, -0.47, 0.07, 1.34),
-    )
-    b.box(
-        base,
-        (-0.51, 0.07, 1.40),
-        (0.14, 0.10, 0.075),
-        "cream",
-        collision=True,
-        euler=(0, -0.65, 0),
-    )
-    for x in (-0.20, 0.20):
-        b.cylinder(
-            base,
-            (x, -0.32, 1.17),
-            0.040,
-            0.022,
-            "bright",
-            euler=(math.pi / 2, 0, 0),
-            collision=True,
-        )
-        b.cylinder(
-            base, (x, -0.346, 1.17), 0.022, 0.006, "dark", euler=(math.pi / 2, 0, 0)
-        )
-    # Open inspection cassette is deliberately a visible dry surrogate.
-    b.box(base, (0, -0.58, 0.79), (0.25, 0.33, 0.04), "metal", collision=True)
-    for x in (-0.14, 0.14):
-        _tag(
-            b,
-            b.box(base, (x, -0.60, 0.842), (0.012, 0.31, 0.012), "bright"),
-            "sem_drawer_guide",
-        )
-    drawer = b.moving(
-        base,
-        "specimen_exchange",
-        (0, -0.62, 0.871),
-        (0, -1, 0),
-        (0, 0.16),
-        mass=0.22,
-        kp=360,
-    )
-    b.box(drawer, (0, 0, 0), (0.19, 0.18, 0.017), "dark", collision=True)
-    b.cylinder(drawer, (0, 0, 0.030), 0.07, 0.013, "metal")
-    stage = b.moving(
-        drawer,
-        "specimen_azimuth",
-        (0, 0, 0.055),
-        (0, 0, 1),
-        (-1.2, 1.2),
-        kind="hinge",
-        mass=0.05,
-        kp=80,
-    )
-    b.cylinder(stage, (0, 0, 0), 0.065, 0.012, "metal", collision=True)
-    b.cylinder(stage, (0, 0, 0.018), 0.015, 0.006, "orange", collision=True)
-    b.box(stage, (0.004, 0, 0.025), (0.0015, 0.011, 0.001), "dark")
-    b.site(stage, "sem_stub", (0, 0, 0.027))
+    from real_labs.boston_sem_compact_geometry import build_compact
+
+    build_compact(b, base)
+    exterior_revision = params.get("exterior_revision", 0)
+    if exterior_revision == 1:
+        from real_labs.boston_sem_exterior import add_exterior
+
+        add_exterior(b.root, base, b.name + "_exterior")
+    elif exterior_revision != 0:
+        raise ValueError("Unknown Boston SEM exterior revision")
+    b.metadata["exterior_revision"] = exterior_revision
     # Adjacent desk supports the source-specific three-monitor curved console.
     for x in (0.58, 2.05):
         for y in (-0.68, 0.10):
@@ -485,36 +366,66 @@ def _boston_sem(b, base, params):
         radius=0.10,
         material="cream",
     )
+    # Contact support beneath the original curved visual console; controls are parked exteriors.
+    b.box(
+        console,
+        (0, 0.015, 0.025),
+        (0.39, 0.15, 0.025),
+        "cream",
+        collision=True,
+        name=b.name + "__console_support",
+    )
     b.box(console, (0, -0.018, 0.052), (0.25, 0.073, 0.010), "dark")
     for x in (-0.34, 0.34):
         b.cylinder(console, (x, -0.02, 0.068), 0.050, 0.018, "dark", collision=True)
     for x in (-0.30, -0.18, -0.06, 0.06, 0.18, 0.30):
         b.cylinder(console, (x, 0.10, 0.065), 0.015, 0.018, "dark", collision=True)
-    b.metadata["capabilities"] = [
-        "open dry SEM specimen exchange",
-        "inert stub azimuth indexing",
-    ]
-    b.metadata["limitations"].append(
-        "Photo-informed Zeiss-family SEM exterior; exact model suffix and hidden specimen mechanics unverified. Open cassette geometry is authored for dry inspection. No electron optics, vacuum, imaging, X-ray spectrum or sample response solver."
-    )
+
+    observation_revision = params.get("chamber_observation_revision", 0)
+    if observation_revision == 1:
+        from real_labs.boston_sem_observation import add_chamber_observation
+
+        b.metadata["chamber_observation"] = add_chamber_observation(b, base)
+    elif observation_revision != 0:
+        raise ValueError("Unknown Boston chamber observation revision")
+
+    context_revision = params.get("source_context_revision", 0)
+    if context_revision == 1:
+        from real_labs.boston_source_context import add_source_context
+
+        b.metadata["source_context"] = add_source_context(
+            b.root, base, console, b.name + "_source"
+        )
+    elif context_revision != 0:
+        raise ValueError("Unknown Boston source context revision")
 
 
 BUILDERS["boston_pml_sem_inspection"] = _boston_sem
 SOURCES["boston_pml_sem_inspection"] = {
     "reference": "BU Photonics PML official installed SEM and operator-console photograph",
     "url": BOSTON,
-    "dimensions_m": [2.88, 1.36, 2.12],
-    "dimension_basis": "All casing, console, sample and control dimensions estimated; model suffix and hidden exchange mechanism unresolved.",
+    "dimensions_m": [2.88, 1.40, 2.12],
+    "dimension_basis": "Family specification supports 330 x 270 mm chamber and stage envelopes; cabinet, console, hidden telescopes and installed BU model suffix remain estimated.",
 }
 SAMPLE_INTERFACES["boston_pml_sem_inspection"] = (
-    "sem_stub",
+    "stub_surface",
     (0.030, 0.030, 0.012),
     "clamped",
-    "inert specimen stub on the open inspection cassette",
+    "inert retained specimen stub on the door-carried dry stage",
 )
 
 
 def _chicago_optical(b, base, params):
+    revision = params.get("enclosure_revision", 1)
+    if revision == 2:
+        from real_labs.chicago_bay_context import add_context
+        from real_labs.chicago_enclosure_geometry import build_enclosure
+
+        build_enclosure(b, base)
+        add_context(b)
+        return
+    if revision != 1:
+        raise ValueError("Unknown Chicago enclosure revision")
     for x in (-1.02, 1.02):
         for y in (-0.64, 0.64):
             b.cylinder(base, (x, y, 0.03), 0.20, 0.03, "rubber", collision=True)
@@ -667,15 +578,21 @@ def _chicago_features(world, definition):
         (0.30, 1.65, 2.89),
         (0.28, 0.29, 0.28, 1),
     )
-    for i in range(40):
-        box(
-            world,
-            f"chicago_black_curtain_{i}",
-            (0.052, 0.022, 1.30),
-            (-1.62 + i * 0.098, 1.65 + 0.013 * math.sin(i), 1.56),
-            (0.065, 0.068, 0.07, 1),
-            collision=False,
-        )
+    revision = next(
+        item
+        for item in definition["equipment"]
+        if item["id"] == "covered_optical_table"
+    )["params"].get("enclosure_revision", 1)
+    if revision == 1:
+        for i in range(40):
+            box(
+                world,
+                f"chicago_black_curtain_{i}",
+                (0.052, 0.022, 1.30),
+                (-1.62 + i * 0.098, 1.65 + 0.013 * math.sin(i), 1.56),
+                (0.065, 0.068, 0.07, 1),
+                collision=False,
+            )
     for x in (-2.50, -1.78):
         box(
             world,

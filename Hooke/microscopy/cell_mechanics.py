@@ -1,16 +1,32 @@
 """Reduced, uncalibrated membrane interaction and conservative picolitre flow."""
 
+from collections import deque
 from dataclasses import asdict, dataclass
 import math
 
 import numpy as np
 
 from liquid_transfer import VolumeLedger, VolumeState
-from microscopy.cell_scene import CELL_RADII, NEEDLE_BACK, NUCLEAR_RADII
+from microscopy.cell_scene import CELL_RADII, NUCLEAR_RADII
 from microscopy.pipettes import INJECTION_PROFILE
 from microscopy.scene import ORIGIN
 from microscopy.kinematics import tool_axes
 from simulation import System
+
+
+_INTERACTION_DTYPE = np.dtype([
+    ("time_s", "f8"), ("tip_world_m", "f8", (3,)),
+    ("cell_world_m", "f8", (3,)), ("contact_cell_world_m", "f8", (3,)),
+    ("normalized_distance", "f8"), ("penetration_m", "f8"),
+    ("indentation_m", "f8"), ("force_n", "f8"), ("focus_plane_z_m", "f8"),
+    ("command_pressure_pa", "f8"), ("actual_pressure_pa", "f8"),
+    ("compensation_pa", "f8"), ("delivered_m3", "f8"),
+    ("inside", "?"), ("punctured", "?"), ("withdrawn", "?"),
+    ("holding_active", "?"), ("holding_sealed", "?"),
+    ("holding_tip_world_m", "f8", (3,)),
+    ("holding_pressure_pa", "f8"), ("holding_force_n", "f8"),
+    ("holding_capacity_n", "f8"),
+])
 
 
 @dataclass(frozen=True)
@@ -48,7 +64,10 @@ class CellMechanics(System):
         self.axis_dofs = tool_dofs(model, "injector")
         self.axis_directions = tool_axes(model, "injector")
         self.stage_dofs = [model.joint("stage_"+axis).dofadr[0] for axis in "xy"]
-        self.ray_radius_m = 1 / np.linalg.norm(NEEDLE_BACK / self.cell_radii)
+        from microscopy.pipette_geometry import installed_geometry
+        self.pipette_geometry = installed_geometry(model, "injector")
+        self.needle_back = np.asarray(self.pipette_geometry.tip_back)
+        self.ray_radius_m = 1 / np.linalg.norm(self.needle_back / self.cell_radii)
         self.resistance_pa_s_m3 = INJECTION_PROFILE.resistance(self.parameters.viscosity_pa_s)
         self.cell_volume_m3 = 4/3*np.pi*np.prod(self.cell_radii)
 
@@ -61,6 +80,9 @@ class CellMechanics(System):
         data.qfrc_applied[self.stage_dofs] = -reaction[:2]
 
     def _reset(self, data):
+        # Keep manual sessions bounded; ordinary 45 s episodes fit completely.
+        self._interaction_rows = deque(maxlen=100_000)
+        self._interaction_steps = 0
         self.ledger = VolumeLedger({"supply": VolumeState(100e-15, 100e-15),
                                    "cell": VolumeState(0., self.cell_volume_m3*.15),
                                    "environment": VolumeState(0., None)})
@@ -75,15 +97,24 @@ class CellMechanics(System):
         data.qfrc_applied[self.axis_dofs] = 0.
         data.qfrc_applied[self.stage_dofs] = 0.
 
+    def update(self, data):
+        previous_time = self.last_time_s
+        super().update(data)
+        if float(data.time) > previous_time:
+            self._record_interaction(data)
+
     def _update(self, data):
         dt = float(data.time)-self.last_time_s
         if dt <= 0:
             return
         self.last_time_s = float(data.time)
         p = self.parameters
-        offset = data.site_xpos[self.tip]-self.centre_position(data)
+        self._contact_cell_world_m = self.centre_position(data).copy()
+        offset = data.site_xpos[self.tip]-self._contact_cell_world_m
         normalized = float(np.linalg.norm(offset / self.cell_radii))
         depth = max(0., (1-normalized)*self.ray_radius_m)
+        self._contact_normalized_distance = normalized
+        self._contact_penetration_m = depth
         self.inside = bool(normalized < 1)
         self.indentation_m += (depth-self.indentation_m) * (-math.expm1(-dt/p.relaxation_s))
         self.maximum_indentation_m = max(self.maximum_indentation_m, self.indentation_m)
@@ -129,10 +160,47 @@ class CellMechanics(System):
         elif not quota_closed:
             self.ledger.transfer("supply", "environment", average_pressure*dt/self.resistance_pa_s_m3)
 
+    def _record_interaction(self, data):
+        """Observe the completed reduced-model tick without changing dynamics."""
+        focus = float(data.qpos[self.model.joint("focus").qposadr[0]])
+        holding = hasattr(self, "holder_tip")
+        self._interaction_rows.append((
+            float(data.time), tuple(data.site_xpos[self.tip]),
+            tuple(self.centre_position(data)), tuple(self._contact_cell_world_m),
+            self._contact_normalized_distance, self._contact_penetration_m,
+            self.indentation_m, self.force_n, ORIGIN[2]+self.optical_reference_height_m+focus,
+            float(data.userdata[0]), self.actual_pressure_pa, self.compensation_pa,
+            self.ledger.state("cell").volume_m3, self.inside, self.punctured, self.withdrawn,
+            holding, bool(getattr(self, "sealed", False)),
+            tuple(data.site_xpos[self.holder_tip]) if holding else (0., 0., 0.),
+            float(getattr(self, "actual_holding_pressure_pa", 0.)),
+            float(np.linalg.norm(getattr(self, "holding_force_n", 0.))),
+            float(getattr(self, "holding_capacity_n", 0.)),
+        ))
+        self._interaction_steps += 1
+
+    def interaction_trace(self):
+        """Return column arrays for a separate NPZ archive, never frame JSON."""
+        rows = np.asarray(list(self._interaction_rows), dtype=_INTERACTION_DTYPE)
+        return {name: rows[name] for name in rows.dtype.names}
+
+    def interaction_trace_metadata(self):
+        return dict(schema_version=1, rows=len(self._interaction_rows),
+                    observed_steps=self._interaction_steps,
+                    dropped_rows=self._interaction_steps-len(self._interaction_rows),
+                    capacity=self._interaction_rows.maxlen,
+                    coordinates="source world, metres",
+                    source="Observed rigid-body tool motion coupled to the reduced, uncalibrated cell model",
+                    contact_model="Analytical ellipsoid and scalar membrane response; not engine collision contacts",
+                    time_alignment="After each reduced-model update; contact_cell_world_m is the cell pose used for that tick's force, cell_world_m is the resulting pose",
+                    missing_holding_values="Zero and false when holding_active is false")
+
     def image_state(self, data):
         return dict(time_s=float(data.time), focus_m=float(data.qpos[self.model.joint("focus").qposadr[0]]),
                     centres_m=[(data.geom_xpos[g]-ORIGIN).tolist() for g in self.shells],
                     tip_m=(data.site_xpos[self.tip]-ORIGIN).tolist(),
+                    needle_back=self.needle_back.tolist(),
+                    needle_geometry=self.pipette_geometry.evidence(),
                     indentation_m=self.indentation_m, punctured=self.punctured,
                     withdrawn=self.withdrawn, delivered_pl=self.ledger.state("cell").volume_m3*1e15,
                     force_nn=self.force_n*1e9, actual_pressure_pa=self.actual_pressure_pa,
@@ -141,6 +209,7 @@ class CellMechanics(System):
 
     def report(self, data):
         return dict(model="adherent_cell_phantom_v1", fidelity="reduced_uncalibrated",
+                    interaction_trace=self.interaction_trace_metadata(),
                     parameters=asdict(self.parameters), cell_radii_m=self.cell_radii.tolist(),
                     nominal_cell_volume_pl=self.cell_volume_m3*1e15,
                     delivered_pl=self.ledger.state("cell").volume_m3*1e15,

@@ -130,18 +130,22 @@ class AmericasWaveSixGeometryTests(unittest.TestCase):
         session.reset()
         supports = _tagged(session, "vessel_support")
         self.assertEqual(len(supports), 5)
-        vessels = [
-            i
-            for i in range(session.model.ngeom)
-            if session.model.geom(i).name.startswith("lapd_segment__")
-            and session.model.geom_type[i] == mujoco.mjtGeom.mjGEOM_CYLINDER
-            and session.model.geom_size[i, 1] > 3.8
-        ]
-        self.assertEqual(len(vessels), 1)
-        lower, upper = _bounds(session, vessels[0])
-        self.assertAlmostEqual(upper[1] - lower[1], 7.8)
+        # The local vessel is now an open wall mesh, not a solid cylinder.
+        # Preserve the same supported 7.8 m envelope using actual vertices.
+        model, data = session.model, session.data
+        vessel = model.geom("lapd_segment__lapd_vessel_surface").id
+        mesh = int(model.geom_dataid[vessel])
+        start = int(model.mesh_vertadr[mesh])
+        count = int(model.mesh_vertnum[mesh])
+        vertices = model.mesh_vert[start:start + count]
+        world = vertices @ data.geom_xmat[vessel].reshape(3, 3).T + data.geom_xpos[vessel]
+        lower, upper = world.min(axis=0), world.max(axis=0)
+        self.assertAlmostEqual(upper[1] - lower[1], 7.8, places=6)
         for support in supports:
             self.assertAlmostEqual(_bounds(session, support)[1][2], lower[2], places=6)
+        wall_contacts = _tagged(session, "vessel_contact")
+        self.assertGreater(len(wall_contacts), 0)
+        self.assertTrue(all(model.geom_contype[g] and model.geom_conaffinity[g] for g in wall_contacts))
 
     def test_penn_documented_wafer_diameter_and_seat(self):
         session = self.sessions["penn_qnf_denton_sputter"]
@@ -186,7 +190,12 @@ class AmericasWaveSixGeometryTests(unittest.TestCase):
                     control.lower + fraction * (control.upper - control.lower)
                 )
             mujoco.mj_forward(session.model, session.data)
-            self.assertGreater(_bounds(session, nozzle)[0][2] - wafer_top, 0.25)
+            # Authored dry geometric clearance, not an OEM coating height.
+            declared = session.equipment["coater_alignment"]["inspection_interface"]["wafer_standoff_m"]
+            self.assertAlmostEqual(declared, 0.05)
+            self.assertAlmostEqual(_bounds(session, nozzle)[0][2] - wafer_top, declared)
+        np.testing.assert_array_equal(session.model.jnt_range[:2], [[-.21, .21], [-.13, .13]])
+        self.assertEqual(session.model.geom("coater_alignment__coater_door_contact_glass").contype, 1)
 
 
 if __name__ == "__main__":
