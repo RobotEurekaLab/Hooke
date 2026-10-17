@@ -107,6 +107,7 @@ function showState(s) {
   if (!cell) $('image-channel').value = 'phase_contrast';
   const manipulator = s.manipulator_profile === 'parallel-v4'
     ? 'MicroManipulatorStepper v4 CAD electric parallel manipulators'
+    : s.manipulator_profile === 'sutter-mp285-reference' ? 'Sutter MP-285 / XenoWorks drawing-based electric XYZ manipulators'
     : s.instrument_profile === 'cad' ? 'Zaber CAD electric manipulators' : 'Electric manipulators';
   $('instrument-description').textContent = s.stand_profile === 'te2000-s-reference'
     ? `TE2000-S independent dimensional and photo reference · ${manipulator} · ${s.stage_profile === 'x-asr100' ? 'X-ASR CAD stage; active X/Y range ±4 mm' : 'Electric stage'} and focus · Independently modelled pipette holders and optical accessories`

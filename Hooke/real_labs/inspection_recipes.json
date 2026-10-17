@@ -1,0 +1,3244 @@
+{
+  "anu_shrimp_geochronology": {
+    "scene": "anu_shrimp_geochronology",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "shrimp_rg",
+        "controls": [
+          "load_lock_door",
+          "sample_transfer",
+          "sample_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_load_lock_door",
+            "targets": {
+              "load_lock_door": 0.85
+            }
+          },
+          {
+            "name": "position_sample_transfer",
+            "targets": {
+              "sample_transfer": 0.06
+            }
+          },
+          {
+            "name": "position_sample_rotation",
+            "targets": {
+              "sample_rotation": 0.35
+            }
+          }
+        ],
+        "observed_sites": [
+          "door_handle",
+          "mineral_mount"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "auckland_aerodynamics_tunnel": {
+    "scene": "auckland_aerodynamics_tunnel",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "specimen_x",
+          "specimen_yaw"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_specimen_x",
+            "targets": {
+              "specimen_x": 0.1
+            }
+          },
+          {
+            "name": "position_specimen_yaw",
+            "targets": {
+              "specimen_yaw": 0.18
+            }
+          }
+        ],
+        "observed_sites": [
+          "clear_specimen"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "cityu_rogach_photoluminescence": {
+    "scene": "cityu_rogach_photoluminescence",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "pl_service",
+        "controls": [
+          "coupon_theta",
+          "service_lid_lift"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_service_lid_lift",
+            "targets": {
+              "service_lid_lift": 0.08
+            }
+          },
+          {
+            "name": "position_coupon_theta",
+            "targets": {
+              "coupon_theta": 0.25
+            }
+          }
+        ],
+        "observed_sites": [
+          "pl_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "cmu_edl_electrochemical_testing": {
+    "scene": "cmu_edl_electrochemical_testing",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "electrochemical_test",
+        "controls": [
+          "specimen_drawer",
+          "clamp_lift"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_clamp_lift",
+            "targets": {
+              "clamp_lift": 0.025
+            }
+          },
+          {
+            "name": "position_specimen_drawer",
+            "targets": {
+              "specimen_drawer": 0.08
+            }
+          }
+        ],
+        "observed_sites": [
+          "electrode_coupon",
+          "clamp_handle"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "columbia_fusion_hbt_ep": {
+    "scene": "columbia_fusion_hbt_ep",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "diagnostic_bay",
+        "controls": [
+          "diagnostic_traverse",
+          "target_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_diagnostic_traverse",
+            "targets": {
+              "diagnostic_traverse": 0.12
+            }
+          },
+          {
+            "name": "position_target_height",
+            "targets": {
+              "target_height": 0.05
+            }
+          }
+        ],
+        "observed_sites": [
+          "alignment_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "copenhagen_nbi_surface_metrology": {
+    "scene": "copenhagen_nbi_surface_metrology",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "surface_profiler",
+        "controls": [
+          "sample_x",
+          "sample_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_sample_x",
+            "targets": {
+              "sample_x": 0.025
+            }
+          },
+          {
+            "name": "position_sample_y",
+            "targets": {
+              "sample_y": -0.02
+            }
+          }
+        ],
+        "observed_sites": [
+          "profiler_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "cuhk_mpil_ultrafast_optics": {
+    "scene": "cuhk_mpil_ultrafast_optics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "ultrafast_alignment",
+        "controls": [
+          "coupon_x",
+          "mirror_theta"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_coupon_x",
+            "targets": {
+              "coupon_x": 0.035
+            }
+          },
+          {
+            "name": "position_mirror_theta",
+            "targets": {
+              "mirror_theta": 0.2
+            }
+          }
+        ],
+        "observed_sites": [
+          "alignment_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "delft_ducat_antenna": {
+    "scene": "delft_ducat_antenna",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "ducat_scanner",
+        "controls": [
+          "scanner_height",
+          "scanner_lateral"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_scanner_height",
+            "targets": {
+              "scanner_height": 0.12
+            }
+          },
+          {
+            "name": "position_scanner_lateral",
+            "targets": {
+              "scanner_lateral": -0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "antenna_reference"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "delft_stevin_structures": {
+    "scene": "delft_stevin_structures",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "beam_rig",
+        "controls": [
+          "load_head_approach",
+          "sensor_traverse"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_load_head_approach",
+            "targets": {
+              "load_head_approach": 0.1
+            }
+          },
+          {
+            "name": "position_sensor_traverse",
+            "targets": {
+              "sensor_traverse": 0.3
+            }
+          }
+        ],
+        "observed_sites": [
+          "beam_specimen",
+          "load_contact_plane"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "epfl_lch_hydraulic_flume": {
+    "scene": "epfl_lch_hydraulic_flume",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "probe_rig",
+        "controls": [
+          "probe_traverse",
+          "probe_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_probe_traverse",
+            "targets": {
+              "probe_traverse": 0.3
+            }
+          },
+          {
+            "name": "position_probe_height",
+            "targets": {
+              "probe_height": -0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "lch_bed_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "epfl_lwe_anechoic_acoustics": {
+    "scene": "epfl_lwe_anechoic_acoustics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "reference_yaw",
+          "microphone_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_reference_yaw",
+            "targets": {
+              "reference_yaw": 0.3
+            }
+          },
+          {
+            "name": "position_microphone_x",
+            "targets": {
+              "microphone_x": 0.06
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_acoustic_reference"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "epfl_microbiorobotics": {
+    "scene": "epfl_microbiorobotics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "magnetic_microrobot",
+        "controls": [
+          "focus",
+          "stage_x",
+          "stage_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_focus",
+            "targets": {
+              "focus": 0.002
+            }
+          },
+          {
+            "name": "position_stage_x",
+            "targets": {
+              "stage_x": 0.015
+            }
+          },
+          {
+            "name": "position_stage_y",
+            "targets": {
+              "stage_y": -0.012
+            }
+          }
+        ],
+        "observed_sites": [
+          "specimen",
+          "micro_agent"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "epfl_tcv_diagnostic_sector": {
+    "scene": "epfl_tcv_diagnostic_sector",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "tcv_sector",
+        "controls": [
+          "inspection_panel_open",
+          "datum_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_inspection_panel_open",
+            "targets": {
+              "inspection_panel_open": 0.12
+            }
+          },
+          {
+            "name": "position_datum_height",
+            "targets": {
+              "datum_height": 0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "inspection_datum"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "eth_experimental_petrology_multianvil": {
+    "scene": "eth_experimental_petrology_multianvil",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "multianvil_access",
+        "controls": [
+          "specimen_drawer",
+          "service_panel_angle"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_service_panel_angle",
+            "targets": {
+              "service_panel_angle": 0.4
+            }
+          },
+          {
+            "name": "position_specimen_drawer",
+            "targets": {
+              "specimen_drawer": 0.12
+            }
+          }
+        ],
+        "observed_sites": [
+          "multianvil_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "eth_gcc_big_blue": {
+    "scene": "eth_gcc_big_blue",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "gcc_beam",
+        "controls": [
+          "beam_azimuth",
+          "model_cradle_tilt"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_beam_azimuth",
+            "targets": {
+              "beam_azimuth": 0.02
+            }
+          },
+          {
+            "name": "position_model_cradle_tilt",
+            "targets": {
+              "model_cradle_tilt": 0.04
+            }
+          }
+        ],
+        "observed_sites": [
+          "retained_model_box"
+        ],
+        "speed_scale": 0.05
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "eth_mougel_inorganic": {
+    "scene": "eth_mougel_inorganic",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "glovebox_west_1",
+        "controls": [
+          "pass_through_lid",
+          "vial_carriage"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_pass_through_lid",
+            "targets": {
+              "pass_through_lid": 0.9
+            }
+          },
+          {
+            "name": "position_vial_carriage",
+            "targets": {
+              "vial_carriage": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_vial"
+        ],
+        "speed_scale": 0.25
+      },
+      {
+        "equipment": "glovebox_west_2",
+        "controls": [
+          "pass_through_lid",
+          "vial_carriage"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_pass_through_lid",
+            "targets": {
+              "pass_through_lid": 0.9
+            }
+          },
+          {
+            "name": "position_vial_carriage",
+            "targets": {
+              "vial_carriage": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_vial"
+        ],
+        "speed_scale": 0.25
+      },
+      {
+        "equipment": "glovebox_east_1",
+        "controls": [
+          "pass_through_lid",
+          "vial_carriage"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_pass_through_lid",
+            "targets": {
+              "pass_through_lid": 0.9
+            }
+          },
+          {
+            "name": "position_vial_carriage",
+            "targets": {
+              "vial_carriage": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_vial"
+        ],
+        "speed_scale": 0.25
+      },
+      {
+        "equipment": "glovebox_east_2",
+        "controls": [
+          "pass_through_lid",
+          "vial_carriage"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_pass_through_lid",
+            "targets": {
+              "pass_through_lid": 0.9
+            }
+          },
+          {
+            "name": "position_vial_carriage",
+            "targets": {
+              "vial_carriage": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_vial"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "eth_robotic_fabrication": {
+    "scene": "eth_robotic_fabrication",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "gantry_west",
+        "controls": [
+          "gantry_traverse",
+          "gantry_drop",
+          "tool_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_gantry_traverse",
+            "targets": {
+              "gantry_traverse": 0.35
+            }
+          },
+          {
+            "name": "position_gantry_drop",
+            "targets": {
+              "gantry_drop": 0.2
+            }
+          },
+          {
+            "name": "position_tool_rotation",
+            "targets": {
+              "tool_rotation": 0.3
+            }
+          }
+        ],
+        "observed_sites": [
+          "construction_coupon"
+        ],
+        "speed_scale": 0.25
+      },
+      {
+        "equipment": "gantry_east",
+        "controls": [
+          "gantry_traverse",
+          "gantry_drop",
+          "tool_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_gantry_traverse",
+            "targets": {
+              "gantry_traverse": 0.35
+            }
+          },
+          {
+            "name": "position_gantry_drop",
+            "targets": {
+              "gantry_drop": 0.2
+            }
+          },
+          {
+            "name": "position_tool_rotation",
+            "targets": {
+              "tool_rotation": 0.3
+            }
+          }
+        ],
+        "observed_sites": [
+          "construction_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "fuberlin_franke_surface_physics": {
+    "scene": "fuberlin_franke_surface_physics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "surface_holder",
+        "controls": [
+          "holder_extension",
+          "holder_azimuth"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_holder_extension",
+            "targets": {
+              "holder_extension": 0.08
+            }
+          },
+          {
+            "name": "position_holder_azimuth",
+            "targets": {
+              "holder_azimuth": 0.35
+            }
+          }
+        ],
+        "observed_sites": [
+          "surface_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "fudan_superassembly_materials": {
+    "scene": "fudan_superassembly_materials",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "materials_glovebox",
+        "controls": [
+          "inspection_tray_x",
+          "coupon_theta"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_inspection_tray_x",
+            "targets": {
+              "inspection_tray_x": 0.06
+            }
+          },
+          {
+            "name": "position_coupon_theta",
+            "targets": {
+              "coupon_theta": 0.35
+            }
+          }
+        ],
+        "observed_sites": [
+          "materials_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "glasgow_iset_exploration": {
+    "scene": "glasgow_iset_exploration",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "prototype_frame",
+        "controls": [
+          "specimen_y",
+          "inspection_head_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_specimen_y",
+            "targets": {
+              "specimen_y": 0.05
+            }
+          },
+          {
+            "name": "position_inspection_head_x",
+            "targets": {
+              "inspection_head_x": 0.15
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_payload_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "glasgow_jwnc_wafer_loading": {
+    "scene": "glasgow_jwnc_wafer_loading",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "wafer_loading",
+        "controls": [
+          "left_carrier_y",
+          "right_carrier_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_left_carrier_y",
+            "targets": {
+              "left_carrier_y": 0.015
+            }
+          },
+          {
+            "name": "position_right_carrier_y",
+            "targets": {
+              "right_carrier_y": -0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "left_wafer",
+          "right_wafer"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "harvard_doyle_cold_molecule_optics": {
+    "scene": "harvard_doyle_cold_molecule_optics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "doyle_workstation",
+        "controls": [
+          "optical_translation",
+          "sample_pitch"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_optical_translation",
+            "targets": {
+              "optical_translation": 0.025
+            }
+          },
+          {
+            "name": "position_sample_pitch",
+            "targets": {
+              "sample_pitch": 0.15
+            }
+          }
+        ],
+        "observed_sites": [
+          "optical_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "hku_civil_boundary_layer_tunnel": {
+    "scene": "hku_civil_boundary_layer_tunnel",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "boundary_layer",
+        "controls": [
+          "model_yaw",
+          "optical_traverse"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_model_yaw",
+            "targets": {
+              "model_yaw": 0.35
+            }
+          },
+          {
+            "name": "position_optical_traverse",
+            "targets": {
+              "optical_traverse": 0.15
+            }
+          }
+        ],
+        "observed_sites": [
+          "building_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "hku_rock_mechanics": {
+    "scene": "hku_rock_mechanics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "rock_frame",
+        "controls": [
+          "crosshead_height",
+          "guard_open"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_guard_open",
+            "targets": {
+              "guard_open": 0.7
+            }
+          },
+          {
+            "name": "position_crosshead_height",
+            "targets": {
+              "crosshead_height": 0.04
+            }
+          }
+        ],
+        "observed_sites": [
+          "rock_core"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "hkust_aaf_wind_tunnel": {
+    "scene": "hkust_aaf_wind_tunnel",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "suspended_model_section",
+        "controls": [
+          "model_yaw",
+          "model_pitch"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_model_yaw",
+            "targets": {
+              "model_yaw": 0.3
+            }
+          },
+          {
+            "name": "position_model_pitch",
+            "targets": {
+              "model_pitch": 0.12
+            }
+          }
+        ],
+        "observed_sites": [
+          "hydrofoil_model"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "hkust_geotechnical_centrifuge": {
+    "scene": "hkust_geotechnical_centrifuge",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "gcf_model_testbed",
+        "controls": [
+          "bridge_y",
+          "carriage_x",
+          "probe_height",
+          "probe_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_probe_height",
+            "targets": {
+              "probe_height": 0.05
+            }
+          },
+          {
+            "name": "position_bridge_y",
+            "targets": {
+              "bridge_y": 0.2
+            }
+          },
+          {
+            "name": "position_carriage_x",
+            "targets": {
+              "carriage_x": 0.25
+            }
+          },
+          {
+            "name": "position_probe_rotation",
+            "targets": {
+              "probe_rotation": 0.25
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_pier",
+          "probe_tip_surface"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "illinois_bil_nonlinear_optics": {
+    "scene": "illinois_bil_nonlinear_optics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "nonlinear_optics",
+        "controls": [
+          "filter_translation",
+          "filter_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_filter_translation",
+            "targets": {
+              "filter_translation": 0.025
+            }
+          },
+          {
+            "name": "position_filter_rotation",
+            "targets": {
+              "filter_rotation": 0.4
+            }
+          }
+        ],
+        "observed_sites": [
+          "optical_filter"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "imperial_thinfilm_bessemer": {
+    "scene": "imperial_thinfilm_bessemer",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "thinfilm_cluster",
+        "controls": [
+          "access_door",
+          "coupon_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_access_door",
+            "targets": {
+              "access_door": 0.95
+            }
+          },
+          {
+            "name": "position_coupon_x",
+            "targets": {
+              "coupon_x": 0.06
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_thinfilm_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "kaist_usdl_magnetic_probe": {
+    "scene": "kaist_usdl_magnetic_probe",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "moke_probe_workspace",
+        "controls": [
+          "specimen_x",
+          "specimen_y",
+          "microscope_focus"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_microscope_focus",
+            "targets": {
+              "microscope_focus": 0.006
+            }
+          },
+          {
+            "name": "position_specimen_x",
+            "targets": {
+              "specimen_x": 0.005
+            }
+          },
+          {
+            "name": "position_specimen_y",
+            "targets": {
+              "specimen_y": -0.004
+            }
+          }
+        ],
+        "observed_sites": [
+          "magnetic_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "kfupm_building_materials": {
+    "scene": "kfupm_building_materials",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "upper_crosshead_z",
+          "lower_grip_z"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_upper_crosshead_z",
+            "targets": {
+              "upper_crosshead_z": 0.035
+            }
+          },
+          {
+            "name": "position_lower_grip_z",
+            "targets": {
+              "lower_grip_z": -0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "kfupm_high_voltage_insulation": {
+    "scene": "kfupm_high_voltage_insulation",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "deenergized_fixture",
+        "controls": [
+          "fixture_x",
+          "coupon_pitch"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_fixture_x",
+            "targets": {
+              "fixture_x": 0.06
+            }
+          },
+          {
+            "name": "position_coupon_pitch",
+            "targets": {
+              "coupon_pitch": 0.15
+            }
+          }
+        ],
+        "observed_sites": [
+          "insulating_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "kfupm_superconductivity_spectroscopy": {
+    "scene": "kfupm_superconductivity_spectroscopy",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "spectrometer",
+        "controls": [
+          "sample_cover_angle",
+          "sample_lift"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_sample_cover_angle",
+            "targets": {
+              "sample_cover_angle": -0.35
+            }
+          },
+          {
+            "name": "position_sample_lift",
+            "targets": {
+              "sample_lift": 0.02
+            }
+          }
+        ],
+        "observed_sites": [
+          "spectrometer_cuvette"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "kth_l2000_wind_tunnel": {
+    "scene": "kth_l2000_wind_tunnel",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "wind_tunnel",
+        "controls": [
+          "model_yaw",
+          "model_pitch"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_model_yaw",
+            "targets": {
+              "model_yaw": 0.12
+            }
+          },
+          {
+            "name": "position_model_pitch",
+            "targets": {
+              "model_pitch": 0.07
+            }
+          }
+        ],
+        "observed_sites": [
+          "wind_model"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "kth_robot_design_prototyping": {
+    "scene": "kth_robot_design_prototyping",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "printer_left",
+        "controls": [
+          "build_plate_z",
+          "toolhead_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_build_plate_z",
+            "targets": {
+              "build_plate_z": 0.1
+            }
+          },
+          {
+            "name": "position_toolhead_x",
+            "targets": {
+              "toolhead_x": 0.06
+            }
+          }
+        ],
+        "observed_sites": [
+          "prototype_coupon"
+        ],
+        "speed_scale": 0.25
+      },
+      {
+        "equipment": "printer_middle",
+        "controls": [
+          "build_plate_z",
+          "toolhead_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_build_plate_z",
+            "targets": {
+              "build_plate_z": 0.1
+            }
+          },
+          {
+            "name": "position_toolhead_x",
+            "targets": {
+              "toolhead_x": 0.06
+            }
+          }
+        ],
+        "observed_sites": [
+          "prototype_coupon"
+        ],
+        "speed_scale": 0.25
+      },
+      {
+        "equipment": "printer_right",
+        "controls": [
+          "build_plate_z",
+          "toolhead_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_build_plate_z",
+            "targets": {
+              "build_plate_z": 0.1
+            }
+          },
+          {
+            "name": "position_toolhead_x",
+            "targets": {
+              "toolhead_x": 0.06
+            }
+          }
+        ],
+        "observed_sites": [
+          "prototype_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "ku_leuven_iglis1_laser": {
+    "scene": "ku_leuven_iglis1_laser",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "alignment_table",
+        "controls": [
+          "target_x",
+          "target_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_target_x",
+            "targets": {
+              "target_x": 0.02
+            }
+          },
+          {
+            "name": "position_target_y",
+            "targets": {
+              "target_y": -0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_alignment_target"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "kyoto_kawayama_terahertz": {
+    "scene": "kyoto_kawayama_terahertz",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "thz_alignment",
+        "controls": [
+          "target_x",
+          "target_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_target_x",
+            "targets": {
+              "target_x": 0.03
+            }
+          },
+          {
+            "name": "position_target_y",
+            "targets": {
+              "target_y": -0.02
+            }
+          }
+        ],
+        "observed_sites": [
+          "thz_target"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "leeds_litac_yarn_spinning": {
+    "scene": "leeds_litac_yarn_spinning",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "yarn_machine",
+        "controls": [
+          "feed_roller",
+          "bobbin_carriage"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_feed_roller",
+            "targets": {
+              "feed_roller": 0.35
+            }
+          },
+          {
+            "name": "position_bobbin_carriage",
+            "targets": {
+              "bobbin_carriage": 0.07
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_yarn_bobbin"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "lund_maxiv_nanomax_eh1": {
+    "scene": "lund_maxiv_nanomax_eh1",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "nanomax",
+        "controls": [
+          "sample_access_door",
+          "dry_specimen_carriage"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_sample_access_door",
+            "targets": {
+              "sample_access_door": 0.95
+            }
+          },
+          {
+            "name": "position_dry_specimen_carriage",
+            "targets": {
+              "dry_specimen_carriage": 0.04
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_nanomax_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "lund_nanoparticle_characterization": {
+    "scene": "lund_nanoparticle_characterization",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "red_chamber",
+        "controls": [
+          "access_lid",
+          "coupon_index"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_access_lid",
+            "targets": {
+              "access_lid": 1.05
+            }
+          },
+          {
+            "name": "position_coupon_index",
+            "targets": {
+              "coupon_index": 0.2
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_characterization_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "manchester_hv_dielectric_fluids": {
+    "scene": "manchester_hv_dielectric_fluids",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "dielectric_cell",
+        "controls": [
+          "service_lid_lift",
+          "specimen_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_service_lid_lift",
+            "targets": {
+              "service_lid_lift": 0.08
+            }
+          },
+          {
+            "name": "position_specimen_height",
+            "targets": {
+              "specimen_height": 0.03
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_dielectric_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "mcgill_mmpc_water_modelling": {
+    "scene": "mcgill_mmpc_water_modelling",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "tundish_model",
+        "controls": [
+          "feed_nozzle_height",
+          "probe_traverse"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_feed_nozzle_height",
+            "targets": {
+              "feed_nozzle_height": 0.06
+            }
+          },
+          {
+            "name": "position_probe_traverse",
+            "targets": {
+              "probe_traverse": 0.2
+            }
+          }
+        ],
+        "observed_sites": [
+          "feed_nozzle",
+          "calibration_target"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "michigan_lurie_lithography_bay": {
+    "scene": "michigan_lurie_lithography_bay",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "wafer_inspection",
+        "controls": [
+          "wafer_x",
+          "wafer_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_wafer_x",
+            "targets": {
+              "wafer_x": 0.02
+            }
+          },
+          {
+            "name": "position_wafer_y",
+            "targets": {
+              "wafer_y": -0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "wafer_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "nju_rise_quantum_109": {
+    "scene": "nju_rise_quantum_109",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "cryostat_bay",
+        "controls": [
+          "inspection_x",
+          "inspection_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_inspection_x",
+            "targets": {
+              "inspection_x": 0.015
+            }
+          },
+          {
+            "name": "position_inspection_y",
+            "targets": {
+              "inspection_y": -0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "inspection_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "northwestern_clammp_charpy": {
+    "scene": "northwestern_clammp_charpy",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "charpy_frame",
+        "controls": [
+          "pendulum_inspection_angle",
+          "coupon_alignment"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_pendulum_inspection_angle",
+            "targets": {
+              "pendulum_inspection_angle": 0.15
+            }
+          },
+          {
+            "name": "position_coupon_alignment",
+            "targets": {
+              "coupon_alignment": 0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "charpy_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "nottingham_food_process_hall": {
+    "scene": "nottingham_food_process_hall",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "dry_pan",
+        "controls": [
+          "pan_tilt",
+          "inspection_cover"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_inspection_cover",
+            "targets": {
+              "inspection_cover": 1.0
+            }
+          },
+          {
+            "name": "position_pan_tilt",
+            "targets": {
+              "pan_tilt": 0.15
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_pan_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "ntu_intelligent_materials": {
+    "scene": "ntu_intelligent_materials",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "aja_inspection_station",
+        "controls": [
+          "inspection_lid_lift",
+          "witness_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_inspection_lid_lift",
+            "targets": {
+              "inspection_lid_lift": 0.1
+            }
+          },
+          {
+            "name": "position_witness_height",
+            "targets": {
+              "witness_height": 0.01
+            }
+          }
+        ],
+        "observed_sites": [
+          "witness_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "ntu_taiwan_iam_fluids": {
+    "scene": "ntu_taiwan_iam_fluids",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "iam_tunnel",
+        "controls": [
+          "cylinder_yaw",
+          "probe_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_cylinder_yaw",
+            "targets": {
+              "cylinder_yaw": 0.3
+            }
+          },
+          {
+            "name": "position_probe_height",
+            "targets": {
+              "probe_height": 0.025
+            }
+          }
+        ],
+        "observed_sites": [
+          "cylinder_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "nus_e6nanofab_l1": {
+    "scene": "nus_e6nanofab_l1",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "ma8_alignment_workspace",
+        "controls": [
+          "wafer_x",
+          "wafer_y",
+          "wafer_theta"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_wafer_x",
+            "targets": {
+              "wafer_x": 0.018
+            }
+          },
+          {
+            "name": "position_wafer_y",
+            "targets": {
+              "wafer_y": -0.015
+            }
+          },
+          {
+            "name": "position_wafer_theta",
+            "targets": {
+              "wafer_theta": 0.08
+            }
+          }
+        ],
+        "observed_sites": [
+          "alignment_wafer"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "nyu_epp_detector_assembly": {
+    "scene": "nyu_epp_detector_assembly",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "desktop_prototyping",
+        "controls": [
+          "printhead_x",
+          "buildplate_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_printhead_x",
+            "targets": {
+              "printhead_x": 0.055
+            }
+          },
+          {
+            "name": "position_buildplate_y",
+            "targets": {
+              "buildplate_y": -0.025
+            }
+          }
+        ],
+        "observed_sites": [
+          "calibration_part"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "osaka_ocean_wave_lab": {
+    "scene": "osaka_ocean_wave_lab",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "wave_channel",
+        "controls": [
+          "carriage_x",
+          "specimen_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_carriage_x",
+            "targets": {
+              "carriage_x": 0.25
+            }
+          },
+          {
+            "name": "position_specimen_height",
+            "targets": {
+              "specimen_height": 0.025
+            }
+          }
+        ],
+        "observed_sites": [
+          "channel_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "oxford_bonilla_semiconductor": {
+    "scene": "oxford_bonilla_semiconductor",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "probe_contact_fixture",
+        "controls": [
+          "sample_x",
+          "left_approach",
+          "right_approach"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_left_approach",
+            "targets": {
+              "left_approach": -0.003
+            }
+          },
+          {
+            "name": "position_right_approach",
+            "targets": {
+              "right_approach": -0.003
+            }
+          },
+          {
+            "name": "position_sample_x",
+            "targets": {
+              "sample_x": 0.008
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_die"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "paris_saclay_lmps_astree": {
+    "scene": "paris_saclay_lmps_astree",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "astree_frame",
+        "controls": [
+          "horizontal_approach",
+          "vertical_approach"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_horizontal_approach",
+            "targets": {
+              "horizontal_approach": 0.08
+            }
+          },
+          {
+            "name": "position_vertical_approach",
+            "targets": {
+              "vertical_approach": 0.08
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_structural_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "penn_qnf_denton_sputter": {
+    "scene": "penn_qnf_denton_sputter",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "pvd_inspection",
+        "controls": [
+          "wafer_platen_index",
+          "chamber_access_angle"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_chamber_access_angle",
+            "targets": {
+              "chamber_access_angle": -0.5
+            }
+          },
+          {
+            "name": "position_wafer_platen_index",
+            "targets": {
+              "wafer_platen_index": 0.35
+            }
+          }
+        ],
+        "observed_sites": [
+          "pvd_wafer"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "pennstate_aeroacoustics_rotor_chamber": {
+    "scene": "pennstate_aeroacoustics_rotor_chamber",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "tandem_rotors",
+        "controls": [
+          "pedestal_rotor_index",
+          "suspended_rotor_index"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_pedestal_rotor_index",
+            "targets": {
+              "pedestal_rotor_index": 0.3
+            }
+          },
+          {
+            "name": "position_suspended_rotor_index",
+            "targets": {
+              "suspended_rotor_index": -0.3
+            }
+          }
+        ],
+        "observed_sites": [
+          "rotor_marker"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "polimi_aeroacoustic_white": {
+    "scene": "polimi_aeroacoustic_white",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "jet_station",
+        "controls": [
+          "specimen_yaw",
+          "microphone_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_specimen_yaw",
+            "targets": {
+              "specimen_yaw": 0.15
+            }
+          },
+          {
+            "name": "position_microphone_x",
+            "targets": {
+              "microphone_x": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_aeroacoustic_model"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "princeton_bam_closed_loop_wind_tunnel": {
+    "scene": "princeton_bam_closed_loop_wind_tunnel",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "wind_tunnel",
+        "controls": [
+          "model_pitch",
+          "probe_traverse"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_model_pitch",
+            "targets": {
+              "model_pitch": 0.12
+            }
+          },
+          {
+            "name": "position_probe_traverse",
+            "targets": {
+              "probe_traverse": 0.15
+            }
+          }
+        ],
+        "observed_sites": [
+          "airfoil_coupon",
+          "probe_tip"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "psl_sesame_adaptive_optics": {
+    "scene": "psl_sesame_adaptive_optics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "sesame_bench",
+        "controls": [
+          "mirror_yaw",
+          "coupon_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_mirror_yaw",
+            "targets": {
+              "mirror_yaw": 0.06
+            }
+          },
+          {
+            "name": "position_coupon_x",
+            "targets": {
+              "coupon_x": 0.02
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_optical_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "science_tokyo_thermal_storage_metrology": {
+    "scene": "science_tokyo_thermal_storage_metrology",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "thermobalance",
+        "controls": [
+          "dry_tray_extension",
+          "upper_head_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_upper_head_height",
+            "targets": {
+              "upper_head_height": 0.015
+            }
+          },
+          {
+            "name": "position_dry_tray_extension",
+            "targets": {
+              "dry_tray_extension": 0.08
+            }
+          }
+        ],
+        "observed_sites": [
+          "thermal_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "sheffield_diamond_pilot_plant": {
+    "scene": "sheffield_diamond_pilot_plant",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "pilot_skid",
+        "controls": [
+          "vessel_cover",
+          "receiver_slide"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_vessel_cover",
+            "targets": {
+              "vessel_cover": 0.85
+            }
+          },
+          {
+            "name": "position_receiver_slide",
+            "targets": {
+              "receiver_slide": 0.08
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_sampling_cup"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "sjtu_deepwater_offshore_basin": {
+    "scene": "sjtu_deepwater_offshore_basin",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "offshore_towing_rig",
+        "controls": [
+          "carriage_longitudinal",
+          "model_transverse"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_carriage_longitudinal",
+            "targets": {
+              "carriage_longitudinal": 0.4
+            }
+          },
+          {
+            "name": "position_model_transverse",
+            "targets": {
+              "model_transverse": 0.3
+            }
+          }
+        ],
+        "observed_sites": [
+          "offshore_model"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "snu_acoustic_impedance": {
+    "scene": "snu_acoustic_impedance",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "impedance_station",
+        "controls": [
+          "coupon_axial",
+          "probe_clearance"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_coupon_axial",
+            "targets": {
+              "coupon_axial": 0.01
+            }
+          },
+          {
+            "name": "position_probe_clearance",
+            "targets": {
+              "probe_clearance": 0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "acoustic_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "sorbonne_isir_covr": {
+    "scene": "sorbonne_isir_covr",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "bridge_y",
+          "panel_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_bridge_y",
+            "targets": {
+              "bridge_y": 0.25
+            }
+          },
+          {
+            "name": "position_panel_x",
+            "targets": {
+              "panel_x": 0.2
+            }
+          }
+        ],
+        "observed_sites": [
+          "interaction_panel"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "sydney_fluids_convection": {
+    "scene": "sydney_fluids_convection",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "side_heated_tank",
+        "controls": [
+          "probe_x",
+          "probe_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_probe_x",
+            "targets": {
+              "probe_x": 0.2
+            }
+          },
+          {
+            "name": "position_probe_height",
+            "targets": {
+              "probe_height": 0.04
+            }
+          }
+        ],
+        "observed_sites": [
+          "calibration_plate",
+          "inspection_camera"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "texas_ferguson_structural_test_hall": {
+    "scene": "texas_ferguson_structural_test_hall",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "beam_test",
+        "controls": [
+          "load_ram",
+          "sensor_traverse"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_load_ram",
+            "targets": {
+              "load_ram": 0.2
+            }
+          },
+          {
+            "name": "position_sensor_traverse",
+            "targets": {
+              "sensor_traverse": 0.35
+            }
+          }
+        ],
+        "observed_sites": [
+          "beam_specimen",
+          "loading_platen",
+          "measurement_head"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "tsinghua_rush3d": {
+    "scene": "tsinghua_rush3d",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "rush3d_microscope",
+        "controls": [
+          "objective_focus",
+          "sample_x",
+          "sample_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_objective_focus",
+            "targets": {
+              "objective_focus": 0.01
+            }
+          },
+          {
+            "name": "position_sample_x",
+            "targets": {
+              "sample_x": 0.015
+            }
+          },
+          {
+            "name": "position_sample_y",
+            "targets": {
+              "sample_y": -0.012
+            }
+          }
+        ],
+        "observed_sites": [
+          "calibration_target"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "tum_nma_electric_powertrain": {
+    "scene": "tum_nma_electric_powertrain",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "powertrain_cell",
+        "controls": [
+          "inspection_carriage",
+          "coupon_index_angle"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_inspection_carriage",
+            "targets": {
+              "inspection_carriage": 0.02
+            }
+          },
+          {
+            "name": "position_coupon_index_angle",
+            "targets": {
+              "coupon_index_angle": 0.12
+            }
+          }
+        ],
+        "observed_sites": [
+          "motor_test_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "tum_wind_tunnel_a": {
+    "scene": "tum_wind_tunnel_a",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "model_station",
+        "controls": [
+          "model_yaw",
+          "probe_traverse"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_model_yaw",
+            "targets": {
+              "model_yaw": 0.18
+            }
+          },
+          {
+            "name": "position_probe_traverse",
+            "targets": {
+              "probe_traverse": 0.25
+            }
+          }
+        ],
+        "observed_sites": [
+          "vehicle_specimen",
+          "probe_tip"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "ubc_hassan_legoflume": {
+    "scene": "ubc_hassan_legoflume",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "river_flume",
+        "controls": [
+          "camera_traverse",
+          "inlet_panel_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_camera_traverse",
+            "targets": {
+              "camera_traverse": 0.35
+            }
+          },
+          {
+            "name": "position_inlet_panel_height",
+            "targets": {
+              "inlet_panel_height": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "riverbed_target"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "ucsd_mccartney_geotechnical_centrifuge": {
+    "scene": "ucsd_mccartney_geotechnical_centrifuge",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "centrifuge",
+        "controls": [
+          "arm_index",
+          "basket_tilt"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_arm_index",
+            "targets": {
+              "arm_index": 0.25
+            }
+          },
+          {
+            "name": "position_basket_tilt",
+            "targets": {
+              "basket_tilt": 0.15
+            }
+          }
+        ],
+        "observed_sites": [
+          "soil_analogue"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "unsw_tyree_xray": {
+    "scene": "unsw_tyree_xray",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "coretom_sample_station",
+        "controls": [
+          "sample_height",
+          "sample_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_sample_height",
+            "targets": {
+              "sample_height": 0.03
+            }
+          },
+          {
+            "name": "position_sample_rotation",
+            "targets": {
+              "sample_rotation": 0.3
+            }
+          }
+        ],
+        "observed_sites": [
+          "source_aperture",
+          "detector_plane",
+          "inert_core"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "unsw_wrl_wave_basin": {
+    "scene": "unsw_wrl_wave_basin",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "paddle_00",
+          "paddle_01",
+          "paddle_02",
+          "paddle_03",
+          "paddle_04",
+          "paddle_05",
+          "paddle_06",
+          "paddle_07",
+          "paddle_08",
+          "paddle_09",
+          "paddle_10",
+          "paddle_11",
+          "paddle_12",
+          "paddle_13",
+          "paddle_14",
+          "paddle_15",
+          "paddle_16",
+          "paddle_17",
+          "paddle_18",
+          "paddle_19"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "alternate_paddle_inspection_positions",
+            "targets": {
+              "paddle_00": 0.04,
+              "paddle_01": -0.04,
+              "paddle_02": 0.04,
+              "paddle_03": -0.04,
+              "paddle_04": 0.04,
+              "paddle_05": -0.04,
+              "paddle_06": 0.04,
+              "paddle_07": -0.04,
+              "paddle_08": 0.04,
+              "paddle_09": -0.04,
+              "paddle_10": 0.04,
+              "paddle_11": -0.04,
+              "paddle_12": 0.04,
+              "paddle_13": -0.04,
+              "paddle_14": 0.04,
+              "paddle_15": -0.04,
+              "paddle_16": 0.04,
+              "paddle_17": -0.04,
+              "paddle_18": 0.04,
+              "paddle_19": -0.04
+            }
+          }
+        ],
+        "observed_sites": [
+          "reference_gauge"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "uppsala_freia_gersemi": {
+    "scene": "uppsala_freia_gersemi",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "gersemi",
+        "controls": [
+          "inspection_port_cover",
+          "dry_insert_lift"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_inspection_port_cover",
+            "targets": {
+              "inspection_port_cover": 0.95
+            }
+          },
+          {
+            "name": "position_dry_insert_lift",
+            "targets": {
+              "dry_insert_lift": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_cryostat_insert"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "uppsala_tandem_pelletron": {
+    "scene": "uppsala_tandem_pelletron",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "pelletron_bay",
+        "controls": [
+          "access_door",
+          "coupon_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_access_door",
+            "targets": {
+              "access_door": 0.9
+            }
+          },
+          {
+            "name": "position_coupon_rotation",
+            "targets": {
+              "coupon_rotation": 0.4
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_beamline_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "uts_infrastructure_robotics": {
+    "scene": "uts_infrastructure_robotics",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "bridge_y",
+          "trolley_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_bridge_y",
+            "targets": {
+              "bridge_y": 0.35
+            }
+          },
+          {
+            "name": "position_trolley_x",
+            "targets": {
+              "trolley_x": 0.3
+            }
+          }
+        ],
+        "observed_sites": [
+          "inspection_dummy"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "uwa_ngcf_c72": {
+    "scene": "uwa_ngcf_c72",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "beam_azimuth",
+          "basket_tilt"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_beam_azimuth",
+            "targets": {
+              "beam_azimuth": 0.07
+            }
+          },
+          {
+            "name": "position_basket_tilt",
+            "targets": {
+              "basket_tilt": 0.05
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_block"
+        ],
+        "speed_scale": 0.05
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "warwick_highfield_nmr_1ghz": {
+    "scene": "warwick_highfield_nmr_1ghz",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "nmr_cryostat",
+        "controls": [
+          "inspection_lift",
+          "holder_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_inspection_lift",
+            "targets": {
+              "inspection_lift": 0.1
+            }
+          },
+          {
+            "name": "position_holder_rotation",
+            "targets": {
+              "holder_rotation": 0.15
+            }
+          }
+        ],
+        "observed_sites": [
+          "inert_nmr_dummy"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "yale_becton_cleanroom_metrology": {
+    "scene": "yale_becton_cleanroom_metrology",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "wafer_inspection",
+        "controls": [
+          "stage_x",
+          "stage_y",
+          "focus_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_focus_height",
+            "targets": {
+              "focus_height": 0.015
+            }
+          },
+          {
+            "name": "position_stage_x",
+            "targets": {
+              "stage_x": 0.015
+            }
+          },
+          {
+            "name": "position_stage_y",
+            "targets": {
+              "stage_y": -0.01
+            }
+          }
+        ],
+        "observed_sites": [
+          "wafer_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "zju_low_turbulence_tunnel": {
+    "scene": "zju_low_turbulence_tunnel",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Execute the declared access and positioning sequence, observe actual specimen and mechanism transforms, then reverse the sequence to measured home.",
+    "devices": [
+      {
+        "equipment": "lswt_model",
+        "controls": [
+          "sting_height",
+          "model_yaw"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_sting_height",
+            "targets": {
+              "sting_height": 0.08
+            }
+          },
+          {
+            "name": "position_model_yaw",
+            "targets": {
+              "model_yaw": 0.25
+            }
+          }
+        ],
+        "observed_sites": [
+          "wind_model"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
+      "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
+    ]
+  }
+}

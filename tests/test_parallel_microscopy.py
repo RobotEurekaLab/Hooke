@@ -3,6 +3,7 @@
 import os
 from pathlib import Path
 import sys
+import tempfile
 from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
@@ -74,6 +75,34 @@ class ParallelWorkstationTests(unittest.TestCase):
         })
         self.settings.start()
         self.addCleanup(self.settings.stop)
+
+    def test_upright_motor_bases_preserve_independently_inclined_pipettes(self):
+        from microscopy.pipettes import pipette_back
+        from microscopy.scene import HOMES, ORIGIN
+
+        task = make_task("suction_injection")
+        task.reset(0)
+        for tool in ("holder", "injector"):
+            base = task.model.body(tool + "_base").id
+            np.testing.assert_allclose(task.data.xmat[base].reshape(3, 3)[:, 2],
+                                       [0., 0., 1.], atol=1e-9)
+            tcp = task.data.site_xpos[task.model.site(tool + "_tcp").id]
+            np.testing.assert_allclose(tcp, ORIGIN + HOMES[tool], atol=2e-9, rtol=0.)
+            holder = task.model.body(tool + "_needle_holder").id
+            direction = task.data.xmat[holder].reshape(3, 3)[:, 2]
+            np.testing.assert_allclose(direction, pipette_back(tool), atol=2e-9, rtol=0.)
+            np.testing.assert_allclose(task.data.xpos[holder] - tcp,
+                                       direction * .012, atol=2e-10, rtol=0.)
+
+    def test_upright_mounts_survive_native_snapshot_roundtrip(self):
+        from backends.baseline import write_snapshot
+
+        task = make_task("suction_injection")
+        task.reset(0)
+        output = Path(__file__).resolve().parents[1] / "temp"
+        output.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="parallel-mount-roundtrip-", dir=output) as directory:
+            write_snapshot(task, Path(directory))
 
     def test_xyz_commands_remain_metres_and_raw_motor_radians_cannot_modify_pressure(self):
         task = make_task("cell_injection")

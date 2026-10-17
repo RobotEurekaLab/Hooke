@@ -1,0 +1,3473 @@
+{
+  "schema": "hooke-explicit-dry-support-interfaces-v1",
+  "scope": "Only listed unordered geometry pairs may meet. Every pair is still measured after each step; negative distance below 1e-7 m fails. Other pairs retain positive recipe clearance. No scientific contact or continuous-time safety qualification.",
+  "scenes": {
+    "anu_shrimp_geochronology": {
+      "scene_sha256": "f7b75b0b74e95e2446d6ca27e2a7b54fd59279b124862ffd0e16bab2cf3f8b92",
+      "equipment": {
+        "shrimp_rg": {
+          "rationale": "Carrier deck on its linear guide; rotary sleeve and thrust-flange faces meet the retained stage disc. Ideal joint support, not a load-bearing contact calibration.",
+          "pairs": [
+            {
+              "geoms": [
+                "shrimp_rg__carrier_guide_1171",
+                "shrimp_rg__stage_deck_left"
+              ],
+              "geom_ids": [
+                718,
+                1057
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg",
+                "shrimp_rg__body_sample_transfer"
+              ],
+              "weld_ids": [
+                0,
+                9
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__carrier_guide_1173",
+                "shrimp_rg__stage_deck_right"
+              ],
+              "geom_ids": [
+                719,
+                1058
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg",
+                "shrimp_rg__body_sample_transfer"
+              ],
+              "weld_ids": [
+                0,
+                9
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_0",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1062,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_1",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1063,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_2",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1064,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_3",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1065,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_4",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1066,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_5",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1067,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_6",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1068,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_7",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1069,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_8",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1070,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_9",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1071,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_10",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1072,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_11",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1073,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_12",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1074,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_13",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1075,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_14",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1076,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_15",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1077,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_16",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1078,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_17",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1079,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_18",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1080,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_19",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1081,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_20",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1082,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_21",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1083,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_22",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1084,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_23",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1085,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_24",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1086,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_25",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1087,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_26",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1088,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_27",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1089,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_28",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1090,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_29",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1091,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_30",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1092,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_31",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1093,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_32",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1094,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_33",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1095,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_34",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1096,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_35",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1097,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_36",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1098,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_37",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1099,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_38",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1100,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_39",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1101,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_40",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1102,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_41",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1103,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_42",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1104,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_43",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1105,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_44",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1106,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_45",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1107,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_46",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1108,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_sleeve_proxy_47",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1109,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_0",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1111,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_1",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1112,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_2",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1113,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_3",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1114,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_4",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1115,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_5",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1116,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_6",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1117,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_7",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1118,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_8",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1119,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_9",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1120,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_10",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1121,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_11",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1122,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_12",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1123,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_13",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1124,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_14",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1125,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_15",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1126,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_16",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1127,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_17",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1128,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_18",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1129,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_19",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1130,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_20",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1131,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_21",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1132,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_22",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1133,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_23",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1134,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_24",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1135,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_25",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1136,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_26",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1137,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_27",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1138,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_28",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1139,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_29",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1140,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_30",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1141,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_31",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1142,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_32",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1143,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_33",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1144,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_34",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1145,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_35",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1146,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_36",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1147,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_37",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1148,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_38",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1149,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_39",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1150,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_40",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1151,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_41",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1152,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_42",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1153,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_43",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1154,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_44",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1155,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_45",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1156,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_46",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1157,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            },
+            {
+              "geoms": [
+                "shrimp_rg__stage_thrust_flange_proxy_47",
+                "shrimp_rg__cylinder_1412"
+              ],
+              "geom_ids": [
+                1158,
+                1161
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "shrimp_rg__body_sample_transfer",
+                "shrimp_rg__body_sample_rotation"
+              ],
+              "weld_ids": [
+                9,
+                10
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "cityu_rogach_photoluminescence": {
+      "scene_sha256": "131ecfd9791877df075caa297bb62839d7fcf3c4dc68cd788cea091398cffd04",
+      "equipment": {
+        "pl_service": {
+          "rationale": "Coaxial coupon-index disc meets its fixed cylindrical pedestal face.",
+          "pairs": [
+            {
+              "geoms": [
+                "pl_service__cylinder_54",
+                "pl_service__cylinder_55"
+              ],
+              "geom_ids": [
+                112,
+                150
+              ],
+              "distance_at_registration_m": 2.220446049250313e-16,
+              "body_names": [
+                "pl_service",
+                "pl_service__body_coupon_theta"
+              ],
+              "weld_ids": [
+                0,
+                5
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "cmu_edl_electrochemical_testing": {
+      "scene_sha256": "9fce43bc51e8a724301915f839d9c7ee158772f6f953f8cd11285c2fbab6db15",
+      "equipment": {
+        "electrochemical_test": {
+          "rationale": "The retained drawer and its perimeter clamp meet the fixture guide/seat faces at the closed inspection pose.",
+          "pairs": [
+            {
+              "geoms": [
+                "electrochemical_test__box_269",
+                "electrochemical_test__box_278"
+              ],
+              "geom_ids": [
+                580,
+                590
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "electrochemical_test__body_specimen_drawer",
+                "electrochemical_test__body_clamp_lift"
+              ],
+              "weld_ids": [
+                3,
+                4
+              ]
+            },
+            {
+              "geoms": [
+                "electrochemical_test__box_269",
+                "electrochemical_test__box_280"
+              ],
+              "geom_ids": [
+                580,
+                592
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "electrochemical_test__body_specimen_drawer",
+                "electrochemical_test__body_clamp_lift"
+              ],
+              "weld_ids": [
+                3,
+                4
+              ]
+            },
+            {
+              "geoms": [
+                "electrochemical_test__box_269",
+                "electrochemical_test__box_282"
+              ],
+              "geom_ids": [
+                580,
+                594
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "electrochemical_test__body_specimen_drawer",
+                "electrochemical_test__body_clamp_lift"
+              ],
+              "weld_ids": [
+                3,
+                4
+              ]
+            },
+            {
+              "geoms": [
+                "electrochemical_test__box_269",
+                "electrochemical_test__box_283"
+              ],
+              "geom_ids": [
+                580,
+                595
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "electrochemical_test__body_specimen_drawer",
+                "electrochemical_test__body_clamp_lift"
+              ],
+              "weld_ids": [
+                3,
+                4
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "cuhk_mpil_ultrafast_optics": {
+      "scene_sha256": "0188eeb444aa8fda3d6c82274838ca90d113649b3b815be2c3e70f4d26e53ace",
+      "equipment": {
+        "ultrafast_alignment": {
+          "rationale": "The optical translation carriage rests at its linear stage guide face.",
+          "pairs": [
+            {
+              "geoms": [
+                "ultrafast_alignment__box_1171",
+                "ultrafast_alignment__box_1172"
+              ],
+              "geom_ids": [
+                1367,
+                1396
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "ultrafast_alignment",
+                "ultrafast_alignment__body_coupon_x"
+              ],
+              "weld_ids": [
+                0,
+                7
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "epfl_lch_hydraulic_flume": {
+      "scene_sha256": "ba6e40f4f4cf377967d07061dd798bc33efa14c8ec615a06f6cbc014f7d048c2",
+      "equipment": {
+        "probe_rig": {
+          "rationale": "The probe traverse bridge sits on the paired rail top faces.",
+          "pairs": [
+            {
+              "geoms": [
+                "probe_rig__lch_traverse_rail_30",
+                "probe_rig__lch_traverse_bridge_36"
+              ],
+              "geom_ids": [
+                285,
+                306
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "probe_rig",
+                "probe_rig__body_probe_traverse"
+              ],
+              "weld_ids": [
+                0,
+                2
+              ]
+            },
+            {
+              "geoms": [
+                "probe_rig__lch_traverse_rail_34",
+                "probe_rig__lch_traverse_bridge_36"
+              ],
+              "geom_ids": [
+                288,
+                306
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "probe_rig",
+                "probe_rig__body_probe_traverse"
+              ],
+              "weld_ids": [
+                0,
+                2
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "fuberlin_franke_surface_physics": {
+      "scene_sha256": "e0a5e09b96975a3c93f7e56bc8c5ac0bada7ae346b67097ecf902421a76ca950",
+      "equipment": {
+        "surface_holder": {
+          "rationale": "The rotary sample holder meets the coaxial support disc face.",
+          "pairs": [
+            {
+              "geoms": [
+                "surface_holder__cylinder_198",
+                "surface_holder__cylinder_199"
+              ],
+              "geom_ids": [
+                259,
+                260
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "surface_holder__body_holder_extension",
+                "surface_holder__body_holder_azimuth"
+              ],
+              "weld_ids": [
+                6,
+                7
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "hkust_geotechnical_centrifuge": {
+      "scene_sha256": "c830e47fede02414587f1cf6005d19703d07a8b9c5a49934a227863fc318b6e0",
+      "equipment": {
+        "gcf_model_testbed": {
+          "rationale": "Nested bridge/carriage faces and probe-bearing collar end faces meet at the authored ideal joint interfaces.",
+          "pairs": [
+            {
+              "geoms": [
+                "gcf_model_testbed__box_2627",
+                "gcf_model_testbed__gcf_top_carriage_2629"
+              ],
+              "geom_ids": [
+                1178,
+                1179
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_bridge_y",
+                "gcf_model_testbed__body_carriage_x"
+              ],
+              "weld_ids": [
+                3,
+                4
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__box_2627",
+                "gcf_model_testbed__box_2630"
+              ],
+              "geom_ids": [
+                1178,
+                1180
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_bridge_y",
+                "gcf_model_testbed__body_carriage_x"
+              ],
+              "weld_ids": [
+                3,
+                4
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_0",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1286,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_1",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1287,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_2",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1288,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_3",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1289,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_4",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1290,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_5",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1291,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_6",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1292,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_7",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1293,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_8",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1294,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_9",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1295,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_10",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1296,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_11",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1297,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_12",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1298,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_13",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1299,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_14",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1300,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_15",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1301,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_16",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1302,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_17",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1303,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_18",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1304,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_19",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1305,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_20",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1306,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_21",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1307,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_22",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1308,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_23",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1309,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_24",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1310,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_25",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1311,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_26",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1312,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_27",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1313,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_28",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1314,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_29",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1315,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_30",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1316,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_31",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1317,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_32",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1318,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_33",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1319,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_34",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1320,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_35",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1321,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_36",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1322,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_37",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1323,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_38",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1324,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_39",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1325,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_40",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1326,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_41",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1327,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_42",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1328,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_43",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1329,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_44",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1330,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_45",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1331,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_46",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1332,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            },
+            {
+              "geoms": [
+                "gcf_model_testbed__gcf_probe_rotary_bearing_proxy_47",
+                "gcf_model_testbed__gcf_probe_retaining_collar"
+              ],
+              "geom_ids": [
+                1333,
+                1336
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "gcf_model_testbed__body_probe_height",
+                "gcf_model_testbed__body_probe_rotation"
+              ],
+              "weld_ids": [
+                5,
+                6
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "kaist_usdl_magnetic_probe": {
+      "scene_sha256": "fe0521b1098348be74b037bb9ced446cdceadd9bce2adc7f276fab2e38de867e",
+      "equipment": {
+        "moke_probe_workspace": {
+          "rationale": "Nested orthogonal positioning-stage decks meet at their linear guide interface.",
+          "pairs": [
+            {
+              "geoms": [
+                "moke_probe_workspace__box_264",
+                "moke_probe_workspace__box_265"
+              ],
+              "geom_ids": [
+                441,
+                442
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "moke_probe_workspace__body_specimen_x",
+                "moke_probe_workspace__body_specimen_y"
+              ],
+              "weld_ids": [
+                4,
+                5
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "kfupm_superconductivity_spectroscopy": {
+      "scene_sha256": "28fc94953ef6879304dfddf24fe5bad305ee8b61dd5917c18baa915c09f41050",
+      "equipment": {
+        "spectrometer": {
+          "rationale": "Closed service cover meets its side supports; lift platform meets the coaxial sleeve end face.",
+          "pairs": [
+            {
+              "geoms": [
+                "spectrometer__box_10",
+                "spectrometer__box_12"
+              ],
+              "geom_ids": [
+                85,
+                94
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "spectrometer",
+                ""
+              ],
+              "weld_ids": [
+                0,
+                5
+              ]
+            },
+            {
+              "geoms": [
+                "spectrometer__box_11",
+                "spectrometer__box_12"
+              ],
+              "geom_ids": [
+                86,
+                94
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "spectrometer",
+                ""
+              ],
+              "weld_ids": [
+                0,
+                5
+              ]
+            },
+            {
+              "geoms": [
+                "spectrometer__spectrometer_lift_sleeve_20",
+                "spectrometer__spectrometer_lift_platform_22"
+              ],
+              "geom_ids": [
+                89,
+                99
+              ],
+              "distance_at_registration_m": 1.1102230246251565e-16,
+              "body_names": [
+                "spectrometer",
+                "spectrometer__body_sample_lift"
+              ],
+              "weld_ids": [
+                0,
+                7
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "kth_l2000_wind_tunnel": {
+      "scene_sha256": "81b8b9d47421a20a9f50000631cff2d6c5fe5e6ca302cba8254abd5ee10c5d60",
+      "equipment": {
+        "wind_tunnel": {
+          "rationale": "The yaw disc rests on the fixed coaxial support pedestal face. The separate pitch shaft uses positive radial clearance.",
+          "pairs": [
+            {
+              "geoms": [
+                "wind_tunnel__cylinder_89",
+                "wind_tunnel__cylinder_90"
+              ],
+              "geom_ids": [
+                64,
+                138
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "wind_tunnel",
+                "wind_tunnel__body_model_yaw"
+              ],
+              "weld_ids": [
+                0,
+                10
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "nju_rise_quantum_109": {
+      "scene_sha256": "7e276fdf85f2d9770e74242b6435c8bdcae2e924a75b5e2fc018a2d9146c3c2c",
+      "equipment": {
+        "cryostat_bay": {
+          "rationale": "The external inspection carriage rests on its supporting linear slide deck.",
+          "pairs": [
+            {
+              "geoms": [
+                "cryostat_bay__box_172",
+                "cryostat_bay__box_173"
+              ],
+              "geom_ids": [
+                220,
+                221
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "cryostat_bay",
+                "cryostat_bay__body_inspection_x"
+              ],
+              "weld_ids": [
+                0,
+                2
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "nus_e6nanofab_l1": {
+      "scene_sha256": "71ce798549ce6d06a172cd3bdeb330bcb3909284b450c5ca18a5a511f2562d27",
+      "equipment": {
+        "ma8_alignment_workspace": {
+          "rationale": "The nested X carriage meets its supporting deck; the theta disc meets its coaxial Y-stage support face.",
+          "pairs": [
+            {
+              "geoms": [
+                "ma8_alignment_workspace__box_18",
+                "ma8_alignment_workspace__box_19"
+              ],
+              "geom_ids": [
+                206,
+                438
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "ma8_alignment_workspace",
+                "ma8_alignment_workspace__body_wafer_x"
+              ],
+              "weld_ids": [
+                0,
+                3
+              ]
+            },
+            {
+              "geoms": [
+                "ma8_alignment_workspace__cylinder_20",
+                "ma8_alignment_workspace__cylinder_21"
+              ],
+              "geom_ids": [
+                439,
+                440
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "ma8_alignment_workspace__body_wafer_y",
+                "ma8_alignment_workspace__body_wafer_theta"
+              ],
+              "weld_ids": [
+                4,
+                5
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "pennstate_aeroacoustics_rotor_chamber": {
+      "scene_sha256": "4632fd554c0447aecfcba7fa79a0580d15ea847a4027b10796f7b5f684d3af67",
+      "equipment": {
+        "tandem_rotors": {
+          "rationale": "The two retained inert rotor hubs meet their respective pedestal and overhead shaft end faces.",
+          "pairs": [
+            {
+              "geoms": [
+                "tandem_rotors__cylinder_6",
+                "tandem_rotors__cylinder_7"
+              ],
+              "geom_ids": [
+                31,
+                154
+              ],
+              "distance_at_registration_m": 2.220446049250313e-16,
+              "body_names": [
+                "tandem_rotors",
+                "tandem_rotors__body_pedestal_rotor_index"
+              ],
+              "weld_ids": [
+                0,
+                4
+              ]
+            },
+            {
+              "geoms": [
+                "tandem_rotors__cylinder_28",
+                "tandem_rotors__cylinder_29"
+              ],
+              "geom_ids": [
+                47,
+                158
+              ],
+              "distance_at_registration_m": 2.220446049250313e-16,
+              "body_names": [
+                "tandem_rotors",
+                "tandem_rotors__body_suspended_rotor_index"
+              ],
+              "weld_ids": [
+                0,
+                6
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sjtu_deepwater_offshore_basin": {
+      "scene_sha256": "ab716610d4d3e563491982b5aea1a6433a78dee3e97ae1425010671d95f6481b",
+      "equipment": {
+        "offshore_towing_rig": {
+          "rationale": "The transverse model trolley meets the undersides of the two moving carriage rails.",
+          "pairs": [
+            {
+              "geoms": [
+                "offshore_towing_rig__box_421",
+                "offshore_towing_rig__box_470"
+              ],
+              "geom_ids": [
+                625,
+                674
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "offshore_towing_rig__body_carriage_longitudinal",
+                "offshore_towing_rig__body_model_transverse"
+              ],
+              "weld_ids": [
+                3,
+                4
+              ]
+            },
+            {
+              "geoms": [
+                "offshore_towing_rig__box_444",
+                "offshore_towing_rig__box_470"
+              ],
+              "geom_ids": [
+                648,
+                674
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "offshore_towing_rig__body_carriage_longitudinal",
+                "offshore_towing_rig__body_model_transverse"
+              ],
+              "weld_ids": [
+                3,
+                4
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "snu_acoustic_impedance": {
+      "scene_sha256": "20674cc6439e9ada2a6f800db87ce1e64bf3d26f2f7c7f5fa2ee4d02308ce7d7",
+      "equipment": {
+        "impedance_station": {
+          "rationale": "The retained coupon carriage meets the linear guide deck face.",
+          "pairs": [
+            {
+              "geoms": [
+                "impedance_station__box_73",
+                "impedance_station__box_74"
+              ],
+              "geom_ids": [
+                154,
+                158
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "impedance_station",
+                "impedance_station__body_coupon_axial"
+              ],
+              "weld_ids": [
+                0,
+                3
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "tum_wind_tunnel_a": {
+      "scene_sha256": "f3b8e842866588f5f38c6a3f4b6b95f7f47542c5e7e855633319abbc7256d909",
+      "equipment": {
+        "model_station": {
+          "rationale": "The circular model turntable meets its fixed supporting disc face.",
+          "pairs": [
+            {
+              "geoms": [
+                "model_station__cylinder_20",
+                "model_station__cylinder_21"
+              ],
+              "geom_ids": [
+                87,
+                106
+              ],
+              "distance_at_registration_m": 1.1102230246251565e-16,
+              "body_names": [
+                "model_station",
+                "model_station__body_model_yaw"
+              ],
+              "weld_ids": [
+                0,
+                2
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "warwick_highfield_nmr_1ghz": {
+      "scene_sha256": "64cfb028fa7385ff80b67aa19386b6c6216e01044ed68b5da2776211bcc8b109",
+      "equipment": {
+        "nmr_cryostat": {
+          "rationale": "The repaired flat lift-shaft end meets the coaxial rotating holder underside; the rounded penetrating end has been removed.",
+          "pairs": [
+            {
+              "geoms": [
+                "nmr_cryostat__cylinder_668",
+                "nmr_cryostat__cylinder_669"
+              ],
+              "geom_ids": [
+                740,
+                741
+              ],
+              "distance_at_registration_m": 1.1102230246251565e-16,
+              "body_names": [
+                "nmr_cryostat__body_inspection_lift",
+                "nmr_cryostat__body_holder_rotation"
+              ],
+              "weld_ids": [
+                2,
+                3
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "zju_low_turbulence_tunnel": {
+      "scene_sha256": "143934a1d3299c0e5bf137b4fd182599e1af45d56135938d66fdce34abf70d78",
+      "equipment": {
+        "lswt_model": {
+          "rationale": "The model yaw disc meets the end of the vertically translating sting support.",
+          "pairs": [
+            {
+              "geoms": [
+                "lswt_model__cylinder_108",
+                "lswt_model__cylinder_109"
+              ],
+              "geom_ids": [
+                156,
+                157
+              ],
+              "distance_at_registration_m": 0.0,
+              "body_names": [
+                "lswt_model__body_sting_height",
+                "lswt_model__body_model_yaw"
+              ],
+              "weld_ids": [
+                2,
+                3
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

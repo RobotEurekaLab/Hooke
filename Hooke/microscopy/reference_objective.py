@@ -6,11 +6,10 @@ calibrated optical prescription. All builders use metres.
 """
 
 import math
+import xml.etree.ElementTree as ET
 
 import numpy as np
-from scipy.spatial import Delaunay
-
-from microscopy.geometry import geom, mesh
+from microscopy.geometry import body, cylinder, geom, mesh, numbers
 
 COVER_GLASS_M = .0012
 WORKING_DISTANCE_M = .0031
@@ -59,54 +58,42 @@ def _lathe(asset, parent, name, profile, position, material="metal", *, knurled=
 
 
 def _mount(asset, focus, position):
-    """Original flat six-position plate; neither Nikon inclination nor CAD."""
-    centre = np.array([-.035, 0.])
-    angles = np.arange(6)*np.pi/3
-    slots = centre+.035*np.column_stack((np.cos(angles), np.sin(angles)))
-    theta = np.arange(192)*2*np.pi/192
-    boundary = centre+.055*np.column_stack((np.cos(theta), np.sin(theta)))
-    theta = np.arange(96)*2*np.pi/96
-    holes = slots[:, None, :]+.0125*np.column_stack((np.cos(theta), np.sin(theta)))
-    points = np.vstack((boundary, holes.reshape(-1, 2)))
-    triangles = Delaunay(points).simplices
-    centroids = points[triangles].mean(axis=1)
-    triangles = triangles[np.all(np.linalg.norm(centroids[:, None]-slots, axis=2) > .0125, axis=1)]
-    n = len(points)
-    vertices = np.vstack((np.column_stack((points, np.full(n, -.005))),
-                          np.column_stack((points, np.zeros(n)))))
-    faces = [tuple(triangle[::-1]) for triangle in triangles]
-    faces.extend(tuple(triangle+n) for triangle in triangles)
-    edges = {}
-    for triangle in triangles:
-        for a, b in zip(triangle, np.roll(triangle, -1)):
-            key = tuple(sorted((int(a), int(b))))
-            if key in edges:
-                del edges[key]
-            else:
-                edges[key] = (int(a), int(b))
-    for a, b in edges.values():
-        faces.extend(((a, b, b+n), (a, b+n, a+n)))
+    """Inclined conical carousel with the selected optical axis unchanged."""
+    from microscopy.turret_geometry import build_geometry
+    vertices, faces, slots, axes = build_geometry()
     mesh(asset, "reference_objective_mount_mesh", vertices, faces)
     geom(focus, "nosepiece", "mesh", (), position, "graphite",
          mesh="reference_objective_mount_mesh", mass="0")
-    return slots
+    return slots, axes
 
 
 def build_reference_objective(asset, focus, origin, focal_reference_m):
     position = np.asarray(origin)+[0., 0., focal_reference_m-SHOULDER_TO_SPECIMEN_M]
-    slots = _mount(asset, focus, position)
+    slots, axes = _mount(asset, focus, position)
     # Retain the three legacy, unidentified reference objectives in separate
     # slots; their exterior dimensions and optical properties are estimates.
-    from microscopy.instrument import detail_objectives
-    # The legacy barrel shoulder was at -47 mm. Seat it on this plate's
-    # shoulder plane; retaining its previous world height left it floating.
-    legacy_origin = np.asarray(origin)+[0., 0., focal_reference_m-SHOULDER_TO_SPECIMEN_M+.047]
     occupied = (1, 2, 5)
-    detail_objectives(focus, legacy_origin, placements=[tuple(slots[index]) for index in occupied])
     for index, slot in enumerate(occupied):
-        _lathe(asset, focus, f"reference_objective_bushing_{index}",
-               [(-.005, .0125), (0., .0125), (0., .0105), (-.005, .0105)],
-               position+[*slots[slot], 0.], "bronze")
+        axis = axes[slot]
+        quaternion = np.r_[1+axis[2], -axis[1], axis[0], 0.]
+        quaternion /= np.linalg.norm(quaternion)
+        socket = body(focus, f"reference_objective_socket_{index}", position+slots[slot],
+                      quat=numbers(quaternion), gravcomp="1")
+        # Fixed visual bodies still need a finite compiler COM. This tiny
+        # numerical mass is not a measured objective mass or a load model.
+        ET.SubElement(socket, "inertial", pos="0 0 .01", mass=".000001",
+                      diaginertia="1e-10 1e-10 1e-10")
+        _lathe(asset, socket, f"reference_objective_bushing_{index}",
+               [(-.006, .0125), (.001, .0125), (.001, .0105), (-.006, .0105)],
+               (0, 0, 0), "bronze")
+        for suffix, lower, upper, radius, material in (
+                ("thread", -.004, 0., .0105, "bronze"),
+                ("barrel", 0., .023, .0095, "metal"),
+                ("collar", .018, .021, .010, "amber"),
+                ("nose", .023, .027, .0068, "graphite"),
+                ("lens", .027, .0275, .0045, "lens")):
+            cylinder(socket, f"objective_{index}_{suffix}", (0, 0, lower),
+                     (0, 0, upper), radius, material, mass="0")
     # Derived end radii follow the drawing's 7 and 5 degree exterior tapers.
     rear_radius = .016-.0128*math.tan(math.radians(7))
     front_radius = .01625-.0247*math.tan(math.radians(5))
@@ -136,12 +123,15 @@ def build_reference_objective(asset, focus, origin, focal_reference_m):
                 cover_glass_m=COVER_GLASS_M, reference_working_distance_m=WORKING_DISTANCE_M,
                 shoulder_to_specimen_m=SHOULDER_TO_SPECIMEN_M, body_length_m=BODY_LENGTH_M,
                 focal_reference_m=focal_reference_m, maximum_diameter_m=.034,
-                mount_slots_m=slots.tolist(), mount_estimated=True,
+                mount_slots_m=slots[:, :2].tolist(), mount_estimated=True,
+                mount_socket_centres_m=slots.tolist(), mount_socket_axes=axes.tolist(),
+                mount_profile="original-inclined-conical-six-position-carousel",
+                inclination_estimate_degrees=18.,
                 legacy_occupied_slots=list(occupied), legacy_shoulder_offset_m=focal_reference_m-SHOULDER_TO_SPECIMEN_M,
                 inactive_objectives="Three legacy unidentified reference bodies; dimensions/optics unverified",
                 interface="M25 x 0.75; simplified cylindrical thread exterior",
                 estimates=["Internal bores and display lens", "Knurl pattern and black band",
-                           "Original flat six-hole support; Nikon left inclination and rotary drive not reconstructed",
+                           "Original inclined conical support; 18 degree inclination is estimated, rotary drive unmodeled",
                            "Original 25-to-21 mm legacy objective sleeves; thread forms omitted",
                            "Focal datum offset into cell phantom; no refractive-index correction"],
                 physical_optics_calibrated=False,

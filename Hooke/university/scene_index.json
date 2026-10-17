@@ -1,0 +1,842 @@
+{
+  "rochester_genomics": {
+    "institution_id": "rochester",
+    "subject_id": "genomics",
+    "subject_label": "Genomics",
+    "lab_id": "genomics_shared_resource",
+    "lab_name": "Genomics Shared Resource"
+  },
+  "indiana_microfluidics": {
+    "institution_id": "indiana_bloomington",
+    "subject_id": "microfluidics",
+    "subject_label": "Microfluidics",
+    "lab_id": "jacobson",
+    "lab_name": "Jacobson Research Group"
+  },
+  "uw_isolab": {
+    "institution_id": "washington",
+    "subject_id": "geochemistry",
+    "subject_label": "Geochemistry",
+    "lab_id": "isolab",
+    "lab_name": "IsoLab"
+  },
+  "uva_deposition": {
+    "institution_id": "virginia",
+    "subject_id": "materials_science",
+    "subject_label": "Materials Science",
+    "lab_id": "ihlefeld",
+    "lab_name": "Ihlefeld Group"
+  },
+  "purdue_phenotyping": {
+    "institution_id": "purdue",
+    "subject_id": "plant_science",
+    "subject_label": "Plant Science",
+    "lab_id": "aapf",
+    "lab_name": "Ag Alumni Seed Phenotyping Facility"
+  },
+  "epfl_microbiorobotics": {
+    "institution_id": "epfl",
+    "subject_id": "microrobotics",
+    "subject_label": "Microrobotics",
+    "lab_id": "microbs",
+    "lab_name": "MicroBioRobotic Systems Laboratory"
+  },
+  "waterloo_robohub": {
+    "institution_id": "waterloo",
+    "subject_id": "robotics",
+    "subject_label": "Robotics",
+    "lab_id": "robohub",
+    "lab_name": "RoboHub"
+  },
+  "penn_pathology": {
+    "institution_id": "upenn",
+    "subject_id": "pathology",
+    "subject_label": "Pathology",
+    "lab_id": "pathology",
+    "lab_name": "Pathology and Laboratory Medicine"
+  },
+  "eth_air_quality": {
+    "institution_id": "eth_zurich",
+    "subject_id": "environmental_science",
+    "subject_label": "Environmental Science",
+    "lab_id": "air_quality",
+    "lab_name": "Air Quality and Particle Technology Laboratory"
+  },
+  "nasa_planetary": {
+    "institution_id": "nasa_glenn",
+    "subject_id": "planetary_robotics",
+    "subject_label": "Planetary Robotics",
+    "lab_id": "slope",
+    "lab_name": "SLOPE Laboratory"
+  },
+  "harvard_cns_cambridge": {
+    "institution_id": "harvard_university",
+    "subject_id": "nanofabrication",
+    "subject_label": "Nanofabrication",
+    "lab_id": "cns_cambridge_lise",
+    "lab_name": "Center for Nanoscale Systems, Cambridge LISE"
+  },
+  "caltech_stoltz_schlinger": {
+    "institution_id": "caltech",
+    "subject_id": "chemistry",
+    "subject_label": "Chemistry",
+    "lab_id": "stoltz_schlinger",
+    "lab_name": "Stoltz Group, Schlinger Laboratory"
+  },
+  "cornell_schlom_mbe": {
+    "institution_id": "cornell_university",
+    "subject_id": "thin_film_materials",
+    "subject_label": "Thin-film Materials",
+    "lab_id": "schlom",
+    "lab_name": "Schlom Group oxide molecular-beam epitaxy laboratory"
+  },
+  "stanford_biomechatronics_gait": {
+    "institution_id": "stanford_university",
+    "subject_id": "biomechatronics",
+    "subject_label": "Biomechatronics",
+    "lab_id": "biomechatronics",
+    "lab_name": "Biomechatronics Laboratory gait test station"
+  },
+  "anu_shrimp_geochronology": {
+    "institution_id": "anu",
+    "subject_id": "geochronology",
+    "subject_label": "Geochronology",
+    "lab_id": "shrimp_geochronology",
+    "lab_name": "Sensitive High Resolution Ion Microprobe facility"
+  },
+  "oxford_bonilla_semiconductor": {
+    "institution_id": "university_of_oxford",
+    "subject_id": "semiconductor_materials",
+    "subject_label": "Semiconductor Materials",
+    "lab_id": "bonilla",
+    "lab_name": "Bonilla Lab semiconductor characterization facilities"
+  },
+  "ntu_sgsr_characterization": {
+    "institution_id": "ntu_singapore",
+    "subject_id": "materials_characterization",
+    "subject_label": "Materials Characterization",
+    "lab_id": "sgsr_characterization",
+    "lab_name": "SGSR Characterization Laboratory and shared facility suite"
+  },
+  "ntu_smtc_membranes": {
+    "institution_id": "ntu_singapore",
+    "subject_id": "water_engineering",
+    "subject_label": "Water Engineering",
+    "lab_id": "smtc",
+    "lab_name": "Singapore Membrane Technology Centre (SMTC)"
+  },
+  "tsinghua_rush3d": {
+    "institution_id": "tsinghua_university",
+    "subject_id": "optical_imaging",
+    "subject_label": "Optical Imaging",
+    "lab_id": "imaging_and_intelligence",
+    "lab_name": "Imaging and Intelligence Laboratory RUSH3D workstation"
+  },
+  "uq_moreton_aquarium": {
+    "institution_id": "university_of_queensland",
+    "subject_id": "marine_science",
+    "subject_label": "Marine Science",
+    "lab_id": "moreton_bay_research_station",
+    "lab_name": "Moreton Bay Research Station aquarium laboratory"
+  },
+  "kyoto_yokokawa_nanometrics": {
+    "institution_id": "kyoto_university",
+    "subject_id": "optical_microsystems",
+    "subject_label": "Optical Microsystems",
+    "lab_id": "kyoto_yokokawa_nanometrics",
+    "lab_name": "Yokokawa Laboratory Nanometrics experimental room cB1S03"
+  },
+  "sjtu_deepwater_offshore_basin": {
+    "institution_id": "shanghai_jiao_tong_university",
+    "subject_id": "ocean_engineering",
+    "subject_label": "Ocean Engineering",
+    "lab_id": "sjtu_deepwater_offshore_basin",
+    "lab_name": "Deepwater Offshore Basin"
+  },
+  "kaist_usdl_magnetic_probe": {
+    "institution_id": "kaist",
+    "subject_id": "magnetic_characterization",
+    "subject_label": "Magnetic Characterization",
+    "lab_id": "kaist_usdl_magnetic_probe",
+    "lab_name": "Ultrafast Spin Dynamics Laboratory magnetic microscopy probe station"
+  },
+  "hkust_aaf_wind_tunnel": {
+    "institution_id": "hong_kong_university_of_science_and_technology",
+    "subject_id": "experimental_aerodynamics",
+    "subject_label": "Experimental Aerodynamics",
+    "lab_id": "hkust_aaf_wind_tunnel",
+    "lab_name": "AAF large low-speed wind tunnel test section"
+  },
+  "delft_stevin_structures": {
+    "institution_id": "delft_university_of_technology",
+    "subject_id": "structural_engineering",
+    "subject_label": "Structural Engineering",
+    "lab_id": "stevin_structures",
+    "lab_name": "Macrolab / Stevinlaboratory structural test hall"
+  },
+  "eth_robotic_fabrication": {
+    "institution_id": "eth_zurich",
+    "subject_id": "robotic_construction",
+    "subject_label": "Robotic Construction",
+    "lab_id": "robotic_fabrication",
+    "lab_name": "Robotic Fabrication Laboratory at Arch_Tec_Lab"
+  },
+  "yale_becton_cleanroom_metrology": {
+    "institution_id": "yale_university",
+    "subject_id": "semiconductor_metrology",
+    "subject_label": "Semiconductor Metrology",
+    "lab_id": "yale_becton_cleanroom_metrology",
+    "lab_name": "Becton Main Campus Cleanroom metrology and fabrication bays"
+  },
+  "texas_ferguson_structural_test_hall": {
+    "institution_id": "university_of_texas_at_austin",
+    "subject_id": "structural_engineering",
+    "subject_label": "Structural Engineering",
+    "lab_id": "texas_ferguson_structural_test_hall",
+    "lab_name": "Ferguson Structural Engineering Laboratory main testing hall"
+  },
+  "berkeley_richmond_towing_tank": {
+    "institution_id": "uc_berkeley",
+    "subject_id": "experimental_hydrodynamics",
+    "subject_label": "Experimental Hydrodynamics",
+    "lab_id": "berkeley_richmond_towing_tank",
+    "lab_name": "FLOW Lab — Richmond Field Station Physical Model Test Facility"
+  },
+  "cmu_edl_electrochemical_testing": {
+    "institution_id": "carnegie_mellon",
+    "subject_id": "electrochemical_energy",
+    "subject_label": "Electrochemical Energy",
+    "lab_id": "cmu_edl_electrochemical_testing",
+    "lab_name": "Electrochemical Decarbonization Laboratory — electrochemical testing area"
+  },
+  "ntu_coeb_nanophotonics": {
+    "institution_id": "ntu_singapore",
+    "subject_id": "nanophotonics",
+    "subject_label": "Nanophotonics",
+    "lab_id": "ntu_coeb_nanophotonics",
+    "lab_name": "COEB Nanophotonics Laboratory"
+  },
+  "ntu_intelligent_materials": {
+    "institution_id": "ntu_singapore",
+    "subject_id": "thin_film_instrumentation",
+    "subject_label": "Thin Film Instrumentation",
+    "lab_id": "ntu_intelligent_materials",
+    "lab_name": "Intelligent Materials and Systems Laboratory"
+  },
+  "nus_e6nanofab_l1": {
+    "institution_id": "nus",
+    "subject_id": "nanofabrication",
+    "subject_label": "Nanofabrication",
+    "lab_id": "nus_e6nanofab_l1",
+    "lab_name": "E6NanoFab L1 SUSS MA8 lithography station"
+  },
+  "hkust_geotechnical_centrifuge": {
+    "institution_id": "hong_kong_university_of_science_and_technology",
+    "subject_id": "geotechnical_testing",
+    "subject_label": "Geotechnical Testing",
+    "lab_id": "hkust_geotechnical_centrifuge",
+    "lab_name": "Geotechnical Centrifuge Facility robotic model test station"
+  },
+  "edinburgh_flowave_basin": {
+    "institution_id": "university_of_edinburgh",
+    "subject_id": "ocean_engineering",
+    "subject_label": "Ocean Engineering",
+    "lab_id": "flowave",
+    "lab_name": "FloWave Ocean Energy Research Facility"
+  },
+  "eth_mougel_inorganic": {
+    "institution_id": "eth_zurich",
+    "subject_id": "inorganic_chemistry",
+    "subject_label": "Inorganic Chemistry",
+    "lab_id": "mougel",
+    "lab_name": "Mougel Group inorganic chemistry glovebox laboratory"
+  },
+  "cambridge_schofield_turner": {
+    "institution_id": "university_of_cambridge",
+    "subject_id": "geotechnical_engineering",
+    "subject_label": "Geotechnical Engineering",
+    "lab_id": "schofield_turner",
+    "lab_name": "Schofield Centre Turner geotechnical centrifuge chamber"
+  },
+  "bristol_equals_shaking_table": {
+    "institution_id": "university_of_bristol",
+    "subject_id": "structural_engineering",
+    "subject_label": "Structural Engineering",
+    "lab_id": "equals_shaking_table",
+    "lab_name": "EQUALS earthquake shaking-table laboratory"
+  },
+  "mit_paoc_rotating_fluids": {
+    "institution_id": "mit",
+    "subject_id": "geophysical_fluid_dynamics",
+    "subject_label": "Geophysical Fluid Dynamics",
+    "lab_id": "mit_paoc_rotating_fluids",
+    "lab_name": "PAOC Rotating Fluids Research and Teaching Laboratory"
+  },
+  "princeton_bam_closed_loop_wind_tunnel": {
+    "institution_id": "princeton_university",
+    "subject_id": "experimental_fluid_dynamics",
+    "subject_label": "Experimental Fluid Dynamics",
+    "lab_id": "princeton_bam_closed_loop_wind_tunnel",
+    "lab_name": "BAM Lab closed-loop wind tunnel at Gas Dynamics Laboratory"
+  },
+  "tum_wind_tunnel_a": {
+    "institution_id": "technical_university_of_munich",
+    "subject_id": "aerodynamics",
+    "subject_label": "Aerodynamics",
+    "lab_id": "wind_tunnel_a",
+    "lab_name": "Aerodynamics and Fluid Mechanics Wind Tunnel A"
+  },
+  "leeds_litac_yarn_spinning": {
+    "institution_id": "university_of_leeds",
+    "subject_id": "textile_engineering",
+    "subject_label": "Textile Engineering",
+    "lab_id": "litac_yarn_spinning",
+    "lab_name": "LITAC laboratory-scale yarn spinning area"
+  },
+  "anu_climate_fluid_physics": {
+    "institution_id": "anu",
+    "subject_id": "fluid_physics",
+    "subject_label": "Fluid Physics",
+    "lab_id": "anu_climate_fluid_physics",
+    "lab_name": "Climate and Fluid Physics Laboratory — Large Rotating Annulus"
+  },
+  "ucsd_mccartney_geotechnical_centrifuge": {
+    "institution_id": "uc_san_diego",
+    "subject_id": "geotechnical_engineering",
+    "subject_label": "Geotechnical Engineering",
+    "lab_id": "ucsd_mccartney_geotechnical_centrifuge",
+    "lab_name": "McCartney Group geotechnical centrifuge laboratory"
+  },
+  "mcgill_mmpc_water_modelling": {
+    "institution_id": "mcgill_university",
+    "subject_id": "materials_process_fluid_modelling",
+    "subject_label": "Materials / Process-Fluid Modelling",
+    "lab_id": "mcgill_mmpc_water_modelling",
+    "lab_name": "McGill Metals Processing Centre — Water Modelling Laboratory"
+  },
+  "sydney_fluids_convection": {
+    "institution_id": "university_of_sydney",
+    "subject_id": "fluid_physics",
+    "subject_label": "Fluid Physics",
+    "lab_id": "sydney_fluids_convection",
+    "lab_name": "Fluids and Convection Laboratories — Side-heated Tank"
+  },
+  "unsw_tyree_xray": {
+    "institution_id": "university_of_new_south_wales",
+    "subject_id": "materials_imaging",
+    "subject_label": "Materials Imaging",
+    "lab_id": "unsw_tyree_xray",
+    "lab_name": "Tyree X-ray CT Facility — CoreTOM Micro CT-1"
+  },
+  "epfl_lspn_chemistry": {
+    "institution_id": "epfl",
+    "subject_id": "chemistry",
+    "subject_label": "Chemistry",
+    "lab_id": "lspn_hood_bay",
+    "lab_name": "Laboratory of Synthesis and Natural Products laboratory hood bay"
+  },
+  "kth_robot_design_prototyping": {
+    "institution_id": "kth_royal_institute_of_technology",
+    "subject_id": "robotics",
+    "subject_label": "Robotics",
+    "lab_id": "robot_design_prototyping",
+    "lab_name": "Robot Design Lab mechatronic prototyping room"
+  },
+  "manchester_hv_dielectric_fluids": {
+    "institution_id": "university_of_manchester",
+    "subject_id": "electrical_engineering",
+    "subject_label": "Electrical Engineering",
+    "lab_id": "hv_dielectric_fluid_workcell",
+    "lab_name": "High Voltage Lab dielectric-fluid experimental workstation"
+  },
+  "columbia_fusion_hbt_ep": {
+    "institution_id": "columbia_university",
+    "subject_id": "plasma_instrumentation",
+    "subject_label": "Plasma Instrumentation",
+    "lab_id": "columbia_fusion_hbt_ep",
+    "lab_name": "Columbia Plasma Physics Laboratory — HBT-EP apparatus bay"
+  },
+  "harvard_doyle_cold_molecule_optics": {
+    "institution_id": "harvard_university",
+    "subject_id": "atomic_molecular_optics",
+    "subject_label": "Atomic Molecular Optics",
+    "lab_id": "harvard_doyle_cold_molecule_optics",
+    "lab_name": "John M. Doyle Laboratory — cold-molecule optics workstation"
+  },
+  "illinois_bil_nonlinear_optics": {
+    "institution_id": "university_of_illinois_urbana_champaign",
+    "subject_id": "optics_instrumentation",
+    "subject_label": "Optics Instrumentation",
+    "lab_id": "illinois_bil_nonlinear_optics",
+    "lab_name": "Biophotonics Imaging Laboratory — Nonlinear Optics Development Lab"
+  },
+  "michigan_lurie_lithography_bay": {
+    "institution_id": "university_of_michigan_ann_arbor",
+    "subject_id": "nanofabrication",
+    "subject_label": "Nanofabrication",
+    "lab_id": "michigan_lurie_lithography_bay",
+    "lab_name": "Lurie Nanofabrication Facility lithography work bay"
+  },
+  "birmingham_chbh_mri": {
+    "institution_id": "university_of_birmingham",
+    "subject_id": "research_imaging",
+    "subject_label": "Research Imaging",
+    "lab_id": "chbh_mri_scanner_room",
+    "lab_name": "Centre for Human Brain Health MRI scanner room"
+  },
+  "ku_leuven_iglis1_laser": {
+    "institution_id": "ku_leuven",
+    "subject_id": "optics",
+    "subject_label": "Optics",
+    "lab_id": "iglis1_laser_bay",
+    "lab_name": "IGLIS-1 dedicated laser laboratory"
+  },
+  "nyu_epp_detector_assembly": {
+    "institution_id": "nyu",
+    "subject_id": "detector_instrumentation",
+    "subject_label": "Detector Instrumentation",
+    "lab_id": "nyu_epp_detector_assembly",
+    "lab_name": "NYU Experimental Particle Physics on-campus detector laboratory"
+  },
+  "paris_saclay_lmps_astree": {
+    "institution_id": "universite_paris_saclay",
+    "subject_id": "mechanical_engineering",
+    "subject_label": "Mechanical Engineering",
+    "lab_id": "lmps_astree_workcell",
+    "lab_name": "LMPS ASTREE triaxial testing station at ENS Paris-Saclay"
+  },
+  "glasgow_iset_exploration": {
+    "institution_id": "university_of_glasgow",
+    "subject_id": "space_engineering",
+    "subject_label": "Space Engineering",
+    "lab_id": "iset_hardware_prototyping",
+    "lab_name": "Integrated Space and Exploration Technology laboratory"
+  },
+  "uwa_ngcf_c72": {
+    "institution_id": "university_of_western_australia",
+    "subject_id": "geotechnical_engineering",
+    "subject_label": "Geotechnical Engineering",
+    "lab_id": "uwa_ngcf_c72",
+    "lab_name": "National Geotechnical Centrifuge Facility — C72 bay"
+  },
+  "uts_infrastructure_robotics": {
+    "institution_id": "university_of_technology_sydney",
+    "subject_id": "infrastructure_robotics",
+    "subject_label": "Infrastructure Robotics",
+    "lab_id": "uts_infrastructure_robotics",
+    "lab_name": "Infrastructure Robotics Laboratory CB01.02.082"
+  },
+  "unsw_wrl_wave_basin": {
+    "institution_id": "university_of_new_south_wales",
+    "subject_id": "coastal_engineering",
+    "subject_label": "Coastal Engineering",
+    "lab_id": "unsw_wrl_wave_basin",
+    "lab_name": "Water Research Laboratory — segmented wave-basin bay"
+  },
+  "duke_joint_mechanical_testing": {
+    "institution_id": "duke_university",
+    "subject_id": "materials_mechanical_testing",
+    "subject_label": "Materials Mechanical Testing",
+    "lab_id": "duke_joint_mechanical_testing",
+    "lab_name": "Duke Joint Mechanical Testing Laboratory — 830LE-AT workstation"
+  },
+  "pennstate_aeroacoustics_rotor_chamber": {
+    "institution_id": "pennsylvania_state_university",
+    "subject_id": "experimental_aeroacoustics",
+    "subject_label": "Experimental Aeroacoustics",
+    "lab_id": "pennstate_aeroacoustics_rotor_chamber",
+    "lab_name": "Penn State Aeroacoustics Lab — open-jet anechoic rotor test station"
+  },
+  "uppsala_tandem_pelletron": {
+    "institution_id": "uppsala_university",
+    "subject_id": "experimental_physics",
+    "subject_label": "Experimental Physics",
+    "lab_id": "tandem_pelletron_bay",
+    "lab_name": "Tandem Laboratory Pelletron beamline bay"
+  },
+  "northwestern_clammp_charpy": {
+    "institution_id": "northwestern_university",
+    "subject_id": "materials_fracture_testing",
+    "subject_label": "Materials Fracture Testing",
+    "lab_id": "northwestern_clammp_charpy",
+    "lab_name": "Northwestern CLaMMP — Charpy impact workstation"
+  },
+  "brown_breuer_afam_tunnel": {
+    "institution_id": "brown_university",
+    "subject_id": "experimental_aerodynamics",
+    "subject_label": "Experimental Aerodynamics",
+    "lab_id": "brown_breuer_afam_tunnel",
+    "lab_name": "Brown Breuer Lab — Animal Flight and Aeromechanics Wind Tunnel"
+  },
+  "ubc_hassan_legoflume": {
+    "institution_id": "university_of_british_columbia",
+    "subject_id": "geomorphology_hydraulics",
+    "subject_label": "Geomorphology Hydraulics",
+    "lab_id": "ubc_hassan_legoflume",
+    "lab_name": "UBC Hassan Geomorphology and Hydrology Laboratory — LegoFlume"
+  },
+  "kyoto_kawayama_terahertz": {
+    "institution_id": "kyoto_university",
+    "subject_id": "terahertz_optics",
+    "subject_label": "Terahertz Optics",
+    "lab_id": "kyoto_kawayama_terahertz",
+    "lab_name": "Kawayama Laboratory laser terahertz emission microscopy station"
+  },
+  "psl_sesame_adaptive_optics": {
+    "institution_id": "universite_psl",
+    "subject_id": "optics",
+    "subject_label": "Optics",
+    "lab_id": "sesame_historical_bench",
+    "lab_name": "Observatoire de Paris SESAME adaptive-optics bench, Meudon"
+  },
+  "boston_photonics_pml_sem": {
+    "institution_id": "boston_university",
+    "subject_id": "electron_microscopy",
+    "subject_label": "Electron Microscopy",
+    "lab_id": "boston_photonics_pml_sem",
+    "lab_name": "Boston University Photonics Center — Precision Measurement Laboratory SEM bay"
+  },
+  "cityu_rogach_photoluminescence": {
+    "institution_id": "city_university_of_hong_kong",
+    "subject_id": "materials_optics",
+    "subject_label": "Materials Optics",
+    "lab_id": "cityu_rogach_photoluminescence",
+    "lab_name": "Rogach Group Optics Laboratory — Photoluminescence Station"
+  },
+  "polyu_materials_tribology": {
+    "institution_id": "hong_kong_polytechnic_university",
+    "subject_id": "materials_mechanics",
+    "subject_label": "Materials Mechanics",
+    "lab_id": "polyu_materials_tribology",
+    "lab_name": "Materials and Mechanics Technology Laboratory — UMT Station"
+  },
+  "cuhk_mpil_ultrafast_optics": {
+    "institution_id": "chinese_university_of_hong_kong",
+    "subject_id": "ultrafast_optics",
+    "subject_label": "Ultrafast Optics",
+    "lab_id": "cuhk_mpil_ultrafast_optics",
+    "lab_name": "Multiscale Precision Instrumentation Laboratory — Room 303 Ultrafast Laser Lab"
+  },
+  "lund_nanoparticle_characterization": {
+    "institution_id": "lund_university",
+    "subject_id": "materials_characterization",
+    "subject_label": "Materials Characterization",
+    "lab_id": "compact_dry_characterization",
+    "lab_name": "NanoLund Aerosollab nanoparticle characterization workstation"
+  },
+  "chicago_mineralphysics_laser_bay": {
+    "institution_id": "university_of_chicago",
+    "subject_id": "experimental_mineral_physics",
+    "subject_label": "Experimental Mineral Physics",
+    "lab_id": "chicago_mineralphysics_laser_bay",
+    "lab_name": "University of Chicago Laboratory for Mineral Physics — room 520 optical bay"
+  },
+  "nju_rise_quantum_109": {
+    "institution_id": "nanjing_university",
+    "subject_id": "quantum_instrumentation",
+    "subject_label": "Quantum Instrumentation",
+    "lab_id": "nju_rise_quantum_109",
+    "lab_name": "RISE Superconducting Quantum Computing Laboratory — Electronics Building 109"
+  },
+  "hku_rock_mechanics": {
+    "institution_id": "university_of_hong_kong",
+    "subject_id": "geomechanics",
+    "subject_label": "Geomechanics",
+    "lab_id": "hku_rock_mechanics",
+    "lab_name": "Civil Engineering Rock Laboratory — Mechanical Testing Bay"
+  },
+  "snu_acoustic_impedance": {
+    "institution_id": "seoul_national_university",
+    "subject_id": "acoustics",
+    "subject_label": "Acoustics",
+    "lab_id": "snu_acoustic_impedance",
+    "lab_name": "Acoustics and Vibration Laboratory — Impedance Measurement Setup"
+  },
+  "ucla_bapsf_lapd": {
+    "institution_id": "ucla",
+    "subject_id": "experimental_plasma_physics",
+    "subject_label": "Experimental Plasma Physics",
+    "lab_id": "ucla_bapsf_lapd",
+    "lab_name": "UCLA Basic Plasma Science Facility — Large Plasma Device"
+  },
+  "penn_qnf_denton_sputter": {
+    "institution_id": "upenn",
+    "subject_id": "thin_film_fabrication",
+    "subject_label": "Thin Film Fabrication",
+    "lab_id": "penn_qnf_denton_sputter",
+    "lab_name": "Penn Quattrone Nanofabrication Facility — Denton Explorer 14 PVD-05"
+  },
+  "jhu_paradim_bulk_crystal_growth": {
+    "institution_id": "johns_hopkins_university",
+    "subject_id": "crystal_growth_materials",
+    "subject_label": "Crystal Growth Materials",
+    "lab_id": "jhu_paradim_bulk_crystal_growth",
+    "lab_name": "Johns Hopkins PARADIM Bulk Crystal Growth Facility"
+  },
+  "fudan_superassembly_materials": {
+    "institution_id": "fudan_university",
+    "subject_id": "materials_instrumentation",
+    "subject_label": "Materials Instrumentation",
+    "lab_id": "fudan_superassembly_materials",
+    "lab_name": "Superassembly Framework Laboratory — Materials Bench and Glovebox"
+  },
+  "zju_low_turbulence_tunnel": {
+    "institution_id": "zhejiang_university",
+    "subject_id": "aerodynamics",
+    "subject_label": "Aerodynamics",
+    "lab_id": "zju_low_turbulence_tunnel",
+    "lab_name": "Aircraft Design Laboratory — Low-Turbulence Quiet Wind Tunnel"
+  },
+  "hku_civil_boundary_layer_tunnel": {
+    "institution_id": "university_of_hong_kong",
+    "subject_id": "wind_engineering",
+    "subject_label": "Wind Engineering",
+    "lab_id": "hku_civil_boundary_layer_tunnel",
+    "lab_name": "Civil Engineering Wind Tunnel Laboratory"
+  },
+  "ntu_taiwan_iam_fluids": {
+    "institution_id": "national_taiwan_university",
+    "subject_id": "experimental_fluid_mechanics",
+    "subject_label": "Experimental Fluid Mechanics",
+    "lab_id": "ntu_taiwan_iam_fluids",
+    "lab_name": "Institute of Applied Mechanics — Fluid Mechanics Teaching Laboratory"
+  },
+  "osaka_ocean_wave_lab": {
+    "institution_id": "university_of_osaka",
+    "subject_id": "ocean_engineering",
+    "subject_label": "Ocean Engineering",
+    "lab_id": "osaka_ocean_wave_lab",
+    "lab_name": "Ocean Space Development Laboratory — Two-Dimensional Wave Tank"
+  },
+  "auckland_aerodynamics_tunnel": {
+    "institution_id": "university_of_auckland",
+    "subject_id": "wind_engineering",
+    "subject_label": "Wind Engineering",
+    "lab_id": "auckland_aerodynamics_tunnel",
+    "lab_name": "Aerodynamics Laboratory — Boundary Layer Wind Tunnel"
+  },
+  "kfupm_building_materials": {
+    "institution_id": "kfupm",
+    "subject_id": "construction_materials_testing",
+    "subject_label": "Construction Materials Testing",
+    "lab_id": "kfupm_building_materials",
+    "lab_name": "Building Materials Laboratory — Mechanical Test Frame"
+  },
+  "cambridge_whittle_low_speed_turbine": {
+    "institution_id": "university_of_cambridge",
+    "subject_id": "mechanical_engineering",
+    "subject_label": "Mechanical Engineering",
+    "lab_id": "cambridge_whittle_low_speed_turbine",
+    "lab_name": "Whittle Laboratory — Large Scale Low Speed Turbine"
+  },
+  "birmingham_advanced_micro_edm": {
+    "institution_id": "university_of_birmingham",
+    "subject_id": "mechanical_engineering",
+    "subject_label": "Mechanical Engineering",
+    "lab_id": "birmingham_advanced_micro_edm",
+    "lab_name": "Advanced Manufacturing Research Group — Micro EDM Laboratory"
+  },
+  "polimi_aeroacoustic_white": {
+    "institution_id": "politecnico_di_milano",
+    "subject_id": "aeroacoustics",
+    "subject_label": "Aeroacoustics",
+    "lab_id": "white_aeroacoustic_chamber",
+    "lab_name": "DAER Aeroacoustic Wind Tunnel, Galleria Bianca"
+  },
+  "sheffield_diamond_pilot_plant": {
+    "institution_id": "university_of_sheffield",
+    "subject_id": "process_engineering",
+    "subject_label": "Process Engineering",
+    "lab_id": "diamond_pilot_process_bay",
+    "lab_name": "Diamond Integrated Pilot Plant process bay"
+  },
+  "yonsei_mics_rf_probe": {
+    "institution_id": "yonsei_university",
+    "subject_id": "electronic_metrology",
+    "subject_label": "Electronic Metrology",
+    "lab_id": "yonsei_mics_rf_probe",
+    "lab_name": "MICS Laboratory — RF Probe Workstation"
+  },
+  "imperial_thinfilm_bessemer": {
+    "institution_id": "imperial_college_london",
+    "subject_id": "materials_physics",
+    "subject_label": "Materials Physics",
+    "lab_id": "thinfilm_technology_historical",
+    "lab_name": "Thin Film Technology Laboratory, photographed Bessemer setup"
+  },
+  "alberta_nanofab_exactacoat": {
+    "institution_id": "university_of_alberta",
+    "subject_id": "materials_science",
+    "subject_label": "Materials Science",
+    "lab_id": "alberta_nanofab_exactacoat",
+    "lab_name": "University of Alberta nanoFAB — ExactaCoat lithography workstation"
+  },
+  "nottingham_food_process_hall": {
+    "institution_id": "university_of_nottingham",
+    "subject_id": "process_engineering",
+    "subject_label": "Process Engineering",
+    "lab_id": "food_process_hall_historical",
+    "lab_name": "Sutton Bonington Food Processing Facilities production hall"
+  },
+  "warwick_highfield_nmr_1ghz": {
+    "institution_id": "university_of_warwick",
+    "subject_id": "magnetic_resonance",
+    "subject_label": "Magnetic Resonance",
+    "lab_id": "highfield_nmr_1ghz",
+    "lab_name": "UK High-Field Solid-State NMR Facility, 1 GHz magnet room"
+  },
+  "lmu_hybrid_snom": {
+    "institution_id": "ludwig_maximilians_universitat_munchen",
+    "subject_id": "optics",
+    "subject_label": "Optics",
+    "lab_id": "lmu_hybrid_snom",
+    "lab_name": "Hybrid Nanosystems — Scanning Near-Field Microscopy Laboratory"
+  },
+  "copenhagen_nbi_surface_metrology": {
+    "institution_id": "university_of_copenhagen",
+    "subject_id": "materials_metrology",
+    "subject_label": "Materials Metrology",
+    "lab_id": "copenhagen_nbi_surface_metrology",
+    "lab_name": "Niels Bohr Institute Cleanroom — Surface Metrology Station"
+  },
+  "sorbonne_isir_covr": {
+    "institution_id": "sorbonne_university",
+    "subject_id": "robotics",
+    "subject_label": "Robotics",
+    "lab_id": "sorbonne_isir_covr",
+    "lab_name": "ISIR — CoVR Cartesian Haptic Arena"
+  },
+  "epfl_lwe_anechoic_acoustics": {
+    "institution_id": "epfl",
+    "subject_id": "acoustics",
+    "subject_label": "Acoustics",
+    "lab_id": "epfl_lwe_anechoic_acoustics",
+    "lab_name": "Laboratory of Wave Engineering — Acoustic Anechoic Room"
+  },
+  "manchester_collaborative_robotics": {
+    "institution_id": "university_of_manchester",
+    "subject_id": "robotics",
+    "subject_label": "Robotics",
+    "lab_id": "manchester_collaborative_robotics",
+    "lab_name": "Robotics Research — Collaborative Manipulation Workstation"
+  },
+  "heidelberg_jochim_quantum_architecture": {
+    "institution_id": "universitat_heidelberg",
+    "subject_id": "optics",
+    "subject_label": "Optics",
+    "lab_id": "heidelberg_jochim_quantum_architecture",
+    "lab_name": "Jochim Labs — Heidelberg Quantum Architecture Optical Station"
+  },
+  "fuberlin_franke_surface_physics": {
+    "institution_id": "freie_universitaet_berlin",
+    "subject_id": "materials_metrology",
+    "subject_label": "Materials Metrology",
+    "lab_id": "fuberlin_franke_surface_physics",
+    "lab_name": "Franke Research Group — Surface Physics Microscopy Station"
+  },
+  "kfupm_superconductivity_spectroscopy": {
+    "institution_id": "kfupm",
+    "subject_id": "materials_metrology",
+    "subject_label": "Materials Metrology",
+    "lab_id": "kfupm_superconductivity_spectroscopy",
+    "lab_name": "Superconductivity Laboratory — Optical Spectroscopy Station"
+  },
+  "science_tokyo_thermal_storage_metrology": {
+    "institution_id": "institute_of_science_tokyo",
+    "subject_id": "clean_energy",
+    "subject_label": "Clean Energy",
+    "lab_id": "science_tokyo_thermal_storage_metrology",
+    "lab_name": "Zero-Carbon Energy Laboratory — Thermobalance Station"
+  },
+  "kfupm_high_voltage_insulation": {
+    "institution_id": "kfupm",
+    "subject_id": "electrical_metrology",
+    "subject_label": "Electrical Metrology",
+    "lab_id": "kfupm_high_voltage_insulation",
+    "lab_name": "Applied Research Center for Metrology — High Voltage Laboratory"
+  },
+  "eth_gcc_big_blue": {
+    "institution_id": "eth_zurich",
+    "subject_id": "geotechnical_engineering",
+    "subject_label": "Geotechnical Engineering",
+    "lab_id": "eth_gcc_big_blue",
+    "lab_name": "Geotechnical Centrifuge Center — Big Blue beam centrifuge"
+  },
+  "epfl_tcv_diagnostic_sector": {
+    "institution_id": "epfl",
+    "subject_id": "apparatus_inspection",
+    "subject_label": "Apparatus Inspection",
+    "lab_id": "epfl_tcv_diagnostic_sector",
+    "lab_name": "Swiss Plasma Center — TCV diagnostic access sector"
+  },
+  "leeds_environmental_tribology": {
+    "institution_id": "university_of_leeds",
+    "subject_id": "materials_physics",
+    "subject_label": "Materials Physics",
+    "lab_id": "environmental_tribology",
+    "lab_name": "Advanced Coatings and Environmental Tribology Suite — Environmental Tribometer"
+  },
+  "copenhagen_pice_ice_workroom": {
+    "institution_id": "university_of_copenhagen",
+    "subject_id": "earth_science",
+    "subject_label": "Earth Science",
+    "lab_id": "pice_ice_core_workroom",
+    "lab_name": "Niels Bohr Institute PICE — Priorparken Ice Core Working Room"
+  },
+  "uppsala_freia_gersemi": {
+    "institution_id": "uppsala_university",
+    "subject_id": "physics_instrumentation",
+    "subject_label": "Physics Instrumentation",
+    "lab_id": "freia_gersemi",
+    "lab_name": "FREIA Laboratory — Gersemi Vertical Cryostat Bay"
+  },
+  "lund_maxiv_nanomax_eh1": {
+    "institution_id": "lund_university",
+    "subject_id": "physics_instrumentation",
+    "subject_label": "Physics Instrumentation",
+    "lab_id": "maxiv_nanomax",
+    "lab_name": "MAX IV Laboratory — NanoMAX Imaging Endstation EH1"
+  },
+  "delft_ducat_antenna": {
+    "institution_id": "delft_university_of_technology",
+    "subject_id": "electromagnetic_metrology",
+    "subject_label": "Electromagnetic Metrology",
+    "lab_id": "delft_ducat_antenna",
+    "lab_name": "Microwave Sensing Signals and Systems — DUCAT antenna test chamber"
+  },
+  "tum_nma_electric_powertrain": {
+    "institution_id": "technical_university_of_munich",
+    "subject_id": "electrical_mechanical_testing",
+    "subject_label": "Electrical Mechanical Testing",
+    "lab_id": "tum_nma_electric_powertrain",
+    "lab_name": "Institute of Sustainable Mobile Powertrains — Electric Motor and Inverter Test Bench"
+  },
+  "glasgow_jwnc_wafer_loading": {
+    "institution_id": "university_of_glasgow",
+    "subject_id": "semiconductor_instrumentation",
+    "subject_label": "Semiconductor Instrumentation",
+    "lab_id": "glasgow_jwnc_wafer_loading",
+    "lab_name": "James Watt Nanofabrication Centre — Wafer Loading Workstation"
+  },
+  "kth_l2000_wind_tunnel": {
+    "institution_id": "kth_royal_institute_of_technology",
+    "subject_id": "aerodynamics",
+    "subject_label": "Aerodynamics",
+    "lab_id": "kth_l2000_wind_tunnel",
+    "lab_name": "Engineering Mechanics — L2000 Wind Tunnel"
+  },
+  "eth_experimental_petrology_multianvil": {
+    "institution_id": "eth_zurich",
+    "subject_id": "materials_testing",
+    "subject_label": "Materials Testing",
+    "lab_id": "eth_experimental_petrology_multianvil",
+    "lab_name": "Experimental Petrology — Multianvil Laboratory"
+  },
+  "epfl_lch_hydraulic_flume": {
+    "institution_id": "epfl",
+    "subject_id": "hydraulics",
+    "subject_label": "Hydraulics",
+    "lab_id": "epfl_lch_hydraulic_flume",
+    "lab_name": "Hydraulic Constructions Platform — Experimental Flume Hall"
+  }
+}

@@ -19,21 +19,41 @@ inclusions. Background cells have independent dimensions, orientation and
 contour variations. These are original statistical shapes; they are not
 measured organelles or a particular validated cell line.
 
+Membrane variations remain inside the nominal mechanical envelope. Multiple
+spatial scales of cytoplasmic texture move with the specimen; gentler nuclear
+contrast and bounded phase exposure reduce saturated concentric rings.
+The annular pupil transitions smoothly rather than introducing a sharp
+numerical edge. These appearance refinements do not change cell size,
+mechanical contact or the separate fluorescence control signal.
+
 `phase_contrast.py` computes scalar thin-object transmission and averages the
-intensity from eight annular illumination directions. Each direction uses a
+intensity from twelve annular illumination directions. Each direction uses a
 shifted objective pupil and an attenuating phase ring. The current estimates
 are 550 nm wavelength, objective NA 0.6 and illumination NA 0.35. A neutral
 camera exposure, vignette and fixed detector-noise realization complete the
 display. Patch boundaries taper into the background rather than appearing
 as square seams.
 
-Object height and focus apply independent Gaussian blur to each cell and
-pipette plane. The empirical defocus scale is 0.45 µm per pixel of blur;
-this is not a measured axial point-spread function. The pipette silhouette
-uses the same SI meridian as the hollow 3D capillary, with translucent glass
-walls. Its shaft is approximated as a single plane at tip height. Glass
-refraction, optical propagation through the full shaft and volumetric cell
-scattering remain unresolved.
+The phase display combines a defocused whole-cell projection with an estimated
+2 µm slab through the actual ellipsoid at the focal height. Moving away from
+the cell equator therefore changes the visible section; a thick cell is not
+collapsed into one plane. This empirical blend is not confocal sectioning or
+a calibrated thick-specimen phase-contrast model. Nuclear fluorescence retains
+its separate projected mask and axial blur.
+
+The pipette silhouette uses the same SI meridian as the hollow 3D capillary.
+Its opacity is partitioned between depth planes along the actual inclined
+shaft, then blurred and composited with floating-point premultiplied colour.
+Focusing the distal tip does not sharpen the entire shaft. The empirical
+defocus scale remains 0.45 µm per pixel of blur; it is not a measured axial
+point-spread function. Glass refraction and volumetric scattering remain
+unresolved. Public calibration labels these estimates explicitly.
+
+Glass-wall contrast is an estimated phase-edge display, not measured optical
+transmission. Status annotations stay outside the specimen area so a puncture
+marker cannot cover the micron-scale tip. Digital crops enlarge recorded
+pixels for inspection without changing the needle diameter or optical
+resolution.
 
 Fluorescence uses estimated nuclear and cytoplasmic masks. The green tracer
 intensity is illustrative; it is not a measurement of concentration or
@@ -62,17 +82,36 @@ intracellular mechanics. Public calibration explicitly reports
 `physical_optics_calibrated: false` and
 `biological_texture_calibrated: false`.
 
+After cell localization, injection demos physically move the focus joint to
+the planned insertion height and return to the cell-centre plane after
+withdrawal. The controller does not enlarge the needle or alter the mechanical
+contact boundary to make the image clearer. Observation records preserve the
+actual focus and needle pose.
+
+Completed commands archive a bounded, per-step `interaction.npz` beside the
+episode result. It contains needle and cell positions, the cell pose used for
+contact, normalized ellipsoid distance, penetration, indentation, reaction
+force, focal height, pressure and conserved delivered volume. `result.json`
+records the schema, row count, dropped-row count and SHA-256 checksum. The
+contact pose is distinct from the subsequently updated suspended-cell pose.
+These traces verify the reduced membrane model; cells are not rigid PhysX
+contact bodies, and puncture is not a resolved mesh-tearing simulation.
+
 Both engines use this object-space imaging model. Their world views come
 from MuJoCo EGL or Isaac RTX respectively. Live images and paired channel
 records are written to the configured, ignored microscopy media directory.
 The neutral laboratory materials and backdrop affect world rendering only.
 The microscope stand remains an independent TE2000-S dimensional/photo
 reconstruction, rather than complete manufacturer CAD.
+The same world geometry can also be exported to an
+[editable Blender scene](microscopy_rendering.md) for offline presentation.
 
 ## References and asset provenance
 
 - [Nikon: introduction to phase-contrast microscopy](https://www.microscopyu.com/techniques/phase-contrast/introduction-to-phase-contrast-microscopy)
   explains annular illumination, phase conversion and characteristic halos.
+- [Nikon: phase-contrast microscope configuration](https://www.microscopyu.com/techniques/phase-contrast/phase-contrast-microscope-configuration)
+  describes the contrast and out-of-focus limitations of thick specimens.
 - [Catfaster: HeLa cell phase-contrast photograph](https://commons.wikimedia.org/wiki/File:HeLa_Cells_Culture_Phase_Contrast_1_v1.jpg),
   CC BY-SA 4.0, was viewed as an unmodified local morphology reference. It is
   not incorporated into the cell textures or distributed as an application

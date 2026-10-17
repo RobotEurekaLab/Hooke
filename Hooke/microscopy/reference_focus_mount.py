@@ -1,21 +1,22 @@
-"""Original motorized nosepiece mount; dimension facts are not OEM fit claims.
+"""Original motorized support for the estimated inclined objective carousel.
 
-The existing focus servo owns the moving carriage. A Q-545 mounting outline
-is used as a geometric reference, not as proof it can carry this nosepiece.
-Piezo internals, load capacity and the Nikon focus drivetrain are unmodeled.
+A rear guide carries a low fork and central spindle. All moving parts belong
+to the existing focus joint; the selected objective and collection datums are
+unchanged. This assembly is not Nikon or Q-545 CAD and has no rated load model.
 """
 
 import numpy as np
 from scipy.spatial import Delaunay
 
 from microscopy.geometry import cylinder, geom, mesh
-from microscopy.reference_cad import FOCUS_DRAWING
+from microscopy.stand_details import turned_part
+from microscopy.turret_geometry import CENTRE_M
 
-ROTATION = np.array([[0., 0., -1.], [-1., 0., 0.], [0., 1., 0.]])
+ROTATION = np.array([[1., 0., 0.], [0., 0., -1.], [0., 1., 0.]])
 
 
 def _plate(asset, parent, name, outline, holes, depth, position):
-    """Extrude a planar outline and open bores, along the mounting normal."""
+    """Closed X/Z mounting plate with real clearance bores, extruded toward Y−."""
     theta = np.arange(48)*2*np.pi/48
     circles = [np.asarray(centre)+radius*np.column_stack((np.cos(theta), np.sin(theta)))
                for centre, radius in holes]
@@ -45,75 +46,52 @@ def _plate(asset, parent, name, outline, holes, depth, position):
 
 
 def build_focus_mount(asset, scope, focus, origin, bench_top, shoulder_m, cad=None):
-    """Connect the fixed stand top to the joint-owned, seated nosepiece."""
+    """Seat an original rear guide on the stand and carry the turret from below."""
     stand_origin = np.r_[origin[:2], bench_top]
-    plate_bottom = np.asarray(origin)+[0., 0., shoulder_m-.005]
-    fixed = plate_bottom+[-.0475, 0., -.026]
-    moving = fixed.copy()
+    shoulder = np.asarray(origin)+[0., 0., shoulder_m]
     stand_top = bench_top+.173
-    foot_height = float(fixed[2]-.024-stand_top)
-    if foot_height <= 0:
-        raise ValueError("Focus mount does not fit above the stand's top face")
-    base_holes = [(np.array([x, y]), .00145) for x in (-.0185, .0185)
-                  for y in (-.0185, .0185)]
-    bottom = stand_top-fixed[2]
+    fixed = np.array([shoulder[0]+CENTRE_M[0], shoulder[1]+.099, stand_top+.034])
+    moving = shoulder+[CENTRE_M[0], .082, -.026]
+    foot_height = .008
+    geom(scope, "focus_mount_foot", "box", (.025, .012, foot_height/2),
+         [fixed[0]-stand_origin[0], .091, .173+foot_height/2], "graphite", mass="0")
+    holes = [(np.array([x, z]), .0017) for x in (-.018, .018) for z in (-.018, .018)]
     _plate(asset, scope, "focus_mount_backplate",
-           np.array([[-.026, bottom], [.026, bottom], [.026, .024], [-.026, .024]]),
-           base_holes, .0075, fixed-stand_origin)
-    geom(scope, "focus_mount_foot", "box", (.0025, .026, foot_height/2),
-         fixed-stand_origin+[.0025, 0., -.024-foot_height/2], "graphite", mass="0")
-    source = "Independent unbored mounting-envelope geometry"
-    source_sha256 = None
-    if cad is not None:
-        from microscopy.focus_assembly import _part, _reference
-        name = "independent-q545-mounting"
-        _reference(cad, name, FOCUS_DRAWING)
-        for parent, role, bounds, position in (
-                (scope, "fixed", [-22.5, -24, -5, 22.5, 24, 0], fixed-stand_origin),
-                (focus, "moving", [-22.5, -24, -15, 22.5, 24, -5], moving)):
-            cad.attach(asset, parent, name, _part(cad, name, bounds), position, ROTATION,
-                       prefix="focus_mount_"+role)
-        source = "Independent Q-545 dimension-reference STEP; original manufacturer CAD unavailable"
-        source_sha256 = cad.read(name)["sha256"]
-    else:
-        geom(scope, "focus_mount_fixed_outline", "box", (.0025, .0225, .024),
-             fixed-stand_origin+[.0025, 0., 0.], "metal", mass="0")
-        geom(focus, "focus_mount_moving_outline", "box", (.005, .0225, .024),
-             moving+[.01, 0., 0.], "metal", mass="0")
-    # A bored original angle joins the carriage's 25 mm M2 hole square to
-    # the underside of the nosepiece hub. No source STEP is modified.
-    carriage_holes = [(np.array([x, y]), .0011) for x in (-.0125, .0125)
-                      for y in (-.0125, .0125)]
-    front = moving+[.015, 0., 0.]
+           np.array([[-.025, -.026], [.025, -.026], [.025, .026], [-.025, .026]]),
+           holes, .008, fixed-stand_origin)
+    geom(scope, "focus_mount_fixed_outline", "box", (.012, .002, .024),
+         fixed-stand_origin+[0., -.010, 0.], "metal", mass="0")
+    geom(focus, "focus_mount_moving_outline", "box", (.016, .005, .021),
+         moving, "metal", mass="0")
+    carriage_holes = [(np.array([x, z]), .0011) for x in (-.010, .010) for z in (-.013, .013)]
     _plate(asset, focus, "focus_mount_carrier_web",
-           np.array([[-.016, -.016], [.016, -.016], [.016, .024], [-.016, .024]]),
-           carriage_holes, .003, front+[.003, 0., 0.])
-    geom(focus, "focus_mount_carrier_cap", "box", (.0065, .016, .001),
-         plate_bottom+[-.036, 0., -.001], "graphite", mass="0")
-    for index, (point, _) in enumerate(base_holes):
-        hole = fixed+ROTATION@[*point, 0.]
-        cylinder(scope, f"focus_mount_fixed_screw_{index}",
-                 hole-stand_origin+[-.009, 0., 0.],
-                 hole-stand_origin+[.003, 0., 0.], .00125, "metal", mass="0")
-        cylinder(scope, f"focus_mount_fixed_head_{index}",
-                 hole-stand_origin+[.003, 0., 0.],
-                 hole-stand_origin+[.0049, 0., 0.], .0025, "metal", mass="0")
+           np.array([[-.016, -.021], [.016, -.021], [.016, .021], [-.016, .021]]),
+           carriage_holes, .002, moving+[0., -.005, 0.])
+    # The fork stays below the lowest inactive socket. A central through bore
+    # in the carousel clears the spindle, keeping the active collection tube
+    # at X=0 entirely separate from this mechanical support at X=-35 mm.
+    geom(focus, "focus_mount_carrier_cap", "box", (.009, .041, .003),
+         shoulder+[CENTRE_M[0], .041, -.050], "graphite", mass="0")
+    cylinder(focus, "focus_mount_spindle", shoulder+[CENTRE_M[0], 0., -.047],
+             shoulder+[CENTRE_M[0], 0., -.002], .006, "metal", mass="0")
+    turned_part(asset, focus, "focus_mount_hub", [(-.005, .008), (-.001, .012),
+                 (.003, .012), (.005, .009)], shoulder+CENTRE_M, material="graphite")
+    for index, (point, _) in enumerate(holes):
+        centre = fixed+ROTATION@[*point, 0.]
+        cylinder(scope, f"focus_mount_fixed_screw_{index}", centre-stand_origin+[0., -.008, 0.],
+                 centre-stand_origin+[0., .001, 0.], .0015, "metal", mass="0")
     for index, (point, _) in enumerate(carriage_holes):
-        hole = front+ROTATION@[*point, 0.]
-        cylinder(focus, f"focus_mount_carrier_screw_{index}",
-                 hole+[-.0035, 0., 0.], hole+[.003, 0., 0.], .001, "metal", mass="0")
-        cylinder(focus, f"focus_mount_carrier_head_{index}",
-                 hole+[.003, 0., 0.], hole+[.0045, 0., 0.], .0018, "metal", mass="0")
-    return dict(profile="original-nosepiece-linear-focus-mount", source=source,
-        dimensional_reference_url=FOCUS_DRAWING, source_sha256=source_sha256,
-        fixed_mount_world_m=fixed.tolist(), moving_mount_zero_world_m=moving.tolist(),
-        carriage_zero_offset_m=0., encoder_axis=[0., 0., 1.],
-        software_focus_range_m=[-.001, .001], base_hole_square_m=.037,
-        carriage_hole_square_m=.025, foot_height_m=foot_height,
-        stand_attachment_plane_world_z_m=stand_top,
-        nosepiece_attachment_plane_world_z_m=float(plate_bottom[2]),
+        centre = moving+ROTATION@[*point, 0.]
+        cylinder(focus, f"focus_mount_carrier_screw_{index}", centre+[0., -.0078, 0.],
+                 centre+[0., -.0048, 0.], .001, "metal", mass="0")
+    return dict(profile="original-inclined-carousel-focus-support",
+        source="Independent rear guide, low fork and spindle; no manufacturer CAD",
+        source_sha256=None, fixed_mount_world_m=fixed.tolist(), moving_mount_zero_world_m=moving.tolist(),
+        carriage_zero_offset_m=0., encoder_axis=[0., 0., 1.], software_focus_range_m=[-.001, .001],
+        foot_height_m=foot_height, stand_attachment_plane_world_z_m=stand_top,
+        nosepiece_attachment_plane_world_z_m=float(shoulder[2]),
         official_cad=False, one_to_one_verified=False, load_capacity_validated=False,
-        estimates=["Original stand backplate, foot, nosepiece carrier and fasteners",
-                   "Q-545 5/10 mm shell split and carriage contour are independently estimated",
-                   "No Nikon coarse/fine drivetrain, piezo internals, load or manufacturing validation"],
-        scope="Visible nominal mechanical chain with fixed/moving joint ownership; geometric and runtime verification required")
+        estimates=["All guide, fork, spindle, bearing and fastener dimensions",
+                   "No OEM focus drivetrain, piezo internals or manufacturing fit",
+                   "Existing ideal focus servo retained; no measured load or vibration model"],
+        scope="Original visible support and verified joint ownership; the optical datum remains unchanged")

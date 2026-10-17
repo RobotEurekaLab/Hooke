@@ -17,8 +17,8 @@ class PhaseContrastOptics:
     numerical_aperture: float = .6
     illumination_na: float = .35
     ring_halfwidth_na: float = .045
-    direct_amplitude: float = .35
-    illumination_samples: int = 8
+    direct_amplitude: float = .55
+    illumination_samples: int = 12
 
     @lru_cache(maxsize=8)
     def pupils(self, shape, pixel_size_m):
@@ -28,9 +28,13 @@ class PhaseContrastOptics:
         for angle in np.linspace(0, 2*np.pi, self.illumination_samples, endpoint=False):
             sx, sy = self.illumination_na/self.wavelength_m*np.array([np.cos(angle), np.sin(angle)])
             aperture = self.wavelength_m*np.hypot(fx+sx, fy+sy)
-            plate = np.where(abs(aperture-self.illumination_na) < self.ring_halfwidth_na,
-                             -self.direct_amplitude*1j, 1.)
-            pupil = np.where(aperture <= self.numerical_aperture, plate, 0.)
+            # Finite phase-ring transitions suppress hard-edged pupil ringing.
+            # Parameters describe an estimated objective, not a vendor replica.
+            separation = abs(aperture-self.illumination_na)
+            ring = .5*(1-np.tanh((separation-self.ring_halfwidth_na)/.008))
+            plate = 1+ring*(-self.direct_amplitude*1j-1)
+            edge = np.clip((self.numerical_aperture-aperture)/.025, 0., 1.)
+            pupil = plate*(edge*edge*(3-2*edge))
             pupil.setflags(write=False)
             pupils.append(pupil)
         return tuple(pupils)

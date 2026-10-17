@@ -1,0 +1,57 @@
+{
+  "hkust_geotechnical_centrifuge": {
+    "sources": [
+      {
+        "local_reference": "temp/university/expansion_100_20261003/research/asia_01_images/hkust_centrifuge.jpg",
+        "sha256": "fbabb92730d92359a3c824e9468faa958b0d3ff2820ea402082608e30cb96ab3",
+        "page": "https://gcf.hkust.edu.hk/",
+        "use": "Robotic manipulator panel only; separate collage apparatus are not treated as one room. Source image is not redistributed."
+      }
+    ],
+    "observed": [
+      "A narrow hanging inspection mechanism is carried by the perforated bridge above the stiffened container."
+    ],
+    "implemented": [
+      "Two supported offset rails replace the central column that intersected the rotating tool.",
+      "Open sliding bearings, a stepped open housing, rotary shaft and retaining collar have enabled collision geometry.",
+      "Original four joint frames, limits and drives are retained. The probe-tip surface site lies on the actual arm underside.",
+      "An additional assembly camera makes the guide and rotating-head interfaces inspectable."
+    ],
+    "inferred": [
+      "The photograph does not resolve hidden bearings. Twin rails, running gaps, shaft and collar are authored mechanical construction.",
+      "The 0.6 mm nominal running gaps are geometric clearances, not instrument precision or bearing performance."
+    ],
+    "unresolved": [
+      "Original installed robot transmission, exact tool identity and room dimensions remain unverified.",
+      "No spinning centrifuge, soil response, calibrated contact/load or scientific measurement is implemented."
+    ]
+  },
+  "epfl_microbiorobotics": {
+    "sources": [
+      {
+        "local_reference": "temp/research/real_labs_references/epfl.jpg",
+        "sha256": "f7ff559104c06c85abe4649ea11f046b48f21309db193df7680cfce7cde58a16",
+        "page": "https://www.epfl.ch/labs/microbs/",
+        "use": "Local inspection evidence only; source photograph is not redistributed."
+      }
+    ],
+    "observed": [
+      "Cached official apparatus photograph depicts an angled machined microsurgery mechanism, not the retained magnetic-coil microscope."
+    ],
+    "implemented": [
+      "Open supported X/Y rails and captive guide shoes replace unsupported or collision-free moving structures.",
+      "An open focus guide, connected arm and supported turret retain the original objective-axis frame and range.",
+      "Mechanical interface revision 1 moves the inert coil cage with the specimen and provides visible mounts; the rear column is recessed and controller is offset to preserve original travel.",
+      "Original three joint frames/ranges, marker placement and existing camera origins are retained. A stage-assembly camera adds an external geometric view."
+    ],
+    "inferred": [
+      "The repaired coil microscope is an authored research-topic surrogate. This repair does not reconstruct the photographed MICROBS machine.",
+      "Nominal guide clearances are 0.5 mm. Bearing stiffness, preload, mass distribution and drive transmission are uncalibrated.",
+      "The inert marker has a 0.4 mm capsule centerline, 0.52 mm total length and 0.12 mm diameter; it is not a biological cell."
+    ],
+    "unresolved": [
+      "Source-specific MICROBS apparatus and real room reconstruction remain outstanding.",
+      "No magnetic field, live coil wiring, microrobot locomotion, biological behavior or calibrated microscope image formation is implemented."
+    ]
+  }
+}

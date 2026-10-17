@@ -1,0 +1,1094 @@
+{
+  "scenes": [
+    {
+      "id": "delft_stevin_structures",
+      "title": "Stevin Structural Testing Hall",
+      "institution": "Delft University of Technology \u2014 Macrolab / Stevinlaboratory structural test hall",
+      "institution_id": "delft_university_of_technology",
+      "domain": "structural_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.tudelft.nl/en/ceg/about-faculty/departments/engineering-structures/sections-labs/macrolab-stevinlaboratory/structures-laboratory"
+      ],
+      "reference_notes": "Official hall photograph shows long white concrete beam specimens passing through large blue bolted steel loading frames. Supported hydraulic cylinders contact the beams; many surface sensor leads feed local acquisition desks. Tripod cameras and yellow/red movable barriers border the test area; red fixture frames stand along the back wall. High glazing, an overhead crane beam and an upper gallery establish the industrial hall context. Photo identifies a particular structural-test setup, not the permanent placement of every hall fixture. Exact beam dimensions, hidden doorways, specimen reinforcement and damage state are not measured. A reconstruction may support fixture access and sample positioning; concrete fracture and structural response require separate validated models. Image CDN is embedded by the official university page.",
+      "observed_cues": [
+        "Official hall photograph shows long white concrete beam specimens passing through large blue bolted steel loading frames. Supported hydraulic cylinders contact the beams; many surface sensor leads feed local acquisition desks. Tripod cameras and yellow/red movable barriers border the test area; red fixture frames stand along the back wall. High glazing, an overhead crane beam and an upper gallery establish the industrial hall context."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          16,
+          12,
+          6.8
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "hall_entry",
+              "wall": "back",
+              "kind": "door",
+              "offset": 6.9,
+              "width": 1.4,
+              "height": 2.3,
+              "sill": 0
+            },
+            {
+              "id": "high_hall_glazing",
+              "wall": "left",
+              "kind": "window",
+              "offset": 0,
+              "width": 10.4,
+              "height": 4.4,
+              "sill": 1.8
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "acquisition_desk",
+          "pos": [
+            -3.2,
+            -4.45,
+            0
+          ],
+          "size": [
+            2.4,
+            0.8,
+            0.78
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "beam_rig",
+          "kind": "stevin_beam_test_rig",
+          "pos": [
+            0,
+            0.35,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Inert concrete-beam specimen with load-head approach and adjacent camera traverse",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://www.tudelft.nl/en/ceg/about-faculty/departments/engineering-structures/sections-labs/macrolab-stevinlaboratory/structures-laboratory"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Align loading head and measurement camera around a supported beam",
+        "description": "Move a loading head toward a rigid inert beam and position the camera carriage; load calibration and structural response are outside this task.",
+        "primary_equipment": "beam_rig",
+        "observable": "Head clearance and sensor carriage position in metres"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            18,
+            -19,
+            12.2
+          ],
+          "target": [
+            0,
+            0.8,
+            2.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            6.65,
+            -4.9,
+            1.7
+          ],
+          "target": [
+            -1,
+            0.6,
+            2
+          ],
+          "fovy": 67
+        },
+        "workstation": {
+          "position": [
+            -7.4,
+            -7.2,
+            4.5
+          ],
+          "target": [
+            -2,
+            -0.35,
+            2
+          ],
+          "fovy": 48
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_access",
+          "minimum_xy": [
+            -7.6,
+            -5.8
+          ],
+          "maximum_xy": [
+            7.6,
+            -5.0
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "right_access",
+          "minimum_xy": [
+            5.8,
+            -4.9
+          ],
+          "maximum_xy": [
+            7.7,
+            5.8
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Two long inert beams on continuous bearing pedestals pass through blue bolted reaction frames; proportions estimated from the official structural-test photograph.",
+        "A high glazed wall, upper gallery, overhead crane beam, red stored fixtures and guarded measurement-camera line reproduce observed hall relationships.",
+        "Camera traverse and 220 mm loading-head approach are authored mechanisms; the head stops above the rigid specimen. Entry position is estimated and its 1 m approach remains clear."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Exact hall and specimen dimensions, beam reinforcement, hydraulic performance and sensor calibration are unverified.",
+        "No concrete constitutive model, force-controlled loading, fracture or damage dynamics."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave1": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/delft_structures.jpg",
+              "sha256": "db12b4702a3ed150499578ebf8fdecaf945490642a2603cb17d072a22354ae33",
+              "page": "https://www.tudelft.nl/en/ceg/about-faculty/departments/engineering-structures/sections-labs/macrolab-stevinlaboratory/structures-laboratory",
+              "image_url": "https://t.e7096c671.entry.domains/VWJXxnLfZeSQx25Ti8XGZS-t5Js=/2000x1500/filters:strip_exif()/https%3A%2F%2Ffilelist.tudelft.nl%2FCiTG%2FOver%2520faculteit%2FAfdelingen%2FEngineering%2520Structures%2FMacrolab%2FUpdate%252024_10%2F20230217_092354%2520small.jpg%3Fhash%3Df3c34304e5",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Official hall photograph shows long white concrete beam specimens passing through large blue bolted steel loading frames. Supported hydraulic cylinders contact the beams; many surface sensor leads feed local acquisition desks. Tripod cameras and yellow/red movable barriers border the test area; red fixture frames stand along the back wall. High glazing, an overhead crane beam and an upper gallery establish the industrial hall context."
+          ],
+          "implemented": [
+            "Two long inert beams on continuous bearing pedestals pass through blue bolted reaction frames; proportions estimated from the official structural-test photograph.",
+            "A high glazed wall, upper gallery, overhead crane beam, red stored fixtures and guarded measurement-camera line reproduce observed hall relationships.",
+            "Camera traverse and 220 mm loading-head approach are authored mechanisms; the head stops above the rigid specimen. Entry position is estimated and its 1 m approach remains clear."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Exact hall and specimen dimensions, beam reinforcement, hydraulic performance and sensor calibration are unverified.",
+            "No concrete constitutive model, force-controlled loading, fracture or damage dynamics."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      },
+      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/."
+    },
+    {
+      "id": "eth_robotic_fabrication",
+      "title": "Robotic Fabrication Gantry Hall",
+      "institution": "ETH Zurich \u2014 Robotic Fabrication Laboratory at Arch_Tec_Lab",
+      "institution_id": "eth_zurich",
+      "domain": "robotic_construction",
+      "university_expansion": true,
+      "source_urls": [
+        "https://arch.ethz.ch/en/forschung.html"
+      ],
+      "reference_notes": "Official photograph identifies the Robotic Fabrication Laboratory and shows multiple industrial manipulators hanging from tall gantry carriages. White overhead rail frames and vertical lift members support the robot bases; cable chains follow the travel axes. Double-height work floor is surrounded by upper glazed rooms, a rear staircase and full-height side windows; yellow safety posts mark the work zone. The photograph documents real installed hardware but not a running fabrication sequence. Gantry span, robot models, control performance and hidden hall boundaries require further evidence. No structural fabrication or material-process validation is implied.",
+      "observed_cues": [
+        "Official photograph identifies the Robotic Fabrication Laboratory and shows multiple industrial manipulators hanging from tall gantry carriages. White overhead rail frames and vertical lift members support the robot bases; cable chains follow the travel axes. Double-height work floor is surrounded by upper glazed rooms, a rear staircase and full-height side windows; yellow safety posts mark the work zone."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          18,
+          13,
+          7.3
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "fabrication_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -4.8,
+              "width": 1.5,
+              "height": 2.3,
+              "sill": 0
+            },
+            {
+              "id": "service_exit",
+              "wall": "back",
+              "kind": "door",
+              "offset": 7.7,
+              "width": 1.1,
+              "height": 2.3,
+              "sill": 0
+            },
+            {
+              "id": "side_fullheight_glazing",
+              "wall": "left",
+              "kind": "window",
+              "offset": 0.65,
+              "width": 7.8,
+              "height": 5.5,
+              "sill": 0.75
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "gantry_west",
+          "kind": "suspended_fabrication_gantry",
+          "pos": [
+            -4.1,
+            0.45,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Suspended gantry X/Z and tool rotation carrying an inert construction coupon",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://arch.ethz.ch/en/forschung.html"
+          ]
+        },
+        {
+          "id": "gantry_east",
+          "kind": "suspended_fabrication_gantry",
+          "pos": [
+            4.1,
+            0.45,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Second independently controlled gantry and clamped-coupon carrier",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://arch.ethz.ch/en/forschung.html"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Position construction coupons with suspended gantries",
+        "description": "Translate and lower two gantry carriers and rotate clamped inert coupons; arm elbows remain in a documented locked preview pose.",
+        "primary_equipment": "gantry_west",
+        "observable": "Gantry displacement, carrier height and coupon rotation"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            21,
+            -20,
+            12.8
+          ],
+          "target": [
+            0,
+            0.5,
+            2.6
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            0.1,
+            -5.75,
+            1.72
+          ],
+          "target": [
+            0,
+            1.2,
+            3.0
+          ],
+          "fovy": 79
+        },
+        "workstation": {
+          "position": [
+            -0.5,
+            -5.0,
+            3.7
+          ],
+          "target": [
+            -3.25,
+            0.45,
+            2.8
+          ],
+          "fovy": 48
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_hall_access",
+          "minimum_xy": [
+            -8.7,
+            -5.6
+          ],
+          "maximum_xy": [
+            8.7,
+            -3.6
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "rear_door_approach",
+          "minimum_xy": [
+            6.8,
+            5.35
+          ],
+          "maximum_xy": [
+            8.5,
+            6.35
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Two overhead carrier bays reproduce the white suspended-robot arrangement, with continuous floor-anchored posts and visible bridge rails.",
+        "A glazed upper gallery, diagonal rear stair, tall side glazing and yellow safety posts follow the official hall photograph; the room extent and entry locations are estimates.",
+        "The manipulator is explicitly a locked-pose mechanical surrogate, with meaningful carrier X/Z and wrist rotation controls; it is not presented as a verified OEM six-axis twin."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Exact gantry spans, original robot models, room dimensions and controller performance are unverified.",
+        "No robot policy, cooperative fabrication, material processing or object release is demonstrated."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave1": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/eth_fabrication.jpg",
+              "sha256": "6777141891602f643be0c2eef08a1602fc72752fdd3b4eda5c74273fcec0f1ba",
+              "page": "https://arch.ethz.ch/en/forschung.html",
+              "image_url": "https://arch.ethz.ch/en/forschung/_jcr_content/par/slideshow_copy/images/item0.imageformat.imagegallery3.166612707.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Official photograph identifies the Robotic Fabrication Laboratory and shows multiple industrial manipulators hanging from tall gantry carriages. White overhead rail frames and vertical lift members support the robot bases; cable chains follow the travel axes. Double-height work floor is surrounded by upper glazed rooms, a rear staircase and full-height side windows; yellow safety posts mark the work zone."
+          ],
+          "implemented": [
+            "Two overhead carrier bays reproduce the white suspended-robot arrangement, with continuous floor-anchored posts and visible bridge rails.",
+            "A glazed upper gallery, diagonal rear stair, tall side glazing and yellow safety posts follow the official hall photograph; the room extent and entry locations are estimates.",
+            "The manipulator is explicitly a locked-pose mechanical surrogate, with meaningful carrier X/Z and wrist rotation controls; it is not presented as a verified OEM six-axis twin."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Exact gantry spans, original robot models, room dimensions and controller performance are unverified.",
+            "No robot policy, cooperative fabrication, material processing or object release is demonstrated."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      },
+      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/."
+    },
+    {
+      "id": "eth_mougel_inorganic",
+      "title": "Mougel Inorganic Chemistry Glovebox Aisle",
+      "institution": "ETH Zurich \u2014 Mougel Group inorganic chemistry glovebox laboratory",
+      "institution_id": "eth_zurich",
+      "domain": "inorganic_chemistry",
+      "university_expansion": true,
+      "source_urls": [
+        "https://mougel.ethz.ch/lab-tour.html"
+      ],
+      "reference_notes": "Viewed a working aisle lined by large glazed glovebox fronts on the right, projecting black glove sleeves, opposing enclosures, tiled floor, tall support frames and overhead linear lights. Windows terminate the long aisle; stools and antechamber hardware are visible. This is actual installed apparatus, not a product render. Only the glovebox aisle is established by this image; other devices listed in the tour belong to separate views and must not be assumed adjacent.",
+      "observed_cues": [
+        "Viewed a working aisle lined by large glazed glovebox fronts on the right, projecting black glove sleeves, opposing enclosures, tiled floor, tall support frames and overhead linear lights. Windows terminate the long aisle; stools and antechamber hardware are visible. This is actual installed apparatus, not a product render."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": "mougel-supported-carriage-shaped-brow-static-gloves-20261004",
+      "room": {
+        "size": [
+          5.6,
+          12,
+          3.2
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "aisle_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -4.9,
+              "width": 1.4,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "end_window",
+              "wall": "back",
+              "kind": "window",
+              "offset": 0,
+              "width": 4.6,
+              "height": 2.15,
+              "sill": 0.75
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "glovebox_west_1",
+          "kind": "mougel_glovebox_module",
+          "pos": [
+            -1.9,
+            -2.25,
+            0
+          ],
+          "yaw": 1.5707963267948966,
+          "params": {},
+          "role": "External pass-through lid and internal inert-vial carriage",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://mougel.ethz.ch/lab-tour.html"
+          ]
+        },
+        {
+          "id": "glovebox_west_2",
+          "kind": "mougel_glovebox_module",
+          "pos": [
+            -1.9,
+            2.4,
+            0
+          ],
+          "yaw": 1.5707963267948966,
+          "params": {},
+          "role": "External pass-through lid and internal inert-vial carriage",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://mougel.ethz.ch/lab-tour.html"
+          ]
+        },
+        {
+          "id": "glovebox_east_1",
+          "kind": "mougel_glovebox_module",
+          "pos": [
+            1.9,
+            -2.25,
+            0
+          ],
+          "yaw": -1.5707963267948966,
+          "params": {},
+          "role": "External pass-through lid and internal inert-vial carriage",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://mougel.ethz.ch/lab-tour.html"
+          ]
+        },
+        {
+          "id": "glovebox_east_2",
+          "kind": "mougel_glovebox_module",
+          "pos": [
+            1.9,
+            2.4,
+            0
+          ],
+          "yaw": -1.5707963267948966,
+          "params": {},
+          "role": "External pass-through lid and internal inert-vial carriage",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://mougel.ethz.ch/lab-tour.html"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Access a pass-through and position an inert vial carrier",
+        "description": "Open the external chamber lid and translate capped inert vials inside the main glovebox. No atmosphere control or full transfer cycle is claimed.",
+        "primary_equipment": "glovebox_east_1",
+        "observable": "Pass-through lid angle and retained-vial carriage displacement"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            9.0,
+            -12.0,
+            7.8
+          ],
+          "target": [
+            0.0,
+            0.1,
+            1.25
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            0.0,
+            -5.2,
+            1.62
+          ],
+          "target": [
+            0.0,
+            3.9,
+            1.5
+          ],
+          "fovy": 59
+        },
+        "workstation": {
+          "position": [
+            -0.28,
+            -3.3,
+            1.73
+          ],
+          "target": [
+            1.5,
+            -2.2,
+            1.43
+          ],
+          "fovy": 56
+        },
+        "rear_gloveboxes": {
+          "position": [
+            0,
+            -0.25,
+            1.7
+          ],
+          "target": [
+            0,
+            2.4,
+            1.25
+          ],
+          "fovy": 63,
+          "purpose": "Aisle view of both rear glovebox sample carriages; glazing remains intact."
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "central_glovebox_aisle",
+          "minimum_xy": [
+            -0.62,
+            -5.65
+          ],
+          "maximum_xy": [
+            0.62,
+            4.75
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "side_entry_approach",
+          "minimum_xy": [
+            -2.65,
+            -5.6
+          ],
+          "maximum_xy": [
+            -1.45,
+            -4.2
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Four glovebox modules in total, two per side, reproduce the opposed aisle, projecting black sleeves, pale frames and end glazing. Module count and spacing remain authored estimates.",
+        "Floor-level legs support each deck; inferred deck-mounted pedestals support the guide rails, and open upper bearing shoes connect the vial carriage with 0.5 mm radial running clearance. A smooth annular presentation shell preserves the open pass-through collision rods; an inferred hinge mount connects its lid.",
+        "Overhead service frames, linear lights, tiled-floor cues and a small end desk provide observed room character; room envelope, entrance and exact machine spacing remain estimated."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "No original CAD, measured room plan, glove mechanics, gas purification, vacuum or atmosphere simulation.",
+        "Internal motorized vial tray is an authored mechanical task fixture; no claim that this exact mechanism exists in the photographed machine.",
+        "The front pane remains collision-solid and gloves remain fixed presentation geometry. Internal carriage travel does not reach the external pass-through; no glove manipulation or transfer cycle is implemented."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave1": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/eth_mougel.jpg",
+              "sha256": "9b259160ceb33450c75bf304c3270a0bfb3715449e30abd8f46a36f5576c08ce",
+              "page": "https://mougel.ethz.ch/lab-tour.html",
+              "image_url": "https://mougel.ethz.ch/lab-tour/_jcr_content/par/slideshow/images/image-9.imageformat.lightbox.2024658141.png",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Viewed a working aisle lined by large glazed glovebox fronts on the right, projecting black glove sleeves, opposing enclosures, tiled floor, tall support frames and overhead linear lights. Windows terminate the long aisle; stools and antechamber hardware are visible. This is actual installed apparatus, not a product render."
+          ],
+          "implemented": [
+            "Four glovebox modules in total, two per side, reproduce the opposed aisle, projecting black sleeves, pale frames and end glazing. Module count and spacing remain authored estimates.",
+            "Floor-level legs support each deck; inferred deck-mounted pedestals support the guide rails, and open upper bearing shoes connect the vial carriage with 0.5 mm radial running clearance. A smooth annular presentation shell preserves the open pass-through collision rods; an inferred hinge mount connects its lid.",
+            "Overhead service frames, linear lights, tiled-floor cues and a small end desk provide observed room character; room envelope, entrance and exact machine spacing remain estimated."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "No original CAD, measured room plan, glove mechanics, gas purification, vacuum or atmosphere simulation.",
+            "Internal motorized vial tray is an authored mechanical task fixture; no claim that this exact mechanism exists in the photographed machine."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      },
+      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/."
+    },
+    {
+      "id": "edinburgh_flowave_basin",
+      "title": "FloWave Circular Ocean Research Basin",
+      "institution": "The University of Edinburgh \u2014 FloWave Ocean Energy Research Facility",
+      "institution_id": "university_of_edinburgh",
+      "domain": "ocean_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://flowave.eng.ed.ac.uk/",
+        "https://flowave.eng.ed.ac.uk/how-it-works",
+        "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/attachments/Tank_Diagram.pdf",
+        "https://doi.org/10.1007/s40722-026-00495-0",
+        "https://www.research.ed.ac.uk/en/projects/uk-centre-for-marine-energy-research-the-all-uk-waters-combined-c/"
+      ],
+      "reference_notes": "Official photographs show narrow framed flaps, genuinely open annular metal grating, yellow rim services, navy peripheral lattice, white control cabinets and a yellow overhead crane. Official dimensions distinguish the 30 m diameter / 5 m deep outer shell from the 25 m diameter / 2 m deep upper test region. The 2026 primary paper identifies 168 flap-type wavemakers with hinges 1.7 m below water. Room, freeboard, section sizes and services remain estimates; no water dynamics or OEM transmission is reconstructed.",
+      "observed_cues": [
+        "Official photographs show narrow framed flaps, genuinely open annular metal grating, yellow rim services, navy peripheral lattice, white control cabinets and a yellow overhead crane. Official dimensions distinguish the 30 m diameter / 5 m deep outer shell from the 25 m diameter / 2 m deep upper test region. The 2026 primary paper identifies 168 flap-type wavemakers with hinges 1.7 m below water. Room, freeboard, section sizes and services remain estimates; no water dynamics or OEM transmission is reconstructed."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 2,
+      "detail_revision": 2,
+      "room": {
+        "size": [
+          32,
+          32,
+          9.1
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "basin_hall_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -14.7,
+              "width": 1.6,
+              "height": 2.5,
+              "sill": 0
+            },
+            {
+              "id": "control_exit",
+              "wall": "back",
+              "kind": "door",
+              "offset": 14.5,
+              "width": 1.3,
+              "height": 2.5,
+              "sill": 0
+            },
+            {
+              "id": "hall_high_glazing",
+              "wall": "left",
+              "kind": "window",
+              "offset": 0.5,
+              "width": 24,
+              "height": 2.6,
+              "sill": 3.4
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "wave_basin",
+          "kind": "flowave_circular_basin",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "168 independently hinged mechanical flaps around a 25 m circular test region",
+          "evidence": "Published count, upper test dimensions and hinge depth; photo-informed frame and open grating, with explicitly estimated angular range, sections and drives.",
+          "support": {
+            "type": "floor",
+            "evidence": "Floor datum z=0; outer shell floor top z=-5.0 m, underside rests on foundation top z=-5.2 m. Authored support columns and fixed inspection locks carry hinge ring and raised test floor. Floor-lifting system is absent."
+          },
+          "source_urls": [
+            "https://flowave.eng.ed.ac.uk/",
+            "https://flowave.eng.ed.ac.uk/how-it-works",
+            "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/attachments/Tank_Diagram.pdf",
+            "https://doi.org/10.1007/s40722-026-00495-0",
+            "https://www.research.ed.ac.uk/en/projects/uk-centre-for-marine-energy-research-the-all-uk-waters-combined-c/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Inspect the complete 168-flap positioning array",
+        "description": "Command bounded coordinated hinge positions and physically return the whole array. Every flap has contact geometry. Static optical water remains present, but no waves, currents, active absorption or hydrodynamic loads are generated.",
+        "primary_equipment": "wave_basin",
+        "observable": "168 measured hinge angles in radians, actual top-edge positions and mechanical clearances"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            35.0,
+            -35.0,
+            25.0
+          ],
+          "target": [
+            0.0,
+            1.0,
+            1.0
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            0.7,
+            -15.25,
+            1.65
+          ],
+          "target": [
+            0.0,
+            3.0,
+            0.5
+          ],
+          "fovy": 78
+        },
+        "workstation": {
+          "position": [
+            4.3,
+            -14.2,
+            2.0
+          ],
+          "target": [
+            3.25,
+            -12.14,
+            0.08
+          ],
+          "fovy": 53
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_corner",
+          "minimum_xy": [
+            -15.85,
+            -15.75
+          ],
+          "maximum_xy": [
+            -13.3,
+            -13.3
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "rear_exit",
+          "minimum_xy": [
+            13.55,
+            14.9
+          ],
+          "maximum_xy": [
+            15.5,
+            15.8
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Published 30 m / 5 m shell is distinct from the 25 m / 2 m upper test region. Deck datum, 350 mm freeboard and fixed raised-floor support state are authored.",
+        "Open grating has finite bars and real holes, supported by annular/radial beams and columns reaching the basin floor. Pitch and sections are estimates.",
+        "Yellow rim services, navy lattice, white cabinets, pressure-vessel exteriors and yellow bridge crane follow actual official photos; hidden service workings are not claimed.",
+        "Version 2 replaces two translating representative boards with all 168 hinged flaps. Old paddle_west/paddle_east actions are rejected, not silently converted."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Water is a fixed optical volume with no fluid mass, waves, currents, turbulence, buoyancy, splashes or hydrodynamic forces.",
+        "Published count/dimensions/hinge depth are source anchors. The 405 mm panels, angular range \u00b10.12 rad, sections, mass, ideal gravity compensation and servo properties are authored estimates.",
+        "Inter-panel gaps are real and unsealed; this dry geometric array is not a watertight wavemaker boundary or calibrated experimental controller.",
+        "The raised test floor is locked on disclosed authored supports. Its real floor lifting/buoyancy system, bellows transmission and 28 operational circulation impellers are not modeled.",
+        "Optical volume covers the upper test region; hidden return-plenum liquid/flow and suspended gantry operation remain absent.",
+        "Full-array physics is slower than real time on the measured single-CPU setup; checked-operation performance is reported separately."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave1": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/edinburgh_flowave.jpg",
+              "sha256": "5859b772949515a982d2f4d7f24e9287859a9e4cd7eff109c6db40a990eff9f6",
+              "page": "https://flowave.eng.ed.ac.uk/",
+              "image_url": "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/images/concentric-spike-wave-flowave-ocean-research-facility.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/optimization_120_20261004/flowave_fidelity/research/paddles.jpg",
+              "sha256": "9dfc3e4ace2e1031dff99cf39084725682a8d24e82d4f5728bccbb6510b38974",
+              "page": "https://flowave.eng.ed.ac.uk/how-it-works",
+              "image_url": "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/images/_MG_4341-min.jpg",
+              "use": "Inspected source only; not redistributed"
+            },
+            {
+              "local_reference": "temp/university/optimization_120_20261004/flowave_fidelity/research/behind_paddles.jpg",
+              "sha256": "48132b2f75ca4d33fe1315b5ea5b8fbe27e36ac2d8b996db5d231d60623d87a1",
+              "page": "https://flowave.eng.ed.ac.uk/how-it-works",
+              "image_url": "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/images/_MG_9522.CR2__0.jpg",
+              "use": "Inspected source only; not redistributed"
+            },
+            {
+              "local_reference": "temp/university/optimization_120_20261004/flowave_fidelity/research/Tank_Diagram.pdf",
+              "sha256": "dab4bf4be371e1834016641aac823372da6ce1f6f38b321a5ba415f03377a245",
+              "page": "https://flowave.eng.ed.ac.uk/how-it-works",
+              "image_url": "https://flowave.eng.ed.ac.uk/sites/flowave.eng.ed.ac.uk/files/attachments/Tank_Diagram.pdf",
+              "use": "Inspected source only; not redistributed"
+            }
+          ],
+          "observed": [
+            "Official photographs show narrow framed flaps, genuinely open annular metal grating, yellow rim services, navy peripheral lattice, white control cabinets and a yellow overhead crane. Official dimensions distinguish the 30 m diameter / 5 m deep outer shell from the 25 m diameter / 2 m deep upper test region. The 2026 primary paper identifies 168 flap-type wavemakers with hinges 1.7 m below water. Room, freeboard, section sizes and services remain estimates; no water dynamics or OEM transmission is reconstructed."
+          ],
+          "implemented": [
+            "Published 30 m / 5 m shell is distinct from the 25 m / 2 m upper test region. Deck datum, 350 mm freeboard and fixed raised-floor support state are authored.",
+            "Open grating has finite bars and real holes, supported by annular/radial beams and columns reaching the basin floor. Pitch and sections are estimates.",
+            "Yellow rim services, navy lattice, white cabinets, pressure-vessel exteriors and yellow bridge crane follow actual official photos; hidden service workings are not claimed.",
+            "Version 2 replaces two translating representative boards with all 168 hinged flaps. Old paddle_west/paddle_east actions are rejected, not silently converted."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Water is a fixed optical volume with no fluid mass, waves, currents, turbulence, buoyancy, splashes or hydrodynamic forces.",
+            "Published count/dimensions/hinge depth are source anchors. The 405 mm panels, angular range \u00b10.12 rad, sections, mass, ideal gravity compensation and servo properties are authored estimates.",
+            "Inter-panel gaps are real and unsealed; this dry geometric array is not a watertight wavemaker boundary or calibrated experimental controller.",
+            "The raised test floor is locked on disclosed authored supports. Its real floor lifting/buoyancy system, bellows transmission and 28 operational circulation impellers are not modeled.",
+            "Optical volume covers the upper test region; hidden return-plenum liquid/flow and suspended gantry operation remain absent.",
+            "Full-array physics is slower than real time on the measured single-CPU setup; checked-operation performance is reported separately."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      },
+      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/.",
+      "control_migration": {
+        "version": 2,
+        "old_keys": [
+          "paddle_west",
+          "paddle_east"
+        ],
+        "new_keys": "flap_000_angle_v2 through flap_167_angle_v2",
+        "old_units": "metres",
+        "new_units": "radians",
+        "automatic_mapping": false,
+        "reason": "Primary reference establishes hinged flaps, not independent translating boards",
+        "authored_range_rad": [
+          -0.12,
+          0.12
+        ]
+      },
+      "dimension_basis": {
+        "verified": {
+          "test_diameter_m": 25,
+          "test_depth_m": 2,
+          "shell_diameter_m": 30,
+          "shell_depth_m": 5,
+          "paddle_count": 168,
+          "hinge_depth_below_water_m": 1.7
+        },
+        "estimated": {
+          "deck_z_m": 0,
+          "water_z_m": -0.35,
+          "test_floor_z_m": -2.35,
+          "shell_floor_z_m": -5,
+          "panel_width_m": 0.405,
+          "room_size_m": [
+            32,
+            32,
+            9.1
+          ]
+        },
+        "convention": "The 5 m shell depth is represented from the authored deck datum; the source does not survey the absolute deck/water datum."
+      },
+      "presentation_volumes": [
+        {
+          "object": "flowave_v2_water_display_volume",
+          "kind": "estimated_rgb_absorption",
+          "units": "m^-1",
+          "absorption_rgb": [
+            0.34,
+            0.065,
+            0.01
+          ],
+          "dimension_basis": "Authored three-band visual proxy; wavelength trend and order of magnitude informed by pure-water literature. Not measured FloWave water or a spectral RGB conversion.",
+          "scientific_optics_calibrated": false
+        }
+      ]
+    }
+  ]
+}

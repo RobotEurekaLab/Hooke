@@ -138,8 +138,9 @@ def export_geometry(output, operation, execute=False, recorded_native=None):
         model, data = task.model, task.data
     evidence = asset_evidence(model)
     if evidence["profile"] != "cad" and not any(
-            assembly.get("profile") == "parallel-v4" for assembly in evidence.get("assemblies", [])):
-        raise ValueError("Assembly audit requires the explicit CAD profile")
+            assembly.get("profile") in ("parallel-v4", "sutter-mp285-reference")
+            for assembly in evidence.get("assemblies", [])):
+        raise ValueError("Assembly audit requires an explicit CAD or Sutter reference profile")
     names, groups, excluded = [], [], []
     for i in range(model.ngeom):
         name = model.geom(i).name

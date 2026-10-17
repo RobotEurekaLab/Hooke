@@ -1,0 +1,713 @@
+{
+  "scenes": [
+    {
+      "id": "nju_rise_quantum_109",
+      "title": "NJU RISE Room 109 Cryostat Inspection Bay",
+      "institution": "RISE Superconducting Quantum Computing Laboratory \u2014 Electronics Building 109",
+      "domain": "quantum_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://rise.nju.edu.cn/f9/17/c59634a719127/page.htm",
+        "https://rise.nju.edu.cn/_upload/article/images/ba/a8/5a8923eb463aa34e1666559a075e/f0df373e-1659-461d-96d8-42dde6619555.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Tall aluminium extrusion structure has diagonal braces and an upper support deck. A large white cylindrical vessel hangs below the deck; smaller cylindrical assemblies and service tubes occupy the upper level. A dense electronics rack stands at left and a wheeled measurement cart faces the vessel.",
+      "observed_cues": [
+        "Tall aluminium extrusion structure has diagonal braces and an upper support deck.",
+        "A large white cylindrical vessel hangs below the deck; smaller cylindrical assemblies and service tubes occupy the upper level.",
+        "A dense electronics rack stands at left and a wheeled measurement cart faces the vessel."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.6,
+          4.0,
+          2.95
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "quantum_instrumentation",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "cryostat_bay",
+          "kind": "quantum_cryostat_inspection_bay",
+          "pos": [
+            0.15,
+            0.35,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate a visible inert inspection coupon on an auxiliary trolley beside a closed, statically supported cryostat exterior.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://rise.nju.edu.cn/f9/17/c59634a719127/page.htm"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Four braced frame legs, equipment rack base and trolley casters seat at authored floor; vessel flange rests on upper deck."
+          }
+        }
+      ],
+      "task": {
+        "name": "NJU RISE Room 109 Cryostat Inspection Bay mechanical positioning",
+        "description": "Translate a visible inert inspection coupon on an auxiliary trolley beside a closed, statically supported cryostat exterior.",
+        "primary_equipment": "cryostat_bay",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.5,
+            -6.7,
+            4.8
+          ],
+          "target": [
+            0,
+            0.2,
+            1.0
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            1.85,
+            -1.6,
+            1.68
+          ],
+          "target": [
+            0.0,
+            0.45,
+            1.4
+          ],
+          "fovy": 60
+        },
+        "workstation": {
+          "position": [
+            1.6,
+            -2.15,
+            1.7
+          ],
+          "target": [
+            0.05,
+            0.1,
+            1.35
+          ],
+          "fovy": 54
+        }
+      },
+      "layout_rationale": [
+        "Tall aluminium extrusion structure has diagonal braces and an upper support deck.",
+        "A large white cylindrical vessel hangs below the deck; smaller cylindrical assemblies and service tubes occupy the upper level.",
+        "A dense electronics rack stands at left and a wheeled measurement cart faces the vessel.",
+        "Only Room 109 is represented; other RISE rooms are not combined.",
+        "The source trolley supports measurement electronics; the XY coupon fixture is an authored mechanical demonstration added to it.",
+        "No cooling, cryogenic assembly, quantum circuits or operating procedure."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Use Room 109 only; the page lists numerous other independently photographed rooms. Vessel dimensions, internal cold stages and service connections are unknown. Mechanical inspection proxies must not claim refrigeration, quantum computation or OEM performance.",
+        "Only Room 109 is represented; other RISE rooms are not combined.",
+        "The source trolley supports measurement electronics; the XY coupon fixture is an authored mechanical demonstration added to it.",
+        "No cooling, cryogenic assembly, quantum circuits or operating procedure."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/nju_rise_109.jpg"
+        ],
+        "reviewed_sha256": [
+          "7dda5a09feafa16aa22ddb77569ebb52af6329477a8fb167f75308f0ef613e4e"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "hku_rock_mechanics",
+      "title": "HKU Rock Mechanics Inspection Bay",
+      "institution": "Civil Engineering Rock Laboratory \u2014 Mechanical Testing Bay",
+      "domain": "geomechanics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.civil.hku.hk/h0_facilities_lab.html",
+        "https://www.civil.hku.hk/images/labphoto/13_rock01.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Tall dark-grey floor-mounted testing frame has a large central guarded specimen region. Control electronics and small monitors cluster beside and in front of the loading frame. An adjacent preparation table, movable display boards and overhead service runs form a compact work bay.",
+      "observed_cues": [
+        "Tall dark-grey floor-mounted testing frame has a large central guarded specimen region.",
+        "Control electronics and small monitors cluster beside and in front of the loading frame.",
+        "An adjacent preparation table, movable display boards and overhead service runs form a compact work bay."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          6.0,
+          4.4,
+          3.0
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "geomechanics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "rock_preparation",
+          "pos": [
+            1.65,
+            -1.18,
+            0
+          ],
+          "size": [
+            1.75,
+            0.9,
+            0.85
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "rock_frame",
+          "kind": "guarded_rock_inspection_frame",
+          "pos": [
+            -0.45,
+            0.65,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Adjust the upper crosshead clearance and open the guard around a supported inert rock core.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://www.civil.hku.hk/h0_facilities_lab.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Full lower frame plinth and side rack bases rest on floor; core is supported continuously by pedestal and lower platen."
+          }
+        }
+      ],
+      "task": {
+        "name": "HKU Rock Mechanics Inspection Bay mechanical positioning",
+        "description": "Adjust the upper crosshead clearance and open the guard around a supported inert rock core.",
+        "primary_equipment": "rock_frame",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.1,
+            -7.6,
+            5.3
+          ],
+          "target": [
+            0,
+            0.1,
+            1.0
+          ],
+          "fovy": 42
+        },
+        "interior": {
+          "position": [
+            1.75,
+            -1.75,
+            1.7
+          ],
+          "target": [
+            -0.5,
+            0.55,
+            1.3
+          ],
+          "fovy": 63
+        },
+        "workstation": {
+          "position": [
+            0.45,
+            -1.65,
+            1.55
+          ],
+          "target": [
+            -0.55,
+            0.55,
+            1.2
+          ],
+          "fovy": 48
+        }
+      },
+      "layout_rationale": [
+        "Tall dark-grey floor-mounted testing frame has a large central guarded specimen region.",
+        "Control electronics and small monitors cluster beside and in front of the loading frame.",
+        "An adjacent preparation table, movable display boards and overhead service runs form a compact work bay.",
+        "Rigid core is an inspection surrogate; no pressure vessel, force calibration, rock deformation or fracture model.",
+        "Guard sweep is reserved in the front aisle and must remain clear of the preparation table."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Page identifies an MTS 815 rock-testing system, but the image does not dimension or resolve its hidden triaxial cell. Do not model stated load/pressure ratings as validated simulation capability; surrounding floor plan remains estimated.",
+        "Rigid core is an inspection surrogate; no pressure vessel, force calibration, rock deformation or fracture model.",
+        "Guard sweep is reserved in the front aisle and must remain clear of the preparation table."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/hku_rock.jpg"
+        ],
+        "reviewed_sha256": [
+          "e5e770abb266c52859a5d65041e8de0a1845834ff35be23e7802974a1318784b"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "snu_acoustic_impedance",
+      "title": "SNU Acoustic Impedance Inspection Bench",
+      "institution": "Acoustics and Vibration Laboratory \u2014 Impedance Measurement Setup",
+      "domain": "acoustics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://acustica.snu.ac.kr/research/",
+        "https://acustica.snu.ac.kr/wp-content/uploads/sites/85/2024/07/measure.png"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Horizontal cylindrical black tube has a large upstream housing and narrower downstream extension. Multiple vertical microphone fittings rise from the tube and lead to cables behind it. Small pedestal feet support the tube on a light wood-tone laboratory workbench.",
+      "observed_cues": [
+        "Horizontal cylindrical black tube has a large upstream housing and narrower downstream extension.",
+        "Multiple vertical microphone fittings rise from the tube and lead to cables behind it.",
+        "Small pedestal feet support the tube on a light wood-tone laboratory workbench."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          4.5,
+          3.4,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "acoustics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "wood_test_counter",
+          "pos": [
+            0,
+            0.4,
+            0
+          ],
+          "size": [
+            2.6,
+            0.95,
+            0.86
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false,
+          "top_color": [
+            0.6,
+            0.43,
+            0.27,
+            1
+          ]
+        }
+      ],
+      "equipment": [
+        {
+          "id": "impedance_station",
+          "kind": "impedance_tube_inspection_workspace",
+          "pos": [
+            0,
+            0.4,
+            0.86
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Move a visible inert circular coupon in the open inspection collar and adjust non-contact probe clearance.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://acustica.snu.ac.kr/research/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "SNU Acoustic Impedance Inspection Bench mechanical positioning",
+        "description": "Move a visible inert circular coupon in the open inspection collar and adjust non-contact probe clearance.",
+        "primary_equipment": "impedance_station",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.7,
+            -6.1,
+            4.3
+          ],
+          "target": [
+            0,
+            0.2,
+            0.75
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            1.2,
+            -1.4,
+            1.6
+          ],
+          "target": [
+            0,
+            0.4,
+            1.05
+          ],
+          "fovy": 58
+        },
+        "workstation": {
+          "position": [
+            1.15,
+            -1.35,
+            1.7
+          ],
+          "target": [
+            0,
+            0.4,
+            1.06
+          ],
+          "fovy": 42
+        }
+      },
+      "layout_rationale": [
+        "Horizontal cylindrical black tube has a large upstream housing and narrower downstream extension.",
+        "Multiple vertical microphone fittings rise from the tube and lead to cables behind it.",
+        "Small pedestal feet support the tube on a light wood-tone laboratory workbench.",
+        "Use only upper-left actual apparatus photo; other panels are not evidence of room layout.",
+        "The open collar is an original demonstration pose, not a sealed acoustic test or material-response model."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Only the upper-left installed-apparatus photograph is used as spatial evidence. Isolated equipment panels and the vendor-style schematic are not room photographs; tube dimensions and full room layout are unknown. No acoustic absorption or transmission results are simulated.",
+        "Use only upper-left actual apparatus photo; other panels are not evidence of room layout.",
+        "The open collar is an original demonstration pose, not a sealed acoustic test or material-response model."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/snu_impedance.png"
+        ],
+        "reviewed_sha256": [
+          "fbbacb3e8db397cb0f3a73ed1aa156ddd15b07c555ef5db337a3fc68bf44ae1d"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "fudan_superassembly_materials",
+      "title": "Fudan Materials Glovebox Inspection Bay",
+      "institution": "Superassembly Framework Laboratory \u2014 Materials Bench and Glovebox",
+      "domain": "materials_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://saflab.fudan.edu.cn/sysgk/main.psp",
+        "http://saflab.fudan.edu.cn/_upload/article/images/6c/72/053276b34e5ba4e63f312e8e8d5c/d8648bd2-a57a-44c1-94cf-07d690c895ce.png"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Long light worktop beneath tall white uprights and transparent reagent shelves; seating aligned along its outer edge. Window wall and large overhead ventilation ducts are visible beyond the bench. Separate equipment photograph shows a white two-glove enclosure with a right-hand cylindrical transfer chamber and lower storage cabinet.",
+      "observed_cues": [
+        "White two-glove enclosure rests on full-height storage cabinet.",
+        "Dark gloves hang from circular front ports beneath transparent glazing.",
+        "Cylindrical transfer chamber projects from the right side; adjacent dark cabinet is visible at left."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          5.4,
+          3.9,
+          2.9
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "materials_instrumentation",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "materials_glovebox",
+          "kind": "materials_glovebox_inspection_workspace",
+          "pos": [
+            -0.2,
+            0.3,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate and rotate a visible inert materials coupon inside a static transparent-front glovebox shell.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://saflab.fudan.edu.cn/sysgk/main.psp"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Full cabinet plinth carries walls and roof; specimen stage sits on the cabinet deck; transfer cylinder attaches continuously through right wall."
+          }
+        }
+      ],
+      "task": {
+        "name": "Fudan Materials Glovebox Inspection Bay mechanical positioning",
+        "description": "Translate and rotate a visible inert materials coupon inside a static transparent-front glovebox shell.",
+        "primary_equipment": "materials_glovebox",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.5,
+            -6.7,
+            4.8
+          ],
+          "target": [
+            0,
+            0.3,
+            0.9
+          ],
+          "fovy": 41
+        },
+        "interior": {
+          "position": [
+            1.65,
+            -1.6,
+            1.65
+          ],
+          "target": [
+            -0.2,
+            0.3,
+            1.2
+          ],
+          "fovy": 60
+        },
+        "workstation": {
+          "position": [
+            -0.35,
+            -1.65,
+            1.8
+          ],
+          "target": [
+            -0.15,
+            0.25,
+            1.15
+          ],
+          "fovy": 50
+        }
+      },
+      "layout_rationale": [
+        "White two-glove enclosure rests on full-height storage cabinet.",
+        "Dark gloves hang from circular front ports beneath transparent glazing.",
+        "Cylindrical transfer chamber projects from the right side; adjacent dark cabinet is visible at left.",
+        "Only glovebox local bay reconstructed; separate bench image adjacency remains unknown."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "The page includes both group and shared equipment; only the bench and glovebox photographs form this reconstruction. Their relative location is unknown and must not be represented as a surveyed combined room. No chemical or biological process is specified.",
+        "Reconstruction is limited to the glovebox photo. The separate bench photo is not used to infer or fabricate adjacency.",
+        "Gloves are fixed original exterior meshes; no glove deformation, sealed atmosphere, chemistry or operating protocol."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/fudan_glovebox.png"
+        ],
+        "reviewed_sha256": [
+          "5d5a4cf19deea9c626f2dd1f6ababefd948ace047768e5026244371e49caa4fd"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    }
+  ]
+}

@@ -1,0 +1,771 @@
+{
+  "scenes": [
+    {
+      "id": "zju_low_turbulence_tunnel",
+      "title": "ZJU Low-Turbulence Wind Tunnel",
+      "institution": "Aircraft Design Laboratory \u2014 Low-Turbulence Quiet Wind Tunnel",
+      "domain": "aerodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://atc.zju.edu.cn/instrument/detail-4202.html",
+        "https://atc.zju.edu.cn/upload/tinstrument/1715047158ohlry.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Deep blue sheet-metal tunnel with large polygonal transition and repeated exterior stiffeners. A rectangular glazed test-section access door sits beside a vertical ladder and elevated railed walkway. The equipment occupies a tall white structural bay; the camera only reveals one side and does not establish a complete room plan.",
+      "observed_cues": [
+        "Deep blue sheet-metal tunnel with large polygonal transition and repeated exterior stiffeners.",
+        "A rectangular glazed test-section access door sits beside a vertical ladder and elevated railed walkway.",
+        "The equipment occupies a tall white structural bay; the camera only reveals one side and does not establish a complete room plan."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          9.6,
+          5.6,
+          4.4
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "aerodynamics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "lswt_model",
+          "kind": "lswt_model_inspection_workspace",
+          "pos": [
+            0,
+            0.35,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Position a visible inert wind model in height and yaw; no aerodynamic measurements.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://atc.zju.edu.cn/instrument/detail-4202.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Tunnel piers and ladder meet the floor; the sting mounts to the test-section floor."
+          }
+        }
+      ],
+      "task": {
+        "name": "ZJU Low-Turbulence Wind Tunnel mechanical positioning",
+        "description": "Position a visible inert wind model in height and yaw; no aerodynamic measurements.",
+        "primary_equipment": "lswt_model",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            10,
+            -12,
+            8.7
+          ],
+          "target": [
+            0,
+            0.2,
+            1.45
+          ],
+          "fovy": 43
+        },
+        "interior": {
+          "position": [
+            3.6,
+            -2.2,
+            2.05
+          ],
+          "target": [
+            -0.3,
+            0.35,
+            1.8
+          ],
+          "fovy": 70
+        },
+        "workstation": {
+          "position": [
+            1.5,
+            -2.0,
+            1.95
+          ],
+          "target": [
+            0.4,
+            0.35,
+            1.65
+          ],
+          "fovy": 49
+        }
+      },
+      "layout_rationale": [
+        "Deep blue sheet-metal tunnel with large polygonal transition and repeated exterior stiffeners.",
+        "A rectangular glazed test-section access door sits beside a vertical ladder and elevated railed walkway.",
+        "The equipment occupies a tall white structural bay; the camera only reveals one side and does not establish a complete room plan.",
+        "The actual 3.5 x 1.2 x 1.2 m LSWT test section anchors the scale; the photographed side, ladder and roof railings are reconstructed approximately.",
+        "The tunnel return path is not shown or invented. Front circulation bay and external support spacing are estimates."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Only the photographed side of the installation is observable. Internal return path, room extents and model manipulator are not pictured. Do not borrow dimensions from ZJU ZD1 or other wind tunnels; no airflow or aeroelastic fidelity is implied.",
+        "The actual 3.5 x 1.2 x 1.2 m LSWT test section anchors the scale; the photographed side, ladder and roof railings are reconstructed approximately.",
+        "The tunnel return path is not shown or invented. Front circulation bay and external support spacing are estimates."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/zju_lowtunnel.jpg"
+        ],
+        "reviewed_sha256": [
+          "14dc9b8048beaa78881b04f333c410e879f113087da4d7713df8d0483bc551f1"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "hku_civil_boundary_layer_tunnel",
+      "title": "HKU Boundary-Layer Wind Tunnel Interior",
+      "institution": "Civil Engineering Wind Tunnel Laboratory",
+      "domain": "wind_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.civil.hku.hk/h0_facilities_lab.html",
+        "https://www.civil.hku.hk/images/labphoto/19_wind02.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. A circular flush floor turntable holds a small upright model in a brown-lined test section. Black tripod-mounted optical equipment faces the model, while a horizontal carriage and controller sit beside the wall. A dense grid of low floor roughness blocks and a square-cell screen appear upstream in the second photograph.",
+      "observed_cues": [
+        "A circular flush floor turntable holds a small upright model in a brown-lined test section.",
+        "Black tripod-mounted optical equipment faces the model, while a horizontal carriage and controller sit beside the wall.",
+        "A dense grid of low floor roughness blocks and a square-cell screen appear upstream in the second photograph."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          14.2,
+          5.2,
+          3.0
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "wind_engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "boundary_layer",
+          "kind": "boundary_layer_inspection_workspace",
+          "pos": [
+            0,
+            0.4,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Rotate an inert building model and traverse a supported optical inspection head inside a cutaway working section.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://www.civil.hku.hk/h0_facilities_lab.html"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Working-section platform spans the floor; roughness, tripod, carriage feet and specimen disc sit on that platform."
+          }
+        }
+      ],
+      "task": {
+        "name": "HKU Boundary-Layer Wind Tunnel Interior mechanical positioning",
+        "description": "Rotate an inert building model and traverse a supported optical inspection head inside a cutaway working section.",
+        "primary_equipment": "boundary_layer",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            12,
+            -14,
+            10
+          ],
+          "target": [
+            0,
+            0.3,
+            0.6
+          ],
+          "fovy": 42
+        },
+        "interior": {
+          "position": [
+            5.1,
+            -1.9,
+            1.65
+          ],
+          "target": [
+            -1.4,
+            0.5,
+            0.75
+          ],
+          "fovy": 63
+        },
+        "workstation": {
+          "position": [
+            3.5,
+            -1.6,
+            1.45
+          ],
+          "target": [
+            1.8,
+            0.4,
+            0.55
+          ],
+          "fovy": 49
+        }
+      },
+      "layout_rationale": [
+        "A circular flush floor turntable holds a small upright model in a brown-lined test section.",
+        "Black tripod-mounted optical equipment faces the model, while a horizontal carriage and controller sit beside the wall.",
+        "A dense grid of low floor roughness blocks and a square-cell screen appear upstream in the second photograph.",
+        "The tunnel working section uses its published 12 x 3 x 1.8 m scale; the front wall and roof are omitted as an explicit inspection cutaway.",
+        "Model yaw and optical travel are original mechanical proxies, not PIV or airflow models.",
+        "The wider building, return circuit and viewing aisle are unmeasured and not reconstructed as verified architecture."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "Both photos show the test-section interior, not the full tunnel loop or room. Optical illumination may be depicted as static visualization only; no flow, PIV or structural response calculation is claimed.",
+        "The tunnel working section uses its published 12 x 3 x 1.8 m scale; the front wall and roof are omitted as an explicit inspection cutaway.",
+        "Model yaw and optical travel are original mechanical proxies, not PIV or airflow models.",
+        "The wider building, return circuit and viewing aisle are unmeasured and not reconstructed as verified architecture."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/hku_wind02.jpg",
+          "temp/university/expansion_100_20261003/references/asia02/hku_wind03.jpg"
+        ],
+        "reviewed_sha256": [
+          "234cc767d49274f1feef2d537c9448d6a5734970532daa453c352cdeb4a9dc74",
+          "064d4103adb16750a64aab4cab2fea239a40a79e84cd48885bf29f68e2b1aff9"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "ntu_taiwan_iam_fluids",
+      "title": "NTU Taiwan IAM Teaching Wind Tunnel",
+      "institution": "Institute of Applied Mechanics \u2014 Fluid Mechanics Teaching Laboratory",
+      "domain": "experimental_fluid_mechanics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.iam.ntu.edu.tw/zh/research/teaching-lab",
+        "https://www.iam.ntu.edu.tw/images/facilities/FluidMechanics.jpg"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Large yellow rectangular inlet with several bolted flange plates narrows toward a glazed test section. The downstream shell changes to circular ducting; the assembly stands on repeated yellow wheeled frames. A right-side table carries electronic acquisition hardware and many thin pressure tubes; window wall and tiled ceiling establish the immediate bay.",
+      "observed_cues": [
+        "Large yellow rectangular inlet with several bolted flange plates narrows toward a glazed test section.",
+        "The downstream shell changes to circular ducting; the assembly stands on repeated yellow wheeled frames.",
+        "A right-side table carries electronic acquisition hardware and many thin pressure tubes; window wall and tiled ceiling establish the immediate bay."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          7.6,
+          4.7,
+          2.9
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "experimental_fluid_mechanics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.15,
+              "width": 1,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "window_0",
+              "wall": "back",
+              "kind": "window",
+              "offset": -2.2,
+              "width": 1.1,
+              "height": 1.25,
+              "sill": 0.9
+            },
+            {
+              "id": "window_1",
+              "wall": "back",
+              "kind": "window",
+              "offset": -0.7500000000000002,
+              "width": 1.1,
+              "height": 1.25,
+              "sill": 0.9
+            },
+            {
+              "id": "window_2",
+              "wall": "back",
+              "kind": "window",
+              "offset": 0.6999999999999997,
+              "width": 1.1,
+              "height": 1.25,
+              "sill": 0.9
+            },
+            {
+              "id": "window_3",
+              "wall": "back",
+              "kind": "window",
+              "offset": 2.1499999999999995,
+              "width": 1.1,
+              "height": 1.25,
+              "sill": 0.9
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [
+        {
+          "id": "acquisition_table",
+          "pos": [
+            1.3,
+            -1.0,
+            0
+          ],
+          "size": [
+            1.65,
+            0.75,
+            0.83
+          ],
+          "yaw": 0,
+          "style": "open_frame",
+          "color": [
+            0.56,
+            0.6,
+            0.59,
+            1
+          ],
+          "accessories": false,
+          "top_color": [
+            0.49,
+            0.34,
+            0.18,
+            1
+          ]
+        }
+      ],
+      "equipment": [
+        {
+          "id": "iam_tunnel",
+          "kind": "iam_teaching_tunnel_workspace",
+          "pos": [
+            0,
+            0.45,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Rotate an inert cylinder and move an inspection probe above a supported, transparent teaching-tunnel test section.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://www.iam.ntu.edu.tw/zh/research/teaching-lab"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Repeated wheeled frames sit on the floor and carry the tunnel; acquisition hardware rests on a separate bench."
+          }
+        }
+      ],
+      "task": {
+        "name": "NTU Taiwan IAM Teaching Wind Tunnel mechanical positioning",
+        "description": "Rotate an inert cylinder and move an inspection probe above a supported, transparent teaching-tunnel test section.",
+        "primary_equipment": "iam_tunnel",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            8.3,
+            -9.8,
+            6.0
+          ],
+          "target": [
+            0,
+            0,
+            0.9
+          ],
+          "fovy": 42
+        },
+        "interior": {
+          "position": [
+            -3.2,
+            -1.9,
+            1.75
+          ],
+          "target": [
+            -0.1,
+            0.35,
+            1.15
+          ],
+          "fovy": 68
+        },
+        "workstation": {
+          "position": [
+            1.35,
+            -1.75,
+            1.85
+          ],
+          "target": [
+            0.05,
+            0.42,
+            1.28
+          ],
+          "fovy": 52
+        }
+      },
+      "layout_rationale": [
+        "Large yellow rectangular inlet with several bolted flange plates narrows toward a glazed test section.",
+        "The downstream shell changes to circular ducting; the assembly stands on repeated yellow wheeled frames.",
+        "A right-side table carries electronic acquisition hardware and many thin pressure tubes; window wall and tiled ceiling establish the immediate bay.",
+        "Only the wind-tunnel assembly from the reviewed photograph is represented; the separate jet and pipe teaching experiments are excluded.",
+        "Dimensions and travel are estimated. The small upper inspection slot and bounded actuators are authored mechanical proxies."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "The source photo clearly shows the installed assembly but gives no dimensions. The teaching page also describes separate jet and pipe experiments, which must not be added as if visible in this bay. Only geometry and mechanical positioning are proposed.",
+        "Only the wind-tunnel assembly from the reviewed photograph is represented; the separate jet and pipe teaching experiments are excluded.",
+        "Dimensions and travel are estimated. The small upper inspection slot and bounded actuators are authored mechanical proxies."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/ntu_iam_fluids.jpg"
+        ],
+        "reviewed_sha256": [
+          "4c7996f8867bd003e2425b1baedbf33d945e0e8ca6ef8fa782d38c4f9c0cc425"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    },
+    {
+      "id": "osaka_ocean_wave_lab",
+      "title": "Osaka Two-Dimensional Wave Tank",
+      "institution": "Ocean Space Development Laboratory \u2014 Two-Dimensional Wave Tank",
+      "domain": "ocean_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www-naoe.eng.osaka-u.ac.jp/naoe/naoe1/e/facility/",
+        "https://www-naoe.eng.osaka-u.ac.jp/naoe/naoe1/e/facility/img/img3.png"
+      ],
+      "reference_notes": "Official laboratory page and its installed apparatus photograph reviewed. Long narrow transparent-sided channel has turquoise longitudinal beams and repeated floor supports. Tall aluminium profiles at the near end and a small cross-channel fixture form distinct local test hardware. A clear right-hand aisle follows the tank beside windows; hoses and instruments occupy the far end and left work area.",
+      "observed_cues": [
+        "Long narrow transparent-sided channel has turquoise longitudinal beams and repeated floor supports.",
+        "Tall aluminium profiles at the near end and a small cross-channel fixture form distinct local test hardware.",
+        "A clear right-hand aisle follows the tank beside windows; hoses and instruments occupy the far end and left work area."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "room": {
+        "size": [
+          18.6,
+          3.8,
+          2.85
+        ],
+        "wall_color": [
+          0.84,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.29,
+          0.39,
+          0.42,
+          1
+        ],
+        "style": "ocean_engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.53,
+              0.5,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1.2
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.75,
+              "width": 1,
+              "height": 2.2,
+              "sill": 0
+            },
+            {
+              "id": "window_0",
+              "wall": "back",
+              "kind": "window",
+              "offset": -4.8,
+              "width": 2.2,
+              "height": 1.2,
+              "sill": 0.92
+            },
+            {
+              "id": "window_1",
+              "wall": "back",
+              "kind": "window",
+              "offset": -1.5999999999999996,
+              "width": 2.2,
+              "height": 1.2,
+              "sill": 0.92
+            },
+            {
+              "id": "window_2",
+              "wall": "back",
+              "kind": "window",
+              "offset": 1.6000000000000005,
+              "width": 2.2,
+              "height": 1.2,
+              "sill": 0.92
+            },
+            {
+              "id": "window_3",
+              "wall": "back",
+              "kind": "window",
+              "offset": 4.800000000000002,
+              "width": 2.2,
+              "height": 1.2,
+              "sill": 0.92
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "benches": [],
+      "equipment": [
+        {
+          "id": "wave_channel",
+          "kind": "osaka_narrow_channel_workspace",
+          "pos": [
+            0,
+            0.15,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Translate a local carriage and adjust a visible inert test coupon above the static water visualization.",
+          "evidence": "Original geometry from inspected official photo; dimensions and hidden mechanics estimated",
+          "source_urls": [
+            "https://www-naoe.eng.osaka-u.ac.jp/naoe/naoe1/e/facility/"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Repeated turquoise floor frames support the tank; traverse rails fasten to the top framing and the coupon is clamped to its vertical rod."
+          }
+        }
+      ],
+      "task": {
+        "name": "Osaka Two-Dimensional Wave Tank mechanical positioning",
+        "description": "Translate a local carriage and adjust a visible inert test coupon above the static water visualization.",
+        "primary_equipment": "wave_channel",
+        "observable": "Bounded mechanical axes position a visible clamped inert target; no scientific process is simulated."
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            14,
+            -17,
+            10
+          ],
+          "target": [
+            0,
+            0.15,
+            0.6
+          ],
+          "fovy": 42
+        },
+        "interior": {
+          "position": [
+            -7.9,
+            -1.2,
+            1.65
+          ],
+          "target": [
+            -0.4,
+            0.2,
+            1.05
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            -5.0,
+            -1.35,
+            1.12
+          ],
+          "target": [
+            -4.2,
+            0.15,
+            1.35
+          ],
+          "fovy": 52
+        }
+      },
+      "layout_rationale": [
+        "Long narrow transparent-sided channel has turquoise longitudinal beams and repeated floor supports.",
+        "Tall aluminium profiles at the near end and a small cross-channel fixture form distinct local test hardware.",
+        "A clear right-hand aisle follows the tank beside windows; hoses and instruments occupy the far end and left work area.",
+        "The published 14 m long, 0.30 m wide and 0.45 m deep two-dimensional tank is represented; the separate AMOEBA basin and 100 m towing tank are excluded.",
+        "Only a short two-axis local fixture is actuated. Water is a static appearance surface without fluid, wave or buoyancy physics.",
+        "The source is a coarse 334 x 250 image; room dimensions, glass framing, fixture details and window spacing remain estimates."
+      ],
+      "limitations": [
+        "Reference-informed prototype; not surveyed, scientifically validated, institution-approved or endorsed.",
+        "Only original geometry; reference photographs are not redistributed.",
+        "Dimensions, unobserved mechanics and travel are authored estimates.",
+        "MuJoCo CPU articulation does not establish Isaac runtime verification.",
+        "The available photograph is 334 by 250 pixels and provides coarse layout only. The AMOEBA basin and 100 m towing tank are separate departmental facilities and must not be merged into this room. No wave generation or fluid solver is implied.",
+        "The published 14 m long, 0.30 m wide and 0.45 m deep two-dimensional tank is represented; the separate AMOEBA basin and 100 m towing tank are excluded.",
+        "Only a short two-axis local fixture is actuated. Water is a static appearance surface without fluid, wave or buoyancy physics.",
+        "The source is a coarse 334 x 250 image; room dimensions, glass framing, fixture details and window spacing remain estimates."
+      ],
+      "reference_detail_evidence": {
+        "reviewed_local_files": [
+          "temp/university/expansion_100_20261003/references/asia02/osaka_2d_tank.png"
+        ],
+        "reviewed_sha256": [
+          "eacb36b7260993837d2083a3f6fa1bd84a36983fae65427c18c80eba6a380619"
+        ],
+        "reviewed_at": "2026-10-03",
+        "dimension_confidence": "Estimated from public undimensioned photographs",
+        "rights": "No source-image redistribution authorization verified"
+      }
+    }
+  ]
+}

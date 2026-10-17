@@ -1,0 +1,1039 @@
+{
+  "scenes": [
+    {
+      "id": "cambridge_schofield_turner",
+      "title": "Turner Geotechnical Centrifuge Chamber",
+      "institution": "University of Cambridge \u2014 Schofield Centre Turner geotechnical centrifuge chamber",
+      "institution_id": "university_of_cambridge",
+      "domain": "geotechnical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.eng.cam.ac.uk/node/374",
+        "https://www-g.eng.cam.ac.uk/125/achievements/centrifuges/index.htm"
+      ],
+      "reference_notes": "Historical facility photograph and original designer Philip Turner drawings inform the polygonal underground chamber, upper corridor, separate lower drive space, four hollow rectangular arm members, end bridges, parked swing-platform exteriors and a continuous shaft in two bearing housings. The stated 14 m shell diameter is interpreted as nominal inner diameter; the original datum remains unresolved. Four approximately 400 by 200 mm members follow the published section; wall thickness, elevations, bearing supports and local fit are estimated. The two original low-speed inspection controls operate an authored maintenance overlay; no OEM swing or high-g dynamics are implemented.",
+      "observed_cues": [
+        "Official photograph shows the long centrifuge beam spanning a low concrete chamber. A central hub supports a broad rectangular equipment platform; each end has a bulky attachment beneath the beam. Foreground has a recessed metal floor grate; shallow overhead beams and fluorescent lights constrain vertical clearance."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 2,
+      "detail_revision": 3,
+      "room": {
+        "size": [
+          18,
+          18,
+          5.8
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "turner_rotor",
+          "kind": "turner_geotechnical_centrifuge",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Restricted maintenance index and inert specimen-carriage access",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://www.eng.cam.ac.uk/node/374"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Inspect and return a retained centrifuge specimen",
+        "description": "Run authored bounded-speed beam indexing, expose the retained inert specimen, observe its actual top surface, then physically return both axes. These surrogate commands are not a real centrifuge operating procedure.",
+        "primary_equipment": "turner_rotor",
+        "observable": "Measured angular/linear speed, guide clearances, visible sample surface and return error"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            15.0,
+            -15.0,
+            10.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            0.7
+          ],
+          "fovy": 46
+        },
+        "interior": {
+          "position": [
+            0.0,
+            -5.8,
+            1.5
+          ],
+          "target": [
+            0.0,
+            0.5,
+            0.9
+          ],
+          "fovy": 79
+        },
+        "workstation": {
+          "position": [
+            5.65,
+            -2.45,
+            1.9
+          ],
+          "target": [
+            4.05,
+            0.0,
+            1.15
+          ],
+          "fovy": 48
+        },
+        "specimen_access": {
+          "position": [
+            5.2,
+            -1.45,
+            2.08
+          ],
+          "target": [
+            4.2,
+            0,
+            1.477
+          ],
+          "fovy": 38
+        },
+        "reference": {
+          "position": [
+            -0.55,
+            -6.15,
+            4.55
+          ],
+          "target": [
+            0.15,
+            2.5,
+            4.1
+          ],
+          "fovy": 64
+        },
+        "structure": {
+          "position": [
+            18,
+            -20,
+            14
+          ],
+          "target": [
+            0,
+            0,
+            2.1
+          ],
+          "fovy": 44
+        },
+        "swing_carriage": {
+          "position": [
+            5.1,
+            -1.7,
+            0.56
+          ],
+          "target": [
+            4.1,
+            0,
+            0.62
+          ],
+          "fovy": 48
+        },
+        "shaft_support": {
+          "position": [
+            2.5,
+            -2.9,
+            2.05
+          ],
+          "target": [
+            0,
+            0,
+            1.15
+          ],
+          "fovy": 50
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "pit_service_patch",
+          "minimum_xy": [
+            -2,
+            -5.15
+          ],
+          "maximum_xy": [
+            2,
+            -3.0
+          ],
+          "basis": "Authored maintenance access patch within the modeled polygonal pit; no egress certification"
+        }
+      ],
+      "layout_rationale": [
+        "Designer topology replaces the generic rectangular pit; outer shell, underground rotor level, upper gallery and lower drive area are distinct.",
+        "Source-supported four-member bridge, separated bearing housings and rigidly parked swing-platform exterior surround the retained authored maintenance fixture; its two original frames and drives remain unchanged."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Historical photograph: current chamber arrangement has not been verified.",
+        "Carrier motion is an authored maintenance mechanism. No centrifugal acceleration scaling, geotechnical similitude, soil mechanics or failure model.",
+        "Source-style swing platforms are rigidly parked, not actuated. Shaft mount, wall thickness and inspection datum are estimates; bearing contacts, balance, torsion compliance and high-g behavior are unvalidated."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave2": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/cambridge_turner.jpg",
+              "sha256": "64a653ba3716e75fff0e0995c99714c27562e31b8a49b12ea7edb739354ccaa3",
+              "page": "https://www.eng.cam.ac.uk/node/374",
+              "image_url": "https://www.eng.cam.ac.uk/sites/www.eng.cam.ac.uk/files/uploads/news/images/centrifuge-590.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Official photograph shows the long centrifuge beam spanning a low concrete chamber. A central hub supports a broad rectangular equipment platform; each end has a bulky attachment beneath the beam. Foreground has a recessed metal floor grate; shallow overhead beams and fluorescent lights constrain vertical clearance."
+          ],
+          "implemented": [
+            "A low concrete chamber encloses a long central beam and broad instrument platform, matching the official historical view.",
+            "Published 10 m machine diameter anchors scale; beam cross-section, carrier details and underground room perimeter are estimated.",
+            "Foreground service grate and shallow ceiling coffers preserve the observed chamber character. The entrance is inferred and kept clear."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Historical photograph: current chamber arrangement has not been verified.",
+            "Carrier motion is an authored maintenance mechanism. No centrifugal acceleration scaling, geotechnical similitude, soil mechanics or failure model."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        },
+        "turner_access": {
+          "observed": [
+            "Long horizontal beam, broad central tray, bulky below-beam end assemblies, low concrete coffers and foreground service grate"
+          ],
+          "inferred": [
+            "Open bearing/hub, rectangular rail shoes, carrier and support brackets are authored assemblies",
+            "Nominal 2 mm radial bearing gap and 0.5 mm rail gap are geometric running clearances carried by ideal joints",
+            "Unsurveyed room perimeter, hidden cabling and mechanism dimensions remain estimates"
+          ],
+          "task_contract": {
+            "rotor_speed_limit_rad_s": 0.025,
+            "carriage_speed_limit_m_s": 0.035,
+            "radius_bound_m": 4.8,
+            "coupled_point_speed_bound_m_s": 0.155,
+            "applies_to": "cambridge_motion operation only; direct raw servo commands have no velocity limit"
+          }
+        },
+        "chamber_structure": {
+          "source": "https://www-g.eng.cam.ac.uk/125/achievements/centrifuges/index.htm",
+          "observed": [
+            "Polygonal underground concrete shell",
+            "Diametric2m corridor above the pit with translucent roof",
+            "Drive unit in a separate below-pit tunnel",
+            "Access/inspection hatches in the corridor floor"
+          ],
+          "published_dimensions": {
+            "shell_diameter_m": 14,
+            "peripheral_wall_thickness_m": 1,
+            "pit_depth_m": 3,
+            "corridor_width_m": 2
+          },
+          "authored_assumptions": [
+            "14m is interpreted as nominal inner diameter; actual datum unresolved",
+            "24facets,14m internal across-flat span and16m outer across-flat span",
+            "Gallery posts, hatch position, fixed ladder, grating and consoles are estimated",
+            "Motor/coupling/gearbox are connected static exteriors without drive behavior"
+          ],
+          "unfinished": [
+            "Surveyed dimensions, current facility configuration, real utility connections and high-speed dynamics"
+          ]
+        },
+        "turner_structure": {
+          "source": "https://www-g.eng.cam.ac.uk/125/achievements/centrifuges/index.htm",
+          "sources": [
+            {
+              "local_reference": "temp/research/lab_access_sources_20261004/turner_bridge3.jpg",
+              "sha256": "ca0d13aef2e9a89820128d66c521fb5d44fb7af4081ffa4e10fcff2062e26c76",
+              "use": "Inspected local reference only; not redistributed"
+            },
+            {
+              "local_reference": "temp/research/lab_access_sources_20261004/turner_fig2.jpg",
+              "sha256": "88b658f9942c349299669a4a90e0a7e10c83923591a0440420491585c6ff2acc",
+              "use": "Inspected local reference only; not redistributed"
+            },
+            {
+              "local_reference": "temp/research/lab_access_sources_20261004/turner_speccarrg.jpg",
+              "sha256": "1dcbf7aa423aab6fbf221b38e380343cae8bdf6746b51d2a1ae0e73ed9220df6",
+              "use": "Inspected local reference only; not redistributed"
+            },
+            {
+              "local_reference": "temp/research/lab_access_sources_20261004/turner_maindetl.jpg",
+              "sha256": "a793b71c18cb89c3e06b8b2f330716539736483c00c690ea110c551a2d0285dd",
+              "use": "Inspected local reference only; not redistributed"
+            },
+            {
+              "local_reference": "temp/research/lab_access_sources_20261004/cambridge_centrifuges_index.html",
+              "sha256": "edd5706e567af62381e0bfd75c355cc0309df6c567f20c635ec4ea5b380b2c42",
+              "use": "Inspected local reference only; not redistributed"
+            }
+          ],
+          "observed": [
+            "Four hollow rectangular principal members in two vertical pairs, approximately 400 by 200 mm section and 10 m long",
+            "Two end bridges and gusseted attachment to the shaft",
+            "Two pivot arms and torsion bars supporting a swinging specimen platform",
+            "Separated upper and lower bearing housings and slip-ring stack on a continuous central shaft"
+          ],
+          "implemented": [
+            "Four open-ended 400 by 200 mm tubes with separate physical walls, end bridges and shaft gussets",
+            "Two supported bearing housings around a continuous inspection shaft; upper mounting plate has a real central opening",
+            "Two rigidly parked swing-platform exteriors with pivot arms, torsion bars, mounts and stops"
+          ],
+          "estimated": [
+            "9.44 m member length fits the retained authored inspection envelope; source gives approximately 10 m",
+            "20 mm tube walls, member spacing, shaft elevations and support frame dimensions are visual estimates",
+            "Solid external shaft collider represents the exterior; hidden bore and rolling elements are not modeled"
+          ],
+          "operation_scope": "The original translating retained-specimen fixture is an authored maintenance overlay, distinct from both parked OEM-style swing exteriors. No high-g or swing dynamics are claimed."
+        }
+      },
+      "rights_status": "Official page displays CC BY-NC-SA 4.0 for its content. Image-specific scope and third-party exceptions still require checking before redistribution. Source photo retained only under ignored temp/; no asset reuse permission inferred.",
+      "physical_site_verified": true,
+      "dimensions_verified": false,
+      "release_authorized": false
+    },
+    {
+      "id": "bristol_equals_shaking_table",
+      "title": "EQUALS Structural Shaking-Table Bay",
+      "institution": "University of Bristol \u2014 EQUALS earthquake shaking-table laboratory",
+      "institution_id": "university_of_bristol",
+      "domain": "structural_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.bristol.ac.uk/research/groups/earthquakegeo/equip/"
+      ],
+      "reference_notes": "Overhead photograph shows an experimental yellow braced frame bolted on a square shaking platform. Platform is recessed in a concrete pit with visible cylinders, hoses and metal edge railings. Surrounding floor has marked access lanes; separate actuator hardware stands at one edge. Photograph identifies the experimental bay, not the complete hall. Test frame is one historical specimen, not permanent lab equipment. No material failure or seismic response solver is implied.",
+      "observed_cues": [
+        "Overhead photograph shows an experimental yellow braced frame bolted on a square shaking platform. Platform is recessed in a concrete pit with visible cylinders, hoses and metal edge railings. Surrounding floor has marked access lanes; separate actuator hardware stands at one edge."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 2,
+      "detail_revision": 2,
+      "room": {
+        "size": [
+          10.5,
+          8.8,
+          5.2
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "bay_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -3.35,
+              "width": 1.2,
+              "height": 2.4,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "shake_platform",
+          "kind": "equals_xy_shake_table",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {
+            "mechanical_revision": 2
+          },
+          "role": "Eight coordinated telescopic actuators position a free rigid platform carrying an inert bolted frame",
+          "evidence": "Official 3 m platform, eight 300 mm stroke / 70 kN actuators and four static support sections; anchors, bearing geometry, masses and servo/preload laws are authored estimates",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://www.bristol.ac.uk/research/groups/earthquakegeo/equip/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Inspect an inert frame on an articulated shaking table",
+        "description": "Use explicit version-2 coordinated leg commands to displace, observe and return the actual free rigid platform under gravity. This is low-speed mechanical positioning, not a hydraulic or earthquake experiment.",
+        "primary_equipment": "shake_platform",
+        "observable": "Measured eight leg lengths, six-degree platform pose, real retained-frame surface and connection clearances"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            11.0,
+            -12.0,
+            9.7
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "fovy": 46
+        },
+        "interior": {
+          "position": [
+            3.9,
+            -3.45,
+            1.7
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.2
+          ],
+          "fovy": 67
+        },
+        "workstation": {
+          "position": [
+            4.2,
+            -4.5,
+            3.35
+          ],
+          "target": [
+            0.0,
+            -0.1,
+            0.8
+          ],
+          "fovy": 55
+        },
+        "actuator_detail": {
+          "target": [
+            1.68,
+            -0.85,
+            -0.5
+          ],
+          "fovy": 65,
+          "position": [
+            2.15,
+            -2.2,
+            0.55
+          ]
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_approach",
+          "minimum_xy": [
+            -4.9,
+            -4.15
+          ],
+          "maximum_xy": [
+            4.9,
+            -3.15
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "right_service",
+          "minimum_xy": [
+            3.0,
+            -3.1
+          ],
+          "maximum_xy": [
+            4.9,
+            3.8
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Official 3 m square platform carries the photographed class of yellow bolted frame above a recessed service pit.",
+        "Four floor aprons leave a real pit. An estimated deeper strong block carries open angular bearings and eight connected telescopic legs; the documented 20 mm isolation gap is represented at the block perimeter.",
+        "Guardrails, marked approaches, a supported fixed service manifold and open rack of stored actuator hardware follow the photographed test-bay cues; hidden pit depth and the complete hall remain estimated."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Selected bay only; full EQUALS hall size, current structural specimen and precise equipment positions are unknown.",
+        "Eight coupled mechanical leg actuators replace the obsolete independent XY preview. Arbitrary leg vectors and the complete rectangular platform workspace are not feasible; checked coordinated paths are required. No seismic waveform, structural damage, hydraulic pressure or force calibration."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave2": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/bristol_equals.jpg",
+              "sha256": "b686e58b12cc8ab6bb58a9a34e90cda263013c9d3aedfc264d2ac2e39ec4b256",
+              "page": "https://www.bristol.ac.uk/research/groups/earthquakegeo/equip/",
+              "image_url": "https://www.bristol.ac.uk/media-library/sites/engineering/research/earthquake/images/shaking-table-large.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Overhead photograph shows an experimental yellow braced frame bolted on a square shaking platform. Platform is recessed in a concrete pit with visible cylinders, hoses and metal edge railings. Surrounding floor has marked access lanes; separate actuator hardware stands at one edge."
+          ],
+          "implemented": [
+            "Official 3 m square platform carries the photographed class of yellow bolted frame above a recessed service pit.",
+            "Four floor aprons leave a real pit. An estimated deeper strong block carries open angular bearings and eight connected telescopic legs; the documented 20 mm isolation gap is represented at the block perimeter.",
+            "Guardrails, marked approaches, a supported fixed service manifold and open rack of stored actuator hardware follow the photographed test-bay cues; hidden pit depth and the complete hall remain estimated."
+          ],
+          "inferred": [
+            "Unobserved room boundaries and pit depth",
+            "Eight actuator anchor coordinates, open spherical-bearing and barrel geometry, frame mass/inertia and scalar servo gains",
+            "A passive preload force law for the four documented static support sections; no fluid pressure model"
+          ],
+          "unresolved": [
+            "Selected bay only; full EQUALS hall size, current structural specimen and precise equipment positions are unknown.",
+            "Eight coupled mechanical leg actuators replace the obsolete independent XY preview. Arbitrary leg vectors and the complete rectangular platform workspace are not feasible; checked coordinated paths are required. No seismic waveform, structural damage, hydraulic pressure or force calibration."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures",
+          "published_dimensions": {
+            "platform_m": [
+              3,
+              3
+            ],
+            "actuator_count": 8,
+            "actuator_stroke_m": 0.3,
+            "each_dynamic_capacity_N": 70000,
+            "static_support_sections": 4,
+            "reported_payload_capacity_kg": 15000,
+            "reported_peak_displacement_m": 0.15
+          },
+          "interface_migration": "Version 2 retires table_x/table_y (80 mm travel, 2/3 kg ideal slides) and introduces eight coupled v2_* leg-length controls with 300 mm total stroke. No automatic legacy action mapping. The 2000 kg rigid platform/frame mass is an explicit engineering estimate, not the published 15 tonne payload rating."
+        }
+      },
+      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/.",
+      "physical_site_verified": true,
+      "dimensions_verified": false,
+      "release_authorized": false
+    },
+    {
+      "id": "tum_wind_tunnel_a",
+      "title": "Wind Tunnel A Model Test Bay",
+      "institution": "Technical University of Munich \u2014 Aerodynamics and Fluid Mechanics Wind Tunnel A",
+      "institution_id": "technical_university_of_munich",
+      "domain": "aerodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.epc.ed.tum.de/en/aer/wind-tunnels/wind-tunnel-a/"
+      ],
+      "reference_notes": "Two official photographs show the enclosed test bay, including a supported model fixture and a vehicle model on the test floor. The large tunnel opening faces an instrumented platform with a circular floor insert; a safety chain borders the approach. A rail-supported overhead lifting beam and high wall panels are visible around the vehicle test station. A second official interior panorama shows amber test-floor panels, a circular inset and a framed traverse surrounding the tunnel opening; its wide-angle distortion is not a measured plan. Photographs establish the test bay; exterior duct photo was also checked and is not substituted for an interior. The small composite limits fine-detail recovery. Vehicle shown is a test specimen. Published cross-section dimensions anchor scale; enclosure dimensions, hidden ductwork and current configuration remain unverified. Airflow/aerodynamic results require a separate validated solver.",
+      "observed_cues": [
+        "Two official photographs show the enclosed test bay, including a supported model fixture and a vehicle model on the test floor. The large tunnel opening faces an instrumented platform with a circular floor insert; a safety chain borders the approach. A rail-supported overhead lifting beam and high wall panels are visible around the vehicle test station. A second official interior panorama shows amber test-floor panels, a circular inset and a framed traverse surrounding the tunnel opening; its wide-angle distortion is not a measured plan."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          9.2,
+          9.5,
+          5.2
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "test_bay_entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -3.6,
+              "width": 1.3,
+              "height": 2.4,
+              "sill": 0
+            },
+            {
+              "id": "upper_window",
+              "wall": "back",
+              "kind": "window",
+              "offset": -2.5,
+              "width": 1.5,
+              "height": 1.2,
+              "sill": 2.9
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "model_station",
+          "kind": "tum_model_test_station",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Turntable-mounted rigid model and supported probe traverse",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://www.epc.ed.tum.de/en/aer/wind-tunnels/wind-tunnel-a/"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Position a model and measurement probe in a wind-tunnel bay",
+        "description": "Yaw a clamped rigid vehicle-like model and traverse a supported probe. The scene exposes mechanical positioning; no wind field or aerodynamic measurement is generated.",
+        "primary_equipment": "model_station",
+        "observable": "Model yaw and probe position"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            10.7,
+            -12.0,
+            8.5
+          ],
+          "target": [
+            0.0,
+            0.6,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            3.65,
+            -3.8,
+            1.9
+          ],
+          "target": [
+            0.0,
+            0.8,
+            1.2
+          ],
+          "fovy": 64
+        },
+        "workstation": {
+          "position": [
+            3.05,
+            -3.8,
+            2.55
+          ],
+          "target": [
+            0.0,
+            0.5,
+            1.2
+          ],
+          "fovy": 56
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_access",
+          "minimum_xy": [
+            -4.2,
+            -4.4
+          ],
+          "maximum_xy": [
+            4.2,
+            -3.1
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "right_service",
+          "minimum_xy": [
+            2.7,
+            -3.0
+          ],
+          "maximum_xy": [
+            4.2,
+            3.8
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "A 2.4 m wide by 1.8 m high rectangular tunnel mouth faces an amber-paneled test floor with a circular insert.",
+        "The published 4.8 m test-section length anchors the test deck; the source vehicle is represented by an original rigid test body on a retained yaw stage.",
+        "A supported traverse, chain barrier and overhead lifting beam follow observed test-bay cues. Hidden return ductwork is not reconstructed."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Only the test bay is reconstructed; unseen hall boundaries, short rear throat, exact mechanisms and current setup are estimated.",
+        "No airflow, turbulence, aerodynamic force, rolling-road dynamics or calibrated measurement solver. The unbranded specimen does not reproduce a particular vehicle."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave2": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/tum_wind_equipment.jpg",
+              "sha256": "9c7ca801add7e18721c508ca040c31811361a6ee35017fcd02c5b09f9d6d12b8",
+              "page": "https://www.epc.ed.tum.de/en/aer/wind-tunnels/wind-tunnel-a/",
+              "image_url": "https://www.epc.ed.tum.de/fileadmin/w00cgc/aer/AER_Gallery/pics/Ausstattung-A.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/tum_wind_testsection_small.webp",
+              "sha256": "15e3bf5f21e08f7f443d8794551fd49489fd01bb5ebb48a7faf6da9013e7ae1a",
+              "page": "https://www.epc.ed.tum.de/en/aer/wind-tunnels/wind-tunnel-a/",
+              "image_url": "https://www.epc.ed.tum.de/fileadmin/_processed_/a/c/csm_GG_Panorama_97fe5954d1.webp",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Two official photographs show the enclosed test bay, including a supported model fixture and a vehicle model on the test floor. The large tunnel opening faces an instrumented platform with a circular floor insert; a safety chain borders the approach. A rail-supported overhead lifting beam and high wall panels are visible around the vehicle test station. A second official interior panorama shows amber test-floor panels, a circular inset and a framed traverse surrounding the tunnel opening; its wide-angle distortion is not a measured plan."
+          ],
+          "implemented": [
+            "A 2.4 m wide by 1.8 m high rectangular tunnel mouth faces an amber-paneled test floor with a circular insert.",
+            "The published 4.8 m test-section length anchors the test deck; the source vehicle is represented by an original rigid test body on a retained yaw stage.",
+            "A supported traverse, chain barrier and overhead lifting beam follow observed test-bay cues. Hidden return ductwork is not reconstructed."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Only the test bay is reconstructed; unseen hall boundaries, short rear throat, exact mechanisms and current setup are estimated.",
+            "No airflow, turbulence, aerodynamic force, rolling-road dynamics or calibrated measurement solver. The unbranded specimen does not reproduce a particular vehicle."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      },
+      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/.",
+      "physical_site_verified": true,
+      "dimensions_verified": false,
+      "release_authorized": false
+    },
+    {
+      "id": "leeds_litac_yarn_spinning",
+      "title": "LITAC Laboratory Yarn-Spinning Workstation",
+      "institution": "University of Leeds \u2014 LITAC laboratory-scale yarn spinning area",
+      "institution_id": "university_of_leeds",
+      "domain": "textile_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.leeds.ac.uk/leeds-institute-textiles-colour-1/doc/facilities"
+      ],
+      "reference_notes": "A working laboratory photograph shows a blue-and-white MESDANLAB fibre-to-yarn machine with a sloping side casing. Exposed rows of small rollers and guides lead to lower vertical yarn stations. A nearby touch panel is supported at standing operator height; white walls and a rear work surface are visible. Only the spinning-machine workstation is visually established. The page also covers knitting, extrusion and other separate laboratories; these must not be fused into one imagined room. No fibre formation, tension-control or textile constitutive solver is verified.",
+      "observed_cues": [
+        "A working laboratory photograph shows a blue-and-white MESDANLAB fibre-to-yarn machine with a sloping side casing. Exposed rows of small rollers and guides lead to lower vertical yarn stations. A nearby touch panel is supported at standing operator height; white walls and a rear work surface are visible."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5.4,
+          4.0,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "workstation_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.95,
+              "width": 1.0,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "yarn_machine",
+          "kind": "litac_yarn_spinning_station",
+          "pos": [
+            0,
+            0.1,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Supported roller and retained bobbin carriage on a laboratory yarn machine",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          },
+          "source_urls": [
+            "https://www.leeds.ac.uk/leeds-institute-textiles-colour-1/doc/facilities"
+          ]
+        }
+      ],
+      "task": {
+        "name": "Position an inert bobbin and index a feed roller",
+        "description": "Use mechanical preview controls on a reference-informed yarn-spinning station. An inert bobbin remains attached to the carrier; fibre formation and yarn tension are not simulated.",
+        "primary_equipment": "yarn_machine",
+        "observable": "Roller angle and retained bobbin-carriage displacement"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.1,
+            -5.8,
+            4.05
+          ],
+          "target": [
+            0.0,
+            0.2,
+            0.83
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.17,
+            -1.7,
+            1.6
+          ],
+          "target": [
+            0.0,
+            0.3,
+            1.13
+          ],
+          "fovy": 66
+        },
+        "workstation": {
+          "position": [
+            1.85,
+            -2.05,
+            1.85
+          ],
+          "target": [
+            0.1,
+            0.1,
+            1.25
+          ],
+          "fovy": 51
+        },
+        "bobbin": {
+          "position": [
+            0,
+            -1.65,
+            0.85
+          ],
+          "target": [
+            0,
+            -0.185,
+            0.724
+          ],
+          "fovy": 38,
+          "purpose": "Low front inspection view of the bobbin and its support, below the upper machine housing."
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "operator_access",
+          "minimum_xy": [
+            -2.4,
+            -1.78
+          ],
+          "maximum_xy": [
+            2.35,
+            -0.8
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_service",
+          "minimum_xy": [
+            -2.45,
+            -0.75
+          ],
+          "maximum_xy": [
+            -1.05,
+            0.65
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Only the photographed yarn-spinning workstation is reconstructed: sloped blue side casings, repeated white roller modules, lower guide stations and a standing touchscreen.",
+        "Visible supports join machine casings, bobbin guides and control screen to the base; the moving bobbin has a retained inert thread package.",
+        "The minimal backdrop and doorway are explicitly authored workspace boundaries, not an inferred plan of all LITAC facilities."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "The source is a single workstation view. Room boundaries, doorway, dimensions, OEM internals and exact motion ranges remain unverified.",
+        "No spinning process, changing thread path, yarn tension, textile material response or machine safety certification. Knitting, extrusion and other separate labs from the page are not combined here."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave2": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_01_media/leeds_yarn.jpg",
+              "sha256": "1461ba0d1e76ed9443a0fea04975f8a50cb607e1e2cd6c08e9977f59dbb823c9",
+              "page": "https://www.leeds.ac.uk/leeds-institute-textiles-colour-1/doc/facilities",
+              "image_url": "https://www.leeds.ac.uk/images/resized/800x400-0-0-1-80-Untitled__800____400px___2__1.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "A working laboratory photograph shows a blue-and-white MESDANLAB fibre-to-yarn machine with a sloping side casing. Exposed rows of small rollers and guides lead to lower vertical yarn stations. A nearby touch panel is supported at standing operator height; white walls and a rear work surface are visible."
+          ],
+          "implemented": [
+            "Only the photographed yarn-spinning workstation is reconstructed: sloped blue side casings, repeated white roller modules, lower guide stations and a standing touchscreen.",
+            "Visible supports join machine casings, bobbin guides and control screen to the base; the moving bobbin has a retained inert thread package.",
+            "The minimal backdrop and doorway are explicitly authored workspace boundaries, not an inferred plan of all LITAC facilities."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "The source is a single workstation view. Room boundaries, doorway, dimensions, OEM internals and exact motion ranges remain unverified.",
+            "No spinning process, changing thread path, yarn tension, textile material response or machine safety certification. Knitting, extrusion and other separate labs from the page are not combined here."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      },
+      "rights_status": "Official public reference. No open licence or permission to redistribute source media verified; original photographs kept only under ignored temp/.",
+      "physical_site_verified": true,
+      "dimensions_verified": false,
+      "release_authorized": false
+    }
+  ]
+}

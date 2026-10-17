@@ -29,6 +29,8 @@ def world_shape(task, gid):
         mesh = trimesh.creation.cylinder(model.geom_size[gid, 0], 2*model.geom_size[gid, 1], sections=64)
     elif model.geom_type[gid] == mujoco.mjtGeom.mjGEOM_BOX:
         mesh = trimesh.creation.box(2*model.geom_size[gid])
+    elif model.geom_type[gid] == mujoco.mjtGeom.mjGEOM_SPHERE:
+        mesh = trimesh.creation.icosphere(subdivisions=3, radius=model.geom_size[gid, 0])
     else:
         raise AssertionError(f"Unsupported collection geometry {model.geom(gid).name}")
     mesh.vertices = mesh.vertices@data.geom_xmat[gid].reshape(3, 3).T+data.geom_xpos[gid]
