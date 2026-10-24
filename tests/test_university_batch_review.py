@@ -71,6 +71,59 @@ class UniversityBatchReviewTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "ranked scope"):
                 batches.load_batch(self.batch())
 
+    def test_later_scenes_do_not_change_a_frozen_batch_scope(self):
+        definitions = {"old": {}, "new": {}, "later": {}}
+        with patch.object(batches, "scenes", return_value=definitions), patch.object(
+            batches, "affiliations", return_value=self.bindings()
+        ):
+            batch = batches.load_batch(self.batch())
+        self.assertEqual(batch["scene_ids"], ["new"])
+        self.assertEqual(batch["baseline_scene_ids"], ["old"])
+
+    def test_batch_scenes_must_still_exist_and_have_classifications(self):
+        for definitions, bindings in (
+            ({"old": {}}, self.bindings()),
+            ({"old": {}, "new": {}}, {"old": self.bindings()["old"]}),
+        ):
+            with self.subTest(definitions=definitions, bindings=bindings), patch.object(
+                batches, "scenes", return_value=definitions
+            ), patch.object(batches, "affiliations", return_value=bindings):
+                with self.assertRaisesRegex(ValueError, "Unknown or unclassified.*new"):
+                    batches.load_batch(self.batch())
+
+    def test_multiple_labs_at_one_school_cannot_close_another_schools_gap(self):
+        bindings = {
+            "first_lab": {"institution_id": "first_school"},
+            "second_lab": {"institution_id": "first_school"},
+            "pending_lab": {"institution_id": "second_school"},
+        }
+        result = batches._school_coverage(
+            ["first_school", "second_school", "third_school"],
+            bindings,
+            [
+                {"id": "first_lab", "ready": True},
+                {"id": "second_lab", "ready": True},
+                {"id": "pending_lab", "ready": False},
+            ],
+        )
+        self.assertEqual(result["implemented"], 2)
+        self.assertEqual(result["ready"], 1)
+        self.assertEqual(result["missing_scenes"], ["third_school"])
+        self.assertEqual(result["pending_review"], ["second_school", "third_school"])
+
+    def test_required_schools_cannot_be_duplicated_or_out_of_scope(self):
+        for required, message in (
+            (["school", "school"], "Duplicate required institution"),
+            (["unknown"], "outside the ranked scope"),
+            ("school", "list of institution IDs"),
+        ):
+            path = self.batch(lambda data: data.update(required_institution_ids=required))
+            with self.subTest(required=required), patch.object(
+                batches, "scenes", return_value={"old": {}, "new": {}}
+            ), patch.object(batches, "affiliations", return_value=self.bindings()):
+                with self.assertRaisesRegex(ValueError, message):
+                    batches.load_batch(path)
+
     def test_partial_batch_is_reported_incomplete_without_inventing_exports(self):
         with patch.object(
             batches, "scenes", return_value={"old": {}, "new": {}}

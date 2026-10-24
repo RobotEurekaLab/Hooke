@@ -838,5 +838,131 @@
     "subject_label": "Hydraulics",
     "lab_id": "epfl_lch_hydraulic_flume",
     "lab_name": "Hydraulic Constructions Platform — Experimental Flume Hall"
+  },
+  "peking_zhao_rotary_evaporation": {
+    "institution_id": "peking_university",
+    "lab_name": "Zhao Research Group — Synthesis Laboratory C805-6",
+    "subject_id": "chemistry",
+    "subject_label": "Chemistry",
+    "lab_id": "zhao_synthesis"
+  },
+  "tokyo_kurumizaka_chromatography": {
+    "institution_id": "university_of_tokyo",
+    "lab_name": "Kurumizaka Laboratory — Chromatography Workstation",
+    "subject_id": "structural_biology",
+    "subject_label": "Structural Biology",
+    "lab_id": "kurumizaka"
+  },
+  "korea_ace_wind_engineering": {
+    "institution_id": "korea_university",
+    "lab_name": "Architecture, Civil and Environmental Engineering — Wind Engineering Laboratory",
+    "subject_id": "aerodynamics",
+    "subject_label": "Aerodynamics",
+    "lab_id": "ace_wind_engineering"
+  },
+  "malaya_high_voltage_metrology": {
+    "institution_id": "universiti_malaya",
+    "lab_name": "High Voltage Laboratory — Unenergized Inspection Bay",
+    "subject_id": "electrical_engineering",
+    "subject_label": "Electrical Engineering",
+    "lab_id": "high_voltage_laboratory"
+  },
+  "melbourne_hrnblwt_probe_alignment": {
+    "institution_id": "university_of_melbourne",
+    "lab_name": "Walter Bassett Aerodynamics Laboratory — HRNBLWT",
+    "subject_id": "aerodynamics",
+    "subject_label": "Aerodynamics",
+    "lab_id": "walter_bassett"
+  },
+  "monash_geoextremes_seismic_platform": {
+    "institution_id": "monash_university",
+    "lab_name": "Monash GeoExtremes Laboratory — Seismic Experimental Platform",
+    "subject_id": "geomechanics",
+    "subject_label": "Geomechanics",
+    "lab_id": "geoextremes"
+  },
+  "ucl_swc_optics_training": {
+    "institution_id": "ucl",
+    "subject_id": "optics",
+    "subject_label": "Optics",
+    "lab_id": "ucl_swc_optics_training",
+    "lab_name": "Sainsbury Wellcome Centre — Advanced Microscopy Optics Training"
+  },
+  "kcl_mic_stellaris": {
+    "institution_id": "king_s_college_london",
+    "subject_id": "microscopy",
+    "subject_label": "Microscopy",
+    "lab_id": "kcl_mic_stellaris",
+    "lab_name": "Microscopy Innovation Centre — STELLARIS 8 FALCON DIVE"
+  },
+  "lse_behavioural_eyelink": {
+    "institution_id": "london_school_of_economics_and_political_science",
+    "subject_id": "behavioural_science",
+    "subject_label": "Behavioural Science",
+    "lab_id": "lse_behavioural_eyelink",
+    "lab_name": "Behavioural Lab — EyeLink Participant Testing"
+  },
+  "ipparis_luli2000_milka": {
+    "institution_id": "institut_polytechnique_de_paris",
+    "subject_id": "plasma_physics",
+    "subject_label": "Plasma Physics",
+    "lab_id": "ipparis_luli2000_milka",
+    "lab_name": "Ecole polytechnique, Palaiseau — LULI2000 Room 1 MILKA"
+  },
+  "uva_speech_studio2": {
+    "institution_id": "university_of_amsterdam",
+    "subject_id": "speech_science",
+    "subject_label": "Speech Science",
+    "lab_id": "uva_speech_studio2",
+    "lab_name": "Speech Lab — Studio 2 Eye-Tracking and Speech Station"
+  },
+  "durham_2m_wind_tunnel": {
+    "institution_id": "durham_university",
+    "subject_id": "aerodynamics",
+    "subject_label": "Aerodynamics",
+    "lab_id": "durham_2m_wind_tunnel",
+    "lab_name": "Fluid Mechanics — 2 m Wind Tunnel Fixed-Ground Test Section"
+  },
+  "toronto_wb233_membrane_crossflow": {
+    "institution_id": "toronto",
+    "subject_id": "membrane_engineering",
+    "subject_label": "Membrane Engineering",
+    "lab_id": "advanced_membranes_wb233",
+    "lab_name": "Advanced Membranes Lab, WB233 Water Analysis and Treatment Laboratory"
+  },
+  "zurich_otology_specimen_preparation": {
+    "institution_id": "university_of_zurich",
+    "subject_id": "biomechanics",
+    "subject_label": "Biomechanics",
+    "lab_id": "otology_preparation",
+    "lab_name": "Otology and Biomechanics of Hearing, Sample Preparation Room"
+  },
+  "adelaide_exterres_rtvac_access": {
+    "institution_id": "adelaide_university",
+    "subject_id": "space_environment_testing",
+    "subject_label": "Space Environment Testing",
+    "lab_id": "exterres_north_terrace",
+    "lab_name": "Andy Thomas Centre for Space Resources, EXTERRES Laboratory"
+  },
+  "ucd_conway_sxt_chamber_inspection": {
+    "institution_id": "university_college_dublin",
+    "subject_id": "xray_microscopy",
+    "subject_label": "Xray Microscopy",
+    "lab_id": "conway_sxt",
+    "lab_name": "Conway Institute Imaging Core, SiriusXT Installation"
+  },
+  "uba_fiuba_chemistry_2008": {
+    "institution_id": "universidad_de_buenos_aires",
+    "subject_id": "chemistry",
+    "subject_label": "Chemistry",
+    "lab_id": "fiuba_chemistry_historical_2008",
+    "lab_name": "FIUBA Chemistry Laboratory, Paseo Colon 850 (2008 reference)"
+  },
+  "trinity_aml_titan_alignment": {
+    "institution_id": "trinity_college_dublin_the_university_of_dublin",
+    "subject_id": "electron_microscopy",
+    "subject_label": "Electron Microscopy",
+    "lab_id": "crann_aml_titan",
+    "lab_name": "CRANN Advanced Microscopy Laboratory, Titan Bay"
   }
 }

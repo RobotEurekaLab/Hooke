@@ -19,10 +19,15 @@ def render_report():
     built_candidates = [row for row in candidates if row.get("existing_scene_id")]
     scope_scenes = sum(row["institution"]["in_scope"] for row in directory["labs"])
     ranking = directory["ranking"]
+    evidence_date = max(
+        (row.get("checked_at", "") for row in candidates),
+        default=ranking["checked_on"],
+    )
     lines = [
         "# University laboratory research register",
         "",
-        f"Reviewed: {ranking['checked_on']}. Generated from `Hooke/university/` metadata.",
+        f"Evidence reviewed through {evidence_date}; pinned roster checked on "
+        f"{ranking['checked_on']}. Generated from `Hooke/university/` metadata.",
         "",
         f"Scope: [{ranking['title']} {ranking['edition']}]({ranking['source_url']}), "
         f"published overall rank ≤100, including ties and corrections: **{counts['scope_institutions']} institutions**. "
@@ -38,16 +43,19 @@ def render_report():
         f"- {counts['university_scenes']} existing university scene prototypes, covering "
         f"{counts['scope_institutions_with_scenes']} in-scope universities; "
         f"{counts['other_institution_scenes']} additional research-institute scene.",
+        f"- {counts['scope_institutions_without_scenes']} in-scope universities still lack a scene. "
+        "Multiple laboratories at one university do not close another university's coverage gap.",
         f"- {scope_scenes} constructed scenes are within the pinned QS scope. "
         f"{len(built_candidates)} retained candidates are linked to constructed prototypes; "
         "the candidate register and the full scene catalogue have different coverage.",
         "- Candidate counts and school names are not completed-model counts. Room evidence does not establish measured dimensions, current layout, scientific validity or institutional endorsement.",
-        "- No retained candidate has a verified media/derived-asset release authorization. Public viewing and academic intent do not establish redistribution permission.",
+        "- Public accessibility does not establish redistribution permission. Consult each source's rights record, including any documented open license; that license does not establish reconstruction fidelity or resolve rights for other source material.",
         "",
         "## Retained laboratories",
         "",
         "P1 means prioritize the next evidence/modeling step; it does not certify a finished reconstruction. "
-        "`none` means spatial evidence remains unverified, even when an equipment inventory is useful.",
+        "`none` means spatial evidence remains unverified, even when an equipment inventory is useful. "
+        "Historical broad leads may coexist with narrower constructed workstation records; candidate counts are not distinct-laboratory counts.",
         "",
         "| University | Lab / official source | QS rank | Evidence | Priority | Existing scene | Model stage |",
         "| --- | --- | ---: | --- | --- | --- | --- |",

@@ -1,7 +1,8 @@
 """Validate expansion scope independently of research leads and render counts.
 
-An expansion counts distinct laboratories, not camera angles, room variants,
-or schools. A partial batch remains useful while its completion gate stays open.
+An expansion counts distinct laboratories, not camera angles or room variants.
+Batches may also require coverage of specific schools. A partial batch remains
+useful while either completion gate stays open.
 """
 
 import argparse
@@ -12,7 +13,7 @@ from pathlib import Path
 
 from real_labs.catalog import scenes
 from real_labs.export import current_scene_digest
-from university.catalog import affiliations, research_candidates
+from university.catalog import affiliations, institutions, research_candidates
 from university.review import collect_records
 
 
@@ -27,8 +28,27 @@ def load_batch(path):
     if type(batch["required_new_labs"]) is not int or batch["required_new_labs"] < 1:
         raise ValueError("Expansion target must be a positive laboratory count")
     definitions, bindings = scenes(), affiliations()
-    if set(ids + baseline) != set(definitions):
-        raise ValueError("Expansion manifest must account for every registered scene")
+    # A batch records its original scope. Later additions must not invalidate
+    # historical batches or be silently counted as part of their acceptance.
+    unknown = set(ids + baseline) - (set(definitions) & set(bindings))
+    if unknown:
+        raise ValueError(f"Unknown or unclassified batch scenes: {sorted(unknown)}")
+    required = batch.get("required_institution_ids", [])
+    if not isinstance(required, list) or any(not isinstance(i, str) for i in required):
+        raise ValueError("Required institutions must be a list of institution IDs")
+    if len(required) != len(set(required)):
+        raise ValueError("Duplicate required institution")
+    if required:
+        known = institutions()
+        for identifier in required:
+            school = known.get(identifier, {})
+            if (
+                not school.get("in_scope")
+                or school.get("ranking_edition") != batch["ranking_edition"]
+            ):
+                raise ValueError(
+                    f"Required institution is outside the ranked scope: {identifier}"
+                )
     identities = {tuple(row) for row in batch["baseline_lab_identities"]}
     for identifier in ids:
         row = bindings[identifier]
@@ -43,6 +63,20 @@ def load_batch(path):
             raise ValueError(f"Laboratory counted more than once: {identity}")
         identities.add(identity)
     return batch
+
+
+def _school_coverage(required, bindings, records):
+    """Count schools once, regardless of their number of scenes or views."""
+    implemented = {bindings[row["id"]]["institution_id"] for row in records}
+    ready = {bindings[row["id"]]["institution_id"] for row in records if row["ready"]}
+    required = set(required)
+    return dict(
+        required=len(required),
+        implemented=len(required & implemented),
+        ready=len(required & ready),
+        missing_scenes=sorted(required - implemented),
+        pending_review=sorted(required - ready),
+    )
 
 
 def progress(batch_path, package_root, visual_reviews=None):
@@ -121,6 +155,9 @@ def progress(batch_path, package_root, visual_reviews=None):
             "ready",
         )
     }
+    school_coverage = _school_coverage(
+        batch.get("required_institution_ids", []), bindings, records
+    )
     return dict(
         batch=batch["id"],
         generated_at=datetime.now(timezone.utc).isoformat(),
@@ -130,7 +167,11 @@ def progress(batch_path, package_root, visual_reviews=None):
         remaining_to_implement=max(0, batch["required_new_labs"] - len(records)),
         counts=counts,
         remaining_new_labs=max(0, batch["required_new_labs"] - counts["ready"]),
-        ready_for_user_review=counts["ready"] >= batch["required_new_labs"],
+        school_coverage=school_coverage,
+        ready_for_user_review=(
+            counts["ready"] >= batch["required_new_labs"]
+            and not school_coverage["pending_review"]
+        ),
         publication="Mechanical prototypes; specialist and Isaac runtime validation pending",
         records=records,
     )

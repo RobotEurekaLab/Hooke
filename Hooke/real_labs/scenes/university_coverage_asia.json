@@ -1,0 +1,1175 @@
+{
+  "scenes": [
+    {
+      "id": "peking_zhao_rotary_evaporation",
+      "title": "Peking Zhao Laboratory dry rotary-evaporator inspection",
+      "institution": "Zhao Research Group \u2014 Synthesis Laboratory C805-6",
+      "domain": "chemistry",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.chem.pku.edu.cn/zhaodh/2023/galleries.html",
+        "https://www.chem.pku.edu.cn/zhaodh/docs/2023-12/20231220181153685551.jpg"
+      ],
+      "reference_notes": "Paired blue rotary evaporators occupy a pale bench beside overhead reagent shelves and a dark-framed window; tall coiled condensers and cream baths are visible. The second device is a stationary exterior cue.",
+      "observed_cues": [
+        "Paired blue rotary evaporators occupy a pale bench beside overhead reagent shelves and a dark-framed window; tall coiled condensers and cream baths are visible. The second device is a stationary exterior cue."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Selected installed workcell only; room boundaries and hidden internals are estimated, not surveyed.",
+      "room": {
+        "size": [
+          3.8,
+          3.2,
+          2.8
+        ],
+        "wall_color": [
+          0.85,
+          0.86,
+          0.83,
+          1
+        ],
+        "accent": [
+          0.32,
+          0.39,
+          0.43,
+          1
+        ],
+        "style": "peking_zhao_rotary_evaporation",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.54,
+              0.52,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.9000000000000001,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            },
+            {
+              "id": "observed_window",
+              "wall": "back",
+              "kind": "window",
+              "offset": 1.15,
+              "width": 0.9,
+              "height": 1.4,
+              "sill": 1.1
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "reference_bench",
+          "pos": [
+            0,
+            0.65,
+            0
+          ],
+          "size": [
+            1.9,
+            0.72,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.8,
+            0.83,
+            0.83,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "peking_zhao_rotary_evaporator",
+          "pos": [
+            0.25,
+            0.65,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Peking Zhao Laboratory dry rotary-evaporator inspection",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://www.chem.pku.edu.cn/zhaodh/2023/galleries.html",
+            "https://www.chem.pku.edu.cn/zhaodh/docs/2023-12/20231220181153685551.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.chem.pku.edu.cn/zhaodh/docs/2023-12/20231220181153685551.jpg",
+          "local_stills": [
+            "temp/university/coverage_20261024/asia/pku_rotavap.jpg"
+          ],
+          "sha256": "03569d2f417ae62a46ab057746d35df1545cd20fff8a6e1bc852b97477692c16",
+          "supports": "Paired blue rotary evaporators occupy a pale bench beside overhead reagent shelves and a dark-framed window; tall coiled condensers and cream baths are visible. The second device is a stationary exterior cue."
+        }
+      ],
+      "layout_rationale": [
+        "Paired blue rotary evaporators occupy a pale bench beside overhead reagent shelves and a dark-framed window; tall coiled condensers and cream baths are visible. The second device is a stationary exterior cue.",
+        "Foreground operator approach and service gaps are authored estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground approach to the dry specimen fixture.",
+        "service_access": "Estimated side and rear access; no certified safety separation."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            3.42,
+            -3.3600000000000003,
+            3.36
+          ],
+          "target": [
+            0,
+            0.35,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.3679999999999999,
+            -1.184,
+            2.2
+          ],
+          "target": [
+            0.25,
+            0.65,
+            1.25
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            1.5,
+            -0.85,
+            2.0
+          ],
+          "target": [
+            0.25,
+            0.65,
+            1.28
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            1.3679999999999999,
+            -1.184,
+            2.2
+          ],
+          "target": [
+            0.25,
+            0.65,
+            1.25
+          ],
+          "fovy": 55
+        }
+      },
+      "task": {
+        "name": "Peking Zhao Laboratory dry rotary-evaporator inspection",
+        "description": "Execute ordered dry inspection positions, observe the retained specimen, then reverse both controls to measured home.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint position, retained sample pose, finite mechanics and unintended collision clearance."
+      },
+      "limitations": [
+        "Original procedural geometry; no OEM CAD or measured digital-twin claim.",
+        "Public institutional reference media are not redistributed; permission is not inferred from accessibility.",
+        "Only bounded mechanical alignment is implemented; scientific process outputs are not validated."
+      ]
+    },
+    {
+      "id": "tokyo_kurumizaka_chromatography",
+      "title": "Tokyo Kurumizaka dry chromatography-collector workstation",
+      "institution": "Kurumizaka Laboratory \u2014 Chromatography Workstation",
+      "domain": "structural_biology",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/research_kizai.html",
+        "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/images/kizai/2021_kizai/AKTApure.JPG"
+      ],
+      "reference_notes": "A circular fraction collector sits immediately left of a tall silver valve panel with dark red side casing, upright columns and thin tubing; both rest on the same dark bench against pale walls. No adjacency to the separately photographed microscope is inferred.",
+      "observed_cues": [
+        "A circular fraction collector sits immediately left of a tall silver valve panel with dark red side casing, upright columns and thin tubing; both rest on the same dark bench against pale walls. No adjacency to the separately photographed microscope is inferred."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Selected installed workcell only; room boundaries and hidden internals are estimated, not surveyed.",
+      "room": {
+        "size": [
+          3.4,
+          3.0,
+          2.8
+        ],
+        "wall_color": [
+          0.85,
+          0.86,
+          0.83,
+          1
+        ],
+        "accent": [
+          0.32,
+          0.39,
+          0.43,
+          1
+        ],
+        "style": "tokyo_kurumizaka_chromatography",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.54,
+              0.52,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.8,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "reference_bench",
+          "pos": [
+            0,
+            0.85,
+            0
+          ],
+          "size": [
+            1.6,
+            0.72,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.8,
+            0.83,
+            0.83,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "tokyo_akta_dry_collector",
+          "pos": [
+            0,
+            0.85,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Tokyo Kurumizaka dry chromatography-collector workstation",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/research_kizai.html",
+            "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/images/kizai/2021_kizai/AKTApure.JPG"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/images/kizai/2021_kizai/AKTApure.JPG",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/asia_01_images/tokyo_akta.jpg"
+          ],
+          "sha256": "eb30c9b0628dd06a79ce107f2a3dd34cda310b89814cef160fb38a10f8b334d2",
+          "supports": "A circular fraction collector sits immediately left of a tall silver valve panel with dark red side casing, upright columns and thin tubing; both rest on the same dark bench against pale walls. No adjacency to the separately photographed microscope is inferred."
+        }
+      ],
+      "layout_rationale": [
+        "A circular fraction collector sits immediately left of a tall silver valve panel with dark red side casing, upright columns and thin tubing; both rest on the same dark bench against pale walls. No adjacency to the separately photographed microscope is inferred.",
+        "Foreground operator approach and service gaps are authored estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground approach to the dry specimen fixture.",
+        "service_access": "Estimated side and rear access; no certified safety separation."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            3.06,
+            -3.1500000000000004,
+            3.36
+          ],
+          "target": [
+            0,
+            0.35,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.224,
+            -1.1099999999999999,
+            2.2
+          ],
+          "target": [
+            0,
+            0.85,
+            1.25
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            1.25,
+            -0.65,
+            2.0
+          ],
+          "target": [
+            0,
+            0.85,
+            1.28
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            1.224,
+            -1.1099999999999999,
+            2.2
+          ],
+          "target": [
+            0,
+            0.85,
+            1.25
+          ],
+          "fovy": 55
+        }
+      },
+      "task": {
+        "name": "Tokyo Kurumizaka dry chromatography-collector workstation",
+        "description": "Execute ordered dry inspection positions, observe the retained specimen, then reverse both controls to measured home.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint position, retained sample pose, finite mechanics and unintended collision clearance."
+      },
+      "limitations": [
+        "Original procedural geometry; no OEM CAD or measured digital-twin claim.",
+        "Public institutional reference media are not redistributed; permission is not inferred from accessibility.",
+        "Only bounded mechanical alignment is implemented; scientific process outputs are not validated."
+      ]
+    },
+    {
+      "id": "korea_ace_wind_engineering",
+      "title": "Korea ACE bridge-section alignment in a glazed wind tunnel",
+      "institution": "Architecture, Civil and Environmental Engineering \u2014 Wind Engineering Laboratory",
+      "domain": "aerodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://ace.korea.ac.kr/sub4_4.php",
+        "https://ace.korea.ac.kr/images/sub/labo01_01.jpg",
+        "https://ace.korea.ac.kr/images/sub/labo01_03.jpg"
+      ],
+      "reference_notes": "Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions.",
+      "observed_cues": [
+        "Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Selected installed workcell only; room boundaries and hidden internals are estimated, not surveyed.",
+      "room": {
+        "size": [
+          6,
+          6.4,
+          3.4
+        ],
+        "wall_color": [
+          0.85,
+          0.86,
+          0.83,
+          1
+        ],
+        "accent": [
+          0.32,
+          0.39,
+          0.43,
+          1
+        ],
+        "style": "korea_ace_wind_engineering",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.54,
+              0.52,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.5,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "korea_ace_bridge_section",
+          "pos": [
+            0.35,
+            0.3,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Korea ACE bridge-section alignment in a glazed wind tunnel",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://ace.korea.ac.kr/sub4_4.php",
+            "https://ace.korea.ac.kr/images/sub/labo01_01.jpg",
+            "https://ace.korea.ac.kr/images/sub/labo01_03.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Original continuous support geometry; dimensions estimated from institutional references."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://ace.korea.ac.kr/images/sub/labo01_01.jpg",
+          "local_stills": [
+            "temp/university/coverage_20261024/asia/korea_wind.jpg"
+          ],
+          "sha256": "e19ed715540ab38128daf891ced58f1e916cedab30e17d35c65019a5529469de",
+          "supports": "Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions."
+        },
+        {
+          "url": "https://ace.korea.ac.kr/images/sub/labo01_03.jpg",
+          "local_stills": [
+            "temp/university/coverage_20261024/asia/korea_rig.jpg"
+          ],
+          "sha256": "0258e3a290d9651e70f62bb15debd6709e5a680cc3b22f56010419d818a6f1f6",
+          "supports": "Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions."
+        }
+      ],
+      "layout_rationale": [
+        "Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions.",
+        "Foreground operator approach and service gaps are authored estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground approach to the dry specimen fixture.",
+        "service_access": "Estimated side and rear access; no certified safety separation."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.4,
+            -6.720000000000001,
+            4.08
+          ],
+          "target": [
+            0,
+            0.35,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.16,
+            -2.368,
+            2.2
+          ],
+          "target": [
+            0.35,
+            0.3,
+            1.25
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            0.7,
+            -2.3,
+            1.55
+          ],
+          "target": [
+            0.35,
+            0.3,
+            1.35
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            2.16,
+            -2.368,
+            2.2
+          ],
+          "target": [
+            0.35,
+            0.3,
+            1.25
+          ],
+          "fovy": 55
+        }
+      },
+      "task": {
+        "name": "Korea ACE bridge-section alignment in a glazed wind tunnel",
+        "description": "Execute ordered dry inspection positions, observe the retained specimen, then reverse both controls to measured home.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint position, retained sample pose, finite mechanics and unintended collision clearance."
+      },
+      "limitations": [
+        "Original procedural geometry; no OEM CAD or measured digital-twin claim.",
+        "Public institutional reference media are not redistributed; permission is not inferred from accessibility.",
+        "Only bounded mechanical alignment is implemented; scientific process outputs are not validated."
+      ]
+    },
+    {
+      "id": "malaya_high_voltage_metrology",
+      "title": "Malaya high-voltage laboratory unenergized electrode metrology",
+      "institution": "High Voltage Laboratory \u2014 Unenergized Inspection Bay",
+      "domain": "electrical_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://ee.um.edu.my/research-area",
+        "https://research.utm.my/ivat/wp-content/uploads/sites/77/2023/09/MyHVnet-Newsletter-2023.pdf"
+      ],
+      "reference_notes": "The UMHVL-author contribution in MyHVnet January 2023, printed pages 12-13 (PDF page 7), shows actual installed black mesh partitions with yellow uprights and a full-height gate, pale tiled floor, overhead fluorescent ceiling and a control console outside the cage. People obscure most interior equipment, so the red-column sphere-gap fixture is an original unenergized metrology proxy, not a claimed exact copy of a photographed instrument.",
+      "observed_cues": [
+        "The UMHVL-author contribution in MyHVnet January 2023, printed pages 12-13 (PDF page 7), shows actual installed black mesh partitions with yellow uprights and a full-height gate, pale tiled floor, overhead fluorescent ceiling and a control console outside the cage. People obscure most interior equipment, so the red-column sphere-gap fixture is an original unenergized metrology proxy, not a claimed exact copy of a photographed instrument."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Selected installed workcell only; room boundaries and hidden internals are estimated, not surveyed.",
+      "room": {
+        "size": [
+          6.2,
+          6.0,
+          3.1
+        ],
+        "wall_color": [
+          0.85,
+          0.86,
+          0.83,
+          1
+        ],
+        "accent": [
+          0.32,
+          0.39,
+          0.43,
+          1
+        ],
+        "style": "malaya_high_voltage_metrology",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.54,
+              0.52,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.3,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "outside_control_table",
+          "pos": [
+            0,
+            -1.75,
+            0
+          ],
+          "size": [
+            1.6,
+            0.7,
+            0.85
+          ],
+          "style": "optical",
+          "color": [
+            0.7,
+            0.7,
+            0.67,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "malaya_unenergized_gap_fixture",
+          "pos": [
+            0,
+            0.65,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Malaya high-voltage laboratory unenergized electrode metrology",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://ee.um.edu.my/research-area",
+            "https://research.utm.my/ivat/wp-content/uploads/sites/77/2023/09/MyHVnet-Newsletter-2023.pdf"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Original continuous support geometry; dimensions estimated from institutional references."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://research.utm.my/ivat/wp-content/uploads/sites/77/2023/09/MyHVnet-Newsletter-2023.pdf",
+          "local_stills": [
+            "temp/university/coverage_20261024/asia/malaya_myhvnet2023_page7.png"
+          ],
+          "sha256": "059d86852ff46e9db2c1d50c2ce191e8c51a2aa6151ff2ca04ff3caa42419ae2",
+          "supports": "The UMHVL-author contribution in MyHVnet January 2023, printed pages 12-13 (PDF page 7), shows actual installed black mesh partitions with yellow uprights and a full-height gate, pale tiled floor, overhead fluorescent ceiling and a control console outside the cage. People obscure most interior equipment, so the red-column sphere-gap fixture is an original unenergized metrology proxy, not a claimed exact copy of a photographed instrument."
+        }
+      ],
+      "layout_rationale": [
+        "The UMHVL-author contribution in MyHVnet January 2023, printed pages 12-13 (PDF page 7), shows actual installed black mesh partitions with yellow uprights and a full-height gate, pale tiled floor, overhead fluorescent ceiling and a control console outside the cage. People obscure most interior equipment, so the red-column sphere-gap fixture is an original unenergized metrology proxy, not a claimed exact copy of a photographed instrument.",
+        "Selected bay and foreground approach are estimates; no surveyed full-room layout."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground approach to the dry specimen fixture.",
+        "service_access": "Estimated side and rear access; no certified safety separation."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.58,
+            -6.300000000000001,
+            3.7199999999999998
+          ],
+          "target": [
+            0,
+            0.35,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.2319999999999998,
+            -2.2199999999999998,
+            2.2
+          ],
+          "target": [
+            0,
+            0.65,
+            1.25
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            1.25,
+            -0.85,
+            2.25
+          ],
+          "target": [
+            0,
+            0.65,
+            1.28
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            2.2319999999999998,
+            -2.2199999999999998,
+            2.2
+          ],
+          "target": [
+            0,
+            0.65,
+            1.25
+          ],
+          "fovy": 55
+        }
+      },
+      "task": {
+        "name": "Malaya high-voltage laboratory unenergized electrode metrology",
+        "description": "Execute ordered dry inspection positions, observe the retained specimen, then reverse both controls to measured home.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint position, retained sample pose, finite mechanics and unintended collision clearance."
+      },
+      "limitations": [
+        "Original procedural geometry; no OEM CAD or measured digital-twin claim.",
+        "Public institutional reference media are not redistributed; permission is not inferred from accessibility.",
+        "Only bounded mechanical alignment is implemented; scientific process outputs are not validated."
+      ]
+    },
+    {
+      "id": "melbourne_hrnblwt_probe_alignment",
+      "title": "Melbourne HRNBLWT dry probe-alignment bay",
+      "institution": "Walter Bassett Aerodynamics Laboratory \u2014 HRNBLWT",
+      "domain": "aerodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://mechanical.eng.unimelb.edu.au/research/fluid-mechanics/research/walter-bassett",
+        "https://www.enggjournals.com/ijet/docs/IJET20-12-01-002.pdf"
+      ],
+      "reference_notes": "Figure 8 of Rendon-Cardona et al. (2020), explicitly captioned as the Walter Bassett HRNBLWT, shows an installed silver vertical traverse with repeated black pads, a long horizontal probe pointing upstream over a gray floor, a small hot-film array, dark background and low wooden rear trim. A 4 m local section is authored around that apparatus; the photograph does not establish the full room or guide lengths.",
+      "observed_cues": [
+        "Figure 8 of Rendon-Cardona et al. (2020), explicitly captioned as the Walter Bassett HRNBLWT, shows an installed silver vertical traverse with repeated black pads, a long horizontal probe pointing upstream over a gray floor, a small hot-film array, dark background and low wooden rear trim. A 4 m local section is authored around that apparatus; the photograph does not establish the full room or guide lengths."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Selected installed workcell only; room boundaries and hidden internals are estimated, not surveyed.",
+      "room": {
+        "size": [
+          5.8,
+          6.4,
+          3.4
+        ],
+        "wall_color": [
+          0.85,
+          0.86,
+          0.83,
+          1
+        ],
+        "accent": [
+          0.32,
+          0.39,
+          0.43,
+          1
+        ],
+        "style": "melbourne_hrnblwt_probe_alignment",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.54,
+              0.52,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.5,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "melbourne_hrnblwt_probe",
+          "pos": [
+            0,
+            0.2,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Melbourne HRNBLWT dry probe-alignment bay",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://mechanical.eng.unimelb.edu.au/research/fluid-mechanics/research/walter-bassett",
+            "https://www.enggjournals.com/ijet/docs/IJET20-12-01-002.pdf"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Original continuous support geometry; dimensions estimated from institutional references."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.enggjournals.com/ijet/docs/IJET20-12-01-002.pdf",
+          "local_stills": [
+            "temp/university/coverage_20261024/support/melbourne_fig8.png"
+          ],
+          "sha256": "29d3fcba30d7e5371b44fe858d41d95f2f0de82a4c4f7bf1bf5c81817ff1dd8c",
+          "supports": "Figure 8 of Rendon-Cardona et al. (2020), explicitly captioned as the Walter Bassett HRNBLWT, shows an installed silver vertical traverse with repeated black pads, a long horizontal probe pointing upstream over a gray floor, a small hot-film array, dark background and low wooden rear trim. A 4 m local section is authored around that apparatus; the photograph does not establish the full room or guide lengths."
+        }
+      ],
+      "layout_rationale": [
+        "Figure 8 of Rendon-Cardona et al. (2020), explicitly captioned as the Walter Bassett HRNBLWT, shows an installed silver vertical traverse with repeated black pads, a long horizontal probe pointing upstream over a gray floor, a small hot-film array, dark background and low wooden rear trim. A 4 m local section is authored around that apparatus; the photograph does not establish the full room or guide lengths.",
+        "Published cross section anchors the enclosure; local length, support height, hidden mechanisms and operator circulation remain estimates."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground approach to the dry specimen fixture.",
+        "service_access": "Estimated side and rear access; no certified safety separation."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "HRNBLWT clear cross-section",
+          "value_m": [
+            1.89,
+            0.92
+          ],
+          "source_url": "https://mechanical.eng.unimelb.edu.au/research/fluid-mechanics/research/walter-bassett",
+          "scope": "Published cross section only; modeled local bay length and mechanics estimated."
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            5.22,
+            -6.720000000000001,
+            4.08
+          ],
+          "target": [
+            0,
+            0.35,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.088,
+            -2.368,
+            2.2
+          ],
+          "target": [
+            0,
+            0.2,
+            1.25
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            0.8,
+            -0.9,
+            1.42
+          ],
+          "target": [
+            0.4,
+            0.3,
+            1.1
+          ],
+          "fovy": 60
+        },
+        "source": {
+          "position": [
+            2.088,
+            -2.368,
+            2.2
+          ],
+          "target": [
+            0,
+            0.2,
+            1.25
+          ],
+          "fovy": 55
+        }
+      },
+      "task": {
+        "name": "Melbourne HRNBLWT dry probe-alignment bay",
+        "description": "Execute ordered dry inspection positions, observe the retained specimen, then reverse both controls to measured home.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint position, retained sample pose, finite mechanics and unintended collision clearance."
+      },
+      "limitations": [
+        "Original procedural geometry; no OEM CAD or measured digital-twin claim.",
+        "Public institutional reference media are not redistributed; permission is not inferred from accessibility.",
+        "Only bounded mechanical alignment is implemented; scientific process outputs are not validated."
+      ]
+    },
+    {
+      "id": "monash_geoextremes_seismic_platform",
+      "title": "Monash GeoExtremes dry seismic-platform inspection",
+      "institution": "Monash GeoExtremes Laboratory \u2014 Seismic Experimental Platform",
+      "domain": "geomechanics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.monash.edu/engineering/mge/facilities",
+        "https://www.3gdeep.com/Test1/wp-content/uploads/2024/04/seismic_experimental_platform_for_rock_joints.jpg",
+        "https://www.monash.edu/engineering/departments/civil/research/facilities/geomechanics-laboratory/macro-scale-facilities",
+        "https://www.3gdeep.com/Test1/?page_id=766"
+      ],
+      "reference_notes": "The lab-owned 3GDeep mirror reproduces an installed seismic-platform photograph: fixed silver perforated deck on a dark blue frame, broad metal/rock plate and sensor leads, a left loading assembly, rear monitor, parquet floor and right-side window. The accompanying schematic is identified separately and does not establish room layout. A published 2.4 m by 1.2 m table footprint anchors scale; a small slow specimen-positioning fixture is an original addition.",
+      "observed_cues": [
+        "The lab-owned 3GDeep mirror reproduces an installed seismic-platform photograph: fixed silver perforated deck on a dark blue frame, broad metal/rock plate and sensor leads, a left loading assembly, rear monitor, parquet floor and right-side window. The accompanying schematic is identified separately and does not establish room layout. A published 2.4 m by 1.2 m table footprint anchors scale; a small slow specimen-positioning fixture is an original addition."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Selected installed workcell only; room boundaries and hidden internals are estimated, not surveyed.",
+      "room": {
+        "size": [
+          6.4,
+          5.4,
+          3.0
+        ],
+        "wall_color": [
+          0.85,
+          0.86,
+          0.83,
+          1
+        ],
+        "accent": [
+          0.32,
+          0.39,
+          0.43,
+          1
+        ],
+        "style": "monash_geoextremes_seismic_platform",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.5,
+              0.4,
+              0.28,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.3
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.0,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "control_table",
+          "pos": [
+            2.1,
+            1,
+            0
+          ],
+          "size": [
+            1.05,
+            0.7,
+            0.85
+          ],
+          "style": "optical",
+          "color": [
+            0.71,
+            0.68,
+            0.57,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "monash_seismic_dry_platform",
+          "pos": [
+            -0.35,
+            0.35,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Monash GeoExtremes dry seismic-platform inspection",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://www.monash.edu/engineering/mge/facilities",
+            "https://www.3gdeep.com/Test1/wp-content/uploads/2024/04/seismic_experimental_platform_for_rock_joints.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Original continuous support geometry; dimensions estimated from institutional references."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.3gdeep.com/Test1/wp-content/uploads/2024/04/seismic_experimental_platform_for_rock_joints.jpg",
+          "local_stills": [
+            "temp/university/coverage_20261024/asia/monash_group_platform.jpg"
+          ],
+          "sha256": "37399fd2e0dae2dc2edb04f3744ea36f8c299821c1b9357c5fda6f2365278f7f",
+          "supports": "The lab-owned 3GDeep mirror reproduces an installed seismic-platform photograph: fixed silver perforated deck on a dark blue frame, broad metal/rock plate and sensor leads, a left loading assembly, rear monitor, parquet floor and right-side window. The accompanying schematic is identified separately and does not establish room layout. A published 2.4 m by 1.2 m table footprint anchors scale; a small slow specimen-positioning fixture is an original addition."
+        }
+      ],
+      "layout_rationale": [
+        "The lab-owned 3GDeep mirror reproduces an installed seismic-platform photograph: fixed silver perforated deck on a dark blue frame, broad metal/rock plate and sensor leads, a left loading assembly, rear monitor, parquet floor and right-side window. The accompanying schematic is identified separately and does not establish room layout. A published 2.4 m by 1.2 m table footprint anchors scale; a small slow specimen-positioning fixture is an original addition.",
+        "Selected bay and foreground approach are estimates; no surveyed full-room layout."
+      ],
+      "circulation": {
+        "operator_approach": "Clear foreground approach to the dry specimen fixture.",
+        "service_access": "Estimated side and rear access; no certified safety separation."
+      },
+      "verified_spatial_dimensions": [
+        {
+          "feature": "fixed seismic platform deck footprint",
+          "value_m": [
+            2.4,
+            1.2
+          ],
+          "source_url": "https://www.monash.edu/engineering/departments/civil/research/facilities/geomechanics-laboratory/macro-scale-facilities",
+          "scope": "Table plan only; height, hole pattern and inspection fixture estimated."
+        }
+      ],
+      "camera": {
+        "overview": {
+          "position": [
+            5.760000000000001,
+            -5.670000000000001,
+            3.5999999999999996
+          ],
+          "target": [
+            0,
+            0.35,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.304,
+            -1.998,
+            2.2
+          ],
+          "target": [
+            -0.35,
+            0.35,
+            1.25
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            0.9,
+            -1.15,
+            2.25
+          ],
+          "target": [
+            -0.35,
+            0.35,
+            1.28
+          ],
+          "fovy": 50
+        },
+        "source": {
+          "position": [
+            2.304,
+            -1.998,
+            2.2
+          ],
+          "target": [
+            -0.35,
+            0.35,
+            1.25
+          ],
+          "fovy": 55
+        }
+      },
+      "task": {
+        "name": "Monash GeoExtremes dry seismic-platform inspection",
+        "description": "Execute ordered dry inspection positions, observe the retained specimen, then reverse both controls to measured home.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint position, retained sample pose, finite mechanics and unintended collision clearance."
+      },
+      "limitations": [
+        "Original procedural geometry; no OEM CAD or measured digital-twin claim.",
+        "Public institutional reference media are not redistributed; permission is not inferred from accessibility.",
+        "Only bounded mechanical alignment is implemented; scientific process outputs are not validated."
+      ]
+    }
+  ]
+}

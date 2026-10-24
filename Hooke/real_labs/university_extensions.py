@@ -40,6 +40,9 @@ MODULES = (
     "university_facility_extra_wave1",
     "university_europe_wave7",
     "university_facility_extra_wave2",
+    "university_coverage_asia",
+    "university_coverage_europe",
+    "university_coverage_global",
 )
 
 

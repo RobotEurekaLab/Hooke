@@ -20,8 +20,13 @@ from university import catalog
 BATCH = json.loads(
     (ROOT / "Hooke/university/batches/qs2027_100_labs_20261003.json").read_text()
 )
-NEW_SCENES = set(BATCH["scene_ids"])
-EXPECTED = set(BATCH["baseline_scene_ids"]) | NEW_SCENES
+# Frozen batches retain their own baselines as the catalogue grows.
+EXPECTED = set()
+for path in (ROOT / "Hooke/university/batches").glob("*.json"):
+    batch = json.loads(path.read_text())
+    EXPECTED.update(batch["baseline_scene_ids"])
+    EXPECTED.update(batch["scene_ids"])
+NEW_SCENES = EXPECTED - set(BATCH["baseline_scene_ids"])
 EXPECTED_SCHOOLS = {
     row["institution_id"]
     for sid, row in catalog.affiliations().items()
@@ -79,6 +84,10 @@ class UniversityCatalogTests(unittest.TestCase):
             {"purdue", "university_college_dublin"},
         )
         self.assertEqual(directory["coverage"]["scope_institutions"], len(scoped))
+        self.assertEqual(
+            directory["coverage"]["scope_institutions_without_scenes"],
+            sum(row["scene_count"] == 0 for row in scoped),
+        )
 
     def test_existing_labs_outside_research_scope_are_retained(self):
         directory = catalog.catalogue()

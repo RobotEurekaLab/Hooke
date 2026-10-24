@@ -7788,6 +7788,922 @@
         "source": "Official LSWT inventory page instrument detail-4202",
         "scope": "Test section only; exterior shell and room sizes unknown."
       }
+    },
+    {
+      "id": "peking_zhao_rotary_evaporation",
+      "institution_id": "peking_university",
+      "lab_name": "Zhao Research Group — Synthesis Laboratory C805-6",
+      "discipline": "chemistry",
+      "official_url": "https://www.chem.pku.edu.cn/zhaodh/2023/galleries.html",
+      "visual_evidence_url": "https://www.chem.pku.edu.cn/zhaodh/docs/2023-12/20231220181153685551.jpg",
+      "observed_evidence": "Paired blue rotary evaporators occupy a pale bench beside overhead reagent shelves and a dark-framed window; tall coiled condensers and cream baths are visible. The second device is a stationary exterior cue.",
+      "identifiable_equipment": [
+        "Peking Zhao Laboratory dry rotary-evaporator inspection"
+      ],
+      "layout_evidence": "workstation",
+      "access_limitations": "No measured room plan or OEM mechanism; bounded original dry operation only.",
+      "rights_status": "Institutional copyright; no source-image redistribution permission verified.",
+      "reconstruction_priority": "P1",
+      "checked_at": "2026-10-24",
+      "provisional": true,
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "peking_zhao_rotary_evaporation",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.chem.pku.edu.cn/zhaodh/docs/2023-12/20231220181153685551.jpg",
+          "image_path": "temp/university/coverage_20261024/asia/pku_rotavap.jpg",
+          "sha256": "03569d2f417ae62a46ab057746d35df1545cd20fff8a6e1bc852b97477692c16",
+          "bytes": 2880778,
+          "observations": "Paired blue rotary evaporators occupy a pale bench beside overhead reagent shelves and a dark-framed window; tall coiled condensers and cream baths are visible. The second device is a stationary exterior cue.",
+          "actually_viewed": true
+        }
+      ]
+    },
+    {
+      "id": "tokyo_kurumizaka_chromatography",
+      "institution_id": "university_of_tokyo",
+      "lab_name": "Kurumizaka Laboratory — Chromatography Workstation",
+      "discipline": "structural_biology",
+      "official_url": "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/research_kizai.html",
+      "visual_evidence_url": "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/images/kizai/2021_kizai/AKTApure.JPG",
+      "observed_evidence": "A circular fraction collector sits immediately left of a tall silver valve panel with dark red side casing, upright columns and thin tubing; both rest on the same dark bench against pale walls. No adjacency to the separately photographed microscope is inferred.",
+      "identifiable_equipment": [
+        "Tokyo Kurumizaka dry chromatography-collector workstation"
+      ],
+      "layout_evidence": "workstation",
+      "access_limitations": "No measured room plan or OEM mechanism; bounded original dry operation only.",
+      "rights_status": "Institutional copyright; no source-image redistribution permission verified.",
+      "reconstruction_priority": "P1",
+      "checked_at": "2026-10-24",
+      "provisional": true,
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "tokyo_kurumizaka_chromatography",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/images/kizai/2021_kizai/AKTApure.JPG",
+          "image_path": "temp/university/expansion_100_20261003/research/asia_01_images/tokyo_akta.jpg",
+          "sha256": "eb30c9b0628dd06a79ce107f2a3dd34cda310b89814cef160fb38a10f8b334d2",
+          "bytes": 107514,
+          "observations": "A circular fraction collector sits immediately left of a tall silver valve panel with dark red side casing, upright columns and thin tubing; both rest on the same dark bench against pale walls. No adjacency to the separately photographed microscope is inferred.",
+          "actually_viewed": true
+        }
+      ]
+    },
+    {
+      "id": "korea_ace_wind_engineering",
+      "institution_id": "korea_university",
+      "lab_name": "Architecture, Civil and Environmental Engineering — Wind Engineering Laboratory",
+      "discipline": "aerodynamics",
+      "official_url": "https://ace.korea.ac.kr/sub4_4.php",
+      "visual_evidence_url": "https://ace.korea.ac.kr/images/sub/labo01_01.jpg",
+      "observed_evidence": "Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions.",
+      "identifiable_equipment": [
+        "Korea ACE bridge-section alignment in a glazed wind tunnel"
+      ],
+      "layout_evidence": "workstation",
+      "access_limitations": "No measured room plan or OEM mechanism; bounded original dry operation only.",
+      "rights_status": "Institutional copyright; no source-image redistribution permission verified.",
+      "reconstruction_priority": "P1",
+      "checked_at": "2026-10-24",
+      "provisional": true,
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "korea_ace_wind_engineering",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://ace.korea.ac.kr/images/sub/labo01_01.jpg",
+          "image_path": "temp/university/coverage_20261024/asia/korea_wind.jpg",
+          "sha256": "e19ed715540ab38128daf891ced58f1e916cedab30e17d35c65019a5529469de",
+          "bytes": 66049,
+          "observations": "Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions.",
+          "actually_viewed": true
+        },
+        {
+          "url": "https://ace.korea.ac.kr/images/sub/labo01_03.jpg",
+          "image_path": "temp/university/coverage_20261024/asia/korea_rig.jpg",
+          "sha256": "0258e3a290d9651e70f62bb15debd6709e5a680cc3b22f56010419d818a6f1f6",
+          "bytes": 43771,
+          "observations": "Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions.",
+          "actually_viewed": true
+        }
+      ]
+    },
+    {
+      "id": "malaya_high_voltage_metrology",
+      "institution_id": "universiti_malaya",
+      "lab_name": "High Voltage Laboratory — Unenergized Inspection Bay",
+      "discipline": "electrical_engineering",
+      "official_url": "https://ee.um.edu.my/research-area",
+      "visual_evidence_url": "https://research.utm.my/ivat/wp-content/uploads/sites/77/2023/09/MyHVnet-Newsletter-2023.pdf",
+      "observed_evidence": "The UMHVL-author contribution in MyHVnet January 2023, printed pages 12-13 (PDF page 7), shows actual installed black mesh partitions with yellow uprights and a full-height gate, pale tiled floor, overhead fluorescent ceiling and a control console outside the cage. People obscure most interior equipment, so the red-column sphere-gap fixture is an original unenergized metrology proxy, not a claimed exact copy of a photographed instrument.",
+      "identifiable_equipment": [
+        "Malaya high-voltage laboratory unenergized electrode metrology"
+      ],
+      "layout_evidence": "workstation",
+      "access_limitations": "No measured room plan or OEM mechanism; bounded original dry operation only.",
+      "rights_status": "Institutional copyright; no source-image redistribution permission verified.",
+      "reconstruction_priority": "P1",
+      "checked_at": "2026-10-24",
+      "provisional": true,
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "malaya_high_voltage_metrology",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://research.utm.my/ivat/wp-content/uploads/sites/77/2023/09/MyHVnet-Newsletter-2023.pdf",
+          "image_path": "temp/university/coverage_20261024/asia/malaya_myhvnet2023_page7.png",
+          "sha256": "059d86852ff46e9db2c1d50c2ce191e8c51a2aa6151ff2ca04ff3caa42419ae2",
+          "bytes": 1803441,
+          "observations": "The UMHVL-author contribution in MyHVnet January 2023, printed pages 12-13 (PDF page 7), shows actual installed black mesh partitions with yellow uprights and a full-height gate, pale tiled floor, overhead fluorescent ceiling and a control console outside the cage. People obscure most interior equipment, so the red-column sphere-gap fixture is an original unenergized metrology proxy, not a claimed exact copy of a photographed instrument.",
+          "actually_viewed": true,
+          "document_path": "temp/university/coverage_20261024/asia/malaya_myhvnet2023.pdf",
+          "document_sha256": "5e15731190df84a3d8b4b07049c1a1559764c14b67e43c5f12f1f8b82abdcc3f",
+          "pdf_page": 7,
+          "printed_pages": "12-13"
+        }
+      ]
+    },
+    {
+      "id": "melbourne_hrnblwt_probe_alignment",
+      "institution_id": "university_of_melbourne",
+      "lab_name": "Walter Bassett Aerodynamics Laboratory — HRNBLWT",
+      "discipline": "aerodynamics",
+      "official_url": "https://mechanical.eng.unimelb.edu.au/research/fluid-mechanics/research/walter-bassett",
+      "visual_evidence_url": "https://www.enggjournals.com/ijet/docs/IJET20-12-01-002.pdf",
+      "observed_evidence": "Figure 8 of Rendon-Cardona et al. (2020), explicitly captioned as the Walter Bassett HRNBLWT, shows an installed silver vertical traverse with repeated black pads, a long horizontal probe pointing upstream over a gray floor, a small hot-film array, dark background and low wooden rear trim. A 4 m local section is authored around that apparatus; the photograph does not establish the full room or guide lengths.",
+      "identifiable_equipment": [
+        "Melbourne HRNBLWT dry probe-alignment bay"
+      ],
+      "layout_evidence": "workstation",
+      "access_limitations": "No measured room plan or OEM mechanism; bounded original dry operation only.",
+      "rights_status": "Institutional copyright; no source-image redistribution permission verified.",
+      "reconstruction_priority": "P1",
+      "checked_at": "2026-10-24",
+      "provisional": true,
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": true,
+      "release_authorized": false,
+      "existing_scene_id": "melbourne_hrnblwt_probe_alignment",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.enggjournals.com/ijet/docs/IJET20-12-01-002.pdf",
+          "image_path": "temp/university/coverage_20261024/support/melbourne_fig8.png",
+          "sha256": "29d3fcba30d7e5371b44fe858d41d95f2f0de82a4c4f7bf1bf5c81817ff1dd8c",
+          "bytes": 293928,
+          "observations": "Figure 8 of Rendon-Cardona et al. (2020), explicitly captioned as the Walter Bassett HRNBLWT, shows an installed silver vertical traverse with repeated black pads, a long horizontal probe pointing upstream over a gray floor, a small hot-film array, dark background and low wooden rear trim. A 4 m local section is authored around that apparatus; the photograph does not establish the full room or guide lengths.",
+          "actually_viewed": true,
+          "document_path": "temp/university/coverage_20261024/support/melbourne_skin_friction_pdf.pdf",
+          "document_sha256": "39af428f8d3397c02a1a486cd8f173a0f1c8396a152cd6736d847c52d6a8f7b9",
+          "pdf_page": 9,
+          "figure": "8"
+        }
+      ]
+    },
+    {
+      "id": "monash_geoextremes_seismic_platform",
+      "institution_id": "monash_university",
+      "lab_name": "Monash GeoExtremes Laboratory — Seismic Experimental Platform",
+      "discipline": "geomechanics",
+      "official_url": "https://www.monash.edu/engineering/mge/facilities",
+      "visual_evidence_url": "https://www.3gdeep.com/Test1/wp-content/uploads/2024/04/seismic_experimental_platform_for_rock_joints.jpg",
+      "observed_evidence": "The lab-owned 3GDeep mirror reproduces an installed seismic-platform photograph: fixed silver perforated deck on a dark blue frame, broad metal/rock plate and sensor leads, a left loading assembly, rear monitor, parquet floor and right-side window. The accompanying schematic is identified separately and does not establish room layout. A published 2.4 m by 1.2 m table footprint anchors scale; a small slow specimen-positioning fixture is an original addition.",
+      "identifiable_equipment": [
+        "Monash GeoExtremes dry seismic-platform inspection"
+      ],
+      "layout_evidence": "workstation",
+      "access_limitations": "No measured room plan or OEM mechanism; bounded original dry operation only.",
+      "rights_status": "Institutional copyright; no source-image redistribution permission verified.",
+      "reconstruction_priority": "P1",
+      "checked_at": "2026-10-24",
+      "provisional": true,
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": true,
+      "release_authorized": false,
+      "existing_scene_id": "monash_geoextremes_seismic_platform",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.3gdeep.com/Test1/wp-content/uploads/2024/04/seismic_experimental_platform_for_rock_joints.jpg",
+          "image_path": "temp/university/coverage_20261024/asia/monash_group_platform.jpg",
+          "sha256": "37399fd2e0dae2dc2edb04f3744ea36f8c299821c1b9357c5fda6f2365278f7f",
+          "bytes": 62959,
+          "observations": "The lab-owned 3GDeep mirror reproduces an installed seismic-platform photograph: fixed silver perforated deck on a dark blue frame, broad metal/rock plate and sensor leads, a left loading assembly, rear monitor, parquet floor and right-side window. The accompanying schematic is identified separately and does not establish room layout. A published 2.4 m by 1.2 m table footprint anchors scale; a small slow specimen-positioning fixture is an original addition.",
+          "actually_viewed": true
+        }
+      ]
+    },
+    {
+      "id": "ucl_swc_optics_training",
+      "institution_id": "ucl",
+      "lab_name": "UCL — Sainsbury Wellcome Centre — Advanced Microscopy Optics Training",
+      "discipline": "optics",
+      "official_url": "https://www.sainsburywellcome.org/content/advanced-microscopy",
+      "visual_evidence_url": "https://www.sainsburywellcome.org/sites/default/files/styles/media_image/public/2018-11/training_course_800.jpg?itok=X_5gTvHm",
+      "observed_evidence": "Open optical breadboard and microscope-construction exercise. The inspected close view shows a linear optical cage with green-tinted lenses, posts, cables and electronics on a perforated board; room extent and auxiliary display are inferred.",
+      "identifiable_equipment": [
+        "Perforated optical table",
+        "Post-mounted optical elements and camera",
+        "Dry calibration-slide XY stage"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "Only the selected bench is visible; the room boundary and auxiliary operator display are authored. No light propagation, two-photon excitation, calibrated optical image or tissue experiment. The XY calibration fixture is authored; this is a selected training workstation, not a complete reconstruction of the SWC facility.",
+      "rights_status": "Public official visual evidence; photograph redistribution license not verified; local reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "ucl_swc_optics_training",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.sainsburywellcome.org/sites/default/files/styles/media_image/public/2018-11/training_course_800.jpg?itok=X_5gTvHm",
+          "image_path": "temp/university/coverage_20261024/europe/ucl_training.jpg",
+          "sha256": "6bf25e2dc9fea44fdb322b60360d48d198d0314d092029c9d847c1d5ae0f138d",
+          "size_bytes": 52593
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Perforated optical table",
+          "Post-mounted optical elements and camera",
+          "Dry calibration-slide XY stage"
+        ],
+        "reusable_equipment": [
+          "namespaced articulated primitives and support frames"
+        ],
+        "new_equipment": [
+          "ucl_swc_optical_breadboard"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Only the selected bench is visible; the room boundary and auxiliary operator display are authored. No light propagation, two-photon excitation, calibrated optical image or tissue experiment. The XY calibration fixture is authored; this is a selected training workstation, not a complete reconstruction of the SWC facility."
+      },
+      "ranking_edition": "QS World University Rankings 2027",
+      "qs_rank": 8
+    },
+    {
+      "id": "kcl_mic_stellaris",
+      "institution_id": "king_s_college_london",
+      "lab_name": "King's College London — Microscopy Innovation Centre — STELLARIS 8 FALCON DIVE",
+      "discipline": "microscopy",
+      "official_url": "https://www.kcl.ac.uk/research/facilities/Microscopy-Innovation-Centre",
+      "visual_evidence_url": "https://www.kcl.ac.uk/newimages/mic-stellaris-8-falcon-dive-banner.xc529ecc9.jpeg?width=1100&f=webp",
+      "observed_evidence": "Installed microscope on black optical table, black stage enclosure over a pale inverted body, a large rectangular laser enclosure to the right, two operator monitors to the left, rear outlet strip and black isolation curtain.",
+      "identifiable_equipment": [
+        "Inverted confocal body and open stage enclosure",
+        "Adjacent laser exterior on optical table",
+        "Dual displays and black light-isolation curtain"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "Stage positioning only. No confocal scanning, fluorescence lifetime, multiphoton excitation, optical resolution, laser safety interlocks or physiological response. Internal stage mechanics and room dimensions are estimates.",
+      "rights_status": "Public official visual evidence; photograph redistribution license not verified; local reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "kcl_mic_stellaris",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.kcl.ac.uk/newimages/mic-stellaris-8-falcon-dive-banner.xc529ecc9.jpeg?width=1100&f=webp",
+          "image_path": "temp/university/coverage_20261024/europe/kcl_stellaris.jpg",
+          "sha256": "09d47dcb37ff3592819b076f6a0aa6dff3c8f6ab70564c4fcf6039e25ee1ef78",
+          "size_bytes": 102635
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Inverted confocal body and open stage enclosure",
+          "Adjacent laser exterior on optical table",
+          "Dual displays and black light-isolation curtain"
+        ],
+        "reusable_equipment": [
+          "namespaced articulated primitives and support frames"
+        ],
+        "new_equipment": [
+          "kcl_mic_confocal_workcell"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Stage positioning only. No confocal scanning, fluorescence lifetime, multiphoton excitation, optical resolution, laser safety interlocks or physiological response. Internal stage mechanics and room dimensions are estimates."
+      },
+      "ranking_edition": "QS World University Rankings 2027",
+      "qs_rank": 37
+    },
+    {
+      "id": "lse_behavioural_eyelink",
+      "institution_id": "london_school_of_economics_and_political_science",
+      "lab_name": "London School of Economics and Political Science — Behavioural Lab — EyeLink Participant Testing",
+      "discipline": "behavioural_science",
+      "official_url": "https://www.lse.ac.uk/behavioural-lab/our-facilities/facilities-list/facilities-photos",
+      "visual_evidence_url": "https://www.lse.ac.uk/behavioural-lab/assets/images/DSC06186-70kb.JPG",
+      "observed_evidence": "Separate participant and experimenter displays on pale desks; a black two-post chin/forehead restraint, a tabletop eye camera with illuminator, keyboard and operator seating. The photo is an actual participant testing setup.",
+      "identifiable_equipment": [
+        "Two-post adjustable head support",
+        "Table-mounted eye camera",
+        "Separate participant and experimenter screens"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "Vacant behavioural workstation. Only chin-height and camera-tilt alignment are simulated; no human participant, eye movements, infrared tracking, physiological measurements or behavioural validity. Camera hinge travel and unseen room boundary are authored.",
+      "rights_status": "Public official visual evidence; photograph redistribution license not verified; local reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "lse_behavioural_eyelink",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.lse.ac.uk/behavioural-lab/assets/images/DSC06186-70kb.JPG",
+          "image_path": "temp/university/coverage_20261024/europe/lse_eye2.jpg",
+          "sha256": "ef198a8399f93c0b0fc20747ddcee54547ce9ab52f710b8eceeb2e1bd2db8dc0",
+          "size_bytes": 67535
+        },
+        {
+          "url": "https://www.lse.ac.uk/behavioural-lab/assets/images/DSC06191-70kb.JPG",
+          "image_path": "temp/university/coverage_20261024/europe/lse_eye3.jpg",
+          "sha256": "2ebdb69bc32082948ade08206a6ccf454eb0b566eab39f5d0c8ea2a209eabe96",
+          "size_bytes": 68159
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Two-post adjustable head support",
+          "Table-mounted eye camera",
+          "Separate participant and experimenter screens"
+        ],
+        "reusable_equipment": [
+          "namespaced articulated primitives and support frames"
+        ],
+        "new_equipment": [
+          "lse_eyelink_workstation"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Vacant behavioural workstation. Only chin-height and camera-tilt alignment are simulated; no human participant, eye movements, infrared tracking, physiological measurements or behavioural validity. Camera hinge travel and unseen room boundary are authored."
+      },
+      "ranking_edition": "QS World University Rankings 2027",
+      "qs_rank": 62
+    },
+    {
+      "id": "ipparis_luli2000_milka",
+      "institution_id": "institut_polytechnique_de_paris",
+      "lab_name": "Institut Polytechnique de Paris — Ecole polytechnique, Palaiseau — LULI2000 Room 1 MILKA",
+      "discipline": "plasma_physics",
+      "official_url": "https://portail.polytechnique.edu/luli/en/facilities/luli2000/experimentals-room",
+      "visual_evidence_url": "https://portail.polytechnique.edu/luli/sites/luli/files/styles/detail/public/content/pages/images/2026-02/img-8264.jpg.webp?itok=PBFRIQsI",
+      "observed_evidence": "Large spherical multiport chamber on pale floor-standing supports, radial flanges and dark viewports, a foreground optical/diagnostic table, side optical benches and equipment racks.",
+      "identifiable_equipment": [
+        "Approximately two-metre MILKA sphere",
+        "Radial optical ports and triangulated supports",
+        "External dry diagnostic alignment table"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "Ecole polytechnique Palaiseau campus, building 84; member-school affiliation is documented separately. No chamber interior, vacuum, radiation, laser/plasma physics, magnetic fields or scientific measurement. Only the external dry diagnostic carriage is operable.",
+      "rights_status": "Public official visual evidence; photograph redistribution license not verified; local reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": true,
+      "release_authorized": false,
+      "existing_scene_id": "ipparis_luli2000_milka",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://portail.polytechnique.edu/luli/sites/luli/files/styles/detail/public/content/pages/images/2026-02/img-8264.jpg.webp?itok=PBFRIQsI",
+          "image_path": "temp/university/coverage_20261024/europe/ip_milka.webp",
+          "sha256": "c380c28ca6a00564687bb764e0a896bc83bc3b944c8eb3945224565b466c995d",
+          "size_bytes": 23916
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Approximately two-metre MILKA sphere",
+          "Radial optical ports and triangulated supports",
+          "External dry diagnostic alignment table"
+        ],
+        "reusable_equipment": [
+          "namespaced articulated primitives and support frames"
+        ],
+        "new_equipment": [
+          "ipparis_milka_diagnostic_bay"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Ecole polytechnique Palaiseau campus, building 84; member-school affiliation is documented separately. No chamber interior, vacuum, radiation, laser/plasma physics, magnetic fields or scientific measurement. Only the external dry diagnostic carriage is operable."
+      },
+      "ranking_edition": "QS World University Rankings 2027",
+      "qs_rank": 43,
+      "verified_dimensions": [
+        {
+          "feature": "approximate MILKA sphere diameter",
+          "dimensions_m": [
+            2.0
+          ],
+          "basis": "Official LULI2000 experimental-room description"
+        }
+      ]
+    },
+    {
+      "id": "uva_speech_studio2",
+      "institution_id": "university_of_amsterdam",
+      "lab_name": "University of Amsterdam — Speech Lab — Studio 2 Eye-Tracking and Speech Station",
+      "discipline": "speech_science",
+      "official_url": "https://www.fon.hum.uva.nl/speechlab/studios.html",
+      "visual_evidence_url": "https://www.fon.hum.uva.nl/speechlab/studio2_2.jpg",
+      "observed_evidence": "Blue acoustic interior with overhead cable tray, a black reclining participant chair on a circular pedestal, white articulated display arm, an eye tracker beneath the screen, two microphones and an elevated keyboard shelf.",
+      "identifiable_equipment": [
+        "Articulated white stimulus monitor arm",
+        "Pedestal participant chair and under-screen tracker",
+        "Two microphones and acoustic wall panels"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "Vacant participant station. Monitor yaw and pitch are authored alignment joints; no acoustics, speech generation, eye tracking, EEG or human-response model. The page describes Studio 2 by its yellow exterior; the inspected interior itself has blue acoustic walls.",
+      "rights_status": "Public official visual evidence; photograph redistribution license not verified; local reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "uva_speech_studio2",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.fon.hum.uva.nl/speechlab/studio2_2.jpg",
+          "image_path": "temp/university/coverage_20261024/europe/uva_studio2_close.jpg",
+          "sha256": "47a0b09d3561c44073eadc4027215353bbcab05b89a23a845877fb9ec1ad35eb",
+          "size_bytes": 3472451
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Articulated white stimulus monitor arm",
+          "Pedestal participant chair and under-screen tracker",
+          "Two microphones and acoustic wall panels"
+        ],
+        "reusable_equipment": [
+          "namespaced articulated primitives and support frames"
+        ],
+        "new_equipment": [
+          "uva_speech_stimulus_station"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Vacant participant station. Monitor yaw and pitch are authored alignment joints; no acoustics, speech generation, eye tracking, EEG or human-response model. The page describes Studio 2 by its yellow exterior; the inspected interior itself has blue acoustic walls."
+      },
+      "ranking_edition": "QS World University Rankings 2027",
+      "qs_rank": 60
+    },
+    {
+      "id": "durham_2m_wind_tunnel",
+      "institution_id": "durham_university",
+      "lab_name": "Durham University — Fluid Mechanics — 2 m Wind Tunnel Fixed-Ground Test Section",
+      "discipline": "aerodynamics",
+      "official_url": "https://www.durham.ac.uk/departments/academic/engineering/research/nodes/fluid-mechanics-/facilitiescapabilities/",
+      "visual_evidence_url": "https://duracuk-lb01-production.terminalfour.net/media/durham-university/departments-/engineering/node-webpages/fluid-mechanics/facilities/2mWT-car.png",
+      "observed_evidence": "Open-jet vehicle test section: dark nozzle behind the retained model car, raised test floor, overhead supports, pale walls, yellow side structure and a nearby observation window. The fixed-ground turntable and probe traverse are described by the facility page.",
+      "identifiable_equipment": [
+        "Open-jet nozzle and retained vehicle model",
+        "Published 1.65-m fixed-ground turntable",
+        "Overhead probe support and vertical positioning"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "Dry fixed-ground mechanical configuration. No airflow, turbulence, aerodynamic force, PIV, infrared data, rolling-road belt or full wind-tunnel return duct. The reference vehicle photograph establishes the bay; the published fixed-ground configuration supplies turntable dimensions.",
+      "rights_status": "Public official visual evidence; photograph redistribution license not verified; local reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": true,
+      "release_authorized": false,
+      "existing_scene_id": "durham_2m_wind_tunnel",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://duracuk-lb01-production.terminalfour.net/media/durham-university/departments-/engineering/node-webpages/fluid-mechanics/facilities/2mWT-car.png",
+          "image_path": "temp/university/coverage_20261024/europe/durham_car.png",
+          "sha256": "a5b288b8cdab01d075bf2fedfbe1216cdaea3dbf356d47281ea868a6fd82d2bb",
+          "size_bytes": 331507
+        },
+        {
+          "url": "https://duracuk-lb01-production.terminalfour.net/media/durham-university/departments-/engineering/node-webpages/fluid-mechanics/facilities/Screenshot-2025-01-16-165118.png",
+          "image_path": "temp/university/coverage_20261024/europe/durham_specs.png",
+          "sha256": "e578067cb25913ac35b08d3915d25ea3f356d59596bb7d6bb6c4aab0c0550909",
+          "size_bytes": 20653
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Open-jet nozzle and retained vehicle model",
+          "Published 1.65-m fixed-ground turntable",
+          "Overhead probe support and vertical positioning"
+        ],
+        "reusable_equipment": [
+          "namespaced articulated primitives and support frames"
+        ],
+        "new_equipment": [
+          "durham_fixed_ground_tunnel"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Dry fixed-ground mechanical configuration. No airflow, turbulence, aerodynamic force, PIV, infrared data, rolling-road belt or full wind-tunnel return duct. The reference vehicle photograph establishes the bay; the published fixed-ground configuration supplies turntable dimensions."
+      },
+      "ranking_edition": "QS World University Rankings 2027",
+      "qs_rank": 85,
+      "verified_dimensions": [
+        {
+          "feature": "fixed-ground turntable diameter",
+          "dimensions_m": [
+            1.65
+          ],
+          "basis": "Official facility text"
+        },
+        {
+          "feature": "test section width height length",
+          "dimensions_m": [
+            1.75,
+            1.15,
+            5.5
+          ],
+          "basis": "Inspected official specification image"
+        },
+        {
+          "feature": "turntable centre downstream of nozzle",
+          "dimensions_m": [
+            1.8
+          ],
+          "basis": "Official facility text"
+        }
+      ]
+    },
+    {
+      "id": "toronto_wb233_membrane_crossflow",
+      "institution_id": "toronto",
+      "lab_name": "Advanced Membranes Lab, WB233 Water Analysis and Treatment Laboratory",
+      "discipline": "membrane_engineering",
+      "official_url": "https://www.labs.chem-eng.utoronto.ca/werber/facilities/",
+      "visual_evidence_url": "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-Large-1024x768.jpeg",
+      "observed_evidence": "Six black rectangular crossflow cells with silver bolted covers, manifold pipes and two round gauges on a white workboard. Tall black-framed windows, overhead metallic ducts and a blue-bin wire rack in the WB233 room. Close-up establishes apparatus composition but does not locate this exact bench within the overview.",
+      "identifiable_equipment": [
+        "toronto_membrane_crossflow_inspection"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. No filtration, permeation, pressure seals or liquid transport. Original guided lids replace manual bolted-lid disassembly for dry inspection. University of Toronto Yu Sun/AMNL is explicitly excluded; this is the independent Advanced Membranes Lab.",
+      "rights_status": "Public primary-source visual evidence; photograph redistribution license not verified. Private reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "toronto_wb233_membrane_crossflow",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-Large-1024x768.jpeg",
+          "image_path": "temp/university/coverage_20261024/global/toronto_room.jpg",
+          "sha256": "ebf133c0cad11bca5b30df4f0b5b8d85690d94a7e5cf9493f65dfb4c18366fdf",
+          "size_bytes": 145156
+        },
+        {
+          "url": "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-RO-Large-1024x457.jpeg",
+          "image_path": "temp/university/coverage_20261024/global/toronto_crossflow.jpg",
+          "sha256": "8bbad6aa6534e7ee02ffc88721fae6a168bd11e22853eafd89cbbaadf59d3452",
+          "size_bytes": 88036
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Six black rectangular crossflow cells with silver bolted covers, manifold pipes and two round gauges on a white workboard.",
+          "Tall black-framed windows, overhead metallic ducts and a blue-bin wire rack in the WB233 room.",
+          "Close-up establishes apparatus composition but does not locate this exact bench within the overview."
+        ],
+        "reusable_equipment": [
+          "procedural primitive builders and open annular guide mounts"
+        ],
+        "new_equipment": [
+          "toronto_membrane_crossflow_inspection"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "No filtration, permeation, pressure seals or liquid transport. Original guided lids replace manual bolted-lid disassembly for dry inspection. University of Toronto Yu Sun/AMNL is explicitly excluded; this is the independent Advanced Membranes Lab."
+      },
+      "verified_dimensions": []
+    },
+    {
+      "id": "zurich_otology_specimen_preparation",
+      "institution_id": "university_of_zurich",
+      "lab_name": "Otology and Biomechanics of Hearing, Sample Preparation Room",
+      "discipline": "biomechanics",
+      "official_url": "https://www.otobm.uzh.ch/en/Infrastructure.html",
+      "visual_evidence_url": "https://www.otobm.uzh.ch/dam/jcr:cc05e8ca-210b-4178-9ea1-4ebb16151f7a/wet_lab_3.jpg",
+      "observed_evidence": "Narrow central aisle between two pale preparation counters. Two surgical microscope assemblies and three articulated ceiling extraction hoods. Large black wall monitor and tall upper white cupboards; exact room dimensions unmeasured.",
+      "identifiable_equipment": [
+        "zurich_otology_dry_microscope"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. No tissue, surgery, optical imaging or sound-pressure measurement. The movable XY calibration fixture is original.",
+      "rights_status": "Public primary-source visual evidence; photograph redistribution license not verified. Private reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "zurich_otology_specimen_preparation",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://www.otobm.uzh.ch/dam/jcr:cc05e8ca-210b-4178-9ea1-4ebb16151f7a/wet_lab_3.jpg",
+          "image_path": "temp/university/coverage_20261024/global/zurich_prep.jpg",
+          "sha256": "4b0340f1b9892c0d03a6cfb9d01339b6aa9db31e970f0f3ad9791f8721518d37",
+          "size_bytes": 2077925
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Narrow central aisle between two pale preparation counters.",
+          "Two surgical microscope assemblies and three articulated ceiling extraction hoods.",
+          "Large black wall monitor and tall upper white cupboards; exact room dimensions unmeasured."
+        ],
+        "reusable_equipment": [
+          "procedural primitive builders and open annular guide mounts"
+        ],
+        "new_equipment": [
+          "zurich_otology_dry_microscope"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "No tissue, surgery, optical imaging or sound-pressure measurement. The movable XY calibration fixture is original."
+      },
+      "verified_dimensions": []
+    },
+    {
+      "id": "adelaide_exterres_rtvac_access",
+      "institution_id": "adelaide_university",
+      "lab_name": "Andy Thomas Centre for Space Resources, EXTERRES Laboratory",
+      "discipline": "space_environment_testing",
+      "official_url": "https://adelaide.edu.au/research/andy-thomas-centre-for-space-resources/",
+      "visual_evidence_url": "https://media.newswise.com/pio/articles/767541/623966a81238a_ExtlabDSC06716Final-web.jpg",
+      "observed_evidence": "Large horizontal cylindrical vacuum vessel with a circular left-hinged door. Blue perforated metal wall screen and tall adjacent glazing. Small auxiliary cabinet and free-standing service table; only this local chamber bay is reconstructed.",
+      "identifiable_equipment": [
+        "adelaide_exterres_vented_rtvac"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. 2022 university-authored photo is legacy University of Adelaide evidence; current Adelaide University ATCSR page confirms EXTERRES North Terrace affiliation. This is an Earth-gravity, vented, unpowered dry inspection surrogate. No vacuum, heat transfer, regolith response or flight qualification. Internal tray and drive are inferred.",
+      "rights_status": "Public primary-source visual evidence; photograph redistribution license not verified. Private reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "adelaide_exterres_rtvac_access",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://media.newswise.com/pio/articles/767541/623966a81238a_ExtlabDSC06716Final-web.jpg",
+          "image_path": "temp/university/coverage_20261024/global/adelaide_room.jpg",
+          "sha256": "cf37e8c4d704a9c74f34c18769720eb595b0531bbe637b8f297443761d081909",
+          "size_bytes": 322086
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Large horizontal cylindrical vacuum vessel with a circular left-hinged door.",
+          "Blue perforated metal wall screen and tall adjacent glazing.",
+          "Small auxiliary cabinet and free-standing service table; only this local chamber bay is reconstructed."
+        ],
+        "reusable_equipment": [
+          "procedural primitive builders and open annular guide mounts"
+        ],
+        "new_equipment": [
+          "adelaide_exterres_vented_rtvac"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "2022 university-authored photo is legacy University of Adelaide evidence; current Adelaide University ATCSR page confirms EXTERRES North Terrace affiliation. This is an Earth-gravity, vented, unpowered dry inspection surrogate. No vacuum, heat transfer, regolith response or flight qualification. Internal tray and drive are inferred."
+      },
+      "verified_dimensions": []
+    },
+    {
+      "id": "ucd_conway_sxt_chamber_inspection",
+      "institution_id": "university_college_dublin",
+      "lab_name": "Conway Institute Imaging Core, SiriusXT Installation",
+      "discipline": "xray_microscopy",
+      "official_url": "https://www.ucd.ie/conway/",
+      "visual_evidence_url": "https://siriusxt.com/wp-content/uploads/2025/08/Zeiss-visit-4-3.png?w=1024",
+      "observed_evidence": "A large stainless cylindrical chamber, nearby smaller vessels and a black overhead lifting frame in the installed-site report. Cream room, suspended ceiling, rear utility shelf with blue bins and small component drawers. People obscure part of the room: only the instrument bay and visible rear services are estimated.",
+      "identifiable_equipment": [
+        "ucd_conway_sxt_inspection"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. Manufacturer installed-site report explicitly identifies Conway Laboratory at UCD; generic OEM stock photographs are not used as layout evidence. Internal holder and cover actuation are authored dry surrogates, not an SXT-100 operating procedure. No X-ray, plasma, vacuum, cryogenic or tomography response.",
+      "rights_status": "Public primary-source visual evidence; photograph redistribution license not verified. Private reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "ucd_conway_sxt_chamber_inspection",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://siriusxt.com/wp-content/uploads/2025/08/Zeiss-visit-4-3.png?w=1024",
+          "image_path": "temp/university/coverage_20261024/global/ucd_sxt.png",
+          "sha256": "550537d6da5f1f8ef41ec8165bd43cd233ed82102d23781cf53520d5461f9d14",
+          "size_bytes": 1433358
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "A large stainless cylindrical chamber, nearby smaller vessels and a black overhead lifting frame in the installed-site report.",
+          "Cream room, suspended ceiling, rear utility shelf with blue bins and small component drawers.",
+          "People obscure part of the room: only the instrument bay and visible rear services are estimated."
+        ],
+        "reusable_equipment": [
+          "procedural primitive builders and open annular guide mounts"
+        ],
+        "new_equipment": [
+          "ucd_conway_sxt_inspection"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Manufacturer installed-site report explicitly identifies Conway Laboratory at UCD; generic OEM stock photographs are not used as layout evidence. Internal holder and cover actuation are authored dry surrogates, not an SXT-100 operating procedure. No X-ray, plasma, vacuum, cryogenic or tomography response."
+      },
+      "verified_dimensions": []
+    },
+    {
+      "id": "uba_fiuba_chemistry_2008",
+      "institution_id": "universidad_de_buenos_aires",
+      "lab_name": "FIUBA Chemistry Laboratory, Paseo Colon 850 (2008 reference)",
+      "discipline": "chemistry",
+      "official_url": "https://www.fi.uba.ar/institucional/sedes/paseo-colon",
+      "visual_evidence_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG/1280px-Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG",
+      "observed_evidence": "Real chemistry experiment around a clamped vertical glass tube and bath tray on a dark countertop. Parallel long teaching benches with cream cabinets, raised black utility rails and yellow service pipes. White tiled structural column and high ceiling strips. This institutional photograph dates to 14 May 2008.",
+      "identifiable_equipment": [
+        "uba_historical_dry_burette"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. Historical teaching-laboratory appearance, not a current research-group room or present-day surveyed twin. Photo by Comunicacion Institucional FIUBA, CC BY-SA 4.0. Source image is retained privately and not redistributed as a texture. Dry mechanical stand-height and stopcock positioning only. No water bath heating, flame, gas supply, titration or reaction.",
+      "rights_status": "CC BY-SA 4.0 institutional photo; retained privately, attribution recorded.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "uba_fiuba_chemistry_2008",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG/1280px-Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG",
+          "image_path": "temp/university/coverage_20261024/global/uba_chemistry.jpg",
+          "sha256": "a0e324a868d94e28eb3ce155c3ce93b379aa6d7adac00c16d6a710ad3ac315bf",
+          "size_bytes": 226005
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "Real chemistry experiment around a clamped vertical glass tube and bath tray on a dark countertop.",
+          "Parallel long teaching benches with cream cabinets, raised black utility rails and yellow service pipes.",
+          "White tiled structural column and high ceiling strips. This institutional photograph dates to 14 May 2008."
+        ],
+        "reusable_equipment": [
+          "procedural primitive builders and open annular guide mounts"
+        ],
+        "new_equipment": [
+          "uba_historical_dry_burette"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Historical teaching-laboratory appearance, not a current research-group room or present-day surveyed twin. Photo by Comunicacion Institucional FIUBA, CC BY-SA 4.0. Source image is retained privately and not redistributed as a texture. Dry mechanical stand-height and stopcock positioning only. No water bath heating, flame, gas supply, titration or reaction."
+      },
+      "verified_dimensions": []
+    },
+    {
+      "id": "trinity_aml_titan_alignment",
+      "institution_id": "trinity_college_dublin_the_university_of_dublin",
+      "lab_name": "CRANN Advanced Microscopy Laboratory, Titan Bay",
+      "discipline": "electron_microscopy",
+      "official_url": "https://www.tcd.ie/crann/aml/",
+      "visual_evidence_url": "https://microscopy.ie/wp-content/uploads/2025/07/EM-UKI_2025_National-spotlight-on-Ireland.pdf",
+      "observed_evidence": "The installed Titan photograph on page 10 shows a tall white enclosure with dark rounded front column. Blue partition at left and a separate operator desk/monitor at right. Only the installed bottom-right photograph establishes local layout; the stock Orion image on the same slide is excluded.",
+      "identifiable_equipment": [
+        "trinity_aml_titan_dry_alignment"
+      ],
+      "layout_evidence": "workstation",
+      "layout_evidence_notes": "apparatus_and_partial_room",
+      "access_limitations": "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. Only the local bay is evidenced; full laboratory floor plan and dimensions remain unknown. External grid alignment cradle is an authored dry mechanism, not verified Titan sample loading. No vacuum, electron beam, atomic resolution or tomography.",
+      "rights_status": "Public primary-source visual evidence; photograph redistribution license not verified. Private reference only.",
+      "reconstruction_priority": "P1",
+      "provisional": true,
+      "checked_at": "2026-10-24",
+      "verification_level": "image_reviewed",
+      "physical_site_verified": true,
+      "full_tour_reviewed": false,
+      "operation_video_reviewed": false,
+      "dimensions_verified": false,
+      "release_authorized": false,
+      "existing_scene_id": "trinity_aml_titan_alignment",
+      "model_stage": "reference_informed_prototype",
+      "reviewed_visuals": [
+        {
+          "url": "https://microscopy.ie/wp-content/uploads/2025/07/EM-UKI_2025_National-spotlight-on-Ireland.pdf",
+          "image_path": "temp/university/coverage_20261024/global/trinity_aml_page10.png",
+          "sha256": "c056f13e98f5da30773558544d62572915c0e9cece4e85fa3579139b1695654a",
+          "size_bytes": 865658,
+          "page": 10,
+          "source_document_sha256": "ec27754dd3a35613cbf0bcce17684ba037e130bab9b3e991de90ecbf64c45c6e"
+        }
+      ],
+      "reconstruction_recipe": {
+        "distinctive_features": [
+          "The installed Titan photograph on page 10 shows a tall white enclosure with dark rounded front column.",
+          "Blue partition at left and a separate operator desk/monitor at right.",
+          "Only the installed bottom-right photograph establishes local layout; the stock Orion image on the same slide is excluded."
+        ],
+        "reusable_equipment": [
+          "procedural primitive builders and open annular guide mounts"
+        ],
+        "new_equipment": [
+          "trinity_aml_titan_dry_alignment"
+        ],
+        "scope": "apparatus_and_partial_room",
+        "scientific_model_boundary": "Only the local bay is evidenced; full laboratory floor plan and dimensions remain unknown. External grid alignment cradle is an authored dry mechanism, not verified Titan sample loading. No vacuum, electron beam, atomic resolution or tomography."
+      },
+      "verified_dimensions": []
     }
   ],
   "held_or_rejected": [

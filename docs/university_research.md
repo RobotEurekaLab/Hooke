@@ -1,22 +1,23 @@
 # University laboratory research register
 
-Reviewed: 2026-10-03. Generated from `Hooke/university/` metadata.
+Evidence reviewed through 2026-10-24; pinned roster checked on 2026-10-03. Generated from `Hooke/university/` metadata.
 
 Scope: [QS World University Rankings 2027](https://www.topuniversities.com/qs-top-uni-wur), published overall rank ≤100, including ties and corrections: **102 institutions**. [QS correction notes](https://www.topuniversities.com/rankings-release-summaries/world-university-rankings-2027-release-summary).
 
 ## What has actually been completed
 
-- 128 retained candidates, 126 within QS scope, across 86 in-scope universities.
-- 118 candidates have inspected images; 49 support room layout and 54 support workstation geometry. A product-only image is not room evidence.
+- 146 retained candidates, 144 within QS scope, across 102 in-scope universities.
+- 136 candidates have inspected images; 49 support room layout and 72 support workstation geometry. A product-only image is not room evidence.
 - 10 candidates have official-page/media-entry review only; linked tours were not fully viewed.
-- 119 existing university scene prototypes, covering 84 in-scope universities; 1 additional research-institute scene.
-- 115 constructed scenes are within the pinned QS scope. 113 retained candidates are linked to constructed prototypes; the candidate register and the full scene catalogue have different coverage.
+- 137 existing university scene prototypes, covering 102 in-scope universities; 1 additional research-institute scene.
+- 0 in-scope universities still lack a scene. Multiple laboratories at one university do not close another university's coverage gap.
+- 133 constructed scenes are within the pinned QS scope. 131 retained candidates are linked to constructed prototypes; the candidate register and the full scene catalogue have different coverage.
 - Candidate counts and school names are not completed-model counts. Room evidence does not establish measured dimensions, current layout, scientific validity or institutional endorsement.
-- No retained candidate has a verified media/derived-asset release authorization. Public viewing and academic intent do not establish redistribution permission.
+- Public accessibility does not establish redistribution permission. Consult each source's rights record, including any documented open license; that license does not establish reconstruction fidelity or resolve rights for other source material.
 
 ## Retained laboratories
 
-P1 means prioritize the next evidence/modeling step; it does not certify a finished reconstruction. `none` means spatial evidence remains unverified, even when an equipment inventory is useful.
+P1 means prioritize the next evidence/modeling step; it does not certify a finished reconstruction. `none` means spatial evidence remains unverified, even when an equipment inventory is useful. Historical broad leads may coexist with narrower constructed workstation records; candidate counts are not distinct-laboratory counts.
 
 | University | Lab / official source | QS rank | Evidence | Priority | Existing scene | Model stage |
 | --- | --- | ---: | --- | --- | --- | --- |
@@ -148,6 +149,24 @@ P1 means prioritize the next evidence/modeling step; it does not certify a finis
 | Yale University | [Becton Main Campus Cleanroom metrology and fabrication bays](https://research.yale.edu/cores/cleanroom) | =16 | workstation | P1 | yale_becton_cleanroom_metrology | reference_informed_prototype |
 | Yonsei University | [MICS Laboratory — RF Probe Workstation](https://mics.yonsei.ac.kr/equipment/) | 42 | workstation | P1 | yonsei_mics_rf_probe | reference_informed_prototype |
 | Zhejiang University | [Aircraft Design Laboratory — Low-Turbulence Quiet Wind Tunnel](https://atc.zju.edu.cn/instrument/detail-4202.html) | 47 | workstation | P1 | zju_low_turbulence_tunnel | reference_informed_prototype |
+| Peking University | [Zhao Research Group — Synthesis Laboratory C805-6](https://www.chem.pku.edu.cn/zhaodh/2023/galleries.html) | 13 | workstation | P1 | peking_zhao_rotary_evaporation | reference_informed_prototype |
+| The University of Tokyo | [Kurumizaka Laboratory — Chromatography Workstation](https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/research_kizai.html) | 39 | workstation | P1 | tokyo_kurumizaka_chromatography | reference_informed_prototype |
+| Korea University | [Architecture, Civil and Environmental Engineering — Wind Engineering Laboratory](https://ace.korea.ac.kr/sub4_4.php) | =52 | workstation | P1 | korea_ace_wind_engineering | reference_informed_prototype |
+| Universiti Malaya (UM) | [High Voltage Laboratory — Unenergized Inspection Bay](https://ee.um.edu.my/research-area) | 56 | workstation | P1 | malaya_high_voltage_metrology | reference_informed_prototype |
+| The University of Melbourne | [Walter Bassett Aerodynamics Laboratory — HRNBLWT](https://mechanical.eng.unimelb.edu.au/research/fluid-mechanics/research/walter-bassett) | =22 | workstation | P1 | melbourne_hrnblwt_probe_alignment | reference_informed_prototype |
+| Monash University | [Monash GeoExtremes Laboratory — Seismic Experimental Platform](https://www.monash.edu/engineering/mge/facilities) | 31 | workstation | P1 | monash_geoextremes_seismic_platform | reference_informed_prototype |
+| UCL | [UCL — Sainsbury Wellcome Centre — Advanced Microscopy Optics Training](https://www.sainsburywellcome.org/content/advanced-microscopy) | =8 | workstation | P1 | ucl_swc_optics_training | reference_informed_prototype |
+| King's College London | [King's College London — Microscopy Innovation Centre — STELLARIS 8 FALCON DIVE](https://www.kcl.ac.uk/research/facilities/Microscopy-Innovation-Centre) | 37 | workstation | P1 | kcl_mic_stellaris | reference_informed_prototype |
+| The London School of Economics and Political Science (LSE) | [London School of Economics and Political Science — Behavioural Lab — EyeLink Participant Testing](https://www.lse.ac.uk/behavioural-lab/our-facilities/facilities-list/facilities-photos) | 62 | workstation | P1 | lse_behavioural_eyelink | reference_informed_prototype |
+| Institut Polytechnique de Paris | [Institut Polytechnique de Paris — Ecole polytechnique, Palaiseau — LULI2000 Room 1 MILKA](https://portail.polytechnique.edu/luli/en/facilities/luli2000/experimentals-room) | =43 | workstation | P1 | ipparis_luli2000_milka | reference_informed_prototype |
+| University of Amsterdam | [University of Amsterdam — Speech Lab — Studio 2 Eye-Tracking and Speech Station](https://www.fon.hum.uva.nl/speechlab/studios.html) | 60 | workstation | P1 | uva_speech_studio2 | reference_informed_prototype |
+| Durham University | [Durham University — Fluid Mechanics — 2 m Wind Tunnel Fixed-Ground Test Section](https://www.durham.ac.uk/departments/academic/engineering/research/nodes/fluid-mechanics-/facilitiescapabilities/) | 85 | workstation | P1 | durham_2m_wind_tunnel | reference_informed_prototype |
+| University of Toronto | [Advanced Membranes Lab, WB233 Water Analysis and Treatment Laboratory](https://www.labs.chem-eng.utoronto.ca/werber/facilities/) | 32 | workstation | P1 | toronto_wb233_membrane_crossflow | reference_informed_prototype |
+| University of Zurich | [Otology and Biomechanics of Hearing, Sample Preparation Room](https://www.otobm.uzh.ch/en/Infrastructure.html) | =98 | workstation | P1 | zurich_otology_specimen_preparation | reference_informed_prototype |
+| Adelaide University | [Andy Thomas Centre for Space Resources, EXTERRES Laboratory](https://adelaide.edu.au/research/andy-thomas-centre-for-space-resources/) | 79 | workstation | P1 | adelaide_exterres_rtvac_access | reference_informed_prototype |
+| University College Dublin | [Conway Institute Imaging Core, SiriusXT Installation](https://www.ucd.ie/conway/) | =100 | workstation | P1 | ucd_conway_sxt_chamber_inspection | reference_informed_prototype |
+| Universidad de Buenos Aires (UBA) | [FIUBA Chemistry Laboratory, Paseo Colon 850 (2008 reference)](https://www.fi.uba.ar/institucional/sedes/paseo-colon) | 84 | workstation | P1 | uba_fiuba_chemistry_2008 | reference_informed_prototype |
+| Trinity College Dublin, The University of Dublin | [CRANN Advanced Microscopy Laboratory, Titan Bay](https://www.tcd.ie/crann/aml/) | 75 | workstation | P1 | trinity_aml_titan_alignment | reference_informed_prototype |
 
 ## Evidence and missing information
 
@@ -1431,13 +1450,193 @@ Official laboratory page and its installed apparatus photograph reviewed. Deep b
 
 [Official page](https://atc.zju.edu.cn/instrument/detail-4202.html) · [Visual reference](https://atc.zju.edu.cn/upload/tinstrument/1715047158ohlry.jpg)
 
+### peking_zhao_rotary_evaporation
+
+Paired blue rotary evaporators occupy a pale bench beside overhead reagent shelves and a dark-framed window; tall coiled condensers and cream baths are visible. The second device is a stationary exterior cue.
+
+**Identifiable equipment:** Peking Zhao Laboratory dry rotary-evaporator inspection.
+
+**Remaining gap:** No measured room plan or OEM mechanism; bounded original dry operation only.
+
+[Official page](https://www.chem.pku.edu.cn/zhaodh/2023/galleries.html) · [Visual reference](https://www.chem.pku.edu.cn/zhaodh/docs/2023-12/20231220181153685551.jpg)
+
+### tokyo_kurumizaka_chromatography
+
+A circular fraction collector sits immediately left of a tall silver valve panel with dark red side casing, upright columns and thin tubing; both rest on the same dark bench against pale walls. No adjacency to the separately photographed microscope is inferred.
+
+**Identifiable equipment:** Tokyo Kurumizaka dry chromatography-collector workstation.
+
+**Remaining gap:** No measured room plan or OEM mechanism; bounded original dry operation only.
+
+[Official page](https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/research_kizai.html) · [Visual reference](https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/images/kizai/2021_kizai/AKTApure.JPG)
+
+### korea_ace_wind_engineering
+
+Glazed test-section walls in repeated metal frames; circular alignment rings; a suspended bridge-section model with upright end plates and brass cylindrical counterweights. A separate IFSS close-up constrains local arrangement, not exact dimensions.
+
+**Identifiable equipment:** Korea ACE bridge-section alignment in a glazed wind tunnel.
+
+**Remaining gap:** No measured room plan or OEM mechanism; bounded original dry operation only.
+
+[Official page](https://ace.korea.ac.kr/sub4_4.php) · [Visual reference](https://ace.korea.ac.kr/images/sub/labo01_01.jpg)
+
+### malaya_high_voltage_metrology
+
+The UMHVL-author contribution in MyHVnet January 2023, printed pages 12-13 (PDF page 7), shows actual installed black mesh partitions with yellow uprights and a full-height gate, pale tiled floor, overhead fluorescent ceiling and a control console outside the cage. People obscure most interior equipment, so the red-column sphere-gap fixture is an original unenergized metrology proxy, not a claimed exact copy of a photographed instrument.
+
+**Identifiable equipment:** Malaya high-voltage laboratory unenergized electrode metrology.
+
+**Remaining gap:** No measured room plan or OEM mechanism; bounded original dry operation only.
+
+[Official page](https://ee.um.edu.my/research-area) · [Visual reference](https://research.utm.my/ivat/wp-content/uploads/sites/77/2023/09/MyHVnet-Newsletter-2023.pdf)
+
+### melbourne_hrnblwt_probe_alignment
+
+Figure 8 of Rendon-Cardona et al. (2020), explicitly captioned as the Walter Bassett HRNBLWT, shows an installed silver vertical traverse with repeated black pads, a long horizontal probe pointing upstream over a gray floor, a small hot-film array, dark background and low wooden rear trim. A 4 m local section is authored around that apparatus; the photograph does not establish the full room or guide lengths.
+
+**Identifiable equipment:** Melbourne HRNBLWT dry probe-alignment bay.
+
+**Remaining gap:** No measured room plan or OEM mechanism; bounded original dry operation only.
+
+[Official page](https://mechanical.eng.unimelb.edu.au/research/fluid-mechanics/research/walter-bassett) · [Visual reference](https://www.enggjournals.com/ijet/docs/IJET20-12-01-002.pdf)
+
+### monash_geoextremes_seismic_platform
+
+The lab-owned 3GDeep mirror reproduces an installed seismic-platform photograph: fixed silver perforated deck on a dark blue frame, broad metal/rock plate and sensor leads, a left loading assembly, rear monitor, parquet floor and right-side window. The accompanying schematic is identified separately and does not establish room layout. A published 2.4 m by 1.2 m table footprint anchors scale; a small slow specimen-positioning fixture is an original addition.
+
+**Identifiable equipment:** Monash GeoExtremes dry seismic-platform inspection.
+
+**Remaining gap:** No measured room plan or OEM mechanism; bounded original dry operation only.
+
+[Official page](https://www.monash.edu/engineering/mge/facilities) · [Visual reference](https://www.3gdeep.com/Test1/wp-content/uploads/2024/04/seismic_experimental_platform_for_rock_joints.jpg)
+
+### ucl_swc_optics_training
+
+Open optical breadboard and microscope-construction exercise. The inspected close view shows a linear optical cage with green-tinted lenses, posts, cables and electronics on a perforated board; room extent and auxiliary display are inferred.
+
+**Identifiable equipment:** Perforated optical table; Post-mounted optical elements and camera; Dry calibration-slide XY stage.
+
+**Remaining gap:** Only the selected bench is visible; the room boundary and auxiliary operator display are authored. No light propagation, two-photon excitation, calibrated optical image or tissue experiment. The XY calibration fixture is authored; this is a selected training workstation, not a complete reconstruction of the SWC facility.
+
+[Official page](https://www.sainsburywellcome.org/content/advanced-microscopy) · [Visual reference](https://www.sainsburywellcome.org/sites/default/files/styles/media_image/public/2018-11/training_course_800.jpg?itok=X_5gTvHm)
+
+### kcl_mic_stellaris
+
+Installed microscope on black optical table, black stage enclosure over a pale inverted body, a large rectangular laser enclosure to the right, two operator monitors to the left, rear outlet strip and black isolation curtain.
+
+**Identifiable equipment:** Inverted confocal body and open stage enclosure; Adjacent laser exterior on optical table; Dual displays and black light-isolation curtain.
+
+**Remaining gap:** Stage positioning only. No confocal scanning, fluorescence lifetime, multiphoton excitation, optical resolution, laser safety interlocks or physiological response. Internal stage mechanics and room dimensions are estimates.
+
+[Official page](https://www.kcl.ac.uk/research/facilities/Microscopy-Innovation-Centre) · [Visual reference](https://www.kcl.ac.uk/newimages/mic-stellaris-8-falcon-dive-banner.xc529ecc9.jpeg?width=1100&f=webp)
+
+### lse_behavioural_eyelink
+
+Separate participant and experimenter displays on pale desks; a black two-post chin/forehead restraint, a tabletop eye camera with illuminator, keyboard and operator seating. The photo is an actual participant testing setup.
+
+**Identifiable equipment:** Two-post adjustable head support; Table-mounted eye camera; Separate participant and experimenter screens.
+
+**Remaining gap:** Vacant behavioural workstation. Only chin-height and camera-tilt alignment are simulated; no human participant, eye movements, infrared tracking, physiological measurements or behavioural validity. Camera hinge travel and unseen room boundary are authored.
+
+[Official page](https://www.lse.ac.uk/behavioural-lab/our-facilities/facilities-list/facilities-photos) · [Visual reference](https://www.lse.ac.uk/behavioural-lab/assets/images/DSC06186-70kb.JPG)
+
+### ipparis_luli2000_milka
+
+Large spherical multiport chamber on pale floor-standing supports, radial flanges and dark viewports, a foreground optical/diagnostic table, side optical benches and equipment racks.
+
+**Identifiable equipment:** Approximately two-metre MILKA sphere; Radial optical ports and triangulated supports; External dry diagnostic alignment table.
+
+**Remaining gap:** Ecole polytechnique Palaiseau campus, building 84; member-school affiliation is documented separately. No chamber interior, vacuum, radiation, laser/plasma physics, magnetic fields or scientific measurement. Only the external dry diagnostic carriage is operable.
+
+[Official page](https://portail.polytechnique.edu/luli/en/facilities/luli2000/experimentals-room) · [Visual reference](https://portail.polytechnique.edu/luli/sites/luli/files/styles/detail/public/content/pages/images/2026-02/img-8264.jpg.webp?itok=PBFRIQsI)
+
+### uva_speech_studio2
+
+Blue acoustic interior with overhead cable tray, a black reclining participant chair on a circular pedestal, white articulated display arm, an eye tracker beneath the screen, two microphones and an elevated keyboard shelf.
+
+**Identifiable equipment:** Articulated white stimulus monitor arm; Pedestal participant chair and under-screen tracker; Two microphones and acoustic wall panels.
+
+**Remaining gap:** Vacant participant station. Monitor yaw and pitch are authored alignment joints; no acoustics, speech generation, eye tracking, EEG or human-response model. The page describes Studio 2 by its yellow exterior; the inspected interior itself has blue acoustic walls.
+
+[Official page](https://www.fon.hum.uva.nl/speechlab/studios.html) · [Visual reference](https://www.fon.hum.uva.nl/speechlab/studio2_2.jpg)
+
+### durham_2m_wind_tunnel
+
+Open-jet vehicle test section: dark nozzle behind the retained model car, raised test floor, overhead supports, pale walls, yellow side structure and a nearby observation window. The fixed-ground turntable and probe traverse are described by the facility page.
+
+**Identifiable equipment:** Open-jet nozzle and retained vehicle model; Published 1.65-m fixed-ground turntable; Overhead probe support and vertical positioning.
+
+**Remaining gap:** Dry fixed-ground mechanical configuration. No airflow, turbulence, aerodynamic force, PIV, infrared data, rolling-road belt or full wind-tunnel return duct. The reference vehicle photograph establishes the bay; the published fixed-ground configuration supplies turntable dimensions.
+
+[Official page](https://www.durham.ac.uk/departments/academic/engineering/research/nodes/fluid-mechanics-/facilitiescapabilities/) · [Visual reference](https://duracuk-lb01-production.terminalfour.net/media/durham-university/departments-/engineering/node-webpages/fluid-mechanics/facilities/2mWT-car.png)
+
+### toronto_wb233_membrane_crossflow
+
+Six black rectangular crossflow cells with silver bolted covers, manifold pipes and two round gauges on a white workboard. Tall black-framed windows, overhead metallic ducts and a blue-bin wire rack in the WB233 room. Close-up establishes apparatus composition but does not locate this exact bench within the overview.
+
+**Identifiable equipment:** toronto_membrane_crossflow_inspection.
+
+**Remaining gap:** All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. No filtration, permeation, pressure seals or liquid transport. Original guided lids replace manual bolted-lid disassembly for dry inspection. University of Toronto Yu Sun/AMNL is explicitly excluded; this is the independent Advanced Membranes Lab.
+
+[Official page](https://www.labs.chem-eng.utoronto.ca/werber/facilities/) · [Visual reference](https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-Large-1024x768.jpeg)
+
+### zurich_otology_specimen_preparation
+
+Narrow central aisle between two pale preparation counters. Two surgical microscope assemblies and three articulated ceiling extraction hoods. Large black wall monitor and tall upper white cupboards; exact room dimensions unmeasured.
+
+**Identifiable equipment:** zurich_otology_dry_microscope.
+
+**Remaining gap:** All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. No tissue, surgery, optical imaging or sound-pressure measurement. The movable XY calibration fixture is original.
+
+[Official page](https://www.otobm.uzh.ch/en/Infrastructure.html) · [Visual reference](https://www.otobm.uzh.ch/dam/jcr:cc05e8ca-210b-4178-9ea1-4ebb16151f7a/wet_lab_3.jpg)
+
+### adelaide_exterres_rtvac_access
+
+Large horizontal cylindrical vacuum vessel with a circular left-hinged door. Blue perforated metal wall screen and tall adjacent glazing. Small auxiliary cabinet and free-standing service table; only this local chamber bay is reconstructed.
+
+**Identifiable equipment:** adelaide_exterres_vented_rtvac.
+
+**Remaining gap:** All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. 2022 university-authored photo is legacy University of Adelaide evidence; current Adelaide University ATCSR page confirms EXTERRES North Terrace affiliation. This is an Earth-gravity, vented, unpowered dry inspection surrogate. No vacuum, heat transfer, regolith response or flight qualification. Internal tray and drive are inferred.
+
+[Official page](https://adelaide.edu.au/research/andy-thomas-centre-for-space-resources/) · [Visual reference](https://media.newswise.com/pio/articles/767541/623966a81238a_ExtlabDSC06716Final-web.jpg)
+
+### ucd_conway_sxt_chamber_inspection
+
+A large stainless cylindrical chamber, nearby smaller vessels and a black overhead lifting frame in the installed-site report. Cream room, suspended ceiling, rear utility shelf with blue bins and small component drawers. People obscure part of the room: only the instrument bay and visible rear services are estimated.
+
+**Identifiable equipment:** ucd_conway_sxt_inspection.
+
+**Remaining gap:** All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. Manufacturer installed-site report explicitly identifies Conway Laboratory at UCD; generic OEM stock photographs are not used as layout evidence. Internal holder and cover actuation are authored dry surrogates, not an SXT-100 operating procedure. No X-ray, plasma, vacuum, cryogenic or tomography response.
+
+[Official page](https://www.ucd.ie/conway/) · [Visual reference](https://siriusxt.com/wp-content/uploads/2025/08/Zeiss-visit-4-3.png?w=1024)
+
+### uba_fiuba_chemistry_2008
+
+Real chemistry experiment around a clamped vertical glass tube and bath tray on a dark countertop. Parallel long teaching benches with cream cabinets, raised black utility rails and yellow service pipes. White tiled structural column and high ceiling strips. This institutional photograph dates to 14 May 2008.
+
+**Identifiable equipment:** uba_historical_dry_burette.
+
+**Remaining gap:** All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. Historical teaching-laboratory appearance, not a current research-group room or present-day surveyed twin. Photo by Comunicacion Institucional FIUBA, CC BY-SA 4.0. Source image is retained privately and not redistributed as a texture. Dry mechanical stand-height and stopcock positioning only. No water bath heating, flame, gas supply, titration or reaction.
+
+[Official page](https://www.fi.uba.ar/institucional/sedes/paseo-colon) · [Visual reference](https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG/1280px-Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG)
+
+### trinity_aml_titan_alignment
+
+The installed Titan photograph on page 10 shows a tall white enclosure with dark rounded front column. Blue partition at left and a separate operator desk/monitor at right. Only the installed bottom-right photograph establishes local layout; the stock Orion image on the same slide is excluded.
+
+**Identifiable equipment:** trinity_aml_titan_dry_alignment.
+
+**Remaining gap:** All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed. Original procedural geometry only; no reference photograph is included as a released texture. Only the local bay is evidenced; full laboratory floor plan and dimensions remain unknown. External grid alignment cradle is an authored dry mechanism, not verified Titan sample loading. No vacuum, electron beam, atomic resolution or tomography.
+
+[Official page](https://www.tcd.ie/crann/aml/) · [Visual reference](https://microscopy.ie/wp-content/uploads/2025/07/EM-UKI_2025_National-spotlight-on-Ireland.pdf)
+
 ## School coverage and assignment queue
 
 Zero candidates means no retained lab in this research batch; it is not a claim that the university has no suitable laboratories. Institutions with existing scenes can still need source refreshes. See the collaboration guide for search and reconstruction criteria.
 
 | Institution ID | University | QS rank | Retained candidates | Existing scenes |
 | --- | --- | ---: | ---: | ---: |
-| `adelaide_university` | Adelaide University | 79 | 0 | 0 |
+| `adelaide_university` | Adelaide University | 79 | 1 | 1 |
 | `anu` | Australian National University (ANU) | 29 | 3 | 2 |
 | `boston_university` | Boston University | 94 | 1 | 1 |
 | `brown_university` | Brown University | 66 | 1 | 1 |
@@ -1448,20 +1647,20 @@ Zero candidates means no retained lab in this research batch; it is not a claim 
 | `cornell_university` | Cornell University | =16 | 1 | 1 |
 | `delft_university_of_technology` | Delft University of Technology | 48 | 2 | 2 |
 | `duke_university` | Duke University | 70 | 1 | 1 |
-| `durham_university` | Durham University | 85 | 0 | 0 |
+| `durham_university` | Durham University | 85 | 1 | 1 |
 | `epfl` | EPFL – École polytechnique fédérale de Lausanne | =22 | 4 | 5 |
 | `eth_zurich` | ETH Zurich | =8 | 4 | 5 |
 | `freie_universitaet_berlin` | Freie Universitaet Berlin | =98 | 1 | 1 |
 | `fudan_university` | Fudan University | 26 | 1 | 1 |
 | `harvard_university` | Harvard University | 5 | 2 | 2 |
 | `imperial_college_london` | Imperial College London | =2 | 1 | 1 |
-| `institut_polytechnique_de_paris` | Institut Polytechnique de Paris | =43 | 0 | 0 |
+| `institut_polytechnique_de_paris` | Institut Polytechnique de Paris | =43 | 1 | 1 |
 | `institute_of_science_tokyo` | Institute of Science Tokyo | =97 | 1 | 1 |
 | `johns_hopkins_university` | Johns Hopkins University | =20 | 1 | 1 |
 | `kaist` | KAIST | 65 | 2 | 1 |
 | `kfupm` | KFUPM | 63 | 3 | 3 |
-| `king_s_college_london` | King's College London | 37 | 0 | 0 |
-| `korea_university` | Korea University | =52 | 0 | 0 |
+| `king_s_college_london` | King's College London | 37 | 1 | 1 |
+| `korea_university` | Korea University | =52 | 1 | 1 |
 | `kth_royal_institute_of_technology` | KTH Royal Institute of Technology | =82 | 3 | 2 |
 | `ku_leuven` | KU Leuven | 59 | 1 | 1 |
 | `kyoto_university` | Kyoto University | 64 | 2 | 2 |
@@ -1469,14 +1668,14 @@ Zero candidates means no retained lab in this research batch; it is not a claim 
 | `lund_university` | Lund University | 71 | 2 | 2 |
 | `mit` | Massachusetts Institute of Technology (MIT) | 1 | 3 | 1 |
 | `mcgill_university` | McGill University | 30 | 1 | 1 |
-| `monash_university` | Monash University | 31 | 0 | 0 |
+| `monash_university` | Monash University | 31 | 1 | 1 |
 | `nanjing_university` | Nanjing University | =90 | 1 | 1 |
 | `ntu_singapore` | Nanyang Technological University, Singapore (NTU Singapore) | 12 | 5 | 4 |
 | `national_taiwan_university` | National Taiwan University (NTU) | 54 | 1 | 1 |
 | `nus` | National University of Singapore (NUS) | 10 | 3 | 1 |
 | `nyu` | New York University (NYU) | 58 | 1 | 1 |
 | `northwestern_university` | Northwestern University | =45 | 1 | 1 |
-| `peking_university` | Peking University | 13 | 2 | 0 |
+| `peking_university` | Peking University | 13 | 3 | 1 |
 | `pennsylvania_state_university` | Pennsylvania State University | =92 | 1 | 1 |
 | `politecnico_di_milano` | Politecnico di Milano | =87 | 1 | 1 |
 | `princeton_university` | Princeton University | 27 | 1 | 1 |
@@ -1489,28 +1688,28 @@ Zero candidates means no retained lab in this research batch; it is not a claim 
 | `chinese_university_of_hong_kong` | The Chinese University of Hong Kong (CUHK) | 18 | 1 | 1 |
 | `hong_kong_polytechnic_university` | The Hong Kong Polytechnic University | 50 | 1 | 1 |
 | `hong_kong_university_of_science_and_technology` | The Hong Kong University of Science and Technology | 33 | 2 | 2 |
-| `london_school_of_economics_and_political_science` | The London School of Economics and Political Science (LSE) | 62 | 0 | 0 |
+| `london_school_of_economics_and_political_science` | The London School of Economics and Political Science (LSE) | 62 | 1 | 1 |
 | `university_of_auckland` | The University of Auckland | 67 | 1 | 1 |
 | `university_of_edinburgh` | The University of Edinburgh | 35 | 1 | 1 |
 | `university_of_hong_kong` | The University of Hong Kong | 11 | 2 | 2 |
 | `university_of_manchester` | The University of Manchester | =40 | 2 | 2 |
-| `university_of_melbourne` | The University of Melbourne | =22 | 0 | 0 |
+| `university_of_melbourne` | The University of Melbourne | =22 | 1 | 1 |
 | `university_of_new_south_wales` | The University of New South Wales (UNSW Sydney) | 19 | 2 | 2 |
 | `university_of_osaka` | The University of Osaka | 95 | 1 | 1 |
 | `university_of_queensland` | The University of Queensland | =40 | 2 | 1 |
 | `university_of_sheffield` | The University of Sheffield | =82 | 1 | 1 |
 | `university_of_sydney` | The University of Sydney | 28 | 1 | 1 |
 | `university_of_technology_sydney` | The University of Technology Sydney (UTS) | =87 | 1 | 1 |
-| `university_of_tokyo` | The University of Tokyo | 39 | 1 | 0 |
+| `university_of_tokyo` | The University of Tokyo | 39 | 2 | 1 |
 | `university_of_western_australia` | The University of Western Australia | =77 | 1 | 1 |
-| `trinity_college_dublin_the_university_of_dublin` | Trinity College Dublin, The University of Dublin | 75 | 0 | 0 |
+| `trinity_college_dublin_the_university_of_dublin` | Trinity College Dublin, The University of Dublin | 75 | 1 | 1 |
 | `tsinghua_university` | Tsinghua University | 14 | 1 | 1 |
-| `ucl` | UCL | =8 | 0 | 0 |
-| `universidad_de_buenos_aires` | Universidad de Buenos Aires (UBA) | 84 | 0 | 0 |
-| `universiti_malaya` | Universiti Malaya (UM) | 56 | 0 | 0 |
-| `university_college_dublin` | University College Dublin | =100 | 0 | 0 |
+| `ucl` | UCL | =8 | 1 | 1 |
+| `universidad_de_buenos_aires` | Universidad de Buenos Aires (UBA) | 84 | 1 | 1 |
+| `universiti_malaya` | Universiti Malaya (UM) | 56 | 1 | 1 |
+| `university_college_dublin` | University College Dublin | =100 | 1 | 1 |
 | `university_of_alberta` | University of Alberta | 96 | 1 | 1 |
-| `university_of_amsterdam` | University of Amsterdam | 60 | 0 | 0 |
+| `university_of_amsterdam` | University of Amsterdam | 60 | 1 | 1 |
 | `university_of_birmingham` | University of Birmingham | =68 | 2 | 2 |
 | `university_of_bristol` | University of Bristol | 57 | 1 | 1 |
 | `university_of_british_columbia` | University of British Columbia | =45 | 1 | 1 |
@@ -1528,10 +1727,10 @@ Zero candidates means no retained lab in this research batch; it is not a claim 
 | `university_of_oxford` | University of Oxford | 4 | 1 | 1 |
 | `upenn` | University of Pennsylvania | 15 | 1 | 2 |
 | `university_of_texas_at_austin` | University of Texas at Austin | 72 | 1 | 1 |
-| `toronto` | University of Toronto | 32 | 0 | 0 |
+| `toronto` | University of Toronto | 32 | 1 | 1 |
 | `university_of_warwick` | University of Warwick | =68 | 1 | 1 |
 | `washington` | University of Washington | =92 | 1 | 1 |
-| `university_of_zurich` | University of Zurich | =98 | 0 | 0 |
+| `university_of_zurich` | University of Zurich | =98 | 1 | 1 |
 | `universitat_heidelberg` | Universität Heidelberg | 86 | 1 | 1 |
 | `universite_paris_saclay` | Université Paris-Saclay | 76 | 1 | 1 |
 | `universite_psl` | Université PSL | 34 | 1 | 1 |
@@ -1548,6 +1747,7 @@ The following batches identify actual scene implementations. A constructed proto
 | --- | ---: | ---: | --- |
 | `qs2027_100_labs_20261003` | 100 | 76 | `alberta_nanofab_exactacoat`, `anu_climate_fluid_physics`, `auckland_aerodynamics_tunnel`, `berkeley_richmond_towing_tank`, `birmingham_advanced_micro_edm`, `birmingham_chbh_mri`, `boston_photonics_pml_sem`, `bristol_equals_shaking_table`, `brown_breuer_afam_tunnel`, `cambridge_schofield_turner`, `cambridge_whittle_low_speed_turbine`, `chicago_mineralphysics_laser_bay`, `cityu_rogach_photoluminescence`, `cmu_edl_electrochemical_testing`, `columbia_fusion_hbt_ep`, `copenhagen_nbi_surface_metrology`, `copenhagen_pice_ice_workroom`, `cuhk_mpil_ultrafast_optics`, `delft_ducat_antenna`, `delft_stevin_structures`, `duke_joint_mechanical_testing`, `edinburgh_flowave_basin`, `epfl_lch_hydraulic_flume`, `epfl_lspn_chemistry`, `epfl_lwe_anechoic_acoustics`, `epfl_tcv_diagnostic_sector`, `eth_experimental_petrology_multianvil`, `eth_gcc_big_blue`, `eth_mougel_inorganic`, `eth_robotic_fabrication`, `fuberlin_franke_surface_physics`, `fudan_superassembly_materials`, `glasgow_iset_exploration`, `glasgow_jwnc_wafer_loading`, `harvard_doyle_cold_molecule_optics`, `heidelberg_jochim_quantum_architecture`, `hku_civil_boundary_layer_tunnel`, `hku_rock_mechanics`, `hkust_aaf_wind_tunnel`, `hkust_geotechnical_centrifuge`, `illinois_bil_nonlinear_optics`, `imperial_thinfilm_bessemer`, `jhu_paradim_bulk_crystal_growth`, `kaist_usdl_magnetic_probe`, `kfupm_building_materials`, `kfupm_high_voltage_insulation`, `kfupm_superconductivity_spectroscopy`, `kth_l2000_wind_tunnel`, `kth_robot_design_prototyping`, `ku_leuven_iglis1_laser`, `kyoto_kawayama_terahertz`, `kyoto_yokokawa_nanometrics`, `leeds_environmental_tribology`, `leeds_litac_yarn_spinning`, `lmu_hybrid_snom`, `lund_maxiv_nanomax_eh1`, `lund_nanoparticle_characterization`, `manchester_collaborative_robotics`, `manchester_hv_dielectric_fluids`, `mcgill_mmpc_water_modelling`, `michigan_lurie_lithography_bay`, `mit_paoc_rotating_fluids`, `nju_rise_quantum_109`, `northwestern_clammp_charpy`, `nottingham_food_process_hall`, `ntu_coeb_nanophotonics`, `ntu_intelligent_materials`, `ntu_taiwan_iam_fluids`, `nus_e6nanofab_l1`, `nyu_epp_detector_assembly`, `osaka_ocean_wave_lab`, `paris_saclay_lmps_astree`, `penn_qnf_denton_sputter`, `pennstate_aeroacoustics_rotor_chamber`, `polimi_aeroacoustic_white`, `polyu_materials_tribology`, `princeton_bam_closed_loop_wind_tunnel`, `psl_sesame_adaptive_optics`, `science_tokyo_thermal_storage_metrology`, `sheffield_diamond_pilot_plant`, `sjtu_deepwater_offshore_basin`, `snu_acoustic_impedance`, `sorbonne_isir_covr`, `sydney_fluids_convection`, `texas_ferguson_structural_test_hall`, `tum_nma_electric_powertrain`, `tum_wind_tunnel_a`, `ubc_hassan_legoflume`, `ucla_bapsf_lapd`, `ucsd_mccartney_geotechnical_centrifuge`, `unsw_tyree_xray`, `unsw_wrl_wave_basin`, `uppsala_freia_gersemi`, `uppsala_tandem_pelletron`, `uts_infrastructure_robotics`, `uwa_ngcf_c72`, `warwick_highfield_nmr_1ghz`, `yale_becton_cleanroom_metrology`, `yonsei_mics_rf_probe`, `zju_low_turbulence_tunnel` |
 | `qs2027_labs_20261003` | 10 | 9 | `harvard_cns_cambridge`, `caltech_stoltz_schlinger`, `cornell_schlom_mbe`, `stanford_biomechatronics_gait`, `anu_shrimp_geochronology`, `oxford_bonilla_semiconductor`, `ntu_sgsr_characterization`, `ntu_smtc_membranes`, `tsinghua_rush3d`, `uq_moreton_aquarium` |
+| `qs2027_school_coverage_20261024` | 18 | 18 | `adelaide_exterres_rtvac_access`, `durham_2m_wind_tunnel`, `ipparis_luli2000_milka`, `kcl_mic_stellaris`, `korea_ace_wind_engineering`, `lse_behavioural_eyelink`, `malaya_high_voltage_metrology`, `melbourne_hrnblwt_probe_alignment`, `monash_geoextremes_seismic_platform`, `peking_zhao_rotary_evaporation`, `tokyo_kurumizaka_chromatography`, `toronto_wb233_membrane_crossflow`, `trinity_aml_titan_alignment`, `uba_fiuba_chemistry_2008`, `ucd_conway_sxt_chamber_inspection`, `ucl_swc_optics_training`, `uva_speech_studio2`, `zurich_otology_specimen_preparation` |
 
 1. **Spatial fidelity:** compare source views with the constructed layouts and obtain scale references. The [NTU SGSR prototype](university_ntu_sgsr_reconstruction.md) now contains partitions and two instruments; its floor-plan revision, dimensions and exact placements remain unresolved.
 2. **Equipment:** review each apparatus silhouette, supports, service access and declared moving mechanisms. Room evidence and manufacturer dimensions are tracked separately.

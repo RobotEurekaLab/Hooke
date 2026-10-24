@@ -3240,5 +3240,710 @@
       "Authored inspection positions; not OEM operating procedures or calibrated scientific setpoints.",
       "No processing, liquid transport, wave generation, imaging physics or scientific measurement is inferred from rigid motion."
     ]
+  },
+  "peking_zhao_rotary_evaporation": {
+    "scene": "peking_zhao_rotary_evaporation",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Perform ordered dry alignment, observe the retained calibration target, then reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "glass_lift",
+          "flask_rotation"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_glass_lift",
+            "targets": {
+              "glass_lift": 0.07
+            }
+          },
+          {
+            "name": "position_flask_rotation",
+            "targets": {
+              "flask_rotation": 0.6
+            }
+          }
+        ],
+        "observed_sites": [
+          "dry_flask_marker"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored dry inspection only; not an OEM operating procedure.",
+      "No process physics, performance calibration or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "tokyo_kurumizaka_chromatography": {
+    "scene": "tokyo_kurumizaka_chromatography",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Perform ordered dry alignment, observe the retained calibration target, then reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "nozzle_height",
+          "collector_angle"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_nozzle_height",
+            "targets": {
+              "nozzle_height": 0.04
+            }
+          },
+          {
+            "name": "position_collector_angle",
+            "targets": {
+              "collector_angle": 0.65
+            }
+          }
+        ],
+        "observed_sites": [
+          "retained_fraction_tube"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored dry inspection only; not an OEM operating procedure.",
+      "No process physics, performance calibration or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "korea_ace_wind_engineering": {
+    "scene": "korea_ace_wind_engineering",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Perform ordered dry alignment, observe the retained calibration target, then reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "model_heave",
+          "model_pitch"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_model_heave",
+            "targets": {
+              "model_heave": 0.035
+            }
+          },
+          {
+            "name": "position_model_pitch",
+            "targets": {
+              "model_pitch": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "model_marker"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored dry inspection only; not an OEM operating procedure.",
+      "No process physics, performance calibration or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "malaya_high_voltage_metrology": {
+    "scene": "malaya_high_voltage_metrology",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Perform ordered dry alignment, observe the retained calibration target, then reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "electrode_gap",
+          "electrode_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_electrode_gap",
+            "targets": {
+              "electrode_gap": 0.1
+            }
+          },
+          {
+            "name": "position_electrode_height",
+            "targets": {
+              "electrode_height": 0.025
+            }
+          }
+        ],
+        "observed_sites": [
+          "electrode_witness"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored dry inspection only; not an OEM operating procedure.",
+      "No process physics, performance calibration or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "melbourne_hrnblwt_probe_alignment": {
+    "scene": "melbourne_hrnblwt_probe_alignment",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Perform ordered dry alignment, observe the retained calibration target, then reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "probe_span",
+          "probe_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_probe_span",
+            "targets": {
+              "probe_span": 0.35
+            }
+          },
+          {
+            "name": "position_probe_height",
+            "targets": {
+              "probe_height": -0.13
+            }
+          }
+        ],
+        "observed_sites": [
+          "probe_marker"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored dry inspection only; not an OEM operating procedure.",
+      "No process physics, performance calibration or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "monash_geoextremes_seismic_platform": {
+    "scene": "monash_geoextremes_seismic_platform",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Perform ordered dry alignment, observe the retained calibration target, then reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "specimen_translation",
+          "coupon_yaw"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_specimen_translation",
+            "targets": {
+              "specimen_translation": 0.05
+            }
+          },
+          {
+            "name": "position_coupon_yaw",
+            "targets": {
+              "coupon_yaw": 0.2
+            }
+          }
+        ],
+        "observed_sites": [
+          "rock_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Authored dry inspection only; not an OEM operating procedure.",
+      "No process physics, performance calibration or scientific measurement is inferred from rigid motion."
+    ]
+  },
+  "ucl_swc_optics_training": {
+    "scene": "ucl_swc_optics_training",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Inspect dry apparatus alignment, observe attached interfaces, and reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "specimen_x",
+          "specimen_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_specimen_x",
+            "targets": {
+              "specimen_x": 0.025
+            }
+          },
+          {
+            "name": "position_specimen_y",
+            "targets": {
+              "specimen_y": -0.018
+            }
+          }
+        ],
+        "observed_sites": [
+          "calibration_slide"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Original bounded dry alignment sequence; not OEM operating instructions.",
+      "Only the selected bench is visible; the room boundary and auxiliary operator display are authored. No light propagation, two-photon excitation, calibrated optical image or tissue experiment. The XY calibration fixture is authored; this is a selected training workstation, not a complete reconstruction of the SWC facility."
+    ]
+  },
+  "kcl_mic_stellaris": {
+    "scene": "kcl_mic_stellaris",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Inspect dry apparatus alignment, observe attached interfaces, and reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "stage_x",
+          "stage_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_stage_x",
+            "targets": {
+              "stage_x": 0.02
+            }
+          },
+          {
+            "name": "position_stage_y",
+            "targets": {
+              "stage_y": -0.014
+            }
+          }
+        ],
+        "observed_sites": [
+          "retained_slide"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Original bounded dry alignment sequence; not OEM operating instructions.",
+      "Stage positioning only. No confocal scanning, fluorescence lifetime, multiphoton excitation, optical resolution, laser safety interlocks or physiological response. Internal stage mechanics and room dimensions are estimates."
+    ]
+  },
+  "lse_behavioural_eyelink": {
+    "scene": "lse_behavioural_eyelink",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Inspect dry apparatus alignment, observe attached interfaces, and reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "chin_height",
+          "camera_tilt"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_chin_height",
+            "targets": {
+              "chin_height": 0.045
+            }
+          },
+          {
+            "name": "position_camera_tilt",
+            "targets": {
+              "camera_tilt": 0.1
+            }
+          }
+        ],
+        "observed_sites": [
+          "chin_support",
+          "eye_camera"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Original bounded dry alignment sequence; not OEM operating instructions.",
+      "Vacant behavioural workstation. Only chin-height and camera-tilt alignment are simulated; no human participant, eye movements, infrared tracking, physiological measurements or behavioural validity. Camera hinge travel and unseen room boundary are authored."
+    ]
+  },
+  "ipparis_luli2000_milka": {
+    "scene": "ipparis_luli2000_milka",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Inspect dry apparatus alignment, observe attached interfaces, and reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "diagnostic_x",
+          "diagnostic_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_diagnostic_x",
+            "targets": {
+              "diagnostic_x": 0.06
+            }
+          },
+          {
+            "name": "position_diagnostic_height",
+            "targets": {
+              "diagnostic_height": 0.07
+            }
+          }
+        ],
+        "observed_sites": [
+          "alignment_target"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Original bounded dry alignment sequence; not OEM operating instructions.",
+      "Ecole polytechnique Palaiseau campus, building 84; member-school affiliation is documented separately. No chamber interior, vacuum, radiation, laser/plasma physics, magnetic fields or scientific measurement. Only the external dry diagnostic carriage is operable."
+    ]
+  },
+  "uva_speech_studio2": {
+    "scene": "uva_speech_studio2",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Inspect dry apparatus alignment, observe attached interfaces, and reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "stimulus_arm_yaw",
+          "stimulus_screen_pitch"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_stimulus_arm_yaw",
+            "targets": {
+              "stimulus_arm_yaw": 0.1
+            }
+          },
+          {
+            "name": "position_stimulus_screen_pitch",
+            "targets": {
+              "stimulus_screen_pitch": -0.08
+            }
+          }
+        ],
+        "observed_sites": [
+          "stimulus_center",
+          "tracker_center"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Original bounded dry alignment sequence; not OEM operating instructions.",
+      "Vacant participant station. Monitor yaw and pitch are authored alignment joints; no acoustics, speech generation, eye tracking, EEG or human-response model. The page describes Studio 2 by its yellow exterior; the inspected interior itself has blue acoustic walls."
+    ]
+  },
+  "durham_2m_wind_tunnel": {
+    "scene": "durham_2m_wind_tunnel",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Inspect dry apparatus alignment, observe attached interfaces, and reverse to measured home.",
+    "devices": [
+      {
+        "equipment": "primary_apparatus",
+        "controls": [
+          "model_yaw",
+          "probe_height"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_model_yaw",
+            "targets": {
+              "model_yaw": 0.18
+            }
+          },
+          {
+            "name": "position_probe_height",
+            "targets": {
+              "probe_height": 0.12
+            }
+          }
+        ],
+        "observed_sites": [
+          "vehicle_model",
+          "probe_tip"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "Original bounded dry alignment sequence; not OEM operating instructions.",
+      "Dry fixed-ground mechanical configuration. No airflow, turbulence, aerodynamic force, PIV, infrared data, rolling-road belt or full wind-tunnel return duct. The reference vehicle photograph establishes the bay; the published fixed-ground configuration supplies turntable dimensions."
+    ]
+  },
+  "toronto_wb233_membrane_crossflow": {
+    "scene": "toronto_wb233_membrane_crossflow",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Lift each original dry inspection lid to expose the fixed membrane coupons, inspect and return.",
+    "devices": [
+      {
+        "equipment": "crossflow",
+        "controls": [
+          "left_lid_z",
+          "right_lid_z"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_left_lid_z",
+            "targets": {
+              "left_lid_z": 0.055
+            }
+          },
+          {
+            "name": "position_right_lid_z",
+            "targets": {
+              "right_lid_z": 0.055
+            }
+          }
+        ],
+        "observed_sites": [
+          "membrane_coupon",
+          "left_lid_z_handle",
+          "right_lid_z_handle"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+      "Original procedural geometry only; no reference photograph is included as a released texture.",
+      "No filtration, permeation, pressure seals or liquid transport. Original guided lids replace manual bolted-lid disassembly for dry inspection.",
+      "University of Toronto Yu Sun/AMNL is explicitly excluded; this is the independent Advanced Membranes Lab."
+    ]
+  },
+  "zurich_otology_specimen_preparation": {
+    "scene": "zurich_otology_specimen_preparation",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Align the retained inert coupon under the microscope using both planar axes and return.",
+    "devices": [
+      {
+        "equipment": "preparation_scope",
+        "controls": [
+          "specimen_x",
+          "specimen_y"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_specimen_x",
+            "targets": {
+              "specimen_x": 0.024
+            }
+          },
+          {
+            "name": "position_specimen_y",
+            "targets": {
+              "specimen_y": -0.015
+            }
+          }
+        ],
+        "observed_sites": [
+          "dry_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+      "Original procedural geometry only; no reference photograph is included as a released texture.",
+      "No tissue, surgery, optical imaging or sound-pressure measurement. The movable XY calibration fixture is original."
+    ]
+  },
+  "adelaide_exterres_rtvac_access": {
+    "scene": "adelaide_exterres_rtvac_access",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Swing the vented service door clear, translate the retained inert coupon along the internal rails, then return.",
+    "devices": [
+      {
+        "equipment": "rtvac",
+        "controls": [
+          "door_yaw",
+          "specimen_x"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_door_yaw",
+            "targets": {
+              "door_yaw": 1.1
+            }
+          },
+          {
+            "name": "position_specimen_x",
+            "targets": {
+              "specimen_x": -0.24
+            }
+          }
+        ],
+        "observed_sites": [
+          "door_handle",
+          "rtvac_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+      "Original procedural geometry only; no reference photograph is included as a released texture.",
+      "2022 university-authored photo is legacy University of Adelaide evidence; current Adelaide University ATCSR page confirms EXTERRES North Terrace affiliation.",
+      "This is an Earth-gravity, vented, unpowered dry inspection surrogate. No vacuum, heat transfer, regolith response or flight qualification. Internal tray and drive are inferred."
+    ]
+  },
+  "ucd_conway_sxt_chamber_inspection": {
+    "scene": "ucd_conway_sxt_chamber_inspection",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Lift the original vented inspection cover, rotate the retained alignment coupon and return.",
+    "devices": [
+      {
+        "equipment": "sxt",
+        "controls": [
+          "lid_z",
+          "specimen_theta"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_lid_z",
+            "targets": {
+              "lid_z": 0.18
+            }
+          },
+          {
+            "name": "position_specimen_theta",
+            "targets": {
+              "specimen_theta": 0.25
+            }
+          }
+        ],
+        "observed_sites": [
+          "lid_handle",
+          "alignment_coupon"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+      "Original procedural geometry only; no reference photograph is included as a released texture.",
+      "Manufacturer installed-site report explicitly identifies Conway Laboratory at UCD; generic OEM stock photographs are not used as layout evidence.",
+      "Internal holder and cover actuation are authored dry surrogates, not an SXT-100 operating procedure. No X-ray, plasma, vacuum, cryogenic or tomography response."
+    ]
+  },
+  "uba_fiuba_chemistry_2008": {
+    "scene": "uba_fiuba_chemistry_2008",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Raise the dry burette in its stand, position its stopcock above the retained empty receiver and return.",
+    "devices": [
+      {
+        "equipment": "burette",
+        "controls": [
+          "clamp_z",
+          "stopcock_theta"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_clamp_z",
+            "targets": {
+              "clamp_z": 0.055
+            }
+          },
+          {
+            "name": "position_stopcock_theta",
+            "targets": {
+              "stopcock_theta": 0.42
+            }
+          }
+        ],
+        "observed_sites": [
+          "receiving_vial",
+          "burette_tip",
+          "stopcock_handle"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+      "Original procedural geometry only; no reference photograph is included as a released texture.",
+      "Historical teaching-laboratory appearance, not a current research-group room or present-day surveyed twin.",
+      "Photo by Comunicacion Institucional FIUBA, CC BY-SA 4.0. Source image is retained privately and not redistributed as a texture.",
+      "Dry mechanical stand-height and stopcock positioning only. No water bath heating, flame, gas supply, titration or reaction."
+    ]
+  },
+  "trinity_aml_titan_alignment": {
+    "scene": "trinity_aml_titan_alignment",
+    "version": 1,
+    "kind": "bounded_dry_inspection_and_return",
+    "description": "Translate and rotate the retained inert grid on the external dry alignment cradle, inspect, then return.",
+    "devices": [
+      {
+        "equipment": "titan",
+        "controls": [
+          "holder_x",
+          "holder_theta"
+        ],
+        "clearance_m": 2.5e-05,
+        "actions": [
+          {
+            "name": "position_holder_x",
+            "targets": {
+              "holder_x": 0.045
+            }
+          },
+          {
+            "name": "position_holder_theta",
+            "targets": {
+              "holder_theta": 0.24
+            }
+          }
+        ],
+        "observed_sites": [
+          "grid_mount"
+        ],
+        "speed_scale": 0.25
+      }
+    ],
+    "limits": [
+      "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+      "Original procedural geometry only; no reference photograph is included as a released texture.",
+      "Only the local bay is evidenced; full laboratory floor plan and dimensions remain unknown.",
+      "External grid alignment cradle is an authored dry mechanism, not verified Titan sample loading. No vacuum, electron beam, atomic resolution or tomography."
+    ]
   }
 }

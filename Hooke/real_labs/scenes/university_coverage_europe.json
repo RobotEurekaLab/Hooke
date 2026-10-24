@@ -1,0 +1,1155 @@
+{
+  "scenes": [
+    {
+      "id": "ucl_swc_optics_training",
+      "title": "UCL \u2014 Sainsbury Wellcome Centre \u2014 Advanced Microscopy Optics Training",
+      "institution": "UCL \u2014 Sainsbury Wellcome Centre \u2014 Advanced Microscopy Optics Training",
+      "institution_id": "ucl",
+      "domain": "optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.sainsburywellcome.org/content/advanced-microscopy",
+        "https://vocal.swc.ucl.ac.uk/about-swc"
+      ],
+      "reference_notes": "Open optical breadboard and microscope-construction exercise. The inspected close view shows a linear optical cage with green-tinted lenses, posts, cables and electronics on a perforated board; room extent and auxiliary display are inferred. Only the selected bench is visible; the room boundary and auxiliary operator display are authored. No light propagation, two-photon excitation, calibrated optical image or tissue experiment. The XY calibration fixture is authored; this is a selected training workstation, not a complete reconstruction of the SWC facility.",
+      "observed_cues": [
+        "Open optical breadboard and microscope-construction exercise. The inspected close view shows a linear optical cage with green-tinted lenses, posts, cables and electronics on a perforated board; room extent and auxiliary display are inferred."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5.8,
+          4.4,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.16,
+          0.3,
+          0.42,
+          1
+        ],
+        "style": "modern",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.47,
+              0.5,
+              0.52,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.4800000000000002,
+              "width": 1.05,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "ucl_swc_optical_breadboard",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Perforated optical table; Post-mounted optical elements and camera; Dry calibration-slide XY stage",
+          "evidence": "Official installed photo inspected; source-derived appearance, estimated dimensions and authored dry controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous apparatus tables, frames or pedestal connect to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect and align the dry apparatus",
+        "description": "Execute two declared positioning axes and return to home; Only the selected bench is visible; the room boundary and auxiliary operator display are authored. No light propagation, two-photon excitation, calibrated optical image or tissue experiment. The XY calibration fixture is authored; this is a selected training workstation, not a complete reconstruction of the SWC facility.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint positions and actual attached site transforms"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            4.64,
+            -4.18,
+            2.94
+          ],
+          "target": [
+            0,
+            0,
+            1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.5,
+            -1.9500000000000002,
+            1.9
+          ],
+          "target": [
+            0,
+            0,
+            1.12
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            1.8,
+            -2.4,
+            2.2
+          ],
+          "target": [
+            0,
+            0,
+            1.03
+          ],
+          "fovy": 60
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_entry",
+          "minimum_xy": [
+            -2.8,
+            -2.0500000000000003
+          ],
+          "maximum_xy": [
+            2.75,
+            -1.2000000000000002
+          ],
+          "basis": "Authored clear route, not surveyed or code-certified"
+        }
+      ],
+      "layout_rationale": [
+        "Perforated optical table",
+        "Post-mounted optical elements and camera",
+        "Dry calibration-slide XY stage"
+      ],
+      "limitations": [
+        "Reference-informed selected workstation; unseen boundaries, furniture and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD or photograph textures. Institution names indicate references, not affiliation or endorsement.",
+        "Source photographs remain private research references; no redistribution license or institutional authorization obtained.",
+        "Only the selected bench is visible; the room boundary and auxiliary operator display are authored. No light propagation, two-photon excitation, calibrated optical image or tissue experiment. The XY calibration fixture is authored; this is a selected training workstation, not a complete reconstruction of the SWC facility."
+      ],
+      "reference_detail_evidence": {
+        "university_coverage_europe": {
+          "sources": [
+            {
+              "local_reference": "temp/university/coverage_20261024/europe/ucl_training.jpg",
+              "sha256": "6bf25e2dc9fea44fdb322b60360d48d198d0314d092029c9d847c1d5ae0f138d",
+              "page": "https://www.sainsburywellcome.org/content/advanced-microscopy",
+              "image_url": "https://www.sainsburywellcome.org/sites/default/files/styles/media_image/public/2018-11/training_course_800.jpg?itok=X_5gTvHm",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Open optical breadboard and microscope-construction exercise. The inspected close view shows a linear optical cage with green-tinted lenses, posts, cables and electronics on a perforated board; room extent and auxiliary display are inferred."
+          ],
+          "implemented": [
+            "Perforated optical table",
+            "Post-mounted optical elements and camera",
+            "Dry calibration-slide XY stage"
+          ],
+          "inferred": [
+            "Room extent and unseen doors",
+            "Unpublished apparatus dimensions and actuator travel"
+          ],
+          "unresolved": [
+            "Only the selected bench is visible; the room boundary and auxiliary operator display are authored. No light propagation, two-photon excitation, calibrated optical image or tissue experiment. The XY calibration fixture is authored; this is a selected training workstation, not a complete reconstruction of the SWC facility."
+          ],
+          "fidelity": "Reference-informed original mechanical prototype"
+        }
+      }
+    },
+    {
+      "id": "kcl_mic_stellaris",
+      "title": "King's College London \u2014 Microscopy Innovation Centre \u2014 STELLARIS 8 FALCON DIVE",
+      "institution": "King's College London \u2014 Microscopy Innovation Centre \u2014 STELLARIS 8 FALCON DIVE",
+      "institution_id": "king_s_college_london",
+      "domain": "microscopy",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.kcl.ac.uk/research/facilities/Microscopy-Innovation-Centre"
+      ],
+      "reference_notes": "Installed microscope on black optical table, black stage enclosure over a pale inverted body, a large rectangular laser enclosure to the right, two operator monitors to the left, rear outlet strip and black isolation curtain. Stage positioning only. No confocal scanning, fluorescence lifetime, multiphoton excitation, optical resolution, laser safety interlocks or physiological response. Internal stage mechanics and room dimensions are estimates.",
+      "observed_cues": [
+        "Installed microscope on black optical table, black stage enclosure over a pale inverted body, a large rectangular laser enclosure to the right, two operator monitors to the left, rear outlet strip and black isolation curtain."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          6.4,
+          4.5,
+          2.9
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.16,
+          0.3,
+          0.42,
+          1
+        ],
+        "style": "modern",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.47,
+              0.5,
+              0.52,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.53,
+              "width": 1.05,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "kcl_mic_confocal_workcell",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Inverted confocal body and open stage enclosure; Adjacent laser exterior on optical table; Dual displays and black light-isolation curtain",
+          "evidence": "Official installed photo inspected; source-derived appearance, estimated dimensions and authored dry controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous apparatus tables, frames or pedestal connect to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect and align the dry apparatus",
+        "description": "Execute two declared positioning axes and return to home; Stage positioning only. No confocal scanning, fluorescence lifetime, multiphoton excitation, optical resolution, laser safety interlocks or physiological response. Internal stage mechanics and room dimensions are estimates.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint positions and actual attached site transforms"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.120000000000001,
+            -4.2749999999999995,
+            3.045
+          ],
+          "target": [
+            0,
+            0,
+            1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.5,
+            -2.0,
+            1.9
+          ],
+          "target": [
+            0,
+            0,
+            1.12
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            1.8,
+            -2.4,
+            2.2
+          ],
+          "target": [
+            0,
+            0,
+            1.03
+          ],
+          "fovy": 60
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_entry",
+          "minimum_xy": [
+            -3.1,
+            -2.1
+          ],
+          "maximum_xy": [
+            3.0500000000000003,
+            -1.25
+          ],
+          "basis": "Authored clear route, not surveyed or code-certified"
+        }
+      ],
+      "layout_rationale": [
+        "Inverted confocal body and open stage enclosure",
+        "Adjacent laser exterior on optical table",
+        "Dual displays and black light-isolation curtain"
+      ],
+      "limitations": [
+        "Reference-informed selected workstation; unseen boundaries, furniture and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD or photograph textures. Institution names indicate references, not affiliation or endorsement.",
+        "Source photographs remain private research references; no redistribution license or institutional authorization obtained.",
+        "Stage positioning only. No confocal scanning, fluorescence lifetime, multiphoton excitation, optical resolution, laser safety interlocks or physiological response. Internal stage mechanics and room dimensions are estimates."
+      ],
+      "reference_detail_evidence": {
+        "university_coverage_europe": {
+          "sources": [
+            {
+              "local_reference": "temp/university/coverage_20261024/europe/kcl_stellaris.jpg",
+              "sha256": "09d47dcb37ff3592819b076f6a0aa6dff3c8f6ab70564c4fcf6039e25ee1ef78",
+              "page": "https://www.kcl.ac.uk/research/facilities/Microscopy-Innovation-Centre",
+              "image_url": "https://www.kcl.ac.uk/newimages/mic-stellaris-8-falcon-dive-banner.xc529ecc9.jpeg?width=1100&f=webp",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Installed microscope on black optical table, black stage enclosure over a pale inverted body, a large rectangular laser enclosure to the right, two operator monitors to the left, rear outlet strip and black isolation curtain."
+          ],
+          "implemented": [
+            "Inverted confocal body and open stage enclosure",
+            "Adjacent laser exterior on optical table",
+            "Dual displays and black light-isolation curtain"
+          ],
+          "inferred": [
+            "Room extent and unseen doors",
+            "Unpublished apparatus dimensions and actuator travel"
+          ],
+          "unresolved": [
+            "Stage positioning only. No confocal scanning, fluorescence lifetime, multiphoton excitation, optical resolution, laser safety interlocks or physiological response. Internal stage mechanics and room dimensions are estimates."
+          ],
+          "fidelity": "Reference-informed original mechanical prototype"
+        }
+      }
+    },
+    {
+      "id": "lse_behavioural_eyelink",
+      "title": "London School of Economics and Political Science \u2014 Behavioural Lab \u2014 EyeLink Participant Testing",
+      "institution": "London School of Economics and Political Science \u2014 Behavioural Lab \u2014 EyeLink Participant Testing",
+      "institution_id": "london_school_of_economics_and_political_science",
+      "domain": "behavioural_science",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.lse.ac.uk/behavioural-lab/our-facilities/facilities-list/facilities-photos"
+      ],
+      "reference_notes": "Separate participant and experimenter displays on pale desks; a black two-post chin/forehead restraint, a tabletop eye camera with illuminator, keyboard and operator seating. The photo is an actual participant testing setup. Vacant behavioural workstation. Only chin-height and camera-tilt alignment are simulated; no human participant, eye movements, infrared tracking, physiological measurements or behavioural validity. Camera hinge travel and unseen room boundary are authored.",
+      "observed_cues": [
+        "Separate participant and experimenter displays on pale desks; a black two-post chin/forehead restraint, a tabletop eye camera with illuminator, keyboard and operator seating. The photo is an actual participant testing setup."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          5.4,
+          3.8,
+          2.8
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.16,
+          0.3,
+          0.42,
+          1
+        ],
+        "style": "modern",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.47,
+              0.5,
+              0.52,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.18,
+              "width": 1.05,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "lse_eyelink_workstation",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Two-post adjustable head support; Table-mounted eye camera; Separate participant and experimenter screens",
+          "evidence": "Official installed photo inspected; source-derived appearance, estimated dimensions and authored dry controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous apparatus tables, frames or pedestal connect to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect and align the dry apparatus",
+        "description": "Execute two declared positioning axes and return to home; Vacant behavioural workstation. Only chin-height and camera-tilt alignment are simulated; no human participant, eye movements, infrared tracking, physiological measurements or behavioural validity. Camera hinge travel and unseen room boundary are authored.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint positions and actual attached site transforms"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            4.32,
+            -3.61,
+            2.94
+          ],
+          "target": [
+            0,
+            0,
+            1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.5,
+            -1.65,
+            1.9
+          ],
+          "target": [
+            0,
+            0,
+            1.12
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            1.8,
+            -2.4,
+            2.2
+          ],
+          "target": [
+            0,
+            0,
+            1.03
+          ],
+          "fovy": 60
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_entry",
+          "minimum_xy": [
+            -2.6,
+            -1.75
+          ],
+          "maximum_xy": [
+            2.5500000000000003,
+            -0.8999999999999999
+          ],
+          "basis": "Authored clear route, not surveyed or code-certified"
+        }
+      ],
+      "layout_rationale": [
+        "Two-post adjustable head support",
+        "Table-mounted eye camera",
+        "Separate participant and experimenter screens"
+      ],
+      "limitations": [
+        "Reference-informed selected workstation; unseen boundaries, furniture and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD or photograph textures. Institution names indicate references, not affiliation or endorsement.",
+        "Source photographs remain private research references; no redistribution license or institutional authorization obtained.",
+        "Vacant behavioural workstation. Only chin-height and camera-tilt alignment are simulated; no human participant, eye movements, infrared tracking, physiological measurements or behavioural validity. Camera hinge travel and unseen room boundary are authored."
+      ],
+      "reference_detail_evidence": {
+        "university_coverage_europe": {
+          "sources": [
+            {
+              "local_reference": "temp/university/coverage_20261024/europe/lse_eye2.jpg",
+              "sha256": "ef198a8399f93c0b0fc20747ddcee54547ce9ab52f710b8eceeb2e1bd2db8dc0",
+              "page": "https://www.lse.ac.uk/behavioural-lab/our-facilities/facilities-list/facilities-photos",
+              "image_url": "https://www.lse.ac.uk/behavioural-lab/assets/images/DSC06186-70kb.JPG",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/coverage_20261024/europe/lse_eye3.jpg",
+              "sha256": "2ebdb69bc32082948ade08206a6ccf454eb0b566eab39f5d0c8ea2a209eabe96",
+              "page": "https://www.lse.ac.uk/behavioural-lab/our-facilities/facilities-list/facilities-photos",
+              "image_url": "https://www.lse.ac.uk/behavioural-lab/assets/images/DSC06191-70kb.JPG",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Separate participant and experimenter displays on pale desks; a black two-post chin/forehead restraint, a tabletop eye camera with illuminator, keyboard and operator seating. The photo is an actual participant testing setup."
+          ],
+          "implemented": [
+            "Two-post adjustable head support",
+            "Table-mounted eye camera",
+            "Separate participant and experimenter screens"
+          ],
+          "inferred": [
+            "Room extent and unseen doors",
+            "Unpublished apparatus dimensions and actuator travel"
+          ],
+          "unresolved": [
+            "Vacant behavioural workstation. Only chin-height and camera-tilt alignment are simulated; no human participant, eye movements, infrared tracking, physiological measurements or behavioural validity. Camera hinge travel and unseen room boundary are authored."
+          ],
+          "fidelity": "Reference-informed original mechanical prototype"
+        }
+      }
+    },
+    {
+      "id": "ipparis_luli2000_milka",
+      "title": "Institut Polytechnique de Paris \u2014 Ecole polytechnique, Palaiseau \u2014 LULI2000 Room 1 MILKA",
+      "institution": "Institut Polytechnique de Paris \u2014 Ecole polytechnique, Palaiseau \u2014 LULI2000 Room 1 MILKA",
+      "institution_id": "institut_polytechnique_de_paris",
+      "domain": "plasma_physics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://portail.polytechnique.edu/luli/en/facilities/luli2000/experimentals-room",
+        "https://portail.polytechnique.edu/luli/en/access-map",
+        "https://researchportal.ip-paris.fr/en/organisations/ip-paris/"
+      ],
+      "reference_notes": "Large spherical multiport chamber on pale floor-standing supports, radial flanges and dark viewports, a foreground optical/diagnostic table, side optical benches and equipment racks. Ecole polytechnique Palaiseau campus, building 84; member-school affiliation is documented separately. No chamber interior, vacuum, radiation, laser/plasma physics, magnetic fields or scientific measurement. Only the external dry diagnostic carriage is operable.",
+      "observed_cues": [
+        "Large spherical multiport chamber on pale floor-standing supports, radial flanges and dark viewports, a foreground optical/diagnostic table, side optical benches and equipment racks."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          6.4,
+          6.0,
+          3.4
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.16,
+          0.3,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.47,
+              0.5,
+              0.52,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.2800000000000002,
+              "width": 1.05,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "ipparis_milka_diagnostic_bay",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Approximately two-metre MILKA sphere; Radial optical ports and triangulated supports; External dry diagnostic alignment table",
+          "evidence": "Official installed photo inspected; source-derived appearance, estimated dimensions and authored dry controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous apparatus tables, frames or pedestal connect to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect and align the dry apparatus",
+        "description": "Execute two declared positioning axes and return to home; Ecole polytechnique Palaiseau campus, building 84; member-school affiliation is documented separately. No chamber interior, vacuum, radiation, laser/plasma physics, magnetic fields or scientific measurement. Only the external dry diagnostic carriage is operable.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint positions and actual attached site transforms"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.120000000000001,
+            -5.699999999999999,
+            3.57
+          ],
+          "target": [
+            0,
+            0,
+            1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.5,
+            -2.75,
+            1.9
+          ],
+          "target": [
+            0,
+            0,
+            1.12
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            1.8,
+            -2.4,
+            2.2
+          ],
+          "target": [
+            0,
+            0,
+            1.03
+          ],
+          "fovy": 60
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_entry",
+          "minimum_xy": [
+            -3.1,
+            -2.85
+          ],
+          "maximum_xy": [
+            3.0500000000000003,
+            -2.0
+          ],
+          "basis": "Authored clear route, not surveyed or code-certified"
+        }
+      ],
+      "layout_rationale": [
+        "Approximately two-metre MILKA sphere",
+        "Radial optical ports and triangulated supports",
+        "External dry diagnostic alignment table"
+      ],
+      "limitations": [
+        "Reference-informed selected workstation; unseen boundaries, furniture and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD or photograph textures. Institution names indicate references, not affiliation or endorsement.",
+        "Source photographs remain private research references; no redistribution license or institutional authorization obtained.",
+        "Ecole polytechnique Palaiseau campus, building 84; member-school affiliation is documented separately. No chamber interior, vacuum, radiation, laser/plasma physics, magnetic fields or scientific measurement. Only the external dry diagnostic carriage is operable."
+      ],
+      "reference_detail_evidence": {
+        "university_coverage_europe": {
+          "sources": [
+            {
+              "local_reference": "temp/university/coverage_20261024/europe/ip_milka.webp",
+              "sha256": "c380c28ca6a00564687bb764e0a896bc83bc3b944c8eb3945224565b466c995d",
+              "page": "https://portail.polytechnique.edu/luli/en/facilities/luli2000/experimentals-room",
+              "image_url": "https://portail.polytechnique.edu/luli/sites/luli/files/styles/detail/public/content/pages/images/2026-02/img-8264.jpg.webp?itok=PBFRIQsI",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Large spherical multiport chamber on pale floor-standing supports, radial flanges and dark viewports, a foreground optical/diagnostic table, side optical benches and equipment racks."
+          ],
+          "implemented": [
+            "Approximately two-metre MILKA sphere",
+            "Radial optical ports and triangulated supports",
+            "External dry diagnostic alignment table"
+          ],
+          "inferred": [
+            "Room extent and unseen doors",
+            "Unpublished apparatus dimensions and actuator travel"
+          ],
+          "unresolved": [
+            "Ecole polytechnique Palaiseau campus, building 84; member-school affiliation is documented separately. No chamber interior, vacuum, radiation, laser/plasma physics, magnetic fields or scientific measurement. Only the external dry diagnostic carriage is operable."
+          ],
+          "fidelity": "Reference-informed original mechanical prototype"
+        }
+      }
+    },
+    {
+      "id": "uva_speech_studio2",
+      "title": "University of Amsterdam \u2014 Speech Lab \u2014 Studio 2 Eye-Tracking and Speech Station",
+      "institution": "University of Amsterdam \u2014 Speech Lab \u2014 Studio 2 Eye-Tracking and Speech Station",
+      "institution_id": "university_of_amsterdam",
+      "domain": "speech_science",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.fon.hum.uva.nl/speechlab/studios.html"
+      ],
+      "reference_notes": "Blue acoustic interior with overhead cable tray, a black reclining participant chair on a circular pedestal, white articulated display arm, an eye tracker beneath the screen, two microphones and an elevated keyboard shelf. Vacant participant station. Monitor yaw and pitch are authored alignment joints; no acoustics, speech generation, eye tracking, EEG or human-response model. The page describes Studio 2 by its yellow exterior; the inspected interior itself has blue acoustic walls.",
+      "observed_cues": [
+        "Blue acoustic interior with overhead cable tray, a black reclining participant chair on a circular pedestal, white articulated display arm, an eye tracker beneath the screen, two microphones and an elevated keyboard shelf."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          4.6,
+          4.0,
+          2.9
+        ],
+        "wall_color": [
+          0.14,
+          0.33,
+          0.43,
+          1
+        ],
+        "accent": [
+          0.16,
+          0.3,
+          0.42,
+          1
+        ],
+        "style": "modern",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.47,
+              0.5,
+              0.52,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.28,
+              "width": 1.05,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "uva_speech_stimulus_station",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Articulated white stimulus monitor arm; Pedestal participant chair and under-screen tracker; Two microphones and acoustic wall panels",
+          "evidence": "Official installed photo inspected; source-derived appearance, estimated dimensions and authored dry controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous apparatus tables, frames or pedestal connect to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect and align the dry apparatus",
+        "description": "Execute two declared positioning axes and return to home; Vacant participant station. Monitor yaw and pitch are authored alignment joints; no acoustics, speech generation, eye tracking, EEG or human-response model. The page describes Studio 2 by its yellow exterior; the inspected interior itself has blue acoustic walls.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint positions and actual attached site transforms"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            3.6799999999999997,
+            -3.8,
+            3.045
+          ],
+          "target": [
+            0,
+            0,
+            1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.5,
+            -1.75,
+            1.9
+          ],
+          "target": [
+            0,
+            0,
+            1.12
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            1.8,
+            -2.4,
+            2.2
+          ],
+          "target": [
+            0,
+            0,
+            1.03
+          ],
+          "fovy": 60
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_entry",
+          "minimum_xy": [
+            -2.1999999999999997,
+            -1.85
+          ],
+          "maximum_xy": [
+            2.15,
+            -1.0
+          ],
+          "basis": "Authored clear route, not surveyed or code-certified"
+        }
+      ],
+      "layout_rationale": [
+        "Articulated white stimulus monitor arm",
+        "Pedestal participant chair and under-screen tracker",
+        "Two microphones and acoustic wall panels"
+      ],
+      "limitations": [
+        "Reference-informed selected workstation; unseen boundaries, furniture and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD or photograph textures. Institution names indicate references, not affiliation or endorsement.",
+        "Source photographs remain private research references; no redistribution license or institutional authorization obtained.",
+        "Vacant participant station. Monitor yaw and pitch are authored alignment joints; no acoustics, speech generation, eye tracking, EEG or human-response model. The page describes Studio 2 by its yellow exterior; the inspected interior itself has blue acoustic walls."
+      ],
+      "reference_detail_evidence": {
+        "university_coverage_europe": {
+          "sources": [
+            {
+              "local_reference": "temp/university/coverage_20261024/europe/uva_studio2_close.jpg",
+              "sha256": "47a0b09d3561c44073eadc4027215353bbcab05b89a23a845877fb9ec1ad35eb",
+              "page": "https://www.fon.hum.uva.nl/speechlab/studios.html",
+              "image_url": "https://www.fon.hum.uva.nl/speechlab/studio2_2.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Blue acoustic interior with overhead cable tray, a black reclining participant chair on a circular pedestal, white articulated display arm, an eye tracker beneath the screen, two microphones and an elevated keyboard shelf."
+          ],
+          "implemented": [
+            "Articulated white stimulus monitor arm",
+            "Pedestal participant chair and under-screen tracker",
+            "Two microphones and acoustic wall panels"
+          ],
+          "inferred": [
+            "Room extent and unseen doors",
+            "Unpublished apparatus dimensions and actuator travel"
+          ],
+          "unresolved": [
+            "Vacant participant station. Monitor yaw and pitch are authored alignment joints; no acoustics, speech generation, eye tracking, EEG or human-response model. The page describes Studio 2 by its yellow exterior; the inspected interior itself has blue acoustic walls."
+          ],
+          "fidelity": "Reference-informed original mechanical prototype"
+        }
+      }
+    },
+    {
+      "id": "durham_2m_wind_tunnel",
+      "title": "Durham University \u2014 Fluid Mechanics \u2014 2 m Wind Tunnel Fixed-Ground Test Section",
+      "institution": "Durham University \u2014 Fluid Mechanics \u2014 2 m Wind Tunnel Fixed-Ground Test Section",
+      "institution_id": "durham_university",
+      "domain": "aerodynamics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.durham.ac.uk/departments/academic/engineering/research/nodes/fluid-mechanics-/facilitiescapabilities/"
+      ],
+      "reference_notes": "Open-jet vehicle test section: dark nozzle behind the retained model car, raised test floor, overhead supports, pale walls, yellow side structure and a nearby observation window. The fixed-ground turntable and probe traverse are described by the facility page. Dry fixed-ground mechanical configuration. No airflow, turbulence, aerodynamic force, PIV, infrared data, rolling-road belt or full wind-tunnel return duct. The reference vehicle photograph establishes the bay; the published fixed-ground configuration supplies turntable dimensions.",
+      "observed_cues": [
+        "Open-jet vehicle test section: dark nozzle behind the retained model car, raised test floor, overhead supports, pale walls, yellow side structure and a nearby observation window. The fixed-ground turntable and probe traverse are described by the facility page."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          7.0,
+          10.0,
+          3.5
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.84,
+          1
+        ],
+        "accent": [
+          0.16,
+          0.3,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.47,
+              0.5,
+              0.52,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 1
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -4.28,
+              "width": 1.05,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "primary_apparatus",
+          "kind": "durham_fixed_ground_tunnel",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Open-jet nozzle and retained vehicle model; Published 1.65-m fixed-ground turntable; Overhead probe support and vertical positioning",
+          "evidence": "Official installed photo inspected; source-derived appearance, estimated dimensions and authored dry controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous apparatus tables, frames or pedestal connect to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect and align the dry apparatus",
+        "description": "Execute two declared positioning axes and return to home; Dry fixed-ground mechanical configuration. No airflow, turbulence, aerodynamic force, PIV, infrared data, rolling-road belt or full wind-tunnel return duct. The reference vehicle photograph establishes the bay; the published fixed-ground configuration supplies turntable dimensions.",
+        "primary_equipment": "primary_apparatus",
+        "observable": "Joint positions and actual attached site transforms"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.6000000000000005,
+            -9.5,
+            3.6750000000000003
+          ],
+          "target": [
+            0,
+            0,
+            1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.5,
+            -4.75,
+            1.9
+          ],
+          "target": [
+            0,
+            0,
+            1.12
+          ],
+          "fovy": 65
+        },
+        "workstation": {
+          "position": [
+            1.8,
+            -2.4,
+            2.2
+          ],
+          "target": [
+            0,
+            0,
+            1.03
+          ],
+          "fovy": 60
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_entry",
+          "minimum_xy": [
+            -3.4,
+            -4.85
+          ],
+          "maximum_xy": [
+            3.35,
+            -4.0
+          ],
+          "basis": "Authored clear route, not surveyed or code-certified"
+        }
+      ],
+      "layout_rationale": [
+        "Open-jet nozzle and retained vehicle model",
+        "Published 1.65-m fixed-ground turntable",
+        "Overhead probe support and vertical positioning"
+      ],
+      "limitations": [
+        "Reference-informed selected workstation; unseen boundaries, furniture and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD or photograph textures. Institution names indicate references, not affiliation or endorsement.",
+        "Source photographs remain private research references; no redistribution license or institutional authorization obtained.",
+        "Dry fixed-ground mechanical configuration. No airflow, turbulence, aerodynamic force, PIV, infrared data, rolling-road belt or full wind-tunnel return duct. The reference vehicle photograph establishes the bay; the published fixed-ground configuration supplies turntable dimensions."
+      ],
+      "reference_detail_evidence": {
+        "university_coverage_europe": {
+          "sources": [
+            {
+              "local_reference": "temp/university/coverage_20261024/europe/durham_car.png",
+              "sha256": "a5b288b8cdab01d075bf2fedfbe1216cdaea3dbf356d47281ea868a6fd82d2bb",
+              "page": "https://www.durham.ac.uk/departments/academic/engineering/research/nodes/fluid-mechanics-/facilitiescapabilities/",
+              "image_url": "https://duracuk-lb01-production.terminalfour.net/media/durham-university/departments-/engineering/node-webpages/fluid-mechanics/facilities/2mWT-car.png",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/coverage_20261024/europe/durham_specs.png",
+              "sha256": "e578067cb25913ac35b08d3915d25ea3f356d59596bb7d6bb6c4aab0c0550909",
+              "page": "https://www.durham.ac.uk/departments/academic/engineering/research/nodes/fluid-mechanics-/facilitiescapabilities/",
+              "image_url": "https://duracuk-lb01-production.terminalfour.net/media/durham-university/departments-/engineering/node-webpages/fluid-mechanics/facilities/Screenshot-2025-01-16-165118.png",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Open-jet vehicle test section: dark nozzle behind the retained model car, raised test floor, overhead supports, pale walls, yellow side structure and a nearby observation window. The fixed-ground turntable and probe traverse are described by the facility page."
+          ],
+          "implemented": [
+            "Open-jet nozzle and retained vehicle model",
+            "Published 1.65-m fixed-ground turntable",
+            "Overhead probe support and vertical positioning"
+          ],
+          "inferred": [
+            "Room extent and unseen doors",
+            "Unpublished apparatus dimensions and actuator travel"
+          ],
+          "unresolved": [
+            "Dry fixed-ground mechanical configuration. No airflow, turbulence, aerodynamic force, PIV, infrared data, rolling-road belt or full wind-tunnel return duct. The reference vehicle photograph establishes the bay; the published fixed-ground configuration supplies turntable dimensions."
+          ],
+          "fidelity": "Reference-informed original mechanical prototype"
+        }
+      }
+    }
+  ]
+}

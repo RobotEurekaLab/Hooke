@@ -1,0 +1,1289 @@
+{
+  "scenes": [
+    {
+      "id": "toronto_wb233_membrane_crossflow",
+      "title": "Toronto WB233 membrane-cell inspection bay",
+      "institution": "Advanced Membranes Lab, WB233 Water Analysis and Treatment Laboratory",
+      "domain": "membrane_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.labs.chem-eng.utoronto.ca/werber/facilities/",
+        "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-Large-1024x768.jpeg",
+        "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-RO-Large-1024x457.jpeg"
+      ],
+      "reference_notes": "Six black rectangular crossflow cells with silver bolted covers, manifold pipes and two round gauges on a white workboard. Tall black-framed windows, overhead metallic ducts and a blue-bin wire rack in the WB233 room. Close-up establishes apparatus composition but does not locate this exact bench within the overview.",
+      "observed_cues": [
+        "Six black rectangular crossflow cells with silver bolted covers, manifold pipes and two round gauges on a white workboard.",
+        "Tall black-framed windows, overhead metallic ducts and a blue-bin wire rack in the WB233 room.",
+        "Close-up establishes apparatus composition but does not locate this exact bench within the overview."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Photograph-supported local bay and visible surroundings only; no surveyed complete laboratory.",
+      "room": {
+        "size": [
+          5.2,
+          5.6,
+          3.1
+        ],
+        "wall_color": [
+          0.83,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.25,
+          0.37,
+          0.44,
+          1
+        ],
+        "style": "toronto_wb233_membrane_crossflow",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.57,
+              0.58,
+              0.55,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.1999999999999997,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "crossflow_bench",
+          "pos": [
+            0,
+            1.5,
+            0
+          ],
+          "size": [
+            2.0,
+            0.75,
+            0.91
+          ],
+          "style": "cabinet",
+          "color": [
+            0.24,
+            0.27,
+            0.28,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "side_counter",
+          "pos": [
+            1.85,
+            0.1,
+            0
+          ],
+          "size": [
+            0.75,
+            1.7,
+            0.91
+          ],
+          "style": "cabinet",
+          "color": [
+            0.24,
+            0.27,
+            0.28,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "crossflow",
+          "kind": "toronto_membrane_crossflow_inspection",
+          "pos": [
+            0,
+            1.5,
+            0.91
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Toronto WB233 membrane-cell inspection bay",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://www.labs.chem-eng.utoronto.ca/werber/facilities/",
+            "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-Large-1024x768.jpeg",
+            "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-RO-Large-1024x457.jpeg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-Large-1024x768.jpeg",
+          "local_stills": [
+            "temp/university/coverage_20261024/global/toronto_room.jpg"
+          ],
+          "sha256": "ebf133c0cad11bca5b30df4f0b5b8d85690d94a7e5cf9493f65dfb4c18366fdf",
+          "supports": "Six black rectangular crossflow cells with silver bolted covers, manifold pipes and two round gauges on a white workboard. Tall black-framed windows, overhead metallic ducts and a blue-bin wire rack in the WB233 room. Close-up establishes apparatus composition but does not locate this exact bench within the overview.",
+          "reviewed": true
+        },
+        {
+          "url": "https://www.labs.chem-eng.utoronto.ca/werber/wp-content/uploads/sites/30/2026/01/233-RO-Large-1024x457.jpeg",
+          "local_stills": [
+            "temp/university/coverage_20261024/global/toronto_crossflow.jpg"
+          ],
+          "sha256": "8bbad6aa6534e7ee02ffc88721fae6a168bd11e22853eafd89cbbaadf59d3452",
+          "supports": "Six black rectangular crossflow cells with silver bolted covers, manifold pipes and two round gauges on a white workboard. Tall black-framed windows, overhead metallic ducts and a blue-bin wire rack in the WB233 room. Close-up establishes apparatus composition but does not locate this exact bench within the overview.",
+          "reviewed": true
+        }
+      ],
+      "layout_rationale": [
+        "Six black rectangular crossflow cells with silver bolted covers, manifold pipes and two round gauges on a white workboard.",
+        "Tall black-framed windows, overhead metallic ducts and a blue-bin wire rack in the WB233 room.",
+        "Close-up establishes apparatus composition but does not locate this exact bench within the overview."
+      ],
+      "circulation": {
+        "operator_approach": "Open foreground approach and estimated operator aisle.",
+        "service_access": "Estimated local access; hidden services are unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.2,
+            -5.6,
+            4.1
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 53
+        },
+        "interior": {
+          "position": [
+            1.9,
+            -0.6,
+            1.9
+          ],
+          "target": [
+            0,
+            1.5,
+            1.05
+          ],
+          "fovy": 55
+        },
+        "workstation": {
+          "position": [
+            0.7,
+            0.3999999999999999,
+            1.6600000000000001
+          ],
+          "target": [
+            0,
+            1.5,
+            1.06
+          ],
+          "fovy": 49
+        },
+        "source": {
+          "position": [
+            1.9,
+            -0.6,
+            1.9
+          ],
+          "target": [
+            0,
+            1.5,
+            1.05
+          ],
+          "fovy": 55
+        }
+      },
+      "task": {
+        "name": "Toronto WB233 membrane-cell inspection bay",
+        "description": "Lift each original dry inspection lid to expose the fixed membrane coupons, inspect and return.",
+        "primary_equipment": "crossflow",
+        "observable": "Bounded mechanical joint positions and retained specimen/site transforms; no scientific transfer function."
+      },
+      "limitations": [
+        "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+        "Original procedural geometry only; no reference photograph is included as a released texture.",
+        "No filtration, permeation, pressure seals or liquid transport. Original guided lids replace manual bolted-lid disassembly for dry inspection.",
+        "University of Toronto Yu Sun/AMNL is explicitly excluded; this is the independent Advanced Membranes Lab."
+      ]
+    },
+    {
+      "id": "zurich_otology_specimen_preparation",
+      "title": "Zurich otology dry specimen-preparation workstation",
+      "institution": "Otology and Biomechanics of Hearing, Sample Preparation Room",
+      "domain": "biomechanics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.otobm.uzh.ch/en/Infrastructure.html",
+        "https://www.otobm.uzh.ch/dam/jcr:cc05e8ca-210b-4178-9ea1-4ebb16151f7a/wet_lab_3.jpg"
+      ],
+      "reference_notes": "Narrow central aisle between two pale preparation counters. Two surgical microscope assemblies and three articulated ceiling extraction hoods. Large black wall monitor and tall upper white cupboards; exact room dimensions unmeasured.",
+      "observed_cues": [
+        "Narrow central aisle between two pale preparation counters.",
+        "Two surgical microscope assemblies and three articulated ceiling extraction hoods.",
+        "Large black wall monitor and tall upper white cupboards; exact room dimensions unmeasured."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Photograph-supported local bay and visible surroundings only; no surveyed complete laboratory.",
+      "room": {
+        "size": [
+          3.6,
+          4.4,
+          2.9
+        ],
+        "wall_color": [
+          0.83,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.25,
+          0.37,
+          0.44,
+          1
+        ],
+        "style": "zurich_otology_specimen_preparation",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.57,
+              0.58,
+              0.55,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.6,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "right_prep_counter",
+          "pos": [
+            1.12,
+            0.2,
+            0
+          ],
+          "size": [
+            0.8,
+            2.9,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.84,
+            0.86,
+            0.87,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "left_prep_counter",
+          "pos": [
+            -1.12,
+            0.55,
+            0
+          ],
+          "size": [
+            0.8,
+            2.0,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.84,
+            0.86,
+            0.87,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "preparation_scope",
+          "kind": "zurich_otology_dry_microscope",
+          "pos": [
+            1.12,
+            0.65,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Zurich otology dry specimen-preparation workstation",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://www.otobm.uzh.ch/en/Infrastructure.html",
+            "https://www.otobm.uzh.ch/dam/jcr:cc05e8ca-210b-4178-9ea1-4ebb16151f7a/wet_lab_3.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.otobm.uzh.ch/dam/jcr:cc05e8ca-210b-4178-9ea1-4ebb16151f7a/wet_lab_3.jpg",
+          "local_stills": [
+            "temp/university/coverage_20261024/global/zurich_prep.jpg"
+          ],
+          "sha256": "4b0340f1b9892c0d03a6cfb9d01339b6aa9db31e970f0f3ad9791f8721518d37",
+          "supports": "Narrow central aisle between two pale preparation counters. Two surgical microscope assemblies and three articulated ceiling extraction hoods. Large black wall monitor and tall upper white cupboards; exact room dimensions unmeasured.",
+          "reviewed": true
+        }
+      ],
+      "layout_rationale": [
+        "Narrow central aisle between two pale preparation counters.",
+        "Two surgical microscope assemblies and three articulated ceiling extraction hoods.",
+        "Large black wall monitor and tall upper white cupboards; exact room dimensions unmeasured."
+      ],
+      "circulation": {
+        "operator_approach": "Open foreground approach and estimated operator aisle.",
+        "service_access": "Estimated local access; hidden services are unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            3.6,
+            -4.4,
+            3.9
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 53
+        },
+        "interior": {
+          "position": [
+            0.0,
+            -1.65,
+            1.65
+          ],
+          "target": [
+            0.4,
+            0.8,
+            1.35
+          ],
+          "fovy": 75
+        },
+        "workstation": {
+          "position": [
+            1.82,
+            -0.45000000000000007,
+            1.65
+          ],
+          "target": [
+            1.12,
+            0.65,
+            1.05
+          ],
+          "fovy": 49
+        },
+        "source": {
+          "position": [
+            0.0,
+            -1.65,
+            1.65
+          ],
+          "target": [
+            0.4,
+            0.8,
+            1.35
+          ],
+          "fovy": 75
+        }
+      },
+      "task": {
+        "name": "Zurich otology dry specimen-preparation workstation",
+        "description": "Align the retained inert coupon under the microscope using both planar axes and return.",
+        "primary_equipment": "preparation_scope",
+        "observable": "Bounded mechanical joint positions and retained specimen/site transforms; no scientific transfer function."
+      },
+      "limitations": [
+        "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+        "Original procedural geometry only; no reference photograph is included as a released texture.",
+        "No tissue, surgery, optical imaging or sound-pressure measurement. The movable XY calibration fixture is original."
+      ]
+    },
+    {
+      "id": "adelaide_exterres_rtvac_access",
+      "title": "Adelaide EXTERRES vented-chamber inspection bay",
+      "institution": "Andy Thomas Centre for Space Resources, EXTERRES Laboratory",
+      "domain": "space_environment_testing",
+      "university_expansion": true,
+      "source_urls": [
+        "https://adelaide.edu.au/research/andy-thomas-centre-for-space-resources/",
+        "https://www.newswise.com/articles/extraterrestrial-surface-simulation-lab-launches-new-chapter-in-space-research",
+        "https://media.newswise.com/pio/articles/767541/623966a81238a_ExtlabDSC06716Final-web.jpg"
+      ],
+      "reference_notes": "Large horizontal cylindrical vacuum vessel with a circular left-hinged door. Blue perforated metal wall screen and tall adjacent glazing. Small auxiliary cabinet and free-standing service table; only this local chamber bay is reconstructed.",
+      "observed_cues": [
+        "Large horizontal cylindrical vacuum vessel with a circular left-hinged door.",
+        "Blue perforated metal wall screen and tall adjacent glazing.",
+        "Small auxiliary cabinet and free-standing service table; only this local chamber bay is reconstructed."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Photograph-supported local bay and visible surroundings only; no surveyed complete laboratory.",
+      "room": {
+        "size": [
+          5.8,
+          5.4,
+          3.2
+        ],
+        "wall_color": [
+          0.83,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.25,
+          0.37,
+          0.44,
+          1
+        ],
+        "style": "adelaide_exterres_rtvac_access",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.57,
+              0.58,
+              0.55,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.1,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "side_access_table",
+          "pos": [
+            1.9,
+            -0.35,
+            0
+          ],
+          "size": [
+            0.7,
+            1.05,
+            0.85
+          ],
+          "style": "optical",
+          "color": [
+            0.58,
+            0.6,
+            0.62,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "rtvac",
+          "kind": "adelaide_exterres_vented_rtvac",
+          "pos": [
+            0,
+            0.55,
+            0
+          ],
+          "yaw": 1.5707963267948966,
+          "params": {},
+          "role": "Adelaide EXTERRES vented-chamber inspection bay",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://adelaide.edu.au/research/andy-thomas-centre-for-space-resources/",
+            "https://www.newswise.com/articles/extraterrestrial-surface-simulation-lab-launches-new-chapter-in-space-research",
+            "https://media.newswise.com/pio/articles/767541/623966a81238a_ExtlabDSC06716Final-web.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Original continuous supporting frame reaches the floor; dimensions inferred from the installed apparatus."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://media.newswise.com/pio/articles/767541/623966a81238a_ExtlabDSC06716Final-web.jpg",
+          "local_stills": [
+            "temp/university/coverage_20261024/global/adelaide_room.jpg"
+          ],
+          "sha256": "cf37e8c4d704a9c74f34c18769720eb595b0531bbe637b8f297443761d081909",
+          "supports": "Large horizontal cylindrical vacuum vessel with a circular left-hinged door. Blue perforated metal wall screen and tall adjacent glazing. Small auxiliary cabinet and free-standing service table; only this local chamber bay is reconstructed.",
+          "reviewed": true
+        }
+      ],
+      "layout_rationale": [
+        "Large horizontal cylindrical vacuum vessel with a circular left-hinged door.",
+        "Blue perforated metal wall screen and tall adjacent glazing.",
+        "Small auxiliary cabinet and free-standing service table; only this local chamber bay is reconstructed."
+      ],
+      "circulation": {
+        "operator_approach": "Open foreground approach and estimated operator aisle.",
+        "service_access": "Estimated local access; hidden services are unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            5.8,
+            -5.4,
+            4.2
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 53
+        },
+        "interior": {
+          "position": [
+            2.45,
+            -2.3,
+            2.4
+          ],
+          "target": [
+            0,
+            0.35,
+            1.0
+          ],
+          "fovy": 59
+        },
+        "workstation": {
+          "position": [
+            0.7,
+            -0.55,
+            1.55
+          ],
+          "target": [
+            0,
+            0.55,
+            1.1
+          ],
+          "fovy": 49
+        },
+        "source": {
+          "position": [
+            2.45,
+            -2.3,
+            2.4
+          ],
+          "target": [
+            0,
+            0.35,
+            1.0
+          ],
+          "fovy": 59
+        }
+      },
+      "task": {
+        "name": "Adelaide EXTERRES vented-chamber inspection bay",
+        "description": "Swing the vented service door clear, translate the retained inert coupon along the internal rails, then return.",
+        "primary_equipment": "rtvac",
+        "observable": "Bounded mechanical joint positions and retained specimen/site transforms; no scientific transfer function."
+      },
+      "limitations": [
+        "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+        "Original procedural geometry only; no reference photograph is included as a released texture.",
+        "2022 university-authored photo is legacy University of Adelaide evidence; current Adelaide University ATCSR page confirms EXTERRES North Terrace affiliation.",
+        "This is an Earth-gravity, vented, unpowered dry inspection surrogate. No vacuum, heat transfer, regolith response or flight qualification. Internal tray and drive are inferred."
+      ]
+    },
+    {
+      "id": "ucd_conway_sxt_chamber_inspection",
+      "title": "UCD Conway SXT chamber inspection workstation",
+      "institution": "Conway Institute Imaging Core, SiriusXT Installation",
+      "domain": "xray_microscopy",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.ucd.ie/conway/",
+        "https://siriusxt.com/library/news/zeiss-microscopy-visit-with-siriusxt-to-see-soft-x-ray-tomography-in-action/",
+        "https://microscopy.ie/wp-content/uploads/2025/07/EM-UKI_2025_National-spotlight-on-Ireland.pdf",
+        "https://siriusxt.com/wp-content/uploads/2025/08/Zeiss-visit-4-3.png?w=1024"
+      ],
+      "reference_notes": "A large stainless cylindrical chamber, nearby smaller vessels and a black overhead lifting frame in the installed-site report. Cream room, suspended ceiling, rear utility shelf with blue bins and small component drawers. People obscure part of the room: only the instrument bay and visible rear services are estimated.",
+      "observed_cues": [
+        "A large stainless cylindrical chamber, nearby smaller vessels and a black overhead lifting frame in the installed-site report.",
+        "Cream room, suspended ceiling, rear utility shelf with blue bins and small component drawers.",
+        "People obscure part of the room: only the instrument bay and visible rear services are estimated."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Photograph-supported local bay and visible surroundings only; no surveyed complete laboratory.",
+      "room": {
+        "size": [
+          4.8,
+          4.8,
+          2.8
+        ],
+        "wall_color": [
+          0.83,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.25,
+          0.37,
+          0.44,
+          1
+        ],
+        "style": "ucd_conway_sxt_chamber_inspection",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.57,
+              0.58,
+              0.55,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.7999999999999998,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "operator_console",
+          "pos": [
+            1.55,
+            0.0,
+            0
+          ],
+          "size": [
+            0.75,
+            0.85,
+            0.8
+          ],
+          "style": "cabinet",
+          "color": [
+            0.24,
+            0.27,
+            0.28,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "sxt",
+          "kind": "ucd_conway_sxt_inspection",
+          "pos": [
+            0,
+            0.6,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "UCD Conway SXT chamber inspection workstation",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://www.ucd.ie/conway/",
+            "https://siriusxt.com/library/news/zeiss-microscopy-visit-with-siriusxt-to-see-soft-x-ray-tomography-in-action/",
+            "https://microscopy.ie/wp-content/uploads/2025/07/EM-UKI_2025_National-spotlight-on-Ireland.pdf",
+            "https://siriusxt.com/wp-content/uploads/2025/08/Zeiss-visit-4-3.png?w=1024"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Original continuous supporting frame reaches the floor; dimensions inferred from the installed apparatus."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://siriusxt.com/wp-content/uploads/2025/08/Zeiss-visit-4-3.png?w=1024",
+          "local_stills": [
+            "temp/university/coverage_20261024/global/ucd_sxt.png"
+          ],
+          "sha256": "550537d6da5f1f8ef41ec8165bd43cd233ed82102d23781cf53520d5461f9d14",
+          "supports": "A large stainless cylindrical chamber, nearby smaller vessels and a black overhead lifting frame in the installed-site report. Cream room, suspended ceiling, rear utility shelf with blue bins and small component drawers. People obscure part of the room: only the instrument bay and visible rear services are estimated.",
+          "reviewed": true
+        }
+      ],
+      "layout_rationale": [
+        "A large stainless cylindrical chamber, nearby smaller vessels and a black overhead lifting frame in the installed-site report.",
+        "Cream room, suspended ceiling, rear utility shelf with blue bins and small component drawers.",
+        "People obscure part of the room: only the instrument bay and visible rear services are estimated."
+      ],
+      "circulation": {
+        "operator_approach": "Open foreground approach and estimated operator aisle.",
+        "service_access": "Estimated local access; hidden services are unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            4.8,
+            -4.8,
+            3.8
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 53
+        },
+        "interior": {
+          "position": [
+            2.05,
+            -2.05,
+            2.4
+          ],
+          "target": [
+            0,
+            0.6,
+            1.15
+          ],
+          "fovy": 53
+        },
+        "workstation": {
+          "position": [
+            0.7,
+            -0.5000000000000001,
+            1.55
+          ],
+          "target": [
+            0,
+            0.6,
+            1.1
+          ],
+          "fovy": 49
+        },
+        "source": {
+          "position": [
+            2.05,
+            -2.05,
+            2.4
+          ],
+          "target": [
+            0,
+            0.6,
+            1.15
+          ],
+          "fovy": 53
+        }
+      },
+      "task": {
+        "name": "UCD Conway SXT chamber inspection workstation",
+        "description": "Lift the original vented inspection cover, rotate the retained alignment coupon and return.",
+        "primary_equipment": "sxt",
+        "observable": "Bounded mechanical joint positions and retained specimen/site transforms; no scientific transfer function."
+      },
+      "limitations": [
+        "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+        "Original procedural geometry only; no reference photograph is included as a released texture.",
+        "Manufacturer installed-site report explicitly identifies Conway Laboratory at UCD; generic OEM stock photographs are not used as layout evidence.",
+        "Internal holder and cover actuation are authored dry surrogates, not an SXT-100 operating procedure. No X-ray, plasma, vacuum, cryogenic or tomography response."
+      ]
+    },
+    {
+      "id": "uba_fiuba_chemistry_2008",
+      "title": "UBA FIUBA chemistry bench, historical 2008 reference",
+      "institution": "FIUBA Chemistry Laboratory, Paseo Colon 850 (2008 reference)",
+      "domain": "chemistry",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.fi.uba.ar/institucional/sedes/paseo-colon",
+        "https://commons.wikimedia.org/wiki/File:Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG/1280px-Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG"
+      ],
+      "reference_notes": "Real chemistry experiment around a clamped vertical glass tube and bath tray on a dark countertop. Parallel long teaching benches with cream cabinets, raised black utility rails and yellow service pipes. White tiled structural column and high ceiling strips. This institutional photograph dates to 14 May 2008.",
+      "observed_cues": [
+        "Real chemistry experiment around a clamped vertical glass tube and bath tray on a dark countertop.",
+        "Parallel long teaching benches with cream cabinets, raised black utility rails and yellow service pipes.",
+        "White tiled structural column and high ceiling strips. This institutional photograph dates to 14 May 2008."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Photograph-supported local bay and visible surroundings only; no surveyed complete laboratory.",
+      "room": {
+        "size": [
+          6.0,
+          5.0,
+          3.15
+        ],
+        "wall_color": [
+          0.83,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.25,
+          0.37,
+          0.44,
+          1
+        ],
+        "style": "uba_fiuba_chemistry_2008",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.57,
+              0.58,
+              0.55,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.9,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "foreground_island",
+          "pos": [
+            0,
+            -0.65,
+            0
+          ],
+          "size": [
+            4.4,
+            0.85,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.13,
+            0.15,
+            0.14,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "rear_island",
+          "pos": [
+            0,
+            1.15,
+            0
+          ],
+          "size": [
+            4.4,
+            0.85,
+            0.9
+          ],
+          "style": "cabinet",
+          "color": [
+            0.13,
+            0.15,
+            0.14,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "burette",
+          "kind": "uba_historical_dry_burette",
+          "pos": [
+            0.55,
+            -0.9,
+            0.9
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "UBA FIUBA chemistry bench, historical 2008 reference",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://www.fi.uba.ar/institucional/sedes/paseo-colon",
+            "https://commons.wikimedia.org/wiki/File:Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG/1280px-Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG/1280px-Laboratorio_de_Qu%C3%ADmica_-_Facultad_de_Ingenier%C3%ADa_UBA.JPG",
+          "local_stills": [
+            "temp/university/coverage_20261024/global/uba_chemistry.jpg"
+          ],
+          "sha256": "a0e324a868d94e28eb3ce155c3ce93b379aa6d7adac00c16d6a710ad3ac315bf",
+          "supports": "Real chemistry experiment around a clamped vertical glass tube and bath tray on a dark countertop. Parallel long teaching benches with cream cabinets, raised black utility rails and yellow service pipes. White tiled structural column and high ceiling strips. This institutional photograph dates to 14 May 2008.",
+          "reviewed": true
+        }
+      ],
+      "layout_rationale": [
+        "Real chemistry experiment around a clamped vertical glass tube and bath tray on a dark countertop.",
+        "Parallel long teaching benches with cream cabinets, raised black utility rails and yellow service pipes.",
+        "White tiled structural column and high ceiling strips. This institutional photograph dates to 14 May 2008."
+      ],
+      "circulation": {
+        "operator_approach": "Open foreground approach and estimated operator aisle.",
+        "service_access": "Estimated local access; hidden services are unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            6.0,
+            -5.0,
+            4.15
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 53
+        },
+        "interior": {
+          "position": [
+            2.6,
+            -2.2,
+            1.75
+          ],
+          "target": [
+            0.4,
+            -0.2,
+            1.1
+          ],
+          "fovy": 67
+        },
+        "workstation": {
+          "position": [
+            1.25,
+            -2.0,
+            1.65
+          ],
+          "target": [
+            0.55,
+            -0.9,
+            1.05
+          ],
+          "fovy": 49
+        },
+        "source": {
+          "position": [
+            2.6,
+            -2.2,
+            1.75
+          ],
+          "target": [
+            0.4,
+            -0.2,
+            1.1
+          ],
+          "fovy": 67
+        }
+      },
+      "task": {
+        "name": "UBA FIUBA chemistry bench, historical 2008 reference",
+        "description": "Raise the dry burette in its stand, position its stopcock above the retained empty receiver and return.",
+        "primary_equipment": "burette",
+        "observable": "Bounded mechanical joint positions and retained specimen/site transforms; no scientific transfer function."
+      },
+      "limitations": [
+        "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+        "Original procedural geometry only; no reference photograph is included as a released texture.",
+        "Historical teaching-laboratory appearance, not a current research-group room or present-day surveyed twin.",
+        "Photo by Comunicacion Institucional FIUBA, CC BY-SA 4.0. Source image is retained privately and not redistributed as a texture.",
+        "Dry mechanical stand-height and stopcock positioning only. No water bath heating, flame, gas supply, titration or reaction."
+      ]
+    },
+    {
+      "id": "trinity_aml_titan_alignment",
+      "title": "Trinity AML Titan dry specimen-alignment bay",
+      "institution": "CRANN Advanced Microscopy Laboratory, Titan Bay",
+      "domain": "electron_microscopy",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.tcd.ie/crann/aml/",
+        "https://microscopy.ie/wp-content/uploads/2025/07/EM-UKI_2025_National-spotlight-on-Ireland.pdf"
+      ],
+      "reference_notes": "The installed Titan photograph on page 10 shows a tall white enclosure with dark rounded front column. Blue partition at left and a separate operator desk/monitor at right. Only the installed bottom-right photograph establishes local layout; the stock Orion image on the same slide is excluded.",
+      "observed_cues": [
+        "The installed Titan photograph on page 10 shows a tall white enclosure with dark rounded front column.",
+        "Blue partition at left and a separate operator desk/monitor at right.",
+        "Only the installed bottom-right photograph establishes local layout; the stock Orion image on the same slide is excluded."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Photograph-supported local bay and visible surroundings only; no surveyed complete laboratory.",
+      "room": {
+        "size": [
+          3.4,
+          3.8,
+          3.0
+        ],
+        "wall_color": [
+          0.83,
+          0.84,
+          0.8,
+          1
+        ],
+        "accent": [
+          0.25,
+          0.37,
+          0.44,
+          1
+        ],
+        "style": "trinity_aml_titan_alignment",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.57,
+              0.58,
+              0.55,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.2999999999999998,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "operator_console",
+          "pos": [
+            1.23,
+            0.43,
+            0
+          ],
+          "size": [
+            0.75,
+            0.8,
+            0.9
+          ],
+          "style": "optical",
+          "color": [
+            0.82,
+            0.82,
+            0.78,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "titan",
+          "kind": "trinity_aml_titan_dry_alignment",
+          "pos": [
+            -0.25,
+            0.65,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Trinity AML Titan dry specimen-alignment bay",
+          "evidence": "reference-informed original dry mechanical prototype",
+          "source_urls": [
+            "https://www.tcd.ie/crann/aml/",
+            "https://microscopy.ie/wp-content/uploads/2025/07/EM-UKI_2025_National-spotlight-on-Ireland.pdf"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Original continuous supporting frame reaches the floor; dimensions inferred from the installed apparatus."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://microscopy.ie/wp-content/uploads/2025/07/EM-UKI_2025_National-spotlight-on-Ireland.pdf",
+          "local_stills": [
+            "temp/university/coverage_20261024/global/trinity_aml_page10.png"
+          ],
+          "sha256": "c056f13e98f5da30773558544d62572915c0e9cece4e85fa3579139b1695654a",
+          "supports": "The installed Titan photograph on page 10 shows a tall white enclosure with dark rounded front column. Blue partition at left and a separate operator desk/monitor at right. Only the installed bottom-right photograph establishes local layout; the stock Orion image on the same slide is excluded.",
+          "reviewed": true,
+          "page": 10,
+          "pdf_sha256": "ec27754dd3a35613cbf0bcce17684ba037e130bab9b3e991de90ecbf64c45c6e",
+          "photo_region": "bottom-right installed Titan photograph only"
+        }
+      ],
+      "layout_rationale": [
+        "The installed Titan photograph on page 10 shows a tall white enclosure with dark rounded front column.",
+        "Blue partition at left and a separate operator desk/monitor at right.",
+        "Only the installed bottom-right photograph establishes local layout; the stock Orion image on the same slide is excluded."
+      ],
+      "circulation": {
+        "operator_approach": "Open foreground approach and estimated operator aisle.",
+        "service_access": "Estimated local access; hidden services are unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            3.4,
+            -3.8,
+            4.0
+          ],
+          "target": [
+            0,
+            0.3,
+            1.0
+          ],
+          "fovy": 53
+        },
+        "interior": {
+          "position": [
+            1.48,
+            -1.6,
+            2.15
+          ],
+          "target": [
+            -0.1,
+            0.7,
+            1.25
+          ],
+          "fovy": 56
+        },
+        "workstation": {
+          "position": [
+            0.44999999999999996,
+            -0.45000000000000007,
+            1.55
+          ],
+          "target": [
+            -0.25,
+            0.65,
+            1.1
+          ],
+          "fovy": 49
+        },
+        "source": {
+          "position": [
+            1.48,
+            -1.6,
+            2.15
+          ],
+          "target": [
+            -0.1,
+            0.7,
+            1.25
+          ],
+          "fovy": 56
+        }
+      },
+      "task": {
+        "name": "Trinity AML Titan dry specimen-alignment bay",
+        "description": "Translate and rotate the retained inert grid on the external dry alignment cradle, inspect, then return.",
+        "primary_equipment": "titan",
+        "observable": "Bounded mechanical joint positions and retained specimen/site transforms; no scientific transfer function."
+      },
+      "limitations": [
+        "All unlisted dimensions and mechanical travel are estimated. No measured digital-twin accuracy or institution endorsement claimed.",
+        "Original procedural geometry only; no reference photograph is included as a released texture.",
+        "Only the local bay is evidenced; full laboratory floor plan and dimensions remain unknown.",
+        "External grid alignment cradle is an authored dry mechanism, not verified Titan sample loading. No vacuum, electron beam, atomic resolution or tomography."
+      ]
+    }
+  ]
+}

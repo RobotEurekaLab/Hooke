@@ -18,6 +18,8 @@ The directory uses versioned, sourced institution records and actual scene bindi
 
 The project-specific search exclusion applies to **University of Toronto Yu Sun / AMNL**, not to the whole university. University membership does not automatically establish affiliation for an overseas campus or independently incorporated institute.
 
+The [October 24 school-coverage batch](university_school_coverage_20261024.md) adds one laboratory at each of the remaining **18 institutions**. The catalogue now covers **102/102 schools** in the pinned roster, with **137 university scenes and one NASA scene**. This closes the school-level implementation gap; it does not certify full-campus reconstruction, scientific processes, or native Isaac execution for the new scenes. Historical batches retain their original scope and validation records.
+
 ## Source of truth
 
 | File | Responsibility |
@@ -26,7 +28,7 @@ The project-specific search exclusion applies to **University of Toronto Yu Sun 
 | `Hooke/university/additional_institutions.json` | Other universities and non-university institutes with explicit provenance |
 | `Hooke/university/research_candidates.json` | Reviewed leads, actual image-review status, equipment clues, remaining gaps, rights status and rejected/held sources |
 | `Hooke/university/scene_index.json` | Scene → institution, subject and laboratory mapping |
-| `Hooke/university/batches/*.json` | Explicit expansion scope, original scene baseline and required new lab IDs |
+| `Hooke/university/batches/*.json` | Explicit expansion scope, original scene baseline, required new lab IDs and optional required institution IDs |
 | `Hooke/university/batches.py`, `review.py` | Distinct-lab accounting, current-source checks, visual-review records and paginated screenshot galleries |
 | `Hooke/real_labs/catalog.json`, `scenes/*.json`, `layouts/`, `evidence/` | Actual scene definitions, spatial layouts and evidence limitations |
 | `Hooke/real_labs/university_extensions.py`, `university_*.py` | Modular instrument geometry, reference records, mechanical interfaces and distinctive room features |

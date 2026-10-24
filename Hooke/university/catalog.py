@@ -135,6 +135,9 @@ def catalogue():
             scope_institutions_with_scenes=sum(
                 row["in_scope"] and row["scene_count"] > 0 for row in universities
             ),
+            scope_institutions_without_scenes=sum(
+                row["in_scope"] and row["scene_count"] == 0 for row in universities
+            ),
             scope_institutions_with_candidates=sum(
                 row["in_scope"] and row["candidate_count"] > 0 for row in universities
             ),
