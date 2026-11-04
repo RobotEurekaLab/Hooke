@@ -26,9 +26,6 @@
   <section class="sim-hero">
     <p class="sim-eyebrow"><a href="index.html">← Robot Scientists</a></p>
     <h1>What we've built in simulation</h1>
-    <p class="sim-lede">Real laboratories rebuilt from their own photographs, planetary sampling validated on two
-      physics backends side by side, and micrometre-scale cell manipulation with quantitative pass criteria —
-      this is the simulation substrate everything else at Hooke is trained and tested against.</p>
 
     <div class="sim-stats">
       <div class="stat"><span class="n">100</span><span class="l">real university labs<br>QS rank 101–250</span></div>
@@ -37,16 +34,52 @@
       <div class="stat"><span class="n">3</span><span class="l">planetary environments<br>Moon, Mars, orbit</span></div>
     </div>
 
+    <nav class="sim-nav-cards" aria-label="Jump to a section">
+      <a class="nav-card" href="#h-micro">
+        <span class="nav-card-n amber">01</span>
+        <h3>Microscopy &amp; Cell&nbsp;Manipulation</h3>
+        <span class="nav-card-go">Scroll to section ↓</span>
+      </a>
+      <a class="nav-card nav-card-live" href="https://tennessee-power-symptoms-hay.trycloudflare.com" target="_blank" rel="noopener">
+        <span class="nav-card-n cyan">02</span>
+        <h3>Live&nbsp;Simulator</h3>
+        <span class="nav-card-go">Open live demo ↗</span>
+      </a>
+      <a class="nav-card" href="#h-reallab">
+        <span class="nav-card-n violet">03</span>
+        <h3>Real Lab&nbsp;Reconstruction</h3>
+        <span class="nav-card-go">Scroll to section ↓</span>
+      </a>
+      <a class="nav-card" href="#h-space">
+        <span class="nav-card-n amber">04</span>
+        <h3>Space &amp; Planetary&nbsp;Science</h3>
+        <span class="nav-card-go">Scroll to section ↓</span>
+      </a>
+    </nav>
+
     <div class="sim-cta">
-      <a class="btn btn-primary" href="https://tennessee-power-symptoms-hay.trycloudflare.com" target="_blank" rel="noopener">Open the live simulator →</a>
       <a class="btn btn-ghost" href="https://github.com/RobotEurekaLab/Hooke/tree/main/real_lab" target="_blank" rel="noopener">Browse the source on GitHub</a>
     </div>
-    <p class="sim-tunnel-note">The live simulator runs on a rotating tunnel address — if the link above is stale, it's between restarts.</p>
+    <p class="sim-tunnel-note">The live simulator (card 02) runs on a rotating tunnel address — if it's stale, it's between restarts.</p>
   </section>
 
-  <section class="sim-section" aria-labelledby="h-reallab">
+  <section class="sim-section" aria-labelledby="h-micro">
     <div class="sim-section-head">
-      <span class="sim-tag amber">01 · Real Lab Reconstruction</span>
+      <span class="sim-tag amber">01 · Microscopy &amp; Cell Manipulation</span>
+      <h2 id="h-micro">Micrometre scale, quantitative pass criteria</h2>
+      <p>A 36 µm phantom cell, a 4 µm probe tip, forceps driven independently of each other — pushing, grasping and
+        volume-controlled injection all score against explicit numeric thresholds (contact duration, placement
+        error, injected volume) rather than a subjective "looks right."</p>
+    </div>
+    <div class="shot-grid" id="micro-grid"></div>
+    <p class="sim-more">
+      <a href="https://tennessee-power-symptoms-hay.trycloudflare.com/microscopy" target="_blank" rel="noopener">Open the microscopy workstation live →</a>
+    </p>
+  </section>
+
+  <section class="sim-section alt" aria-labelledby="h-reallab">
+    <div class="sim-section-head">
+      <span class="sim-tag violet">03 · Real Lab Reconstruction</span>
       <h2 id="h-reallab">Not a generic bench — the actual room</h2>
       <p>For each university we went to the lab's own homepage, press materials, or facility photos and rebuilt the
         room against what's actually visible in them — wall color, shelving, windows, the specific instruments —
@@ -71,9 +104,9 @@
     </p>
   </section>
 
-  <section class="sim-section alt" aria-labelledby="h-space">
+  <section class="sim-section" aria-labelledby="h-space">
     <div class="sim-section-head">
-      <span class="sim-tag cyan">02 · Space &amp; Planetary Science</span>
+      <span class="sim-tag amber">04 · Space &amp; Planetary Science</span>
       <h2 id="h-space">The same task, two physics engines, one answer</h2>
       <p>Sample loading, mass measurement and spectral analysis run identically on the Moon, Mars and in orbit —
         each task implemented once and executed on both MuJoCo and NVIDIA Isaac Sim (PhysX), so the two backends can
@@ -82,20 +115,6 @@
     <div class="pair-grid" id="space-grid"></div>
     <p class="sim-more">
       <a href="https://tennessee-power-symptoms-hay.trycloudflare.com/space-experiments" target="_blank" rel="noopener">Explore every environment and task live →</a>
-    </p>
-  </section>
-
-  <section class="sim-section" aria-labelledby="h-micro">
-    <div class="sim-section-head">
-      <span class="sim-tag amber">03 · Microscopy &amp; Cell Manipulation</span>
-      <h2 id="h-micro">Micrometre scale, quantitative pass criteria</h2>
-      <p>A 36 µm phantom cell, a 4 µm probe tip, forceps driven independently of each other — pushing, grasping and
-        volume-controlled injection all score against explicit numeric thresholds (contact duration, placement
-        error, injected volume) rather than a subjective "looks right."</p>
-    </div>
-    <div class="shot-grid" id="micro-grid"></div>
-    <p class="sim-more">
-      <a href="https://tennessee-power-symptoms-hay.trycloudflare.com/microscopy" target="_blank" rel="noopener">Open the microscopy workstation live →</a>
     </p>
   </section>
 
