@@ -11,6 +11,7 @@ from microscopy.cell_scene import CELL_RADII, NUCLEAR_RADII
 from microscopy.pipettes import INJECTION_PROFILE
 from microscopy.scene import ORIGIN
 from microscopy.kinematics import tool_axes
+from microscopy.cell_deformation import needle_contact_offset, needle_contact_descriptor
 from simulation import System
 
 
@@ -87,6 +88,7 @@ class CellMechanics(System):
                                    "cell": VolumeState(0., self.cell_volume_m3*.15),
                                    "environment": VolumeState(0., None)})
         self.indentation_m = self.force_n = self.actual_pressure_pa = self.compensation_pa = 0.
+        self._membrane_contact_offset_m = None
         self.maximum_indentation_m = self.maximum_force_n = self.maximum_depth_m = 0.
         self.contact_s = self.blocked_injection_s = self.intracellular_s = 0.
         self.punctured = self.withdrawn = self.overdepth = self.nuclear_contact = False
@@ -116,6 +118,8 @@ class CellMechanics(System):
         self._contact_normalized_distance = normalized
         self._contact_penetration_m = depth
         self.inside = bool(normalized < 1)
+        if self.inside:
+            self._membrane_contact_offset_m = needle_contact_offset(offset, self.cell_radii, self.needle_back)
         self.indentation_m += (depth-self.indentation_m) * (-math.expm1(-dt/p.relaxation_s))
         self.maximum_indentation_m = max(self.maximum_indentation_m, self.indentation_m)
         if depth:
@@ -202,6 +206,9 @@ class CellMechanics(System):
                     needle_back=self.needle_back.tolist(),
                     needle_geometry=self.pipette_geometry.evidence(),
                     indentation_m=self.indentation_m, punctured=self.punctured,
+                    membrane_contacts=[] if self._membrane_contact_offset_m is None else [
+                        needle_contact_descriptor(self._membrane_contact_offset_m, self.cell_radii,
+                                                  self.needle_back, self.indentation_m)],
                     withdrawn=self.withdrawn, delivered_pl=self.ledger.state("cell").volume_m3*1e15,
                     force_nn=self.force_n*1e9, actual_pressure_pa=self.actual_pressure_pa,
                     cell_radii_m=self.cell_radii.tolist(), nuclear_radii_m=self.nuclear_radii.tolist(),

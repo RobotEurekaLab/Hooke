@@ -29,7 +29,54 @@ SmarAct 集成，私有资产准备及未确认的品牌用途许可见[CAD 集�
 
 细胞注射工具、流程、开源控制参考与后续实现方案见 [细胞微注射调研](cell_microinjection.md)。`microscopy_injection` 现复用贴壁细胞的 pL 剂量控制，另保留 `microscopy_cell_injection` 与双侧悬浮细胞 `microscopy_suction_injection`，见 [双侧吸持注射](suction_microinjection.md)。当前公开任务均使用细胞；切换场景会重建模型。
 
-## 运行网页
+## Public video showcase
+
+`/microscopy` now opens a video gallery, starting with suspended-cell holding
+and injection. Visitors can select five experiments and either MuJoCo or NVIDIA
+Isaac Sim recordings, pause, seek and enter fullscreen. Playback is muted and
+loops automatically unless reduced motion is requested. Opening this page does
+not start a simulator or send control requests.
+
+The gallery uses ten curated recordings, each in H.264 MP4 and VP9 WebM, in
+`docs/assets/microscopy-{operation}-{backend}.{mp4,webm}`, served by `/docs-assets/`.
+Operations are `suction_injection`, `cell_injection`, `pick_place`, `push` and
+`injection`; backends are `mujoco` and `isaac`. All twenty files together occupy
+2,848,059 bytes. The source observations come from the verified `20260919-sutter-reference` release
+under `temp/microscopy_demo/cad_integration/parallel_v4_production_v1/recordings/`.
+Deploy these curated files with the page; the ignored historical media directory
+is not required. The three microscopy cards in `Web/simulation.html` also use
+these recordings. These twenty curated files ship with the repository; intermediate
+frames, historical recordings and raw validation logs remain in ignored `temp/`.
+
+The `20261104-contact` presentation revision corrects a fixed 45-degree membrane
+dent. Deformation now follows the observed needle entry point or individual
+probe/jaw contacts in cell-local coordinates, including their height in the
+microscope focal slab. This remains an estimated, non-volume-conserving optical
+deformation, not a resolved membrane solver. Mechanical forces, controllers and
+the flow model are unchanged.
+
+The refreshed clips reuse the original workstation views and recorded motion.
+Eight episodes reconstruct the optical inputs from archived interaction samples
+and joint feedback. The two historical MuJoCo handling episodes require an exact
+CPU replay because their saved encoders and cached tool geometry refer to
+different integration stages; all 22 trace columns and observation encoders were
+checked against the originals before using the recovered optical inputs.
+New microscope panels, input states, provenance and videos are kept under
+`temp/microscopy_showcase/contact_fix/`; original evidence is preserved.
+Future captures save `image_state.json` beside each observation so optical fixes
+can be applied without reconstructing past poses. The refresh utility is
+`python -m microscopy.refresh_recordings --help` with `PYTHONPATH=Hooke`.
+
+Validation on 2026-11-04: 55 focused Python tests passed. All ten recordings
+played in Chromium, all twenty encodings passed full decoding and byte-range
+checks, and mobile layout and missing-media handling passed browser checks.
+The video page issued no simulator API requests. The two MuJoCo handling
+replays matched all 22 archived trace columns across 13,940 steps exactly.
+
+The command API and offline experiment runners remain available for development.
+The interactive-page instructions below describe the earlier workstation UI.
+
+## Earlier interactive workstation
 
 最新 TE2000-S 参考配置的双环境控制入口：`http://10.5.174.93:8084/microscopy?experiment=suction_injection`。页面可选择 Isaac，支持实际手动控制和对应环境的双格式录像。部署、会话同步、尺寸和播放格式见[双环境网页说明](microscopy_live_backends.md)。8082／8083 历史单环境服务已关闭，相应试验记录仍保留在忽略目录。
 

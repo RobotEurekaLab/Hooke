@@ -111,6 +111,9 @@ class ExperimentSession:
         for view in views:
             shutil.copyfile(self.output / f"{view}.png", folder / f"{view}.png")
         write_json(folder / "state.json", self.public_state())
+        # Keep the optical input so display fixes can be applied to this exact
+        # observation without replaying physics or inferring past tool poses.
+        write_json(folder / "image_state.json", self.task.mechanics.image_state(self.task.data))
         self.frame_times.append(float(self.task.data.time))
         write_json(self.episode / "frames.json", dict(backend=self.backend, time_s=self.frame_times))
         self.last_capture = float(self.task.data.time)

@@ -213,13 +213,14 @@ const SPACE = [
 ];
 
 const MICRO = [
-  { file: 'microscopy-cell-manipulation', title: 'Grasp and transfer',
+  { file: 'microscopy-cell-manipulation', operation: 'pick_place', title: 'Grasp and transfer',
     detail: 'Independently driven fine forceps lift and relocate a 36 µm cell with <3 µm placement error.' },
-  { file: 'microscopy-cell-injection', title: 'Volume-controlled injection',
+  { file: 'microscopy-cell-injection', operation: 'injection', title: 'Volume-controlled injection',
     detail: 'Membrane puncture and 0.5 pL delivery into a 36 × 28 × 8 µm adherent cell.' },
-  { file: 'microscopy-cell-pushing', title: 'Cell pushing',
+  { file: 'microscopy-cell-pushing', operation: 'push', title: 'Cell pushing',
     detail: 'A 4 µm blunt probe holds ≥50 ms contact within 3 µm of the target, ≤4.5 µm compression.' },
 ];
+const MICRO_RECORDING_REVISION = '20261104-contact';
 
 function el(tag, className, children) {
   const node = document.createElement(tag);
@@ -335,15 +336,36 @@ function buildMicroGrid() {
   if (!grid) return;
   for (const shot of MICRO) {
     const card = el('div', 'shot-card', []);
-    const img = document.createElement('img');
-    img.src = `../docs/assets/${shot.file}.png`;
-    img.loading = 'lazy';
-    img.alt = shot.title;
+    const video = document.createElement('video');
+    const status = el('p', null, []);
+    status.hidden = true;
+    status.setAttribute('role', 'status');
+    const unavailable = () => {
+      status.textContent = 'Recording unavailable. Please try again later.';
+      status.hidden = false;
+    };
+    let failedSources = 0;
+    for (const format of ['mp4', 'webm']) {
+      const source = document.createElement('source');
+      source.src = `../docs/assets/microscopy-${shot.operation}-mujoco.${format}?v=${MICRO_RECORDING_REVISION}`;
+      source.type = `video/${format}`;
+      source.addEventListener('error', () => { if (++failedSources === 2) unavailable(); });
+      video.append(source);
+    }
+    video.addEventListener('error', unavailable);
+    video.poster = `../docs/assets/${shot.file}.png`;
+    video.setAttribute('aria-label', `${shot.title} — MuJoCo recording`);
+    video.controls = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.autoplay = !reduceMotion;
     const body = el('div', 'shot-card-body', []);
     const h3 = el('h3', null, []); h3.textContent = shot.title;
     const p = el('p', null, []); p.textContent = shot.detail;
-    body.append(h3, p);
-    card.append(img, body);
+    body.append(h3, p, status);
+    card.append(video, body);
     grid.append(card);
   }
 }

@@ -14,6 +14,7 @@ import numpy as np
 from microscopy.cell_mechanics import CellMechanics
 from microscopy.cell_handling_scene import CELL_RADII, PROBE_RADIUS_M
 from microscopy.scene import ORIGIN
+from microscopy.cell_deformation import handling_contact_descriptor
 
 
 @dataclass(frozen=True)
@@ -57,6 +58,7 @@ class CellHandlingMechanics(CellMechanics):
         self.compression_m = 0.
         self.grip_losses = 0
         self.contact_history = []
+        self._handling_membrane_contacts = []
 
     def centre_position(self, data):
         return self.position_m
@@ -141,8 +143,12 @@ class CellHandlingMechanics(CellMechanics):
             self.grasp_offset_m = None
         compression = 0.
         force_sum = 0.
+        self._handling_membrane_contacts = []
         for _, geom, normal, equilibrium, k in contacts:
             overlap = max(0., float((equilibrium-position)@normal))
+            if overlap:
+                self._handling_membrane_contacts.append(
+                    handling_contact_descriptor(normal, self.cell_radii, overlap))
             force = overlap*k*normal
             jacobian = np.zeros((3, self.model.nv))
             mujoco.mj_jacGeom(self.model, data, jacobian, None, geom)
@@ -166,6 +172,7 @@ class CellHandlingMechanics(CellMechanics):
         state = super().image_state(data)
         state["centres_m"][0] = (self.position_m-ORIGIN).tolist()
         state["indentation_m"] = self.compression_m
+        state["membrane_contacts"] = self._handling_membrane_contacts
         if self.probe >= 0:
             state.update(probe_tip_m=(data.geom_xpos[self.probe]-ORIGIN).tolist(), probe_radius_m=PROBE_RADIUS_M)
         if self.gripper >= 0:

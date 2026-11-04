@@ -37,10 +37,14 @@ class CellMicroscope(Microscope):
                     empirical_defocus_scale_m=self.calibration.defocus_scale_m,
                     axial_response="Estimated focal slab plus defocused projection; capillaries use their sloping depth",
                     focal_slab_depth_m=2e-6,
+                    membrane_deformation_model="estimated_contact_anchored_gaussian_dimple",
+                    membrane_contact_coordinates="cell-local metres",
+                    membrane_dimple_width_fraction=.22,
+                    membrane_volume_conserved=False,
                     thick_specimen_model_calibrated=False,
                     biological_texture_calibrated=False)
 
-    def _projection(self, index, dx0, dy0, width, radii, nuclear, indentation_m, axial_slab=None):
+    def _projection(self, index, dx0, dy0, width, radii, nuclear, contacts, axial_slab=None):
         yy, xx = np.mgrid[:width, :width]
         dx = dx0+xx*self.calibration.pixel_size_m
         dy = dy0-yy*self.calibration.pixel_size_m
@@ -48,7 +52,7 @@ class CellMicroscope(Microscope):
         u = np.cos(angle)*dx+np.sin(angle)*dy
         v = -np.sin(angle)*dx+np.cos(angle)*dy
         opd, absorption, interior, nucleus = cell_fields(
-            u, v, radii, nuclear, index=index, indentation_m=indentation_m, axial_slab=axial_slab)
+            u, v, radii, nuclear, index=index, membrane_contacts=contacts, axial_slab=axial_slab)
         contrast = self.phase_optics.intensity(opd, absorption, self.calibration.pixel_size_m)-1.
         edge = np.minimum.reduce([xx, yy, width-1-xx, width-1-yy])
         window = np.clip(edge/24., 0., 1.)
@@ -72,6 +76,11 @@ class CellMicroscope(Microscope):
         focal_height = reference_height+state["focus_m"]
         radii = np.asarray(state.get("cell_radii_m", CELL_RADII))
         nuclear = np.asarray(state.get("nuclear_radii_m", NUCLEAR_RADII))
+        # Include immutable cell-local contact positions in the projection key.
+        # A scalar indentation alone supplies no spatial evidence for a dent.
+        contacts = tuple((*map(float, contact["offset_m"]), float(contact["indentation_m"]))
+                         for contact in state.get("membrane_contacts", ())
+                         if contact["indentation_m"] > 0.)
         for i, centre in enumerate(state["centres_m"]):
             if channel == "fluorescence" and i != 0:
                 continue  # Only the target is labelled in this experiment.
@@ -94,7 +103,7 @@ class CellMicroscope(Microscope):
                 i, float((left+offset-c.pixels/2)*c.pixel_size_m-centre[0]),
                 float((c.pixels/2-top-offset)*c.pixel_size_m-centre[1]),
                 2*sharp_halfwidth+1, tuple(cell_radii), tuple(nr),
-                state["indentation_m"] if i == 0 else 0.)
+                contacts if i == 0 else ())
             if channel == "phase_contrast":
                 # A bounded display exposure preserves bright edge detail.
                 # Dose never recolours the unstained transmission channel.
@@ -117,7 +126,7 @@ class CellMicroscope(Microscope):
                     i, float((left+offset-c.pixels/2)*c.pixel_size_m-centre[0]),
                     float((c.pixels/2-top-offset)*c.pixel_size_m-centre[1]),
                     2*sharp_halfwidth+1, tuple(cell_radii), tuple(nr),
-                    state["indentation_m"] if i == 0 else 0., (float(focal_height-centre[2]), 2e-6))
+                    contacts if i == 0 else (), (float(focal_height-centre[2]), 2e-6))
                 section_signal = .75*58*np.tanh(section/.95)
                 section_signal = self._plane_blur(section_signal, sigma=(.8, .8))
                 signal = np.array(signal, copy=True)

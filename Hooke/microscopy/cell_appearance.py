@@ -26,12 +26,60 @@ def _texture(dx, dy, rng, length_m, waves=12):
     return field/np.sqrt(waves)
 
 
-def cell_fields(dx, dy, radii, nuclear_radii, *, index, indentation_m=0., axial_slab=None):
+def _contact_thickness(dx, dy, radii, lower, upper, contacts):
+    """Integrate a smooth local dimple through the same 3D optical column.
+
+    A Gaussian displacement of the contact tangent plane clips a small patch
+    of the nominal ellipsoid. Width and edge smoothing are visual estimates;
+    this is neither a membrane solver nor a volume-preserving deformation.
+    """
+    thickness = np.maximum(0., upper-lower)
+    if not contacts:
+        return thickness
+    width = .22*min(radii[:2])
+    active = np.zeros_like(thickness, dtype=bool)
+    patches = []
+    for x, y, z, indentation in contacts:
+        if indentation <= 0:
+            continue
+        point = np.array([x, y, z])
+        normal = point/radii**2
+        length = np.linalg.norm(normal)
+        if not length:
+            continue
+        normal /= length
+        active |= ((dx-x)**2+(dy-y)**2 < (4*width)**2) & (thickness > 0)
+        patches.append((point, normal, indentation))
+    if not active.any():
+        return thickness
+    x, y = dx[active], dy[active]
+    low, span = lower[active], thickness[active]
+    occupied = np.zeros_like(span)
+    # Midpoint integration is confined to the affected columns. The smooth
+    # 0.2 um boundary avoids discretisation bands at microscope pixel scale.
+    for fraction in (np.arange(48)+.5)/48:
+        z = low+fraction*span
+        density = np.ones_like(span)
+        for point, normal, indentation in patches:
+            px, py, pz = x-point[0], y-point[1], z-point[2]
+            signed = normal[0]*px+normal[1]*py+normal[2]*pz
+            tangent2 = np.maximum(0., px*px+py*py+pz*pz-signed*signed)
+            displacement = indentation*np.exp(-.5*tangent2/width**2)
+            edge_width = min(.2e-6, indentation)
+            density *= np.clip(.5-(signed+displacement)/edge_width, 0., 1.)
+        occupied += density
+    thickness[active] *= occupied/48
+    return thickness
+
+
+def cell_fields(dx, dy, radii, nuclear_radii, *, index, indentation_m=0.,
+                membrane_contacts=(), axial_slab=None):
     """Return optical path, absorption, cytoplasm and nuclear label masks.
 
     Nuclear optical contrast is deliberately modest: a nucleus need not have
     a larger refractive index than its cytoplasm. The nuclear label stays
     centrosymmetric for the existing centroid-based image controller.
+    Legacy ``indentation_m`` alone supplies no contact position and is ignored.
     """
     radii, nuclear_radii = np.asarray(radii), np.asarray(nuclear_radii)
     rng = np.random.default_rng(7189+index*101)
@@ -42,16 +90,20 @@ def cell_fields(dx, dy, radii, nuclear_radii, *, index, indentation_m=0., axial_
         contour += 1-np.cos(harmonic*angle+rng.uniform(0, 2*np.pi))
     # Keep the calibrated major/minor diameters and the contact envelope.
     outline = 1-irregularity*contour*np.sin(2*angle)**2
-    contact_angle = np.arctan2(np.sin(angle-np.pi/4), np.cos(angle-np.pi/4))
-    outline -= min(.15, indentation_m/radii[0])*np.exp(-contact_angle**2/.12)
     distance = np.hypot(dx/radii[0], dy/radii[1])/outline
     cytoplasm = np.clip((1-distance)*35, 0., 1.)
     thickness = 2*radii[2]*np.sqrt(np.clip(1-distance**2, 0., 1.))
+    lower, upper = -thickness/2, thickness/2
     if axial_slab is not None:
         offset, depth = axial_slab
-        thickness = np.maximum(0., np.minimum(thickness/2, offset+depth/2)
-                               - np.maximum(-thickness/2, offset-depth/2))
+        lower, upper = np.maximum(lower, offset-depth/2), np.minimum(upper, offset+depth/2)
+    original_thickness = np.maximum(0., upper-lower)
+    thickness = _contact_thickness(dx, dy, radii, lower, upper, membrane_contacts)
+    if axial_slab is not None:
         cytoplasm *= np.clip(thickness/depth, 0., 1.)
+    elif membrane_contacts:
+        cytoplasm *= np.divide(thickness, original_thickness, out=np.zeros_like(thickness),
+                               where=original_thickness > 0)
     coarse = _texture(dx, dy, rng, 5.5e-6)
     fine = _texture(dx, dy, rng, 1.3e-6)
     opd = .010*thickness*(1+.018*coarse)

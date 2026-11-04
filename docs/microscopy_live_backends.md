@@ -1,5 +1,11 @@
 # 显微网页双环境控制
 
+The public `/microscopy` page now presents saved experiment videos without
+starting a simulation. See the [video showcase guide](microscopy_demo.md#public-video-showcase)
+for its curated media and deployment requirements. The control APIs and offline
+runners remain available; the interactive-page descriptions below document the
+earlier UI.
+
 All five public experiments now use micrometre-scale simulated cells. Pushing,
 grasp/transfer and the original volume-controlled injection entry use the
 [cell manipulation models](cell_manipulation.md); injection doses are in pL.

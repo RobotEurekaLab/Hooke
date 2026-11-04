@@ -45,6 +45,8 @@ def encode_episode(episode, output, fps=4):
             names.append("closeup.png")
         if (folder/"microscope_fluorescence.png").is_file():
             names.append("microscope_fluorescence.png")
+        if (folder/"image_state.json").is_file():
+            names.append("image_state.json")
         provenance.append({name: hashlib.sha256((folder / name).read_bytes()).hexdigest()
                            for name in names})
     log_path = output.with_name(output.name + ".log")
