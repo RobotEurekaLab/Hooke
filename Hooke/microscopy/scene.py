@@ -27,13 +27,30 @@ WELL = np.array([0.003, 0.0025])
 
 
 def manipulator(world, actuators, tool, asset=None, cad=None, *, compact=False, cell_pipettes=False,
-                parallel=None, equality=None):
+                parallel=None, equality=None, profile="auto", suspended=False, pipette_azimuth=None):
     home = HOMES[tool]
     direction = APPROACHES[tool]
     back = np.r_[direction[:2]/2**.5, 1/2**.5]
     if cell_pipettes and tool in ("injector", "holder"):
         from microscopy.pipettes import pipette_back
         back = pipette_back(tool)
+    if profile == "sutter-mp285-reference":
+        from microscopy.sutter_manipulator import mount_sutter
+        from microscopy.pipette_geometry import for_workstation
+        pipette = for_workstation(tool, suspended=suspended, azimuth_deg=pipette_azimuth) if tool in ("injector", "holder") else None
+        if pipette is not None:
+            back = np.asarray(pipette.shaft_back)
+        parent, evidence = mount_sutter(world, asset, actuators, tool, home, ORIGIN, BENCH_TOP,
+            back, terminal_back=None if pipette is None else pipette.tip_back,
+            capillary_base=None if pipette is None else pipette.centreline(.012))
+        tool_geometry(parent, actuators, tool, housed_gripper=tool == "gripper")
+        if pipette is not None:
+            evidence["pipette_geometry"] = pipette.evidence()
+        if tool != "gripper":
+            quat = np.r_[1-back[2], np.cross([0., 0., -1.], back)]
+            quat /= np.linalg.norm(quat)
+            parent.find(f"geom[@name='{tool}_taper']").set("quat", numbers(quat))
+        return evidence
     if parallel is not None:
         from microscopy.parallel_mount import mount_parallel
 
@@ -112,7 +129,7 @@ def tool_geometry(parent, actuators, tool, *, housed_gripper=False):
              material="cyan" if tool == "probe" else "glass", contype="1", conaffinity="1")
 
 
-def build_xml(tools=None, *, focal_reference_m=RADIUS, cell_pipettes=False):
+def build_xml(tools=None, *, focal_reference_m=RADIUS, cell_pipettes=False, suspended=False):
     from microscopy.cad_assets import requested_assets
     tools = DEFAULT_TOOLS if tools is None else tuple(tools)
     if not tools or len(set(tools)) != len(tools) or not set(tools) <= HOMES.keys():
@@ -120,9 +137,16 @@ def build_xml(tools=None, *, focal_reference_m=RADIUS, cell_pipettes=False):
     cad = requested_assets()
     from microscopy.parallel_mount import requested_parallel
     parallel = requested_parallel()
+    from microscopy.manipulator_profile import requested_profile
+    profile = requested_profile()
+    if profile == "sutter-mp285-reference" and (len(tools) > 2 or {"probe", "holder"} <= set(tools)):
+        raise ValueError("The Sutter installation supports one tool or an opposed two-tool pair")
     from microscopy.stand import stand_profile
     instrument = stand_profile(cad is not None)
-    compact = instrument == "te2000-s-reference" and (cad is not None or parallel is not None)
+    if profile == "sutter-mp285-reference" and instrument != "te2000-s-reference":
+        raise ValueError("The Sutter reference installation requires the TE2000-S reference stand")
+    compact = instrument == "te2000-s-reference" and (
+        cad is not None or parallel is not None or profile == "sutter-mp285-reference")
     reference_40x = instrument == "te2000-s-reference" and cell_pipettes
     glass_thickness_m = .0012 if reference_40x else .0005
     root = ET.Element("mujoco", model="motorized_microscopy_workstation")
@@ -237,13 +261,14 @@ def build_xml(tools=None, *, focal_reference_m=RADIUS, cell_pipettes=False):
              (* (WELL + .0012 * np.array([np.cos(angle), np.sin(angle)])), .00035),
              "violet", contype="1", conaffinity="1", euler=f"0 0 {angle + math.pi / 2}")
     ET.SubElement(stage, "site", name="well_center", pos=numbers([*WELL, .00035]), group="5", size=".00005")
-    parallel_evidence = []
+    manipulator_evidence = []
     equality = ET.SubElement(root, "equality") if parallel is not None else None
     for tool in tools:
         evidence = manipulator(world, actuators, tool, asset, cad, compact=compact, cell_pipettes=cell_pipettes,
-                               parallel=parallel, equality=equality)
+                               parallel=parallel, equality=equality, profile=profile, suspended=suspended,
+                               pipette_azimuth=180. if tool == "injector" and "gripper" in tools else None)
         if evidence:
-            parallel_evidence.append(evidence)
+            manipulator_evidence.append(evidence)
     for name, xy, material in (("bead_push", (-.0026, -.0012), "amber"),
                                ("bead_pick", (.0008, -.0008), "blue")):
         sample = body(world, name, ORIGIN + [*xy, RADIUS])
@@ -295,9 +320,9 @@ def build_xml(tools=None, *, focal_reference_m=RADIUS, cell_pipettes=False):
         from microscopy.reference_detection import add_detection_view
         add_detection_view(world, ORIGIN, BENCH_TOP)
     if cad is not None:
-        cad.evidence["assemblies"].extend(parallel_evidence)
+        cad.evidence["assemblies"].extend(manipulator_evidence)
         cad.record(root)
-    elif parallel_evidence:
+    elif manipulator_evidence:
         text = root.find("custom/text[@name='microscopy_assets']")
         if text is None:
             custom = root.find("custom")
@@ -307,7 +332,7 @@ def build_xml(tools=None, *, focal_reference_m=RADIUS, cell_pipettes=False):
             evidence = dict(profile="reference", assemblies=[])
         else:
             evidence = json.loads(text.get("data"))
-        evidence["assemblies"].extend(parallel_evidence)
+        evidence["assemblies"].extend(manipulator_evidence)
         text.set("data", json.dumps(evidence))
     ET.indent(root, space="  ")
     return ET.tostring(root, encoding="unicode")

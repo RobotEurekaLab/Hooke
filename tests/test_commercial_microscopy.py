@@ -3,6 +3,7 @@
 import os
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 from unittest.mock import patch
 
@@ -22,6 +23,23 @@ ASSETS = Path(os.environ.get('HOOKE_TEST_CAD_ASSET_ROOT', DEFAULT_ROOT))
 
 
 class ReferenceStand(unittest.TestCase):
+    def test_reference_stand_survives_native_snapshot_roundtrip(self):
+        from backends.baseline import write_snapshot
+
+        with patch.dict(os.environ, dict(HOOKE_MICROSCOPY_ASSETS='reference',
+                                        HOOKE_MICROSCOPY_STAND='te2000-s-reference',
+                                        HOOKE_MICROSCOPY_STAGE='reference',
+                                        HOOKE_MICROSCOPY_OPTICS='estimated',
+                                        HOOKE_MICROSCOPY_MANIPULATOR='auto')):
+            task = make_task('suction_injection')
+            task.reset(0)
+        (ROOT/'temp').mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='stand-roundtrip-', dir=ROOT/'temp') as directory:
+            # Exercises the same strict geometry/mass checks used before USD
+            # export. Oblique near-circular ocular meshes previously failed
+            # after the XML writer changed their principal-axis orientation.
+            write_snapshot(task, Path(directory))
+
     def test_stand_keeps_the_target_scale_and_declares_reference_boundaries(self):
         with patch.dict(os.environ, dict(HOOKE_MICROSCOPY_ASSETS='reference',
                                         HOOKE_MICROSCOPY_STAND='te2000-s-reference',
@@ -50,6 +68,16 @@ class ReferenceStand(unittest.TestCase):
         vertices = t.model.mesh_vert[int(mesh.vertadr[0]):int(mesh.vertadr[0])+int(mesh.vertnum[0])]
         rotation = t.data.geom_xmat[t.model.geom('te_lamp_arm').id].reshape(3, 3)
         self.assertAlmostEqual(height+float((vertices@rotation.T)[:, 2].max())-.705, .611, delta=1e-7)
+        # Nikon's published observation angle is 25 degrees. Verify the built
+        # optical axes and eyepoint, rather than only the descriptive metadata.
+        for x in (-.032, .032):
+            lens = t.model.geom(f'te_eyepiece_lens_{x}')
+            axis = t.data.geom_xmat[lens.id].reshape(3, 3)[:, 2]
+            if axis[1] > 0:
+                axis = -axis
+            self.assertAlmostEqual(float(np.rad2deg(np.arcsin(axis[2]))), 25., delta=1e-3)
+            end = t.data.geom_xpos[lens.id]+axis*float(lens.size[1])
+            self.assertAlmostEqual(float(end[2])-.705, .4494, delta=1e-7)
 
     def test_openframe_mounts_cannot_silently_use_the_commercial_stand(self):
         with patch.dict(os.environ, dict(HOOKE_MICROSCOPY_STAND='te2000-s-reference',

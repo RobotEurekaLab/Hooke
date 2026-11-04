@@ -63,6 +63,11 @@ def write_snapshot(expert, out: Path):
     for element in tree.findall('./asset/mesh'):
         source_mesh = meshes[element.get('name')]
         element.set('inertia', source_mesh.inertia.name.removeprefix('mjMESH_INERTIA_').lower())
+        # MjSpec.to_xml() rounds inline vertices to six significant digits.
+        # This can distort thin walls and rotate the principal axes of nearly
+        # symmetric meshes. Preserve the source values before recompiling.
+        if len(source_mesh.uservert):
+            element.set('vertex', ' '.join(format(float(v), '.17g') for v in source_mesh.uservert))
     source_assets = {}
     asset_dir = Path(__file__).resolve().parents[1] / 'assets'
     for element in tree.iter():
@@ -119,6 +124,19 @@ def write_snapshot(expert, out: Path):
         'isaac_qualification': 'unqualified',
         'scope': 'Compiled source archive; no claim that archived physics fields are implemented in Isaac.',
     }
+    from backends.headlights import source_headlight_from_model
+    metadata['source_headlight'] = source_headlight_from_model(model)
+    native_options = getattr(expert, 'native_physics_options', None)
+    if native_options is not None:
+        from backends.physics_options import validate_physics_options
+        native_options = validate_physics_options(native_options)
+        if native_options:
+            metadata['native_physics_options'] = native_options
+    visual_profile = getattr(expert, 'visual_profile', None)
+    if visual_profile is not None:
+        from backends.visual_profiles import source_visibility_profile
+        metadata['visual_profile'] = visual_profile
+        source_visibility_profile(metadata)
     metadata['archive_sha256'] = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
                                   for p in (out/'model.npz', out/'model.mjb', out/'scene.xml')}
     (out / 'scene.json').write_text(json.dumps(metadata, indent=2))

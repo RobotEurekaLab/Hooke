@@ -1,0 +1,165 @@
+{
+  "brown_breuer_afam_tunnel": {
+    "reference_urls": [
+      "https://sites.brown.edu/breuerlab/animal-flight-and-aeromechanics-wind-tunnel/",
+      "https://sites.brown.edu/breuerlab/files/2020/01/TestSection-300x200.jpg"
+    ],
+    "observed_details": "Broad opaque surrounds around the transparent test section; varied instrument rack front panels and side cable dressing.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ],
+    "window_topology_revision": "Opaque door fields surround separate lower and upper central lights and narrow side windows, following the supplied official photograph. Pane dimensions remain estimated; published clear section and moving positioner are unchanged."
+  },
+  "caltech_stoltz_schlinger": {
+    "reference_urls": [
+      "https://www.stoltz2.caltech.edu/labtour2.html"
+    ],
+    "observed_details": "Continuous hood run with narrow service piers; rack-supported glass columns, stopcocks and utility connections.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ],
+    "visible_cue_followup": {
+      "local_reference": "temp/research/qs_lab_page_audit/stills/caltech_stoltz_4.img",
+      "sha256": "4963c76215cd39c469405a98361a95e36697314bed57e935e6f57dbf51deca5f",
+      "implemented": "Dual horizontal glass manifolds with individually colored tap handles and supported mixed-height bottle groups now accompany the existing heaters and condensers. All are retained static exterior context; no fluids or chemistry.",
+      "scope": "Finite original exterior omissions; no new scientific process or remotely actuated equipment."
+    }
+  },
+  "chicago_mineralphysics_laser_bay": {
+    "reference_urls": [
+      "https://mineralphysics.uchicago.edu/labtour.html",
+      "https://mineralphysics.uchicago.edu/images/labtour/IMG_0669.JPG"
+    ],
+    "observed_details": "Dark rack panel seams, hinges, ventilation slots and upper duct/service context above the cabinets.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ]
+  },
+  "cmu_edl_electrochemical_testing": {
+    "reference_urls": [
+      "https://www.cmu.edu/me/tpes/facilities/tpes-lab.html",
+      "https://www.cmu.edu/me/tpes/facilities/test-stand-2.jpg",
+      "https://www.cmu.edu/me/tpes/facilities/corner-lab.jpg"
+    ],
+    "observed_details": "Two levels of shelves, unequal instrument housings and storage boxes, a secondary work run and small containers in the corner photograph.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ],
+    "visible_cue_followup": {
+      "local_reference": "temp/university/expansion_100_20261003/research/stills/cmu_edl_teststand.img",
+      "sha256": "cfe9b91fb12968fc6642d34c842ff7ff0cd8a80b63f04d75a12021bd5513ef0d",
+      "implemented": "Two supported blue secondary instrument housings sit behind the 850BP; an under-shelf outlet strip and finite cable routes connect to static cabinets outside the coupon fixture workspace. No electrical model.",
+      "scope": "Finite original exterior omissions; no new scientific process or remotely actuated equipment."
+    }
+  },
+  "cornell_schlom_mbe": {
+    "reference_urls": [
+      "https://schlom.mse.cornell.edu/labtour",
+      "https://schlom.mse.cornell.edu/sites/default/files/MBE.jpg"
+    ],
+    "observed_details": "Dense asymmetric service manifold, unequal valve actuator heights and two unequal black control housings at the front vessel.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ]
+  },
+  "epfl_lspn_chemistry": {
+    "reference_urls": [
+      "https://www.epfl.ch/labs/lspn/group/lab-tour/"
+    ],
+    "observed_details": "A second hotplate and retained jack in each hood, separate from the primary glassware and bath.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ]
+  },
+  "jhu_paradim_bulk_crystal_growth": {
+    "reference_urls": [
+      "https://www.paradim.org/bulkcrystal",
+      "https://www.paradim.org/sites/default/files/inline-images/PossibleBannerImage.jpg"
+    ],
+    "observed_details": "Wood-top preparation island, supported sample containers, a side computer workstation and rectangular overhead services in the panorama.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ],
+    "visible_cue_followup": {
+      "local_reference": "temp/university/expansion_100_20261003/research/americas_02_sources/stills/jhu_room.img",
+      "sha256": "7a1981a46ae7da6c8afb72942edf3fc5d69feb5e390811222d8a45a1101e16fa",
+      "implemented": "The three generic island blocks are replaced by a computer/keyboard, a pan balance with open glazed draft shield, wash bottles and existing small sample-jar trays. All remain fixed contextual props with blank readouts.",
+      "scope": "Finite original exterior omissions; no new scientific process or remotely actuated equipment."
+    }
+  },
+  "ntu_smtc_membranes": {
+    "reference_urls": [
+      "https://www.ntu.edu.sg/docs/librariesprovider88/newri-domains/smtc/smtc-brochure_compressede6c80970-b0ba-4414-90e7-bcb662e94af7.pdf?sfvrsn=87821fc1_3"
+    ],
+    "observed_details": "Industrial aisle instruments, side service connections and overhead carrier support; unobstructed central aisle retained. The brochure pressure-housing view informs a compact auxiliary frame; its placement within the aisle scene is authored.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ],
+    "visible_cue_followup": {
+      "local_reference": "temp/research/qs_lab_page_audit/stills/ntu_smtc_facilities.png",
+      "sha256": "17fe11db8dc684f0c8769a082aaaa09581de9d345a51a664d5d71af7d4df6912",
+      "implemented": "Dark floor-supported carrier columns and knee braces remain readable under the roof cutaway. The auxiliary four-pressure-housing frame now sits at the left aisle edge beside the casting cabinet, providing layered industrial context while preserving the full marked 3 m corridor. Exact layout is estimated, not photographed registration.",
+      "scope": "Finite original exterior omissions; no new scientific process or remotely actuated equipment."
+    }
+  },
+  "purdue_phenotyping": {
+    "reference_urls": [
+      "https://ag.purdue.edu/aapf/virtual-tour.html",
+      "https://ag.purdue.edu/department/arge/industry/sparc/plant-sciences.html"
+    ],
+    "observed_details": "Open reflector cheeks, supported stationary lamp wiring, upper camera vents and service connector dressing.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ]
+  },
+  "texas_ferguson_structural_test_hall": {
+    "reference_urls": [
+      "https://fsel.engr.utexas.edu/",
+      "https://fsel.engr.utexas.edu/images/featured/facilities3.jpg"
+    ],
+    "observed_details": "Parked mobile work platforms and wall-side service cabinets, separated from primary reaction frame and circulation lanes. Additional rear reaction frames and a retained slab on grounded timber falsework reproduce the repeated test-bay pattern.",
+    "reconstruction": "Original geometry informed by locally inspected source images; placement and dimensions are estimates, not measured reconstruction or OEM CAD.",
+    "physical_scope": "Static exterior context; original joints, target values and scientific limitations are retained. Added secondary equipment is not remotely actuated.",
+    "source_media_rights": "Reference images remain private local research evidence; redistribution rights have not been established.",
+    "remaining_limits": [
+      "Room envelope, hidden geometry and service routing are not surveyed.",
+      "Photographic resemblance does not establish validated experimental process physics or full facility fidelity."
+    ]
+  }
+}

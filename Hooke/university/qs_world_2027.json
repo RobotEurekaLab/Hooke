@@ -1,0 +1,632 @@
+{
+  "edition": 2027,
+  "title": "QS World University Rankings 2027",
+  "source_url": "https://www.topuniversities.com/qs-top-uni-wur",
+  "checked_on": "2026-10-03",
+  "published_on": "2026-06-18",
+  "scope": "Published overall world rank <= 100, including every tied and corrected institution",
+  "institution_count": 102,
+  "announcement_url": "https://www.qs.com/insights/qs-world-university-rankings",
+  "corroborating_url": "https://www.topuniversities.com/student-info/choosing-university/worlds-top-100-universities",
+  "correction_url": "https://www.topuniversities.com/rankings-release-summaries/world-university-rankings-2027-release-summary",
+  "notes": [
+    "The official table has 102 institutions with published rank <= 100. Preserve the published ranks rather than truncating to 100 rows.",
+    "QS corrected Institute of Science Tokyo to rank 97 without renumbering other institutions; Purdue University and University College Dublin are both rank =100.",
+    "rank_display follows the official overview table. Profile pages omit '=' for the two institutions at 97; their numeric rank and inclusion are consistent.",
+    "A university's inclusion does not establish a particular laboratory's evidence quality, institutional endorsement, or media redistribution permission."
+  ],
+  "universities": [
+    {
+      "id": "mit",
+      "name": "Massachusetts Institute of Technology (MIT)",
+      "rank": 1,
+      "rank_display": "1"
+    },
+    {
+      "id": "imperial_college_london",
+      "name": "Imperial College London",
+      "rank": 2,
+      "rank_display": "=2"
+    },
+    {
+      "id": "stanford_university",
+      "name": "Stanford University",
+      "rank": 2,
+      "rank_display": "=2"
+    },
+    {
+      "id": "university_of_oxford",
+      "name": "University of Oxford",
+      "rank": 4,
+      "rank_display": "4"
+    },
+    {
+      "id": "harvard_university",
+      "name": "Harvard University",
+      "rank": 5,
+      "rank_display": "5"
+    },
+    {
+      "id": "university_of_cambridge",
+      "name": "University of Cambridge",
+      "rank": 6,
+      "rank_display": "6"
+    },
+    {
+      "id": "caltech",
+      "name": "California Institute of Technology (Caltech)",
+      "rank": 7,
+      "rank_display": "7"
+    },
+    {
+      "id": "eth_zurich",
+      "name": "ETH Zurich",
+      "rank": 8,
+      "rank_display": "=8"
+    },
+    {
+      "id": "ucl",
+      "name": "UCL",
+      "rank": 8,
+      "rank_display": "=8"
+    },
+    {
+      "id": "nus",
+      "name": "National University of Singapore (NUS)",
+      "rank": 10,
+      "rank_display": "10"
+    },
+    {
+      "id": "university_of_hong_kong",
+      "name": "The University of Hong Kong",
+      "rank": 11,
+      "rank_display": "11"
+    },
+    {
+      "id": "ntu_singapore",
+      "name": "Nanyang Technological University, Singapore (NTU Singapore)",
+      "rank": 12,
+      "rank_display": "12"
+    },
+    {
+      "id": "peking_university",
+      "name": "Peking University",
+      "rank": 13,
+      "rank_display": "13"
+    },
+    {
+      "id": "tsinghua_university",
+      "name": "Tsinghua University",
+      "rank": 14,
+      "rank_display": "14"
+    },
+    {
+      "id": "upenn",
+      "name": "University of Pennsylvania",
+      "rank": 15,
+      "rank_display": "15"
+    },
+    {
+      "id": "cornell_university",
+      "name": "Cornell University",
+      "rank": 16,
+      "rank_display": "=16"
+    },
+    {
+      "id": "yale_university",
+      "name": "Yale University",
+      "rank": 16,
+      "rank_display": "=16"
+    },
+    {
+      "id": "chinese_university_of_hong_kong",
+      "name": "The Chinese University of Hong Kong (CUHK)",
+      "rank": 18,
+      "rank_display": "18"
+    },
+    {
+      "id": "university_of_new_south_wales",
+      "name": "The University of New South Wales (UNSW Sydney)",
+      "rank": 19,
+      "rank_display": "19"
+    },
+    {
+      "id": "johns_hopkins_university",
+      "name": "Johns Hopkins University",
+      "rank": 20,
+      "rank_display": "=20"
+    },
+    {
+      "id": "uc_berkeley",
+      "name": "University of California, Berkeley (UCB)",
+      "rank": 20,
+      "rank_display": "=20"
+    },
+    {
+      "id": "epfl",
+      "name": "EPFL – École polytechnique fédérale de Lausanne",
+      "rank": 22,
+      "rank_display": "=22"
+    },
+    {
+      "id": "university_of_melbourne",
+      "name": "The University of Melbourne",
+      "rank": 22,
+      "rank_display": "=22"
+    },
+    {
+      "id": "university_of_chicago",
+      "name": "University of Chicago",
+      "rank": 24,
+      "rank_display": "24"
+    },
+    {
+      "id": "technical_university_of_munich",
+      "name": "Technical University of Munich",
+      "rank": 25,
+      "rank_display": "25"
+    },
+    {
+      "id": "fudan_university",
+      "name": "Fudan University",
+      "rank": 26,
+      "rank_display": "26"
+    },
+    {
+      "id": "princeton_university",
+      "name": "Princeton University",
+      "rank": 27,
+      "rank_display": "27"
+    },
+    {
+      "id": "university_of_sydney",
+      "name": "The University of Sydney",
+      "rank": 28,
+      "rank_display": "28"
+    },
+    {
+      "id": "anu",
+      "name": "Australian National University (ANU)",
+      "rank": 29,
+      "rank_display": "29"
+    },
+    {
+      "id": "mcgill_university",
+      "name": "McGill University",
+      "rank": 30,
+      "rank_display": "30"
+    },
+    {
+      "id": "monash_university",
+      "name": "Monash University",
+      "rank": 31,
+      "rank_display": "31"
+    },
+    {
+      "id": "toronto",
+      "name": "University of Toronto",
+      "rank": 32,
+      "rank_display": "32"
+    },
+    {
+      "id": "hong_kong_university_of_science_and_technology",
+      "name": "The Hong Kong University of Science and Technology",
+      "rank": 33,
+      "rank_display": "33"
+    },
+    {
+      "id": "universite_psl",
+      "name": "Université PSL",
+      "rank": 34,
+      "rank_display": "34"
+    },
+    {
+      "id": "university_of_edinburgh",
+      "name": "The University of Edinburgh",
+      "rank": 35,
+      "rank_display": "35"
+    },
+    {
+      "id": "shanghai_jiao_tong_university",
+      "name": "Shanghai Jiao Tong University",
+      "rank": 36,
+      "rank_display": "36"
+    },
+    {
+      "id": "king_s_college_london",
+      "name": "King's College London",
+      "rank": 37,
+      "rank_display": "37"
+    },
+    {
+      "id": "seoul_national_university",
+      "name": "Seoul National University",
+      "rank": 38,
+      "rank_display": "38"
+    },
+    {
+      "id": "university_of_tokyo",
+      "name": "The University of Tokyo",
+      "rank": 39,
+      "rank_display": "39"
+    },
+    {
+      "id": "university_of_manchester",
+      "name": "The University of Manchester",
+      "rank": 40,
+      "rank_display": "=40"
+    },
+    {
+      "id": "university_of_queensland",
+      "name": "The University of Queensland",
+      "rank": 40,
+      "rank_display": "=40"
+    },
+    {
+      "id": "yonsei_university",
+      "name": "Yonsei University",
+      "rank": 42,
+      "rank_display": "42"
+    },
+    {
+      "id": "columbia_university",
+      "name": "Columbia University",
+      "rank": 43,
+      "rank_display": "=43"
+    },
+    {
+      "id": "institut_polytechnique_de_paris",
+      "name": "Institut Polytechnique de Paris",
+      "rank": 43,
+      "rank_display": "=43"
+    },
+    {
+      "id": "northwestern_university",
+      "name": "Northwestern University",
+      "rank": 45,
+      "rank_display": "=45"
+    },
+    {
+      "id": "university_of_british_columbia",
+      "name": "University of British Columbia",
+      "rank": 45,
+      "rank_display": "=45"
+    },
+    {
+      "id": "zhejiang_university",
+      "name": "Zhejiang University",
+      "rank": 47,
+      "rank_display": "47"
+    },
+    {
+      "id": "delft_university_of_technology",
+      "name": "Delft University of Technology",
+      "rank": 48,
+      "rank_display": "48"
+    },
+    {
+      "id": "ucla",
+      "name": "University of California, Los Angeles (UCLA)",
+      "rank": 49,
+      "rank_display": "49"
+    },
+    {
+      "id": "hong_kong_polytechnic_university",
+      "name": "The Hong Kong Polytechnic University",
+      "rank": 50,
+      "rank_display": "50"
+    },
+    {
+      "id": "university_of_michigan_ann_arbor",
+      "name": "University of Michigan-Ann Arbor",
+      "rank": 51,
+      "rank_display": "51"
+    },
+    {
+      "id": "city_university_of_hong_kong",
+      "name": "City University of Hong Kong (CityUHK)",
+      "rank": 52,
+      "rank_display": "=52"
+    },
+    {
+      "id": "korea_university",
+      "name": "Korea University",
+      "rank": 52,
+      "rank_display": "=52"
+    },
+    {
+      "id": "national_taiwan_university",
+      "name": "National Taiwan University (NTU)",
+      "rank": 54,
+      "rank_display": "54"
+    },
+    {
+      "id": "carnegie_mellon",
+      "name": "Carnegie Mellon University",
+      "rank": 55,
+      "rank_display": "55"
+    },
+    {
+      "id": "universiti_malaya",
+      "name": "Universiti Malaya (UM)",
+      "rank": 56,
+      "rank_display": "56"
+    },
+    {
+      "id": "university_of_bristol",
+      "name": "University of Bristol",
+      "rank": 57,
+      "rank_display": "57"
+    },
+    {
+      "id": "nyu",
+      "name": "New York University (NYU)",
+      "rank": 58,
+      "rank_display": "58"
+    },
+    {
+      "id": "ku_leuven",
+      "name": "KU Leuven",
+      "rank": 59,
+      "rank_display": "59"
+    },
+    {
+      "id": "university_of_amsterdam",
+      "name": "University of Amsterdam",
+      "rank": 60,
+      "rank_display": "60"
+    },
+    {
+      "id": "ludwig_maximilians_universitat_munchen",
+      "name": "Ludwig-Maximilians-Universität München",
+      "rank": 61,
+      "rank_display": "61"
+    },
+    {
+      "id": "london_school_of_economics_and_political_science",
+      "name": "The London School of Economics and Political Science (LSE)",
+      "rank": 62,
+      "rank_display": "62"
+    },
+    {
+      "id": "kfupm",
+      "name": "KFUPM",
+      "rank": 63,
+      "rank_display": "63"
+    },
+    {
+      "id": "kyoto_university",
+      "name": "Kyoto University",
+      "rank": 64,
+      "rank_display": "64"
+    },
+    {
+      "id": "kaist",
+      "name": "KAIST",
+      "rank": 65,
+      "rank_display": "65"
+    },
+    {
+      "id": "brown_university",
+      "name": "Brown University",
+      "rank": 66,
+      "rank_display": "66"
+    },
+    {
+      "id": "university_of_auckland",
+      "name": "The University of Auckland",
+      "rank": 67,
+      "rank_display": "67"
+    },
+    {
+      "id": "university_of_warwick",
+      "name": "University of Warwick",
+      "rank": 68,
+      "rank_display": "=68"
+    },
+    {
+      "id": "university_of_birmingham",
+      "name": "University of Birmingham",
+      "rank": 68,
+      "rank_display": "=68"
+    },
+    {
+      "id": "duke_university",
+      "name": "Duke University",
+      "rank": 70,
+      "rank_display": "70"
+    },
+    {
+      "id": "lund_university",
+      "name": "Lund University",
+      "rank": 71,
+      "rank_display": "71"
+    },
+    {
+      "id": "university_of_texas_at_austin",
+      "name": "University of Texas at Austin",
+      "rank": 72,
+      "rank_display": "72"
+    },
+    {
+      "id": "sorbonne_university",
+      "name": "Sorbonne University",
+      "rank": 73,
+      "rank_display": "73"
+    },
+    {
+      "id": "university_of_illinois_urbana_champaign",
+      "name": "University of Illinois Urbana-Champaign",
+      "rank": 74,
+      "rank_display": "74"
+    },
+    {
+      "id": "trinity_college_dublin_the_university_of_dublin",
+      "name": "Trinity College Dublin, The University of Dublin",
+      "rank": 75,
+      "rank_display": "75"
+    },
+    {
+      "id": "universite_paris_saclay",
+      "name": "Université Paris-Saclay",
+      "rank": 76,
+      "rank_display": "76"
+    },
+    {
+      "id": "university_of_western_australia",
+      "name": "The University of Western Australia",
+      "rank": 77,
+      "rank_display": "=77"
+    },
+    {
+      "id": "university_of_leeds",
+      "name": "University of Leeds",
+      "rank": 77,
+      "rank_display": "=77"
+    },
+    {
+      "id": "adelaide_university",
+      "name": "Adelaide University",
+      "rank": 79,
+      "rank_display": "79"
+    },
+    {
+      "id": "university_of_glasgow",
+      "name": "University of Glasgow",
+      "rank": 80,
+      "rank_display": "80"
+    },
+    {
+      "id": "uc_san_diego",
+      "name": "University of California, San Diego (UCSD)",
+      "rank": 81,
+      "rank_display": "81"
+    },
+    {
+      "id": "kth_royal_institute_of_technology",
+      "name": "KTH Royal Institute of Technology",
+      "rank": 82,
+      "rank_display": "=82"
+    },
+    {
+      "id": "university_of_sheffield",
+      "name": "The University of Sheffield",
+      "rank": 82,
+      "rank_display": "=82"
+    },
+    {
+      "id": "universidad_de_buenos_aires",
+      "name": "Universidad de Buenos Aires (UBA)",
+      "rank": 84,
+      "rank_display": "84"
+    },
+    {
+      "id": "durham_university",
+      "name": "Durham University",
+      "rank": 85,
+      "rank_display": "85"
+    },
+    {
+      "id": "universitat_heidelberg",
+      "name": "Universität Heidelberg",
+      "rank": 86,
+      "rank_display": "86"
+    },
+    {
+      "id": "politecnico_di_milano",
+      "name": "Politecnico di Milano",
+      "rank": 87,
+      "rank_display": "=87"
+    },
+    {
+      "id": "university_of_technology_sydney",
+      "name": "The University of Technology Sydney (UTS)",
+      "rank": 87,
+      "rank_display": "=87"
+    },
+    {
+      "id": "uppsala_university",
+      "name": "Uppsala University",
+      "rank": 87,
+      "rank_display": "=87"
+    },
+    {
+      "id": "nanjing_university",
+      "name": "Nanjing University",
+      "rank": 90,
+      "rank_display": "=90"
+    },
+    {
+      "id": "university_of_copenhagen",
+      "name": "University of Copenhagen",
+      "rank": 90,
+      "rank_display": "=90"
+    },
+    {
+      "id": "pennsylvania_state_university",
+      "name": "Pennsylvania State University",
+      "rank": 92,
+      "rank_display": "=92"
+    },
+    {
+      "id": "washington",
+      "name": "University of Washington",
+      "rank": 92,
+      "rank_display": "=92"
+    },
+    {
+      "id": "boston_university",
+      "name": "Boston University",
+      "rank": 94,
+      "rank_display": "94"
+    },
+    {
+      "id": "university_of_osaka",
+      "name": "The University of Osaka",
+      "rank": 95,
+      "rank_display": "95"
+    },
+    {
+      "id": "university_of_alberta",
+      "name": "University of Alberta",
+      "rank": 96,
+      "rank_display": "96"
+    },
+    {
+      "id": "institute_of_science_tokyo",
+      "name": "Institute of Science Tokyo",
+      "rank": 97,
+      "rank_display": "=97"
+    },
+    {
+      "id": "university_of_nottingham",
+      "name": "University of Nottingham",
+      "rank": 97,
+      "rank_display": "=97"
+    },
+    {
+      "id": "freie_universitaet_berlin",
+      "name": "Freie Universitaet Berlin",
+      "rank": 98,
+      "rank_display": "=98"
+    },
+    {
+      "id": "university_of_zurich",
+      "name": "University of Zurich",
+      "rank": 98,
+      "rank_display": "=98"
+    },
+    {
+      "id": "purdue",
+      "name": "Purdue University",
+      "rank": 100,
+      "rank_display": "=100"
+    },
+    {
+      "id": "university_college_dublin",
+      "name": "University College Dublin",
+      "rank": 100,
+      "rank_display": "=100"
+    }
+  ]
+}

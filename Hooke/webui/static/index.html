@@ -243,7 +243,7 @@
 
 <fieldset id="university-panel" style="display:none">
   <p class="hint">We've virtualized labs from a number of universities. Pick one, then narrow down by subject and lab.</p>
-  <p class="hint">Each entry below is a real, sourced lab facility (QS World University Rankings 101&ndash;250). Picking a university filters Subject and Lab to that school's reconstructed scene(s) and plays its clip right away &mdash; "Generate scene" renders a fresh live snapshot on top of that.</p>
+  <p class="hint" id="uni-scope-hint">Browse both university laboratory collections. Available clips play when selected; "Generate scene" opens instrument controls or renders a fresh snapshot.</p>
 
   <label for="uni-university">University</label>
   <select id="uni-university"></select>
@@ -255,7 +255,7 @@
   <select id="uni-lab"></select>
   <div id="uni-robot-info"></div>
 
-  <button class="primary" id="uni-generate">Generate scene</button>
+  <button class="primary" id="uni-generate" disabled>Generate scene</button>
   <div id="uni-error"></div>
 </fieldset>
 
@@ -415,71 +415,125 @@ async function loadCatalog() {
   populateUniSubjects();
 }
 
-function realLabTasks() {
-  return CATALOG.tasks.filter(t => t.category === 'real_lab' && t.navigation?.university);
+function universityDirectory() {
+  const directory = CATALOG?.university;
+  const universities = new Map((Array.isArray(directory?.universities) ? directory.universities : [])
+    .filter(university => university?.id && university.name)
+    .map(university => [university.id, university]));
+  const universityNames = new Map([...universities.values()]
+    .map(university => [university.name.trim().toLocaleLowerCase('en'), university.id]));
+  const tasks = new Map((CATALOG?.tasks || []).map(task => [task.name, task]));
+  const labs = (Array.isArray(directory?.labs) ? directory.labs : []).filter(lab =>
+    lab?.scene_id && lab.subject_id && universities.has(lab.institution_id) && tasks.has(lab.task_name));
+  const represented = new Set(labs.map(lab => lab.task_name));
+
+  // The instrument directory and the contributor's display tasks have distinct
+  // execution paths. Normalize their picker rows without changing either task.
+  for (const task of tasks.values()) {
+    const navigation = task.navigation;
+    if (task.category !== 'real_lab' || !navigation?.university || !navigation.category
+        || !navigation.facility || represented.has(task.name)) continue;
+    const name = navigation.university;
+    const nameKey = name.trim().toLocaleLowerCase('en');
+    const institution = universityNames.get(nameKey) || `real_lab:${name}`;
+    if (!universities.has(institution)) {
+      universities.set(institution, { id: institution, name });
+      universityNames.set(nameKey, institution);
+    }
+    labs.push({
+      scene_id: task.name, task_name: task.name, institution_id: institution,
+      subject_id: navigation.category, subject_label: navigation.category_label,
+      lab_name: navigation.facility, title: navigation.task_label,
+      university_name: name, url: navigation.url,
+    });
+  }
+  return { universities: [...universities.values()], labs };
+}
+
+function selectedUniversityLabs() {
+  const institution = document.getElementById('uni-university').value;
+  return universityDirectory().labs.filter(lab => !institution || lab.institution_id === institution);
 }
 
 function populateUniUniversities() {
-  const universities = [...new Set(realLabTasks().map(t => t.navigation.university))]
-    .sort((a, b) => a.localeCompare(b, 'en'));
+  const universities = universityDirectory().universities
+    .sort((a, b) => a.name.localeCompare(b.name, 'en'));
   const universitySelect = document.getElementById('uni-university');
   universitySelect.replaceChildren(
     new Option('All universities', ''),
-    ...universities.map(name => new Option(name, name)),
+    ...universities.map(university => new Option(university.name, university.id)),
   );
-  universitySelect.addEventListener('change', populateUniSubjects);
+  const ranking = CATALOG?.university?.ranking;
+  document.getElementById('uni-scope-hint').textContent = (ranking?.edition
+    ? `Research scope: ${ranking.title || 'QS World University Rankings'} ${ranking.edition}, ranks 1–100. Additional sourced facilities from ranks 101–250 are also listed. `
+    : 'Both university laboratory collections are listed. ')
+    + 'Universities and labs are sorted A–Z. Available clips play when selected; "Generate scene" opens instrument controls or renders a fresh snapshot.';
 }
 
 function populateUniSubjects() {
-  const university = document.getElementById('uni-university').value;
-  const tasks = realLabTasks().filter(t => !university || t.navigation.university === university);
   const subjects = new Map();
-  for (const task of tasks) {
-    subjects.set(task.navigation.category, task.navigation.category_label);
+  for (const lab of selectedUniversityLabs()) {
+    subjects.set(lab.subject_id, lab.subject_label || lab.subject_id);
   }
   const ordered = [...subjects.keys()].sort((a, b) =>
     subjects.get(a).localeCompare(subjects.get(b), 'en'));
   const subjectSelect = document.getElementById('uni-subject');
   subjectSelect.replaceChildren(...ordered.map(key => new Option(subjects.get(key), key)));
-  subjectSelect.addEventListener('change', populateUniLabs);
-  document.getElementById('uni-lab').addEventListener('change', onUniLabChange);
+  subjectSelect.disabled = !ordered.length;
+  if (!ordered.length) subjectSelect.add(new Option('No subjects available', ''));
   populateUniLabs();
 }
 
 function populateUniLabs() {
   const university = document.getElementById('uni-university').value;
   const subject = document.getElementById('uni-subject').value;
-  const tasks = realLabTasks()
-    .filter(t => (!university || t.navigation.university === university) && t.navigation.category === subject)
-    .sort((a, b) => {
-      const la = university ? a.navigation.facility : `${a.navigation.university} — ${a.navigation.facility}`;
-      const lb = university ? b.navigation.facility : `${b.navigation.university} — ${b.navigation.facility}`;
-      return la.localeCompare(lb, 'en');
-    });
+  const labs = selectedUniversityLabs().filter(lab => lab.subject_id === subject);
+  const nameOf = lab => {
+    const name = lab.lab_name || lab.title || lab.scene_id;
+    return !university && lab.university_name ? `${lab.university_name} — ${name}` : name;
+  };
+  const names = new Map();
+  for (const lab of labs) names.set(nameOf(lab), (names.get(nameOf(lab)) || 0) + 1);
+  const options = labs.map(lab => {
+    const name = nameOf(lab);
+    const label = names.get(name) > 1 ? `${name} — ${lab.title || lab.scene_id}` : name;
+    return new Option(label, lab.scene_id);
+  }).sort((a, b) => a.text.localeCompare(b.text, 'en'));
   const labSelect = document.getElementById('uni-lab');
-  labSelect.replaceChildren(...tasks.map(task => {
-    const label = university ? task.navigation.facility : `${task.navigation.university} — ${task.navigation.facility}`;
-    return new Option(label, task.name);
-  }));
+  labSelect.replaceChildren(...options);
+  labSelect.disabled = !labs.length;
+  if (!labs.length) labSelect.add(new Option('No reconstructed labs available', ''));
   onUniLabChange();
 }
 
+function currentUniLab() {
+  const scene = document.getElementById('uni-lab').value;
+  const subject = document.getElementById('uni-subject').value;
+  return selectedUniversityLabs().find(lab => lab.scene_id === scene && lab.subject_id === subject);
+}
+
 function currentUniTask() {
-  const name = document.getElementById('uni-lab').value;
-  return CATALOG.tasks.find(t => t.name === name);
+  const lab = currentUniLab();
+  return lab && (CATALOG?.tasks || []).find(task => task.name === lab.task_name);
 }
 
 function onUniLabChange() {
   const task = currentUniTask();
+  document.getElementById('uni-preview').replaceChildren();
   document.getElementById('uni-error').textContent = '';
+  document.getElementById('uni-generate').disabled = !task;
+  const info = document.getElementById('uni-robot-info');
   if (!task) {
-    document.getElementById('uni-robot-info').textContent = '';
-    document.getElementById('uni-preview').innerHTML = '';
+    info.textContent = document.getElementById('uni-university').value
+      ? 'No reconstructed labs are available for this university yet.'
+      : 'No reconstructed university labs are available yet.';
     return;
   }
-  const robot = CATALOG.robots[task.robot];
-  document.getElementById('uni-robot-info').textContent =
-    `${task.description} — ${robot.category.replace('_', ' ')}, this task's native robot.`;
+  const robot = CATALOG?.robots?.[task.robot];
+  const description = task.description || currentUniLab().title || currentUniLab().lab_name;
+  info.textContent = robot?.category
+    ? `${description} — ${robot.category.replaceAll('_', ' ')}, this task's native robot.`
+    : description || '';
 
   // Real-lab tasks ship a pre-recorded clip of their one moving part, so
   // the simulation is viewable the instant a lab is picked -- no need to
@@ -492,6 +546,10 @@ function onUniLabChange() {
     document.getElementById('uni-preview').innerHTML = '';
   }
 }
+
+document.getElementById('uni-university').addEventListener('change', populateUniSubjects);
+document.getElementById('uni-subject').addEventListener('change', populateUniLabs);
+document.getElementById('uni-lab').addEventListener('change', onUniLabChange);
 
 function populateTasks() {
   const category = document.getElementById('category').value;
@@ -642,16 +700,14 @@ document.getElementById('uni-generate').addEventListener('click', uniGenerateSce
 document.getElementById('generate-custom').addEventListener('click', generateCustom);
 
 async function uniGenerateScene() {
+  const lab = currentUniLab();
   const task = currentUniTask();
-  if (!task) return;
+  if (!lab || !task) return;
   document.getElementById('uni-error').textContent = '';
 
-  // Tasks with their own dedicated page (microscopy, space experiments,
-  // surface missions, dual-backend) go straight there, same as the
-  // existing panel does -- this quick picker's /api/scene preview is a
-  // generic fallback, not the primary way to view those.
-  if (task.navigation?.url) {
-    location.assign(new URL(task.navigation.url, location.origin).href);
+  const destination = lab.url || task.navigation?.url;
+  if (destination) {
+    location.assign(new URL(destination, location.origin).href);
     return;
   }
 
@@ -669,6 +725,7 @@ async function uniGenerateScene() {
     body: JSON.stringify(body),
   });
   const data = await res.json();
+  if (currentUniLab()?.scene_id !== lab.scene_id) return;
   if (!res.ok) {
     document.getElementById('uni-error').textContent = data.error || 'Unknown error';
     document.getElementById('uni-preview').innerHTML = '';

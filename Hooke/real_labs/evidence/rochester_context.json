@@ -1,0 +1,42 @@
+{
+  "rochester_genomics": {
+    "observed": [
+      "The official room photograph shows pale blue walls, wood-front counters, crowded shelves with varied cartons, two compact cream/blue bench devices, tissue packs, cables and a white/black Digital Spatial Profiler exterior."
+    ],
+    "source_urls": [
+      "https://www.library.rochester.edu/studio-x/projects/genomics-shared-resource-virtual-tour",
+      "https://nanostring.com/wp-content/uploads/2024/06/BR_MK0981_GeoMx_Brochure_r41_letter.pdf",
+      "https://www.urmc.rochester.edu/research/rochester-genomics-center/services/spatial-genomics"
+    ],
+    "local_reference_sha256": "21365afe5db8d47db1241ec280f81c43f038a7e6cd9f7d766963dec77c2c3789",
+    "published_dimensions_m": {
+      "instrument": "GeoMx Digital Spatial Profiler",
+      "width": 0.76,
+      "depth": 0.73,
+      "height": 0.61,
+      "basis": "Manufacturer brochure dimension table, 30 x 29 x 24 inches; nominal centimetre dimensions are rounded."
+    },
+    "historical_context": "Rochester states that GeoMx service support ended on June 30, 2026. This exterior is retained as historical photographic context, not current service inventory.",
+    "implemented": [
+      "A supported closed profiler exterior with four contact-capable feet, rounded white/black housing, front handle and side vents; the side counter is widened to contain its footprint.",
+      "Varied contact-capable cartons on supported wood shelves, with physical clearance from the vertical shelf posts.",
+      "Two parked bench-device exteriors, a tissue pack and visual cables joining modeled device and power-strip ports."
+    ],
+    "inferred": [
+      "All placements, room dimensions, device feet, small-device shapes, carton dimensions and cable routing are authored estimates from visible categories. The photograph does not establish a measured room plan or the exact installed profiler configuration.",
+      "Published overall dimensions inform an original exterior approximation; this is not OEM CAD or an exact reconstruction of internal components."
+    ],
+    "capabilities": {
+      "closed_exterior_collision": true,
+      "profiler_operation": false,
+      "bench_device_operation": false,
+      "fluid_or_electrical_simulation": false,
+      "cabinet_load_capacity_validated": false
+    },
+    "unresolved": [
+      "The fixed contextual props have no pickup interface or scientific behavior; robot access to their exteriors has not been qualified.",
+      "Room topology, exact instrument inventory and equipment installation clearances require additional reference views or measurements."
+    ],
+    "media_policy": "Photographs remain local inspection evidence. No source photographs, labels, logos or OEM CAD are embedded or redistributed."
+  }
+}

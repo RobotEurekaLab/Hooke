@@ -3,10 +3,9 @@
 import mujoco
 import numpy as np
 
-from microscopy.cell_scene import NEEDLE_BACK
 from microscopy.cell_tasks import CellInjection, CellInjectionExpert
 from microscopy.suction_mechanics import SuctionMechanics
-from microscopy.suction_scene import CELL_CENTER, CELL_RADII, HOLDER_BACK, build_xml
+from microscopy.suction_scene import CELL_CENTER, CELL_RADII, build_xml
 
 
 class SuctionInjection(CellInjection):
@@ -63,26 +62,30 @@ class SuctionInjection(CellInjection):
 
 class SuctionInjectionExpert(CellInjectionExpert, SuctionInjection):
     def suction_injection(self):
+        needle_back = self.mechanics.needle_back
+        holder_back = self.mechanics.holder_back
         self.phase("locate_cell")
         centre = np.array([*self.locate("cell"), CELL_CENTER[2]])
         radius = CELL_RADII[0]
         self.phase("approach_holding_pipette")
-        self.move("holder", centre+HOLDER_BACK*(radius+80e-6), .8)
-        self.move("holder", centre+HOLDER_BACK*radius, .7)
+        self.move("holder", centre+holder_back*(radius+80e-6), .8)
+        self.move("holder", centre+holder_back*radius, .7)
         self.phase("establish_suction")
         self.mechanics.holding_pressure_pa = -1500.
         self.wait(.2)
         if not self.mechanics.sealed:
             raise RuntimeError("Holding seal was not established; injection aborted")
         centre[:2] = self.locate("cell")
-        self.move("injector", centre+NEEDLE_BACK*(radius+100e-6), .8)
+        self.move("injector", centre+needle_back*(radius+100e-6), .8)
+        self.focus_observation(centre[2]+needle_back[2]*(radius-3e-6),
+                               "focus_injection_plane")
         self.mechanics.compensation_pa = 500.
         self.phase("approach_cell")
-        self.move("injector", centre+NEEDLE_BACK*(radius+10e-6), .7)
+        self.move("injector", centre+needle_back*(radius+10e-6), .7)
         self.phase("membrane_contact")
-        self.move("injector", centre+NEEDLE_BACK*(radius-.6e-6), .5)
+        self.move("injector", centre+needle_back*(radius-.6e-6), .5)
         self.phase("puncture_cell")
-        self.move("injector", centre+NEEDLE_BACK*(radius-3e-6), .7)
+        self.move("injector", centre+needle_back*(radius-3e-6), .7)
         if not self.mechanics.punctured or not self.mechanics.sealed:
             raise RuntimeError("A supported membrane puncture was not established; injection aborted")
         self.phase("cytoplasm_injection")
@@ -98,12 +101,13 @@ class SuctionInjectionExpert(CellInjectionExpert, SuctionInjection):
         self.data.userdata[0] = 0.
         self.mechanics.compensation_pa = 0.
         self.phase("withdraw_cell_needle")
-        self.move("injector", centre+NEEDLE_BACK*(radius+25e-6), .6)
+        self.move("injector", centre+needle_back*(radius+25e-6), .6)
         self.wait(.3)
         self.phase("release_suction")
         self.mechanics.holding_pressure_pa = 0.
         self.wait(.4)
-        self.move("holder", centre+HOLDER_BACK*(radius+50e-6), .6)
+        self.move("holder", centre+holder_back*(radius+50e-6), .6)
+        self.restore_cell_focus()
         self.phase("tracer_review")
 
 

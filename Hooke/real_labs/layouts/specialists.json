@@ -1,0 +1,942 @@
+{
+  "indiana_microfluidics": {
+    "layout_fidelity": "workflow_based_design",
+    "reference_notes": "The Jacobson tour verifies fluorescence microscopy and vacuum-controlled microfluidic valves, but provides no measured floor plan. The compact imaging alcove, optical support, curtains and separated preparation counter are an authored workflow-based design, not a reconstruction of the Indiana room.",
+    "room": {
+      "size": [
+        6.4,
+        4.7,
+        2.85
+      ],
+      "wall_color": [
+        0.72,
+        0.73,
+        0.71,
+        1
+      ],
+      "accent": [
+        0.32,
+        0.34,
+        0.33,
+        1
+      ],
+      "style": "imaging",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.31,
+            0.34,
+            0.33,
+            1
+          ],
+          "pattern": "plain",
+          "spacing": 1
+        },
+        "openings": [
+          {
+            "id": "entry",
+            "wall": "back",
+            "kind": "door",
+            "offset": 0.65,
+            "width": 0.95,
+            "height": 2.1,
+            "sill": 0
+          }
+        ],
+        "ceiling": "suspended",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "imaging_island",
+        "pos": [
+          -1.55,
+          0.65,
+          0
+        ],
+        "size": [
+          2.15,
+          1.2,
+          0.8
+        ],
+        "yaw": 0,
+        "style": "optical",
+        "color": [
+          0.21,
+          0.23,
+          0.24,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "sample_preparation",
+        "pos": [
+          2.65,
+          0,
+          0
+        ],
+        "size": [
+          2.9,
+          0.75,
+          0.9
+        ],
+        "yaw": -1.57079632679,
+        "style": "cabinet",
+        "color": [
+          0.68,
+          0.7,
+          0.65,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "fluidics_service",
+        "pos": [
+          -1.45,
+          -1.2,
+          0
+        ],
+        "size": [
+          1.75,
+          0.65,
+          0.75
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.4,
+          0.43,
+          0.43,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "microfluidic_station": {
+        "pos": [
+          -1.55,
+          0.65,
+          0.8
+        ],
+        "yaw": 0
+      },
+      "centrifuge": {
+        "pos": [
+          2.65,
+          -0.65,
+          0.9
+        ],
+        "yaw": -1.57079632679
+      },
+      "cell_dish": {
+        "pos": [
+          2.65,
+          0.05,
+          0.9
+        ],
+        "yaw": 0
+      },
+      "reagent_bottle": {
+        "pos": [
+          2.65,
+          0.9,
+          0.9
+        ],
+        "yaw": 0
+      },
+      "oscilloscope": {
+        "pos": [
+          -1.8,
+          -1.2,
+          0.75
+        ],
+        "yaw": 0
+      }
+    },
+    "camera": {
+      "overview": {
+        "position": [
+          7.4,
+          -9.5,
+          7.5
+        ],
+        "target": [
+          0,
+          0.15,
+          0.65
+        ],
+        "fovy": 45
+      },
+      "workstation": {
+        "position": [
+          -0.3,
+          -1.45,
+          1.8
+        ],
+        "target": [
+          -1.48,
+          0.63,
+          1.2
+        ],
+        "fovy": 42
+      },
+      "interior": {
+        "position": [
+          1.5,
+          -1.9,
+          1.62
+        ],
+        "target": [
+          -1.1,
+          0.55,
+          1.18
+        ],
+        "fovy": 65
+      },
+      "stage_access": {
+        "position": [
+          -1.36,
+          0.33,
+          1.4
+        ],
+        "target": [
+          -1.55,
+          0.65,
+          1.145
+        ],
+        "fovy": 34,
+        "purpose": "Inspection of the authored open XY stage, slide retainers and objective support. This is a geometric view, not a calibrated microscope image."
+      }
+    },
+    "layout_rationale": [
+      "Observed function: vacuum-actuated microfluidic valves and fluorescence imaging are described at 6:27-7:02 of the official Jacobson tour (https://stephenjacobson.lab.iu.edu/).",
+      "Authored design: a low optical table occupies a shaded alcove; the preparation counter is separated from the instrument and acquisition desk by an open circulation aisle.",
+      "Authored service details: a light-control curtain, small vacuum service box and routed tubing support the documented imaging/pressure workflow; their presence and positions in the real laboratory are unverified.",
+      "Uncertainty: all room dimensions, apertures, furniture positions and service routing are estimates; curtain use is a workflow choice, not a source-observed fixture."
+    ]
+  },
+  "epfl_microbiorobotics": {
+    "layout_fidelity": "workflow_based_design",
+    "reference_notes": "The inspected MICROBS apparatus photograph shows machined stages, bolts, wire harnesses, tubing and an angled microsurgical tool. It does not show a floor plan or the retained magnetic-coil apparatus. This open optical-mechatronics bay is an authored workflow-based design; the articulated magnetic microscope remains a clearly identified research-topic surrogate.",
+    "room": {
+      "size": [
+        5.6,
+        4.8,
+        3.15
+      ],
+      "wall_color": [
+        0.81,
+        0.82,
+        0.79,
+        1
+      ],
+      "accent": [
+        0.36,
+        0.42,
+        0.46,
+        1
+      ],
+      "style": "mechatronics",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.47,
+            0.49,
+            0.47,
+            1
+          ],
+          "pattern": "seams",
+          "spacing": 1.2
+        },
+        "openings": [
+          {
+            "id": "entry",
+            "wall": "left",
+            "kind": "door",
+            "offset": -1.4,
+            "width": 0.92,
+            "height": 2.15,
+            "sill": 0
+          },
+          {
+            "id": "daylight",
+            "wall": "back",
+            "kind": "window",
+            "offset": 0.15,
+            "width": 2.6,
+            "height": 0.8,
+            "sill": 1.85
+          }
+        ],
+        "ceiling": "suspended",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "microrobot_workspace",
+        "pos": [
+          -0.65,
+          -0.3,
+          0
+        ],
+        "size": [
+          2.15,
+          1.35,
+          0.8
+        ],
+        "yaw": 0,
+        "style": "optical",
+        "color": [
+          0.28,
+          0.3,
+          0.31,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "sample_preparation",
+        "pos": [
+          2.2,
+          -0.35,
+          0
+        ],
+        "size": [
+          1.45,
+          0.7,
+          0.9
+        ],
+        "yaw": -1.57079632679,
+        "style": "cabinet",
+        "color": [
+          0.71,
+          0.73,
+          0.71,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "electronics_bench",
+        "pos": [
+          -0.3,
+          1.9,
+          0
+        ],
+        "size": [
+          3.8,
+          0.7,
+          0.85
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.67,
+          0.69,
+          0.68,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "magnetic_microrobot": {
+        "pos": [
+          -0.65,
+          -0.25,
+          0.8
+        ],
+        "yaw": 0
+      },
+      "cell_dish": {
+        "pos": [
+          2.2,
+          -0.65,
+          0.9
+        ],
+        "yaw": 0
+      },
+      "oscilloscope": {
+        "pos": [
+          -1.25,
+          1.9,
+          0.85
+        ],
+        "yaw": 0
+      },
+      "function_generator": {
+        "pos": [
+          -0.15,
+          1.9,
+          0.85
+        ],
+        "yaw": 0
+      },
+      "reagent_bottle": {
+        "pos": [
+          2.2,
+          0.15,
+          0.9
+        ],
+        "yaw": 0
+      }
+    },
+    "camera": {
+      "overview": {
+        "position": [
+          7.2,
+          -8.4,
+          7.3
+        ],
+        "target": [
+          0,
+          0.3,
+          0.7
+        ],
+        "fovy": 45
+      },
+      "workstation": {
+        "position": [
+          0.65,
+          -2.3,
+          1.9
+        ],
+        "target": [
+          -0.6,
+          -0.15,
+          1.17
+        ],
+        "fovy": 43
+      },
+      "interior": {
+        "position": [
+          2.15,
+          -1.95,
+          1.62
+        ],
+        "target": [
+          -0.65,
+          0.15,
+          1.2
+        ],
+        "fovy": 65
+      },
+      "stage_assembly": {
+        "position": [
+          -0.26,
+          -0.83,
+          1.42
+        ],
+        "target": [
+          -0.65,
+          -0.25,
+          1.155
+        ],
+        "fovy": 36
+      }
+    },
+    "layout_rationale": [
+      "Observed apparatus cue: the official MICROBS image shows compact machined mechatronics, bolted components, motor wiring and an angled tool (https://www.epfl.ch/labs/microbs/).",
+      "Authored design: a central optical table provides access around the manipulation platform, while an independent rear electronics bench keeps test instruments and their cables clear of the sample area.",
+      "Research-topic substitution: the retained coil microscope does not reproduce the pictured microsurgery mechanism. Magnetic actuation is documented by MICROBS research pages, but neither this coil configuration nor this room is institution-verified.",
+      "Uncertainty: window, door, table dimensions and equipment positions are estimated. This scene is a microbiorobotics workflow environment, not the MICROBS floor plan."
+    ]
+  },
+  "uva_deposition": {
+    "layout_fidelity": "workflow_based_design",
+    "reference_notes": "The official Ihlefeld facilities gallery was inspected directly: Sputter1 shows a rounded multiport vessel, lateral manifold, inclined bolted ports, upright actuator posts and connected services on a slotted rack frame. PLD1 and Oxford FlexAL are distinct instruments and are not merged into this mechanism. The retained top-opening chamber, free-coupon platen and valve are an authored dry-access surrogate; they do not reproduce Sputter1 loading mechanics. Room layout, all dimensions and internal supports remain inferred.",
+    "room": {
+      "size": [
+        8.0,
+        4.8,
+        3.7
+      ],
+      "wall_color": [
+        0.79,
+        0.78,
+        0.73,
+        1
+      ],
+      "accent": [
+        0.4,
+        0.43,
+        0.42,
+        1
+      ],
+      "style": "fabrication",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.37,
+            0.39,
+            0.39,
+            1
+          ],
+          "pattern": "seams",
+          "spacing": 2
+        },
+        "openings": [
+          {
+            "id": "entry",
+            "wall": "left",
+            "kind": "door",
+            "offset": -1.45,
+            "width": 1.15,
+            "height": 2.3,
+            "sill": 0
+          },
+          {
+            "id": "observation",
+            "wall": "back",
+            "kind": "window",
+            "offset": 1.9,
+            "width": 2.3,
+            "height": 0.65,
+            "sill": 2.35
+          }
+        ],
+        "ceiling": "exposed",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "deposition_bench",
+        "pos": [
+          -1.6,
+          0.25,
+          0
+        ],
+        "size": [
+          2.35,
+          1.4,
+          0.75
+        ],
+        "yaw": 0,
+        "style": "open_frame",
+        "color": [
+          0.47,
+          0.5,
+          0.52,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "substrate_preparation",
+        "pos": [
+          3.25,
+          0.1,
+          0
+        ],
+        "size": [
+          3.0,
+          0.9,
+          0.92
+        ],
+        "yaw": -1.57079632679,
+        "style": "cabinet",
+        "color": [
+          0.67,
+          0.69,
+          0.67,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "measurement_bench",
+        "pos": [
+          1.25,
+          1.85,
+          0
+        ],
+        "size": [
+          2.0,
+          0.75,
+          0.92
+        ],
+        "yaw": 0,
+        "style": "cabinet",
+        "color": [
+          0.61,
+          0.63,
+          0.61,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "deposition_chamber": {
+        "pos": [
+          -1.6,
+          0.15,
+          0.75
+        ],
+        "yaw": 0
+      },
+      "spin_coater": {
+        "pos": [
+          3.25,
+          -0.75,
+          0.92
+        ],
+        "yaw": -1.57079632679
+      },
+      "quartz_microbalance": {
+        "pos": [
+          0.65,
+          1.85,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "analytical_balance": {
+        "pos": [
+          1.65,
+          1.85,
+          0.92
+        ],
+        "yaw": 0
+      },
+      "reagent_bottle": {
+        "pos": [
+          3.25,
+          0.95,
+          0.92
+        ],
+        "yaw": 0
+      }
+    },
+    "camera": {
+      "overview": {
+        "position": [
+          9.4,
+          -10.0,
+          8.1
+        ],
+        "target": [
+          0,
+          0.3,
+          0.75
+        ],
+        "fovy": 46
+      },
+      "workstation": {
+        "position": [
+          0.1,
+          -2.3,
+          2.1
+        ],
+        "target": [
+          -1.5,
+          0.4,
+          1.15
+        ],
+        "fovy": 48
+      },
+      "interior": {
+        "position": [
+          1.95,
+          -1.65,
+          1.67
+        ],
+        "target": [
+          -1.45,
+          0.8,
+          1.25
+        ],
+        "fovy": 68
+      },
+      "chamber_loading": {
+        "position": [
+          -1.45,
+          -0.15,
+          2.08
+        ],
+        "target": [
+          -1.6,
+          0.15,
+          1.11
+        ],
+        "fovy": 37,
+        "purpose": "Overhead loading inspection with the chamber lid open. The closed metal lid remains opaque."
+      }
+    },
+    "layout_rationale": [
+      "Verified process family: sputtering, pulsed-laser ablation, ALD and solution deposition are listed by the official Ihlefeld faculty page (https://engineering.virginia.edu/faculty/jon-ihlefeld).",
+      "Authored design: a low steel process skid replaces the wet-lab island; a rear service zone accommodates a vacuum pump, chiller, controls and secured process-gas cylinders.",
+      "Authored circulation: the operator approaches the chamber from the front; the right counter separates spin-coating and substrate cleaning from vacuum services; the rear measurement counter keeps weighing away from the pump.",
+      "Uncertainty: this compact sputter bay is not the original UVA geometry, not a certified cleanroom and not a pressure-system design; services are geometric context without fluid or vacuum solvers."
+    ],
+    "observed_cues": [
+      "Sputter1 photograph: polished rounded multiport vessel and lateral cylindrical manifold.",
+      "Sputter1 photograph: inclined bolted flanges, upright actuator posts and connected service hoses.",
+      "Sputter1 photograph: open extrusion frame with rack-mounted electronics; no measured room plan."
+    ],
+    "task": {
+      "name": "Inspect a supported substrate through an open chamber",
+      "description": "Open the authored lid, rotate the already-loaded free coupon through contact, observe its top access, and return the platen and lid using measured actuators.",
+      "primary_equipment": "deposition_chamber",
+      "observable": "Source-bound mechanical operation records actual positions, coupon contact/retention, direct clearances and visible geometric access; no deposition or sealing claim."
+    },
+    "source_urls": [
+      "https://wordpress.its.virginia.edu/Ihlefeld_Research_Group/facilities/",
+      "https://engineering.virginia.edu/faculty/jon-ihlefeld"
+    ],
+    "mechanical_access_revision": 1,
+    "reference_detail_evidence": {
+      "uva_access": {
+        "reference": "Official Ihlefeld facilities gallery: Sputter1, PLD1 and Oxford FlexAL personally inspected; Sputter1 exterior cues selected.",
+        "primary_image_url": "https://wordpress.its.virginia.edu/Ihlefeld_Research_Group/wp-content/blogs.dir/14246/files/facilities/IMG_1824.JPG",
+        "image_sha256": "ba29e59408526cc2ce32645f69834b1cc66a99fcdbcba5a40adf1a993f97878a",
+        "geometry_basis": "Original dry-access apparatus with supported spindle/bearings, hinge, valve gland, controller and connected services. Capped branches are exterior context, not a transfer mechanism.",
+        "limitations": [
+          "Not an exact Sputter1 model or institution-approved digital twin",
+          "No vacuum, sealing, pressure, sputtering, plasma or film-growth validation",
+          "Photo redistribution rights are not established; source imagery remains local research evidence"
+        ]
+      }
+    }
+  },
+  "eth_air_quality": {
+    "layout_fidelity": "workflow_based_design",
+    "reference_notes": "The official Wang Group tour thumbnail shows a crowded instrument bench, vial racks, a secured cylinder and a vertical duct. Those are source-observed cues. The long sampling counter, separate lower gravimetry table and all dimensions/apertures are authored workflow choices; the room layout is not recovered from the thumbnail.",
+    "room": {
+      "size": [
+        6.6,
+        4.0,
+        3.0
+      ],
+      "wall_color": [
+        0.83,
+        0.84,
+        0.8,
+        1
+      ],
+      "accent": [
+        0.55,
+        0.61,
+        0.55,
+        1
+      ],
+      "style": "aerosol",
+      "architecture": {
+        "floor": {
+          "color": [
+            0.49,
+            0.53,
+            0.5,
+            1
+          ],
+          "pattern": "plain",
+          "spacing": 1
+        },
+        "openings": [
+          {
+            "id": "entry",
+            "wall": "left",
+            "kind": "door",
+            "offset": -1.1,
+            "width": 0.9,
+            "height": 2.15,
+            "sill": 0
+          }
+        ],
+        "ceiling": "exposed",
+        "service_strip": false
+      }
+    },
+    "benches": [
+      {
+        "id": "sampling_bench",
+        "pos": [
+          -0.2,
+          1.3,
+          0
+        ],
+        "size": [
+          5.0,
+          0.85,
+          0.9
+        ],
+        "yaw": 0,
+        "style": "cabinet",
+        "color": [
+          0.72,
+          0.75,
+          0.7,
+          1
+        ],
+        "accessories": false
+      },
+      {
+        "id": "filter_preparation",
+        "pos": [
+          2.7,
+          -0.5,
+          0
+        ],
+        "size": [
+          1.6,
+          0.75,
+          0.82
+        ],
+        "yaw": -1.57079632679,
+        "style": "open_frame",
+        "color": [
+          0.48,
+          0.52,
+          0.49,
+          1
+        ],
+        "accessories": false
+      }
+    ],
+    "equipment_positions": {
+      "aerosol_sampler": {
+        "pos": [
+          -1.45,
+          1.3,
+          0.9
+        ],
+        "yaw": 0
+      },
+      "analytical_balance": {
+        "pos": [
+          2.7,
+          -0.15,
+          0.82
+        ],
+        "yaw": -1.57079632679
+      },
+      "cell_dish": {
+        "pos": [
+          2.7,
+          -0.9,
+          0.82
+        ],
+        "yaw": 0
+      },
+      "reagent_bottle": {
+        "pos": [
+          -0.3,
+          1.3,
+          0.9
+        ],
+        "yaw": 0
+      },
+      "ph_meter": {
+        "pos": [
+          0.75,
+          1.3,
+          0.9
+        ],
+        "yaw": 0
+      }
+    },
+    "camera": {
+      "overview": {
+        "position": [
+          7.8,
+          -9.4,
+          7.3
+        ],
+        "target": [
+          0,
+          0.35,
+          0.7
+        ],
+        "fovy": 43
+      },
+      "workstation": {
+        "position": [
+          -0.25,
+          -0.35,
+          1.7
+        ],
+        "target": [
+          -1.25,
+          1.3,
+          1.3
+        ],
+        "fovy": 44
+      },
+      "interior": {
+        "position": [
+          1.6,
+          -1.65,
+          1.62
+        ],
+        "target": [
+          -0.95,
+          1.3,
+          1.3
+        ],
+        "fovy": 67
+      },
+      "filter_inspection": {
+        "position": [
+          -1.29,
+          0.94,
+          1.38
+        ],
+        "target": [
+          -1.59,
+          1.2,
+          1.072
+        ],
+        "fovy": 30
+      },
+      "bench_context": {
+        "position": [
+          0.94,
+          0.22,
+          1.58
+        ],
+        "target": [
+          0.17,
+          1.3,
+          1.08
+        ],
+        "fovy": 32
+      }
+    },
+    "layout_rationale": [
+      "Observed cues: the official tour thumbnail shows a densely occupied instrument counter, vial racks, secured gas cylinder and vertical ventilation duct (https://ie.ifu.ethz.ch/forschung/studies-labs/labs.html).",
+      "Authored design: a wall-aligned sampling counter groups inlet, filter and collection-fluid handling; a separate lower table provides space for gravimetric filter preparation.",
+      "Authored support services: sampling tubing, a suspended local canopy and service rails give the apparatus a coherent installation. They do not certify airflow performance or reproduce an observed exact duct route.",
+      "Uncertainty: only one ETH laboratory thumbnail was inspected. Images of the Chinese partner-laboratory visit were excluded from ETH geometry evidence."
+    ],
+    "task": {
+      "name": "Expose and inspect a loaded inert filter carrier",
+      "description": "Move the physically free, already loaded filter carrier through the supported drawer, verify visible access, and return without resetting the simulation.",
+      "primary_equipment": "aerosol_sampler",
+      "observable": "Measured drawer position, free-carrier retention, open access and actual return state; no flow or sampling result."
+    },
+    "detail_revision": 4,
+    "reference_detail_evidence": {
+      "eth_filter_access": {
+        "reference": "Official ETH tour thumbnail; one 480 by 360 view",
+        "source_url": "https://ie.ifu.ethz.ch/forschung/studies-labs/labs.html",
+        "observed": [
+          "Crowded enclosed instrument bench, sample racks, secured cylinder and vertical duct"
+        ],
+        "authored": [
+          "Open filter carriage, supported guides, bearing shoes, valve stem, stack connectors and all internal dimensions",
+          "The generic monitor/manifold is not identified as the cream instrument pictured in the thumbnail"
+        ],
+        "limitations": [
+          "No recovered room dimensions or OEM filter-access assembly",
+          "Physical access to a loaded rigid inert carrier only; no flow, aerosol or filtration response"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "kyoto_yokokawa_nanometrics": {
+    "observed": [
+      "The official TIRF workstation photograph shows a real central opening in the microscope stage, supported above the lower optical body."
+    ],
+    "source_urls": [
+      "https://www.mbsys.me.kyoto-u.ac.jp/album/lab/",
+      "https://www.mbsys.me.kyoto-u.ac.jp/wp-content/uploads/2023/09/Nano3-1-scaled.jpg"
+    ],
+    "implemented": [
+      "Open XY stage plates and an inset slide holder, with separate contact boxes that leave the same aperture open in physics.",
+      "Visible fasteners and slide-edge retention, preserving the 75 x 25 mm slide, 2 mm inert target and existing stage travel.",
+      "A sample close-up supplements the original room and workstation cameras."
+    ],
+    "inferred": [
+      "Plate envelopes, rectangular insert, aperture clearances and fasteners are original estimates; the source does not identify a measured motorized stage assembly."
+    ],
+    "unresolved": [
+      "The supported prismatic joints approximate internal guides; preload, bearing friction and optical image formation are not modeled.",
+      "Clearance and visibility checks do not establish a calibrated TIRF optical path."
+    ],
+    "media_policy": "Source photographs are local inspection evidence only; no photo textures or OEM CAD are redistributed."
+  },
+  "tsinghua_rush3d": {
+    "observed": [
+      "The official apparatus photograph shows a supported sample stage below the upper objective, with separate machined plates and adjustment mechanisms."
+    ],
+    "source_urls": [
+      "https://www.tsinghua.edu.cn/info/3155/119959.htm"
+    ],
+    "implemented": [
+      "Open sample-stage plates, inset slide support and estimated fastening details, keeping the existing target coordinates and control ranges.",
+      "A narrower X-carrier envelope clears the right support post at full travel; separate guide housings explain the gap between exterior plates.",
+      "One continuous visual mesh avoids false seams between the four contact boxes; neither representation seals the central aperture.",
+      "A close-up makes the authored 2 mm inert target visible at physical scale."
+    ],
+    "inferred": [
+      "The functional rectangular apertures and guide hardware are authored surrogate details. Their exact shapes and dimensions cannot be established from the single source view."
+    ],
+    "unresolved": [
+      "Internal rolling-guide behavior is represented by the prismatic joint; bearing preload, instrument precision and optical transfer functions remain unvalidated.",
+      "The lower microscope body and camera adjustment stack still need source-specific refinement."
+    ],
+    "media_policy": "Source photographs are local inspection evidence only; no photo textures or OEM CAD are redistributed."
+  }
+}

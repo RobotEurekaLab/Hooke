@@ -1,0 +1,850 @@
+{
+  "scenes": [
+    {
+      "id": "psl_sesame_adaptive_optics",
+      "title": "PSL SESAME Historical Optical Bench (2009)",
+      "institution": "Universite Psl \u2014 Observatoire de Paris SESAME adaptive-optics bench, Meudon",
+      "institution_id": "universite_psl",
+      "domain": "optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://lira.observatoiredeparis.psl.eu/Photos-Galerie"
+      ],
+      "reference_notes": "Two actual photographs show a large perforated optical table on isolated legs, with many vertically mounted circular optics, linear mounts, cameras and trailing control cables. Desks and screens sit against the rear wall, while a black curtain borders the work area. Historical 2009 gallery, not a verified 2026 arrangement. SESAME documentation locates the bench in the basement of building 18 at Meudon, shared with another bench; do not count that other bench as another lab. No adaptive-optics wavefront or telescope-performance solver.",
+      "observed_cues": [
+        "Two actual photographs show a large perforated optical table on isolated legs, with many vertically mounted circular optics, linear mounts, cameras and trailing control cables. Desks and screens sit against the rear wall, while a black curtain borders the work area."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          6.4,
+          5.2,
+          2.85
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "optics_bay_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.72,
+              "width": 1.1,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "sesame_bench",
+          "kind": "sesame_historical_relay_bench",
+          "pos": [
+            0,
+            -0.25,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Historical three-metre relay bench with two explicitly authored dry alignment controls",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Align an inert optical coupon and a mechanical mirror mount",
+        "description": "Translate a retained calibration target and yaw a supported mirror-shaped mount. Dense short lens mounts on a three-metre table, rear computer desks and a black curtain reproduce historical source cues; no optical image or wavefront result.",
+        "primary_equipment": "sesame_bench",
+        "observable": "Coupon displacement and mechanical mirror orientation"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            6.3,
+            -7.0,
+            4.5
+          ],
+          "target": [
+            0.0,
+            0.2,
+            0.97
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.02,
+            -2.12,
+            1.58
+          ],
+          "target": [
+            -0.3,
+            0.32,
+            1.09
+          ],
+          "fovy": 73
+        },
+        "workstation": {
+          "position": [
+            1.95,
+            -1.32,
+            1.72
+          ],
+          "target": [
+            0.14,
+            -0.26,
+            1.05
+          ],
+          "fovy": 55
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_access",
+          "minimum_xy": [
+            -2.88,
+            -2.36
+          ],
+          "maximum_xy": [
+            2.23,
+            -1.18
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_service",
+          "minimum_xy": [
+            -2.91,
+            -1.1
+          ],
+          "maximum_xy": [
+            -1.75,
+            1.43
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Two official historical photographs establish a dense perforated optical table, short circular optics, small cameras, cables, rear desk row and side black curtain.",
+        "Published 3 x 1.5 m table and optical-axis height provide scale anchors; small mounts, coupon fixture, room bounds and motion ranges remain original estimates.",
+        "This is explicitly a 2009 reference reconstruction at Meudon. The other bench sharing the room is not modeled or counted as another lab."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Historical configuration only; no assertion that the present-day laboratory matches these 2009 photographs. Source reuse licence and institutional endorsement remain unverified.",
+        "No optical prescription, adaptive-optics control, wavefront, calibrated images, light propagation or telescope performance. Perforation marks are decimated from the documented 25 mm grid."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave5": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/psl_sesame_room.jpg",
+              "sha256": "03385c76861782b1395dd8a5ea2c205855e9780677701fd27fc9dd7d705df281",
+              "page": "https://lira.observatoiredeparis.psl.eu/Photos-Galerie",
+              "image_url": "https://lira.observatoiredeparis.psl.eu/IMG/jpg/Salle_001-1-petit.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/psl_sesame_bench.jpg",
+              "sha256": "10134a88d620eadc62e2da717266b2ef28641f1e8a901d99f35c2233b96425f6",
+              "page": "https://lira.observatoiredeparis.psl.eu/Photos-Galerie",
+              "image_url": "https://lira.observatoiredeparis.psl.eu/IMG/jpg/banc-sesame2_500.jpg",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Two actual photographs show a large perforated optical table on isolated legs, with many vertically mounted circular optics, linear mounts, cameras and trailing control cables. Desks and screens sit against the rear wall, while a black curtain borders the work area."
+          ],
+          "implemented": [
+            "Two official historical photographs establish a dense perforated optical table, short circular optics, small cameras, cables, rear desk row and side black curtain.",
+            "Published 3 x 1.5 m table and optical-axis height provide scale anchors; small mounts, coupon fixture, room bounds and motion ranges remain original estimates.",
+            "This is explicitly a 2009 reference reconstruction at Meudon. The other bench sharing the room is not modeled or counted as another lab."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Historical configuration only; no assertion that the present-day laboratory matches these 2009 photographs. Source reuse licence and institutional endorsement remain unverified.",
+            "No optical prescription, adaptive-optics control, wavefront, calibrated images, light propagation or telescope performance. Perforation marks are decimated from the documented 25 mm grid."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "lund_nanoparticle_characterization",
+      "title": "NanoLund Dry Characterization Workstation",
+      "institution": "Lund University \u2014 NanoLund Aerosollab nanoparticle characterization workstation",
+      "institution_id": "lund_university",
+      "domain": "materials_characterization",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.nano.lu.se/labs/lund-nano-characterization-labs/aerosollab"
+      ],
+      "reference_notes": "The bench photo shows a red instrument base on a wooden worktop, a circular metal chamber with clamp handles and radial fasteners, side-mounted fittings and routed service tubes. A separate room detail shows a frame-mounted control computer beside a stainless enclosure and vertical utility pipes. Only the listed installed workstation views establish geometry. Do not merge this compact chamber with the separately described room-size climate chambers. No particle generation, exposure protocol, dispersion/collection physics or biological process; use inert mechanical samples.",
+      "observed_cues": [
+        "The bench photo shows a red instrument base on a wooden worktop, a circular metal chamber with clamp handles and radial fasteners, side-mounted fittings and routed service tubes. A separate room detail shows a frame-mounted control computer beside a stainless enclosure and vertical utility pipes."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          3.8,
+          3.5,
+          2.65
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "workstation_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -0.89,
+              "width": 0.98,
+              "height": 2.2,
+              "sill": 0
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "red_chamber",
+          "kind": "lund_red_dry_characterization_chamber",
+          "pos": [
+            -0.21,
+            0.26,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Reference-informed red bench instrument and circular chamber with dry mechanical access",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Inspect and index a retained inert characterization coupon",
+        "description": "Open a mechanical cover and rotate an inert coupon tray. The red housing, circular polished chamber, black lid, fasteners and side fittings reproduce the photographed device class. This is a dry mechanical preview without particle production or exposure.",
+        "primary_equipment": "red_chamber",
+        "observable": "Cover angle and retained inert coupon orientation"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            3.9,
+            -4.6,
+            3.4
+          ],
+          "target": [
+            0.14,
+            0.4,
+            1.0
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            1.57,
+            -1.43,
+            1.53
+          ],
+          "target": [
+            -0.09,
+            0.47,
+            1.14
+          ],
+          "fovy": 66
+        },
+        "workstation": {
+          "position": [
+            0.5,
+            -0.49,
+            2.43
+          ],
+          "target": [
+            -0.21,
+            0.26,
+            1.2
+          ],
+          "fovy": 49
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_access",
+          "minimum_xy": [
+            -1.66,
+            -1.5
+          ],
+          "maximum_xy": [
+            1.61,
+            -0.42
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_access",
+          "minimum_xy": [
+            -1.67,
+            -0.35
+          ],
+          "maximum_xy": [
+            -1.02,
+            1.48
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "Primary source supports a red bench-mounted housing, circular multi-port chamber, black cover, radial fasteners, side cylinder and routed service tubes.",
+        "The original mechanical cover defaults open for inspection of visible retained inert coupons; the internal indexing tray and hinge are clearly authored surrogates.",
+        "A separate photographed control rack is shown as an estimated nearby utility position. Exact adjacency is not established; larger climate chambers from the page are not combined with this compact workcell."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "Unmeasured selected workstation: room boundary, device dimensions, hidden internals, controller adjacency and motion ranges are estimates.",
+        "No aerosol or particle generation, exposure protocol, dispersion/collection physics, biological process, climate simulation or scientific measurement is implemented. The only sample is an inert geometric coupon."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave5": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/lund_chamber.webp",
+              "sha256": "d2af985eea8f30de74276e1010705600ebe552383e9916e88a0618f498e470b9",
+              "page": "https://www.nano.lu.se/labs/lund-nano-characterization-labs/aerosollab",
+              "image_url": "https://www.nano.lu.se/sites/nano.lu.se/files/styles/lu_wysiwyg_full_desktop/public/2021-05/Aerosol_4_5.jpg.webp?itok=tjLTHyPi",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/lund_aerosol.webp",
+              "sha256": "2660d5ab005feebe07cea10d7338efe2d76b64ab8a588c21b6f44843a826b3ee",
+              "page": "https://www.nano.lu.se/labs/lund-nano-characterization-labs/aerosollab",
+              "image_url": "https://www.nano.lu.se/sites/nano.lu.se/files/styles/lu_wysiwyg_half_desktop/public/2021-05/aerosol1_2.jpg.webp?itok=FNhw5yY2",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "The bench photo shows a red instrument base on a wooden worktop, a circular metal chamber with clamp handles and radial fasteners, side-mounted fittings and routed service tubes. A separate room detail shows a frame-mounted control computer beside a stainless enclosure and vertical utility pipes."
+          ],
+          "implemented": [
+            "Primary source supports a red bench-mounted housing, circular multi-port chamber, black cover, radial fasteners, side cylinder and routed service tubes.",
+            "The original mechanical cover defaults open for inspection of visible retained inert coupons; the internal indexing tray and hinge are clearly authored surrogates.",
+            "A separate photographed control rack is shown as an estimated nearby utility position. Exact adjacency is not established; larger climate chambers from the page are not combined with this compact workcell."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "Unmeasured selected workstation: room boundary, device dimensions, hidden internals, controller adjacency and motion ranges are estimates.",
+            "No aerosol or particle generation, exposure protocol, dispersion/collection physics, biological process, climate simulation or scientific measurement is implemented. The only sample is an inert geometric coupon."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "polimi_aeroacoustic_white",
+      "title": "Polimi White Aeroacoustic Chamber",
+      "institution": "Politecnico Di Milano \u2014 DAER Aeroacoustic Wind Tunnel, Galleria Bianca",
+      "institution_id": "politecnico_di_milano",
+      "domain": "aeroacoustics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.aero.polimi.it/it/laboratori-sperimentali/laboratorio-aerodinamico"
+      ],
+      "reference_notes": "The installed chamber interior has dense white acoustic wedges on walls and ceiling, a square framed flow opening with a dark interior, a narrow stand carrying a microphone-like probe and black absorptive panels around the measurement area. The official gallery includes several different tunnels; this record uses only the white aeroacoustic chamber view and does not merge the blue Sergio De Ponte hall. Hidden supports, floor layout and exact mount placements remain unknown. No acoustic propagation or aerodynamic solver.",
+      "observed_cues": [
+        "The installed chamber interior has dense white acoustic wedges on walls and ceiling, a square framed flow opening with a dark interior, a narrow stand carrying a microphone-like probe and black absorptive panels around the measurement area."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          4.0,
+          4.0,
+          4.0
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "acoustic_chamber_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.05,
+              "width": 1.0,
+              "height": 2.3,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "jet_station",
+          "kind": "polimi_white_openjet_station",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "White open-jet enclosure with original inert model yaw and supported microphone traverse",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Position an inert model and a measurement-shaped probe",
+        "description": "Yaw a retained rigid calibration body and translate a supported microphone-shaped probe. White triangular acoustic wedges, a dark framed opening and black absorbing panels preserve the photographed chamber. No acoustic or aerodynamic signal is synthesized.",
+        "primary_equipment": "jet_station",
+        "observable": "Model orientation and probe X displacement"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            5.5,
+            -6.0,
+            4.9
+          ],
+          "target": [
+            0.0,
+            0.1,
+            1.6
+          ],
+          "fovy": 50
+        },
+        "interior": {
+          "position": [
+            1.35,
+            -1.39,
+            1.64
+          ],
+          "target": [
+            -0.39,
+            1.13,
+            1.53
+          ],
+          "fovy": 76
+        },
+        "workstation": {
+          "position": [
+            0.9,
+            -1.25,
+            1.66
+          ],
+          "target": [
+            -0.32,
+            0.5,
+            1.38
+          ],
+          "fovy": 58
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "entry_front",
+          "minimum_xy": [
+            -1.7,
+            -1.65
+          ],
+          "maximum_xy": [
+            1.58,
+            -0.59
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_access",
+          "minimum_xy": [
+            -1.69,
+            -0.45
+          ],
+          "maximum_xy": [
+            -1.1,
+            1.53
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The chamber is explicitly the separate white aeroacoustic facility: true triangular white wall/ceiling wedges, a square-like framed dark jet opening, thin measurement supports and black absorber panels.",
+        "Published 4 x 4 x 4 m chamber and 0.5 x 0.7 m useful jet section anchor scale; unseen doorway location, wedge depth, opening orientation and detailed supports are authored.",
+        "The blue Sergio De Ponte and green wind tunnels are not merged or counted here. Model yaw and microphone traverse are original mechanical tasks with a visible retained rigid inert specimen."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "One installed interior image establishes the white chamber. No exact full-room survey, manufacturer model, microphone calibration or original specimen model is available.",
+        "No wind, turbulence, sound propagation, noise spectra, microphone output, aerodynamic forces or scientific measurement. USD exports provide visual geometry only, not Isaac or SimReady certification."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave5": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/polimi_aero_2.webp",
+              "sha256": "bcab2f2ccf4edc91ee16ef812a23ce8c7130d195e2047c698af2a4778be5d991",
+              "page": "https://www.aero.polimi.it/it/laboratori-sperimentali/laboratorio-aerodinamico",
+              "image_url": "https://cdn.sanity.io/images/2lf3n3gh/production/c2b35bcb9e515dc28ad84f018974275ba3ac1872-1920x960.jpg?w=1000&fm=webp&fit=max",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "The installed chamber interior has dense white acoustic wedges on walls and ceiling, a square framed flow opening with a dark interior, a narrow stand carrying a microphone-like probe and black absorptive panels around the measurement area."
+          ],
+          "implemented": [
+            "The chamber is explicitly the separate white aeroacoustic facility: true triangular white wall/ceiling wedges, a square-like framed dark jet opening, thin measurement supports and black absorber panels.",
+            "Published 4 x 4 x 4 m chamber and 0.5 x 0.7 m useful jet section anchor scale; unseen doorway location, wedge depth, opening orientation and detailed supports are authored.",
+            "The blue Sergio De Ponte and green wind tunnels are not merged or counted here. Model yaw and microphone traverse are original mechanical tasks with a visible retained rigid inert specimen."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "One installed interior image establishes the white chamber. No exact full-room survey, manufacturer model, microphone calibration or original specimen model is available.",
+            "No wind, turbulence, sound propagation, noise spectra, microphone output, aerodynamic forces or scientific measurement. USD exports provide visual geometry only, not Isaac or SimReady certification."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    },
+    {
+      "id": "sheffield_diamond_pilot_plant",
+      "title": "Sheffield Diamond Pilot Process Bay",
+      "institution": "University Of Sheffield \u2014 Diamond Integrated Pilot Plant process bay",
+      "institution_id": "university_of_sheffield",
+      "domain": "process_engineering",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.sheffield.ac.uk/engineering/diamond-engineering/our-facilities/pilot-plant"
+      ],
+      "reference_notes": "Actual process-bay photographs show stainless equipment spread across raised grated platforms with wide stairs and handrails. A large GEA housing stands above piping and vessels; another angle shows a tall process vessel beside full-height glazing and a control cabinet. Official page lists several co-located process systems, but exact connections between the two photographed viewpoints are not established. Do not invent a complete process flow or claim tableting, reaction, fermentation, sterility or product quality. Use inert rigid samples and mechanical access controls only.",
+      "observed_cues": [
+        "Actual process-bay photographs show stainless equipment spread across raised grated platforms with wide stairs and handrails. A large GEA housing stands above piping and vessels; another angle shows a tall process vessel beside full-height glazing and a control cabinet."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "layout_revision": 1,
+      "detail_revision": 1,
+      "room": {
+        "size": [
+          6.8,
+          6.0,
+          4.2
+        ],
+        "wall_color": [
+          0.84,
+          0.85,
+          0.82,
+          1
+        ],
+        "accent": [
+          0.21,
+          0.33,
+          0.42,
+          1
+        ],
+        "style": "industrial",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.52,
+              0.55,
+              0.54,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 2
+          },
+          "openings": [
+            {
+              "id": "pilot_bay_access",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.88,
+              "width": 1.12,
+              "height": 2.4,
+              "sill": 0
+            },
+            {
+              "id": "daylight_glazing",
+              "wall": "left",
+              "kind": "window",
+              "offset": 0.93,
+              "width": 3.25,
+              "height": 2.7,
+              "sill": 0.65
+            }
+          ],
+          "ceiling": "none",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "pilot_skid",
+          "kind": "sheffield_dipp_pilot_skid",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Source-informed raised stainless process bay with mechanical cover and inert receiver access",
+          "evidence": "Inspected official source; estimated geometry and explicitly authored mechanical controls",
+          "support": {
+            "type": "floor",
+            "evidence": "Continuous foundation and anchored structural supports connect apparatus to the floor"
+          }
+        }
+      ],
+      "task": {
+        "name": "Access a dry vessel and position an inert receiver cup",
+        "description": "Open the mechanical cover and translate a retained empty receiver cup on a supported tray. Stainless stairs, handrails, elevated operator deck, large process housing and front vessel reproduce the primary installed photograph; no process recipe or material production.",
+        "primary_equipment": "pilot_skid",
+        "observable": "Vessel-cover angle and empty-cup displacement"
+      },
+      "camera": {
+        "overview": {
+          "position": [
+            7.1,
+            -7.6,
+            5.5
+          ],
+          "target": [
+            0.0,
+            0.3,
+            1.55
+          ],
+          "fovy": 49
+        },
+        "interior": {
+          "position": [
+            2.52,
+            -2.41,
+            1.68
+          ],
+          "target": [
+            -0.1,
+            0.44,
+            1.65
+          ],
+          "fovy": 79
+        },
+        "workstation": {
+          "position": [
+            0.74,
+            -1.9,
+            2.22
+          ],
+          "target": [
+            -0.39,
+            -0.23,
+            1.29
+          ],
+          "fovy": 57
+        }
+      },
+      "reserved_walkways": [
+        {
+          "id": "front_access",
+          "minimum_xy": [
+            -3.09,
+            -2.72
+          ],
+          "maximum_xy": [
+            3.1,
+            -1.95
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        },
+        {
+          "id": "left_service",
+          "minimum_xy": [
+            -2.65,
+            -1.75
+          ],
+          "maximum_xy": [
+            -1.83,
+            1.3
+          ],
+          "basis": "Authored clear circulation route; not a surveyed route or building-code certification"
+        }
+      ],
+      "layout_rationale": [
+        "The primary photograph establishes a stainless vessel in front of a large process housing, a raised operator deck, broad stairs and handrails. This selected bay preserves those relative heights and relationships.",
+        "Stair treads have continuous diagonal stringers and rails; floor legs support the operator platform. The empty retained cup and lid are original mechanical task fixtures, not an inferred operating recipe.",
+        "A secondary photograph establishes the wider facility daylight character only. Its other process assemblies are not merged into this bay or represented as a validated process flow."
+      ],
+      "limitations": [
+        "Reference-informed selected facility subset; unseen room boundaries and dimensions are estimates, not a surveyed or institution-validated twin.",
+        "Original procedural geometry; no OEM CAD downloaded and no source photographs embedded.",
+        "Institution names identify visual references; redistribution permission and endorsement have not been obtained.",
+        "Mechanical access and positioning only; scientific process accuracy and complete autonomous experiments remain unvalidated.",
+        "No measured plan or manufacturer CAD is available. Platform and vessel dimensions, precise stair pitch, service connections, lid hinge and receiver motion are estimates.",
+        "No liquid/powder flow, tablet manufacture, fermentation, sterility, reaction, temperature control, product quality, mass balance or validated scientific process. Original media and trademarks are not redistributed."
+      ],
+      "reference_detail_evidence": {
+        "university_europe_wave5": {
+          "sources": [
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/sheffield_pilot_full.jpg",
+              "sha256": "c17f6682d2f389bfe905f4dbc2adfcc9d1234905474751112933d6330943a906",
+              "page": "https://www.sheffield.ac.uk/engineering/diamond-engineering/our-facilities/pilot-plant",
+              "image_url": "https://www.sheffield.ac.uk/sites/default/files/styles/desktop_full_width_1x/public/2024-01/Pilot%20Plant%2018%20%28body%29.jpg?h=3ba62664&itok=eRGhXJLi",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            },
+            {
+              "local_reference": "temp/university/expansion_100_20261003/research/europe_02_media/sheffield_pilot.jpg",
+              "sha256": "11e06bbf63602959fee00fc8310136e2e0ecc8154f9a757578b801dcf4ab534b",
+              "page": "https://www.sheffield.ac.uk/engineering/diamond-engineering/our-facilities/pilot-plant",
+              "image_url": "https://www.sheffield.ac.uk/sites/default/files/styles/mobile_single_column_1x/public/2024-01/Pilot%20Plant%201%20%28potentail%20cover%29.JPG.jpg?itok=kbjhFVKQ",
+              "use": "Inspected visual reference only; original photograph not redistributed"
+            }
+          ],
+          "observed": [
+            "Actual process-bay photographs show stainless equipment spread across raised grated platforms with wide stairs and handrails. A large GEA housing stands above piping and vessels; another angle shows a tall process vessel beside full-height glazing and a control cabinet."
+          ],
+          "implemented": [
+            "The primary photograph establishes a stainless vessel in front of a large process housing, a raised operator deck, broad stairs and handrails. This selected bay preserves those relative heights and relationships.",
+            "Stair treads have continuous diagonal stringers and rails; floor legs support the operator platform. The empty retained cup and lid are original mechanical task fixtures, not an inferred operating recipe.",
+            "A secondary photograph establishes the wider facility daylight character only. Its other process assemblies are not merged into this bay or represented as a validated process flow."
+          ],
+          "inferred": [
+            "Unobserved room boundary and doorway positions",
+            "Machine internal geometry, travel and servo dynamics"
+          ],
+          "unresolved": [
+            "No measured plan or manufacturer CAD is available. Platform and vessel dimensions, precise stair pitch, service connections, lid hinge and receiver motion are estimates.",
+            "No liquid/powder flow, tablet manufacture, fermentation, sterility, reaction, temperature control, product quality, mass balance or validated scientific process. Original media and trademarks are not redistributed."
+          ],
+          "fidelity": "Reference-informed geometry with explicitly authored mechanical task fixtures"
+        }
+      }
+    }
+  ]
+}

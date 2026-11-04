@@ -1,0 +1,38 @@
+{
+  "cambridge_schofield_turner": {
+    "source_urls": [
+      "https://www.eng.cam.ac.uk/node/374",
+      "https://www-g.eng.cam.ac.uk/125/achievements/centrifuges/index.htm"
+    ],
+    "scope": "Historical source topology and explicit authored interior details",
+    "published_dimensions": {
+      "shell_diameter_m": 14,
+      "wall_thickness_m": 1,
+      "pit_depth_m": 3,
+      "corridor_width_m": 2,
+      "steel_tread_cladding_m": 0.01
+    },
+    "interpretation": "14 m is interpreted as nominal internal across-flat diameter, not a verified inner-diameter specification. This keeps the existing authored instrument/viewframes inside a plausible chamber. Wall count, gallery fittings and drive exterior remain estimates.",
+    "source_supported": [
+      "Polygonal underground concrete pit",
+      "Diametric elevated corridor with translucent curved roof",
+      "Separate below-pit drive space",
+      "Inspection/access openings and floor grate"
+    ],
+    "authored": [
+      "24facets; precise roof/coffer/gallery/duct proportions",
+      "Motor, gearbox and coupling exterior geometry",
+      "Open hatch and ladder placement, console positions and fittings",
+      "Existing broad beam and linear retained-specimen task mechanism",
+      "Gallery ledgers, joists and hatch framing estimated with explicit geometric bearing contact"
+    ],
+    "unfinished": [
+      "Documented four-member beam/end bridges and swinging specimen carriage",
+      "Dual-bearing rotor shaft/slipring/drive integration",
+      "Actual observation room and service configuration",
+      "Scientific centrifuge dynamics/geotechnical scaling",
+      "Surveyed/current facility dimensions and institution validation"
+    ],
+    "rights": "Original procedural geometry; source images are private local references and are not redistributed"
+  }
+}

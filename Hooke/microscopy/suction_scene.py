@@ -15,7 +15,7 @@ HOLDER_BACK = pipette_back("holder")
 
 
 def build_xml():
-    root = ET.fromstring(cell_xml(tools=("holder", "injector"), focal_reference_m=CELL_CENTER[2]))
+    root = ET.fromstring(cell_xml(tools=("holder", "injector"), focal_reference_m=CELL_CENTER[2], suspended=True))
     root.set("model", "suspended_cell_suction_injection_phantom")
     asset, world = root.find("asset"), root.find("worldbody")
     for name in ("cell_0_shell", "cell_0_nucleus"):
@@ -28,9 +28,14 @@ def build_xml():
     holder = next(node for node in world.iter("body")
                   if node.find("site[@name='holder_tcp']") is not None)
     holder.remove(holder.find("geom[@name='holder_taper']"))
-    hollow_pipette(asset, "holding_pipette_mesh", profile=HOLDING_PROFILE)
+    from microscopy.manipulator_profile import requested_profile
+    from microscopy.pipette_geometry import for_workstation
+    pipette = for_workstation("holder", suspended=True) if requested_profile() == "sutter-mp285-reference" else None
+    hollow_pipette(asset, "holding_pipette_mesh", profile=HOLDING_PROFILE, geometry=pipette)
     quaternion = np.r_[1-HOLDER_BACK[2], np.cross([0., 0., -1.], HOLDER_BACK)]
     quaternion /= np.linalg.norm(quaternion)
+    if pipette is not None:
+        quaternion = np.array([1., 0., 0., 0.])
     ET.SubElement(holder, "geom", name="holding_hollow_pipette", type="mesh",
                   mesh="holding_pipette_mesh", quat=numbers(quaternion), material="glass")
     holder.find("geom[@name='holder_tip']").set("size", str(HOLDER_OUTER_M))

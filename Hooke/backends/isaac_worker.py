@@ -76,21 +76,50 @@ try:
     elif op=='reset':result=scene.reset(request.get('qpos'),request.get('qvel'))
     elif op=='render':result=scene.render_frame(request.get('visuals',{}))
     elif op=='observe':result=scene.observe()
+    elif op=='box_info':
+     from omni.physx import get_physxunittests_interface
+     from pxr import UsdGeom, UsdShade
+     diagnostics=get_physxunittests_interface();items=[]
+     ids=request.get('geoms',[])
+     if len(ids)>32:raise ValueError('Inspect at most 32 source geoms')
+     for geom in ids:
+      parts=[]
+      for path in scene.bridge.collider_paths.get(int(geom),[]):
+       prim=scene.world.stage.GetPrimAtPath(path)
+       if not prim.IsA(UsdGeom.Cube):raise ValueError('Expected a native-box collider')
+       orient=prim.GetAttribute('xformOp:orient').Get()
+       material,_=UsdShade.MaterialBindingAPI(prim).ComputeBoundMaterial('physics')
+       parts.append({'path':path,'size':float(UsdGeom.Cube(prim).GetSizeAttr().Get()),
+                     'half_extents':[float(v) for v in prim.GetAttribute('xformOp:scale').Get()],
+                     'orientation':[float(orient.GetReal()),*[float(v) for v in orient.GetImaginary()]],
+                     'expected_material':str(material.GetPath()),
+                     'native_materials':[str(v) for v in diagnostics.get_materials_paths(path)]})
+      items.append({'geom':geom,'boxes':parts})
+     result={'items':items,'native_shape_statistics':diagnostics.get_physics_stats()}
     elif op=='collider_info':
-     from omni.physx import get_physx_cooking_interface
+     from omni.physx import get_physx_cooking_interface, get_physxunittests_interface
+     from pxr import UsdShade
      cooking=get_physx_cooking_interface();result=[]
      ids=request.get('geoms',[])
      if len(ids)>32:raise ValueError('Inspect at most 32 colliders')
      for geom in ids:
-      path=scene.bridge.geom_paths[int(geom)];meshes=[]
-      for index in range(cooking.get_nb_convex_mesh_data(path)):
-       mesh=cooking.get_convex_mesh_data(path,index)
-       if 'vertices' not in mesh or 'polygons' not in mesh:
-        meshes.append({'unavailable':True,'returned_fields':list(mesh)})
-        continue
-       meshes.append({'vertices':[[float(v[0]),float(v[1]),float(v[2])] for v in mesh['vertices']],
-                      'planes':[[float(p['plane'][j]) for j in range(4)] for p in mesh['polygons']]})
-      result.append({'geom':geom,'meshes':meshes})
+      meshes=[]
+      paths=scene.bridge.collider_paths.get(int(geom), [])
+      for path in paths:
+       scale=scene.world.stage.GetPrimAtPath(path).GetAttribute('xformOp:scale').Get()
+       scale=[float(value) for value in scale] if scale is not None else [1.,1.,1.]
+       for index in range(cooking.get_nb_convex_mesh_data(path)):
+        mesh=cooking.get_convex_mesh_data(path,index)
+        if 'vertices' not in mesh or 'polygons' not in mesh:
+         meshes.append({'collider_path':path,'unavailable':True,'returned_fields':list(mesh)})
+         continue
+        material,_=UsdShade.MaterialBindingAPI(scene.world.stage.GetPrimAtPath(path)).ComputeBoundMaterial('physics')
+        meshes.append({'collider_path':path,'authored_mesh_scale':scale,
+                       'expected_material':str(material.GetPath()),
+                       'native_materials':[str(value) for value in get_physxunittests_interface().get_materials_paths(path)],
+                       'vertices':[[float(v[0]),float(v[1]),float(v[2])] for v in mesh['vertices']],
+                       'planes':[[float(p['plane'][j]) for j in range(4)] for p in mesh['polygons']]})
+      result.append({'geom':geom,'collider_paths':paths,'meshes':meshes})
     elif op=='profile_steps':
      # Bounded local diagnostic; advances real physics with supplied controls.
      import cProfile,pstats,io,time
@@ -102,6 +131,7 @@ try:
      report=io.StringIO();pstats.Stats(profile,stream=report).sort_stats('cumulative').print_stats(35)
      result={'state':state,'steps':count,'wall_s':wall,'profile':report.getvalue()}
     elif op=='info':result={'time':scene.time,'steps':scene.steps,'frames':scene.frame_count,'physics_wall_s':scene.physics_wall,
+     'native_substeps':scene.native_substeps,'native_steps':scene.native_steps,'physics_timestep_s':scene.physics_dt,'public_timestep_s':scene.dt,
      'initialization_physics_events':scene.initialization_physics_events,
      'physics_events_total':physics_clock['events'],'physics_event_elapsed_s':physics_clock['elapsed_s'],
      'physics_events_since_load':physics_clock['events']-scene.physics_event_epoch,

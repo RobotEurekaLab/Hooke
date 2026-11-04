@@ -8,7 +8,11 @@ def stand_profile(has_cad):
     if value not in ("auto", "openframe", "te2000-s-reference"):
         raise ValueError("HOOKE_MICROSCOPY_STAND must be auto, openframe or te2000-s-reference")
     if value == "auto":
-        return "openframe" if has_cad else "photo-reference"
+        from microscopy.manipulator_profile import requested_profile
+        if requested_profile() == "sutter-mp285-reference":
+            value = "te2000-s-reference"
+        else:
+            return "openframe" if has_cad else "photo-reference"
     if value == "openframe" and not has_cad:
         raise ValueError("The openFrame stand requires the CAD asset profile")
     if value == "te2000-s-reference":

@@ -59,6 +59,11 @@ _LITE6_MJCF = str(lite6_with_position_gripper().relative_to(MODEL_ROOT))
 ROBOTS: dict[str, RobotEntry] = {
     entry.name: entry for entry in [
         RobotEntry(
+            name="lab_instruments", display_name="Laboratory instruments (direct motor control)",
+            category="laboratory", mount="native_only", mjcf_path=None,
+            source="Hooke reference-informed laboratory equipment", controller_available=True,
+        ),
+        RobotEntry(
             name="micro_workstation", display_name="Motorized XYZ Micromanipulation Workstation",
             category="micromanipulator", mount="native_only", mjcf_path=None,
             source="Original Hooke parametric instrument and tool assets",

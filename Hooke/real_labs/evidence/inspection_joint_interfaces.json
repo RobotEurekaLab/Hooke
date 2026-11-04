@@ -1,0 +1,42 @@
+{
+  "hkust_aaf_wind_tunnel": {
+    "reference_urls": [
+      "https://aaf.ust.hk/fac/1/",
+      "https://aaf.ust.hk/media/news_pics/Hydrofoil_kiel_probe_2_NKil5ob.JPG"
+    ],
+    "revision": "2026-10-15 joint-interface geometry repair",
+    "mechanical_change": "Replace intersecting solid suspension rods by an authored fork around the pitch hub.",
+    "scope": "The pitch hub now has enabled collision geometry. Fork placement and hidden joint details are authored, not OEM-derived.",
+    "verification": "Combined nine-by-nine full-travel geometric sampling checks enabled cross-weld shapes directly. This is discrete clearance evidence, not continuous-time or scientific-process qualification."
+  },
+  "kth_l2000_wind_tunnel": {
+    "reference_urls": [
+      "https://www.kth.se/en/tekmek/infrastruktur/vindtunnel-l2000-1.1244292",
+      "https://www.kth.se/polopoly_fs/1.1292662.1699265785!/image/IMG_9191.JPEG"
+    ],
+    "revision": "2026-10-15 joint-interface geometry repair",
+    "mechanical_change": "Replace solid pitch bearing exteriors with open annular mounts and place the rigid wing on a 50 mm cradle.",
+    "scope": "The named wind-model site moves with the retained wing. Original yaw/pitch axes, limits, drives, inertias and raw diagnostic targets remain unchanged; the cradle is an authored inspection fixture.",
+    "verification": "Combined nine-by-nine full-travel geometric sampling checks enabled cross-weld shapes directly. This is discrete clearance evidence, not continuous-time or scientific-process qualification."
+  },
+  "uwa_ngcf_c72": {
+    "reference_urls": [
+      "https://ngcf.edu.au/",
+      "https://ngcf.edu.au/resized-uploads/ngcf-c72-beam-centrifuge_resized_5e3be45cdd0905121f708f66154fe9d1c18908c4.jpg",
+      "https://www.uwa.edu.au/research/-/media/project/uwa/uwa/uwa-corporate/hero/geotechnical-centrifuge-iomrc-1776_x_568.jpg?w=1440&hash=98FB02F50649988760B557EA916AC9C7"
+    ],
+    "revision": "2026-10-15 joint-interface geometry repair",
+    "mechanical_change": "Fit the suspended basket shell inside the clear corridor between the two beam sides.",
+    "scope": "Estimated basket shell width is 0.81 m; no manufacturer basket dimensions or real bearing design are claimed. Original joint frames, limits, drives, inertias and retained specimen pose remain unchanged.",
+    "verification": "Combined nine-by-nine full-travel geometric sampling checks enabled cross-weld shapes directly. This is discrete clearance evidence, not continuous-time or scientific-process qualification."
+  },
+  "warwick_highfield_nmr_1ghz": {
+    "reference_urls": [
+      "https://warwick.ac.uk/fac/sci/physics/research/condensedmatt/nmr/850/"
+    ],
+    "revision": "2026-10-15 joint-interface geometry repair",
+    "mechanical_change": "Use a flat-ended lift shaft that meets the rotating holder underside without penetrating it.",
+    "scope": "This remains the original authored dry external fixture below the cryostat. The zero-distance face is an ideal rotary support interface; it is not calibrated bearing or cryogenic hardware.",
+    "verification": "Combined nine-by-nine full-travel geometric sampling checks enabled cross-weld shapes directly. This is discrete clearance evidence, not continuous-time or scientific-process qualification."
+  }
+}

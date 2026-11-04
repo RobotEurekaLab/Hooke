@@ -13,7 +13,7 @@ import numpy as np
 from microscopy.cell_mechanics import CellMechanics
 from microscopy.kinematics import tool_axes
 from microscopy.scene import ORIGIN
-from microscopy.suction_scene import CELL_RADII, HOLDER_BACK, HOLDER_INNER_M
+from microscopy.suction_scene import CELL_RADII, HOLDER_INNER_M
 
 
 @dataclass(frozen=True)
@@ -41,6 +41,9 @@ class SuctionMechanics(CellMechanics):
     def _reload(self, model):
         super()._reload(model)
         self.holder_tip = model.site("holder_tcp").id
+        from microscopy.pipette_geometry import installed_geometry
+        self.holder_geometry = installed_geometry(model, "holder")
+        self.holder_back = np.asarray(self.holder_geometry.tip_back)
         from microscopy.kinematics import tool_dofs
         self.holder_dofs = tool_dofs(model, "holder")
         self.holder_axes = tool_axes(model, "holder")
@@ -95,8 +98,8 @@ class SuctionMechanics(CellMechanics):
             -math.expm1(-dt/p.pressure_response_s))
         holder = data.site_xpos[self.holder_tip]
         offset = self.position_m-holder
-        axial = float(offset @ -HOLDER_BACK)
-        tangent = np.linalg.norm(offset+HOLDER_BACK*axial)
+        axial = float(offset @ -self.holder_back)
+        tangent = np.linalg.norm(offset+self.holder_back*axial)
         touching = (abs(axial-CELL_RADII[0]) <= p.seal_gap_m and tangent <= p.seal_tangent_m)
         vacuum = self.actual_holding_pressure_pa <= -p.minimum_vacuum_pa and not self.holding_occluded
         if not self.sealed:
@@ -137,7 +140,8 @@ class SuctionMechanics(CellMechanics):
         state = super().image_state(data)
         state["centres_m"][0] = (self.position_m-ORIGIN).tolist()
         state.update(holder_tip_m=(data.site_xpos[self.holder_tip]-ORIGIN).tolist(),
-                     holder_back=HOLDER_BACK.tolist(), holding_sealed=self.sealed,
+                     holder_back=self.holder_back.tolist(), holding_sealed=self.sealed,
+                     holder_geometry=self.holder_geometry.evidence(),
                      holding_pressure_pa=self.actual_holding_pressure_pa)
         return state
 

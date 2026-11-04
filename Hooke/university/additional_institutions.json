@@ -1,0 +1,50 @@
+[
+  {
+    "id": "waterloo",
+    "name": "University of Waterloo",
+    "rank": 113,
+    "rank_display": "=113",
+    "source_url": "https://www.topuniversities.com/universities/university-waterloo",
+    "checked_on": "2026-10-03"
+  },
+  {
+    "id": "rochester",
+    "name": "University of Rochester",
+    "rank": 251,
+    "rank_display": "251",
+    "source_url": "https://www.topuniversities.com/universities/university-rochester",
+    "checked_on": "2026-10-03"
+  },
+  {
+    "id": "virginia",
+    "name": "University of Virginia",
+    "rank": 268,
+    "rank_display": "268",
+    "source_url": "https://www.topuniversities.com/universities/university-virginia",
+    "checked_on": "2026-10-03"
+  },
+  {
+    "id": "indiana_bloomington",
+    "name": "Indiana University Bloomington",
+    "rank": 360,
+    "rank_display": "=360",
+    "source_url": "https://www.topuniversities.com/universities/indiana-university-bloomington",
+    "checked_on": "2026-10-03"
+  },
+  {
+    "id": "nasa_glenn",
+    "name": "NASA Glenn Research Center",
+    "kind": "research_institute",
+    "rank": null,
+    "rank_display": null,
+    "source_url": "https://www.nasa.gov/glenn/virtual-tours/slope360/"
+  },
+  {
+    "id": "georgia_tech",
+    "name": "Georgia Institute of Technology",
+    "rank": 142,
+    "rank_display": "=142",
+    "source_url": "https://www.topuniversities.com/universities/georgia-institute-technology",
+    "checked_on": "2026-10-03"
+  }
+]

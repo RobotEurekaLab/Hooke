@@ -1,0 +1,789 @@
+{
+  "scenes": [
+    {
+      "id": "columbia_fusion_hbt_ep",
+      "title": "HBT-EP Diagnostic Access Bay",
+      "institution": "Columbia Plasma Physics Laboratory \u2014 HBT-EP apparatus bay",
+      "domain": "plasma_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://www.apam.columbia.edu/about/news/hands-fusion-plasma-lab-hosts-first-hbt-ep-fun-run",
+        "https://www.apam.columbia.edu/sites/default/files/2026-08/FunRun_2026_3_0.png"
+      ],
+      "reference_notes": "Official 2026 laboratory event photograph shows researchers beside the operational HBT-EP apparatus, its diagnostic-side vacuum hardware and overhead services. No measured apparatus layout or CAD license verified. Mechanical access and instrument positioning are plausible simulation tasks; plasma behavior requires a separate scientific model.",
+      "observed_cues": [
+        "A large toroidal assembly is surrounded by perforated structural members and exposed copper-colored coils.",
+        "A long cylindrical vacuum auxiliary line projects into the foreground on an open rectangular metal frame.",
+        "Dense overhead cables, ventilation ducts and a low service barrier define the constrained access bay."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Reconstruct the photographed HBT-EP access/diagnostic bay only; do not combine other Columbia plasma devices or infer a complete room plan.",
+      "room": {
+        "size": [
+          7.2,
+          7.8,
+          3.8
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "columbia_fusion_hbt_ep",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -3.2,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "diagnostic_bay",
+          "kind": "columbia_hbtep_diagnostic_assembly",
+          "pos": [
+            -0.2,
+            0.45,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "HBT-EP Diagnostic Access Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://www.apam.columbia.edu/about/news/hands-fusion-plasma-lab-hosts-first-hbt-ep-fun-run",
+            "https://www.apam.columbia.edu/sites/default/files/2026-08/FunRun_2026_3_0.png"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://www.apam.columbia.edu/sites/default/files/2026-08/FunRun_2026_3_0.png",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/columbia_hbtep.img"
+          ],
+          "supports": "Official 2026 laboratory event photograph shows researchers beside the operational HBT-EP apparatus, its diagnostic-side vacuum hardware and overhead services."
+        }
+      ],
+      "layout_rationale": [
+        "A large toroidal assembly is surrounded by perforated structural members and exposed copper-colored coils.",
+        "A long cylindrical vacuum auxiliary line projects into the foreground on an open rectangular metal frame.",
+        "Dense overhead cables, ventilation ducts and a low service barrier define the constrained access bay.",
+        "Toroidal coil cage sits behind the long cylindrical diagnostic line and its open support stand.",
+        "Grounded load paths under the vessel and side fixture are inferred engineering details."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            8.0,
+            -10.0,
+            7.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.2
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            3.1,
+            -3.3,
+            2.1
+          ],
+          "target": [
+            0.0,
+            -0.5,
+            1.45
+          ],
+          "fovy": 60
+        },
+        "workstation": {
+          "position": [
+            2.6,
+            -3.8,
+            2.5
+          ],
+          "target": [
+            -0.05,
+            -1.2,
+            1.35
+          ],
+          "fovy": 52
+        },
+        "source": {
+          "position": [
+            2.6,
+            -3.8,
+            2.5
+          ],
+          "target": [
+            -0.05,
+            -1.2,
+            1.35
+          ],
+          "fovy": 52
+        }
+      },
+      "task": {
+        "name": "HBT-EP Diagnostic Access Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "diagnostic_bay",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No plasma, magnet, vacuum or scientific diagnostic-response model.",
+        "The two-axis dry target fixture is an authored inspection surrogate beside the diagnostic line."
+      ]
+    },
+    {
+      "id": "harvard_doyle_cold_molecule_optics",
+      "title": "Doyle Cold-Molecule Optics Workstation",
+      "institution": "John M. Doyle Laboratory \u2014 cold-molecule optics workstation",
+      "domain": "atomic_molecular_optics",
+      "university_expansion": true,
+      "source_urls": [
+        "https://news.harvard.edu/gazette/story/2019/03/snapshots-from-harvards-science-labs/",
+        "https://news.harvard.edu/gazette/wp-content/uploads/2019/02/020419_Doyle_153_2500.jpg"
+      ],
+      "reference_notes": "An official Harvard Gazette photograph explicitly identifies the John Doyle group and shows two researchers adjusting optical experiments inside a dense, curtained workstation. Photo credit Kris Snibbe / Harvard Staff Photographer. Exact capture layout is historical, room dimensions and instrument models are unverified; physical optics and ultracold-atom behavior are separate scientific models.",
+      "observed_cues": [
+        "A vertical black optical curtain divides two densely populated bench sides.",
+        "Multi-level breadboards and optomechanical posts fill the lower work area.",
+        "Overhead instrument shelves carry oscilloscopes with long hanging fibers and cable drops."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Reconstruct the workstation captured in the 2019 official photograph. Do not merge other groups or photographs from the multi-laboratory article; a current official faculty page confirms the active group but not an unchanged room layout.",
+      "room": {
+        "size": [
+          5.8,
+          5.4,
+          3.1
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "harvard_doyle_cold_molecule_optics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "seams",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -2.0,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "exposed",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "doyle_workstation",
+          "kind": "harvard_doyle_dual_optical_bench",
+          "pos": [
+            0,
+            0.25,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Doyle Cold-Molecule Optics Workstation",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://news.harvard.edu/gazette/story/2019/03/snapshots-from-harvards-science-labs/",
+            "https://news.harvard.edu/gazette/wp-content/uploads/2019/02/020419_Doyle_153_2500.jpg"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://news.harvard.edu/gazette/wp-content/uploads/2019/02/020419_Doyle_153_2500.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/harvard_doyle.img"
+          ],
+          "supports": "An official Harvard Gazette photograph explicitly identifies the John Doyle group and shows two researchers adjusting optical experiments inside a dense, curtained workstation."
+        }
+      ],
+      "layout_rationale": [
+        "A vertical black optical curtain divides two densely populated bench sides.",
+        "Multi-level breadboards and optomechanical posts fill the lower work area.",
+        "Overhead instrument shelves carry oscilloscopes with long hanging fibers and cable drops.",
+        "Two dense bench halves, central black partition and supported overhead instrument shelves reproduce the photographed workstation organization.",
+        "Hidden table legs and rail attachments are inferred engineering supports."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            7.0,
+            -8.0,
+            6.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.2
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.65,
+            -2.35,
+            1.85
+          ],
+          "target": [
+            0.0,
+            0.35,
+            1.35
+          ],
+          "fovy": 62
+        },
+        "workstation": {
+          "position": [
+            2.7,
+            -0.6,
+            1.55
+          ],
+          "target": [
+            1.0,
+            -0.04,
+            1.2
+          ],
+          "fovy": 55
+        },
+        "source": {
+          "position": [
+            2.1,
+            -2.7,
+            1.9
+          ],
+          "target": [
+            0.0,
+            0.15,
+            1.4
+          ],
+          "fovy": 62
+        }
+      },
+      "task": {
+        "name": "Doyle Cold-Molecule Optics Workstation",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "doyle_workstation",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "Historical 2019 layout only; unchanged current configuration is unverified.",
+        "No laser propagation, cooling, quantum or molecule-response model.",
+        "Optical target stages are dry authored inspection mechanisms."
+      ]
+    },
+    {
+      "id": "illinois_bil_nonlinear_optics",
+      "title": "Nonlinear Optics Development Workstation",
+      "institution": "Biophotonics Imaging Laboratory \u2014 Nonlinear Optics Development Lab",
+      "domain": "optics_instrumentation",
+      "university_expansion": true,
+      "source_urls": [
+        "https://biophotonics.illinois.edu/about/facilities",
+        "https://biophotonics.illinois.edu/_sitemanager/viewphoto.aspx?id=36312&s=1280"
+      ],
+      "reference_notes": "The official room-specific image shows an optical bench with large laser enclosures, rear optical mounts and a suspended equipment shelf. Optical brands, dimensions and hidden beam paths are unverified. Model geometry and positioning; no biological preparation workflows are included.",
+      "observed_cues": [
+        "Large dark laser enclosures occupy the front and right edges of the central optical table.",
+        "A white utility shelf hangs from ceiling rods with equipment and vertical cable drops.",
+        "Rear breadboard optics sit in a compact pale-walled room with a narrow side access strip."
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "Only the Nonlinear Optics Development room, whose official image is explicitly grouped under that heading; do not merge adjacent microscopy, clinical or culture rooms.",
+      "room": {
+        "size": [
+          4.8,
+          5.0,
+          3.1
+        ],
+        "wall_color": [
+          0.77,
+          0.77,
+          0.73,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "illinois_bil_nonlinear_optics",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.46,
+              0.48,
+              0.46,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "entry",
+              "wall": "left",
+              "kind": "door",
+              "offset": -1.8,
+              "width": 1.0,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [],
+      "equipment": [
+        {
+          "id": "nonlinear_optics",
+          "kind": "illinois_nonlinear_optics_workstation",
+          "pos": [
+            0,
+            0.25,
+            0
+          ],
+          "yaw": 0,
+          "params": {},
+          "role": "Nonlinear Optics Development Workstation",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://biophotonics.illinois.edu/about/facilities",
+            "https://biophotonics.illinois.edu/_sitemanager/viewphoto.aspx?id=36312&s=1280"
+          ],
+          "support": {
+            "type": "floor",
+            "evidence": "Photographed self-standing instrument; modeled continuous ground connections are inferred, dimensions estimated."
+          }
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://biophotonics.illinois.edu/_sitemanager/viewphoto.aspx?id=36312&s=1280",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/illinois_optics_development.img"
+          ],
+          "supports": "The official room-specific image shows an optical bench with large laser enclosures, rear optical mounts and a suspended equipment shelf."
+        }
+      ],
+      "layout_rationale": [
+        "Large dark laser enclosures occupy the front and right edges of the central optical table.",
+        "A white utility shelf hangs from ceiling rods with equipment and vertical cable drops.",
+        "Rear breadboard optics sit in a compact pale-walled room with a narrow side access strip.",
+        "Large front laser housings and rear optical breadboard preserve the official room-specific workstation arrangement.",
+        "Suspended shelf rods meet ceiling anchors; side chiller remains on grounded feet."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            6.0,
+            -7.0,
+            5.8
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 48
+        },
+        "interior": {
+          "position": [
+            2.1,
+            -2.1,
+            1.95
+          ],
+          "target": [
+            0.0,
+            0.35,
+            1.4
+          ],
+          "fovy": 62
+        },
+        "workstation": {
+          "position": [
+            0.05,
+            2.1,
+            1.75
+          ],
+          "target": [
+            0.05,
+            0.8,
+            1.08
+          ],
+          "fovy": 48
+        },
+        "source": {
+          "position": [
+            0.1,
+            -2.2,
+            1.8
+          ],
+          "target": [
+            0.0,
+            0.35,
+            1.5
+          ],
+          "fovy": 68
+        }
+      },
+      "task": {
+        "name": "Nonlinear Optics Development Workstation",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "nonlinear_optics",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No active laser, nonlinear optical response, biological preparation or imaging model.",
+        "The rotation/translation fixture is a dry mechanical surrogate, with estimated stroke and dimensions."
+      ]
+    },
+    {
+      "id": "michigan_lurie_lithography_bay",
+      "title": "Lurie Amber Lithography Inspection Bay",
+      "institution": "Lurie Nanofabrication Facility lithography work bay",
+      "domain": "nanofabrication",
+      "university_expansion": true,
+      "source_urls": [
+        "https://alumni.umich.edu/michigan-alum/spaces-the-lurie-nanofabrication-facility/",
+        "https://alumni.umich.edu/wp-content/uploads/IMG_2582-2-scaled.jpg"
+      ],
+      "reference_notes": "Official wide amber-lit cleanroom photograph inspected: a full-height bank of small windowed storage cabinets on the left faces microscope/metrology workstations on the right, forming a long central aisle. Vertical service tubes, suspended ceiling panels, stools and an end doorway are visible. The official article establishes active multidisciplinary research use. Photo supports bay arrangement, but individual model labels and measured floor plan are unverified. Official article credits LNF imagery; redistribution permission remains unresolved.",
+      "observed_cues": [
+        "Amber-lit long cleanroom bay",
+        "Full-height grid of windowed storage cabinets along the left wall",
+        "Right-hand row of microscope/metrology stations and stools facing a central aisle"
+      ],
+      "layout_fidelity": "estimated_from_public_reference",
+      "reconstruction_scope": "room",
+      "room": {
+        "size": [
+          4.5,
+          10.0,
+          3.1
+        ],
+        "wall_color": [
+          0.9,
+          0.77,
+          0.35,
+          1
+        ],
+        "accent": [
+          0.34,
+          0.43,
+          0.46,
+          1
+        ],
+        "style": "michigan_lurie_lithography_bay",
+        "architecture": {
+          "floor": {
+            "color": [
+              0.64,
+              0.6,
+              0.37,
+              1
+            ],
+            "pattern": "tiles",
+            "spacing": 0.6
+          },
+          "openings": [
+            {
+              "id": "end_entry",
+              "wall": "back",
+              "kind": "door",
+              "offset": 0,
+              "width": 1.2,
+              "height": 2.1,
+              "sill": 0
+            }
+          ],
+          "ceiling": "suspended",
+          "service_strip": false
+        }
+      },
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "benches": [
+        {
+          "id": "inspection_counter_0",
+          "pos": [
+            1.5,
+            -1.75,
+            0
+          ],
+          "size": [
+            1.04,
+            1.85,
+            0.83
+          ],
+          "style": "open_frame",
+          "color": [
+            0.75,
+            0.69,
+            0.45,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "inspection_counter_1",
+          "pos": [
+            1.5,
+            0.85,
+            0
+          ],
+          "size": [
+            1.04,
+            1.85,
+            0.83
+          ],
+          "style": "open_frame",
+          "color": [
+            0.75,
+            0.69,
+            0.45,
+            1
+          ],
+          "accessories": false
+        },
+        {
+          "id": "inspection_counter_2",
+          "pos": [
+            1.5,
+            3.0,
+            0
+          ],
+          "size": [
+            1.04,
+            1.85,
+            0.83
+          ],
+          "style": "open_frame",
+          "color": [
+            0.75,
+            0.69,
+            0.45,
+            1
+          ],
+          "accessories": false
+        }
+      ],
+      "equipment": [
+        {
+          "id": "wafer_inspection",
+          "kind": "michigan_lurie_wafer_inspector",
+          "pos": [
+            1.5,
+            -1.75,
+            0.83
+          ],
+          "yaw": -90,
+          "params": {},
+          "role": "Lurie Amber Lithography Inspection Bay",
+          "evidence": "reference-informed original mechanical prototype",
+          "source_urls": [
+            "https://alumni.umich.edu/michigan-alum/spaces-the-lurie-nanofabrication-facility/",
+            "https://alumni.umich.edu/wp-content/uploads/IMG_2582-2-scaled.jpg"
+          ]
+        }
+      ],
+      "layout_evidence": [
+        {
+          "url": "https://alumni.umich.edu/wp-content/uploads/IMG_2582-2-scaled.jpg",
+          "local_stills": [
+            "temp/university/expansion_100_20261003/research/stills/michigan_lurie.img"
+          ],
+          "supports": "Official wide amber-lit cleanroom photograph inspected: a full-height bank of small windowed storage cabinets on the left faces microscope/metrology workstations on the right, forming a long central aisle. Vertical service tubes, suspended ceiling panels, stools and an end doorway are visible. The official article establishes active multidisciplinary research use."
+        }
+      ],
+      "layout_rationale": [
+        "Amber-lit long cleanroom bay",
+        "Full-height grid of windowed storage cabinets along the left wall",
+        "Right-hand row of microscope/metrology stations and stools facing a central aisle",
+        "Amber-toned windowed cabinets line the left, inspection benches and stools line the right, and the central aisle leads to an end door.",
+        "Only one wafer inspection station is actuated; adjacent instruments are static context rather than additional laboratory claims."
+      ],
+      "circulation": {
+        "operator_approach": "Estimated clear foreground approach to visible specimen and controls.",
+        "service_access": "Perimeter access is approximate; hidden room boundaries and infrastructure remain unverified."
+      },
+      "verified_spatial_dimensions": [],
+      "camera": {
+        "overview": {
+          "position": [
+            8.0,
+            -12.0,
+            8.0
+          ],
+          "target": [
+            0.0,
+            0.0,
+            1.1
+          ],
+          "fovy": 50
+        },
+        "interior": {
+          "position": [
+            -0.35,
+            -4.65,
+            1.72
+          ],
+          "target": [
+            0.0,
+            2.5,
+            1.35
+          ],
+          "fovy": 62
+        },
+        "workstation": {
+          "position": [
+            -0.7,
+            -3.1,
+            1.85
+          ],
+          "target": [
+            1.35,
+            -1.72,
+            1.14
+          ],
+          "fovy": 44
+        },
+        "source": {
+          "position": [
+            -0.35,
+            -4.65,
+            1.72
+          ],
+          "target": [
+            0.0,
+            2.5,
+            1.35
+          ],
+          "fovy": 62
+        }
+      },
+      "task": {
+        "name": "Lurie Amber Lithography Inspection Bay",
+        "description": "Mechanically position the visible inert calibration specimen and return both controls safely.",
+        "primary_equipment": "wafer_inspection",
+        "observable": "Mechanical joint positions, physical contact geometry and rigid specimen placement."
+      },
+      "limitations": [
+        "All room and instrument dimensions are estimates; no measured digital-twin accuracy claimed.",
+        "Only the cited view is reconstructed; hidden interiors and motorization are authored.",
+        "Reference imagery is private research evidence; release rights remain unresolved.",
+        "No lithographic exposure, resist chemistry, optical measurement or cleanroom airflow model.",
+        "Instrument identity, wafer diameter, room dimensions and motorization are unverified."
+      ]
+    }
+  ]
+}

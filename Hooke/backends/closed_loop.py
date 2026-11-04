@@ -21,8 +21,15 @@ from backends.task_result import task_result
 
 
 class PhysXTaskAdapter:
-    def __init__(self, task, worker, output: Path, render=False,physics_options=None,report_progress=True,managed_render=False):
+    def __init__(self, task, worker, output: Path, render=False,physics_options=None,report_progress=True,managed_render=False, observation_target=None):
         self.task,self.worker,self.output=task,worker,output
+        if observation_target is not None and (observation_target.model is not task.model
+                                               or observation_target.data is not task.data):
+            raise ValueError('Observation target must share the native task model and data')
+        self.observation_target = observation_target
+        if any(getattr(target, '_physics_context_owner', None) is not None
+               for target in (task, observation_target) if target is not None):
+            raise RuntimeError('A physics context already owns this observed state')
         self.report_progress=report_progress
         self.rows=[];self.contact_steps=0
         self.max_fk_position_error=0.
@@ -31,10 +38,17 @@ class PhysXTaskAdapter:
         write_snapshot(task,source)
         loaded=worker.call('load',source=str(source.resolve()),output=str((output/'isaac').resolve()),render=render,physics_options=physics_options,managed_render=managed_render)
         self.loaded=loaded
+        self._friction_required = bool(loaded.get('conversion', {}).get(
+            'contact_reporting', {}).get('friction_anchor_channel', False))
         self._native_contacts=[]
+        self._native_friction_contacts=[]
         self.apply_state(loaded['state'])
 
     def apply_state(self, state):
+        if getattr(self, '_friction_required', False) and 'friction_contacts' not in state:
+            raise RuntimeError('Native state omitted its advertised friction-anchor channel')
+        self._friction_required = getattr(self, '_friction_required', False) or 'friction_contacts' in state
+        effort = self._validate_effort(state)
         model,data=self.task.model,self.task.data
         velocity=np.asarray(state['qvel']);current_time=float(state['time'])
         previous_time=getattr(self,'_previous_time',current_time)
@@ -57,11 +71,75 @@ class PhysXTaskAdapter:
             if np.any(errors>.005):
                 index=int(np.argmax(errors));body=int(ids[index]);position_error=float(errors[index])
                 raise RuntimeError(f'Native body/FK disagreement at t={data.time:.4f}, body={body} ({model.body(body).name}): {position_error:.6f} m; source={data.xpos[body].tolist()}, native={poses[index,:3].tolist()}')
+        self._apply_contacts(state)
+        self._native_effort = effort
+        self._apply_effort()
+        self._observed_state = (data.qpos.copy(), data.qvel.copy(), float(data.time))
+
+    def _validate_effort(self, state):
+        effort = state.get('actuator_effort', {'available': False})
+        if not isinstance(effort, dict) or type(effort.get('available')) is not bool:
+            raise RuntimeError('Invalid native actuator effort availability')
+        required = (getattr(self, '_effort_required', False)
+                    or getattr(self, 'loaded', {}).get('conversion', {}).get('actuator_effort', {}).get('available', False))
+        if required and not effort['available']:
+            raise RuntimeError('Native state omitted its advertised actuator effort channel')
+        if effort['available']:
+            if (effort.get('quantity') != 'applied_explicit_actuator_input'
+                    or effort.get('native_input_verified') is not True):
+                raise RuntimeError('Native actuator effort requires verified explicit input provenance')
+            for key in ('last', 'mean', 'peak_abs', 'signed_peak'):
+                values = np.asarray(effort.get(key), dtype=float)
+                if values.shape != (self.task.model.nu,) or not np.isfinite(values).all():
+                    raise RuntimeError(f'Invalid native actuator effort {key}')
+            peak = np.asarray(effort['peak_abs'])
+            mean = abs(np.asarray(effort['mean']))
+            # A weighted mean can exceed a constant sample by one rounding
+            # unit. This allowance is numerical, not a physical force margin.
+            roundoff = 8 * np.finfo(float).eps * np.maximum(peak, mean)
+            if (np.any(peak < abs(np.asarray(effort['last'])))
+                    or np.any(mean - peak > roundoff)
+                    or not np.array_equal(abs(np.asarray(effort['signed_peak'])), effort['peak_abs'])):
+                raise RuntimeError('Native actuator effort peak is inconsistent')
+            count, interval = effort.get('sample_count'), effort.get('interval_s')
+            if (type(count) is not int or not 0 <= count <= 32
+                    or isinstance(interval, bool) or not isinstance(interval, (int, float))
+                    or not np.isfinite(interval)):
+                raise RuntimeError('Invalid native actuator effort interval')
+            if float(state['time']) == 0.:
+                if count != 0 or interval != 0. or any(np.any(effort[key]) for key in ('last', 'mean', 'peak_abs')):
+                    raise RuntimeError('Native reset must report a cleared explicit input buffer')
+            else:
+                expected = getattr(self, 'loaded', {}).get('conversion', {}).get('integration', {}).get('native_substeps')
+                if (count == 0 or expected is not None and count != expected
+                        or not np.isclose(interval, self.task.model.opt.timestep, rtol=1e-9, atol=1e-12)):
+                    raise RuntimeError('Native actuator effort interval does not match the public step')
+            self._effort_required = True
+        return effort
+
+    def _apply_effort(self):
+        effort = self._native_effort
+        available = effort['available']
+        # Missing native observations must never retain source-computed forces.
+        self.task.data.actuator_force[:] = effort['last'] if available else np.nan
+        observations = {'backend': 'isaac', 'physics_engine': 'PhysX',
+                        'actuator_force': available,
+                        'actuator_force_provenance': effort.get('quantity', 'Unavailable implicit drive effort')}
+        if available:
+            observations['actuator_force_peak_abs'] = list(effort['peak_abs'])
+        self.task.physics_observations = observations
+        target = getattr(self, 'observation_target', None)
+        if target is not None:
+            target.physics_observations = dict(observations)
+
+    def _apply_contacts(self, state):
+        model,data=self.task.model,self.task.data
         # These contacts were solved by PhysX. They have no MuJoCo constraint
         # Jacobian/force entries; never leave the old solver dimensions active.
         data.nefc=0
         data.ncon=0
         self._native_contacts=state['contacts']
+        self._native_friction_contacts=state.get('friction_contacts', [])
         self._contact_arrays={}
         count=len(self._native_contacts)
         if count:
@@ -88,7 +166,40 @@ class PhysXTaskAdapter:
             friction=np.maximum(model.geom_friction[geoms[:,0]],model.geom_friction[geoms[:,1]])
             data.contact.friction[:]=friction[:,[0,0,1,2,2]]
             self._contact_arrays={'geoms':geoms,'points':points,'forces':forces}
+        # Friction acts at separate native anchors. Include their exact wrench
+        # in body-force observations without inventing extra geometric contacts
+        # or distributing a patch force among unrelated normal points.
+        if self._native_friction_contacts:
+            anchors=self._native_friction_contacts
+            friction_arrays={
+                'geoms':np.asarray([[c['geom1'],c['geom2']] for c in anchors],dtype=np.int32),
+                'points':np.asarray([c['pos'] for c in anchors],dtype=float),
+                'forces':np.asarray([c['force'] for c in anchors],dtype=float),
+            }
+            self._contact_arrays={
+                key:np.concatenate((self._contact_arrays[key],values)) if key in self._contact_arrays else values
+                for key,values in friction_arrays.items()
+            }
         self.update_touch_sensors()
+
+    def forward(self, model, data):
+        """Refresh source kinematics while preserving the native observation.
+
+        Separate planning data may use ordinary source forward calculations.
+        Editing the live pose requires an explicit native reset; it cannot be
+        applied by a MuJoCo-only refresh. Explicit input observations are
+        preserved; implicit motor effort remains unavailable.
+        """
+        if model is not self.task.model or data is not self.task.data:
+            return self.original_forward(model, data)
+        qpos, qvel, observed_time = self._observed_state
+        if (not np.array_equal(data.qpos, qpos) or not np.array_equal(data.qvel, qvel)
+                or data.time != observed_time):
+            raise RuntimeError('Live pose, velocity or time changed without a native state update')
+        update_kinematics(model, data)
+        self._apply_contacts({'contacts': self._native_contacts,
+                              'friction_contacts': self._native_friction_contacts})
+        self._apply_effort()
 
     def update_touch_sensors(self):
         """Retain the source sensor zone/ray rule using actual native forces.
@@ -161,6 +272,8 @@ class PhysXTaskAdapter:
             np.add.at(data.cfrc_ext,bodies.reshape(-1),np.concatenate((torques,forces),axis=2).reshape(-1,6))
 
     def contact_force(self, model, data, contact_id, result):
+        # Point reports contain normal impulses only. Native friction patches
+        # have separate application points and contribute through cfrc_ext.
         if model is not self.task.model:raise RuntimeError('Unexpected model in contact force query')
         result[:]=0
         if 0<=contact_id<len(self._native_contacts):
@@ -168,15 +281,36 @@ class PhysXTaskAdapter:
             result[:3]=frame@np.asarray(self._native_contacts[contact_id]['force'])
 
     def __enter__(self):
+        targets = [self.task]
+        target = getattr(self, 'observation_target', None)
+        if target is not None and target is not self.task:
+            targets.append(target)
+        if any(getattr(target, '_physics_context_owner', None) is not None for target in targets):
+            raise RuntimeError('A physics context already owns this observed state')
+        self._context_targets = targets
+        for target in targets:
+            target._physics_context_owner = self
         self.original_step=mujoco.mj_step;self.original_force=mujoco.mj_contactForce
         self.original_post=mujoco.mj_rnePostConstraint
+        self.original_forward=mujoco.mj_forward
         mujoco.mj_step=self.step;mujoco.mj_contactForce=self.contact_force
         mujoco.mj_rnePostConstraint=self.post_constraint
+        mujoco.mj_forward=self.forward
         return self
 
     def __exit__(self,*_):
         mujoco.mj_step=self.original_step;mujoco.mj_contactForce=self.original_force
         mujoco.mj_rnePostConstraint=self.original_post
+        mujoco.mj_forward=self.original_forward
+        for target in self._context_targets:
+            if getattr(target, '_physics_context_owner', None) is self:
+                del target._physics_context_owner
+            target.physics_observations = {
+                'backend': 'isaac',
+                'physics_engine': 'PhysX',
+                'actuator_force': False,
+                'actuator_force_provenance': 'Native physics context ended; reset the source session before using source force observations',
+            }
 
 
 def run(task_name: str, seed: int, output: Path, render: bool, gpu: int):

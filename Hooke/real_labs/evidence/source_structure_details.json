@@ -1,0 +1,243 @@
+{
+  "alberta_nanofab_exactacoat": {
+    "reference_urls": [
+      "https://www.nanofab.ualberta.ca/new-spray-coating-tool-available/",
+      "https://www.nanofab.ualberta.ca/wp-content/uploads/2024/02/ExactaCoat-768x1024.jpg"
+    ],
+    "observed_details": "Unequal capped dispensing valves, fasteners and capillary routing on the retained coater head. Synthetic inspection softboxes no longer obscure the front glazing.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/research/americas_02_sources/stills/alberta_coater.img",
+        "sha256": "b5c2fa9b671a3910799a6fb466274fba68a75361882f0cfb56c3132791949e5d"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "mit_paoc_rotating_fluids": {
+    "reference_urls": [
+      "https://paocweb.mit.edu/about/facilities/the-fluids-lab",
+      "https://paocweb.mit.edu/images/uploads/fluidlab_0_0.jpg"
+    ],
+    "observed_details": "Narrower taller transparent cylinder, raised perimeter rim, graduation marks and supported overhead service leads; original rotor axis, camera rotation and retained datum orbit remain.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/research/stills/mit_rotating_fluids.img",
+        "sha256": "c46dfcb865ac17abdbb0711c0acf3e738f14c7842125b07253dc95a58098ff4a"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "ucsd_mccartney_geotechnical_centrifuge": {
+    "reference_urls": [
+      "https://mccartney.ucsd.edu/facilities",
+      "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72sGBk_yy8HwpLYNkNhZ6oDkdwAtYcKIaJhdqm7nTNPKPAtaPqdG99MYf6s3X69jI0nkQ4qY5WzIsqV4i3eR_4H6NmC_pMR517KbPUZ9CSgqiV70jiLkYdyw91Or9WTnQQceDJYoqDFavLOowfxfbwfZy5dXMIvaAhBjcEVxzJ3y7kpt2vX3gfFc23J1Ey8AXdDferwIZKGuwcOrPubjL28jQ4xRYwcZ1b-QkD5O=w1280"
+    ],
+    "observed_details": "Smooth blue cast-pedestal silhouette with open arch, continuous thin beam skins, pivot cap hardware and open annular basket bearings. The new bearings clear the retained hanger through combined full-range poses.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/research/stills/ucsd_centrifuge.img",
+        "sha256": "b3caf82aecf2f4d9d169e7ff8d02717aa8df256a582a54e03e2b3ac416887d7d"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "sydney_fluids_convection": {
+    "reference_urls": [
+      "https://www.sydney.edu.au/engineering/our-research/laboratories-and-facilities/fluids-laboratory.html",
+      "https://www.sydney.edu.au/content/dam/corporate/images/faculty-of-engineering-and-information-technologies/research/laboratories-and-facilities/laboratories-hero-fluids-laboratory-and-wave-flume-heated-tank.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+    ],
+    "observed_details": "Raised transparent enclosure above the right end with floor, rim and continuous supports. Its rear placement preserves the complete dry traverse envelope.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/references/sydney_fluids.jpg",
+        "sha256": "555575f0d5d4d46186b32fe6c3403d457e5181328c40fb783981a46ed75e537b"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "tsinghua_rush3d": {
+    "reference_urls": [
+      "https://www.tsinghua.edu.cn/info/3155/119959.htm"
+    ],
+    "observed_details": "Silver lower frame, objective selector, stepped focus knobs and fasteners, and unequal camera adjustment plates on the original microscope arrangement.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/research/qs_asia_visual_checks/qinghua_rush3d.jpg",
+        "sha256": "15039f4f84f740463180485fbd34d98ec7ead99c6d4c2c2885117f74c3c9cc49"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "yonsei_mics_rf_probe": {
+    "reference_urls": [
+      "https://mics.yonsei.ac.kr/equipment/",
+      "https://mics.yonsei.ac.kr/wp-content/uploads/2024/11/mics-main-img-v10-1-840x562.jpeg",
+      "https://ggb.com/wp-content/uploads/2025/04/mod40a.pdf"
+    ],
+    "observed_details": "Dark probe-positioner surfaces, hexagonal connector exteriors and head fasteners; original collision proxies and 100 micrometre GSG tips remain.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/references/asia02/yonsei_mics_probe.jpeg",
+        "sha256": "4b8af9c08a3534c80ad2242f5dd3493af314c7eb74bb598ab388924c9df65e4e"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "lmu_hybrid_snom": {
+    "reference_urls": [
+      "https://www.physik.lmu.de/hybridnano/en/research/facilities/",
+      "https://cms-cdn.lmu.de/media/17-physik/17-hybridnano/photos/snom__nanoinstitute_3_2_format_s.jpg",
+      "https://cms-cdn.lmu.de/media/17-physik/17-hybridnano/photos/snom2_hynano_3_2_format_s.jpg",
+      "https://www.nanosensors.com/pointprobe-plus-non-contact-tapping-mode-high-resonance-frequency-ptir5-coating-afm-tip-PPP-NCHPt"
+    ],
+    "observed_details": "Large front selector and raised circular cover, six unequal right-hand optical/electronics modules, upper adjustment knobs and restrained service leads informed by the commercial exterior photograph.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/references/asia03/lmu_snom.jpg",
+        "sha256": "636c5d2a4a6f2a482a75859b55c319508a56601746b729a8aa398cf1236000fe"
+      },
+      {
+        "local_path": "temp/university/optimization_120_20261004/lmu_snom/research/attocube_snom.jpg",
+        "sha256": "0c57368e8534ff805347cdb88ee690eb12c99145a6656a9c26ff9a7109a9248f"
+      },
+      {
+        "local_path": "temp/university/optimization_120_20261004/lmu_snom/research/experimental_snom.jpg",
+        "sha256": "8944776cf91df68f8dc8ef7c5d0e6ac155008ce8c9cfa91b267a72ec506dc41a"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "heidelberg_jochim_quantum_architecture": {
+    "reference_urls": [
+      "https://ultracold.physi.uni-heidelberg.de/02research/",
+      "https://ultracold.physi.uni-heidelberg.de/02research/img/HQA_Setup.JPG"
+    ],
+    "observed_details": "Red viewport and optical faces, three adjusters per retained cage plate, supported unequal optical components on the surrounding decks. Red color/emission is illustrative, without laser-power or optical-propagation physics.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/references/asia03/heidelberg_hqa.jpg",
+        "sha256": "511ac7d9dbedae0add1b51d32e3cef3e09a951f532832c7da125af5bcbc37226"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "leeds_environmental_tribology": {
+    "reference_urls": [
+      "https://www.leeds.ac.uk/experimental-facilities/dir-record/profiles/23792/advanced-coatings-system-and-environmental-tribology-suite"
+    ],
+    "observed_details": "Rear chamber fasteners and black socket centers, base anchors and paired supported gas gauges beside the existing cylinder. The gauges do not synthesize a pressure reading.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/research/europe_03_media/leeds_tribology.jpg",
+        "sha256": "1b13e7ec31371630b989df87390320f7be387fdf974eedfa30b70438c613fae8"
+      },
+      {
+        "local_path": "temp/university/expansion_100_20261003/research/europe_03_media/leeds_tribology_room.jpg",
+        "sha256": "208b9e8cc3c9106fead7d0eccd384895dbdedefbaf22a990d131cac6a2f8573e"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "kyoto_yokokawa_nanometrics": {
+    "reference_urls": [
+      "https://www.mbsys.me.kyoto-u.ac.jp/album/lab/",
+      "https://www.mbsys.me.kyoto-u.ac.jp/wp-content/uploads/2023/09/Nano1-1-scaled.jpg",
+      "https://www.mbsys.me.kyoto-u.ac.jp/wp-content/uploads/2023/09/Nano3-1-scaled.jpg"
+    ],
+    "observed_details": "Heterogeneous rear shelf instruments and a tall side rack with two retained instruments, preserving operator access and the existing microscope workspace.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/university/expansion_100_20261003/research/asia_01_images/kyoto_nano_room.jpg",
+        "sha256": "edd66d07bca744b4f88fcd2e80d7c999dd7415b9b78db9eee9f1e5e23e8f2183"
+      },
+      {
+        "local_path": "temp/university/expansion_100_20261003/research/asia_01_images/kyoto_nano_tirf.jpg",
+        "sha256": "061efd718d73b950466c0e51b004bc40344b18067a7247d29e314578be8569ca"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  },
+  "stanford_biomechatronics_gait": {
+    "reference_urls": [
+      "https://biomechatronics.stanford.edu/"
+    ],
+    "observed_details": "Flat calf rails, cuff-shaped pads, pulley exteriors, frame-mounted amplifier enclosures and parked paired leads on the retained unloaded dry rig.",
+    "source_reference_hashes": [
+      {
+        "local_path": "temp/research/qs_lab_page_audit/stills/stanford_biomechatronics_1.img",
+        "sha256": "7baf3b877318eb1187cc2f5cf49009664b5f3c72a9c10c899df1797e1256684f"
+      },
+      {
+        "local_path": "temp/research/qs_lab_page_audit/stills/stanford_biomechatronics_2.img",
+        "sha256": "e3d7b5d58c8efa82242fc3b535e7a561956b33b18be6f19bf849c6f0b117a2c5"
+      }
+    ],
+    "reconstruction": "Original geometry informed by inspected official/reference images. Unpublished dimensions and hidden connections are estimates; this is not OEM CAD or a surveyed digital twin.",
+    "physical_scope": "Original actuated axes and their diagnostic targets are retained. Added fixed context does not imply a functional secondary instrument or scientific process model.",
+    "source_media_rights": "Reference images stay in ignored local research storage. Redistribution permission has not been established.",
+    "remaining_limits": [
+      "Room dimensions and hidden service layouts are not surveyed.",
+      "Mechanical verification and visual correspondence are separate gates; resemblance does not certify experimental process physics."
+    ]
+  }
+}

@@ -23,15 +23,38 @@ BACKGROUND_CELLS = ((-52e-6, 19e-6), (43e-6, 43e-6), (-34e-6, -48e-6),
                     (57e-6, -23e-6), (-17e-6, 65e-6))
 
 
-def hollow_pipette(asset, name="cell_hollow_pipette_mesh", *, profile=INJECTION_PROFILE):
+def hollow_pipette(asset, name="cell_hollow_pipette_mesh", *, profile=INJECTION_PROFILE, geometry=None):
     sides = 48
     vertices, faces = [], []
     # Close the glass wall around the mouth and rear opening; preserve the bore.
-    rings = [(distance, outer) for distance, outer, _ in reversed(profile.sections)]
-    rings += [(distance, inner) for distance, _, inner in profile.sections]
+    sections = profile.sections
+    if geometry is not None and geometry.bend_end_m:
+        distances = np.unique(np.r_[[row[0] for row in sections],
+            np.linspace(geometry.bend_start_m, geometry.bend_end_m, 17)])
+        sections = [(distance, profile.radius(distance), profile.radius(distance, inner=True))
+                    for distance in distances]
+    rings = [(distance, outer) for distance, outer, _ in reversed(sections)]
+    rings += [(distance, inner) for distance, _, inner in sections]
+    helper = None
+    if geometry is not None:
+        if geometry.bend_end_m:
+            helper = np.cross(geometry.tip_back, geometry.shaft_back)
+            helper /= np.linalg.norm(helper)
+            if helper[np.argmax(np.abs(helper))] < 0:
+                helper = -helper
+        else:
+            helper = np.eye(3)[int(np.argmin(np.abs(geometry.shaft_back)))]
     for distance, radius in rings:
+        centre = np.array([0., 0., -distance])
+        u, v = np.eye(3)[:2]
+        if geometry is not None:
+            centre = geometry.centreline(distance)
+            tangent = geometry.tangents(distance)
+            u = np.cross(tangent, helper)
+            u /= np.linalg.norm(u)
+            v = np.cross(u, tangent)
         for angle in np.linspace(0, 2*np.pi, sides, endpoint=False):
-            vertices.append((radius*np.cos(angle), radius*np.sin(angle), -distance))
+            vertices.append(centre+radius*(np.cos(angle)*u+np.sin(angle)*v))
     for ring in range(len(rings)):
         a, b = ring*sides, ((ring+1) % len(rings))*sides
         for i in range(sides):
@@ -41,9 +64,9 @@ def hollow_pipette(asset, name="cell_hollow_pipette_mesh", *, profile=INJECTION_
     mesh(asset, name, vertices, faces)
 
 
-def build_xml(tools=("injector",), *, focal_reference_m=CELL_CENTER[2]):
+def build_xml(tools=("injector",), *, focal_reference_m=CELL_CENTER[2], suspended=False):
     root = ET.fromstring(workstation_xml(tools=tools, focal_reference_m=focal_reference_m,
-                                        cell_pipettes=True))
+                                        cell_pipettes=True, suspended=suspended))
     root.set("model", "adherent_cell_microinjection_phantom")
     root.find("visual/map").set("znear", ".0000001")
     world, asset, actuators = (root.find(name) for name in ("worldbody", "asset", "actuator"))
@@ -80,11 +103,20 @@ def build_xml(tools=("injector",), *, focal_reference_m=CELL_CENTER[2]):
     injector = next(node for node in world.iter("body")
                     if node.find("site[@name='injector_tcp']") is not None)
     injector.remove(injector.find("geom[@name='injector_taper']"))
-    hollow_pipette(asset)
+    from microscopy.manipulator_profile import requested_profile
+    from microscopy.pipette_geometry import PipetteGeometry
+    pipette = None
+    if requested_profile() == "sutter-mp285-reference":
+        assemblies = json.loads(metadata.get("data"))["assemblies"]
+        pipette = PipetteGeometry.from_evidence(next(
+            item["pipette_geometry"] for item in assemblies if item["tool"] == "injector"))
+    hollow_pipette(asset, geometry=pipette)
     # Rotate local -Z onto the upward/rightward pipette back direction.
     axis = np.cross([0., 0., -1.], NEEDLE_BACK)
     quaternion = np.r_[1-NEEDLE_BACK[2], axis]
     quaternion /= np.linalg.norm(quaternion)
+    if pipette is not None:
+        quaternion = np.array([1., 0., 0., 0.])
     ET.SubElement(injector, "geom", name="cell_hollow_pipette", type="mesh",
                   mesh="cell_hollow_pipette_mesh", quat=numbers(quaternion), material="glass")
     tip = injector.find("geom[@name='injector_tip']")

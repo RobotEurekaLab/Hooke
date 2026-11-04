@@ -17,6 +17,8 @@ from backends.collision_rules import collision_participants
 from backends.contact_parameters import compliant_parameters,constraint_parameters
 from backends.render_settings import RenderSettings
 from backends.world_frame import WorldFrame
+from backends.contact_offsets import resolve_contact_offset_overrides, validate_offset_pair
+from backends.physics_options import validate_contact_offset_overrides
 
 
 def quat(q):
@@ -55,8 +57,10 @@ class SceneBridge:
         self.body_paths = {i: f'/World/b{i}' for i in range(len(self.names['body']))}
         self.joint_paths = {}
         self.geom_paths = {}
+        self.collider_paths = {}
         self.camera_paths = {}
         self.written_textures = set()
+        self.material_templates = {}
         self.articulation_roots = []
         self.free_bodies = {}
         self.physics_options={
@@ -67,20 +71,26 @@ class SceneBridge:
                                       '.00005' if np.any(self.m['geom_type']==8) else '.001')),
             'sdf_contact_offset_m':float(os.environ.get('HOOKE_ISAAC_SDF_CONTACT_OFFSET','.00005')),
             'solver_velocity_iterations':int(os.environ.get('HOOKE_ISAAC_VELOCITY_ITERATIONS','8')),
+            'solver_position_iterations':int(os.environ.get('HOOKE_ISAAC_POSITION_ITERATIONS','32')),
             'simulation_threads':int(os.environ.get('HOOKE_ISAAC_SIMULATION_THREADS','1')),
             'solver_type':os.environ.get('HOOKE_ISAAC_SOLVER_TYPE','TGS'),
             'external_forces_every_iteration':os.environ.get('HOOKE_ISAAC_EXTERNAL_FORCES_EVERY_ITERATION','0')=='1',
+            'enable_stabilization':False,
             'compliant_contact_scale':float(os.environ.get('HOOKE_ISAAC_COMPLIANT_SCALE','1')),
             'compliant_impedance_fraction':float(os.environ.get('HOOKE_ISAAC_IMPEDANCE_FRACTION','0')),
             'soft_connect_constraints':os.environ.get('HOOKE_ISAAC_SOFT_CONNECT','1')=='1',
             'connect_impedance_fraction':float(os.environ.get('HOOKE_ISAAC_CONNECT_IMPEDANCE_FRACTION','0')),
             'approximate_cylinders':os.environ.get('HOOKE_ISAAC_APPROXIMATE_CYLINDERS','0')=='1',
+            'compound_cylinder_colliders':False,
+            'contact_offset_overrides_m':{},
             'world_origin_m':[0.,0.,0.],
         }
         if physics_options:
             unknown=set(physics_options)-self.physics_options.keys()
             if unknown:raise ValueError(f'Unknown physics options: {sorted(unknown)}')
             self.physics_options.update(physics_options)
+        self.physics_options['contact_offset_overrides_m'] = validate_contact_offset_overrides(
+            self.physics_options['contact_offset_overrides_m'])
         self.frame=WorldFrame(self.physics_options['world_origin_m'])
         self.physics_options['world_origin_m']=self.frame.origin.tolist()
         for key in ('contact_offset_m','sdf_contact_offset_m','compliant_contact_scale'):
@@ -91,11 +101,20 @@ class SceneBridge:
         iterations=self.physics_options['solver_velocity_iterations']
         if self.physics_options['solver_type'] not in ('TGS','PGS'):raise ValueError('Invalid solver type')
         if not isinstance(self.physics_options['external_forces_every_iteration'],bool):raise ValueError('Invalid external force iteration option')
+        if not isinstance(self.physics_options['enable_stabilization'], bool):
+            raise ValueError('enable_stabilization must be a boolean')
         if int(iterations)!=iterations or not 1<=iterations<=255:raise ValueError('Invalid solver iterations')
+        position_iterations = self.physics_options['solver_position_iterations']
+        if (isinstance(position_iterations, (bool, np.bool_))
+                or not isinstance(position_iterations, (int, np.integer))
+                or not 1 <= position_iterations <= 255):
+            raise ValueError('Position solver iterations must be an integer from 1 to 255')
         threads=self.physics_options['simulation_threads']
         if not isinstance(threads,int) or isinstance(threads,bool) or not 1<=threads<=64:
             raise ValueError('Simulation threads must be an integer from 1 to 64')
         if not isinstance(self.physics_options['approximate_cylinders'],bool):raise ValueError('Invalid cylinder approximation option')
+        if not isinstance(self.physics_options['compound_cylinder_colliders'], bool):
+            raise ValueError('Compound cylinder colliders must be a boolean')
         fraction=float(self.physics_options['compliant_impedance_fraction'])
         if not np.isfinite(fraction) or not 0<=fraction<=1:raise ValueError('Invalid impedance fraction')
         fraction=float(self.physics_options['connect_impedance_fraction'])
@@ -108,6 +127,8 @@ class SceneBridge:
             'Finite ground mesh uses the source plane display extent; infinite collision plane is not reproduced.',
             'Source camera pose/FOV retained; output resolution and exposure must be qualified separately.',
         ]
+        if self.physics_options['enable_stabilization']:
+            self.limits.append('PhysX stabilization can rescale effective gravity at multi-contact supports; source force and momentum equivalence is not qualified with this option enabled.')
 
     def name(self, prim, kind, index):
         prim.CreateAttribute('hooke:sourceId', Sdf.ValueTypeNames.Int).Set(index)
@@ -135,6 +156,15 @@ class SceneBridge:
         if self.physics_options['compliant_contact_scale']:
             self.limits.append('Compliant contacts use a calibrated constant source impedance; nonlinear residual dependence and coupled friction remain unqualified.')
         self.colliders,self.explicit_pairs=collision_participants(m)
+        self.contact_offset_overrides = resolve_contact_offset_overrides(
+            self.physics_options['contact_offset_overrides_m'], self.names['geom'],
+            self.colliders, m['geom_margin'])
+        if any(m['geom_type'][i] == 4 for i in self.colliders):
+            self.limits.append('Ellipsoid colliders use baked-axis convex meshes with at most 128 cooked vertices; analytic ellipsoid contact equivalence is unqualified.')
+        compound_count = (sum(m['geom_type'][i] == 5 for i in self.colliders)
+                          if self.physics_options['compound_cylinder_colliders'] else 0)
+        if compound_count:
+            self.limits.append('Cylinder decomposition uses six-vertex nonoverlapping prisms and native boxes for thin rails, with a 40 micrometre ideal radial budget. Actual cooked geometry and contact response require task-specific qualification.')
         self.sdf_contacts={i for i in self.colliders if m['geom_type'][i]==8}
         for a,b in self.explicit_pairs:
             if m['geom_type'][a]==8 or m['geom_type'][b]==8:self.sdf_contacts.update((a,b))
@@ -148,6 +178,14 @@ class SceneBridge:
         # skipping the massless joint owner would pin a free object to world.
         self.rigid = {i for i in range(1,len(self.names['body']))
                       if (m['body_weldid'][i]==0 and m['body_mass'][i]>0) or m['body_jntnum'][i]>0}
+        from backends.articulation_layout import articulation_layout
+        self.rigid, self.articulation_layout = articulation_layout(m, self.rigid)
+        if self.articulation_layout['removed_fixed_rigid_bodies']:
+            self.limits.append('Oversized world-fixed support trees are partitioned into independently anchored articulations; all source geometry and moving masses are retained.')
+        self.shared_world_anchors = {body: roots[0]
+                                     for roots in self.articulation_layout['shared_world_anchor_roots']
+                                     for body in roots}
+        self.validate_explicit_contacts()
         self.mass_properties={}
         for i in self.rigid:
             members=np.flatnonzero(m['body_weldid']==i) if m['body_weldid'][i] else [i]
@@ -173,12 +211,11 @@ class SceneBridge:
                 mass.CreateDiagonalInertiaAttr(vec(properties['diagonal']))
                 mass.CreatePrincipalAxesAttr(quat(properties['axes']))
                 rb = PhysxSchema.PhysxRigidBodyAPI.Apply(prim)
-                comp=properties['gravcomp']
-                rb.CreateDisableGravityAttr(bool(np.isclose(comp,1.)))
+                rb.CreateDisableGravityAttr(properties['disable_gravity'])
+                rb.CreateSolverPositionIterationCountAttr(self.physics_options['solver_position_iterations'])
+                rb.CreateSolverVelocityIterationCountAttr(self.physics_options['solver_velocity_iterations'])
                 rb.CreateLinearDampingAttr(0.)
                 rb.CreateAngularDampingAttr(0.)
-                if not (np.isclose(comp,0.) or np.isclose(comp,1.)):
-                    raise NotImplementedError('Partial gravity compensation needs force integration.')
         for i in range(len(self.names['geom'])):
             self.geometry(i)
         self.joints()
@@ -226,7 +263,7 @@ class SceneBridge:
         source_points = create_point_lights(stage, m, self.body_paths)
         if source_points:
             self.limits.append('Fixed source point lights use an illustrative sphere-light intensity scale; source attenuation, spot cones and ambient terms are not equivalent.')
-        report = {'status': 'EXPERIMENTAL_UNQUALIFIED', 'source': str(self.source),'conversion_version':7,
+        report = {'status': 'EXPERIMENTAL_UNQUALIFIED', 'source': str(self.source),'conversion_version':14,
                   'source_point_lights': source_points,
                   'body_count': len(self.body_paths), 'geom_count': len(self.geom_paths),
                   'joint_count': len(self.joint_paths), 'camera_count': len(self.camera_paths),
@@ -239,12 +276,43 @@ class SceneBridge:
                   'render_settings':self.render_settings.report(),
                   'explicit_contact_pairs':sorted(self.explicit_pairs),
                   'collider_count':len(self.colliders),
+                  'compound_cylinder_geom_count':int(compound_count),
+                  'cylinder_collision_profile':getattr(self, 'cylinder_collision_profile', {}),
+                  'native_collider_count':sum(map(len, self.collider_paths.values())),
+                  'collider_paths':self.collider_paths,
+                  'contact_offset_overrides':self.contact_offset_override_report(),
+                  'collision_filter_counts':self.collision_filter_counts,
                   'articulation_roots': self.articulation_roots,
+                  'articulation_layout': self.articulation_layout,
                   'body_paths': self.body_paths, 'geom_paths': self.geom_paths,
                   'joint_paths': self.joint_paths, 'camera_paths': self.camera_paths,
                   'limitations': self.limits}
         (self.output/'conversion.json').write_text(json.dumps(report, indent=2))
         return report
+
+    def contact_offset(self, index):
+        """Resolve one source shape's skin; source margin remains a lower bound."""
+        default = self.physics_options[
+            'sdf_contact_offset_m' if index in self.sdf_contacts else 'contact_offset_m']
+        offset = self.contact_offset_overrides.get(index, default)
+        return validate_offset_pair(max(offset, float(self.m['geom_margin'][index])), 0.0)[0]
+
+    def contact_offset_override_report(self):
+        """Read back every generated USD collider for each explicit override."""
+        rows = []
+        for index, offset in self.contact_offset_overrides.items():
+            shapes = []
+            for path in self.collider_paths[index]:
+                api = PhysxSchema.PhysxCollisionAPI(self.stage.GetPrimAtPath(path))
+                contact, rest = validate_offset_pair(
+                    api.GetContactOffsetAttr().Get(), api.GetRestOffsetAttr().Get())
+                if not np.isclose(contact, offset, rtol=2 * np.finfo(np.float32).eps, atol=0) or rest != 0:
+                    raise ValueError(f'Contact offset readback mismatch for {path}')
+                shapes.append({'path':path, 'contact_offset_m':contact, 'rest_offset_m':rest})
+            rows.append({'geom_id':index, 'geom_name':self.names['geom'][index],
+                         'resolved_contact_offset_m':offset, 'readback_source':'USD PhysxCollisionAPI attributes',
+                         'native_shape_api_verified':False, 'shapes':shapes})
+        return rows
 
     def material(self, i, prim):
         m = self.m
@@ -253,8 +321,31 @@ class SceneBridge:
         # MuJoCo uses material RGBA only when geom RGBA has the default value.
         if mat_id >= 0 and np.allclose(rgba, [.5, .5, .5, 1]):
             rgba = m['mat_rgba'][mat_id].copy()
-        material = UsdShade.Material.Define(self.stage, f'/World/Materials/g{i}')
-        shader = UsdShade.Shader.Define(self.stage, f'/World/Materials/g{i}/Surface')
+        scale = self.physics_options['compliant_contact_scale']
+        compliance = (compliant_parameters(m, i, self.meta['timestep_s'],
+                                          self.physics_options['compliant_impedance_fraction'])
+                      if scale and i in self.colliders else None)
+        # Constant source surfaces share one immutable definition. Textured
+        # geoms keep their existing paths for independent runtime overrides.
+        key = (mat_id, tuple(rgba), float(m['geom_friction'][i, 0]), compliance)
+        if key not in self.material_templates:
+            path = f'/World/Materials/Shared/m{len(self.material_templates)}'
+            self.material_definition(i, path, rgba, compliance)
+            self.material_templates[key] = path
+        material = UsdShade.Material.Get(self.stage, self.material_templates[key])
+        texture = int(m['mat_texid'][mat_id, 1]) if mat_id >= 0 else -1
+        if texture >= 0 and m['tex_type'][texture] == 0:
+            material = UsdShade.Material.Define(self.stage, f'/World/Materials/g{i}')
+            material.GetPrim().GetReferences().SetReferences([Sdf.Reference('', self.material_templates[key])])
+        UsdShade.MaterialBindingAPI.Apply(prim).Bind(material)
+        UsdShade.MaterialBindingAPI(prim).Bind(material, UsdShade.Tokens.weakerThanDescendants, 'physics')
+        return float(rgba[3])
+
+    def material_definition(self, i, path, rgba, compliance):
+        m = self.m
+        mat_id = int(m['geom_matid'][i])
+        material = UsdShade.Material.Define(self.stage, path)
+        shader = UsdShade.Shader.Define(self.stage, path + '/Surface')
         shader.CreateIdAttr('UsdPreviewSurface')
         color = rgba[:3]
         if self.render_settings.native_color_pipeline == 'source_display':
@@ -278,10 +369,10 @@ class SceneBridge:
                 pixels = m['tex_data'][start:start+w*h*c].reshape(h,w,c)
                 Image.fromarray(pixels).save(file)
                 self.written_textures.add(tex_id)
-            uv = UsdShade.Shader.Define(self.stage, f'/World/Materials/g{i}/UV')
+            uv = UsdShade.Shader.Define(self.stage, path + '/UV')
             uv.CreateIdAttr('UsdPrimvarReader_float2')
             uv.CreateInput('varname', Sdf.ValueTypeNames.Token).Set('st')
-            tex = UsdShade.Shader.Define(self.stage, f'/World/Materials/g{i}/Texture')
+            tex = UsdShade.Shader.Define(self.stage, path + '/Texture')
             tex.CreateIdAttr('UsdUVTexture')
             tex.CreateInput('file', Sdf.ValueTypeNames.Asset).Set(str(file.resolve()))
             tex.CreateInput('sourceColorSpace', Sdf.ValueTypeNames.Token).Set('raw')
@@ -289,7 +380,6 @@ class SceneBridge:
             tex.CreateInput('wrapT', Sdf.ValueTypeNames.Token).Set('repeat')
             tex.CreateInput('st', Sdf.ValueTypeNames.Float2).ConnectToSource(uv.ConnectableAPI(), 'result')
             shader.GetInput('diffuseColor').ConnectToSource(tex.ConnectableAPI(), 'rgb')
-        UsdShade.MaterialBindingAPI.Apply(prim).Bind(material)
         physics = UsdPhysics.MaterialAPI.Apply(material.GetPrim())
         physics.CreateStaticFrictionAttr(float(m['geom_friction'][i, 0]))
         physics.CreateDynamicFrictionAttr(float(m['geom_friction'][i, 0]))
@@ -297,8 +387,8 @@ class SceneBridge:
         native_material=PhysxSchema.PhysxMaterialAPI.Apply(material.GetPrim())
         native_material.CreateFrictionCombineModeAttr('max')
         scale=self.physics_options['compliant_contact_scale']
-        if scale and i in self.colliders:
-            stiffness,damping=compliant_parameters(m,i,self.meta['timestep_s'],self.physics_options['compliant_impedance_fraction'])
+        if compliance is not None:
+            stiffness,damping=compliance
             native_material.CreateCompliantContactAccelerationSpringAttr(True)
             native_material.CreateCompliantContactStiffnessAttr(stiffness*scale)
             native_material.CreateCompliantContactDampingAttr(damping*np.sqrt(scale))
@@ -306,12 +396,12 @@ class SceneBridge:
             # min selects the stiffer material, including dedicated pairs.
             native_material.CreateRestitutionCombineModeAttr('min')
             native_material.CreateDampingCombineModeAttr('max')
-        UsdShade.MaterialBindingAPI(prim).Bind(material, UsdShade.Tokens.weakerThanDescendants, 'physics')
-        return float(rgba[3])
 
     def geometry(self, i):
         m, stage = self.m, self.stage
         typ = int(m['geom_type'][i]); size = m['geom_size'][i]
+        compound = (typ == 5 and i in self.colliders
+                    and self.physics_options.get('compound_cylinder_colliders', False))
         path = self.body_paths[int(m['geom_bodyid'][i])] + f'/g{i}'
         self.geom_paths[i] = path
         if typ in (0, 1, 7, 8):
@@ -364,14 +454,26 @@ class SceneBridge:
             g.CreateDoubleSidedAttr(True)
         elif typ == 6:
             g = UsdGeom.Cube.Define(stage, path); g.CreateSizeAttr(2.)
-        elif typ in (2, 4):
-            g = UsdGeom.Sphere.Define(stage, path); g.CreateRadiusAttr(1. if typ == 4 else float(size[0]))
+        elif typ == 4:
+            from backends.ellipsoid import ellipsoid_surface
+            points, faces, normals = ellipsoid_surface(size)
+            extent = size
+            g = UsdGeom.Mesh.Define(stage, path)
+            g.CreatePointsAttr(Vt.Vec3fArray.FromNumpy(points))
+            g.CreateFaceVertexCountsAttr(Vt.IntArray.FromNumpy(np.full(len(faces), 3, np.int32)))
+            g.CreateFaceVertexIndicesAttr(Vt.IntArray.FromNumpy(faces.ravel()))
+            g.CreateNormalsAttr(Vt.Vec3fArray.FromNumpy(normals))
+            g.SetNormalsInterpolation(UsdGeom.Tokens.vertex)
+            g.CreateSubdivisionSchemeAttr(UsdGeom.Tokens.none)
+            g.CreateExtentAttr([vec(-extent), vec(extent)])
+        elif typ == 2:
+            g = UsdGeom.Sphere.Define(stage, path); g.CreateRadiusAttr(float(size[0]))
         else:
             g = (UsdGeom.Capsule if typ == 3 else UsdGeom.Cylinder).Define(stage, path)
             g.CreateRadiusAttr(float(size[0])); g.CreateHeightAttr(2*float(size[1])); g.CreateAxisAttr('Z')
         prim = g.GetPrim()
         pose(prim, m['geom_pos'][i], m['geom_quat'][i])
-        if typ in (4,6):
+        if typ == 6:
             UsdGeom.Xformable(prim).AddScaleOp().Set(vec(size))
         self.name(prim, 'geom', i)
         alpha = self.material(i, prim)
@@ -380,19 +482,104 @@ class SceneBridge:
         # An invisible source geom must contribute no surface to the image.
         if m['geom_group'][i] > 2 or alpha == 0:
             UsdGeom.Imageable(prim).MakeInvisible()
+        if compound:
+            self.compound_cylinder(i, path, size)
+            return
         if i in self.colliders:
+            self.collider_paths[i] = [path]
             UsdPhysics.CollisionAPI.Apply(prim)
             api = PhysxSchema.PhysxCollisionAPI.Apply(prim)
-            offset=self.physics_options['sdf_contact_offset_m'] if i in self.sdf_contacts else self.physics_options['contact_offset_m']
-            api.CreateContactOffsetAttr(max(offset, float(m['geom_margin'][i])))
+            api.CreateContactOffsetAttr(self.contact_offset(i))
             api.CreateRestOffsetAttr(0.)
             if typ == 1:
                 UsdPhysics.MeshCollisionAPI.Apply(prim).CreateApproximationAttr('none')
-            elif typ == 7:
+            elif typ in (4, 7):
                 UsdPhysics.MeshCollisionAPI.Apply(prim).CreateApproximationAttr('convexHull')
+                if typ == 4:
+                    hull = PhysxSchema.PhysxConvexHullCollisionAPI.Apply(prim)
+                    # Bound the cooked polyhedron without inflating thin or
+                    # micrometre-scale source ellipsoids to a default thickness.
+                    hull.CreateHullVertexLimitAttr(128)
+                    hull.CreateMinThicknessAttr(0.)
             elif typ == 8:
                 UsdPhysics.MeshCollisionAPI.Apply(prim).CreateApproximationAttr('sdf')
                 PhysxSchema.PhysxSDFMeshCollisionAPI.Apply(prim).CreateSdfResolutionAttr(256)
+
+    def compound_cylinder(self, index, parent_path, size):
+        """Tile an inscribed cylinder with disjoint six-vertex convex prisms."""
+        from backends.sector_cylinder import cylinder_sectors, radial_deficit, uses_box_fallback, RADIAL_BUDGET_M, MAX_SECTORS
+
+        if not hasattr(self, 'cylinder_collision_profile'):
+            self.cylinder_collision_profile = {}
+        if uses_box_fallback(size[0], size[1]):
+            self.box_cylinder(index, parent_path, size)
+            self.cylinder_collision_profile[index] = {'strategy':'native_boxes',
+                'child_count':len(self.collider_paths[index]),'radial_budget_m':RADIAL_BUDGET_M,'max_children':256}
+            return
+        try:
+            sectors = cylinder_sectors(size[0], size[1])
+        except ValueError as exc:
+            raise ValueError(f"Cylinder geom {index} ({self.names['geom'][index]}): {exc}") from exc
+        parent = self.stage.GetPrimAtPath(parent_path)
+        parent.CreateAttribute('hooke:cylinderSectorCount', Sdf.ValueTypeNames.Int).Set(len(sectors))
+        parent.CreateAttribute('hooke:cylinderRadialBudget', Sdf.ValueTypeNames.Double).Set(RADIAL_BUDGET_M)
+        parent.CreateAttribute('hooke:cylinderIdealRadialDeficit', Sdf.ValueTypeNames.Double).Set(radial_deficit(size[0]))
+        parent.CreateAttribute('hooke:cylinderMaxSectors', Sdf.ValueTypeNames.Int).Set(MAX_SECTORS)
+        paths = []
+        for part, (points, faces) in enumerate(sectors):
+            path = f'{parent_path}/collider{part}'
+            mesh = UsdGeom.Mesh.Define(self.stage, path)
+            mesh.CreatePointsAttr([vec(point) for point in points])
+            mesh.CreateFaceVertexCountsAttr([3] * len(faces))
+            mesh.CreateFaceVertexIndicesAttr(faces.reshape(-1).tolist())
+            mesh.CreateSubdivisionSchemeAttr('none')
+            mesh.MakeInvisible()
+            prim = mesh.GetPrim()
+            self.name(prim, 'geom', index)
+            prim.CreateAttribute('hooke:colliderPart', Sdf.ValueTypeNames.Int).Set(part)
+            UsdPhysics.CollisionAPI.Apply(prim)
+            UsdPhysics.MeshCollisionAPI.Apply(prim).CreateApproximationAttr('convexHull')
+            hull = PhysxSchema.PhysxConvexHullCollisionAPI.Apply(prim)
+            hull.CreateHullVertexLimitAttr(64)
+            hull.CreateMinThicknessAttr(0.)
+            collision = PhysxSchema.PhysxCollisionAPI.Apply(prim)
+            collision.CreateContactOffsetAttr(self.contact_offset(index))
+            collision.CreateRestOffsetAttr(0.)
+            paths.append(path)
+        self.collider_paths[index] = paths
+        self.cylinder_collision_profile[index] = {'strategy':'triangular_prisms',
+            'child_count':len(paths),'radial_budget_m':RADIAL_BUDGET_M,'max_children':MAX_SECTORS}
+
+    def box_cylinder(self, index, parent_path, size):
+        """Tile a bounded circumscribed cylinder with native box primitives."""
+        from backends.box_cylinder import cylinder_boxes, radial_excess, RADIAL_BUDGET_M, MAX_BOXES
+
+        try:
+            half_extents, angles = cylinder_boxes(size[0], size[1])
+        except ValueError as exc:
+            raise ValueError(f"Cylinder geom {index} ({self.names['geom'][index]}): {exc}") from exc
+        parent = self.stage.GetPrimAtPath(parent_path)
+        parent.CreateAttribute('hooke:cylinderBoxCount', Sdf.ValueTypeNames.Int).Set(len(angles))
+        parent.CreateAttribute('hooke:cylinderRadialBudget', Sdf.ValueTypeNames.Double).Set(RADIAL_BUDGET_M)
+        parent.CreateAttribute('hooke:cylinderIdealRadialExcess', Sdf.ValueTypeNames.Double).Set(radial_excess(size[0]))
+        parent.CreateAttribute('hooke:cylinderMaxBoxes', Sdf.ValueTypeNames.Int).Set(MAX_BOXES)
+        paths = []
+        for part, angle in enumerate(angles):
+            path = f'{parent_path}/collider{part}'
+            cube = UsdGeom.Cube.Define(self.stage, path)
+            cube.CreateSizeAttr(2.)
+            prim = cube.GetPrim()
+            pose(prim, [0., 0., 0.], [math.cos(angle / 2), 0., 0., math.sin(angle / 2)])
+            UsdGeom.Xformable(prim).AddScaleOp().Set(vec(half_extents))
+            cube.MakeInvisible()
+            self.name(prim, 'geom', index)
+            prim.CreateAttribute('hooke:colliderPart', Sdf.ValueTypeNames.Int).Set(part)
+            UsdPhysics.CollisionAPI.Apply(prim)
+            collision = PhysxSchema.PhysxCollisionAPI.Apply(prim)
+            collision.CreateContactOffsetAttr(self.contact_offset(index))
+            collision.CreateRestOffsetAttr(0.)
+            paths.append(path)
+        self.collider_paths[index] = paths
 
     def parent_rigid(self, body):
         p = int(self.m['body_parentid'][body])
@@ -444,12 +631,13 @@ class SceneBridge:
                 # PhysX requires a fixed root link before an articulation's
                 # first scalar DOF. This world-fixed frame adds no moving
                 # mass and preserves a source hinge/slide directly on world.
-                anchor=f'/World/rootAnchor{b}'
+                anchor_body = self.shared_world_anchors.get(b, b)
+                anchor=f'/World/rootAnchor{anchor_body}'
                 prim=UsdGeom.Xform.Define(stage,anchor).GetPrim()
                 UsdPhysics.RigidBodyAPI.Apply(prim)
                 mass=UsdPhysics.MassAPI.Apply(prim)
                 mass.CreateMassAttr(1.);mass.CreateDiagonalInertiaAttr(Gf.Vec3f(1.))
-                root_path=f'/World/Joints/rootAnchor{b}'
+                root_path=f'/World/Joints/rootAnchor{anchor_body}'
                 fixed=UsdPhysics.FixedJoint.Define(stage,root_path)
                 fixed.CreateBody1Rel().SetTargets([anchor])
                 joint.CreateBody0Rel().SetTargets([anchor])
@@ -473,16 +661,43 @@ class SceneBridge:
                     joint.CreateLowerLimitAttr(float((m['jnt_range'][j,0]-reference)*factor))
                     joint.CreateUpperLimitAttr(float((m['jnt_range'][j,1]-reference)*factor))
                 PhysxSchema.PhysxJointAPI.Apply(joint.GetPrim()).CreateJointFrictionAttr(0.)
-            if not parent:
-                # Each independent source tree becomes its own articulation.
+            if not parent and self.shared_world_anchors.get(b, b) == b:
+                # Oversized independent branches may share a fixed world root.
                 self.articulation(b, root_path)
+
+    def validate_explicit_contacts(self):
+        """PhysX cannot enable contacts between adjacent articulation links."""
+        def owner(geom):
+            body = int(self.m['geom_bodyid'][geom])
+            return int(self.m['body_weldid'][body]) or (body if body in self.rigid else 0)
+
+        unsupported = []
+        for first, second in sorted(self.explicit_pairs):
+            a, b = owner(first), owner(second)
+            if not a or not b or a == b:
+                continue
+            # Compound source bodies introduce auxiliary links. Their terminal
+            # collision link is no longer adjacent to the source parent.
+            adjacent = any(self.parent_rigid(child) == parent
+                           and self.m['body_jntnum'][child] <= 1
+                           for child, parent in ((a, b), (b, a)))
+            if adjacent:
+                unsupported.append(f"{self.names['geom'][first]!r} (geom {first}) / "
+                                   f"{self.names['geom'][second]!r} (geom {second}), "
+                                   f"rigid bodies {a}/{b}")
+        if unsupported:
+            raise NotImplementedError(
+                'PhysX always filters parent-child articulation contacts; explicit MJCF pairs '
+                'cannot override this rule: ' + '; '.join(unsupported)
+                + '. Use MuJoCo for this scene or revise its explicit contact topology. '
+                'Native articulation splitting is not supported.')
 
     def articulation(self, body, root_path):
         root = self.stage.GetPrimAtPath(root_path)
         UsdPhysics.ArticulationRootAPI.Apply(root)
         art = PhysxSchema.PhysxArticulationAPI.Apply(root)
         art.CreateEnabledSelfCollisionsAttr(True)
-        art.CreateSolverPositionIterationCountAttr(32)
+        art.CreateSolverPositionIterationCountAttr(self.physics_options['solver_position_iterations'])
         art.CreateSolverVelocityIterationCountAttr(self.physics_options['solver_velocity_iterations'])
         self.articulation_roots.append({'body': body, 'body_path': self.body_paths[body], 'root_path': root_path})
 
@@ -500,7 +715,8 @@ class SceneBridge:
         align=Gf.Quatf(Gf.Rotation(Gf.Vec3d(1,0,0),Gf.Vec3d(*map(float,m['jnt_axis'][j]))).GetQuat())
         joint.CreateLocalPos0Attr(vec(local));joint.CreateLocalPos1Attr(vec(anchor))
         joint.CreateLocalRot0Attr(quat(m['reference_xquat'][parent]).GetInverse()*quat(m['reference_xquat'][body])*align)
-        joint.CreateLocalRot1Attr(align);joint.CreateAxisAttr('X');joint.CreateCollisionEnabledAttr(False)
+        joint.CreateLocalRot1Attr(align);joint.CreateAxisAttr('X')
+        joint.CreateCollisionEnabledAttr(False)
         self.joint_paths[j]=path;self.name(joint.GetPrim(),'joint',j)
         if m['jnt_limited'][j]:
             factor=180/math.pi if m['jnt_type'][j]==3 else 1.
@@ -603,6 +819,9 @@ class SceneBridge:
                         drive.CreateTargetPositionAttr(0.);drive.CreateTargetVelocityAttr(0.)
                     note='Experimental: connect equality uses force springs from source reference mass and impedance; nonlinear residual dependence remains unqualified.'
                     if note not in self.limits:self.limits.append(note)
+                else:
+                    note='Connect equalities use hard spherical constraints; source solref/solimp compliance is not reproduced.'
+                    if note not in self.limits:self.limits.append(note)
             elif typ == 2 and np.allclose(m['eq_data'][i,2:5], 0) and b >= 0:
                 for j in (a,b):
                     if m['jnt_type'][j]==3 and not m['jnt_limited'][j]:
@@ -634,46 +853,32 @@ class SceneBridge:
                 raise NotImplementedError(f'Equality {i}, type {typ} requires an adapter.')
 
     def filters(self):
-        """Preserve source collision rules without quadratic visual-geom lists."""
+        """Use exact collider collections for uniformly excluded body pairs."""
         from collections import defaultdict
-        m=self.m
-        excludes=set(map(int,m['exclude_signature']))
-        colliders=defaultdict(list)
-        for i in self.geom_paths:
-            if i in self.colliders:
-                colliders[int(m['geom_bodyid'][i])].append(i)
-        body_filters=defaultdict(list);geom_filters=defaultdict(list)
-        bodies=sorted(colliders)
-        for index,a in enumerate(bodies):
-            for b in bodies[index+1:]:
-                ga=np.asarray(colliders[a],dtype=int);gb=np.asarray(colliders[b],dtype=int)
-                wa,wb=int(m['body_weldid'][a]),int(m['body_weldid'][b])
-                pa=int(m['body_weldid'][m['body_parentid'][wa]])
-                pb=int(m['body_weldid'][m['body_parentid'][wb]])
-                same=wa==wb
-                adjacent=wa!=0 and wb!=0 and (wa==pb or wb==pa)
-                if same or adjacent or ((a<<16)+b) in excludes:
-                    allowed=np.zeros((len(ga),len(gb)),dtype=bool)
-                else:
-                    allowed=((m['geom_contype'][ga,None]&m['geom_conaffinity'][gb])!=0)|((m['geom_conaffinity'][ga,None]&m['geom_contype'][gb])!=0)
-                # Explicit MJCF contact pairs bypass the collision masks.
-                # Thread and dedicated grasp colliders often use zero masks
-                # specifically so they collide only through these pairs.
-                if self.explicit_pairs:
-                    ia={int(g):k for k,g in enumerate(ga)};ib={int(g):k for k,g in enumerate(gb)}
-                    for g1,g2 in self.explicit_pairs:
-                        if g1 in ia and g2 in ib:allowed[ia[g1],ib[g2]]=True
-                        if g2 in ia and g1 in ib:allowed[ia[g2],ib[g1]]=True
-                if allowed.all():continue
-                if not allowed.any() and a in self.rigid and b in self.rigid:
-                    body_filters[a].append(self.body_paths[b])
-                else:
-                    for ai,bi in zip(*np.where(~allowed)):
-                        geom_filters[int(ga[ai])].append(self.geom_paths[int(gb[bi])])
-        for body,targets in body_filters.items():
-            UsdPhysics.FilteredPairsAPI.Apply(self.stage.GetPrimAtPath(self.body_paths[body])).CreateFilteredPairsRel().SetTargets(targets)
-        for geom,targets in geom_filters.items():
-            UsdPhysics.FilteredPairsAPI.Apply(self.stage.GetPrimAtPath(self.geom_paths[geom])).CreateFilteredPairsRel().SetTargets(targets)
+        from backends.collision_filters import collision_filter_plan
+
+        plan = collision_filter_plan(self.m, self.colliders, self.explicit_pairs)
+        grouped_bodies = {body for pair in plan.body_pairs for body in pair}
+        group_paths = {body: f'/World/CollisionGroups/b{body}' for body in grouped_bodies}
+        group_filters, geom_filters = defaultdict(list), defaultdict(list)
+        if grouped_bodies:
+            UsdGeom.Scope.Define(self.stage, '/World/CollisionGroups')
+        for body in sorted(grouped_bodies):
+            group = UsdPhysics.CollisionGroup.Define(self.stage, group_paths[body])
+            collection = group.GetCollidersCollectionAPI()
+            collection.CreateExpansionRuleAttr('explicitOnly')
+            collection.CreateIncludesRel().SetTargets([path for i in plan.body_geoms[body] for path in self.collider_paths[i]])
+        for a, b in plan.body_pairs:
+            group_filters[a].append(group_paths[b])
+        for body, targets in group_filters.items():
+            UsdPhysics.CollisionGroup.Get(self.stage, group_paths[body]).CreateFilteredGroupsRel().SetTargets(targets)
+        for a, b in plan.geom_pairs:
+            for path in self.collider_paths[a]:
+                geom_filters[path].extend(self.collider_paths[b])
+        for path, targets in geom_filters.items():
+            UsdPhysics.FilteredPairsAPI.Apply(self.stage.GetPrimAtPath(path)).CreateFilteredPairsRel().SetTargets(targets)
+        self.collision_filter_counts = {'groups': len(group_paths), 'group_pairs': len(plan.body_pairs),
+                                        'geom_pairs': len(plan.geom_pairs)}
 
     def cameras(self):
         m = self.m

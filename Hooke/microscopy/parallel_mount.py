@@ -8,7 +8,8 @@ import xml.etree.ElementTree as ET
 import numpy as np
 from scipy.spatial.transform import Rotation
 
-from microscopy.geometry import body, cylinder, geom, numbers
+from microscopy.geometry import body, cylinder, numbers
+from microscopy.manipulator_support import add_support
 from microscopy.needle_holder import CAPILLARY_EXPOSED_M, HOLDER_LENGTH_M, mount_holder
 from microscopy.parallel_scene import build_xml
 
@@ -17,9 +18,8 @@ TOOL_EXTENSION_M = .180
 
 
 def requested_parallel():
-    profile = os.environ.get("HOOKE_MICROSCOPY_MANIPULATOR", "auto")
-    if profile not in ("auto", "parallel-v4"):
-        raise ValueError("HOOKE_MICROSCOPY_MANIPULATOR must be auto or parallel-v4")
+    from microscopy.manipulator_profile import requested_profile
+    profile = requested_profile()
     return Path(os.environ.get("HOOKE_MICROSCOPY_PARALLEL_ROOT", DEFAULT_ROOT)) if profile == "parallel-v4" else None
 
 
@@ -35,7 +35,10 @@ def mount_parallel(world, asset, actuators, equality, tool, home, origin, bench_
                 node.set(key, mapping[node.get(key)])
     tangent = np.cross([0., 0., 1.], back)
     tangent /= np.linalg.norm(tangent)
-    rotation = np.column_stack((tangent, np.cross(back, tangent), back))
+    # Keep the motor assembly upright; only its tool holder is inclined.
+    # The CAD occupies mostly local -X/-Y, so yaw its bulk away from the sample.
+    yaw = np.arctan2(back[1], back[0]) + 3 * np.pi / 4
+    rotation = Rotation.from_euler("z", yaw).as_matrix()
     quaternion = Rotation.from_matrix(rotation).as_quat()[[3, 0, 1, 2]]
     platform_position = origin + home + back * TOOL_EXTENSION_M
     for node in mechanism.find("worldbody"):
@@ -46,25 +49,31 @@ def mount_parallel(world, asset, actuators, equality, tool, home, origin, bench_
     actuators.extend(mechanism.find("actuator"))
     equality.extend(mechanism.find("equality"))
     platform = world.find(f"body[@name='{tool}_platform']")
-    tcp = body(platform, tool + "_tcp_frame", (0, 0, -TOOL_EXTENSION_M),
+    tcp = body(platform, tool + "_tcp_frame", -rotation.T @ back * TOOL_EXTENSION_M,
                quat=numbers(np.r_[quaternion[0], -quaternion[1:]]), gravcomp="1")
     ET.SubElement(tcp, "site", name=tool + "_tcp", size=".00005", group="5")
-    # The estimated plate contacts the CAD base's local Z=0 face. Its post is
-    # independent hardware, not an upstream or commercial mounting claim.
-    plate = platform_position + rotation @ np.array([-.03025, -.03025, -.0495])
-    support = body(world, tool + "_support")
-    outward = back[:2] / np.linalg.norm(back[:2])
-    foot = np.r_[plate[:2] + outward * .160, bench_top + .012]
-    geom(support, tool + "_foot", "box", (.043, .037, .012), foot, "graphite")
-    arm_end = plate - back * .004
-    post_top = np.r_[foot[:2], arm_end[2]]
-    cylinder(support, tool + "_post", foot + [0, 0, .012], post_top, .014, "metal")
-    cylinder(support, tool + "_support_arm", post_top, arm_end, .008, "metal")
-    geom(support, tool + "_mount_plate", "box", (.01725, .01725, .002), plate, "metal", quat=numbers(quaternion))
+    # The upright CAD base and bench fixture use separate frames from the tool.
+    # This is the measured lower face centre of BaseBlock.FCStd, not a promise
+    # of hardware fit; the surrounding motors require a side cradle below it.
+    plate = platform_position + rotation @ np.array([-.03025, -.03025, -.0475])
+    support_evidence = add_support(asset, world, tool, plate, rotation, bench_top)
     needle_holder = None
     if tool in ("injector", "holder"):
-        cylinder(tcp, tool + "_holder_adapter", back * (TOOL_EXTENSION_M - .0145),
-                 back * (CAPILLARY_EXPOSED_M + HOLDER_LENGTH_M), .002, "metal")
+        # The fork loads the rotation clamp from the side. The axial holder
+        # tail stays open for the pneumatic inlet instead of carrying a rod.
+        rear = back * (TOOL_EXTENSION_M - .0145)
+        clamp = back * (CAPILLARY_EXPOSED_M + .118)
+        side = -tangent * .010
+        # Retain the previous numerical mass distribution without showing the
+        # old axial rod through the pressure inlet. The new fork is visual.
+        cylinder(tcp, tool + "_holder_adapter", rear,
+                 back * (CAPILLARY_EXPOSED_M + HOLDER_LENGTH_M), .002, "metal", rgba="0 0 0 0")
+        cylinder(tcp, tool + "_holder_fork_rear", rear, rear + side,
+                 .002, "graphite", mass="0")
+        cylinder(tcp, tool + "_holder_fork", rear + side, clamp + side,
+                 .002, "graphite", mass="0")
+        cylinder(tcp, tool + "_holder_clamp_bridge", clamp + side,
+                 clamp - tangent * .0035, .002, "graphite", mass="0")
         needle_holder = mount_holder(tcp, tool, back)
     else:
         cylinder(tcp, tool + "_boom", back * (TOOL_EXTENSION_M - .0145), back * .025, .004, "metal")
@@ -76,5 +85,12 @@ def mount_parallel(world, asset, actuators, equality, tool, home, origin, bench_
                     motor_joints=[f"{tool}_motor_{i}" for i in range(3)],
                     tool_back_direction=back.tolist(), tool_elevation_deg=float(np.rad2deg(np.arcsin(back[2]))),
                     tool_extension_m=TOOL_EXTENSION_M,
-                    mounting="Original inclined plate, outboard post, cantilever and holder adapter; no verified hardware fit")
+                    mounting="Original upright bench column and side cradle; independently inclined holder; no verified hardware fit",
+                    mechanism_yaw_deg=float(np.rad2deg(yaw)),
+                    mechanism_vertical_axis="world +Z",
+                    base_face_centre_m=plate.tolist(), bench_support=support_evidence)
+    if needle_holder is not None:
+        evidence["holder_adapter_inertia"] = (
+            "Original axial adapter retained as an invisible numerical mass proxy; "
+            "side fork and clamp details are massless appearance geometry")
     return tcp, evidence

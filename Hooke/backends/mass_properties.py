@@ -45,5 +45,15 @@ def compose_welded_mass(m,root,members):
     diagonal,axes=np.linalg.eigh(tensor)
     if np.linalg.det(axes)<0:axes[:,0]*=-1
     if np.any(diagonal<=0):raise ValueError(f'Invalid welded inertia for body {root}')
+    compensated_mass = sum(weight * compensation for weight, _, _, compensation in parts)
+    compensated_first_moment = sum(
+        (weight * compensation * position for weight, position, _, compensation in parts),
+        np.zeros(3),
+    )
+    if not np.isfinite(compensated_mass) or not np.isfinite(compensated_first_moment).all():
+        raise ValueError(f'Invalid gravity compensation for body {root}')
     return {'mass':mass,'center':center,'diagonal':diagonal,'axes':quaternion(axes),
-            'tensor':tensor,'gravcomp':sum(p[0]*p[3] for p in parts)/mass,'members':list(members)}
+            'tensor':tensor,'gravcomp':compensated_mass/mass,'members':list(members),
+            'disable_gravity':all(compensation == 1. for _, _, _, compensation in parts),
+            'compensated_mass':compensated_mass,
+            'compensated_first_moment':compensated_first_moment}

@@ -41,6 +41,11 @@ class MicroscopyTask(Task):
                 soft_connect_constraints=False,
                 world_origin_m=self.model.body("injector_platform").pos.tolist())
         from microscopy.cad_assets import asset_evidence
+        from microscopy.manipulator_profile import installed_profile
+        self.manipulator_profile = installed_profile(self.model, self.instrument_drives.profile)
+        if self.manipulator_profile == "sutter-mp285-reference":
+            # Keep micron-scale contact coordinates near the PhysX origin.
+            self.native_physics_options = dict(self.native_physics_options, world_origin_m=ORIGIN.tolist())
         self.command_limits = {name: list(limits) for name, limits in self.instrument_drives.limits.items()}
         for name, limits in asset_evidence(self.model).get("stage", {}).get("operating_limits_m", {}).items():
             hardware = self.command_limits[name]
@@ -97,7 +102,7 @@ class MicroscopyTask(Task):
             target_nl=float(self.data.userdata[1]),
             delivered_nl=self.mechanics.ledger.state("well").volume_m3 * 1e12,
             instrument_profile=evidence["profile"],
-            manipulator_profile=self.instrument_drives.profile,
+            manipulator_profile=self.manipulator_profile,
             stand_profile=evidence.get("microscope", {}).get("stand_profile", "auto"),
             stage_profile=evidence.get("stage", {}).get("profile", "reference"),
             actuator_limits_m=self.instrument_drives.limits,
