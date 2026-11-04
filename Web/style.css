@@ -205,10 +205,22 @@ a{color:inherit;text-decoration:none}
 .card h2{font-size:19px;color:#f2f5f9;margin-top:2px}
 .card p{font-size:13.5px;line-height:1.5;color:var(--text-dim);flex:1}
 .card-go{
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;
-  color:var(--text-faint);transition:color .2s ease,transform .2s ease;
+  display:inline-flex;align-items:center;width:fit-content;
+  margin-top:2px;
+  font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.03em;
+  color:var(--amber);
+  background:var(--amber-soft);
+  border:1px solid rgba(232,163,85,.4);
+  border-radius:99px;
+  padding:7px 13px;
+  transition:color .2s ease,background .2s ease,border-color .2s ease,transform .2s ease;
 }
-.card:hover .card-go{color:var(--text);transform:translateX(3px)}
+.card:hover .card-go{
+  color:#1a1206;
+  background:var(--amber);
+  border-color:var(--amber);
+  transform:translateX(3px);
+}
 
 @media (max-width:1080px){
   .cards{grid-template-columns:repeat(2,minmax(0,340px))}
