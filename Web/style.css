@@ -9,6 +9,8 @@
   --amber-soft: rgba(232,163,85,.14);
   --cyan: #6fcbe3;
   --cyan-soft: rgba(111,203,227,.14);
+  --violet: #a690e8;
+  --violet-soft: rgba(166,144,232,.14);
   --shadow: 0 24px 60px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.4);
   --display: 'Fraunces', ui-serif, Georgia, serif;
   --body-font: 'Public Sans', system-ui, -apple-system, sans-serif;
@@ -164,7 +166,7 @@ a{color:inherit;text-decoration:none}
 .cards{
   margin-top:64px;
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,340px));
+  grid-template-columns:repeat(3,minmax(0,340px));
   justify-content:center;
   gap:28px;
   text-align:left;
@@ -199,6 +201,7 @@ a{color:inherit;text-decoration:none}
 }
 .card-tag.amber{color:var(--amber)}
 .card-tag.cyan{color:var(--cyan)}
+.card-tag.violet{color:var(--violet)}
 .card h2{font-size:19px;color:#f2f5f9;margin-top:2px}
 .card p{font-size:13.5px;line-height:1.5;color:var(--text-dim);flex:1}
 .card-go{
@@ -207,6 +210,9 @@ a{color:inherit;text-decoration:none}
 }
 .card:hover .card-go{color:var(--text);transform:translateX(3px)}
 
+@media (max-width:1080px){
+  .cards{grid-template-columns:repeat(2,minmax(0,340px))}
+}
 @media (max-width:640px){
   .cards{grid-template-columns:minmax(0,340px)}
   .card{min-height:auto}
