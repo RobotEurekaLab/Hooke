@@ -226,7 +226,7 @@ def start_job():
     science = body.get('science_model')
     experiments = {'thermal':('thermal_mixer',90.),'capillary':('pipette_transfer',5.)}
     if mode == 'experiment' and (science not in experiments or task != experiments[science][0]):
-        return jsonify(error='模型与场景不匹配：热学使用 thermal_mixer，流体使用 pipette_transfer。'),400
+        return jsonify(error='Model does not match scene: thermal uses thermal_mixer, fluid uses pipette_transfer.'),400
     if task not in CATALOG or backend not in ('mujoco','isaac') or mode not in ('preview','expert','experiment'):
         return jsonify(error='Invalid task, backend or mode'),400
     try:
@@ -236,7 +236,7 @@ def start_job():
     if mode == 'experiment':seconds = experiments[science][1]
     with _lock:
         if any(j.get('process') and j['process'].poll() is None for j in _jobs.values()):
-            return jsonify(error='已有运行中的仿真任务，请等待或停止该任务后切换后端。'),409
+            return jsonify(error='A simulation task is already running; wait for it or stop it before switching backends.'),409
         try:
             if backend == 'isaac':
                 installation = require_isaac_environment()
@@ -246,7 +246,7 @@ def start_job():
         except IsaacConfigurationError as error:
             return jsonify(error=str(error), environment=error.report),503
         except (ValueError, OSError) as error:
-            return jsonify(error=f'服务器 GPU 配置无效：{error}'),503
+            return jsonify(error=f'Invalid server GPU configuration: {error}'),503
         try:
             with GPULease(gpu):pass
         except RuntimeError as exc:

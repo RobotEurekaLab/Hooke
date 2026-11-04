@@ -30,18 +30,19 @@ def inspect_installation(installation=None):
     def fail(code, path, message):
         report.update(error_code=code, blocked_path=str(path) if path else None, error=message)
         report["remediation"] = [
-            "网页访问者共用服务器配置；请由运行 Hooke 的 Linux 账号配置 Isaac 安装。",
-            "详细安装、多用户权限及服务部署说明：docs/isaac_setup.md。",
-            "从仓库根目录运行 ./scripts/start_hooke_backends.sh --configure-isaac --discover；"
-            "唯一可用安装可用 --auto 保存；非标准目录可加 --search-root /absolute/search/directory。",
-            "从仓库的 Hooke/ 目录运行：../.venv/bin/python -m backends.config "
-            "--isaac-path /absolute/path/to/isaacsim --gpu <空闲GPU编号>。",
-            "环境变量 HOOKE_ISAAC_PATH / HOOKE_ISAAC_GPU 优先；修改服务环境后重启服务。",
+            "Web visitors share the server configuration; the Linux account running Hooke must configure the Isaac installation.",
+            "Detailed installation, multi-user permissions, and service deployment notes: docs/isaac_setup.md.",
+            "From the repo root, run ./scripts/start_hooke_backends.sh --configure-isaac --discover; "
+            "a single available installation can be saved with --auto; non-standard directories can add --search-root /absolute/search/directory.",
+            "From the repo's Hooke/ directory, run: ../.venv/bin/python -m backends.config "
+            "--isaac-path /absolute/path/to/isaacsim --gpu <free GPU index>.",
+            "Environment variables HOOKE_ISAAC_PATH / HOOKE_ISAAC_GPU take priority; restart the service after changing it.",
         ]
         if code in ("permission_denied", "not_executable"):
             report["remediation"].append(
-                "请安装所有者或管理员为服务账号授予必要的目录遍历、读取和执行权限，"
-                "或使用服务账号可访问的安装；配置路径不能绕过权限。"
+                "Ask the installation owner or an administrator to grant the service account the necessary "
+                "directory traversal, read, and execute permissions, or use an installation the service account "
+                "can already access; the configured path cannot bypass permissions."
             )
         return report
 
@@ -62,15 +63,15 @@ def inspect_installation(installation=None):
         try:
             mode = path.stat().st_mode
         except PermissionError:
-            return fail("permission_denied", path, f"服务账号 {user} 无法访问目录 {path}。")
+            return fail("permission_denied", path, f"Service account {user} cannot access directory {path}.")
         except FileNotFoundError:
-            return fail("installation_missing", path, f"Isaac 安装目录不存在：{path}（服务账号 {user}）。")
+            return fail("installation_missing", path, f"Isaac installation directory does not exist: {path} (service account {user}).")
         except OSError as error:
-            return fail("installation_unavailable", path, f"无法访问 Isaac 目录 {path}：{error}")
+            return fail("installation_unavailable", path, f"Cannot access Isaac directory {path}: {error}")
         if not stat.S_ISDIR(mode):
-            return fail("installation_invalid", path, f"Isaac 路径不是目录：{path}。")
+            return fail("installation_invalid", path, f"Isaac path is not a directory: {path}.")
         if not os.access(path, os.X_OK, effective_ids=True):
-            return fail("permission_denied", path, f"服务账号 {user} 无法遍历目录 {path}。")
+            return fail("permission_denied", path, f"Service account {user} cannot traverse directory {path}.")
         return None
 
     for path in (*reversed(installation.parents), installation):
@@ -93,17 +94,17 @@ def inspect_installation(installation=None):
         try:
             mode = path.stat().st_mode
         except PermissionError:
-            return fail("permission_denied", path, f"服务账号 {user} 无法访问 {path}。")
+            return fail("permission_denied", path, f"Service account {user} cannot access {path}.")
         except FileNotFoundError:
-            return fail("installation_incomplete", path, f"Isaac 安装缺少必要文件：{path}。")
+            return fail("installation_incomplete", path, f"Isaac installation is missing a required file: {path}.")
         except OSError as error:
-            return fail("installation_unavailable", path, f"无法读取 {path}：{error}")
+            return fail("installation_unavailable", path, f"Cannot read {path}: {error}")
         if not stat.S_ISREG(mode):
-            return fail("installation_invalid", path, f"Isaac 必要文件不是普通文件：{path}。")
+            return fail("installation_invalid", path, f"Isaac required file is not a regular file: {path}.")
         if not os.access(path, os.R_OK, effective_ids=True):
-            return fail("permission_denied", path, f"服务账号 {user} 无法读取 {path}。")
+            return fail("permission_denied", path, f"Service account {user} cannot read {path}.")
         if executable and not os.access(path, os.X_OK, effective_ids=True):
-            return fail("not_executable", path, f"服务账号 {user} 无法执行 {path}。")
+            return fail("not_executable", path, f"Service account {user} cannot execute {path}.")
         report["checks"][name] = True
     report["installation_ready"] = True
     return report
@@ -117,7 +118,7 @@ def isaac_environment(gpu=None):
         report["gpu"] = None
         if report["installation_ready"]:
             report.update(installation_ready=False, error_code="configuration_invalid", error=str(error))
-            report["remediation"] = ["修正服务账号配置中的 gpu 或环境变量 HOOKE_ISAAC_GPU，使用非负整数。"]
+            report["remediation"] = ["Fix the gpu value in the service account configuration or the HOOKE_ISAAC_GPU environment variable; use a non-negative integer."]
     return report
 
 

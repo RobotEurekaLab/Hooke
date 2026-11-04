@@ -99,7 +99,7 @@ class WorldProfile:
 WORLDS = {
     "orbital": WorldProfile(
         "orbital",
-        "空间站实验舱",
+        "Space Station Experiment Module",
         0.0,
         Environment(101325.0, 293.15, "pressurized_air"),
         Environment(0.0, 3.0, "ideal_vacuum"),
@@ -110,7 +110,7 @@ WORLDS = {
     ),
     "lunar": WorldProfile(
         "lunar",
-        "月球表面实验工作区",
+        "Lunar Surface Work Area",
         1.62,
         Environment(0.0, 250.0, "ideal_vacuum"),
         Environment(0.0, 250.0, "ideal_vacuum"),
@@ -119,7 +119,7 @@ WORLDS = {
     ),
     "martian": WorldProfile(
         "martian",
-        "火星表面实验工作区",
+        "Martian Surface Work Area",
         3.73,
         Environment(636.0, 214.0, "thin_co2_atmosphere"),
         Environment(636.0, 214.0, "thin_co2_atmosphere"),

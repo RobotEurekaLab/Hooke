@@ -10,10 +10,10 @@ from webui.backend_api import read_json
 
 bp = Blueprint("surface_missions", __name__)
 VIEWS = {
-    "overview": "全景",
-    "landing": "着陆区",
-    "follow": "跟随机器人",
-    "sample": "取样特写",
+    "overview": "Overview",
+    "landing": "Landing zone",
+    "follow": "Robot follow",
+    "sample": "Sample close-up",
 }
 FORMATS = {
     "image": ("png", "image/png"),
@@ -61,9 +61,9 @@ def catalog():
                 team=dict(
                     task=f"space_{world}_humanoid_rover",
                     label=(
-                        "月面人形机器人协作采样"
+                        "Lunar humanoid-robot cooperative sampling"
                         if world == "lunar"
-                        else "火星人形机器人协作采样"
+                        else "Martian humanoid-robot cooperative sampling"
                     ),
                     policy_available=GAIT_POLICY.is_file(),
                     qualification=[
@@ -90,9 +90,9 @@ def catalog():
         missions=missions,
         views=VIEWS,
         limitations=[
-            "人形协作：G1 行走并触压确认按钮，采样车负责抓取与收纳岩样",
-            "使用刚性地形和状态反馈导航；未模拟松软土壤、扬尘和视觉自主导航",
-            "火星岩样复用 Apollo 外形作为示意样本，未代表实际火星岩石成分",
+            "Humanoid cooperation: the G1 walks and presses a confirmation button; the sampling rover handles grasping and stowing the rock",
+            "Navigation uses rigid terrain and state feedback; soft soil, dust, and vision-based autonomous navigation are not simulated",
+            "The Martian rock sample reuses the Apollo mesh as an illustrative stand-in; it does not represent actual Martian rock composition",
         ],
     )
 

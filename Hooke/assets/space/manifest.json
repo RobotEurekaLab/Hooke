@@ -3,7 +3,7 @@
   "assets": [
     {
       "id": "iss_us_lab",
-      "label": "ISS 美国实验舱",
+      "label": "ISS US Laboratory Module",
       "repository": "nasa/astrobee_media",
       "commit": "1cb0620121099cc848f5a3db480464188dc91ea3",
       "resources": [
@@ -159,7 +159,7 @@
     },
     {
       "id": "iss_handrail",
-      "label": "ISS 扶手",
+      "label": "ISS Handrail",
       "repository": "nasa/astrobee_media",
       "commit": "1cb0620121099cc848f5a3db480464188dc91ea3",
       "resources": [
@@ -234,7 +234,7 @@
     },
     {
       "id": "apollo_sample",
-      "label": "Apollo 样品外形 1",
+      "label": "Apollo Sample Shape 1",
       "repository": "AndrejOrsula/srb_assets",
       "commit": "54b1282a5f89ead8ff51b869060e68083fa3ad2f",
       "resources": [
@@ -293,7 +293,7 @@
     },
     {
       "id": "mars_sample_tube",
-      "label": "Mars 2020 采样管",
+      "label": "Mars 2020 Sample Tube",
       "repository": "AndrejOrsula/srb_assets",
       "commit": "54b1282a5f89ead8ff51b869060e68083fa3ad2f",
       "resources": [

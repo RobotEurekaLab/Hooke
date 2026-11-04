@@ -7,7 +7,7 @@
       "sha256": "f3a2d855ff7a28df89462bc3e2262261d2c7d2c9986fcb194fa511706e589f8d",
       "environment": {
         "name": "orbital",
-        "label": "空间站实验舱",
+        "label": "Space Station Experiment Module",
         "gravity_m_s2": 0.0,
         "workspace": {
           "pressure_pa": 101325.0,
@@ -72,7 +72,7 @@
       "sha256": "d2b459a7215b2ed6ff93e6b3e74dc405abffc371c339b933261efa3b307aa627",
       "environment": {
         "name": "lunar",
-        "label": "月球表面实验工作区",
+        "label": "Lunar Surface Work Area",
         "gravity_m_s2": 1.62,
         "workspace": {
           "pressure_pa": 0.0,
@@ -137,7 +137,7 @@
       "sha256": "cfd757cd671c36eebf158d95fb66007fe962a5fbefa80bb1fc41bfd9f79b0666",
       "environment": {
         "name": "martian",
-        "label": "火星表面实验工作区",
+        "label": "Martian Surface Work Area",
         "gravity_m_s2": 3.73,
         "workspace": {
           "pressure_pa": 636.0,
