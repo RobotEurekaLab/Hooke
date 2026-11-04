@@ -84,10 +84,10 @@ def discover_installations(search_roots=()):
 
 def select_installation(report):
     if report["search_truncated"]:
-        raise IsaacDiscoveryError("discovery_incomplete", "搜索达到目录上限，请缩小 --search-root 后重试。", report)
+        raise IsaacDiscoveryError("discovery_incomplete", "Search hit the directory limit; narrow --search-root and retry.", report)
     available = report["available_installations"]
     if not available:
-        raise IsaacDiscoveryError("installation_not_found", "没有发现服务账号可访问的完整 Isaac 安装，请指定路径或安装 Isaac。", report)
+        raise IsaacDiscoveryError("installation_not_found", "No complete Isaac installation accessible to the service account was found; specify a path or install Isaac.", report)
     if len(available) > 1:
-        raise IsaacDiscoveryError("installation_ambiguous", "发现多个可用 Isaac 安装，请用 --isaac-path 明确选择：" + "、".join(available), report)
+        raise IsaacDiscoveryError("installation_ambiguous", "Found multiple usable Isaac installations; pick one explicitly with --isaac-path: " + ", ".join(available), report)
     return Path(available[0])

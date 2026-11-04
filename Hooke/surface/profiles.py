@@ -42,6 +42,6 @@ class SurfaceMission:
 
 
 MISSIONS = {
-    "lunar": SurfaceMission("lunar", "月面陨坑探测与岩样采集"),
-    "martian": SurfaceMission("martian", "火星河谷探测与岩样采集"),
+    "lunar": SurfaceMission("lunar", "Lunar crater survey and rock sample collection"),
+    "martian": SurfaceMission("martian", "Martian valley survey and rock sample collection"),
 }
