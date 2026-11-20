@@ -277,19 +277,21 @@ function externalLink(label, href) {
 function buildUniversityCard(lab) {
   const card = el('article', 'video-card university-card', []);
   card.dataset.scene = lab.id;
+  const previewUrl = new URL(lab.preview, window.location.href);
+  if (lab.preview_sha256) previewUrl.searchParams.set('v', lab.preview_sha256.slice(0, 12));
   const image = document.createElement('img');
-  image.src = lab.preview;
+  image.src = previewUrl.href;
   image.alt = `${lab.school} — ${lab.lab}, ${lab.view} simulation render`;
   image.loading = 'lazy';
   image.decoding = 'async';
   image.width = 800;
   image.height = 500;
-  const imageLink = externalLink('', lab.preview);
+  const imageLink = externalLink('', previewUrl.href);
   imageLink.setAttribute('aria-label', `Open render of ${lab.lab}`);
   imageLink.append(image);
   const frame = el('div', 'video-frame', [imageLink]);
   const qs = el('span', 'qs-badge', []);
-  qs.textContent = `QS 2027 · ${lab.rank}`;
+  qs.textContent = `QS ranking · ${lab.rank}`;
   const renderLabel = el('span', 'render-badge', []);
   renderLabel.textContent = 'Simulation render';
   frame.append(qs, renderLabel);
@@ -305,13 +307,13 @@ function buildUniversityCard(lab) {
   body.append(heading, title, subject, links);
   card.append(frame, body);
   return {
-    el: card, school: lab.school, collection: 'qs100', room: false,
+    el: card, school: lab.school, rank: Number(lab.rank), collection: 'qs100', room: false,
     search: [lab.school, lab.lab, lab.title, lab.subject, lab.id].join(' ').toLowerCase(),
   };
 }
 
 function renderRealLabCards() {
-  realLabCards.sort((a, b) => a.school.localeCompare(b.school, 'en'));
+  realLabCards.sort((a, b) => a.rank - b.rank || a.school.localeCompare(b.school, 'en'));
   document.getElementById('reallab-grid').replaceChildren(...realLabCards.map(card => card.el));
   document.getElementById('lab-scene-total').textContent = realLabCards.length;
   applyRealLabFilter();
@@ -327,7 +329,7 @@ async function buildRealLabGrid() {
     card.rel = 'noopener';
     const frame = el('div', 'video-frame', [lazyVideo(`../docs/assets/real-lab-${lab.file}-mujoco.mp4`)]);
     const qs = el('span', 'qs-badge', []);
-    qs.textContent = `QS 2025 · ${lab.qs}`;
+    qs.textContent = `QS ranking · ${lab.qs}`;
     frame.append(qs);
     if (lab.room) {
       const roomBadge = el('span', 'room-badge', []);
@@ -340,7 +342,7 @@ async function buildRealLabGrid() {
     body.append(h3, p);
     card.append(frame, body);
     return {
-      el: card, school: lab.school, room: lab.room, collection: 'pilot',
+      el: card, school: lab.school, rank: Number(lab.qs), room: lab.room, collection: 'pilot',
       search: `${lab.school} ${lab.detail}`.toLowerCase(),
     };
   });
@@ -353,7 +355,7 @@ async function buildRealLabGrid() {
   status.textContent = 'Loading QS top-100 scene previews…';
   status.hidden = false;
   try {
-    const response = await fetch('data/qs100-scenes.json');
+    const response = await fetch('data/qs100-scenes.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error(`Catalogue HTTP ${response.status}`);
     const catalogue = await response.json();
     if (catalogue.schema_version !== 1 || !Array.isArray(catalogue.scenes)) {

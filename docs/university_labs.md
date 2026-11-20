@@ -28,6 +28,7 @@ The [October 24 school-coverage batch](university_school_coverage_20261024.md) a
 | `Hooke/university/additional_institutions.json` | Other universities and non-university institutes with explicit provenance |
 | `Hooke/university/research_candidates.json` | Reviewed leads, actual image-review status, equipment clues, remaining gaps, rights status and rejected/held sources |
 | `Hooke/university/scene_index.json` | Scene → institution, subject and laboratory mapping |
+| `Hooke/university/preview_views.json` | Reviewed gallery camera per scene, prioritizing visible experimental apparatus |
 | `Hooke/university/batches/*.json` | Explicit expansion scope, original scene baseline, required new lab IDs and optional required institution IDs |
 | `Hooke/university/batches.py`, `review.py` | Distinct-lab accounting, current-source checks, visual-review records and paginated screenshot galleries |
 | `Hooke/real_labs/catalog.json`, `scenes/*.json`, `layouts/`, `evidence/` | Actual scene definitions, spatial layouts and evidence limitations |
@@ -83,11 +84,11 @@ Example binding:
 
 The [website laboratory gallery](https://roboteurekalab.github.io/Hooke/Web/simulation.html#h-reallab) includes the
 pinned QS top-100 collection alongside the existing QS 101–250 collection.
-The ranking editions are identified separately; their school counts must not be
-added together as a count of unique institutions.
+The gallery uses a unified QS ranking label; the source records preserve ranking
+provenance. Scene counts must not be interpreted as counts of unique institutions.
 
 The top-100 collection publishes **133 scene prototypes at 102 institutions**,
-with one compact recorded Blender interior preview per scene, source-definition
+with one compact recorded Blender preview per scene, source-definition
 and institutional-reference links, and a
 [portable MJCF download](assets/qs100-scenes-mjcf.zip). Extract the complete ZIP
 before opening a scene's `scene.xml`: each scene includes its required assets and
@@ -99,10 +100,10 @@ These are estimated mechanical prototypes, not institution-validated digital
 twins. The gallery uses previously recorded renders; some images predate detailed
 mechanical refinements in the downloadable models. Source photographs, Blender
 intermediates and raw experiment logs remain local. A fresh clone can show the
-published interior preview in the simulator without rendering; additional camera
+published preview in the simulator without rendering; additional camera
 views still require local exports. Locally generated previews take precedence.
 
-The November 20, 2026 publication includes 133 WebP previews (2.14 MB total)
+The November 20, 2026 publication includes 133 WebP previews
 and a 9.34 MB MJCF ZIP with the applicable asset license notices. All 133
 packaged models compile, all 133 previews work without local exports, and
 desktop/mobile gallery checks cover both collections, search, filtering and
@@ -127,6 +128,14 @@ This command performs CPU compilation and image encoding only. It does not
 download resources, render new views or step a simulator. The local publication
 report records image provenance, model hashes and compile results. New curated
 media remain ignored until explicitly included in an authorized Git submission.
+
+Gallery cameras are selected individually in `Hooke/university/preview_views.json`.
+Prefer identifiable instruments and experimental rigs over empty floor space;
+retain room views where they show large apparatus more clearly than a close-up.
+Use the same command with `--previews-only` to update thumbnails and camera labels
+without rebuilding models or changing the downloadable archive. This mode reads
+the existing gallery catalogue; its audit is written to `previews.json` under the
+specified work directory. The ZIP retains its original publication index.
 
 ### Local exports and validation
 

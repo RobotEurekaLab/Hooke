@@ -33,12 +33,61 @@ def source_files():
     return result
 
 
-def preview_source(identifier, roots):
+def preview_source(identifier, roots, view):
+    if not re.fullmatch(r"[a-z][a-z0-9_]*", view):
+        raise ValueError(f"Invalid preview view: {view!r}")
     for root in roots:
-        image = root / identifier / "interior.png"
+        image = root / identifier / f"{view}.png"
         if image.is_file():
             return image
-    raise FileNotFoundError(f"No recorded interior preview for {identifier}")
+    raise FileNotFoundError(f"No recorded {view} preview for {identifier}")
+
+
+def selected_previews(identifiers, roots):
+    views = json.loads((Path(__file__).parent / "preview_views.json").read_text())
+    return {
+        identifier: preview_source(identifier, roots, views[identifier])
+        for identifier in identifiers
+    }
+
+
+def encode_preview(source, target, workspace):
+    from PIL import Image
+
+    with Image.open(source) as original:
+        preview = original.convert("RGB")
+        preview.thumbnail((800, 500), Image.Resampling.LANCZOS)
+        temporary = workspace / target.name
+        preview.save(temporary, format="WEBP", quality=82, method=6)
+        temporary.replace(target)
+        return list(preview.size)
+
+
+def refresh_previews(preview_roots, media_directory, catalog_path, workspace):
+    """Refresh gallery views without rebuilding or changing the model archive."""
+    records = json.loads(catalog_path.read_text())
+    sources = selected_previews((row["id"] for row in records["scenes"]), preview_roots)
+    workspace.mkdir(parents=True, exist_ok=True)
+    media_directory.mkdir(parents=True, exist_ok=True)
+    audit = []
+    for row in records["scenes"]:
+        source = sources[row["id"]]
+        target = media_directory / f"{row['id']}.webp"
+        dimensions = encode_preview(source, target, workspace)
+        row["view"] = source.stem
+        row["preview_sha256"] = hashlib.sha256(target.read_bytes()).hexdigest()
+        audit.append(dict(
+            scene=row["id"], view=source.stem, preview_source=str(source.resolve()),
+            preview_source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+            preview_sha256=row["preview_sha256"],
+            preview_dimensions=dimensions,
+        ))
+    temporary_catalog = workspace / catalog_path.name
+    temporary_catalog.write_bytes(json_bytes(records))
+    temporary_catalog.replace(catalog_path)
+    result = dict(scene_count=len(audit), model_archive_changed=False, scenes=audit)
+    (workspace / "previews.json").write_bytes(json_bytes(result))
+    return result
 
 
 def portable_scene(identifier):
@@ -113,8 +162,6 @@ def archive_file(archive, name, content):
 
 
 def publish(preview_roots, media_directory, catalog_path, archive_path, workspace):
-    from PIL import Image
-
     directory = catalogue()
     labs = sorted(
         (row for row in directory["labs"] if row["institution"]["in_scope"]),
@@ -122,7 +169,7 @@ def publish(preview_roots, media_directory, catalog_path, archive_path, workspac
     )
     sources = source_files()
     # Check the complete input set before producing partial public output.
-    previews = {row["scene_id"]: preview_source(row["scene_id"], preview_roots) for row in labs}
+    previews = selected_previews((row["scene_id"] for row in labs), preview_roots)
     for path in (media_directory, catalog_path.parent, archive_path.parent, workspace):
         path.mkdir(parents=True, exist_ok=True)
     records, audit = [], []
@@ -157,23 +204,18 @@ def publish(preview_roots, media_directory, catalog_path, archive_path, workspac
             files["manifest.json"] = json_bytes(manifest)
             for name, content in sorted(files.items()):
                 archive_file(archive, f"{identifier}/{name}", content)
-            with Image.open(source) as original:
-                preview = original.convert("RGB")
-                preview.thumbnail((800, 500), Image.Resampling.LANCZOS)
-                target = media_directory / f"{identifier}.webp"
-                temporary_preview = workspace / target.name
-                preview.save(temporary_preview, format="WEBP", quality=82, method=6)
-                temporary_preview.replace(target)
-                dimensions = list(preview.size)
+            target = media_directory / f"{identifier}.webp"
+            dimensions = encode_preview(source, target, workspace)
             render = json.loads((source.parent / "render.json").read_text())
             records.append(dict(
                 id=identifier, institution_id=lab["institution_id"],
                 school=lab["institution"]["name"], rank=lab["institution"]["rank"],
                 subject=lab["subject_label"], lab=lab["lab_name"], title=lab["title"],
                 preview=f"../docs/assets/qs100/{identifier}.webp",
+                preview_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),
                 source=GITHUB + sources[identifier], reference=lab["source_urls"][0],
                 download="../docs/assets/qs100-scenes-mjcf.zip",
-                archive_directory=identifier, view="interior", model_stage="mechanical_prototype",
+                archive_directory=identifier, view=source.stem, model_stage="mechanical_prototype",
             ))
             audit.append(dict(
                 scene=identifier, preview_source=str(source.resolve()),
@@ -215,10 +257,16 @@ def main():
     parser.add_argument("--previews-from", type=Path, action="append", required=True)
     parser.add_argument("--media-directory", type=Path, required=True)
     parser.add_argument("--catalog", type=Path, required=True)
-    parser.add_argument("--archive", type=Path, required=True)
+    parser.add_argument("--archive", type=Path)
     parser.add_argument("--work-directory", type=Path, required=True)
+    parser.add_argument("--previews-only", action="store_true", help="Update existing gallery images and view labels; keep models unchanged")
     args = parser.parse_args()
-    result = publish(args.previews_from, args.media_directory, args.catalog, args.archive, args.work_directory)
+    if args.previews_only:
+        result = refresh_previews(args.previews_from, args.media_directory, args.catalog, args.work_directory)
+    else:
+        if args.archive is None:
+            parser.error("--archive is required unless --previews-only is used")
+        result = publish(args.previews_from, args.media_directory, args.catalog, args.archive, args.work_directory)
     print(json.dumps({key: value for key, value in result.items() if key != "scenes"}))
 
 

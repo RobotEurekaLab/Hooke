@@ -17,13 +17,16 @@ No build step — plain HTML/CSS/JS.
 
 `simulation.html#h-reallab` combines both university collections without a live
 simulator: 133 QS top-100 scene previews from `data/qs100-scenes.json` and the
-100 recorded QS 101–250 scenes. Filter by collection or search by university,
-laboratory or apparatus. The two collections use different ranking editions;
-the combined count describes scenes, not unique universities.
+100 recorded QS 101–250 scenes. Cards are ordered numerically by QS ranking,
+with university names breaking ties. Filter by rank range or search by university,
+laboratory or apparatus. The page uses a single "QS ranking" label; ranking-edition
+provenance remains in the source records. Counts describe scenes, not unique universities.
 
 The top-100 previews and portable MJCF ZIP are curated, committed files under
 `docs/assets/`. The [asset guide](../docs/university_labs.md#published-gallery-and-models)
 describes their scope and how to regenerate the catalogue and model package.
+Preview cameras are chosen per scene to show experimental equipment clearly;
+the selection is stored in `Hooke/university/preview_views.json`.
 Original photographs, render intermediates and raw experiment logs remain local.
 
 Serve the repository root, as below, so `../docs/assets/` links resolve. Opening

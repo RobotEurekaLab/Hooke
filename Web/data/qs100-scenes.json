@@ -22,7 +22,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "adelaide_exterres_rtvac_access",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "5425d7d1f75f9fbb2501db3027715b33da7c0522271087cc001ae0721a810f13"
     },
     {
       "id": "anu_climate_fluid_physics",
@@ -37,8 +38,9 @@
       "reference": "https://cfplab.org/facilities/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "anu_climate_fluid_physics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "bb6886c5141b6f395a726927d14d50500df6e0dcc4f9bc9bee64709ba468143e"
     },
     {
       "id": "anu_shrimp_geochronology",
@@ -53,8 +55,9 @@
       "reference": "https://science.anu.edu.au/study/360-virtual-tours/sensitive-high-resolution-ion-microprobe-shrimp-360deg-facility-tour",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "anu_shrimp_geochronology",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "013c72653afff86bbf758c22cdd5ad245dc8d152e84fd79c37a821c77c150b01"
     },
     {
       "id": "boston_photonics_pml_sem",
@@ -69,8 +72,9 @@
       "reference": "https://www.bu.edu/photonics/sharedfacilities/pml/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "boston_photonics_pml_sem",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "886f19c328503d26098db81bcd5ef532c2f809fc9f9b9227f9c786429b71bf05"
     },
     {
       "id": "brown_breuer_afam_tunnel",
@@ -86,7 +90,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "brown_breuer_afam_tunnel",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "50c4aa4a9dc6e4c6b05619c35be058ce9bb9489caf0f608ddcb534eabd396764"
     },
     {
       "id": "caltech_stoltz_schlinger",
@@ -101,8 +106,9 @@
       "reference": "https://www.stoltz2.caltech.edu/labtour2.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "caltech_stoltz_schlinger",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "764635fd93b3232fab8d4218b2ddf2886d21a2212a4f3dfb6fe81dc847398d43"
     },
     {
       "id": "cmu_edl_electrochemical_testing",
@@ -117,8 +123,9 @@
       "reference": "https://www.cmu.edu/me/tpes/facilities/tpes-lab.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "cmu_edl_electrochemical_testing",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "c0e27f135a2f8c4f3d8da79e4e03684471d9f7d88788df369bec5c9ad1907973"
     },
     {
       "id": "cityu_rogach_photoluminescence",
@@ -133,8 +140,9 @@
       "reference": "https://personal.cityu.edu.hk/arogatch/lab.htm",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "cityu_rogach_photoluminescence",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "8e398bc20210e0a43daa46977a67f4fd003e542bb8679b4b5774c7f982b39f34"
     },
     {
       "id": "columbia_fusion_hbt_ep",
@@ -149,8 +157,9 @@
       "reference": "https://www.apam.columbia.edu/about/news/hands-fusion-plasma-lab-hosts-first-hbt-ep-fun-run",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "columbia_fusion_hbt_ep",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "0c2968ba363d30e01dc201c5770cf8cf1cc2c7bc8f352b2aefa1cce0899e0b23"
     },
     {
       "id": "cornell_schlom_mbe",
@@ -166,7 +175,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "cornell_schlom_mbe",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "5fdfd55cc84ad24d1e3036af7d3664d40a6695ea3c87d3c290f4b9dd25de3478"
     },
     {
       "id": "delft_stevin_structures",
@@ -181,8 +191,9 @@
       "reference": "https://www.tudelft.nl/en/ceg/about-faculty/departments/engineering-structures/sections-labs/macrolab-stevinlaboratory/structures-laboratory",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "delft_stevin_structures",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "abf2a5aa9f4ff8b34d6b45bcaceae9294b225d3b9800c24e4ba88a9a35b8c7ed"
     },
     {
       "id": "delft_ducat_antenna",
@@ -197,8 +208,9 @@
       "reference": "https://radar.tudelft.nl/Facilities/ducat.php",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "delft_ducat_antenna",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "71ffb457b1effef2d0f551381a19bb630429d304a9f4878805e08fab9e9fde9e"
     },
     {
       "id": "duke_joint_mechanical_testing",
@@ -213,8 +225,9 @@
       "reference": "https://mems.duke.edu/impact/facilities/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "duke_joint_mechanical_testing",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "5d6ca80ec331e5e790b3e70aca934d6c6d08a1f98e0c7854bff72ac505d1e01d"
     },
     {
       "id": "durham_2m_wind_tunnel",
@@ -229,8 +242,9 @@
       "reference": "https://www.durham.ac.uk/departments/academic/engineering/research/nodes/fluid-mechanics-/facilitiescapabilities/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "durham_2m_wind_tunnel",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "80faf112630f7227a40adbecdc43543107232b01b57f64f9e612b441fcb8d0dd"
     },
     {
       "id": "epfl_lch_hydraulic_flume",
@@ -246,7 +260,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "epfl_lch_hydraulic_flume",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "bd2db30f2f1e31fdca531d481ba6ae31f5e3b15efa338b2b107ccdf087acbf6f"
     },
     {
       "id": "epfl_lspn_chemistry",
@@ -261,8 +276,9 @@
       "reference": "https://www.epfl.ch/labs/lspn/group/lab-tour/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "epfl_lspn_chemistry",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "46568cbf909f41cbe6de3ecfac9facbd6ace0f6ac653a07b9552225f553174ee"
     },
     {
       "id": "epfl_lwe_anechoic_acoustics",
@@ -277,8 +293,9 @@
       "reference": "https://www.epfl.ch/labs/lwe/facilities/anechoic-room-acoustics/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "epfl_lwe_anechoic_acoustics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "64f5d4e4cad63cdea89216d289943c5f5a4b26a279c4a550e3b6a02dbc03140f"
     },
     {
       "id": "epfl_microbiorobotics",
@@ -293,8 +310,9 @@
       "reference": "https://www.epfl.ch/labs/microbs/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "epfl_microbiorobotics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "86e5431190345712b737c9a285ce8ba67a7ace33cd19f120c3598ebeba0f29aa"
     },
     {
       "id": "epfl_tcv_diagnostic_sector",
@@ -310,7 +328,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "epfl_tcv_diagnostic_sector",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "4a98bcdca38e70deacb64f626f4d19892b40d1f11bd47b68cf14036d697dd322"
     },
     {
       "id": "eth_air_quality",
@@ -325,8 +344,9 @@
       "reference": "https://ie.ifu.ethz.ch/forschung/studies-labs/labs.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "eth_air_quality",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "c882d0395e71e07626c1a11398b3132dbf52f343761f7ecddea3de7de5da758a"
     },
     {
       "id": "eth_experimental_petrology_multianvil",
@@ -341,8 +361,9 @@
       "reference": "https://highpressure.ethz.ch/facilities/experimental.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "eth_experimental_petrology_multianvil",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "9bb6c8799c6b697e79ce15608db295485282179c06476d38b5a1707bc9faa419"
     },
     {
       "id": "eth_gcc_big_blue",
@@ -358,7 +379,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "eth_gcc_big_blue",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "c666e6b0feeb87edfa17eb84c39556f270194ff407c14bdb99379bfd7ed3899a"
     },
     {
       "id": "eth_mougel_inorganic",
@@ -373,8 +395,9 @@
       "reference": "https://mougel.ethz.ch/lab-tour.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "eth_mougel_inorganic",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "5c691cbd90f02638303cda7fcb8562c501fb267b1a6cbe013ae5588f093b4450"
     },
     {
       "id": "eth_robotic_fabrication",
@@ -389,8 +412,9 @@
       "reference": "https://arch.ethz.ch/en/forschung.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "eth_robotic_fabrication",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "8025d47da61763c4d81e7fdcfa704a5de49f869fed8e969f17b60acd0f5515d5"
     },
     {
       "id": "fuberlin_franke_surface_physics",
@@ -405,8 +429,9 @@
       "reference": "https://www.physik.fu-berlin.de/en/langenacht/inhalt/labor/franke.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "fuberlin_franke_surface_physics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "d406845d2362c2dc0448523029b360b285adb54cd115beb8ecd24929f98ed2a1"
     },
     {
       "id": "fudan_superassembly_materials",
@@ -421,8 +446,9 @@
       "reference": "https://saflab.fudan.edu.cn/sysgk/main.psp",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "fudan_superassembly_materials",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "7b0051634480bc993c3c2043190a0e938536827358ffd60485c5db293cfaac2a"
     },
     {
       "id": "harvard_cns_cambridge",
@@ -437,8 +463,9 @@
       "reference": "https://cns1.rc.fas.harvard.edu/virtual-visit/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "harvard_cns_cambridge",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "a7a545609f3706ce3fda979a851114d96c8d06a2ef79f0ad694bda81f4667462"
     },
     {
       "id": "harvard_doyle_cold_molecule_optics",
@@ -453,8 +480,9 @@
       "reference": "https://news.harvard.edu/gazette/story/2019/03/snapshots-from-harvards-science-labs/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "harvard_doyle_cold_molecule_optics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "3563666e8010979d4fd1ab250f96c0367dfa65bd066083ea6963fb3e233f4ba8"
     },
     {
       "id": "imperial_thinfilm_bessemer",
@@ -470,7 +498,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "imperial_thinfilm_bessemer",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "2486cb55f9c0c36ae176b24519dfb3a95c2d9c5352c080928ec6412064f0ca14"
     },
     {
       "id": "ipparis_luli2000_milka",
@@ -486,7 +515,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ipparis_luli2000_milka",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "dc3beb998f291783596f38e54e9bd9887823058c2b3294ba92942ed47caacbee"
     },
     {
       "id": "science_tokyo_thermal_storage_metrology",
@@ -502,7 +532,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "science_tokyo_thermal_storage_metrology",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "d618ccfff01cd07366193993bd0ba37174694a19d06989efcfc5a4a2ee98524e"
     },
     {
       "id": "jhu_paradim_bulk_crystal_growth",
@@ -517,8 +548,9 @@
       "reference": "https://www.paradim.org/bulkcrystal",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "jhu_paradim_bulk_crystal_growth",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "4abe80c7713136c31c087f296c3062145695a539f2ef2b8c95fdca329f494469"
     },
     {
       "id": "kaist_usdl_magnetic_probe",
@@ -533,8 +565,9 @@
       "reference": "https://spintronics.kaist.ac.kr/facilities.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kaist_usdl_magnetic_probe",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "36644efb4e24e4bb5b1477de8c27e06436a5e4d18e58813c20e08310059c464a"
     },
     {
       "id": "kfupm_high_voltage_insulation",
@@ -549,8 +582,9 @@
       "reference": "https://ri.kfupm.edu.sa/arc-mst/facilities/facility-details/high-voltage-laboratory-%28hvl%29",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kfupm_high_voltage_insulation",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "1b41047f1a0df5e34548288b5282814a71e8c0ca5a3d0ce882fc8142bcb93849"
     },
     {
       "id": "kfupm_building_materials",
@@ -565,8 +599,9 @@
       "reference": "https://ri.kfupm.edu.sa/irc-cbm/facilities/facility-details/building-materials-lab",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kfupm_building_materials",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "ab74f8b7e503226aa5b02bd6fab90acd7c38d5e3075ec1f3a54f9f7d901b3473"
     },
     {
       "id": "kfupm_superconductivity_spectroscopy",
@@ -581,8 +616,9 @@
       "reference": "https://physics.kfupm.edu.sa/facilities/superconductivity",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kfupm_superconductivity_spectroscopy",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "d2cac93730fed61ea2254232dea0b119a3a50c42ac6aefa3a325b4752f47bc0a"
     },
     {
       "id": "kcl_mic_stellaris",
@@ -598,7 +634,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kcl_mic_stellaris",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "2a4f01f1804fd3f24cc470458b3efd8bfadd1ebc9863f6c3f9b74465d7b7f558"
     },
     {
       "id": "korea_ace_wind_engineering",
@@ -613,8 +650,9 @@
       "reference": "https://ace.korea.ac.kr/sub4_4.php",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "korea_ace_wind_engineering",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "d34c7ef7dba5f33dcee70d2ebd40eb63c4c96854fefba1f9d05f412bcabce6ef"
     },
     {
       "id": "kth_l2000_wind_tunnel",
@@ -629,8 +667,9 @@
       "reference": "https://www.kth.se/en/tekmek/infrastruktur/vindtunnel-l2000-1.1244292",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kth_l2000_wind_tunnel",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "overview",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "1949acde188433fd8af9f4785779a587fcf0ec3591e4dafd53afd1656aedf5ba"
     },
     {
       "id": "kth_robot_design_prototyping",
@@ -645,8 +684,9 @@
       "reference": "https://www.kth.se/mmk/mechatronics/laboratories/robot-design-lab",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kth_robot_design_prototyping",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "97d2d2b4bb8f9c7e1e32b01dcc4ac3c80feb43f7d93c3e24bcc25bc1798dc253"
     },
     {
       "id": "ku_leuven_iglis1_laser",
@@ -661,8 +701,9 @@
       "reference": "https://fys.kuleuven.be/iks/ns/experimental-facilities/iglis/IGLIS-1",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ku_leuven_iglis1_laser",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "2b7e390f614434a41636f0dc2c17637d3836d1d931eb02aa11af259237d6719e"
     },
     {
       "id": "kyoto_kawayama_terahertz",
@@ -677,8 +718,9 @@
       "reference": "https://dpe.energy.kyoto-u.ac.jp/en/research/facilities/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kyoto_kawayama_terahertz",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "a0e815aac0857b418eb01d3eaa3be53a0a38c5a181b1408c1be08989a2cb0270"
     },
     {
       "id": "kyoto_yokokawa_nanometrics",
@@ -693,8 +735,9 @@
       "reference": "https://www.mbsys.me.kyoto-u.ac.jp/album/lab/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "kyoto_yokokawa_nanometrics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "f18654c0b84ff7c7b6c645f75a356e7668bd14f28b3f69af329d89a5b8fdf357"
     },
     {
       "id": "lmu_hybrid_snom",
@@ -709,8 +752,9 @@
       "reference": "https://www.physik.lmu.de/hybridnano/en/research/facilities/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "lmu_hybrid_snom",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "4fcf021fd23d98852d23bcde2e9e702e5d2796ce4fa2048f68fe4c7075466e04"
     },
     {
       "id": "lund_maxiv_nanomax_eh1",
@@ -725,8 +769,9 @@
       "reference": "https://www.maxiv.lu.se/beamlines-accelerators/beamlines/nanomax/imaging-station/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "lund_maxiv_nanomax_eh1",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "bdaba25e34f0d9ae7c07863bd9f0d6c1eb8e8f58db11fd7ed2eae12d7e5f1864"
     },
     {
       "id": "lund_nanoparticle_characterization",
@@ -741,8 +786,9 @@
       "reference": "https://www.nano.lu.se/labs/lund-nano-characterization-labs/aerosollab",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "lund_nanoparticle_characterization",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "c68b79d0692dc83e8ceea6315d78a4e42dbabcde3882f2a693e3557bd7bedb8d"
     },
     {
       "id": "mit_paoc_rotating_fluids",
@@ -757,8 +803,9 @@
       "reference": "https://paocweb.mit.edu/about/facilities/the-fluids-lab",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "mit_paoc_rotating_fluids",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "da0c5ba78c76f6e9107868baeeb1c897803e972cc0686b9e117798766454adb1"
     },
     {
       "id": "mcgill_mmpc_water_modelling",
@@ -774,7 +821,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "mcgill_mmpc_water_modelling",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "0b5285ed733af1e01ee7cf8121265de891599026c5ffb500a05561f797d90b11"
     },
     {
       "id": "monash_geoextremes_seismic_platform",
@@ -789,8 +837,9 @@
       "reference": "https://www.monash.edu/engineering/mge/facilities",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "monash_geoextremes_seismic_platform",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "e8601135f3e97773e9e41714289fc76f944d685294e51ef9144744520398c2c0"
     },
     {
       "id": "nju_rise_quantum_109",
@@ -805,8 +854,9 @@
       "reference": "https://rise.nju.edu.cn/f9/17/c59634a719127/page.htm",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "nju_rise_quantum_109",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "a09080df9b102d1f12e657ef63d6d0f5b6b2909ccd20896da22a27a1c2e16d38"
     },
     {
       "id": "ntu_coeb_nanophotonics",
@@ -821,8 +871,9 @@
       "reference": "https://www.ntu.edu.sg/coeb/research-capabilities/equipment",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ntu_coeb_nanophotonics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "d1587fb018a8b5ff2a210c662a3a5918bbb1222b8487b88547de247cecafea51"
     },
     {
       "id": "ntu_intelligent_materials",
@@ -837,8 +888,9 @@
       "reference": "https://personal.ntu.edu.sg/wensiang/equipment.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ntu_intelligent_materials",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "6d164a3e5ab1a9d893e6f477f20d11b165ffb590fddfe5d40a3a11ad0705686f"
     },
     {
       "id": "ntu_sgsr_characterization",
@@ -853,8 +905,9 @@
       "reference": "https://www.ntu.edu.sg/mse/research/sgsr/facilities",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ntu_sgsr_characterization",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "857d3a3c301c3b037ea82b58bf1af5f115b1b816cd2f6faedd0466e1c7780a8d"
     },
     {
       "id": "ntu_smtc_membranes",
@@ -869,8 +922,9 @@
       "reference": "https://www.ntu.edu.sg/docs/librariesprovider88/newri-domains/smtc/smtc-brochure_compressede6c80970-b0ba-4414-90e7-bcb662e94af7.pdf?sfvrsn=87821fc1_3",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ntu_smtc_membranes",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "d20b8b555c02162730e3b62675371f65e09331f0329dd254394ab333202431df"
     },
     {
       "id": "ntu_taiwan_iam_fluids",
@@ -885,8 +939,9 @@
       "reference": "https://www.iam.ntu.edu.tw/zh/research/teaching-lab",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ntu_taiwan_iam_fluids",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "bdc2c0c73ab0f7917c8a12d8aba58819f10145474e695f8fa9465036238dd041"
     },
     {
       "id": "nus_e6nanofab_l1",
@@ -901,8 +956,9 @@
       "reference": "https://cde.nus.edu.sg/e6nanofab/facility-cleanrooms/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "nus_e6nanofab_l1",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "fd13a354d1c35551a1a7d53fb6c597609965466c77d25c913121bc2f6e6acac9"
     },
     {
       "id": "nyu_epp_detector_assembly",
@@ -917,8 +973,9 @@
       "reference": "https://physics.nyu.edu/experimentalparticle/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "nyu_epp_detector_assembly",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "8f2f1ac54f04e8fb1ebee30abe8ac11b1cbcf61a9e79b8ab680933024e39292f"
     },
     {
       "id": "northwestern_clammp_charpy",
@@ -934,7 +991,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "northwestern_clammp_charpy",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "bbded035e7c0c628d138f37ce57665fd589993dc55c8308fc44e69105cd134d2"
     },
     {
       "id": "peking_zhao_rotary_evaporation",
@@ -950,7 +1008,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "peking_zhao_rotary_evaporation",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "83b1a7d1d7d5f0f78270321cbd5025b28af78a5aad86969a935f7fa58efc85e7"
     },
     {
       "id": "pennstate_aeroacoustics_rotor_chamber",
@@ -965,8 +1024,9 @@
       "reference": "https://aeroacoustics.psu.edu/excap/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "pennstate_aeroacoustics_rotor_chamber",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "f957a85e8975c7b4b044e346738d6a5f10f23a61ce4a1c30b79e6ee8b8e11ac9"
     },
     {
       "id": "polimi_aeroacoustic_white",
@@ -981,8 +1041,9 @@
       "reference": "https://www.aero.polimi.it/it/laboratori-sperimentali/laboratorio-aerodinamico",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "polimi_aeroacoustic_white",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "f83368228833c6eca8579c390f55ebb3c905d65fedaa3343cb909df0333f39b3"
     },
     {
       "id": "princeton_bam_closed_loop_wind_tunnel",
@@ -997,8 +1058,9 @@
       "reference": "https://bamlab.princeton.edu/facilities",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "princeton_bam_closed_loop_wind_tunnel",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "d781dc4c9b666faf3a463041abf0be801dd60ed4cdcbc27b01303cb80c962c57"
     },
     {
       "id": "purdue_phenotyping",
@@ -1013,8 +1075,9 @@
       "reference": "https://ag.purdue.edu/aapf/virtual-tour.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "purdue_phenotyping",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "222c99ffaae35c62845147f9fd65a384954a60fab3915e0af1ea2cdd77ef0308"
     },
     {
       "id": "snu_acoustic_impedance",
@@ -1029,8 +1092,9 @@
       "reference": "https://acustica.snu.ac.kr/research/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "snu_acoustic_impedance",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "fecf9e292728ff11e95a1145164126fa3dffc907f43a24d45ef5088adc951570"
     },
     {
       "id": "sjtu_deepwater_offshore_basin",
@@ -1045,8 +1109,9 @@
       "reference": "https://oe.sjtu.edu.cn/list.php?id=26&t=3",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "sjtu_deepwater_offshore_basin",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "ec716e3e03988e1c6bda456421d2a0e0652e7b7c77bff31abe86b15a4391c900"
     },
     {
       "id": "sorbonne_isir_covr",
@@ -1062,7 +1127,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "sorbonne_isir_covr",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "4c454a710764ddbd8bb03e2fb137202c9c4c19140ebc3928b72984d2d16792e8"
     },
     {
       "id": "stanford_biomechatronics_gait",
@@ -1077,8 +1143,9 @@
       "reference": "https://biomechatronics.stanford.edu/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "stanford_biomechatronics_gait",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "8a32e3416806ecf7eaeb4ffe8b15e830845669847f55ef40201582ebed851479"
     },
     {
       "id": "tum_wind_tunnel_a",
@@ -1093,8 +1160,9 @@
       "reference": "https://www.epc.ed.tum.de/en/aer/wind-tunnels/wind-tunnel-a/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "tum_wind_tunnel_a",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "df25bc16bc796a98fac9106f76da5c91005fc64bd614c238819b75073cf68e9b"
     },
     {
       "id": "tum_nma_electric_powertrain",
@@ -1110,7 +1178,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "tum_nma_electric_powertrain",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "6ad784f2032b2d0f47cb2eaf18f05f643b3c0c51b47b6b08dda38beb881aa98e"
     },
     {
       "id": "cuhk_mpil_ultrafast_optics",
@@ -1125,8 +1194,9 @@
       "reference": "https://www.mpil.mae.cuhk.edu.hk/facilities",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "cuhk_mpil_ultrafast_optics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "61caa399ae2144264fa513656eb734928f817aef4dac0479a0353dfe7825ff10"
     },
     {
       "id": "polyu_materials_tribology",
@@ -1141,8 +1211,9 @@
       "reference": "https://www.polyu.edu.hk/me/research/laboratories/materials-and-mechanics-technology-laboratory/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "polyu_materials_tribology",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "972795d09790850451a094179a02aa805a4deb59acb62e018ff693ee58f530af"
     },
     {
       "id": "hkust_aaf_wind_tunnel",
@@ -1157,8 +1228,9 @@
       "reference": "https://aaf.ust.hk/fac/1/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "hkust_aaf_wind_tunnel",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "76a0402a97fc68de7aeff99bac0d55bed4504f4644ca79d9f680a1773ce67734"
     },
     {
       "id": "hkust_geotechnical_centrifuge",
@@ -1173,8 +1245,9 @@
       "reference": "https://gcf.hkust.edu.hk/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "hkust_geotechnical_centrifuge",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "bc157548dbee5ce6988dbf27247b0a6b9d8026967f4b7991910d200275f12c6d"
     },
     {
       "id": "lse_behavioural_eyelink",
@@ -1190,7 +1263,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "lse_behavioural_eyelink",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "6ca87d15498bdeaa1fb884decaa14f42a57eb7944f4364724e76f96ec8f2f774"
     },
     {
       "id": "auckland_aerodynamics_tunnel",
@@ -1205,8 +1279,9 @@
       "reference": "https://www.auckland.ac.nz/en/news/2026/09/01/my-space-wind-tunnel.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "auckland_aerodynamics_tunnel",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "8ff9e038dc25375ea00feaf754ad52f34c6bb3a6129c1ba4302953aa4c0664e6"
     },
     {
       "id": "edinburgh_flowave_basin",
@@ -1221,8 +1296,9 @@
       "reference": "https://flowave.eng.ed.ac.uk/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "edinburgh_flowave_basin",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "overview",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "4d5077a703f24c88e19f7326f83d551ff1d52832e8a7a4905df8bfd5b21a8928"
     },
     {
       "id": "hku_rock_mechanics",
@@ -1237,8 +1313,9 @@
       "reference": "https://www.civil.hku.hk/h0_facilities_lab.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "hku_rock_mechanics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "1a762bea36eebf3015b9a98f0e32028b2200f86a2df7aa4cae380ab3dcf87cf0"
     },
     {
       "id": "hku_civil_boundary_layer_tunnel",
@@ -1253,8 +1330,9 @@
       "reference": "https://www.civil.hku.hk/h0_facilities_lab.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "hku_civil_boundary_layer_tunnel",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "98f4c1cbd4d1c785135cf8f8ea0a6be85bcbcbdd84e697b2fe7d22aa78709fb0"
     },
     {
       "id": "manchester_hv_dielectric_fluids",
@@ -1269,8 +1347,9 @@
       "reference": "https://www.scieng.manchester.ac.uk/tomorrowlabs/high-voltage-lab/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "manchester_hv_dielectric_fluids",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "422e6d9ebdeb142364f44776e1aa2abb6b780dbc7ab26c2e9fb4f3475b0a759f"
     },
     {
       "id": "manchester_collaborative_robotics",
@@ -1285,8 +1364,9 @@
       "reference": "https://sites.manchester.ac.uk/robotics/research/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "manchester_collaborative_robotics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "e15a5428e82ded666cc310ef445ceffa4f24866aecb70b1bfcc300ec911b7bfb"
     },
     {
       "id": "melbourne_hrnblwt_probe_alignment",
@@ -1301,8 +1381,9 @@
       "reference": "https://mechanical.eng.unimelb.edu.au/research/fluid-mechanics/research/walter-bassett",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "melbourne_hrnblwt_probe_alignment",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "30b8d0b546b079761fd5774747e1fbdf867b6b6bdbb2f0fd9134d573c5b7ba82"
     },
     {
       "id": "unsw_tyree_xray",
@@ -1317,8 +1398,9 @@
       "reference": "https://www.unsw.edu.au/research/facilities-and-infrastructure/find-an-instrument/micro-ct-instruments/coretom-micro-ct-1",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "unsw_tyree_xray",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "9df24b75b7927faf7b961d92aecf802faa6db19ddc3e143ccb8668516998ce71"
     },
     {
       "id": "unsw_wrl_wave_basin",
@@ -1333,8 +1415,9 @@
       "reference": "https://www.unsw.edu.au/research/wrl/facilities-and-equipment",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "unsw_wrl_wave_basin",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "97658db629311b4bfe4967db7503616bcbe122987cf24eb7ae92afae2c0766b6"
     },
     {
       "id": "osaka_ocean_wave_lab",
@@ -1349,8 +1432,9 @@
       "reference": "https://www-naoe.eng.osaka-u.ac.jp/naoe/naoe1/e/facility/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "osaka_ocean_wave_lab",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "68b57fcff07f2c985f1a63f04f24db50d58bb2549c960a2af1c3c277a7753cea"
     },
     {
       "id": "uq_moreton_aquarium",
@@ -1365,8 +1449,9 @@
       "reference": "https://moreton-bay.research.uq.edu.au/facilities/research-laboratories-aquariums",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "uq_moreton_aquarium",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "9e7af1186794654a98192f811076a03a56180590cc97be12d14136a3d1b5388a"
     },
     {
       "id": "sheffield_diamond_pilot_plant",
@@ -1381,8 +1466,9 @@
       "reference": "https://www.sheffield.ac.uk/engineering/diamond-engineering/our-facilities/pilot-plant",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "sheffield_diamond_pilot_plant",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "1627632ff7ef9553f1bf8aff15051c437c0b06b41b1ee294d358fd5a2f8ff146"
     },
     {
       "id": "sydney_fluids_convection",
@@ -1397,8 +1483,9 @@
       "reference": "https://www.sydney.edu.au/engineering/our-research/laboratories-and-facilities/fluids-laboratory.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "sydney_fluids_convection",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "8eee98e7b27092a63603548a99dd7882c732afed1d326ff4236ad1e07025005b"
     },
     {
       "id": "uts_infrastructure_robotics",
@@ -1413,8 +1500,9 @@
       "reference": "https://www.uts.edu.au/research/centres/robotics-institute/our-research/research-labs/infrastructure-robotics-lab",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "uts_infrastructure_robotics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "facde620aa6eb477ab1f72ded16a83d31c32d1fe613cb893717a9b2132656a77"
     },
     {
       "id": "tokyo_kurumizaka_chromatography",
@@ -1429,8 +1517,9 @@
       "reference": "https://www.iqb.u-tokyo.ac.jp/kurumizakalab/eng/research_kizai.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "tokyo_kurumizaka_chromatography",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "aa95703b2a56fc9bac4377463d0bf7268411070eb54d2407b47aec7359e537da"
     },
     {
       "id": "uwa_ngcf_c72",
@@ -1446,7 +1535,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "uwa_ngcf_c72",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "352c10c418632316d8e86a5cf655ed2fddb9b927acea50f067dc20017195fc65"
     },
     {
       "id": "trinity_aml_titan_alignment",
@@ -1462,7 +1552,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "trinity_aml_titan_alignment",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "3eba51a9cf82a2c47e71ed52534533a3638e91c0811748c44654aa8def59c56e"
     },
     {
       "id": "tsinghua_rush3d",
@@ -1477,8 +1568,9 @@
       "reference": "https://www.tsinghua.edu.cn/info/3155/119959.htm",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "tsinghua_rush3d",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "12baacf7ad28225d349f1e9201e0dfcc0b433b67b46f383b34d1fd0d6e4c39cc"
     },
     {
       "id": "ucl_swc_optics_training",
@@ -1494,7 +1586,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ucl_swc_optics_training",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "a45b1bb41c211a6b6e98799faedcd670aa6ad90531a3f3414409362eb8f8d6ac"
     },
     {
       "id": "uba_fiuba_chemistry_2008",
@@ -1509,8 +1602,9 @@
       "reference": "https://www.fi.uba.ar/institucional/sedes/paseo-colon",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "uba_fiuba_chemistry_2008",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "bc2a4f857c494b90b80a93154c2815b03c2129239579637820e7b2badc4849cf"
     },
     {
       "id": "malaya_high_voltage_metrology",
@@ -1525,8 +1619,9 @@
       "reference": "https://ee.um.edu.my/research-area",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "malaya_high_voltage_metrology",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "5106237ee9602be5bc75ac558aaffaf298aadc704b2a814206a1ae6846fe4cd3"
     },
     {
       "id": "ucd_conway_sxt_chamber_inspection",
@@ -1542,7 +1637,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ucd_conway_sxt_chamber_inspection",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "7ea5c9ac3f5092690ea2fc668ebcdfaab54d0d0ccaab270141d68b36c9863a51"
     },
     {
       "id": "alberta_nanofab_exactacoat",
@@ -1558,7 +1654,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "alberta_nanofab_exactacoat",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "7b7789a6860628fcf65e8b474e4c69dd9e3b66c570d6544339b39fa35959ba48"
     },
     {
       "id": "uva_speech_studio2",
@@ -1573,8 +1670,9 @@
       "reference": "https://www.fon.hum.uva.nl/speechlab/studios.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "uva_speech_studio2",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "a791bb2e735b355f43e8234100191700ab6863af56f40ed67065c6c1d2bc362c"
     },
     {
       "id": "birmingham_advanced_micro_edm",
@@ -1589,8 +1687,9 @@
       "reference": "https://www.birmingham.ac.uk/research/centres-institutes/research-in-mechanical-engineering/advanced-manufacturing-research-group/facilities",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "birmingham_advanced_micro_edm",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "a729cab0657d12e2a66cdf1d322a0e1f515ed1be67fcde7a456a7de958b60ed2"
     },
     {
       "id": "birmingham_chbh_mri",
@@ -1606,7 +1705,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "birmingham_chbh_mri",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "bbda89e106e11d66d76b2673884a75f9c4c44213821a4b558d492ff5664dba69"
     },
     {
       "id": "bristol_equals_shaking_table",
@@ -1621,8 +1721,9 @@
       "reference": "https://www.bristol.ac.uk/research/groups/earthquakegeo/equip/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "bristol_equals_shaking_table",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "a79156d2701405d3a2cb60cf11c888e9a0770ffab17d2b4cd0346ecd4b5ecd71"
     },
     {
       "id": "ubc_hassan_legoflume",
@@ -1637,8 +1738,9 @@
       "reference": "https://geog.ubc.ca/news/cutting-edge-river-science-and-engineering-tools-in-action-the-hassan-labs-legoflume-launches/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ubc_hassan_legoflume",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "af38f48623d9712667f03ee67832c8bc88b8ac9947caf48e6b9e8d56ad85d708"
     },
     {
       "id": "berkeley_richmond_towing_tank",
@@ -1653,8 +1755,9 @@
       "reference": "https://flow-lab-berkeley.netlify.app/physical-model-test-facility",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "berkeley_richmond_towing_tank",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "adbdbf9982ccc9e6e8a219833b9bad1ae75c65b2188c2b28016b8c5711881d1d"
     },
     {
       "id": "ucla_bapsf_lapd",
@@ -1669,8 +1772,9 @@
       "reference": "https://plasma.physics.ucla.edu/large-plasma-device.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ucla_bapsf_lapd",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "e2b26cd298f39708dc868bd7cc37d0ccbe8bae5dd1583df9529687444032d3a8"
     },
     {
       "id": "ucsd_mccartney_geotechnical_centrifuge",
@@ -1685,8 +1789,9 @@
       "reference": "https://mccartney.ucsd.edu/facilities",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "ucsd_mccartney_geotechnical_centrifuge",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "9169e47bea92b756a4c4364b8f7116df5b16ffa4d1f8019335cc42b29c2571fd"
     },
     {
       "id": "cambridge_schofield_turner",
@@ -1701,8 +1806,9 @@
       "reference": "https://www.eng.cam.ac.uk/node/374",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "cambridge_schofield_turner",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "72589b5fc1615b5f503aadd602ad221892ab90a151d54bd33026015a7d4eb973"
     },
     {
       "id": "cambridge_whittle_low_speed_turbine",
@@ -1718,7 +1824,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "cambridge_whittle_low_speed_turbine",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "dc2cca50f2905693cc547007ef61d9ef29465d5be050a2760910178876d8e807"
     },
     {
       "id": "chicago_mineralphysics_laser_bay",
@@ -1733,8 +1840,9 @@
       "reference": "https://mineralphysics.uchicago.edu/labtour.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "chicago_mineralphysics_laser_bay",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "fdcc97cc57b42dc828ab1723616b0e56b1f5d305b0df3fe597b8e82fcd3a2414"
     },
     {
       "id": "copenhagen_nbi_surface_metrology",
@@ -1749,8 +1857,9 @@
       "reference": "https://nbi.ku.dk/english/research_infrastructure/nbi-cleanroom/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "copenhagen_nbi_surface_metrology",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "fc40322d27ee7c476b9688b87fa06f4e3258e0aae9fcc34a037f16588ba5abae"
     },
     {
       "id": "copenhagen_pice_ice_workroom",
@@ -1765,8 +1874,9 @@
       "reference": "https://nbi.ku.dk/english/research/pice/centre-for-ice-and-climate/ice-core-facilities/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "copenhagen_pice_ice_workroom",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "12d85dd1f66316d196c6757bea22db9a1116f990051969aee66d06bcda68801f"
     },
     {
       "id": "glasgow_iset_exploration",
@@ -1781,8 +1891,9 @@
       "reference": "https://www.gla.ac.uk/research/az/space-exploration-technology/facilities/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "glasgow_iset_exploration",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "2da279970b07a4bba67ead8b0e961f0db3bcf8a71f2753e50a2e41d8e95487ba"
     },
     {
       "id": "glasgow_jwnc_wafer_loading",
@@ -1797,8 +1908,9 @@
       "reference": "https://www.gla.ac.uk/research/az/jwnc/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "glasgow_jwnc_wafer_loading",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "c052cd5790188dca6a94bd488a2daeabb804ece980c90408245a4a772b113f65"
     },
     {
       "id": "illinois_bil_nonlinear_optics",
@@ -1813,8 +1925,9 @@
       "reference": "https://biophotonics.illinois.edu/about/facilities",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "illinois_bil_nonlinear_optics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "5031d92853426ff81ce9040bc56ebfea90cd63ecc48b99d622e84b3b1158e1af"
     },
     {
       "id": "leeds_environmental_tribology",
@@ -1829,8 +1942,9 @@
       "reference": "https://www.leeds.ac.uk/experimental-facilities/dir-record/profiles/23792/advanced-coatings-system-and-environmental-tribology-suite",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "leeds_environmental_tribology",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "f284a369a63e3703d975ee500192e3b07c21331be6bcbe63101a83884cdb2be4"
     },
     {
       "id": "leeds_litac_yarn_spinning",
@@ -1845,8 +1959,9 @@
       "reference": "https://www.leeds.ac.uk/leeds-institute-textiles-colour-1/doc/facilities",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "leeds_litac_yarn_spinning",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "acec5104c785114bd7480e4665772a107f9633286320195c9c0ddf4aa7396714"
     },
     {
       "id": "michigan_lurie_lithography_bay",
@@ -1861,8 +1976,9 @@
       "reference": "https://alumni.umich.edu/michigan-alum/spaces-the-lurie-nanofabrication-facility/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "michigan_lurie_lithography_bay",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "7b6848450f8999e4e9cd005b5f66246d2bdf3420a87202f208bd000669fb013a"
     },
     {
       "id": "nottingham_food_process_hall",
@@ -1877,8 +1993,9 @@
       "reference": "https://www.nottingham.ac.uk/biosciences/documents/business/food-processing-equipment-and-facilities.pdf",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "nottingham_food_process_hall",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "952d74c0fa19dcd5ad735d1c28801d4f0ae3da4b61f6d1f45d68645da4d458ae"
     },
     {
       "id": "oxford_bonilla_semiconductor",
@@ -1893,8 +2010,9 @@
       "reference": "https://interface.web.ox.ac.uk/infrastructure",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "oxford_bonilla_semiconductor",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "ee64bcf06f47db689cad451ee48f907a0ec141e6785d1fb706f4e9506d8b4395"
     },
     {
       "id": "penn_pathology",
@@ -1909,8 +2027,9 @@
       "reference": "https://pathology.med.upenn.edu/department/about-the-department/department-videos/follow-specimen",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "penn_pathology",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "instrument",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "503961647ce2f52f0a1c7d33a0050cb1ad1d4897d32d3eda667d39c28b91a4a1"
     },
     {
       "id": "penn_qnf_denton_sputter",
@@ -1925,8 +2044,9 @@
       "reference": "https://www.nano.upenn.edu/resources/equipmentinstrumentation/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "penn_qnf_denton_sputter",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "d38262c23a75ed394d61590537c1d62567fa5f6069a507fb04fc18a013d6d1ae"
     },
     {
       "id": "texas_ferguson_structural_test_hall",
@@ -1941,8 +2061,9 @@
       "reference": "https://fsel.engr.utexas.edu/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "texas_ferguson_structural_test_hall",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "a034d0970e6c0d42057dda55786776a7d1ed6d26313cae0af066dced28da451b"
     },
     {
       "id": "toronto_wb233_membrane_crossflow",
@@ -1957,8 +2078,9 @@
       "reference": "https://www.labs.chem-eng.utoronto.ca/werber/facilities/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "toronto_wb233_membrane_crossflow",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "de40c8b16ac6486dbb2254a341a3325e2468f71beb57e10ae190292099f906e4"
     },
     {
       "id": "warwick_highfield_nmr_1ghz",
@@ -1974,7 +2096,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "warwick_highfield_nmr_1ghz",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "5a61260c346f73db24d759a87cbbbc65727976ef4511351424effa607c9a4bfb"
     },
     {
       "id": "uw_isolab",
@@ -1989,8 +2112,9 @@
       "reference": "https://isolab.ess.washington.edu/laboratory/facility.php",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "uw_isolab",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "2276d89aecc033ff7129cc4026596791a4fcc838996a647bc6d762f9385099f8"
     },
     {
       "id": "zurich_otology_specimen_preparation",
@@ -2005,8 +2129,9 @@
       "reference": "https://www.otobm.uzh.ch/en/Infrastructure.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "zurich_otology_specimen_preparation",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "699245b2dd943d6af2e82b0fca0ae23d42cdfd019ba3af019c4b79662bfa92e0"
     },
     {
       "id": "heidelberg_jochim_quantum_architecture",
@@ -2021,8 +2146,9 @@
       "reference": "https://ultracold.physi.uni-heidelberg.de/02research/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "heidelberg_jochim_quantum_architecture",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "ab47d3111bdb794a93c0000f99ac4a44367e51816f09cbeca147e05e4e98db2b"
     },
     {
       "id": "paris_saclay_lmps_astree",
@@ -2038,7 +2164,8 @@
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "paris_saclay_lmps_astree",
       "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "f6896239b0724c64dc8f575f7627fbcbc8a9adc6cf2c275bef18d689c113403b"
     },
     {
       "id": "psl_sesame_adaptive_optics",
@@ -2053,8 +2180,9 @@
       "reference": "https://lira.observatoiredeparis.psl.eu/Photos-Galerie",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "psl_sesame_adaptive_optics",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "dde714915193b47c05420171f7e69b30e14d130dd2df255f4045b561c857423f"
     },
     {
       "id": "uppsala_freia_gersemi",
@@ -2069,8 +2197,9 @@
       "reference": "https://www.uu.se/en/department/physics-and-astronomy/infrastructure/freia-laboratory/gersemi-vertical-cryostat",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "uppsala_freia_gersemi",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "b57c5f6db54a65b138d992426ad204e645f280ecd983b5a4a9fbebbb8c7339a8"
     },
     {
       "id": "uppsala_tandem_pelletron",
@@ -2085,8 +2214,9 @@
       "reference": "https://www.uu.se/en/centre/tandemlab/infrastructure/accelerators",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "uppsala_tandem_pelletron",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "2abb6fed3e412c5cc69112d69d8f0530ce066bd5d2d73d510182ca5d78b5a04d"
     },
     {
       "id": "yale_becton_cleanroom_metrology",
@@ -2101,8 +2231,9 @@
       "reference": "https://research.yale.edu/cores/cleanroom",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "yale_becton_cleanroom_metrology",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "174cc3938ed26ca7a8ae2d261cd41b37fe0222a37491c2fa0f55d63b45bb0176"
     },
     {
       "id": "yonsei_mics_rf_probe",
@@ -2117,8 +2248,9 @@
       "reference": "https://mics.yonsei.ac.kr/equipment/",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "yonsei_mics_rf_probe",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "277bac66b77666e376d91ea764005f7584a661b648262abd828f2e4f5ddeefa6"
     },
     {
       "id": "zju_low_turbulence_tunnel",
@@ -2133,8 +2265,9 @@
       "reference": "https://atc.zju.edu.cn/instrument/detail-4202.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
       "archive_directory": "zju_low_turbulence_tunnel",
-      "view": "interior",
-      "model_stage": "mechanical_prototype"
+      "view": "workstation",
+      "model_stage": "mechanical_prototype",
+      "preview_sha256": "5419aaf7d4ca898fa3b4779a26e89278134f19fec3f634a3a4a9970c3ea0352f"
     }
   ]
 }
