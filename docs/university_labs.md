@@ -79,6 +79,57 @@ Example binding:
 
 ## Export and review
 
+### Published gallery and models
+
+The [website laboratory gallery](https://roboteurekalab.github.io/Hooke/Web/simulation.html#h-reallab) includes the
+pinned QS top-100 collection alongside the existing QS 101–250 collection.
+The ranking editions are identified separately; their school counts must not be
+added together as a count of unique institutions.
+
+The top-100 collection publishes **133 scene prototypes at 102 institutions**,
+with one compact recorded Blender interior preview per scene, source-definition
+and institutional-reference links, and a
+[portable MJCF download](assets/qs100-scenes-mjcf.zip). Extract the complete ZIP
+before opening a scene's `scene.xml`: each scene includes its required assets and
+a manifest describing equipment controls, references and limitations. Every model
+is freshly generated from the source and compile-checked in MuJoCo. This delivery
+check does not repeat dynamics, scientific validation or native Isaac validation.
+
+These are estimated mechanical prototypes, not institution-validated digital
+twins. The gallery uses previously recorded renders; some images predate detailed
+mechanical refinements in the downloadable models. Source photographs, Blender
+intermediates and raw experiment logs remain local. A fresh clone can show the
+published interior preview in the simulator without rendering; additional camera
+views still require local exports. Locally generated previews take precedence.
+
+The November 20, 2026 publication includes 133 WebP previews (2.14 MB total)
+and a 9.34 MB MJCF ZIP with the applicable asset license notices. All 133
+packaged models compile, all 133 previews work without local exports, and
+desktop/mobile gallery checks cover both collections, search, filtering and
+download availability. No new GPU rendering or scientific-process validation
+is implied by these publication checks.
+
+The static metadata is generated from `Hooke/university/` into
+`Web/data/qs100-scenes.json`. To refresh an explicitly selected publication from
+existing renders, use:
+
+```bash
+PYTHONPATH=Hooke python -m university.publish \
+  --previews-from temp/university/coverage_20261024/packages \
+  --previews-from temp/real_labs/latest \
+  --media-directory docs/assets/qs100 \
+  --catalog Web/data/qs100-scenes.json \
+  --archive docs/assets/qs100-scenes-mjcf.zip \
+  --work-directory temp/university/publication
+```
+
+This command performs CPU compilation and image encoding only. It does not
+download resources, render new views or step a simulator. The local publication
+report records image provenance, model hashes and compile results. New curated
+media remain ignored until explicitly included in an authorized Git submission.
+
+### Local exports and validation
+
 From the repository root, use the existing environment:
 
 ```bash

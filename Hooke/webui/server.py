@@ -148,6 +148,12 @@ def api_scene():
         if len(image) > 16 * 1024 * 1024:
             return jsonify(error="Recorded preview exceeds the 16 MiB image limit; regenerate a smaller overview.",
                            interaction_url=navigation["url"]), 413
+        if path.suffix == ".webp":
+            # Keep the existing PNG response contract for clients of /api/scene.
+            with Image.open(io.BytesIO(image)) as preview:
+                buffer = io.BytesIO()
+                preview.save(buffer, format="PNG")
+                image = buffer.getvalue()
         return jsonify(
             image_png_base64=base64.b64encode(image).decode("ascii"),
             task_info={"prefix": navigation["task_label"] + " — recorded preview",

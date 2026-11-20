@@ -542,8 +542,22 @@ function onUniLabChange() {
     document.getElementById('uni-preview').innerHTML =
       `<video src="${task.navigation.video}" autoplay loop muted playsinline controls></video>
        <p><em>${task.navigation.university} — ${task.navigation.facility}</em></p>`;
-  } else {
-    document.getElementById('uni-preview').innerHTML = '';
+  } else if (task.navigation?.preview) {
+    const container = document.getElementById('uni-preview');
+    const image = document.createElement('img');
+    image.alt = `${task.navigation.task_label} — recorded scene preview`;
+    const caption = document.createElement('p');
+    caption.textContent = 'Recorded scene preview · ';
+    const link = document.createElement('a');
+    link.href = task.navigation.url;
+    link.textContent = 'Open instrument controls';
+    caption.append(link);
+    image.onerror = () => {
+      image.remove();
+      caption.firstChild.textContent = 'No recorded preview is available. ';
+    };
+    image.src = task.navigation.preview;
+    container.replaceChildren(image, caption);
   }
 }
 

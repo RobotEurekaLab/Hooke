@@ -20,6 +20,7 @@ from real_labs import operations
 
 bp = Blueprint("real_labs", __name__)
 ROOT = Path(__file__).resolve().parents[2]
+PUBLISHED_PREVIEWS = ROOT / "docs/assets/qs100"
 
 
 class _SceneBusy(RuntimeError):
@@ -125,7 +126,16 @@ def recorded_preview_path(identifier, name="overview.png"):
         os.environ.get("HOOKE_REAL_LABS_OUTPUT", ROOT / "temp/real_labs/latest")
     ).resolve()
     path = (base / identifier / name).resolve()
-    return path if path.is_relative_to(base) and path.is_file() else None
+    if path.is_relative_to(base) and path.is_file():
+        return path
+    # Fresh clones include one curated room view per published scene. Other
+    # camera requests must not silently display that same image as a close-up.
+    if name == "overview.png":
+        published = PUBLISHED_PREVIEWS.resolve()
+        path = (published / f"{identifier}.webp").resolve()
+        if path.is_relative_to(published) and path.is_file():
+            return path
+    return None
 
 
 def _state(session):
@@ -399,4 +409,4 @@ def preview(identifier, name):
     path = recorded_preview_path(identifier, name)
     if path is None:
         abort(404)
-    return send_file(path, mimetype="image/png")
+    return send_file(path, mimetype="image/webp" if path.suffix == ".webp" else "image/png")

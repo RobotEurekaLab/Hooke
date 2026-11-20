@@ -45,6 +45,12 @@ See the [microscopy demo guide](docs/microscopy_demo.md).
 | --- | --- | --- |
 | <img src="docs/assets/microscopy-cell-pushing.png" alt="Microscopy workstation and simulated cell pushed by a fine probe" width="288"> | <img src="docs/assets/microscopy-cell-manipulation.png" alt="Microscopy workstation and simulated cell held by microforceps, with phase-contrast and fluorescence views" width="288"> | <img src="docs/assets/microscopy-cell-injection.png" alt="Microscopy workstation and pL-scale injection into a simulated cell" width="288"> |
 
+University laboratory reconstructions include 133 scene prototypes across the
+102 institutions in the pinned QS top-100 roster, alongside the QS 101–250
+collection. Browse the [scene previews and downloadable models](https://roboteurekalab.github.io/Hooke/Web/simulation.html#h-reallab),
+or see the [laboratory asset guide](docs/university_labs.md#published-gallery-and-models)
+for source directories, evidence limits and rebuild instructions.
+
 ## Quick start
 
 ### 1. Install
@@ -138,6 +144,9 @@ Use a separate training environment for OpenPI.
 | Directory | Contents |
 | --- | --- |
 | `Hooke/` | Simulator, experiment tasks, assets and web interface |
+| `Hooke/university/`, `Hooke/real_labs/` | QS top-100 directory, procedural lab models and equipment controls |
+| `real_lab/` | QS 101–250 laboratory research records |
+| `Web/` | Public showcase with previews and model downloads |
 | `openpi/` | Policy training and inference, including pi0.5 configurations |
 | `openpi-pi0-legacy/` | Earlier pi0 training setup |
 | `RoboticsDiffusionTransformer/` | RDT baseline |

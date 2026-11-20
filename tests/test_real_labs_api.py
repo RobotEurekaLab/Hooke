@@ -164,6 +164,47 @@ class RealLabApiTests(unittest.TestCase):
                 )
             self.mock_build.assert_not_called()
 
+    def test_curated_preview_is_available_without_local_exports_and_keeps_mime(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            published = base / "published"
+            published.mkdir()
+            (published / "alpha.webp").write_bytes(b"curated room view")
+            with patch.object(real_labs_api, "PUBLISHED_PREVIEWS", published), patch.dict(
+                "os.environ", {"HOOKE_REAL_LABS_OUTPUT": str(base / "absent")}
+            ):
+                with self.client.get("/api/real-labs/alpha/preview/overview.png") as response:
+                    self.assertEqual(response.status_code, 200)
+                    self.assertEqual(response.mimetype, "image/webp")
+                    self.assertEqual(response.get_data(), b"curated room view")
+                for name in ("workstation.png", "interior.png", "unregistered.png"):
+                    self.assertEqual(
+                        self.client.get(f"/api/real-labs/alpha/preview/{name}").status_code,
+                        404,
+                    )
+                self.assertIsNone(real_labs_api.recorded_preview_path("absent"))
+                self.assertIsNone(real_labs_api.recorded_preview_path("alpha", "../overview.png"))
+            self.mock_build.assert_not_called()
+
+    def test_local_preview_takes_priority_and_curated_symlinks_cannot_escape(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            published = base / "published"
+            published.mkdir()
+            (published / "alpha.webp").write_bytes(b"curated room view")
+            local = base / "local/alpha"
+            local.mkdir(parents=True)
+            (local / "overview.png").write_bytes(b"new local view")
+            with patch.object(real_labs_api, "PUBLISHED_PREVIEWS", published), patch.dict(
+                "os.environ", {"HOOKE_REAL_LABS_OUTPUT": str(local.parent)}
+            ):
+                with self.client.get("/api/real-labs/alpha/preview/overview.png") as response:
+                    self.assertEqual(response.mimetype, "image/png")
+                    self.assertEqual(response.get_data(), b"new local view")
+                (published / "beta.webp").symlink_to(local / "overview.png")
+                self.assertIsNone(real_labs_api.recorded_preview_path("beta"))
+            self.mock_build.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

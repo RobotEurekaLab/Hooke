@@ -35,7 +35,8 @@ function picker() {
     robots: { ur5e: { category: 'robot_arm' } },
     tasks: [
       { name: 'real_lab_original', category: 'real_labs', robot: 'lab_instruments',
-        navigation: { url: '/real-labs?scene=original' } },
+        navigation: { url: '/real-labs?scene=original', task_label: 'Instrument Room',
+          preview: '/api/real-labs/original/preview/overview.png' } },
       display('real_lab_shared_display', 'Alpha University', 'Chemistry', 'Optics Room'),
       display('real_lab_zeta_display', 'Zeta University', 'Biology', 'Imaging Core'),
     ],
@@ -48,7 +49,18 @@ function picker() {
     },
   };
   const sandbox = {
-    document: { getElementById: element }, URL, fixture,
+    document: {
+      getElementById: element,
+      createElement(tagName) {
+        return {
+          tagName, children: [],
+          set textContent(value) { this.children = [{ textContent: value }]; },
+          get firstChild() { return this.children[0]; },
+          append(...children) { this.children.push(...children); },
+          remove() { this.removed = true; },
+        };
+      },
+    }, URL, fixture,
     Option: function (text, value) { this.text = text; this.value = value; },
     fetch: () => new Promise(() => {}),
     location: { origin: 'http://localhost', assign(url) { this.assigned = url; } },
@@ -98,6 +110,19 @@ test('display selection plays its clip and generates the exact native task', asy
   assert.equal(request.body.robot, 'ur5e');
   assert.equal(view.sandbox.location.assigned, undefined);
   assert.match(view.element('uni-preview').innerHTML, /base64,fresh/);
+});
+
+test('reference selection displays a recorded image and keeps controls usable if it is absent', () => {
+  const view = picker();
+  view.change('uni-university', 'alpha');
+  const [image, caption] = view.element('uni-preview').children;
+  assert.equal(image.src, '/api/real-labs/original/preview/overview.png');
+  assert.equal(image.alt, 'Instrument Room — recorded scene preview');
+  assert.equal(caption.children[1].href, '/real-labs?scene=original');
+  image.onerror();
+  assert.equal(image.removed, true);
+  assert.match(caption.firstChild.textContent, /No recorded preview/);
+  assert.equal(view.element('uni-generate').disabled, false);
 });
 
 test('late display render cannot replace a newly selected instrument scene or clip', async () => {

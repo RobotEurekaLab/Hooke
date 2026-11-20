@@ -265,7 +265,59 @@ function lazyVideo(src) {
 
 let realLabCards = [];
 
-function buildRealLabGrid() {
+function externalLink(label, href) {
+  const link = el('a', null, []);
+  link.textContent = label;
+  link.href = href;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  return link;
+}
+
+function buildUniversityCard(lab) {
+  const card = el('article', 'video-card university-card', []);
+  card.dataset.scene = lab.id;
+  const image = document.createElement('img');
+  image.src = lab.preview;
+  image.alt = `${lab.school} — ${lab.lab}, ${lab.view} simulation render`;
+  image.loading = 'lazy';
+  image.decoding = 'async';
+  image.width = 800;
+  image.height = 500;
+  const imageLink = externalLink('', lab.preview);
+  imageLink.setAttribute('aria-label', `Open render of ${lab.lab}`);
+  imageLink.append(image);
+  const frame = el('div', 'video-frame', [imageLink]);
+  const qs = el('span', 'qs-badge', []);
+  qs.textContent = `QS 2027 · ${lab.rank}`;
+  const renderLabel = el('span', 'render-badge', []);
+  renderLabel.textContent = 'Simulation render';
+  frame.append(qs, renderLabel);
+  const body = el('div', 'video-card-body', []);
+  const heading = el('h3', null, []);
+  heading.textContent = lab.school;
+  const title = el('p', 'lab-title', []);
+  title.textContent = lab.lab;
+  const subject = el('p', null, []);
+  subject.textContent = `${lab.subject} · Mechanical prototype`;
+  const links = el('div', 'scene-links', [externalLink('Scene source', lab.source)]);
+  if (lab.reference) links.append(externalLink('Lab reference', lab.reference));
+  body.append(heading, title, subject, links);
+  card.append(frame, body);
+  return {
+    el: card, school: lab.school, collection: 'qs100', room: false,
+    search: [lab.school, lab.lab, lab.title, lab.subject, lab.id].join(' ').toLowerCase(),
+  };
+}
+
+function renderRealLabCards() {
+  realLabCards.sort((a, b) => a.school.localeCompare(b.school, 'en'));
+  document.getElementById('reallab-grid').replaceChildren(...realLabCards.map(card => card.el));
+  document.getElementById('lab-scene-total').textContent = realLabCards.length;
+  applyRealLabFilter();
+}
+
+async function buildRealLabGrid() {
   const grid = document.getElementById('reallab-grid');
   if (!grid) return;
   realLabCards = REAL_LAB.map((lab) => {
@@ -275,7 +327,7 @@ function buildRealLabGrid() {
     card.rel = 'noopener';
     const frame = el('div', 'video-frame', [lazyVideo(`../docs/assets/real-lab-${lab.file}-mujoco.mp4`)]);
     const qs = el('span', 'qs-badge', []);
-    qs.textContent = `QS ${lab.qs}`;
+    qs.textContent = `QS 2025 · ${lab.qs}`;
     frame.append(qs);
     if (lab.room) {
       const roomBadge = el('span', 'room-badge', []);
@@ -287,27 +339,61 @@ function buildRealLabGrid() {
     const p = el('p', null, []); p.textContent = lab.detail;
     body.append(h3, p);
     card.append(frame, body);
-    grid.append(card);
-    return { el: card, school: lab.school.toLowerCase(), room: lab.room };
+    return {
+      el: card, school: lab.school, room: lab.room, collection: 'pilot',
+      search: `${lab.school} ${lab.detail}`.toLowerCase(),
+    };
   });
-  applyRealLabFilter();
+  const selection = new URLSearchParams(window.location.search).get('collection');
+  if (['all', 'qs100', 'pilot'].includes(selection)) {
+    document.getElementById('reallab-collection').value = selection;
+  }
+  renderRealLabCards();
+  const status = document.getElementById('reallab-status');
+  status.textContent = 'Loading QS top-100 scene previews…';
+  status.hidden = false;
+  try {
+    const response = await fetch('data/qs100-scenes.json');
+    if (!response.ok) throw new Error(`Catalogue HTTP ${response.status}`);
+    const catalogue = await response.json();
+    if (catalogue.schema_version !== 1 || !Array.isArray(catalogue.scenes)) {
+      throw new Error('Unsupported university catalogue');
+    }
+    if (catalogue.preview_note) {
+      document.getElementById('qs100-preview-note').textContent = catalogue.preview_note;
+    }
+    if (catalogue.download_bytes) {
+      document.getElementById('qs100-download').textContent =
+        `Download QS100 models · MJCF ZIP · ${(catalogue.download_bytes / 1048576).toFixed(1)} MiB`;
+    }
+    realLabCards.push(...catalogue.scenes.map(buildUniversityCard));
+    renderRealLabCards();
+    status.hidden = true;
+  } catch (error) {
+    status.textContent = 'QS top-100 previews could not load. Reload this page, or use the model download and GitHub source links above. The QS 101–250 collection remains available.';
+    console.error('University gallery:', error);
+  }
 }
 
 function applyRealLabFilter() {
   const searchInput = document.getElementById('reallab-search');
   const roomOnly = document.getElementById('reallab-room-only');
+  const collection = document.getElementById('reallab-collection')?.value || 'all';
   const countEl = document.getElementById('reallab-count');
   const emptyEl = document.getElementById('reallab-empty');
   if (!searchInput || !roomOnly) return;
+  roomOnly.disabled = collection === 'qs100';
+  if (roomOnly.disabled) roomOnly.checked = false;
   const query = searchInput.value.trim().toLowerCase();
   const onlyRooms = roomOnly.checked;
   let shown = 0;
   for (const card of realLabCards) {
-    const matches = (!query || card.school.includes(query)) && (!onlyRooms || card.room);
+    const matches = (!query || card.search.includes(query)) && (!onlyRooms || card.room)
+      && (collection === 'all' || card.collection === collection);
     card.el.hidden = !matches;
     if (matches) shown += 1;
   }
-  if (countEl) countEl.textContent = `${shown} of ${realLabCards.length} universities`;
+  if (countEl) countEl.textContent = `${shown} of ${realLabCards.length} scenes`;
   if (emptyEl) emptyEl.hidden = shown !== 0;
 }
 
@@ -376,6 +462,7 @@ buildMicroGrid();
 
 document.getElementById('reallab-search')?.addEventListener('input', applyRealLabFilter);
 document.getElementById('reallab-room-only')?.addEventListener('change', applyRealLabFilter);
+document.getElementById('reallab-collection')?.addEventListener('change', applyRealLabFilter);
 
 // Fade each section in as it enters view, same restrained reveal used on
 // the landing page's screen 2.

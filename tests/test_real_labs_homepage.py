@@ -15,6 +15,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "Hooke"))
 from archetypes.task_catalog import CATALOG, CatalogEntry
+from webui import real_labs_api
 
 
 class RealLabHomepageTests(unittest.TestCase):
@@ -29,6 +30,11 @@ class RealLabHomepageTests(unittest.TestCase):
         self.directory = tempfile.TemporaryDirectory(dir=ROOT / "temp")
         self.addCleanup(self.directory.cleanup)
         self.output = Path(self.directory.name)
+        self.published = self.output / "published"
+        self.published.mkdir()
+        previews = patch.object(real_labs_api, "PUBLISHED_PREVIEWS", self.published)
+        previews.start()
+        self.addCleanup(previews.stop)
         (self.output / "eth_air_quality").mkdir()
         environment = patch.dict(
             "os.environ", {"HOOKE_REAL_LABS_OUTPUT": str(self.output)}
@@ -75,6 +81,19 @@ class RealLabHomepageTests(unittest.TestCase):
         self.assertEqual(body["interaction_url"], "/real-labs?scene=eth_air_quality")
         self.assertTrue(all(not renderer.called for renderer in self.renderers))
 
+    def test_published_webp_preserves_png_api_contract_without_rendering(self):
+        Image.new("RGB", (2, 2), (50, 80, 100)).save(
+            self.published / "eth_air_quality.webp", format="WEBP", lossless=True
+        )
+        with patch.object(CatalogEntry, "load_classes", side_effect=AssertionError("Loaded task")):
+            response = self.client.post("/api/scene", json={"task": "real_lab_eth_air_quality"})
+        self.assertEqual(response.status_code, 200)
+        data = base64.b64decode(response.get_json()["image_png_base64"])
+        with Image.open(io.BytesIO(data)) as image:
+            self.assertEqual(image.format, "PNG")
+            self.assertEqual(image.getpixel((0, 0)), (50, 80, 100))
+        self.assertTrue(all(not renderer.called for renderer in self.renderers))
+
     def test_recorded_preview_response_has_a_size_bound(self):
         with (self.output / "eth_air_quality/overview.png").open("wb") as output:
             output.truncate(16 * 1024 * 1024 + 1)
@@ -101,6 +120,10 @@ class RealLabHomepageTests(unittest.TestCase):
             ).read_text()
         )
         expected = set(batch["baseline_scene_ids"] + batch["scene_ids"])
+        coverage = json.loads(
+            (ROOT / "Hooke/university/batches/qs2027_school_coverage_20261024.json").read_text()
+        )
+        expected.update(coverage["scene_ids"])
         self.assertEqual(
             {lab["name"].removeprefix("real_lab_") for lab in labs}, expected
         )

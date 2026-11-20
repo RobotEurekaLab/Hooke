@@ -87,6 +87,14 @@ class TaskNavigation(unittest.TestCase):
                     self.assertIsNone(navigation["url"])
                     self.assertIsNone(entry.completion_rule)
 
+    def test_reference_labs_expose_recorded_previews_without_loading_engines(self):
+        with patch.object(CatalogEntry, "load_classes", side_effect=AssertionError("Loaded engine")):
+            entry = CATALOG["real_lab_eth_air_quality"]
+            navigation = task_navigation(entry)
+        self.assertEqual(navigation["preview"], "/api/real-labs/eth_air_quality/preview/overview.png")
+        self.assertEqual(navigation["url"], "/real-labs?scene=eth_air_quality")
+        self.assertNotIn("video", navigation)
+
     def test_unregistered_world_or_operation_keeps_safe_generic_presentation(self):
         base = CATALOG["space_orbital_sample_transfer"]
         for name in ("future", "space_venus_experiment"):
