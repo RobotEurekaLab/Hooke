@@ -224,6 +224,12 @@ body.sim-page{
   padding:3px 9px;border-radius:99px;
   background:rgba(232,163,85,.85);color:#1a1206;font-weight:600;
 }
+.robot-badge{
+  position:absolute;bottom:10px;left:10px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.03em;
+  padding:3px 9px;border-radius:99px;
+  background:rgba(94,196,168,.9);color:#06201a;font-weight:600;
+}
 .video-card-body{padding:16px 18px 20px}
 .video-card-body h3{
   font-family:var(--body-font);font-weight:700;font-size:15px;color:#f2f5f9;margin:0 0 6px;

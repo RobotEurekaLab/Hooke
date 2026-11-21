@@ -277,23 +277,34 @@ function externalLink(label, href) {
 function buildUniversityCard(lab) {
   const card = el('article', 'video-card university-card', []);
   card.dataset.scene = lab.id;
-  const previewUrl = new URL(lab.preview, window.location.href);
-  if (lab.preview_sha256) previewUrl.searchParams.set('v', lab.preview_sha256.slice(0, 12));
-  const image = document.createElement('img');
-  image.src = previewUrl.href;
-  image.alt = `${lab.school} — ${lab.lab}, ${lab.view} simulation render`;
-  image.loading = 'lazy';
-  image.decoding = 'async';
-  image.width = 800;
-  image.height = 500;
-  const imageLink = externalLink('', previewUrl.href);
-  imageLink.setAttribute('aria-label', `Open render of ${lab.lab}`);
-  imageLink.append(image);
-  const frame = el('div', 'video-frame', [imageLink]);
+  const frame = el('div', 'video-frame', []);
+  if (lab.video) {
+    const videoUrl = new URL(lab.video, window.location.href);
+    const video = lazyVideo(videoUrl.href);
+    video.setAttribute('aria-label', `${lab.school} — ${lab.lab}, robot manipulation recording`);
+    frame.append(video);
+    const robotBadge = el('span', 'robot-badge', []);
+    robotBadge.textContent = 'Robot manipulation';
+    frame.append(robotBadge);
+  } else {
+    const previewUrl = new URL(lab.preview, window.location.href);
+    if (lab.preview_sha256) previewUrl.searchParams.set('v', lab.preview_sha256.slice(0, 12));
+    const image = document.createElement('img');
+    image.src = previewUrl.href;
+    image.alt = `${lab.school} — ${lab.lab}, ${lab.view} simulation render`;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.width = 800;
+    image.height = 500;
+    const imageLink = externalLink('', previewUrl.href);
+    imageLink.setAttribute('aria-label', `Open render of ${lab.lab}`);
+    imageLink.append(image);
+    frame.append(imageLink);
+  }
   const qs = el('span', 'qs-badge', []);
   qs.textContent = `QS ranking · ${lab.rank}`;
   const renderLabel = el('span', 'render-badge', []);
-  renderLabel.textContent = 'Simulation render';
+  renderLabel.textContent = lab.video ? 'Simulation recording' : 'Simulation render';
   frame.append(qs, renderLabel);
   const body = el('div', 'video-card-body', []);
   const heading = el('h3', null, []);
@@ -301,7 +312,7 @@ function buildUniversityCard(lab) {
   const title = el('p', 'lab-title', []);
   title.textContent = lab.lab;
   const subject = el('p', null, []);
-  subject.textContent = `${lab.subject} · Mechanical prototype`;
+  subject.textContent = lab.video ? (lab.video_caption || `${lab.subject} · Mechanical prototype`) : `${lab.subject} · Mechanical prototype`;
   const links = el('div', 'scene-links', [externalLink('Scene source', lab.source)]);
   if (lab.reference) links.append(externalLink('Lab reference', lab.reference));
   body.append(heading, title, subject, links);

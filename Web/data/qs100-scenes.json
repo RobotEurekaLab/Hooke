@@ -102,6 +102,8 @@
       "lab": "Stoltz Group, Schlinger Laboratory",
       "title": "Stoltz Chemistry Laboratory Bay",
       "preview": "../docs/assets/qs100/caltech_stoltz_schlinger.webp",
+      "video": "../docs/assets/real-lab-caltech-stoltz-schlinger-robot-mujoco.mp4",
+      "video_caption": "UR5e + Robotiq 2F-85 grips the hood's own sash handle and opens it via real IK and real mj_step contact — not a scripted actuator command.",
       "source": "https://github.com/RobotEurekaLab/Hooke/blob/main/Hooke/real_labs/scenes/university_facilities.json",
       "reference": "https://www.stoltz2.caltech.edu/labtour2.html",
       "download": "../docs/assets/qs100-scenes-mjcf.zip",
