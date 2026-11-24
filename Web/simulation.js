@@ -3,6 +3,8 @@
 // the actual preview clips live (checked into the repo, so they load the
 // same whether served from GitHub Pages or a local http.server).
 
+// QS 101-250 pilot collection -- kept as data but no longer rendered; the
+// gallery below shows the QS top 50 only (see buildRealLabGrid).
 const REAL_LAB = [
   { school: 'King Fahd University of Petroleum & Minerals', qs: '101', file: 'king-fahd-university-of-petroleum-minerals', room: false,
     detail: 'A field-emission SEM with a swinging EDX detector arm in the Chemistry Department Microscopy Laboratory, Building 4 Room 157, King Fahd University of Petroleum and Minerals.' },
@@ -333,37 +335,10 @@ function renderRealLabCards() {
 async function buildRealLabGrid() {
   const grid = document.getElementById('reallab-grid');
   if (!grid) return;
-  realLabCards = REAL_LAB.map((lab) => {
-    const card = el('a', 'video-card', []);
-    card.href = `https://github.com/RobotEurekaLab/Hooke/blob/main/real_lab/labs/${lab.file}.md`;
-    card.target = '_blank';
-    card.rel = 'noopener';
-    const frame = el('div', 'video-frame', [lazyVideo(`../docs/assets/real-lab-${lab.file}-mujoco.mp4`)]);
-    const qs = el('span', 'qs-badge', []);
-    qs.textContent = `QS ranking · ${lab.qs}`;
-    frame.append(qs);
-    if (lab.room) {
-      const roomBadge = el('span', 'room-badge', []);
-      roomBadge.textContent = 'Room rebuilt';
-      frame.append(roomBadge);
-    }
-    const body = el('div', 'video-card-body', []);
-    const h3 = el('h3', null, []); h3.textContent = lab.school;
-    const p = el('p', null, []); p.textContent = lab.detail;
-    body.append(h3, p);
-    card.append(frame, body);
-    return {
-      el: card, school: lab.school, rank: Number(lab.qs), room: lab.room, collection: 'pilot',
-      search: `${lab.school} ${lab.detail}`.toLowerCase(),
-    };
-  });
-  const selection = new URLSearchParams(window.location.search).get('collection');
-  if (['all', 'qs100', 'pilot'].includes(selection)) {
-    document.getElementById('reallab-collection').value = selection;
-  }
+  realLabCards = [];
   renderRealLabCards();
   const status = document.getElementById('reallab-status');
-  status.textContent = 'Loading QS top-100 scene previews…';
+  status.textContent = 'Loading QS top-50 scene previews…';
   status.hidden = false;
   try {
     const response = await fetch('data/qs100-scenes.json', { cache: 'no-cache' });
@@ -379,30 +354,24 @@ async function buildRealLabGrid() {
       document.getElementById('qs100-download').textContent =
         `Download QS100 models · MJCF ZIP · ${(catalogue.download_bytes / 1048576).toFixed(1)} MiB`;
     }
-    realLabCards.push(...catalogue.scenes.map(buildUniversityCard));
+    realLabCards.push(...catalogue.scenes.filter((lab) => Number(lab.rank) <= 50).map(buildUniversityCard));
     renderRealLabCards();
     status.hidden = true;
   } catch (error) {
-    status.textContent = 'QS top-100 previews could not load. Reload this page, or use the model download and GitHub source links above. The QS 101–250 collection remains available.';
+    status.textContent = 'QS top-50 previews could not load. Reload this page, or use the model download and GitHub source links above.';
     console.error('University gallery:', error);
   }
 }
 
 function applyRealLabFilter() {
   const searchInput = document.getElementById('reallab-search');
-  const roomOnly = document.getElementById('reallab-room-only');
-  const collection = document.getElementById('reallab-collection')?.value || 'all';
   const countEl = document.getElementById('reallab-count');
   const emptyEl = document.getElementById('reallab-empty');
-  if (!searchInput || !roomOnly) return;
-  roomOnly.disabled = collection === 'qs100';
-  if (roomOnly.disabled) roomOnly.checked = false;
+  if (!searchInput) return;
   const query = searchInput.value.trim().toLowerCase();
-  const onlyRooms = roomOnly.checked;
   let shown = 0;
   for (const card of realLabCards) {
-    const matches = (!query || card.search.includes(query)) && (!onlyRooms || card.room)
-      && (collection === 'all' || card.collection === collection);
+    const matches = !query || card.search.includes(query);
     card.el.hidden = !matches;
     if (matches) shown += 1;
   }
@@ -474,8 +443,6 @@ buildSpaceGrid();
 buildMicroGrid();
 
 document.getElementById('reallab-search')?.addEventListener('input', applyRealLabFilter);
-document.getElementById('reallab-room-only')?.addEventListener('change', applyRealLabFilter);
-document.getElementById('reallab-collection')?.addEventListener('change', applyRealLabFilter);
 
 // Fade each section in as it enters view, same restrained reveal used on
 // the landing page's screen 2.

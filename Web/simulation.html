@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Simulation — Robot Scientists — Hooke</title>
-<meta name="description" content="233 university laboratory scene prototypes with previews, source references and downloadable QS top-100 models, alongside planetary and microscopy experiments in Hooke.">
+<meta name="description" content="71 university laboratory scene prototypes across the QS World top 50, with previews, source references and downloadable models, alongside planetary and microscopy experiments in Hooke.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="simulation.css?v=20261120-ranking">
+<link rel="stylesheet" href="simulation.css?v=20261123-top50">
 </head>
 <body class="sim-page">
 
@@ -28,7 +28,7 @@
     <h1>What we've built in simulation</h1>
 
     <div class="sim-stats">
-      <div class="stat"><span class="n" id="lab-scene-total">233</span><span class="l">laboratory scenes<br>ordered by QS ranking</span></div>
+      <div class="stat"><span class="n" id="lab-scene-total">71</span><span class="l">laboratory scenes<br>QS World top 50</span></div>
       <div class="stat"><span class="n">500+</span><span class="l">simulated tasks<br>across every domain</span></div>
       <div class="stat"><span class="n">2</span><span class="l">physics backends<br>MuJoCo &amp; Isaac Sim</span></div>
       <div class="stat"><span class="n">3</span><span class="l">planetary environments<br>Moon, Mars, orbit</span></div>
@@ -81,8 +81,9 @@
     <div class="sim-section-head">
       <span class="sim-tag violet">03 · Real Lab Reconstruction</span>
       <h2 id="h-reallab">University laboratories, reconstructed from references</h2>
-      <p>Explore 233 laboratory scene prototypes ordered by QS ranking: reconstructed rooms,
-        equipment and mechanical controls, with source references and downloadable models.</p>
+      <p>Explore 71 laboratory scene prototypes across the QS World top 50 universities, ordered
+        by QS ranking: reconstructed rooms, equipment and mechanical controls, with source
+        references and downloadable models.</p>
       <p class="collection-note">Ranks follow the source records. One university can have multiple laboratory scenes; counts refer to scenes.
         These are reference-informed prototypes with estimated dimensions, not institution-validated digital twins.</p>
     </div>
@@ -96,17 +97,6 @@
         <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm9 2-4.35-4.35"/></svg>
         <input type="search" id="reallab-search" placeholder="Search universities, laboratories or equipment…" aria-label="Search laboratory scenes">
       </div>
-      <label class="collection-field">QS ranking
-        <select id="reallab-collection">
-          <option value="all">All ranks</option>
-          <option value="qs100">1–100</option>
-          <option value="pilot">101–250</option>
-        </select>
-      </label>
-      <label class="room-toggle">
-        <input type="checkbox" id="reallab-room-only">
-        <span title="The 27 scenes marked as room rebuilds in the QS 101–250 pilot">Pilot room rebuilds only (27)</span>
-      </label>
       <span class="reallab-count" id="reallab-count"></span>
     </div>
     <p class="sim-more" id="reallab-status" role="status" hidden></p>
@@ -114,8 +104,7 @@
     <p class="sim-more" id="reallab-empty" hidden>No laboratory scene matches these filters.</p>
     <p class="sim-more">Explore the source collections on GitHub:
       <a href="https://github.com/RobotEurekaLab/Hooke/tree/main/Hooke/university" target="_blank" rel="noopener">QS top-100 directory</a> ·
-      <a href="https://github.com/RobotEurekaLab/Hooke/tree/main/Hooke/real_labs" target="_blank" rel="noopener">scene and equipment builders</a> ·
-      <a href="https://github.com/RobotEurekaLab/Hooke/blob/main/real_lab/schools.csv" target="_blank" rel="noopener">QS 101–250 sourcing</a>
+      <a href="https://github.com/RobotEurekaLab/Hooke/tree/main/Hooke/real_labs" target="_blank" rel="noopener">scene and equipment builders</a>
     </p>
     <noscript><p class="sim-more">Enable JavaScript to browse scene previews, or use the model download and source links above.</p></noscript>
   </section>
@@ -143,6 +132,6 @@
     </div>
   </section>
 
-  <script src="simulation.js?v=20261120-ranking"></script>
+  <script src="simulation.js?v=20261123-top50"></script>
 </body>
 </html>
