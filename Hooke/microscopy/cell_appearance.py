@@ -26,18 +26,7 @@ def _texture(dx, dy, rng, length_m, waves=12):
     return field/np.sqrt(waves)
 
 
-def _contact_thickness(dx, dy, radii, lower, upper, contacts):
-    """Integrate a smooth local dimple through the same 3D optical column.
-
-    A Gaussian displacement of the contact tangent plane clips a small patch
-    of the nominal ellipsoid. Width and edge smoothing are visual estimates;
-    this is neither a membrane solver nor a volume-preserving deformation.
-    """
-    thickness = np.maximum(0., upper-lower)
-    if not contacts:
-        return thickness
-    width = .22*min(radii[:2])
-    active = np.zeros_like(thickness, dtype=bool)
+def _contact_patches(radii, contacts):
     patches = []
     for x, y, z, indentation in contacts:
         if indentation <= 0:
@@ -48,8 +37,65 @@ def _contact_thickness(dx, dy, radii, lower, upper, contacts):
         if not length:
             continue
         normal /= length
-        active |= ((dx-x)**2+(dy-y)**2 < (4*width)**2) & (thickness > 0)
         patches.append((point, normal, indentation))
+    return patches
+
+
+def _contact_density(x, y, z, patches, width):
+    """Shared deformed-volume membership for optical columns and tool depth."""
+    density = np.ones_like(x, dtype=float)
+    for point, normal, indentation in patches:
+        px, py, pz = x-point[0], y-point[1], z-point[2]
+        signed = normal[0]*px+normal[1]*py+normal[2]*pz
+        tangent2 = np.maximum(0., px*px+py*py+pz*pz-signed*signed)
+        displacement = indentation*np.exp(-.5*tangent2/width**2)
+        edge_width = min(.2e-6, indentation)
+        density *= np.clip(.5-(signed+displacement)/edge_width, 0., 1.)
+    return density
+
+
+def _outline_distance(dx, dy, radii, index, rng):
+    angle = np.arctan2(dy/radii[1], dx/radii[0])
+    irregularity = .008 if index == 0 else .024
+    contour = np.zeros_like(angle)
+    for harmonic in (3, 5, 7):
+        contour += 1-np.cos(harmonic*angle+rng.uniform(0, 2*np.pi))
+    outline = 1-irregularity*contour*np.sin(2*angle)**2
+    return np.hypot(dx/radii[0], dy/radii[1])/outline
+
+
+def cell_occupancy(points, centre, radii, *, membrane_contacts=(),
+                   contact_width_fraction=.22, edge_width_m=.2e-6):
+    """Soft membership in the displayed target-cell volume, in SI coordinates.
+
+    Includes axial position and the same contact cutouts as cell_fields.
+    This is an estimated depth cue, not a light-transport or membrane solver.
+    """
+    radii = np.asarray(radii)
+    x, y, z = (np.asarray(points)-np.asarray(centre)).T
+    distance = _outline_distance(x, y, radii, 0, np.random.default_rng(7189))
+    half_height = radii[2]*np.sqrt(np.clip(1-distance**2, 0., 1.))
+    occupancy = np.clip((half_height-np.abs(z))/edge_width_m, 0., 1.)
+    occupancy *= np.clip((1-distance)*min(radii[:2])/edge_width_m, 0., 1.)
+    return occupancy*_contact_density(x, y, z, _contact_patches(radii, membrane_contacts),
+                                      contact_width_fraction*min(radii[:2]))
+
+
+def _contact_thickness(dx, dy, radii, lower, upper, contacts, width_fraction):
+    """Integrate a smooth local dimple through the same 3D optical column.
+
+    A Gaussian displacement of the contact tangent plane clips a small patch
+    of the nominal ellipsoid. Width and edge smoothing are visual estimates;
+    this is neither a membrane solver nor a volume-preserving deformation.
+    """
+    thickness = np.maximum(0., upper-lower)
+    if not contacts:
+        return thickness
+    width = width_fraction*min(radii[:2])
+    patches = _contact_patches(radii, contacts)
+    active = np.zeros_like(thickness, dtype=bool)
+    for point, _, _ in patches:
+        active |= ((dx-point[0])**2+(dy-point[1])**2 < (4*width)**2) & (thickness > 0)
     if not active.any():
         return thickness
     x, y = dx[active], dy[active]
@@ -59,21 +105,13 @@ def _contact_thickness(dx, dy, radii, lower, upper, contacts):
     # 0.2 um boundary avoids discretisation bands at microscope pixel scale.
     for fraction in (np.arange(48)+.5)/48:
         z = low+fraction*span
-        density = np.ones_like(span)
-        for point, normal, indentation in patches:
-            px, py, pz = x-point[0], y-point[1], z-point[2]
-            signed = normal[0]*px+normal[1]*py+normal[2]*pz
-            tangent2 = np.maximum(0., px*px+py*py+pz*pz-signed*signed)
-            displacement = indentation*np.exp(-.5*tangent2/width**2)
-            edge_width = min(.2e-6, indentation)
-            density *= np.clip(.5-(signed+displacement)/edge_width, 0., 1.)
-        occupied += density
+        occupied += _contact_density(x, y, z, patches, width)
     thickness[active] *= occupied/48
     return thickness
 
 
 def cell_fields(dx, dy, radii, nuclear_radii, *, index, indentation_m=0.,
-                membrane_contacts=(), axial_slab=None):
+                membrane_contacts=(), axial_slab=None, contact_width_fraction=.22):
     """Return optical path, absorption, cytoplasm and nuclear label masks.
 
     Nuclear optical contrast is deliberately modest: a nucleus need not have
@@ -83,14 +121,8 @@ def cell_fields(dx, dy, radii, nuclear_radii, *, index, indentation_m=0.,
     """
     radii, nuclear_radii = np.asarray(radii), np.asarray(nuclear_radii)
     rng = np.random.default_rng(7189+index*101)
-    angle = np.arctan2(dy/radii[1], dx/radii[0])
-    irregularity = .008 if index == 0 else .024
-    contour = np.zeros_like(angle)
-    for harmonic in (3, 5, 7):
-        contour += 1-np.cos(harmonic*angle+rng.uniform(0, 2*np.pi))
     # Keep the calibrated major/minor diameters and the contact envelope.
-    outline = 1-irregularity*contour*np.sin(2*angle)**2
-    distance = np.hypot(dx/radii[0], dy/radii[1])/outline
+    distance = _outline_distance(dx, dy, radii, index, rng)
     cytoplasm = np.clip((1-distance)*35, 0., 1.)
     thickness = 2*radii[2]*np.sqrt(np.clip(1-distance**2, 0., 1.))
     lower, upper = -thickness/2, thickness/2
@@ -98,7 +130,8 @@ def cell_fields(dx, dy, radii, nuclear_radii, *, index, indentation_m=0.,
         offset, depth = axial_slab
         lower, upper = np.maximum(lower, offset-depth/2), np.minimum(upper, offset+depth/2)
     original_thickness = np.maximum(0., upper-lower)
-    thickness = _contact_thickness(dx, dy, radii, lower, upper, membrane_contacts)
+    thickness = _contact_thickness(dx, dy, radii, lower, upper, membrane_contacts,
+                                   contact_width_fraction)
     if axial_slab is not None:
         cytoplasm *= np.clip(thickness/depth, 0., 1.)
     elif membrane_contacts:

@@ -6,11 +6,13 @@ import sys
 import unittest
 
 import numpy as np
+from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/"Hooke"))
 
 from microscopy.cell_optics import CellMicroscope
 from microscopy.phase_contrast import PhaseContrastOptics
+from microscopy.pipettes import INJECTION_PROFILE
 
 
 class CellImageFormation(unittest.TestCase):
@@ -51,6 +53,18 @@ class CellImageFormation(unittest.TestCase):
         self.assertFalse(calibration["physical_optics_calibrated"])
         self.assertFalse(calibration["biological_texture_calibrated"])
         self.assertEqual(calibration["observation_channel"], "synthetic_nuclear_fluorescence")
+
+    def test_glass_mouth_keeps_an_open_bore_instead_of_a_transverse_cap(self):
+        alpha = []
+        for closed in (False, True):
+            layer = Image.new("RGBA", (768, 768))
+            self.scope.draw_pipette(ImageDraw.Draw(layer), np.zeros(2),
+                                    np.array([1., 0., 0.]), INJECTION_PROFILE,
+                                    close_mouth=closed)
+            alpha.append(np.asarray(layer)[..., 3])
+        self.assertLess(alpha[0][384, 384], 40)
+        self.assertGreater(alpha[1][384, 384], 100)
+        self.assertGreater(alpha[0][381:388, 384].max(), alpha[0][384, 384])
 
 
 if __name__ == "__main__":

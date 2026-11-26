@@ -82,6 +82,38 @@ class MembraneContactTests(unittest.TestCase):
         self.assertGreater(np.max(np.abs(right[1]-left[1])), .5)
         self.assertIs(right, scope._projection(*args, ((18e-6, 0., 0., 1e-6),), (0., 2e-6)))
 
+    def test_puncture_releases_dent_and_exposes_an_intracellular_tip_segment(self):
+        scope = CellMicroscope()
+        for sign in (-1, 1):
+            with self.subTest(side=sign):
+                descriptor = dict(offset_m=[sign*18e-6, 0., 0.], indentation_m=3e-6)
+                state = dict(membrane_contacts=[descriptor], punctured=False)
+                before = scope._membrane_contacts(state)
+                after = scope._membrane_contacts(dict(state, punctured=True))
+                # A point between the inserted tip and entry surface should be
+                # inside the cell after puncture, rather than inside a deep dent.
+                x, y = [sign*15.5, sign*17.6, -sign*17.6, 0.], [0., 0., 0., 17.6]
+                intact = self.fields(x, y, before)[2]
+                punctured = self.fields(x, y, after)[2]
+                self.assertLess(intact[0, 0], .1)
+                self.assertGreater(punctured[0, 0], .9)
+                # Release must retain a local dent rather than erase it.
+                self.assertLess(punctured[0, 1], .1)
+                np.testing.assert_array_equal(intact[:, 2:], punctured[:, 2:])
+                self.assertEqual(descriptor["indentation_m"], 3e-6)
+                self.assertEqual(before[0][:3], after[0][:3])
+
+    def test_puncture_dimple_retains_shoulders_around_the_local_entry(self):
+        scope = CellMicroscope()
+        contacts = scope._membrane_contacts(dict(punctured=True, membrane_contacts=[
+            dict(offset_m=[18e-6, 0., 0.], indentation_m=3e-6)]))
+        x, y = [17.2, 17.2, 17.2], [0., 4., -4.]
+        original = self.fields(x, y)[2]
+        local = self.fields(x, y, contacts,
+                            contact_width_fraction=scope.punctured_dimple_width_fraction)[2]
+        self.assertLess(local[0, 0], .1*original[0, 0])
+        self.assertTrue(np.all(local[0, 1:] > .9*original[0, 1:]))
+
     def test_relaxation_anchor_moves_with_cell_and_not_with_withdrawn_needle(self):
         task = make_task("suction_injection")
         task.reset(0)

@@ -31,7 +31,8 @@ class PipetteGeometryTests(unittest.TestCase):
             self.assertAlmostEqual(float(ring.max()), outer, delta=2e-9)
             self.assertAlmostEqual(float(ring.min()), inner, delta=2e-9)
         self.assertAlmostEqual(2*radial[abs(axial) < 2e-9].max(), 1.2e-6, delta=2e-9)
-        self.assertLess(2*radial[axial < .300001e-3].max(), 4.01e-6)
+        self.assertLess(2*radial[axial < .300001e-3].max(), 12.01e-6)
+        self.assertGreater(INJECTION_PROFILE.radius(20e-6), 2*INJECTION_PROFILE.radius(0.))
         angles = task.public_state()["sample_scale"]["pipette_elevation_deg"]
         self.assertAlmostEqual(angles["holder"], 30.)
         self.assertAlmostEqual(angles["injector"], 35.)
@@ -59,6 +60,17 @@ class PipetteGeometryTests(unittest.TestCase):
         task = make_task("cell_injection")
         task.reset(0)
         self.assertEqual(task.mechanics.resistance_pa_s_m3, INJECTION_PROFILE.resistance(viscosity))
+
+    def test_external_taper_revision_preserves_mouth_and_hydraulic_resistance(self):
+        original = PipetteProfile((
+            (0., .6e-6, .25e-6), (100e-6, 1e-6, .6e-6),
+            (300e-6, 2e-6, 1.5e-6), (800e-6, 6e-6, 4.5e-6),
+            (3e-3, 70e-6, 54.6e-6), (8e-3, .5e-3, .4e-3),
+            (12e-3, .5e-3, .4e-3)))
+        self.assertEqual(INJECTION_PROFILE.sections[0], original.sections[0])
+        self.assertEqual([(x, inner) for x, _, inner in INJECTION_PROFILE.sections],
+                         [(x, inner) for x, _, inner in original.sections])
+        self.assertEqual(INJECTION_PROFILE.resistance(.001), original.resistance(.001))
 
 
 if __name__ == "__main__":

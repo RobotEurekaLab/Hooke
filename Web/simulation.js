@@ -217,12 +217,12 @@ const SPACE = [
 const MICRO = [
   { file: 'microscopy-cell-manipulation', operation: 'pick_place', title: 'Grasp and transfer',
     detail: 'Independently driven fine forceps lift and relocate a 36 µm cell with <3 µm placement error.' },
-  { file: 'microscopy-cell-injection', operation: 'injection', title: 'Volume-controlled injection',
-    detail: 'Membrane puncture and 0.5 pL delivery into a 36 × 28 × 8 µm adherent cell.' },
+  { file: 'microscopy-cell-injection', operation: 'suction_injection', title: 'Hold and inject',
+    detail: 'A holding pipette stabilizes a 36 µm suspended cell during membrane puncture and 0.5 pL delivery.' },
   { file: 'microscopy-cell-pushing', operation: 'push', title: 'Cell pushing',
     detail: 'A 4 µm blunt probe holds ≥50 ms contact within 3 µm of the target, ≤4.5 µm compression.' },
 ];
-const MICRO_RECORDING_REVISION = '20261104-contact';
+const MICRO_RECORDING_REVISION = '20261126-depth';
 
 function el(tag, className, children) {
   const node = document.createElement(tag);
@@ -421,7 +421,7 @@ function buildMicroGrid() {
       video.append(source);
     }
     video.addEventListener('error', unavailable);
-    video.poster = `../docs/assets/${shot.file}.png`;
+    video.poster = `../docs/assets/${shot.file}.png?v=${MICRO_RECORDING_REVISION}`;
     video.setAttribute('aria-label', `${shot.title} — MuJoCo recording`);
     video.controls = true;
     video.muted = true;

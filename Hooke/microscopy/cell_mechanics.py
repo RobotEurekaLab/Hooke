@@ -205,6 +205,7 @@ class CellMechanics(System):
                     tip_m=(data.site_xpos[self.tip]-ORIGIN).tolist(),
                     needle_back=self.needle_back.tolist(),
                     needle_geometry=self.pipette_geometry.evidence(),
+                    injection_profile_m=[list(section) for section in INJECTION_PROFILE.sections],
                     indentation_m=self.indentation_m, punctured=self.punctured,
                     membrane_contacts=[] if self._membrane_contact_offset_m is None else [
                         needle_contact_descriptor(self._membrane_contact_offset_m, self.cell_radii,

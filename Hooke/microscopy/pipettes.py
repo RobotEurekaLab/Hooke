@@ -52,9 +52,10 @@ class PipetteProfile:
 
 INJECTION_PROFILE = PipetteProfile((
     (0., TIP_OUTER_M, TIP_INNER_M),
-    (.1e-3, 1e-6, .6e-6),
-    (.3e-3, 2e-6, 1.5e-6),
-    (.8e-3, 6e-6, 4.5e-6),
+    # Authored external glass taper; the mouth and hydraulic bore are unchanged.
+    (.1e-3, 4e-6, .6e-6),
+    (.3e-3, 6e-6, 1.5e-6),
+    (.8e-3, 12e-6, 4.5e-6),
     (3e-3, 70e-6, 54.6e-6),
     (8e-3, BASE_OUTER_M, BASE_INNER_M),
     (NEEDLE_LENGTH_M, BASE_OUTER_M, BASE_INNER_M),

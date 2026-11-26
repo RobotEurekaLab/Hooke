@@ -16,6 +16,7 @@ from PIL import Image
 
 from microscopy.artifacts import write_image, write_json
 from microscopy.cell_optics import CellMicroscope
+from microscopy.pipettes import INJECTION_PROFILE
 from microscopy.recording import encode_episode
 from microscopy.scene import ORIGIN
 
@@ -174,6 +175,7 @@ def reconstruct_episode(episode, source):
                                holding_pressure_pa=float(trace["holding_pressure_pa"][row]))
         if operation in ("push", "pick_place"):
             handling_contacts(model, pose, trace, row, image_state, operation)
+        image_state.update(recorded_pipette_appearance(state))
         reconstructed.append((folder, state, image_state))
     evidence = dict(source_episode=str(episode), static_model_source=str(model.source),
                     interaction_sha256=interaction_hash,
@@ -222,6 +224,17 @@ def handling_contacts(model, pose, trace, row, state, operation):
     state["indentation_m"] = max((contact["indentation_m"] for contact in contacts), default=0.)
 
 
+def recorded_pipette_appearance(state):
+    """Keep archived mouth geometry/style independent of later asset revisions."""
+    calibration = state.get("calibration", {})
+    appearance = dict(pipette_mouth_outline=calibration.get("pipette_mouth_outline", "closed_polygon"),
+                      pipette_depth_mode=calibration.get("pipette_depth_mode", "overlay"))
+    profile = state.get("sample_scale", {}).get("injection_profile_m")
+    if profile is not None:
+        appearance["injection_profile_m"] = profile
+    return appearance
+
+
 def recovered_episode(episode, recovered):
     """Accept a separately verified deterministic CPU replay of missing poses."""
     episode, recovered = Path(episode).resolve(), Path(recovered).resolve()
@@ -254,6 +267,7 @@ def recovered_episode(episode, recovered):
                     raise ValueError(f"Recovered optical {key} differs from archived interaction")
             if image_state["focus_m"] != state["encoders_m"]["focus"]:
                 raise ValueError("Recovered optical focus differs from archived encoder")
+            image_state.update(recorded_pipette_appearance(state))
             reconstructed.append((folder, state, image_state))
     evidence.update(recovered_evidence_file=str(evidence_path),
                     recovered_evidence_sha256=digest(evidence_path),
@@ -263,7 +277,7 @@ def recovered_episode(episode, recovered):
 
 
 def refresh_episode(recording, source, output, *, encode=True, validate_only=False,
-                    recovered_image_states=None):
+                    recovered_image_states=None, current_presentation=False):
     """Write only new microscope images; original world panels remain read-only."""
     recording, output = Path(recording), Path(output)
     provenance = json.loads(recording.read_text())
@@ -297,15 +311,29 @@ def refresh_episode(recording, source, output, *, encode=True, validate_only=Fal
                 raise ValueError(f"Undeformed baseline differs from archive: {baseline_folder/name}")
     evidence.update(undeformed_baseline=baseline_folder.name, baseline_pixel_identical=True,
                     microscope_observations_regenerated=0, microscope_observations_reused=0)
+    presentation = {}
+    if current_presentation:
+        presentation = dict(injection_profile_m=INJECTION_PROFILE.sections,
+                            pipette_mouth_outline="longitudinal_walls",
+                            pipette_depth_mode="cell_volume")
+        renderer = Path(__file__).parent
+        evidence.update(presentation_overrides=presentation,
+                        presentation_calibration=microscope.public_calibration(),
+                        renderer_sha256={name: digest(renderer/name) for name in (
+                            "cell_optics.py", "cell_appearance.py", "capillary_optics.py",
+                            "pipettes.py", "refresh_recordings.py", "recording.py")},
+                        world_panels="Original archived native simulator images",
+                        microscope_panels="Revised synthetic microscopy; recorded motion, force and dose preserved")
     output.mkdir(parents=True, exist_ok=False)
     for folder, _, image_state in observations:
+        image_state = {**image_state, **presentation}
         destination = output/"observations"/folder.name
         destination.mkdir(parents=True)
         for original in folder.iterdir():
             if original.name not in ("microscope.png", "microscope_fluorescence.png", "image_state.json"):
                 (destination/original.name).symlink_to(original.resolve())
         write_json(destination/"image_state.json", image_state)
-        if image_state["indentation_m"] == 0:
+        if image_state["indentation_m"] == 0 and not current_presentation:
             for name in ("microscope.png", "microscope_fluorescence.png"):
                 if (folder/name).is_file():
                     (destination/name).symlink_to((folder/name).resolve())
@@ -329,12 +357,15 @@ def main():
     parser.add_argument("--output", type=Path, required=True, help="New episode directory under ignored temp/")
     parser.add_argument("--validate-only", action="store_true")
     parser.add_argument("--skip-encode", action="store_true")
+    parser.add_argument("--current-presentation", action="store_true",
+                        help="After archive validation, regenerate all panels with current needle geometry and depth cues")
     parser.add_argument("--recovered-image-states", type=Path,
                         help="Separately verified exact CPU replay containing evidence.json and image states")
     args = parser.parse_args()
     print(json.dumps(refresh_episode(args.recording, args.source, args.output,
                                     encode=not args.skip_encode, validate_only=args.validate_only,
-                                    recovered_image_states=args.recovered_image_states)))
+                                    recovered_image_states=args.recovered_image_states,
+                                    current_presentation=args.current_presentation)))
 
 
 if __name__ == "__main__":

@@ -9,7 +9,8 @@ import numpy as np
 from PIL import Image
 
 
-def composite_capillary(image, layer, tip, back, focal_height, calibration, blur, *, geometry=None):
+def composite_capillary(image, layer, tip, back, focal_height, calibration, blur, *, geometry=None,
+                         visibility=None):
     pixels = np.asarray(layer, dtype=float)
     alpha = pixels[..., 3]/255.
     rows, columns = np.nonzero(alpha)
@@ -37,6 +38,12 @@ def composite_capillary(image, layer, tip, back, focal_height, calibration, blur
     # convolution so a thin glass wall is not rounded away before compositing.
     luminance = pixels[rows, columns, :3].mean(axis=1)
     source_alpha = alpha[rows, columns]
+    if visibility is not None:
+        # Evaluate specimen membership at actual tool heights, before blur.
+        # Multiplying source alpha also scales its premultiplied colour below,
+        # so specimen texture remains visible through the intracellular glass.
+        points = np.column_stack((xx, yy, depth+focal_height))
+        source_alpha *= np.clip(visibility(points), 0., 1.)
     for index in np.unique(np.r_[upper-1, upper]):
         weights = np.where(upper == index, fraction, np.where(upper-1 == index, 1-fraction, 0.))
         active = weights > 0

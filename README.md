@@ -39,11 +39,12 @@ See the [station experiment guide](docs/space_experiments.md) and
 Microscopy experiments combine an inverted microscope, motorized
 micromanipulators and micrometre-scale simulated cells for pushing, grasping,
 transfer and pL-scale injection.
-See the [microscopy demo guide](docs/microscopy_demo.md).
+Watch the [recorded experiments](https://roboteurekalab.github.io/Hooke/Hooke/webui/static/microscopy.html)
+or see the [microscopy demo guide](docs/microscopy_demo.md).
 
 | Cell pushing | Cell grasp and transfer | Cell injection |
 | --- | --- | --- |
-| <img src="docs/assets/microscopy-cell-pushing.png" alt="Microscopy workstation and simulated cell pushed by a fine probe" width="288"> | <img src="docs/assets/microscopy-cell-manipulation.png" alt="Microscopy workstation and simulated cell held by microforceps, with phase-contrast and fluorescence views" width="288"> | <img src="docs/assets/microscopy-cell-injection.png" alt="Microscopy workstation and pL-scale injection into a simulated cell" width="288"> |
+| <img src="docs/assets/microscopy-cell-pushing.png?v=20261126-depth" alt="Microscopy workstation and simulated cell pushed by a fine probe" width="288"> | <img src="docs/assets/microscopy-cell-manipulation.png?v=20261126-depth" alt="Microscopy workstation and simulated cell held by microforceps, with phase-contrast and fluorescence views" width="288"> | <img src="docs/assets/microscopy-cell-injection.png?v=20261126-depth" alt="Microscopy workstation and pL-scale injection into a simulated cell" width="288"> |
 
 University laboratory reconstructions include 133 scene prototypes across the
 102 institutions in the pinned QS top-100 roster, alongside the QS 101–250

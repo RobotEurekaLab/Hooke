@@ -48,8 +48,8 @@ a:focus-visible,button:focus-visible,select:focus-visible,video:focus-visible{ou
 <body>
 <main>
   <header>
-    <a class="wordmark" href="/">HOOKE</a>
-    <nav aria-label="Main navigation"><a href="/">Experiments</a><a href="https://github.com/RobotEurekaLab/Hooke">GitHub</a></nav>
+    <a class="wordmark" id="home-link" href="/">HOOKE</a>
+    <nav aria-label="Main navigation"><a id="experiments-link" href="/">Experiments</a><a href="https://github.com/RobotEurekaLab/Hooke">GitHub</a></nav>
   </header>
   <div class="heading">
     <div>
@@ -64,12 +64,10 @@ a:focus-visible,button:focus-visible,select:focus-visible,video:focus-visible{ou
   <section class="player" aria-labelledby="experiment-title">
     <div class="player-heading"><h2 id="experiment-title">Suspended-cell holding &amp; injection</h2><span class="badge" id="recording-label">MuJoCo recording</span></div>
     <video id="experiment-video" controls muted loop playsinline preload="metadata"
-      aria-label="Recorded suspended-cell holding and injection experiment"
-      poster="/docs-assets/microscopy-cell-injection.png">
-      <source src="/docs-assets/microscopy-suction_injection-mujoco.mp4?v=20261104-contact" type="video/mp4">
-      <source src="/docs-assets/microscopy-suction_injection-mujoco.webm?v=20261104-contact" type="video/webm">
+      aria-label="Recorded suspended-cell holding and injection experiment">
       Your browser does not support embedded video.
     </video>
+    <noscript><p>Enable JavaScript to choose and watch recorded experiments.</p></noscript>
     <p id="playback-message" role="status" hidden></p>
     <div class="caption"><p>Instrument view · Synthetic microscope view</p><span id="experiment-scale">36 µm cell · 0.5 pL injection</span></div>
   </section>
@@ -115,7 +113,13 @@ const backend = document.getElementById('backend');
 const message = document.getElementById('playback-message');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const params = new URLSearchParams(location.search);
-const recordingRevision = '20261104-contact';
+const recordingRevision = '20261126-depth';
+const staticPage = location.pathname.endsWith('/microscopy.html');
+const assetBase = staticPage ? '../../../docs/assets/' : '/docs-assets/';
+if (staticPage) {
+  document.getElementById('home-link').href = '../../../Web/index.html';
+  document.getElementById('experiments-link').href = '../../../Web/simulation.html';
+}
 let operation = Object.hasOwn(experiments, params.get('experiment')) ? params.get('experiment') : 'suction_injection';
 let revision = 0;
 backend.value = params.get('backend') === 'isaac' ? 'isaac' : 'mujoco';
@@ -141,11 +145,11 @@ function selectRecording(userInitiated = false) {
     document.getElementById(`step-${index + 1}-detail`).textContent = detail;
   });
   video.setAttribute('aria-label', 'Recorded ' + experiment.title.toLowerCase() + ' experiment');
-  video.poster = `/docs-assets/microscopy-cell-${experiment.poster}.png`;
+  video.poster = `${assetBase}microscopy-cell-${experiment.poster}.png?v=${recordingRevision}`;
   let failedSources = 0;
   video.replaceChildren(...['mp4', 'webm'].map(format => {
     const source = document.createElement('source');
-    source.src = `/docs-assets/microscopy-${operation}-${backend.value}.${format}?v=${recordingRevision}`;
+    source.src = `${assetBase}microscopy-${operation}-${backend.value}.${format}?v=${recordingRevision}`;
     source.type = `video/${format}`;
     source.addEventListener('error', () => {
       if (current === revision && ++failedSources === 2) showMessage('This recording is unavailable. Please choose another experiment.');

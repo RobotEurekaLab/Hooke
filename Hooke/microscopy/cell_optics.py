@@ -8,8 +8,8 @@ from PIL import Image, ImageDraw, ImageFilter
 from microscopy.cell_scene import CELL_CENTER, CELL_RADII, NEEDLE_BACK, NUCLEAR_RADII
 from microscopy.optics import Microscope, OpticalCalibration
 from microscopy.optical_cache import PlaneBlurCache
-from microscopy.pipettes import HOLDING_PROFILE, INJECTION_PROFILE
-from microscopy.cell_appearance import background_geometry, cell_fields
+from microscopy.pipettes import HOLDING_PROFILE, INJECTION_PROFILE, PipetteProfile
+from microscopy.cell_appearance import background_geometry, cell_fields, cell_occupancy
 from microscopy.phase_contrast import PhaseContrastOptics
 from microscopy.capillary_optics import composite_capillary
 from microscopy.pipette_geometry import PipetteGeometry
@@ -17,6 +17,10 @@ from microscopy.pipette_geometry import PipetteGeometry
 
 class CellMicroscope(Microscope):
     scale_bar_m = 20e-6
+    # Visual residual after puncture, not a fitted membrane material parameter.
+    punctured_dimple_retention = .60
+    punctured_dimple_width_fraction = .14
+    intracellular_needle_contrast = .45
 
     def __init__(self):
         super().__init__(OpticalCalibration(field_width_m=160e-6, pixels=768, defocus_scale_m=.45e-6))
@@ -34,17 +38,24 @@ class CellMicroscope(Microscope):
                     detector_read_noise_dn=.25,
                     display_tone_curve="Bounded tanh exposure of normalised phase intensity",
                     tool_image_model="SI glass-wall silhouette with estimated phase-edge contrast and depth-dependent blur",
+                    pipette_mouth_outline="longitudinal_walls",
+                    pipette_edge_supersampling=4,
+                    pipette_depth_mode="cell_volume",
+                    intracellular_needle_contrast=self.intracellular_needle_contrast,
                     empirical_defocus_scale_m=self.calibration.defocus_scale_m,
                     axial_response="Estimated focal slab plus defocused projection; capillaries use their sloping depth",
                     focal_slab_depth_m=2e-6,
                     membrane_deformation_model="estimated_contact_anchored_gaussian_dimple",
                     membrane_contact_coordinates="cell-local metres",
                     membrane_dimple_width_fraction=.22,
+                    membrane_post_puncture_retention=self.punctured_dimple_retention,
+                    membrane_post_puncture_width_fraction=self.punctured_dimple_width_fraction,
                     membrane_volume_conserved=False,
                     thick_specimen_model_calibrated=False,
                     biological_texture_calibrated=False)
 
-    def _projection(self, index, dx0, dy0, width, radii, nuclear, contacts, axial_slab=None):
+    def _projection(self, index, dx0, dy0, width, radii, nuclear, contacts, axial_slab=None,
+                    contact_width_fraction=.22):
         yy, xx = np.mgrid[:width, :width]
         dx = dx0+xx*self.calibration.pixel_size_m
         dy = dy0-yy*self.calibration.pixel_size_m
@@ -52,7 +63,8 @@ class CellMicroscope(Microscope):
         u = np.cos(angle)*dx+np.sin(angle)*dy
         v = -np.sin(angle)*dx+np.cos(angle)*dy
         opd, absorption, interior, nucleus = cell_fields(
-            u, v, radii, nuclear, index=index, membrane_contacts=contacts, axial_slab=axial_slab)
+            u, v, radii, nuclear, index=index, membrane_contacts=contacts,
+            axial_slab=axial_slab, contact_width_fraction=contact_width_fraction)
         contrast = self.phase_optics.intensity(opd, absorption, self.calibration.pixel_size_m)-1.
         edge = np.minimum.reduce([xx, yy, width-1-xx, width-1-yy])
         window = np.clip(edge/24., 0., 1.)
@@ -61,9 +73,27 @@ class CellMicroscope(Microscope):
             values.setflags(write=False)
         return contrast, interior, nucleus
 
+    def _membrane_contacts(self, state):
+        # Once punctured, the membrane releases part of its indentation. Keeping
+        # the entire insertion depth as a dent would leave the needle tip on the
+        # outer silhouette even during intracellular delivery. Only the optical
+        # displacement changes; recorded poses, forces and doses are untouched.
+        retention = self.punctured_dimple_retention if state.get("punctured", False) else 1.
+        return tuple((*map(float, contact["offset_m"]),
+                      retention*float(contact["indentation_m"]))
+                     for contact in state.get("membrane_contacts", ())
+                     if contact["indentation_m"] > 0.)
+
     def render(self, state, *, annotate=True, channel="phase_contrast"):
         if channel not in ("phase_contrast", "fluorescence"):
             raise ValueError("Unknown cell imaging channel")
+        outline = state.get("pipette_mouth_outline", "longitudinal_walls")
+        if outline not in ("longitudinal_walls", "closed_polygon"):
+            raise ValueError("Unknown pipette mouth outline")
+        close_mouth = outline == "closed_polygon"
+        depth_mode = state.get("pipette_depth_mode", "cell_volume")
+        if depth_mode not in ("cell_volume", "overlay"):
+            raise ValueError("Unknown pipette depth mode")
         c = self.calibration
         yy, xx = np.mgrid[:c.pixels, :c.pixels]
         x = (xx-c.pixels/2)*c.pixel_size_m
@@ -78,9 +108,10 @@ class CellMicroscope(Microscope):
         nuclear = np.asarray(state.get("nuclear_radii_m", NUCLEAR_RADII))
         # Include immutable cell-local contact positions in the projection key.
         # A scalar indentation alone supplies no spatial evidence for a dent.
-        contacts = tuple((*map(float, contact["offset_m"]), float(contact["indentation_m"]))
-                         for contact in state.get("membrane_contacts", ())
-                         if contact["indentation_m"] > 0.)
+        contacts = self._membrane_contacts(state)
+        # Keep the residual dent local to the puncture, instead of flattening a
+        # broad arc of membrane. This width is also an optical estimate.
+        contact_width = self.punctured_dimple_width_fraction if state.get("punctured", False) else .22
         for i, centre in enumerate(state["centres_m"]):
             if channel == "fluorescence" and i != 0:
                 continue  # Only the target is labelled in this experiment.
@@ -103,7 +134,7 @@ class CellMicroscope(Microscope):
                 i, float((left+offset-c.pixels/2)*c.pixel_size_m-centre[0]),
                 float((c.pixels/2-top-offset)*c.pixel_size_m-centre[1]),
                 2*sharp_halfwidth+1, tuple(cell_radii), tuple(nr),
-                contacts if i == 0 else ())
+                contacts if i == 0 else (), contact_width_fraction=contact_width)
             if channel == "phase_contrast":
                 # A bounded display exposure preserves bright edge detail.
                 # Dose never recolours the unstained transmission channel.
@@ -126,7 +157,8 @@ class CellMicroscope(Microscope):
                     i, float((left+offset-c.pixels/2)*c.pixel_size_m-centre[0]),
                     float((c.pixels/2-top-offset)*c.pixel_size_m-centre[1]),
                     2*sharp_halfwidth+1, tuple(cell_radii), tuple(nr),
-                    contacts if i == 0 else (), (float(focal_height-centre[2]), 2e-6))
+                    contacts if i == 0 else (), (float(focal_height-centre[2]), 2e-6),
+                    contact_width_fraction=contact_width)
                 section_signal = .75*58*np.tanh(section/.95)
                 section_signal = self._plane_blur(section_signal, sigma=(.8, .8))
                 signal = np.array(signal, copy=True)
@@ -141,22 +173,30 @@ class CellMicroscope(Microscope):
         if channel == "phase_contrast":
             image = self.handling_tools(image, state, focal_height)
         if "holder_tip_m" in state and channel == "phase_contrast":
-            layer = Image.new("RGBA", image.size)
-            draw = ImageDraw.Draw(layer)
             holding_tip = np.asarray(state["holder_tip_m"][:2])
             geometry = PipetteGeometry.from_evidence(state["holder_geometry"]) if "holder_geometry" in state else None
-            self.draw_pipette(draw, holding_tip, np.asarray(state["holder_back"]), HOLDING_PROFILE, geometry=geometry)
+            layer = self.pipette_layer(holding_tip, np.asarray(state["holder_back"]), HOLDING_PROFILE,
+                                      geometry=geometry, close_mouth=close_mouth)
             image = composite_capillary(image, layer, state["holder_tip_m"], state["holder_back"],
                                         focal_height, c, self._plane_blur, geometry=geometry)
         tip = np.asarray(state["tip_m"][:2])
         back = np.asarray(state.get("needle_back", NEEDLE_BACK))
         geometry = PipetteGeometry.from_evidence(state["needle_geometry"]) if "needle_geometry" in state else None
-        layer = Image.new("RGBA", image.size)
-        draw = ImageDraw.Draw(layer)
         if channel == "phase_contrast":
-            self.draw_pipette(draw, tip, back, INJECTION_PROFILE, geometry=geometry)
-        image = composite_capillary(image, layer, state["tip_m"], back,
-                                    focal_height, c, self._plane_blur, geometry=geometry)
+            profile = INJECTION_PROFILE
+            if "injection_profile_m" in state:
+                profile = PipetteProfile(tuple(map(tuple, state["injection_profile_m"])))
+            layer = self.pipette_layer(tip, back, profile, geometry=geometry, close_mouth=close_mouth)
+            visibility = None
+            if depth_mode == "cell_volume" and state.get("punctured", False) and len(state["centres_m"]):
+                def visibility(points):
+                    inside = cell_occupancy(points, state["centres_m"][0], radii,
+                        membrane_contacts=contacts, contact_width_fraction=contact_width,
+                        edge_width_m=c.pixel_size_m)
+                    return 1-(1-self.intracellular_needle_contrast)*inside
+            image = composite_capillary(image, layer, state["tip_m"], back,
+                                        focal_height, c, self._plane_blur, geometry=geometry,
+                                        visibility=visibility)
         if annotate:
             draw = ImageDraw.Draw(image)
             draw.rectangle((0, 0, c.pixels, 32), fill=(23, 33, 41))
@@ -219,7 +259,17 @@ class CellMicroscope(Microscope):
         rgba = np.dstack([luminance, luminance, luminance, 255*opacity])
         return Image.fromarray(rgba.clip(0, 255).astype(np.uint8))
 
-    def draw_pipette(self, draw, tip, back, profile, *, geometry=None):
+    def pipette_layer(self, tip, back, profile, *, geometry=None, close_mouth=False):
+        """Antialias the micron-scale taper without changing its SI profile."""
+        scale = 1 if close_mouth else 4
+        pixels = self.calibration.pixels
+        layer = Image.new("RGBA", (pixels*scale, pixels*scale))
+        self.draw_pipette(ImageDraw.Draw(layer), tip, back, profile, geometry=geometry,
+                          close_mouth=close_mouth, pixel_scale=scale)
+        return layer if scale == 1 else layer.resize((pixels, pixels), Image.Resampling.LANCZOS)
+
+    def draw_pipette(self, draw, tip, back, profile, *, geometry=None, close_mouth=False,
+                     pixel_scale=1):
         """Top-view silhouette from the same SI meridian used by the 3D mesh."""
         c = self.calibration
         direction = back[:2]/np.linalg.norm(back[:2])
@@ -235,9 +285,17 @@ class CellMicroscope(Microscope):
         for inner, fill, outline in ((False, (96, 96, 96, 160), (35, 35, 35, 240)),
                                      (True, (202, 202, 202, 20), (96, 96, 96, 180))):
             radii = profile.radius(distances, inner=inner)[:, None]*perpendicular
-            polygon = [c.pixel(point) for point in np.r_[centres+radii, (centres-radii)[::-1]]]
+            sides = [[tuple(pixel_scale*v for v in c.pixel(point))
+                      for point in centres+sign*radii] for sign in (1, -1)]
+            polygon = sides[0]+sides[1][::-1]
             draw.polygon(polygon, fill=fill)
-            draw.line(polygon+[polygon[0]], fill=outline, width=1)
+            if close_mouth:  # Reproduce the recorded outline in older archives.
+                draw.line(polygon+[polygon[0]], fill=outline, width=pixel_scale)
+            else:
+                # Glass has two visible walls and an open bore, not a dark cap
+                # connecting the walls across the injection aperture.
+                for side in sides:
+                    draw.line(side, fill=outline, width=pixel_scale)
 
     def composite_tool(self, image, layer, sigma):
         """Approximate a capillary as a single optical plane at its tip height."""

@@ -37,11 +37,16 @@ Isaac Sim recordings, pause, seek and enter fullscreen. Playback is muted and
 loops automatically unless reduced motion is requested. Opening this page does
 not start a simulator or send control requests.
 
+The same page is published directly on
+[GitHub Pages](https://roboteurekalab.github.io/Hooke/Hooke/webui/static/microscopy.html).
+The website's microscopy link uses this static page, so its versioned media
+updates with the repository without relying on the separate live-server tunnel.
+
 The gallery uses ten curated recordings, each in H.264 MP4 and VP9 WebM, in
 `docs/assets/microscopy-{operation}-{backend}.{mp4,webm}`, served by `/docs-assets/`.
 Operations are `suction_injection`, `cell_injection`, `pick_place`, `push` and
 `injection`; backends are `mujoco` and `isaac`. All twenty files together occupy
-2,848,059 bytes. The source observations come from the verified `20260919-sutter-reference` release
+2,862,400 bytes. The source observations come from the verified `20260919-sutter-reference` release
 under `temp/microscopy_demo/cad_integration/parallel_v4_production_v1/recordings/`.
 Deploy these curated files with the page; the ignored historical media directory
 is not required. The three microscopy cards in `Web/simulation.html` also use
@@ -55,17 +60,66 @@ microscope focal slab. This remains an estimated, non-volume-conserving optical
 deformation, not a resolved membrane solver. Mechanical forces, controllers and
 the flow model are unchanged.
 
+The current renderer also retains 60% of the contact indentation after recorded
+puncture, allowing the needle tip to appear inside the cell instead of remaining
+on the displaced outer contour. This fraction is an explicit optical estimate,
+reported as `membrane_post_puncture_retention` in calibration metadata. The
+post-puncture Gaussian width is 0.14 of the smaller in-plane cell radius, also
+reported in metadata, to keep the visible dent local to the needle entry.
+These display parameters do not change mechanical indentation, forces or delivered volume.
+The `20261126-depth` presentation revision includes these changes in all ten
+curated recordings, together with the needle appearance changes below.
+
+The external glass-needle taper now widens to radii of 4, 6 and 12 micrometres
+at 100, 300 and 800 micrometres behind the mouth. The 1.2-micrometre outer mouth
+diameter and all bore dimensions are unchanged, so the hydraulic resistance is
+unchanged. This is authored geometry shared by the mesh and synthetic view, not
+a measured pipette profile. The view outlines the longitudinal glass walls
+without a transverse dark line across the aperture. Fourfold edge supersampling
+keeps the taper smooth at microscope-pixel scale. Archived replays retain
+their recorded profile and mouth-outline convention; presentation revisions
+record any override separately.
+
+After recorded puncture, the injector is composited using its actual three-dimensional
+position within the displayed cell volume, including the membrane indentation.
+The intracellular segment retains 45% of its normal contrast so cytoplasmic
+texture remains visible through it; the exterior segment and existing focal blur
+are unchanged. This is an estimated depth cue, not calibrated optical transport.
+Calibration records `pipette_depth_mode` and `intracellular_needle_contrast`.
+Older recordings replay with their original `overlay` mode.
+
 The refreshed clips reuse the original workstation views and recorded motion.
 Eight episodes reconstruct the optical inputs from archived interaction samples
 and joint feedback. The two historical MuJoCo handling episodes require an exact
 CPU replay because their saved encoders and cached tool geometry refer to
 different integration stages; all 22 trace columns and observation encoders were
 checked against the originals before using the recovered optical inputs.
-New microscope panels, input states, provenance and videos are kept under
-`temp/microscopy_showcase/contact_fix/`; original evidence is preserved.
+The initial contact revision remains under `temp/microscopy_showcase/contact_fix/`.
+Current microscope panels, input states, provenance and videos are kept under
+`temp/microscopy_showcase/depth_revision/`; original evidence is preserved.
 Future captures save `image_state.json` beside each observation so optical fixes
 can be applied without reconstructing past poses. The refresh utility is
 `python -m microscopy.refresh_recordings --help` with `PYTHONPATH=Hooke`.
+Use `--current-presentation` to apply the current taper, open-mouth outline and
+cell-volume depth cue after the original undeformed baseline is verified pixel
+for pixel. This option regenerates every microscope frame, including frames
+before contact, and records presentation overrides separately from simulation
+state. Workstation images, observation times, force and dose records remain
+unchanged. The website's injection card and README injection image show the
+suspended-cell task, with the holding pipette and needle entry visible together.
+
+Validation on 2026-11-26: 63 related Python tests passed. All 270 saved
+observations were regenerated and all twenty video files passed full decoding.
+Every source observation timestamp, simulation-state hash and native-world
+image hash matches its archived recording. Original undeformed microscope
+baselines match pixel for pixel before the presentation overrides are applied.
+The three documentation posters remain 1280 × 720. No new physics run or GPU
+rendering was used for this presentation update.
+Chromium playback passed for all ten recordings through both Flask and direct
+static hosting, with twenty byte-range checks, mobile layout, seeking and error
+fallbacks. All three main-site cards played, with zero JavaScript errors and
+zero simulator API requests. Local browser evidence is under
+`temp/microscopy_showcase/depth_revision/browser/`.
 
 Validation on 2026-11-04: 55 focused Python tests passed. All ten recordings
 played in Chromium, all twenty encodings passed full decoding and byte-range
