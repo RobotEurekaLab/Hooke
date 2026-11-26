@@ -39,11 +39,30 @@ class PhaseContrastOptics:
             pupils.append(pupil)
         return tuple(pupils)
 
-    def intensity(self, optical_path_m, absorption, pixel_size_m):
+    def intensity(self, optical_path_m, absorption, pixel_size_m, *, defocus_m=0.,
+                  medium_index=1.333):
+        """Thin-object intensity with optional paraxial axial propagation.
+
+        The zero-defocus path preserves the historical projection exactly.
+        Refractive index and annular illumination are estimates, not a measured
+        instrument transfer function or a thick-cell scattering model.
+        """
         field = np.exp(-absorption+2j*np.pi*optical_path_m/self.wavelength_m)
         scattered = np.fft.fft2(field-1.)
         intensity = np.zeros(field.shape)
-        for pupil in self.pupils(field.shape, pixel_size_m):
+        pupils = self.pupils(field.shape, pixel_size_m)
+        if defocus_m:
+            fy, fx = np.meshgrid(np.fft.fftfreq(field.shape[0], pixel_size_m),
+                                 np.fft.fftfreq(field.shape[1], pixel_size_m), indexing="ij")
+            propagated = []
+            for angle, pupil in zip(np.linspace(0, 2*np.pi, self.illumination_samples, endpoint=False), pupils):
+                sx, sy = self.illumination_na/self.wavelength_m*np.array([np.cos(angle), np.sin(angle)])
+                # Paraxial propagation relative to each illumination carrier.
+                # A uniform specimen therefore retains unit intensity at any z.
+                phase = -np.pi*self.wavelength_m*defocus_m/medium_index*(fx*fx+fy*fy+2*(fx*sx+fy*sy))
+                propagated.append(pupil*np.exp(1j*phase))
+            pupils = propagated
+        for pupil in pupils:
             image_field = np.fft.ifft2(scattered*pupil)-self.direct_amplitude*1j
             intensity += abs(image_field)**2
         return intensity / (self.illumination_samples*self.direct_amplitude**2)

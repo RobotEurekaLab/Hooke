@@ -118,7 +118,7 @@ class ArchivedMicroscopyTests(unittest.TestCase):
             self.assertEqual(appearance["pipette_mouth_outline"], "closed_polygon")
             self.assertEqual(digest(image_path), original_hash)
 
-    def presentation_fixture(self, root):
+    def presentation_fixture(self, root, operation="suction_injection"):
         episode = root/"original"
         observations, hashes = [], []
 
@@ -131,7 +131,7 @@ class ArchivedMicroscopyTests(unittest.TestCase):
         for index, indentation in enumerate((0., 1e-6)):
             folder = episode/"observations"/f"{index:05d}"
             folder.mkdir(parents=True)
-            state = dict(time_s=index*.25, force_nn=index*25., delivered_pl=index*.2,
+            state = dict(operation=operation, time_s=index*.25, force_nn=index*25., delivered_pl=index*.2,
                          indentation_m=indentation, punctured=bool(index),
                          injection_profile_m=[[0., .6e-6, .25e-6], [100e-6, 1e-6, .6e-6]],
                          pipette_mouth_outline="closed_polygon", pipette_depth_mode="overlay")
@@ -162,6 +162,8 @@ class ArchivedMicroscopyTests(unittest.TestCase):
             self.assertEqual(evidence["microscope_observations_regenerated"], 2)
             self.assertEqual(evidence["microscope_observations_reused"], 0)
             self.assertTrue(evidence["baseline_pixel_identical"])
+            self.assertNotIn("cell_projection_mode", evidence["presentation_overrides"])
+            self.assertNotIn("capillary_blur_model", evidence["presentation_overrides"])
             self.assertEqual([item[2] for item in observations], original_states)
             calls = scope.render.call_args_list
             self.assertEqual(len(calls), 6)  # Two original baseline channels, then two per frame.
@@ -186,6 +188,24 @@ class ArchivedMicroscopyTests(unittest.TestCase):
                     self.assertFalse((destination/name).is_symlink())
                     with Image.open(destination/name) as image:
                         self.assertTrue(np.all(np.asarray(image) == value))
+
+    def test_current_adherent_presentation_records_optical_modes_after_baseline_check(self):
+        for operation in ("cell_injection", "injection"):
+            with self.subTest(operation=operation), TemporaryDirectory() as folder:
+                root = Path(folder)
+                recording, observations, _, scope = self.presentation_fixture(root, operation)
+                with patch("microscopy.refresh_recordings.reconstruct_episode", return_value=(observations, {})), \
+                        patch("microscopy.refresh_recordings.CellMicroscope", return_value=scope):
+                    evidence = refresh_episode(recording, root/"source", root/"revised",
+                                               encode=False, current_presentation=True)
+                for key, value in (("cell_projection_mode", "phase_defocus"),
+                                   ("capillary_blur_model", "aperture")):
+                    self.assertEqual(evidence["presentation_calibration"][key], value)
+                    for call in scope.render.call_args_list[:2]:
+                        self.assertNotIn(key, call.args[0])
+                    for path in (root/"revised/observations").glob("*/image_state.json"):
+                        self.assertEqual(json.loads(path.read_text())[key], value)
+                self.assertIn("phase_contrast.py", evidence["renderer_sha256"])
 
     def test_current_presentation_rejects_bad_baseline_before_creating_output(self):
         with TemporaryDirectory() as folder:

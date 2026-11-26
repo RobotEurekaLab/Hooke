@@ -225,10 +225,12 @@ def handling_contacts(model, pose, trace, row, state, operation):
 
 
 def recorded_pipette_appearance(state):
-    """Keep archived mouth geometry/style independent of later asset revisions."""
+    """Keep archived geometry and optical modes independent of later revisions."""
     calibration = state.get("calibration", {})
     appearance = dict(pipette_mouth_outline=calibration.get("pipette_mouth_outline", "closed_polygon"),
-                      pipette_depth_mode=calibration.get("pipette_depth_mode", "overlay"))
+                      pipette_depth_mode=calibration.get("pipette_depth_mode", "overlay"),
+                      cell_projection_mode=calibration.get("cell_projection_mode", "gaussian"),
+                      capillary_blur_model=calibration.get("capillary_blur_model", "empirical"))
     profile = state.get("sample_scale", {}).get("injection_profile_m")
     if profile is not None:
         appearance["injection_profile_m"] = profile
@@ -316,12 +318,17 @@ def refresh_episode(recording, source, output, *, encode=True, validate_only=Fal
         presentation = dict(injection_profile_m=INJECTION_PROFILE.sections,
                             pipette_mouth_outline="longitudinal_walls",
                             pipette_depth_mode="cell_volume")
+        if observations[0][1]["operation"] in ("cell_injection", "injection"):
+            presentation.update(cell_projection_mode="phase_defocus",
+                                capillary_blur_model="aperture")
         renderer = Path(__file__).parent
         evidence.update(presentation_overrides=presentation,
-                        presentation_calibration=microscope.public_calibration(),
+                        presentation_calibration=dict(microscope.public_calibration(), **{
+                            key: value for key, value in presentation.items()
+                            if key != "injection_profile_m"}),
                         renderer_sha256={name: digest(renderer/name) for name in (
                             "cell_optics.py", "cell_appearance.py", "capillary_optics.py",
-                            "pipettes.py", "refresh_recordings.py", "recording.py")},
+                            "phase_contrast.py", "pipettes.py", "refresh_recordings.py", "recording.py")},
                         world_panels="Original archived native simulator images",
                         microscope_panels="Revised synthetic microscopy; recorded motion, force and dose preserved")
     output.mkdir(parents=True, exist_ok=False)

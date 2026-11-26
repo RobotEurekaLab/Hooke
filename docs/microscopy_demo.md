@@ -32,7 +32,7 @@ SmarAct 集成，私有资产准备及未确认的品牌用途许可见[CAD 集�
 ## Public video showcase
 
 `/microscopy` now opens a video gallery, starting with suspended-cell holding
-and injection. Visitors can select five experiments and either MuJoCo or NVIDIA
+and injection. Visitors can select five demonstrations and either MuJoCo or NVIDIA
 Isaac Sim recordings, pause, seek and enter fullscreen. Playback is muted and
 loops automatically unless reduced motion is requested. Opening this page does
 not start a simulator or send control requests.
@@ -46,7 +46,7 @@ The gallery uses ten curated recordings, each in H.264 MP4 and VP9 WebM, in
 `docs/assets/microscopy-{operation}-{backend}.{mp4,webm}`, served by `/docs-assets/`.
 Operations are `suction_injection`, `cell_injection`, `pick_place`, `push` and
 `injection`; backends are `mujoco` and `isaac`. All twenty files together occupy
-2,862,400 bytes. The source observations come from the verified `20260919-sutter-reference` release
+2,807,243 bytes. The source observations come from the verified `20260919-sutter-reference` release
 under `temp/microscopy_demo/cad_integration/parallel_v4_production_v1/recordings/`.
 Deploy these curated files with the page; the ignored historical media directory
 is not required. The three microscopy cards in `Web/simulation.html` also use
@@ -95,8 +95,8 @@ CPU replay because their saved encoders and cached tool geometry refer to
 different integration stages; all 22 trace columns and observation encoders were
 checked against the originals before using the recovered optical inputs.
 The initial contact revision remains under `temp/microscopy_showcase/contact_fix/`.
-Current microscope panels, input states, provenance and videos are kept under
-`temp/microscopy_showcase/depth_revision/`; original evidence is preserved.
+The `20261126-depth` microscope panels, input states, provenance and videos are
+kept under `temp/microscopy_showcase/depth_revision/`; original evidence is preserved.
 Future captures save `image_state.json` beside each observation so optical fixes
 can be applied without reconstructing past poses. The refresh utility is
 `python -m microscopy.refresh_recordings --help` with `PYTHONPATH=Hooke`.
@@ -108,7 +108,7 @@ state. Workstation images, observation times, force and dose records remain
 unchanged. The website's injection card and README injection image show the
 suspended-cell task, with the holding pipette and needle entry visible together.
 
-Validation on 2026-11-26: 63 related Python tests passed. All 270 saved
+Validation of `20261126-depth` on 2026-11-26: 63 related Python tests passed. All 270 saved
 observations were regenerated and all twenty video files passed full decoding.
 Every source observation timestamp, simulation-state hash and native-world
 image hash matches its archived recording. Original undeformed microscope
@@ -129,6 +129,49 @@ replays matched all 22 archived trace columns across 13,940 steps exactly.
 
 The command API and offline experiment runners remain available for development.
 The interactive-page instructions below describe the earlier workstation UI.
+
+## Adherent-cell recording presentation
+
+The `20261126-adherent` presentation updates gallery entries 02 and 05 for both
+backends: four episodes with 112 saved observations, encoded as eight MP4/WebM
+files. These entries use a dedicated adherent-cell poster,
+`docs/assets/microscopy-cell-adherent-injection.png`. The suspended-cell, pushing
+and grasp/transfer recordings retain their previous image content.
+
+The `cell_injection` and `injection` entries share the same adherent-cell
+controller and archived interaction trajectory; their observation sampling
+differs. The recorded straight needle enters the upper cell surface at 45°.
+Its tip and focal plane are near z = 6.49 µm, while the cell centre is at z = 4 µm.
+The entry is consequently near the cell's projected centre, not its side outline.
+The [Eppendorf adherent-cell guide](https://www.eppendorf.com/product-media/doc/en/825836/Cell-Technology_Protocol_047_InjectMan-4-FemtoJet-4_Step-Step-Guide-Microinjection-Adherent-Cells-Eppendorf-InjectMan-4-FemtoJet-4.pdf)
+describes a local phase-bright contact cue for this geometry.
+
+The revised recordings explicitly enable two image-state settings:
+`cell_projection_mode="phase_defocus"` propagates thin-cell phase contrast
+through the annular pupil instead of blurring the entire projection;
+`capillary_blur_model="aperture"` uses a Gaussian approximation with the same
+Cartesian variance as a uniform geometric defocus disk. Its standard deviation
+is `|z| tan(asin(NA/n)) / 2`, combined in quadrature with an estimated diffraction
+width and converted to pixels. These remain estimated optical models.
+
+Both options remain disabled by default in the runtime renderer, preserving
+existing controller observations and archived replay behavior. They are enabled
+explicitly for these presentation recordings. The phase option leaves
+thick-specimen rendering and fluorescence unchanged. Revised images, encoding
+provenance and comparison material remain under
+`temp/microscopy_showcase/adherent_revision/`; recorded poses, focus, forces and
+doses are retained. `refresh_recordings --current-presentation` selects these
+two modes for `cell_injection` and `injection` after validating the original
+optical baseline. It preserves the recorded modes for ordinary archive replays.
+
+Release validation on 2026-11-26 passed 40 focused Python tests. All 112
+observation states, times, native views and fluorescence hashes match the source;
+all eight encodings match the previously decoded preview. Chromium played all
+ten gallery selections through Flask and static hosting, with twenty byte-range
+checks, correct posters, mobile layout, seeking and playback fallbacks. There
+were no JavaScript errors or simulator requests. The other twelve video files
+and three existing posters are byte-identical to the preceding release. A full
+archived delivery frame remains pixel-identical with the new options omitted.
 
 ## Earlier interactive workstation
 

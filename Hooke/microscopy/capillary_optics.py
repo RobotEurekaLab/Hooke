@@ -9,8 +9,20 @@ import numpy as np
 from PIL import Image
 
 
+def aperture_blur_sigma(depth_m, pixel_size_m, numerical_aperture, wavelength_m,
+                        medium_index=1.333):
+    """Estimated Gaussian PSF matching a uniform defocus disk's variance.
+
+    The cone radius is |z| tan(asin(NA/n)); each Cartesian variance is R²/4.
+    Add an approximate diffraction width in quadrature, in detector pixels.
+    This is an aperture-based approximation, not a calibrated microscope PSF.
+    """
+    slope = numerical_aperture/np.sqrt(medium_index**2-numerical_aperture**2)
+    return np.hypot(.21*wavelength_m/numerical_aperture, .5*depth_m*slope)/pixel_size_m
+
+
 def composite_capillary(image, layer, tip, back, focal_height, calibration, blur, *, geometry=None,
-                         visibility=None):
+                         visibility=None, psf_sigma=None):
     pixels = np.asarray(layer, dtype=float)
     alpha = pixels[..., 3]/255.
     rows, columns = np.nonzero(alpha)
@@ -49,7 +61,8 @@ def composite_capillary(image, layer, tip, back, focal_height, calibration, blur
         active = weights > 0
         if not active.any():
             continue
-        sigma = np.hypot(.8, planes[index]/calibration.defocus_scale_m)
+        sigma = (psf_sigma(planes[index]) if psf_sigma is not None
+                 else np.hypot(.8, planes[index]/calibration.defocus_scale_m))
         if sigma > calibration.pixels/4:
             continue
         padding = int(np.ceil(4*sigma))

@@ -92,7 +92,7 @@ const experiments = {
     steps: [['Hold', 'A holding pipette stabilizes the suspended cell with suction.'], ['Inject', 'The second pipette approaches, punctures and delivers the target dose.'], ['Release', 'The needle withdraws before the holding pressure is released.']]
   },
   cell_injection: {
-    title: 'Adherent-cell injection', poster: 'injection', scale: '36 × 28 × 8 µm cell · 0.5 pL injection',
+    title: 'Adherent-cell injection', poster: 'adherent-injection', scale: '36 × 28 × 8 µm cell · 0.5 pL injection',
     steps: [['Locate', 'Focus the microscope and align the injection pipette with the cell.'], ['Inject', 'Advance through the membrane and deliver the simulated intracellular dose.'], ['Withdraw', 'Retract the needle and observe the synthetic tracer image.']]
   },
   pick_place: {
@@ -104,7 +104,7 @@ const experiments = {
     steps: [['Approach', 'Align the blunt probe with the cell under microscope observation.'], ['Push', 'Contact the cell and move it toward the target.'], ['Retract', 'Withdraw the probe and review the final cell position.']]
   },
   injection: {
-    title: 'Volume-controlled cell injection', poster: 'injection', scale: '36 × 28 × 8 µm cell · 0.5 pL target',
+    title: 'Volume-controlled cell injection', poster: 'adherent-injection', scale: '36 × 28 × 8 µm cell · 0.5 pL target',
     steps: [['Align', 'Position the glass pipette at the cell membrane.'], ['Deliver', 'Apply pressure after puncture and track the delivered volume.'], ['Stop', 'Stop at the target dose and withdraw the pipette.']]
   }
 };
@@ -113,7 +113,7 @@ const backend = document.getElementById('backend');
 const message = document.getElementById('playback-message');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const params = new URLSearchParams(location.search);
-const recordingRevision = '20261126-depth';
+const recordingRevision = '20261126-adherent';
 const staticPage = location.pathname.endsWith('/microscopy.html');
 const assetBase = staticPage ? '../../../docs/assets/' : '/docs-assets/';
 if (staticPage) {

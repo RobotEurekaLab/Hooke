@@ -11,7 +11,7 @@ from microscopy.optical_cache import PlaneBlurCache
 from microscopy.pipettes import HOLDING_PROFILE, INJECTION_PROFILE, PipetteProfile
 from microscopy.cell_appearance import background_geometry, cell_fields, cell_occupancy
 from microscopy.phase_contrast import PhaseContrastOptics
-from microscopy.capillary_optics import composite_capillary
+from microscopy.capillary_optics import aperture_blur_sigma, composite_capillary
 from microscopy.pipette_geometry import PipetteGeometry
 
 
@@ -55,7 +55,7 @@ class CellMicroscope(Microscope):
                     biological_texture_calibrated=False)
 
     def _projection(self, index, dx0, dy0, width, radii, nuclear, contacts, axial_slab=None,
-                    contact_width_fraction=.22):
+                    contact_width_fraction=.22, defocus_m=0.):
         yy, xx = np.mgrid[:width, :width]
         dx = dx0+xx*self.calibration.pixel_size_m
         dy = dy0-yy*self.calibration.pixel_size_m
@@ -65,7 +65,8 @@ class CellMicroscope(Microscope):
         opd, absorption, interior, nucleus = cell_fields(
             u, v, radii, nuclear, index=index, membrane_contacts=contacts,
             axial_slab=axial_slab, contact_width_fraction=contact_width_fraction)
-        contrast = self.phase_optics.intensity(opd, absorption, self.calibration.pixel_size_m)-1.
+        contrast = self.phase_optics.intensity(opd, absorption, self.calibration.pixel_size_m,
+                                               defocus_m=defocus_m)-1.
         edge = np.minimum.reduce([xx, yy, width-1-xx, width-1-yy])
         window = np.clip(edge/24., 0., 1.)
         contrast *= window*window*(3-2*window)
@@ -94,6 +95,18 @@ class CellMicroscope(Microscope):
         depth_mode = state.get("pipette_depth_mode", "cell_volume")
         if depth_mode not in ("cell_volume", "overlay"):
             raise ValueError("Unknown pipette depth mode")
+        projection_mode = state.get("cell_projection_mode", "gaussian")
+        if projection_mode not in ("gaussian", "phase_defocus"):
+            raise ValueError("Unknown cell projection mode")
+        blur_model = state.get("capillary_blur_model", "empirical")
+        if blur_model not in ("empirical", "aperture"):
+            raise ValueError("Unknown capillary blur model")
+        psf_sigma = None
+        if blur_model == "aperture":
+            def psf_sigma(depth):
+                return aperture_blur_sigma(depth, self.calibration.pixel_size_m,
+                                           self.phase_optics.numerical_aperture,
+                                           self.phase_optics.wavelength_m)
         c = self.calibration
         yy, xx = np.mgrid[:c.pixels, :c.pixels]
         x = (xx-c.pixels/2)*c.pixel_size_m
@@ -116,6 +129,8 @@ class CellMicroscope(Microscope):
             if channel == "fluorescence" and i != 0:
                 continue  # Only the target is labelled in this experiment.
             cell_radii = radii if i == 0 else background_geometry(i)[0]
+            phase_defocus = (projection_mode == "phase_defocus" and channel == "phase_contrast"
+                             and radii[2] <= 5e-6 and cell_radii[2] <= 5e-6)
             sigma = abs(centre[2]-focal_height)/c.defocus_scale_m
             # Render a padded local patch so defocus is applied independently
             # to each object plane, including content outside the field edge.
@@ -134,21 +149,22 @@ class CellMicroscope(Microscope):
                 i, float((left+offset-c.pixels/2)*c.pixel_size_m-centre[0]),
                 float((c.pixels/2-top-offset)*c.pixel_size_m-centre[1]),
                 2*sharp_halfwidth+1, tuple(cell_radii), tuple(nr),
-                contacts if i == 0 else (), contact_width_fraction=contact_width)
+                contacts if i == 0 else (), contact_width_fraction=contact_width,
+                defocus_m=float(centre[2]-focal_height) if phase_defocus else 0.)
             if channel == "phase_contrast":
                 # A bounded display exposure preserves bright edge detail.
                 # Dose never recolours the unstained transmission channel.
                 signal = np.zeros((height, width))
-                signal[region] = .55*58*np.tanh(contrast/.95)
+                signal[region] = (1.15 if phase_defocus else .55)*58*np.tanh(contrast/.95)
             else:
                 signal = np.zeros((height, width, 3))
                 signal[region] = nucleus[..., None]*np.array([22., 45., 230.])
                 tracer = min(1., state["delivered_pl"]/.5)
                 signal[region] += tracer*interior[..., None]*np.array([5., 140., 18.])
-            if sigma:
+            if sigma and not phase_defocus:
                 widths = (sigma, sigma) if signal.ndim == 2 else (sigma, sigma, 0)
                 signal = self._plane_blur(signal, sigma=widths, mode="constant", cval=0.)
-            if channel == "phase_contrast" and abs(focal_height-centre[2]) <= cell_radii[2]+1e-6:
+            if channel == "phase_contrast" and not phase_defocus and abs(focal_height-centre[2]) <= cell_radii[2]+1e-6:
                 # A finite slab through the actual ellipsoid retains structures
                 # around the needle plane. Defocused projected light remains;
                 # this is a declared empirical thick-object approximation, not
@@ -178,7 +194,8 @@ class CellMicroscope(Microscope):
             layer = self.pipette_layer(holding_tip, np.asarray(state["holder_back"]), HOLDING_PROFILE,
                                       geometry=geometry, close_mouth=close_mouth)
             image = composite_capillary(image, layer, state["holder_tip_m"], state["holder_back"],
-                                        focal_height, c, self._plane_blur, geometry=geometry)
+                                        focal_height, c, self._plane_blur, geometry=geometry,
+                                        psf_sigma=psf_sigma)
         tip = np.asarray(state["tip_m"][:2])
         back = np.asarray(state.get("needle_back", NEEDLE_BACK))
         geometry = PipetteGeometry.from_evidence(state["needle_geometry"]) if "needle_geometry" in state else None
@@ -196,7 +213,7 @@ class CellMicroscope(Microscope):
                     return 1-(1-self.intracellular_needle_contrast)*inside
             image = composite_capillary(image, layer, state["tip_m"], back,
                                         focal_height, c, self._plane_blur, geometry=geometry,
-                                        visibility=visibility)
+                                        visibility=visibility, psf_sigma=psf_sigma)
         if annotate:
             draw = ImageDraw.Draw(image)
             draw.rectangle((0, 0, c.pixels, 32), fill=(23, 33, 41))
